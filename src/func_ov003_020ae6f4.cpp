@@ -1,5 +1,5 @@
 //cpp
-// NONMATCHING: schedule residual on tens OAM::Render (div≈58 words)
+// NONMATCHING: tens OAM::Render schedule + sbi guard order (div≈58 words)
 struct VBase {
     virtual void v0();
     virtual void v1();
