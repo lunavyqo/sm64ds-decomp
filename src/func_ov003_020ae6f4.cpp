@@ -1,5 +1,5 @@
 //cpp
-// NONMATCHING: near-miss from DB (div=51)
+// NONMATCHING: schedule residual on tens OAM::Render (div≈58 words)
 struct VBase {
     virtual void v0();
     virtual void v1();
