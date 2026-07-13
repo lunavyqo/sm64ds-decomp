@@ -105,4 +105,4 @@ it is fair to take over: ping the claimant first.
 | ov018 func_ov018_02111fac (0x02111fac, size 0x230) | lunavyqo (Grok-assisted) | 2026-07-12 | done - verified byte-identical; API claim clm_5551ed44d304 kept active |
 | ov072: func_ov072_02121368 (0x02121368, 0x174) + __sinit_ov072_02122414 (0x02122414, 0x2f4) | lunavyqo (Grok-assisted) | 2026-07-13 | done - both verified byte-identical |
 | ov025 func_ov025_021113f0 (0x021113f0, 0x3ec) | lunavyqo (Grok) | 2026-07-13 | **done** — verified byte-identical |
-| ov073: func_ov073_0211f61c (0x0211f61c, 0x458) + func_ov073_021203ac (0x021203ac, 0x244) + _ZN11ChiefChilly8BehaviorEv (0x021218a0, 0x42c) | lunavyqo (Grok) | 2026-07-13 | **active** — matching batch |
+| ov073: func_ov073_0211f61c (0x0211f61c, 0x458) + func_ov073_021203ac (0x021203ac, 0x244) + _ZN11ChiefChilly8BehaviorEv (0x021218a0, 0x42c) | lunavyqo (Grok) | 2026-07-13 | **active** — 203ac MATCH; Behavior div=4 (dust y/x load order); 0211f61c div=53 (in-loop 4c0 materialize hoist wall) |

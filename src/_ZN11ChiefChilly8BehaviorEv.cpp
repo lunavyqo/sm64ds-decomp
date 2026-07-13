@@ -1,15 +1,12 @@
 //cpp
-// NONMATCHING: register allocation (div=87). Logic verified correct vs ROM; not
-// byte-matchable from C at mwccarm 1.2/sp2p3 (see notes/matching-style.md).
-// Counts as decompiled, not matched.
+// NONMATCHING: dust matrix extract load order (ldr #0x24/#0x28 vs ROM #0x28/#0x24) (div=4)
+#pragma opt_propagation off
 struct Vector3 { int x, y, z; };
 struct Mat4x3 { int m[12]; };
 
 struct C;
 typedef int (C::*PMF)();
 struct C { char pad[0x37c]; PMF *pp; };
-
-struct RayParams { Vector3 start, end, in, out; };
 
 extern "C" {
 extern void *data_0209f318;
@@ -56,11 +53,11 @@ extern "C" int _ZN11ChiefChilly8BehaviorEv(C *c)
 {
     char *self = (char *)c;
     Vector3 v0;
-    RayParams rp;
+    Vector3 start, end, vin, vout;
     Vector3 v3C;
     Vector3 v48;
     Vector3 v54;
-    int line[0x1f];
+    char line[0x7c];
 
     *(C **)((char *)data_0209f318 + 0x114) = c;
     DecIfAbove0_Short((unsigned short *)(self + 0x100));
@@ -78,7 +75,8 @@ extern "C" int _ZN11ChiefChilly8BehaviorEv(C *c)
         int sum = *(int *)(self + 0xa8) + *(int *)(self + 0x9c);
         int m = *(int *)(self + 0xa0);
         int ac = *(int *)(self + 0xac);
-        if (sum >= m) m = sum;
+        if (sum >= m)
+            m = sum;
         *(int *)(self + 0xa8) = m;
         *(int *)(self + 0xac) = ac;
         _ZN5Actor22UpdatePosWithOnlySpeedEP12CylinderClsn(self, self + 0x110);
@@ -88,13 +86,17 @@ extern "C" int _ZN11ChiefChilly8BehaviorEv(C *c)
         && _ZNK9Animation12WillHitFrameEi(self + 0x35c, 7) != 0) {
         data_020a0e68 = *(Mat4x3 *)(self + 0x328);
         MulMat4x3Mat4x3(*(char **)(self + 0x320) + 0x60, &data_020a0e68, &data_020a0e68);
-        v0.x = data_020a0e68.m[9];
         v0.y = data_020a0e68.m[10];
+        v0.x = data_020a0e68.m[9];
         v0.z = data_020a0e68.m[11];
         Vec3_Lsl(&v3C, &v0, 3);
-        v0 = v3C;
+        v0.x = v3C.x;
+        v0.y = v3C.y;
+        v0.z = v3C.z;
         func_02012694(0x167, self + 0x74);
-        v48 = v0;
+        v48.x = v0.x;
+        v48.y = v0.y;
+        v48.z = v0.z;
         _ZN5Actor17HugeLandingDustAtER7Vector3b(self, &v48, 1);
     }
 
@@ -105,29 +107,48 @@ extern "C" int _ZN11ChiefChilly8BehaviorEv(C *c)
         && (char *)c->pp != data_ov073_02123320
         && (char *)c->pp != data_ov073_02123340
         && (char *)c->pp != data_ov073_02123380) {
+        int ang;
         _ZN11RaycastLineC1Ev(line);
-        rp.start.x = 0; rp.start.y = 0; rp.start.z = 0;
-        rp.end.x = 0; rp.end.y = 0; rp.end.z = 0;
-        rp.in.x = 0; rp.in.y = 0; rp.in.z = 0;
-        rp.out.x = 0; rp.out.y = 0; rp.out.z = 0;
-        rp.start.x = *(int *)(self + 0x5c);
-        rp.start.y = *(int *)(self + 0x60);
-        rp.start.z = *(int *)(self + 0x64);
-        rp.start.y = *(int *)(self + 0x60) + 0x78000;
+        {
+            int z = 0;
+            start.x = z; start.y = z; start.z = z;
+            end.x = z; end.y = z; end.z = z;
+            vin.x = z; vin.y = z; vin.z = z;
+            vout.x = z; vout.y = z; vout.z = z;
+        }
+        start.x = *(int *)(self + 0x5c);
+        ang = 0x2000;
+        {
+            int y = *(int *)(self + 0x60);
+            start.y = y;
+            int z = *(int *)(self + 0x64);
+            start.y = y + 0x78000;
+            start.z = z;
+        }
         if (*(unsigned char *)(self + 0x4cb) > 1)
-            rp.in.z = 0x258000;
+            vin.z = 0x258000;
         else
-            rp.in.z = 0x12c000;
+            vin.z = 0x12c000;
         Matrix4x3_FromRotationY(&data_020a0e68, *(short *)(self + 0x94));
-        Matrix4x3_ApplyInPlaceToRotationX(&data_020a0e68, 0x2000);
-        MulVec3Mat4x3(&rp.in, &data_020a0e68, &rp.out);
-        rp.end.x = rp.start.x;
-        rp.end.x = rp.start.x + rp.out.x;
-        rp.end.y = rp.start.y;
-        rp.end.y = rp.start.y + rp.out.y;
-        rp.end.z = rp.start.z;
-        rp.end.z = rp.start.z + rp.out.z;
-        _ZN11RaycastLine13SetObjAndLineERK7Vector3S2_P5Actor(line, &rp.start, &rp.end, self);
+        Matrix4x3_ApplyInPlaceToRotationX(&data_020a0e68, ang);
+        MulVec3Mat4x3(&vin, &data_020a0e68, &vout);
+        {
+            int sx = start.x;
+            int ox = vout.x;
+            int sy = start.y;
+            int sz = start.z;
+            end.x = sx;
+            end.x = sx + ox;
+            {
+                int oy = vout.y;
+                int oz = vout.z;
+                end.y = sy;
+                end.y = sy + oy;
+                end.z = sz;
+                end.z = sz + oz;
+            }
+        }
+        _ZN11RaycastLine13SetObjAndLineERK7Vector3S2_P5Actor(line, &start, &end, self);
         if (_ZN11RaycastLine10DetectClsnEv(line) == 0) {
             if (*(int *)(self + 0x98) > 0xa000) {
                 *(unsigned char *)(self + 0x4c9) = 1;
@@ -149,7 +170,14 @@ extern "C" int _ZN11ChiefChilly8BehaviorEv(C *c)
 
     _ZN5Enemy12UpdateWMClsnER12WithMeshClsnj(self, self + 0x150, 0);
 
-    v54 = data_ov073_02123040;
+    {
+        int x = data_ov073_02123040.x;
+        int y = data_ov073_02123040.y;
+        int z = data_ov073_02123040.z;
+        v54.x = x;
+        v54.z = z;
+        v54.y = y;
+    }
     _ZN25MovingCylinderClsnWithPos21SetPosRelativeToActorERK7Vector3(self + 0x110, &v54);
 
     if ((char *)c->pp == data_ov073_02123360
