@@ -1,5 +1,5 @@
-// NONMATCHING: init-store order + loop-inc/RenderSub arg schedule (div=32). Size matches;
-// scale tail close; remaining store interleaving and increment ordering walls.
+// NONMATCHING: init r0/r1 + store order; loop-inc order; RenderSub arg setup (div=26).
+// Size matches. Improved from div=32 via tmp reuse + outer loop y1 schedule.
 struct Obj {
     char pad0[0x54];
     unsigned char unk54;
@@ -37,30 +37,29 @@ int func_ov005_020c0b04(struct Obj *arg0)
     volatile int v[10];
     int sb, fp, r8, r7, r6, r5, r4;
     int t, t2, scale;
-    int eighteen;
+    int tmp;
 
     if (data_0209b300 == 1) {
-        _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, data_ov005_020c2f88, 0x80, 0xA4, -1, 0, 0x1000, 0x1000, 0, -1);
+        tmp = _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, data_ov005_020c2f88, 0x80, 0xA4, -1, 0, 0x1000, 0x1000, 0, -1);
     } else {
-        _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, data_ov005_020c2fcc, 0x80, 0xA4, -1, 0, 0x1000, 0x1000, 0, -1);
+        tmp = _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, data_ov005_020c2fcc, 0x80, 0xA4, -1, 0, 0x1000, 0x1000, 0, -1);
     }
 
-    /* ROM: mov r0,#0x18; str v1; mov sb,#0; str v6; str v9; mov #1; str v2; mvn; mov fp; store zeros; str -1 */
-    eighteen = 0x18;
-    v[1] = eighteen;
+    /* reuse return reg path: overwrite tmp with 0x18 like ROM reuses r0 */
+    tmp = 0x18;
+    v[1] = tmp;
     sb = 0;
-    v[6] = eighteen;
-    v[9] = eighteen;
-    v[2] = 1;
-    {
-        int neg1 = -1;
-        fp = 0x28;
-        v[3] = sb;
-        v[4] = sb;
-        v[5] = sb;
-        v[8] = sb;
-        v[7] = neg1;
-    }
+    v[6] = tmp;
+    v[9] = tmp;
+    tmp = 1;
+    v[2] = tmp;
+    tmp = -1;
+    fp = 0x28;
+    v[3] = sb;
+    v[4] = sb;
+    v[5] = sb;
+    v[8] = sb;
+    v[7] = tmp;
 
     do {
         r7 = v[4];
@@ -73,20 +72,31 @@ int func_ov005_020c0b04(struct Obj *arg0)
         r4 = data_ov005_020c2250[sb];
         r6 = r4;
         do {
-            if (func_ov005_020c00b4(arg0, r6) != 0 && func_ov005_020c007c(arg0, r5 + r4) != 0) {
-                _ZN3OAM9RenderSubEP7OamAttriiii(data_ov005_020c2f60[v[0]], v[6], fp, v[7], v[5]);
-                break;
+            if (func_ov005_020c00b4(arg0, r6) != 0) {
+                if (func_ov005_020c007c(arg0, r5 + r4) != 0) {
+                    _ZN3OAM9RenderSubEP7OamAttriiii(data_ov005_020c2f60[v[0]], v[6], fp, v[7], v[5]);
+                    goto next_outer;
+                }
             }
             r6 += 4;
             r5 += 4;
             r7 += 1;
         } while (r7 < 9);
-        if (arg0->unk58 != r4)
-            r8 += 4;
-        _ZN3OAM9RenderSubEP7OamAttriiii(data_ov005_020c2c28[r8], v[9], v[1], v[7], v[8]);
-        sb += 1;
-        fp += 0x30;
-        v[1] += 0x30;
+    next_outer:
+        {
+            int y9 = v[9];
+            int x8 = v[8];
+            if (arg0->unk58 != r4)
+                r8 += 4;
+            _ZN3OAM9RenderSubEP7OamAttriiii(data_ov005_020c2c28[r8], y9, v[1], v[7], x8);
+        }
+        {
+            int y1 = v[1];
+            sb += 1;
+            y1 += 0x30;
+            fp += 0x30;
+            v[1] = y1;
+        }
     } while (sb < 4);
 
     if (arg0->unk54 == 0) {
