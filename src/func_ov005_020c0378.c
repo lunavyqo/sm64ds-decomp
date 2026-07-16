@@ -1,9 +1,5 @@
 //cpp
 // NONMATCHING: regalloc/path-A schedule; idx colors to fp not r5 (div=77)
-// NONMATCHING: regalloc/path-A schedule (div=77). Size matches; idx colors to fp not r5;
-// path-A setup/y-load order diverges; struct-copy/epilogue shape close.
-// NONMATCHING: regalloc/path-A schedule (div~77). Flag+copy+epilogue shape close;
-// idx colors to fp not r5; path-A setup/y-load order diverges under default CSE.
 extern "C" {
 typedef unsigned char u8;
 typedef unsigned short u16;

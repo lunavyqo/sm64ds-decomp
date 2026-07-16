@@ -1,6 +1,5 @@
-// NONMATCHING: missing logic (ROM does more) (div=30). Logic verified correct vs ROM; not
-// byte-matchable from C at mwccarm 1.2/sp2p3 (see notes/matching-style.md).
-// Counts as decompiled, not matched.
+// NONMATCHING: init-store order + loop-inc/RenderSub arg schedule (div=32). Size matches;
+// scale tail close; remaining store interleaving and increment ordering walls.
 struct Obj {
     char pad0[0x54];
     unsigned char unk54;
@@ -38,6 +37,7 @@ int func_ov005_020c0b04(struct Obj *arg0)
     volatile int v[10];
     int sb, fp, r8, r7, r6, r5, r4;
     int t, t2, scale;
+    int eighteen;
 
     if (data_0209b300 == 1) {
         _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, data_ov005_020c2f88, 0x80, 0xA4, -1, 0, 0x1000, 0x1000, 0, -1);
@@ -45,17 +45,23 @@ int func_ov005_020c0b04(struct Obj *arg0)
         _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, data_ov005_020c2fcc, 0x80, 0xA4, -1, 0, 0x1000, 0x1000, 0, -1);
     }
 
-    v[1] = 0x18;
-    v[6] = 0x18;
-    v[9] = 0x18;
+    /* ROM: mov r0,#0x18; str v1; mov sb,#0; str v6; str v9; mov #1; str v2; mvn; mov fp; store zeros; str -1 */
+    eighteen = 0x18;
+    v[1] = eighteen;
     sb = 0;
+    v[6] = eighteen;
+    v[9] = eighteen;
     v[2] = 1;
-    fp = 0x28;
-    v[3] = 0;
-    v[4] = 0;
-    v[5] = 0;
-    v[8] = 0;
-    v[7] = -1;
+    {
+        int neg1 = -1;
+        fp = 0x28;
+        v[3] = sb;
+        v[4] = sb;
+        v[5] = sb;
+        v[8] = sb;
+        v[7] = neg1;
+    }
+
     do {
         r7 = v[4];
         r8 = sb;
