@@ -753,7 +753,7 @@
         "rom",
         "compiler"
       ],
-      "description": "Independently re-compile and re-check each candidate in a fan-out result JSON, then bank the passing ones. Nothing is trusted on an agent's say-so. Verify-only without --apply.",
+      "description": "Fan-out verify/bank: re-check LLM batch JSON wins and write src/ + matched ledger. NOT attempt-tree logging and NOT final how-stamping. For how use stamp_provenance; for tries use log_attempt.",
       "args": [
         {
           "name": "result",
@@ -1129,7 +1129,7 @@
       "label": "Log attempt",
       "category": "logging",
       "readOnly": false,
-      "description": "REQUIRED after every try: append attempt-tree node with WHO/HOW. AI: model+reasoning+harness. near_miss --src upserts tip C.",
+      "description": "REQUIRED after EVERY try (including no_progress). Writes config/match_attempts.jsonl. AI must pass model+reasoning+harness. near_miss + --src upserts nearmiss tip C. matched only after verify; tip not beaten \u2192 no_progress. No wall-clock times.",
       "args": [
         {
           "name": "func",
@@ -1262,7 +1262,7 @@
       "label": "Stamp provenance",
       "category": "logging",
       "readOnly": false,
-      "description": "Stamp final how-record after MATCH (AI: model+reasoning+harness). Not tools/bank.py fan-out. Not a new try.",
+      "description": "REQUIRED after MATCH for AI how-record (model+reasoning+harness) \u2192 config/match_provenance.jsonl. Not a new try. Not tools/bank.py fan-out.",
       "args": [
         {
           "name": "src",
