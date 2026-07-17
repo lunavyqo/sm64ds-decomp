@@ -135,3 +135,12 @@ if a 1-2 instruction gap refuses to close, it may be one of those. Ask on Discor
 
 If anything here is unclear or out of date, ping me on Discord (`beansntoast`), I'd
 rather fix the docs than have you stuck.
+
+## Attempt history and provenance (optional Console stack)
+
+Every matching **try** can be logged to `config/match_attempts.jsonl` via
+`tools/log_attempt.py` (tree: functionId, attemptId, parent, status, model/reasoning/harness).
+Near-miss **tip C** still lives only in `nearmiss/db.jsonl` (pass `--src` on near_miss).
+Final **how** after MATCH: `tools/stamp_provenance.py` → `config/match_provenance.jsonl`.
+Do not confuse with `tools/bank.py` (fan-out batch verify/bank).
+Details: [notes/match-attempts.md](notes/match-attempts.md), [notes/match-provenance.md](notes/match-provenance.md).
