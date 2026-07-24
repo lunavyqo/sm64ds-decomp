@@ -19,6 +19,7 @@ it is fair to take over: ping the claimant first.
 
 | Range | Who | Claimed | Status |
 |---|---|---|---|
+| ov102 QuestionBlock::InitResources (_ZN13QuestionBlock13InitResourcesEv @ 0x0214a4a4, size 0x348) | lunavyqo (Grok) | 2026-07-24 | **done** — verified byte-identical + linkcheck VERIFIED (mwccarm 1.2/sp2p3); goto shared end + 2nd switch case order 3,2,4,7,5,6; API clm_ba0aef36d151 kept |
 | ov100 _ZN14UnchainedChomp13InitResourcesEv (0x02144088, size 0x24c) | lunavyqo (Grok) | 2026-07-24 | **done** — verified byte-identical (mwccarm 1.2/sp2p3); u64-mask launder y+=0x64000; API clm_f134441b0585 kept |
 | ov102 _ZN6BobOmb8BehaviorEv (0x0214c1bc, size 0x354) | lunavyqo (Grok) | 2026-07-24 | **done** — verified byte-identical + linkcheck VERIFIED (mwccarm 1.2/sp2p3); bool materialize + shared epilogue + u64-launder 0x128; API clm_6e02f4c4430d kept |
 | ov102 func_ov102_0214b248 (0x0214b248, size 0x13c) | lunavyqo (Grok) | 2026-07-24 | **done** — verified byte-identical + linkcheck VERIFIED (mwccarm 1.2/sp2p3); u64-launder 0x128 RMW (inline + named post-call); API clm_17507dedc6b6 kept |
