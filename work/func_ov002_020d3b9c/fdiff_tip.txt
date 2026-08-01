@@ -1,0 +1,2 @@
+  size differs: target 0x5a0 vs candidate 0x598
+RESULT match=False mismatches=999/360

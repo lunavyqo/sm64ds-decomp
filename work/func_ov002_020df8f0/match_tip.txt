@@ -1,0 +1,326 @@
+TARGET func_ov002_020df8f0 @ 0x020df8f0 size 0x500  bytes: 10402de90040a0e1980094e5a82094e54014a0e1910100e04214a0e1910120e0c01fa0e18a77fdeb0004a0e1400684e5a0149fe51800a0e30030d1e598249fe5401694e5930000e0f0c092e18c249fe5a10fa0e19211c3e0c330a0e1033080e04c23a0e192c3c3e0020ba0e300209ce00000a3e22236a0e10219a0e3003a83e1000061e2000053e10030a0b1020953e34c349fa5000053e3160000da061c84e2fe09d1e1000050e3090000aa34049fe5002084e0f000d2e1400080e2b000c2e1fe09d1e1200050e32000a0c3be09c1c1260000ea030050e108049fe52020a0b30318a0e14020a0a3000084e04118a0e13c6dfdeb1d0000ea000053e3160000aa061c84e2fe09d1e1000050e3090000dad0039fe51f20e0e3003084e0f000d3e1400040e2b000c3e1fe09d1e1020050e1be29c1b10d0000ea030050e1a4039fe54020a0b30318a0e12020a0a3000084e04118a0e1236dfdeb040000ea84039fe50010a0e3000084e04020a0e31d6dfdeb60039fe5402694e50030d0e51800a0e3c210a0e193000ce0210f82e058339fe54001a0e1fc2093e10219a0e34223a0e192c0c3e0020ba0e300209ce00000a3e22226a0e1002a82e1003062e2000061e2000053e10030a0b1020953e310339fa5000053e3160000da061c84e2fc09d1e1000050e3090000aa00039fe5002084e0f000d2e1400080e2b000c2e1fc09d1e1100050e31000a0c3bc09c1c1260000ea030050e1d4029fe51020a0b30318a0e12020a0a3000084e04118a0e1ed6cfdeb1d0000ea000053e3160000aa061c84e2fc09d1e1000050e3090000da9c029fe50f20e0e3003084e0f000d3e1400040e2b000c3e1fc09d1e1020050e1bc29c1b10d0000ea030050e170029fe52020a0b30318a0e11020a0a3000084e04118a0e1d46cfdeb040000ea50029fe50010a0e3000084e04020a0e3ce6cfdeb94e084e2060c84e2f0c0dee1fc39d0e11410a0e3192d84e203308ce0b030cee1fc09d0e1000060e2900101e0b619c4e1f209d4e1001092e5c000a0e1010c80e2000041e0000082e5400694e5192d84e2000050e3000060b2400684b5060c84e2bc19d0e1dc019fe54112a0e18110a0e1011081e28110a0e1f10090e1001092e5010a60e2c00041e0000082e5400694e5000050e30000a0b3400684b5400694e5010850e3070000da021840e20600a0e3910000e0922084e2f010d2e1400681e0b000c2e10c0000ea010950e3921084d2f000d1d1060c40d2b000c1d1060000da021840e20a00a0e3910000e0922084e2f010d2e1400681e0b000c2e1923084e2060c84e2fe19d0e1f020d3e138019fe5011082e0b010c3e1f219d4e124319fe5000051e1b209c4c1f219d4e11c019fe5000051e1b209c4b1b209d4e1402694e54002a0e10001a0e1f01093e1020ba0e392c1c1e000209ce00010a1e22226a0e1012a82e1a82084e5b219d4e1402694e54112a0e18110a0e1011081e28110a0e1f11093e19231c1e0002093e00000a1e22216a0e1001a81e1981084e5f209d4e10020a0e3bc08c4e1f409d4e1be08c4e1f609d4e1b009c4e1401694e5f209d4e1c132a0e1010a53e37c109fe5013aa0a393e18ce093c22ce0c33fa0e1022ba0e302209ee093c12ce0000060e20008a0e10010ace22226a0e1012a82e10218a0e14008a0e14118a0e1010050e10100a0c1001061e2010050e10108a0b14008a0b1bc08c4e11040bde81eff2fe1400e0a02a4f4090267666666ff7f00009e060000a2f409029c06000014220802aa2a000056d5ffff
+
+=== mwccarm 1.2/sp2p3 ===
+   +0x00 | 10402de9 push {r4, lr}            | 10402de9 push {r4, lr}            | OK
+   +0x04 | 0040a0e1 mov r4, r0               | 0040a0e1 mov r4, r0               | OK
+   +0x08 | 980094e5 ldr r0, [r4, #0x98]      | 980094e5 ldr r0, [r4, #0x98]      | OK
+   +0x0c | a82094e5 ldr r2, [r4, #0xa8]      | a82094e5 ldr r2, [r4, #0xa8]      | OK
+   +0x10 | 4014a0e1 asr r1, r0, #8           | 4014a0e1 asr r1, r0, #8           | OK
+   +0x14 | 910100e0 mul r0, r1, r1           | 910100e0 mul r0, r1, r1           | OK
+   +0x18 | 4214a0e1 asr r1, r2, #8           | 4214a0e1 asr r1, r2, #8           | OK
+   +0x1c | 910120e0 mla r0, r1, r1, r0       | 910120e0 mla r0, r1, r1, r0       | OK
+   +0x20 | c01fa0e1 asr r1, r0, #0x1f        | c01fa0e1 asr r1, r0, #0x1f        | OK
+   +0x24 | 8a77fdeb bl #0xfff5de30           | 000000eb bl #8                    | reloc (wildcard)
+   +0x28 | 0004a0e1 lsl r0, r0, #8           | 0004a0e1 lsl r0, r0, #8           | OK
+   +0x2c | 400684e5 str r0, [r4, #0x640]     | 400684e5 str r0, [r4, #0x640]     | OK
+   +0x30 | a0149fe5 ldr r1, [pc, #0x4a0]     | a0149fe5 ldr r1, [pc, #0x4a0]     | OK
+   +0x34 | 1800a0e3 mov r0, #0x18            | 1800a0e3 mov r0, #0x18            | OK
+   +0x38 | 0030d1e5 ldrb r3, [r1]            | 0030d1e5 ldrb r3, [r1]            | OK
+   +0x3c | 98249fe5 ldr r2, [pc, #0x498]     | 98249fe5 ldr r2, [pc, #0x498]     | OK
+   +0x40 | 401694e5 ldr r1, [r4, #0x640]     | 401694e5 ldr r1, [r4, #0x640]     | OK
+   +0x44 | 930000e0 mul r0, r3, r0           | 930000e0 mul r0, r3, r0           | OK
+   +0x48 | f0c092e1 ldrsh ip, [r2, r0]       | f0c092e1 ldrsh ip, [r2, r0]       | OK
+   +0x4c | 8c249fe5 ldr r2, [pc, #0x48c]     | 8c249fe5 ldr r2, [pc, #0x48c]     | OK
+   +0x50 | a10fa0e1 lsr r0, r1, #0x1f        | a10fa0e1 lsr r0, r1, #0x1f        | OK
+   +0x54 | 9211c3e0 smull r1, r3, r2, r1     | 9211c3e0 smull r1, r3, r2, r1     | OK
+   +0x58 | c330a0e1 asr r3, r3, #1           | c330a0e1 asr r3, r3, #1           | OK
+   +0x5c | 033080e0 add r3, r0, r3           | 033080e0 add r3, r0, r3           | OK
+   +0x60 | 4c23a0e1 asr r2, ip, #6           | 4c23a0e1 asr r2, ip, #6           | OK
+   +0x64 | 92c3c3e0 smull ip, r3, r2, r3     | 92c3c3e0 smull ip, r3, r2, r3     | OK
+   +0x68 | 020ba0e3 mov r0, #0x800           | 020ba0e3 mov r0, #0x800           | OK
+   +0x6c | 00209ce0 adds r2, ip, r0          | 00209ce0 adds r2, ip, r0          | OK
+   +0x70 | 0000a3e2 adc r0, r3, #0           | 0000a3e2 adc r0, r3, #0           | OK
+   +0x74 | 2236a0e1 lsr r3, r2, #0xc         | 2236a0e1 lsr r3, r2, #0xc         | OK
+   +0x78 | 0219a0e3 mov r1, #0x8000          | 0219a0e3 mov r1, #0x8000          | OK
+   +0x7c | 003a83e1 orr r3, r3, r0, lsl #20  | 003a83e1 orr r3, r3, r0, lsl #20  | OK
+   +0x80 | 000061e2 rsb r0, r1, #0           | 000061e2 rsb r0, r1, #0           | OK
+   +0x84 | 000053e1 cmp r3, r0               | 000053e1 cmp r3, r0               | OK
+   +0x88 | 0030a0b1 movlt r3, r0             | 0030a0b1 movlt r3, r0             | OK
+   +0x8c | 020953e3 cmp r3, #0x8000          | 020953e3 cmp r3, #0x8000          | OK
+   +0x90 | 4c349fa5 ldrge r3, [pc, #0x44c]   | 4c349fa5 ldrge r3, [pc, #0x44c]   | OK
+   +0x94 | 000053e3 cmp r3, #0               | 000053e3 cmp r3, #0               | OK
+   +0x98 | 160000da ble #0x60                | 160000da ble #0x60                | OK
+   +0x9c | 061c84e2 add r1, r4, #0x600       | 061c84e2 add r1, r4, #0x600       | OK
+   +0xa0 | fe09d1e1 ldrsh r0, [r1, #0x9e]    | fe09d1e1 ldrsh r0, [r1, #0x9e]    | OK
+   +0xa4 | 000050e3 cmp r0, #0               | 000050e3 cmp r0, #0               | OK
+   +0xa8 | 090000aa bge #0x2c                | 090000aa bge #0x2c                | OK
+   +0xac | 34049fe5 ldr r0, [pc, #0x434]     | 34049fe5 ldr r0, [pc, #0x434]     | OK
+   +0xb0 | 002084e0 add r2, r4, r0           | 002084e0 add r2, r4, r0           | OK
+   +0xb4 | f000d2e1 ldrsh r0, [r2]           | f000d2e1 ldrsh r0, [r2]           | OK
+   +0xb8 | 400080e2 add r0, r0, #0x40        | 400080e2 add r0, r0, #0x40        | OK
+   +0xbc | b000c2e1 strh r0, [r2]            | b000c2e1 strh r0, [r2]            | OK
+   +0xc0 | fe09d1e1 ldrsh r0, [r1, #0x9e]    | fe09d1e1 ldrsh r0, [r1, #0x9e]    | OK
+   +0xc4 | 200050e3 cmp r0, #0x20            | 200050e3 cmp r0, #0x20            | OK
+   +0xc8 | 2000a0c3 movgt r0, #0x20          | 2000a0c3 movgt r0, #0x20          | OK
+   +0xcc | be09c1c1 strhgt r0, [r1, #0x9e]   | be09c1c1 strhgt r0, [r1, #0x9e]   | OK
+   +0xd0 | 260000ea b #0xa0                  | 260000ea b #0xa0                  | OK
+   +0xd4 | 030050e1 cmp r0, r3               | 030050e1 cmp r0, r3               | OK
+   +0xd8 | 08049fe5 ldr r0, [pc, #0x408]     | 08049fe5 ldr r0, [pc, #0x408]     | OK
+   +0xdc | 2020a0b3 movlt r2, #0x20          | 2020a0b3 movlt r2, #0x20          | OK
+   +0xe0 | 0318a0e1 lsl r1, r3, #0x10        | 0318a0e1 lsl r1, r3, #0x10        | OK
+   +0xe4 | 4020a0a3 movge r2, #0x40          | 4020a0a3 movge r2, #0x40          | OK
+   +0xe8 | 000084e0 add r0, r4, r0           | 000084e0 add r0, r4, r0           | OK
+   +0xec | 4118a0e1 asr r1, r1, #0x10        | 4118a0e1 asr r1, r1, #0x10        | OK
+   +0xf0 | 3c6dfdeb bl #0xfff5b4f8           | 000000eb bl #8                    | reloc (wildcard)
+   +0xf4 | 1d0000ea b #0x7c                  | 1d0000ea b #0x7c                  | OK
+   +0xf8 | 000053e3 cmp r3, #0               | 000053e3 cmp r3, #0               | OK
+   +0xfc | 160000aa bge #0x60                | 160000aa bge #0x60                | OK
+   +0x100 | 061c84e2 add r1, r4, #0x600       | 061c84e2 add r1, r4, #0x600       | OK
+   +0x104 | fe09d1e1 ldrsh r0, [r1, #0x9e]    | fe09d1e1 ldrsh r0, [r1, #0x9e]    | OK
+   +0x108 | 000050e3 cmp r0, #0               | 000050e3 cmp r0, #0               | OK
+   +0x10c | 090000da ble #0x2c                | 090000da ble #0x2c                | OK
+   +0x110 | d0039fe5 ldr r0, [pc, #0x3d0]     | d0039fe5 ldr r0, [pc, #0x3d0]     | OK
+   +0x114 | 1f20e0e3 mvn r2, #0x1f            | 1f20e0e3 mvn r2, #0x1f            | OK
+   +0x118 | 003084e0 add r3, r4, r0           | 003084e0 add r3, r4, r0           | OK
+   +0x11c | f000d3e1 ldrsh r0, [r3]           | f000d3e1 ldrsh r0, [r3]           | OK
+   +0x120 | 400040e2 sub r0, r0, #0x40        | 400040e2 sub r0, r0, #0x40        | OK
+   +0x124 | b000c3e1 strh r0, [r3]            | b000c3e1 strh r0, [r3]            | OK
+   +0x128 | fe09d1e1 ldrsh r0, [r1, #0x9e]    | fe09d1e1 ldrsh r0, [r1, #0x9e]    | OK
+   +0x12c | 020050e1 cmp r0, r2               | 020050e1 cmp r0, r2               | OK
+   +0x130 | be29c1b1 strhlt r2, [r1, #0x9e]   | be29c1b1 strhlt r2, [r1, #0x9e]   | OK
+   +0x134 | 0d0000ea b #0x3c                  | 0d0000ea b #0x3c                  | OK
+   +0x138 | 030050e1 cmp r0, r3               | 030050e1 cmp r0, r3               | OK
+   +0x13c | a4039fe5 ldr r0, [pc, #0x3a4]     | a4039fe5 ldr r0, [pc, #0x3a4]     | OK
+   +0x140 | 4020a0b3 movlt r2, #0x40          | 4020a0b3 movlt r2, #0x40          | OK
+   +0x144 | 0318a0e1 lsl r1, r3, #0x10        | 0318a0e1 lsl r1, r3, #0x10        | OK
+   +0x148 | 2020a0a3 movge r2, #0x20          | 2020a0a3 movge r2, #0x20          | OK
+   +0x14c | 000084e0 add r0, r4, r0           | 000084e0 add r0, r4, r0           | OK
+   +0x150 | 4118a0e1 asr r1, r1, #0x10        | 4118a0e1 asr r1, r1, #0x10        | OK
+   +0x154 | 236dfdeb bl #0xfff5b494           | 000000eb bl #8                    | reloc (wildcard)
+   +0x158 | 040000ea b #0x18                  | 040000ea b #0x18                  | OK
+   +0x15c | 84039fe5 ldr r0, [pc, #0x384]     | 84039fe5 ldr r0, [pc, #0x384]     | OK
+   +0x160 | 0010a0e3 mov r1, #0               | 0010a0e3 mov r1, #0               | OK
+   +0x164 | 000084e0 add r0, r4, r0           | 000084e0 add r0, r4, r0           | OK
+   +0x168 | 4020a0e3 mov r2, #0x40            | 4020a0e3 mov r2, #0x40            | OK
+   +0x16c | 1d6dfdeb bl #0xfff5b47c           | 000000eb bl #8                    | reloc (wildcard)
+   +0x170 | 60039fe5 ldr r0, [pc, #0x360]     | 60039fe5 ldr r0, [pc, #0x360]     | OK
+   +0x174 | 402694e5 ldr r2, [r4, #0x640]     | 402694e5 ldr r2, [r4, #0x640]     | OK
+   +0x178 | 0030d0e5 ldrb r3, [r0]            | 0030d0e5 ldrb r3, [r0]            | OK
+   +0x17c | 1800a0e3 mov r0, #0x18            | 1800a0e3 mov r0, #0x18            | OK
+   +0x180 | c210a0e1 asr r1, r2, #1           | c210a0e1 asr r1, r2, #1           | OK
+   +0x184 | 93000ce0 mul ip, r3, r0           | 93000ce0 mul ip, r3, r0           | OK
+   +0x188 | 210f82e0 add r0, r2, r1, lsr #30  | 210f82e0 add r0, r2, r1, lsr #30  | OK
+   +0x18c | 58339fe5 ldr r3, [pc, #0x358]     | 58339fe5 ldr r3, [pc, #0x358]     | OK
+   +0x190 | 4001a0e1 asr r0, r0, #2           | 4001a0e1 asr r0, r0, #2           | OK
+   +0x194 | fc2093e1 ldrsh r2, [r3, ip]       | fc2093e1 ldrsh r2, [r3, ip]       | OK
+   +0x198 | 0219a0e3 mov r1, #0x8000          | 0219a0e3 mov r1, #0x8000          | OK
+   +0x19c | 4223a0e1 asr r2, r2, #6           | 4223a0e1 asr r2, r2, #6           | OK
+   +0x1a0 | 92c0c3e0 smull ip, r3, r2, r0     | 92c0c3e0 smull ip, r3, r2, r0     | OK
+   +0x1a4 | 020ba0e3 mov r0, #0x800           | 020ba0e3 mov r0, #0x800           | OK
+   +0x1a8 | 00209ce0 adds r2, ip, r0          | 00209ce0 adds r2, ip, r0          | OK
+   +0x1ac | 0000a3e2 adc r0, r3, #0           | 0000a3e2 adc r0, r3, #0           | OK
+   +0x1b0 | 2226a0e1 lsr r2, r2, #0xc         | 2226a0e1 lsr r2, r2, #0xc         | OK
+   +0x1b4 | 002a82e1 orr r2, r2, r0, lsl #20  | 002a82e1 orr r2, r2, r0, lsl #20  | OK
+   +0x1b8 | 003062e2 rsb r3, r2, #0           | 003062e2 rsb r3, r2, #0           | OK
+   +0x1bc | 000061e2 rsb r0, r1, #0           | 000061e2 rsb r0, r1, #0           | OK
+   +0x1c0 | 000053e1 cmp r3, r0               | 000053e1 cmp r3, r0               | OK
+   +0x1c4 | 0030a0b1 movlt r3, r0             | 0030a0b1 movlt r3, r0             | OK
+   +0x1c8 | 020953e3 cmp r3, #0x8000          | 020953e3 cmp r3, #0x8000          | OK
+   +0x1cc | 10339fa5 ldrge r3, [pc, #0x310]   | 10339fa5 ldrge r3, [pc, #0x310]   | OK
+   +0x1d0 | 000053e3 cmp r3, #0               | 000053e3 cmp r3, #0               | OK
+   +0x1d4 | 160000da ble #0x60                | 160000da ble #0x60                | OK
+   +0x1d8 | 061c84e2 add r1, r4, #0x600       | 061c84e2 add r1, r4, #0x600       | OK
+   +0x1dc | fc09d1e1 ldrsh r0, [r1, #0x9c]    | fc09d1e1 ldrsh r0, [r1, #0x9c]    | OK
+   +0x1e0 | 000050e3 cmp r0, #0               | 000050e3 cmp r0, #0               | OK
+   +0x1e4 | 090000aa bge #0x2c                | 090000aa bge #0x2c                | OK
+   +0x1e8 | 00039fe5 ldr r0, [pc, #0x300]     | 00039fe5 ldr r0, [pc, #0x300]     | OK
+   +0x1ec | 002084e0 add r2, r4, r0           | 002084e0 add r2, r4, r0           | OK
+   +0x1f0 | f000d2e1 ldrsh r0, [r2]           | f000d2e1 ldrsh r0, [r2]           | OK
+   +0x1f4 | 400080e2 add r0, r0, #0x40        | 400080e2 add r0, r0, #0x40        | OK
+   +0x1f8 | b000c2e1 strh r0, [r2]            | b000c2e1 strh r0, [r2]            | OK
+   +0x1fc | fc09d1e1 ldrsh r0, [r1, #0x9c]    | fc09d1e1 ldrsh r0, [r1, #0x9c]    | OK
+   +0x200 | 100050e3 cmp r0, #0x10            | 100050e3 cmp r0, #0x10            | OK
+   +0x204 | 1000a0c3 movgt r0, #0x10          | 1000a0c3 movgt r0, #0x10          | OK
+   +0x208 | bc09c1c1 strhgt r0, [r1, #0x9c]   | bc09c1c1 strhgt r0, [r1, #0x9c]   | OK
+   +0x20c | 260000ea b #0xa0                  | 260000ea b #0xa0                  | OK
+   +0x210 | 030050e1 cmp r0, r3               | 030050e1 cmp r0, r3               | OK
+   +0x214 | d4029fe5 ldr r0, [pc, #0x2d4]     | d4029fe5 ldr r0, [pc, #0x2d4]     | OK
+   +0x218 | 1020a0b3 movlt r2, #0x10          | 1020a0b3 movlt r2, #0x10          | OK
+   +0x21c | 0318a0e1 lsl r1, r3, #0x10        | 0318a0e1 lsl r1, r3, #0x10        | OK
+   +0x220 | 2020a0a3 movge r2, #0x20          | 2020a0a3 movge r2, #0x20          | OK
+   +0x224 | 000084e0 add r0, r4, r0           | 000084e0 add r0, r4, r0           | OK
+   +0x228 | 4118a0e1 asr r1, r1, #0x10        | 4118a0e1 asr r1, r1, #0x10        | OK
+   +0x22c | ed6cfdeb bl #0xfff5b3bc           | 000000eb bl #8                    | reloc (wildcard)
+   +0x230 | 1d0000ea b #0x7c                  | 1d0000ea b #0x7c                  | OK
+   +0x234 | 000053e3 cmp r3, #0               | 000053e3 cmp r3, #0               | OK
+   +0x238 | 160000aa bge #0x60                | 160000aa bge #0x60                | OK
+   +0x23c | 061c84e2 add r1, r4, #0x600       | 061c84e2 add r1, r4, #0x600       | OK
+   +0x240 | fc09d1e1 ldrsh r0, [r1, #0x9c]    | fc09d1e1 ldrsh r0, [r1, #0x9c]    | OK
+   +0x244 | 000050e3 cmp r0, #0               | 000050e3 cmp r0, #0               | OK
+   +0x248 | 090000da ble #0x2c                | 090000da ble #0x2c                | OK
+   +0x24c | 9c029fe5 ldr r0, [pc, #0x29c]     | 9c029fe5 ldr r0, [pc, #0x29c]     | OK
+   +0x250 | 0f20e0e3 mvn r2, #0xf             | 0f20e0e3 mvn r2, #0xf             | OK
+   +0x254 | 003084e0 add r3, r4, r0           | 003084e0 add r3, r4, r0           | OK
+   +0x258 | f000d3e1 ldrsh r0, [r3]           | f000d3e1 ldrsh r0, [r3]           | OK
+   +0x25c | 400040e2 sub r0, r0, #0x40        | 400040e2 sub r0, r0, #0x40        | OK
+   +0x260 | b000c3e1 strh r0, [r3]            | b000c3e1 strh r0, [r3]            | OK
+   +0x264 | fc09d1e1 ldrsh r0, [r1, #0x9c]    | fc09d1e1 ldrsh r0, [r1, #0x9c]    | OK
+   +0x268 | 020050e1 cmp r0, r2               | 020050e1 cmp r0, r2               | OK
+   +0x26c | bc29c1b1 strhlt r2, [r1, #0x9c]   | bc29c1b1 strhlt r2, [r1, #0x9c]   | OK
+   +0x270 | 0d0000ea b #0x3c                  | 0d0000ea b #0x3c                  | OK
+   +0x274 | 030050e1 cmp r0, r3               | 030050e1 cmp r0, r3               | OK
+   +0x278 | 70029fe5 ldr r0, [pc, #0x270]     | 70029fe5 ldr r0, [pc, #0x270]     | OK
+   +0x27c | 2020a0b3 movlt r2, #0x20          | 2020a0b3 movlt r2, #0x20          | OK
+   +0x280 | 0318a0e1 lsl r1, r3, #0x10        | 0318a0e1 lsl r1, r3, #0x10        | OK
+   +0x284 | 1020a0a3 movge r2, #0x10          | 1020a0a3 movge r2, #0x10          | OK
+   +0x288 | 000084e0 add r0, r4, r0           | 000084e0 add r0, r4, r0           | OK
+   +0x28c | 4118a0e1 asr r1, r1, #0x10        | 4118a0e1 asr r1, r1, #0x10        | OK
+   +0x290 | d46cfdeb bl #0xfff5b358           | 000000eb bl #8                    | reloc (wildcard)
+   +0x294 | 040000ea b #0x18                  | 040000ea b #0x18                  | OK
+   +0x298 | 50029fe5 ldr r0, [pc, #0x250]     | 50029fe5 ldr r0, [pc, #0x250]     | OK
+   +0x29c | 0010a0e3 mov r1, #0               | 0010a0e3 mov r1, #0               | OK
+   +0x2a0 | 000084e0 add r0, r4, r0           | 000084e0 add r0, r4, r0           | OK
+   +0x2a4 | 4020a0e3 mov r2, #0x40            | 4020a0e3 mov r2, #0x40            | OK
+   +0x2a8 | ce6cfdeb bl #0xfff5b340           | 000000eb bl #8                    | reloc (wildcard)
+   +0x2ac | 94e084e2 add lr, r4, #0x94        | 94e084e2 add lr, r4, #0x94        | OK
+   +0x2b0 | 060c84e2 add r0, r4, #0x600       | 060c84e2 add r0, r4, #0x600       | OK
+   +0x2b4 | f0c0dee1 ldrsh ip, [lr]           | f0c0dee1 ldrsh ip, [lr]           | OK
+   +0x2b8 | fc39d0e1 ldrsh r3, [r0, #0x9c]    | fc39d0e1 ldrsh r3, [r0, #0x9c]    | OK
+   +0x2bc | 1410a0e3 mov r1, #0x14            | 1410a0e3 mov r1, #0x14            | OK
+   +0x2c0 | 192d84e2 add r2, r4, #0x640       | 192d84e2 add r2, r4, #0x640       | OK
+   +0x2c4 | 03308ce0 add r3, ip, r3           | 03308ce0 add r3, ip, r3           | OK
+   +0x2c8 | b030cee1 strh r3, [lr]            | b030cee1 strh r3, [lr]            | OK
+   +0x2cc | fc09d0e1 ldrsh r0, [r0, #0x9c]    | fc09d0e1 ldrsh r0, [r0, #0x9c]    | OK
+   +0x2d0 | 000060e2 rsb r0, r0, #0           | 000060e2 rsb r0, r0, #0           | OK
+   +0x2d4 | 900101e0 mul r1, r0, r1           | 900101e0 mul r1, r0, r1           | OK
+   +0x2d8 | b619c4e1 strh r1, [r4, #0x96]     | b619c4e1 strh r1, [r4, #0x96]     | OK
+   +0x2dc | f209d4e1 ldrsh r0, [r4, #0x92]    | f209d4e1 ldrsh r0, [r4, #0x92]    | OK
+   +0x2e0 | 001092e5 ldr r1, [r2]             | 001092e5 ldr r1, [r2]             | OK
+   +0x2e4 | c000a0e1 asr r0, r0, #1           | c000a0e1 asr r0, r0, #1           | OK
+   +0x2e8 | 010c80e2 add r0, r0, #0x100       | 010c80e2 add r0, r0, #0x100       | OK
+   +0x2ec | 000041e0 sub r0, r1, r0           | 000041e0 sub r0, r1, r0           | OK
+   +0x2f0 | 000082e5 str r0, [r2]             | 000082e5 str r0, [r2]             | OK
+   +0x2f4 | 400694e5 ldr r0, [r4, #0x640]     | 400694e5 ldr r0, [r4, #0x640]     | OK
+   +0x2f8 | 192d84e2 add r2, r4, #0x640       | 192d84e2 add r2, r4, #0x640       | OK
+   +0x2fc | 000050e3 cmp r0, #0               | 000050e3 cmp r0, #0               | OK
+   +0x300 | 000060b2 rsblt r0, r0, #0         | 000060b2 rsblt r0, r0, #0         | OK
+   +0x304 | 400684b5 strlt r0, [r4, #0x640]   | 400684b5 strlt r0, [r4, #0x640]   | OK
+   +0x308 | 060c84e2 add r0, r4, #0x600       | 060c84e2 add r0, r4, #0x600       | OK
+   +0x30c | bc19d0e1 ldrh r1, [r0, #0x9c]     | bc19d0e1 ldrh r1, [r0, #0x9c]     | OK
+   +0x310 | dc019fe5 ldr r0, [pc, #0x1dc]     | dc019fe5 ldr r0, [pc, #0x1dc]     | OK
+   +0x314 | 4112a0e1 asr r1, r1, #4           | 4112a0e1 asr r1, r1, #4           | OK
+   +0x318 | 8110a0e1 lsl r1, r1, #1           | 8110a0e1 lsl r1, r1, #1           | OK
+   +0x31c | 011081e2 add r1, r1, #1           | 011081e2 add r1, r1, #1           | OK
+   +0x320 | 8110a0e1 lsl r1, r1, #1           | 8110a0e1 lsl r1, r1, #1           | OK
+   +0x324 | f10090e1 ldrsh r0, [r0, r1]       | f10090e1 ldrsh r0, [r0, r1]       | OK
+   +0x328 | 001092e5 ldr r1, [r2]             | 001092e5 ldr r1, [r2]             | OK
+   +0x32c | 010a60e2 rsb r0, r0, #0x1000      | 010a60e2 rsb r0, r0, #0x1000      | OK
+   +0x330 | c00041e0 sub r0, r1, r0, asr #1   | c00041e0 sub r0, r1, r0, asr #1   | OK
+   +0x334 | 000082e5 str r0, [r2]             | 000082e5 str r0, [r2]             | OK
+   +0x338 | 400694e5 ldr r0, [r4, #0x640]     | 400694e5 ldr r0, [r4, #0x640]     | OK
+   +0x33c | 000050e3 cmp r0, #0               | 000050e3 cmp r0, #0               | OK
+   +0x340 | 0000a0b3 movlt r0, #0             | 0000a0b3 movlt r0, #0             | OK
+   +0x344 | 400684b5 strlt r0, [r4, #0x640]   | 400684b5 strlt r0, [r4, #0x640]   | OK
+   +0x348 | 400694e5 ldr r0, [r4, #0x640]     | 400694e5 ldr r0, [r4, #0x640]     | OK
+   +0x34c | 010850e3 cmp r0, #0x10000         | 010850e3 cmp r0, #0x10000         | OK
+   +0x350 | 070000da ble #0x24                | 070000da ble #0x24                | OK
+   +0x354 | 021840e2 sub r1, r0, #0x20000     | 021840e2 sub r1, r0, #0x20000     | OK
+   +0x358 | 0600a0e3 mov r0, #6               | 0600a0e3 mov r0, #6               | OK
+   +0x35c | 910000e0 mul r0, r1, r0           | 910000e0 mul r0, r1, r0           | OK
+   +0x360 | 922084e2 add r2, r4, #0x92        | 922084e2 add r2, r4, #0x92        | OK
+   +0x364 | f010d2e1 ldrsh r1, [r2]           | f010d2e1 ldrsh r1, [r2]           | OK
+   +0x368 | 400681e0 add r0, r1, r0, asr #12  | 400681e0 add r0, r1, r0, asr #12  | OK
+   +0x36c | b000c2e1 strh r0, [r2]            | b000c2e1 strh r0, [r2]            | OK
+   +0x370 | 0c0000ea b #0x38                  | 0c0000ea b #0x38                  | OK
+   +0x374 | 010950e3 cmp r0, #0x4000          | 010950e3 cmp r0, #0x4000          | OK
+   +0x378 | 921084d2 addle r1, r4, #0x92      | 921084d2 addle r1, r4, #0x92      | OK
+   +0x37c | f000d1d1 ldrshle r0, [r1]         | f000d1d1 ldrshle r0, [r1]         | OK
+   +0x380 | 060c40d2 suble r0, r0, #0x600     | 060c40d2 suble r0, r0, #0x600     | OK
+   +0x384 | b000c1d1 strhle r0, [r1]          | b000c1d1 strhle r0, [r1]          | OK
+   +0x388 | 060000da ble #0x20                | 060000da ble #0x20                | OK
+   +0x38c | 021840e2 sub r1, r0, #0x20000     | 021840e2 sub r1, r0, #0x20000     | OK
+   +0x390 | 0a00a0e3 mov r0, #0xa             | 0a00a0e3 mov r0, #0xa             | OK
+   +0x394 | 910000e0 mul r0, r1, r0           | 910000e0 mul r0, r1, r0           | OK
+   +0x398 | 922084e2 add r2, r4, #0x92        | 922084e2 add r2, r4, #0x92        | OK
+   +0x39c | f010d2e1 ldrsh r1, [r2]           | f010d2e1 ldrsh r1, [r2]           | OK
+   +0x3a0 | 400681e0 add r0, r1, r0, asr #12  | 400681e0 add r0, r1, r0, asr #12  | OK
+   +0x3a4 | b000c2e1 strh r0, [r2]            | b000c2e1 strh r0, [r2]            | OK
+   +0x3a8 | 923084e2 add r3, r4, #0x92        | 923084e2 add r3, r4, #0x92        | OK
+   +0x3ac | 060c84e2 add r0, r4, #0x600       | 060c84e2 add r0, r4, #0x600       | OK
+   +0x3b0 | fe19d0e1 ldrsh r1, [r0, #0x9e]    | fe19d0e1 ldrsh r1, [r0, #0x9e]    | OK
+   +0x3b4 | f020d3e1 ldrsh r2, [r3]           | f020d3e1 ldrsh r2, [r3]           | OK
+   +0x3b8 | 38019fe5 ldr r0, [pc, #0x138]     | 38019fe5 ldr r0, [pc, #0x138]     | OK
+   +0x3bc | 011082e0 add r1, r2, r1           | 011082e0 add r1, r2, r1           | OK
+   +0x3c0 | b010c3e1 strh r1, [r3]            | b010c3e1 strh r1, [r3]            | OK
+   +0x3c4 | f219d4e1 ldrsh r1, [r4, #0x92]    | f219d4e1 ldrsh r1, [r4, #0x92]    | OK
+   +0x3c8 | 24319fe5 ldr r3, [pc, #0x124]     | 24319fe5 ldr r3, [pc, #0x124]     | OK
+   +0x3cc | 000051e1 cmp r1, r0               | 000051e1 cmp r1, r0               | OK
+   +0x3d0 | b209c4c1 strhgt r0, [r4, #0x92]   | b209c4c1 strhgt r0, [r4, #0x92]   | OK
+   +0x3d4 | f219d4e1 ldrsh r1, [r4, #0x92]    | f219d4e1 ldrsh r1, [r4, #0x92]    | OK
+   +0x3d8 | 1c019fe5 ldr r0, [pc, #0x11c]     | 1c019fe5 ldr r0, [pc, #0x11c]     | OK
+   +0x3dc | 000051e1 cmp r1, r0               | 000051e1 cmp r1, r0               | OK
+   +0x3e0 | b209c4b1 strhlt r0, [r4, #0x92]   | b209c4b1 strhlt r0, [r4, #0x92]   | OK
+   +0x3e4 | b209d4e1 ldrh r0, [r4, #0x92]     | b209d4e1 ldrh r0, [r4, #0x92]     | OK
+   +0x3e8 | 402694e5 ldr r2, [r4, #0x640]     | 402694e5 ldr r2, [r4, #0x640]     | OK
+   +0x3ec | 4002a0e1 asr r0, r0, #4           | 4002a0e1 asr r0, r0, #4           | OK
+   +0x3f0 | 0001a0e1 lsl r0, r0, #2           | 0001a0e1 lsl r0, r0, #2           | OK
+   +0x3f4 | f01093e1 ldrsh r1, [r3, r0]       | f01093e1 ldrsh r1, [r3, r0]       | OK
+   +0x3f8 | 020ba0e3 mov r0, #0x800           | 020ba0e3 mov r0, #0x800           | OK
+   +0x3fc | 92c1c1e0 smull ip, r1, r2, r1     | 92c1c1e0 smull ip, r1, r2, r1     | OK
+   +0x400 | 00209ce0 adds r2, ip, r0          | 00209ce0 adds r2, ip, r0          | OK
+   +0x404 | 0010a1e2 adc r1, r1, #0           | 0010a1e2 adc r1, r1, #0           | OK
+   +0x408 | 2226a0e1 lsr r2, r2, #0xc         | 2226a0e1 lsr r2, r2, #0xc         | OK
+   +0x40c | 012a82e1 orr r2, r2, r1, lsl #20  | 012a82e1 orr r2, r2, r1, lsl #20  | OK
+   +0x410 | a82084e5 str r2, [r4, #0xa8]      | a82084e5 str r2, [r4, #0xa8]      | OK
+   +0x414 | b219d4e1 ldrh r1, [r4, #0x92]     | b219d4e1 ldrh r1, [r4, #0x92]     | OK
+   +0x418 | 402694e5 ldr r2, [r4, #0x640]     | 402694e5 ldr r2, [r4, #0x640]     | OK
+   +0x41c | 4112a0e1 asr r1, r1, #4           | 4112a0e1 asr r1, r1, #4           | OK
+   +0x420 | 8110a0e1 lsl r1, r1, #1           | 8110a0e1 lsl r1, r1, #1           | OK
+   +0x424 | 011081e2 add r1, r1, #1           | 011081e2 add r1, r1, #1           | OK
+   +0x428 | 8110a0e1 lsl r1, r1, #1           | 8110a0e1 lsl r1, r1, #1           | OK
+   +0x42c | f11093e1 ldrsh r1, [r3, r1]       | f11093e1 ldrsh r1, [r3, r1]       | OK
+   +0x430 | 9231c1e0 smull r3, r1, r2, r1     | 9231c1e0 smull r3, r1, r2, r1     | OK
+   +0x434 | 002093e0 adds r2, r3, r0          | 002093e0 adds r2, r3, r0          | OK
+   +0x438 | 0000a1e2 adc r0, r1, #0           | 0000a1e2 adc r0, r1, #0           | OK
+   +0x43c | 2216a0e1 lsr r1, r2, #0xc         | 2216a0e1 lsr r1, r2, #0xc         | OK
+   +0x440 | 001a81e1 orr r1, r1, r0, lsl #20  | 001a81e1 orr r1, r1, r0, lsl #20  | OK
+   +0x444 | 981084e5 str r1, [r4, #0x98]      | 981084e5 str r1, [r4, #0x98]      | OK
+   +0x448 | f209d4e1 ldrsh r0, [r4, #0x92]    | f209d4e1 ldrsh r0, [r4, #0x92]    | OK
+   +0x44c | 0020a0e3 mov r2, #0               | 0010a0e3 mov r1, #0               | <<< MISMATCH
+   +0x450 | bc08c4e1 strh r0, [r4, #0x8c]     | bc08c4e1 strh r0, [r4, #0x8c]     | OK
+   +0x454 | f409d4e1 ldrsh r0, [r4, #0x94]    | f409d4e1 ldrsh r0, [r4, #0x94]    | OK
+   +0x458 | be08c4e1 strh r0, [r4, #0x8e]     | be08c4e1 strh r0, [r4, #0x8e]     | OK
+   +0x45c | f609d4e1 ldrsh r0, [r4, #0x96]    | f609d4e1 ldrsh r0, [r4, #0x96]    | OK
+   +0x460 | b009c4e1 strh r0, [r4, #0x90]     | b009c4e1 strh r0, [r4, #0x90]     | OK
+   +0x464 | 401694e5 ldr r1, [r4, #0x640]     | 400694e5 ldr r0, [r4, #0x640]     | <<< MISMATCH
+   +0x468 | f209d4e1 ldrsh r0, [r4, #0x92]    | f2e9d4e1 ldrsh lr, [r4, #0x92]    | <<< MISMATCH
+   +0x46c | c132a0e1 asr r3, r1, #5           | c022a0e1 asr r2, r0, #5           | <<< MISMATCH
+   +0x470 | 010a53e3 cmp r3, #0x1000          | 010a52e3 cmp r2, #0x1000          | <<< MISMATCH
+   +0x474 | 7c109fe5 ldr r1, [pc, #0x7c]      | 7c009fe5 ldr r0, [pc, #0x7c]      | <<< MISMATCH
+   +0x478 | 013aa0a3 movge r3, #0x1000        | 012aa0a3 movge r2, #0x1000        | <<< MISMATCH
+   +0x47c | 93e18ce0 umull lr, ip, r3, r1     | 92c083e0 umull ip, r3, r2, r0     | <<< MISMATCH
+   +0x480 | 93c22ce0 mla ip, r3, r2, ip       | 923123e0 mla r3, r2, r1, r3       | <<< MISMATCH
+   +0x484 | c33fa0e1 asr r3, r3, #0x1f        | c22fa0e1 asr r2, r2, #0x1f        | <<< MISMATCH
+   +0x488 | 022ba0e3 mov r2, #0x800           | 923023e0 mla r3, r2, r0, r3       | <<< MISMATCH
+   +0x48c | 02209ee0 adds r2, lr, r2          | 021ba0e3 mov r1, #0x800           | <<< MISMATCH
+   +0x490 | 93c12ce0 mla ip, r3, r1, ip       | 01c09ce0 adds ip, ip, r1          | <<< MISMATCH
+   +0x494 | 000060e2 rsb r0, r0, #0           | 00006ee2 rsb r0, lr, #0           | <<< MISMATCH
+   +0x498 | 0008a0e1 lsl r0, r0, #0x10        | 0018a0e1 lsl r1, r0, #0x10        | <<< MISMATCH
+   +0x49c | 0010ace2 adc r1, ip, #0           | 0000a3e2 adc r0, r3, #0           | <<< MISMATCH
+   +0x4a0 | 2226a0e1 lsr r2, r2, #0xc         | 2c26a0e1 lsr r2, ip, #0xc         | <<< MISMATCH
+   +0x4a4 | 012a82e1 orr r2, r2, r1, lsl #20  | 002a82e1 orr r2, r2, r0, lsl #20  | <<< MISMATCH
+   +0x4a8 | 0218a0e1 lsl r1, r2, #0x10        | 0208a0e1 lsl r0, r2, #0x10        | <<< MISMATCH
+   +0x4ac | 4008a0e1 asr r0, r0, #0x10        | 4008a0e1 asr r0, r0, #0x10        | OK
+   +0x4b0 | 4118a0e1 asr r1, r1, #0x10        | 4118a0e1 asr r1, r1, #0x10        | OK
+   +0x4b4 | 010050e1 cmp r0, r1               | 000051e1 cmp r1, r0               | <<< MISMATCH
+   +0x4b8 | 0100a0c1 movgt r0, r1             | 0010a0c1 movgt r1, r0             | <<< MISMATCH
+   +0x4bc | 001061e2 rsb r1, r1, #0           | 000060e2 rsb r0, r0, #0           | <<< MISMATCH
+   +0x4c0 | 010050e1 cmp r0, r1               | 000051e1 cmp r1, r0               | <<< MISMATCH
+   +0x4c4 | 0108a0b1 lsllt r0, r1, #0x10      | 0008a0b1 lsllt r0, r0, #0x10      | <<< MISMATCH
+   +0x4c8 | 4008a0b1 asrlt r0, r0, #0x10      | 4018a0b1 asrlt r1, r0, #0x10      | <<< MISMATCH
+   +0x4cc | bc08c4e1 strh r0, [r4, #0x8c]     | bc18c4e1 strh r1, [r4, #0x8c]     | <<< MISMATCH
+   +0x4d0 | 1040bde8 pop {r4, lr}             | 1040bde8 pop {r4, lr}             | OK
+   +0x4d4 | 1eff2fe1 bx lr                    | 1eff2fe1 bx lr                    | OK
+   +0x4d8 | 400e0a02 andeq r0, sl, #64, #28   | 00000000 andeq r0, r0, r0         | reloc (wildcard)
+   +0x4dc | a4f40902 andeq pc, sb, #164, #8   | 00000000 andeq r0, r0, r0         | reloc (wildcard)
+   +0x4e0 | 67666666 strbtvs r6, [r6], -r7, ror #12 | 67666666 strbtvs r6, [r6], -r7, ror #12 | OK
+   +0x4e4 | ff7f0000 strdeq r7, r8, [r0], -pc | ff7f0000 strdeq r7, r8, [r0], -pc | OK
+   +0x4e8 | 9e060000 muleq r0, lr, r6         | 9e060000 muleq r0, lr, r6         | OK
+   +0x4ec | a2f40902 andeq pc, sb, #0xa2000000 | 00000000 andeq r0, r0, r0         | reloc (wildcard)
+   +0x4f0 | 9c060000 muleq r0, ip, r6         | 9c060000 muleq r0, ip, r6         | OK
+   +0x4f4 | 14220802 andeq r2, r8, #20, #4    | 00000000 andeq r0, r0, r0         | reloc (wildcard)
+   +0x4f8 | aa2a0000 andeq r2, r0, sl, lsr #21 | aa2a0000 andeq r2, r0, sl, lsr #21 | OK
+   +0x4fc | 56d5ffff 56d5ffff                 | 56d5ffff 56d5ffff                 | OK
+
+========================================
+MATCHING VERSIONS: none
