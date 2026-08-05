@@ -32,6 +32,7 @@ start converting a class; the same staleness rule applies.
 
 
 | Range | Who | Claimed | Status |
+| ov007 func_ov007_020c6e68 (0x020c6e68, size 0x1e4) | lunavyqo (Grok) | 2026-08-06 | **released** — near-miss improved **53→11→10** (fdiff 10/121). Body after +0x5c byte-identical. Residual pure early load sched: t→sl vs sb, pz after px-index. fake-dep px+=(pz-pz). tip in nearmiss; API released |
 | ov004 __sinit_ov004_020b955c (0x020b955c, size 0x574) | lunavyqo (Grok) | 2026-08-05 | **done** — verified byte-identical + linkcheck VERIFIED (mwccarm **2004/b56**); levers: field-load `tmp.a/b` from `data_02086b58` then `w[0]/w[1]` copy; mid-stream `p0.a=w[0]` / fills / `p0.b=w[1]` + bf4f8 p1-p4+p11=tmp; from near-miss 299→142→22→0; API clm_05b55ea60b6a kept |
 | ov007 func_ov007_020c9688 (0x020c9688, size 0x300) | lunavyqo (Grok) | 2026-08-05 | **released** — near-miss improved **41→33** (match.py words). Levers: `r=p` first; key/hi via r; `p+=0x14` before bF/h10 forces sb base for fF/h10. Residual: mov/ldrb order (2), hi in r1 vs ip cascade (12 pack), second-loop q/c2/g/m regperm (19). notes: cannot force ip. tip in nearmiss/db.jsonl; API clm_3b6bda45cb20 released |
 | ov007 func_ov007_020c9688 (0x020c9688, size 0x300) | lunavyqo (Grok) | 2026-08-06 | **released** — FLOOR(regperm) **div=33** reconfirmed. Residual: mov/ldrb order + hi r1 vs ip pack cascade + loop2 q/c2/g/m regperm. 100+ variants + permuter 32it no win; same under 1.2/sp2p3. tip+floor in nearmiss/db.jsonl; API clm_601e7964eeb4 released |
