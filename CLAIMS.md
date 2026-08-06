@@ -32,6 +32,8 @@ start converting a class; the same staleness rule applies.
 
 
 | Range | Who | Claimed | Status |
+| ov006 func_ov006_020fb230 (0x020fb230, size 0x22c) | lunavyqo (Grok) | 2026-08-07 | **released** — no_progress FLOOR(ordering final-block) reconfirmed. Tip div=3 (new_var size-short) / size-exact plain match-words=7. Residual: second respawn post-RandomInt SCHED (ROM ldr-mask→add r3→late add#0x5b00; ours add-first + early add#0x5b00). 80+ variants + permuter ~750it score220→190 no beat tip. tip+floor in nearmiss/db.jsonl; CLAIMS.md only (API key rejected) |
+| ov006 func_ov006_02108d28 (0x02108d28, size 0xfc) | lunavyqo (Grok) | 2026-08-07 | **active** — match from near-miss div=15; API clm_e626ef55e3f4 |
 | ov004 __sinit_ov004_020b955c (0x020b955c, size 0x574) | lunavyqo (Grok) | 2026-08-05 | **done** — verified byte-identical + linkcheck VERIFIED (mwccarm **2004/b56**); levers: field-load `tmp.a/b` from `data_02086b58` then `w[0]/w[1]` copy; mid-stream `p0.a=w[0]` / fills / `p0.b=w[1]` + bf4f8 p1-p4+p11=tmp; from near-miss 299→142→22→0; API clm_05b55ea60b6a kept |
 | ov007 func_ov007_020c49bc (0x020c49bc, size 0x440) | lunavyqo (Grok) | 2026-08-05 | **done** — verified byte-identical (mwccarm 2004/b56); strength_reduction off + 6k decl sl/sb + sp4C-before-sp30 + else-path name-swap r6/r7; API clm_671dd186507f kept |
 | ov007 func_ov007_020c9688 (0x020c9688, size 0x300) | lunavyqo (Grok) | 2026-08-06 | **active** — continue grind from near-miss div=33; API clm_601e7964eeb4 |
@@ -305,6 +307,7 @@ start converting a class; the same staleness rule applies.
 | ov073: 0211f2c0 (0x0211f2c0), 02120ed0 (0x02120ed0) | lunavyqo | 2026-07-10 | done - verified byte-identical, PR #260 open |
 | ov072 10 funcs (0x0211f1dc-0x021218dc) | lunavyqo | 2026-07-10 | done - verified byte-identical, PR #235 open |
 | ov015: _ZN13PoleBillboard8BehaviorEv (0x02111720), _ZN14MovingBarSmall8BehaviorEv (0x021124d0), 021114f0 (0x021114f0) | lunavyqo | 2026-07-10 | near-miss (PR #229 open) |
+| ov015 func_ov015_021114f0 (0x021114f0, size 0x17c) | lunavyqo (Grok) | 2026-08-07 | **active** — re-crack from near-miss div=12 (smull dest/reg coloring); API clm_9f86bbbe6156 |
 | ov070 func_ov070_0211f48c (0x0211f48c, size 0x164) | lunavyqo | 2026-07-10 | near-miss (PR #234 open) |
 | ov005: 020c0378 (0x020c0378), 020c1130 (0x020c1130), 020c16e4 (0x020c16e4) | lunavyqo | 2026-07-10 | **partial done** — 020c1130 MATCH (PR #385); 020c0378 + 020c16e4 still near-miss (banked in nearmiss/db.jsonl; old PR #239 stale) |
 | ov020: 02111340 (0x02111340), 021115ac (0x021115ac) | lunavyqo | 2026-07-10 | near-miss (PR #244 closed; 02113148 matched by ai-tdd-labs in #471) |
