@@ -8,7 +8,8 @@
  * deslop
  * Leftover: func_ov098_0213a794 / func_ov098_0213a2cc and
  * data_ov022_0211427c (shared falling-block setup lives in ov098;
- * this leaf only passes the file table).
+ * this leaf only passes the file table). Factory is still
+ * src/d_a_obj_fl_fall_block.c, outside this TU.
  */
 
 #include "daObjFl_Fall_Block_c.h"
