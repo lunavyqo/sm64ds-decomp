@@ -54,7 +54,7 @@
 struct daObjUkiyuka_c : dBgActor_c {
     /* Field NAMES are placeholders. Offsets, widths and types are observed. */
     s32 mRestY;             /* 0x320 */
-    s32 mBobAmplitude;      /* 0x324 */
+    Fix12i mBobAmplitude;   /* 0x324 */
     s16 mBobPhase;          /* 0x328 */
     u16 mRestTimer;         /* 0x32a */
 
@@ -108,7 +108,7 @@ typedef char daObjUkiyuka_c_size_must_be_0x32c[sizeof(daObjUkiyuka_c) == 0x32c ?
 struct daObjUkiyuka_c {
     u8  pad_000[0x320];
     s32 mRestY;             /* 0x320 */
-    s32 mBobAmplitude;      /* 0x324 */
+    Fix12i mBobAmplitude;   /* 0x324 */
     s16 mBobPhase;          /* 0x328 */
     u16 mRestTimer;         /* 0x32a */
 };

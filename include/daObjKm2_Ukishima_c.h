@@ -11,12 +11,15 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * factory allocates 0x32c, which daObjUkiyuka_c fills. Overrides the
  * two slots the base leaves null (InitResources, CleanupResources)
  * and hands this overlay's model/collision descriptor to the shared
- * ov002 helpers. Init also stores the bob amplitude.
+ * ov002 helpers. Init also stores BOB_AMPLITUDE into mBobAmplitude.
  *
  * `daObjKm2_Ukishima_c` is the RTTI name. `ukishima` is a floating
  * island.
  */
 struct daObjKm2_Ukishima_c : daObjUkiyuka_c {
+    /* 20.12; the shared setup helper writes this to mBobAmplitude. */
+    enum { BOB_AMPLITUDE = 0xf50 };
+
     /* Inline and first: out-of-line mwccarm emits D0 before D1; retail
        has D1 at 0x02111b14 below D0 at 0x02111b64. */
     virtual ~daObjKm2_Ukishima_c() {}

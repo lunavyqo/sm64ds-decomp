@@ -4,7 +4,7 @@
  *
  * No fields. InitResources / CleanupResources hand this overlay's
  * model and collision files to daObjUkiyuka_c's shared ov002 helpers.
- * Init also stores bob amplitude 0xf50 into mBobAmplitude (0x324).
+ * Init also stores BOB_AMPLITUDE into mBobAmplitude.
  *
  * daObjKm2_Ukishima_c_classInit is reconstructed (RTTI
  * daObjKm2_Ukishima_c, KM2_UKISHIMA registry). Retail does not store
@@ -15,7 +15,6 @@
  *   shared floating-floor setup/teardown; names are placeholders.
  * Leftover: data_ov045_02112f08 is an opaque 3-word file table.
  *   Nothing in this TU dereferences it.
- * Leftover: bob amplitude is still the raw 0xf50 literal.
  */
 
 #include "daObjKm2_Ukishima_c.h"
@@ -26,7 +25,7 @@ struct ResourceDescriptor {
 
 extern "C" {
 int func_ov002_020b6584(daObjKm2_Ukishima_c *self, ResourceDescriptor *descriptor,
-                        int bobAmplitude);
+                        Fix12i bobAmplitude);
 int func_ov002_020b6424(daObjKm2_Ukishima_c *self, ResourceDescriptor *descriptor);
 extern ResourceDescriptor data_ov045_02112f08;
 }
@@ -65,7 +64,7 @@ extern "C" UkishimaSpawnInfo g_profile_KM2_UKISHIMA = {
 // @symbol _ZN19daObjKm2_Ukishima_c13InitResourcesEv
 s32 daObjKm2_Ukishima_c::InitResources()
 {
-    return func_ov002_020b6584(this, &data_ov045_02112f08, 0xf50);
+    return func_ov002_020b6584(this, &data_ov045_02112f08, BOB_AMPLITUDE);
 }
 
 // @symbol _ZN19daObjKm2_Ukishima_c16CleanupResourcesEv
