@@ -14,14 +14,9 @@
  *
  * deslop
  * Leftover: the symbol is still func_ov006_02112ad8 (no RTTI for methods).
- * Leftover: #pragma opt_strength_reduction off.
- * Leftover: FIX_MUL / FIX_MUL_SU / FIX_MUL_US -- signedness of the 20.12
- *   product is load-bearing.
- * Leftover: pos0..pos12 copies of the probe point (passing &work DIFFs).
- * Leftover: ball-vs-ball and hole walks stay do-while (for re-reads the
- *   count and DIFFs).
- * Leftover: gotos outer_loop / final_checks.
- * Leftover: each balls[] / holes[] read rematerializes its own null.
+ * Leftover: #pragma opt_strength_reduction off (drop DIFFs 53 words).
+ * Leftover: pos1..pos12 copies of the probe point (passing &work DIFFs).
+ * Leftover: goto final_checks on a kinoko hit (skips pos7..pos10).
  */
 
 typedef struct V2 {
@@ -88,10 +83,6 @@ typedef struct State {
     int depth;
     int zeroAngle;
     int zero;
-    int entityIndex;
-    void *null34;
-    void *null38;
-    int null3c;
     int angle40;
     int index44;
     int zero48;
@@ -131,10 +122,8 @@ extern void func_ov006_02111dcc(Ball *self, int value);
 extern int data_0209d4b8;
 
 #define FIX_MUL(a, b) ((int)(((s64)(a) * (b) + 0x800) >> 12))
-#define FIX_MUL_SU(a, b) \
-    ((int)(((s64)((u64)(s64)(a) * (b)) + 0x800) >> 12))
-#define FIX_MUL_US(a, b) \
-    ((int)(((s64)((a) * (u64)(s64)(b)) + 0x800) >> 12))
+#define GET_BALL(mgr, i) ((i) >= 0xd ? (void *)0 : (mgr)->balls[i])
+#define GET_HOLE(mgr, i) ((i) >= (mgr)->holeCount ? (void *)0 : (mgr)->holes[i])
 
 #pragma opt_strength_reduction off
 void func_ov006_02112ad8(Ball *self)
@@ -243,9 +232,6 @@ void func_ov006_02112ad8(Ball *self)
 
     state.depth = 0;
     state.zero = 0;
-    state.null34 = (void *)0;
-    state.null38 = (void *)0;
-    state.null3c = 0;
     state.angle40 = 0;
     state.index44 = 0;
     state.zero4c = 0;
@@ -254,7 +240,7 @@ void func_ov006_02112ad8(Ball *self)
     state.zeroAngle = 0;
 
     /* Walk the ball out of whatever it is overlapping, up to 32 times. */
-outer_loop:
+    do {
         /* 32 feelers, one every 0x800 (1/32 of a turn). */
         angle = state.zeroAngle;
         blocked = angle;
@@ -276,7 +262,6 @@ outer_loop:
                         self->hitA[i] = 1;
                         self->anyHit = 1;
                         blocked = 1;
-                        goto final_checks;
                     } else {
                         pos2 = work;
                         if (func_ov006_02112504(self, &pos2) != 0) {
@@ -313,7 +298,6 @@ outer_loop:
                             self->hitB[i] = 1;
                             state.hitExit = 1;
                             blocked = 1;
-                            goto final_checks;
                         } else {
                             if (state.iteration == 1) {
                                 pos6 = work;
@@ -393,57 +377,49 @@ final_checks:
 
         /* Ball-vs-ball: if another live ball is close, mark that ring. */
         if (state.resolveCount < 0x11 && self->state3a == 0) {
-            otherBall = 0;
-            if (self->mpManager->ballCount > 0) {
-                do {
-                    if (otherBall != self->mIndex) {
-                        other = otherBall >= 0xd ? state.null34
-                            : self->mpManager->balls[otherBall];
-                        if (((Ball *)other)->state3a == 0) {
-                            other = otherBall >= 0xd ? state.null38
-                                : self->mpManager->balls[otherBall];
-                            if (((Ball *)other)->mIsActive != 0) {
-                                other = otherBall >= 0xd
-                                    ? (void *)state.null3c
-                                    : self->mpManager->balls[otherBall];
-                                func_ov006_0211470c(&entityPos, other);
-                                Vec2_Sub(&entityDelta, (V2 *)&self->mCurrent0,
-                                    &entityPos);
-                                delta = entityDelta;
-                                if (func_0203d5bc(&delta) <= 0x100000LL) {
-                                    angle = state.angle40;
-                                    mgr = self->mpManager;
-                                    other = otherBall >= 0xd ? (void *)angle
-                                        : mgr->balls[otherBall];
-                                    func_ov006_0211470c(&entityPos2, other);
-                                    otherPos = entityPos2;
-                                    if (self->mCurrent1 < 0x90000 ||
-                                        self->mCurrent0 <= otherPos.x) {
-                                        i = state.index44;
-                                        for (; i < 0x20; i++) {
-                                            work.z = self->mRadius;
-                                            work.x = 0;
-                                            func_0203d388(&work, angle);
-                                            work.x += self->mCurrent0;
-                                            work.z += self->mCurrent1;
-                                            Vec2_Sub(&radialDelta, &work, &otherPos);
-                                            delta = radialDelta;
-                                            if (func_0203d5bc(&delta) < 0x40000LL) {
-                                                self->targetIndex = otherBall;
-                                                self->hit[i] = 1;
-                                                self->hitA[i] = 1;
-                                                self->hitC[i] = 1;
-                                                blocked = 1;
-                                            }
-                                            angle = (s16)(angle + 0x800);
+            for (otherBall = 0; otherBall < self->mpManager->ballCount;
+                otherBall++) {
+                if (otherBall != self->mIndex) {
+                    other = GET_BALL(self->mpManager, otherBall);
+                    if (((Ball *)other)->state3a == 0) {
+                        other = GET_BALL(self->mpManager, otherBall);
+                        if (((Ball *)other)->mIsActive != 0) {
+                            other = GET_BALL(self->mpManager, otherBall);
+                            func_ov006_0211470c(&entityPos, other);
+                            Vec2_Sub(&entityDelta, (V2 *)&self->mCurrent0,
+                                &entityPos);
+                            delta = entityDelta;
+                            if (func_0203d5bc(&delta) <= 0x100000LL) {
+                                angle = state.angle40;
+                                mgr = self->mpManager;
+                                other = GET_BALL(mgr, otherBall);
+                                func_ov006_0211470c(&entityPos2, other);
+                                otherPos = entityPos2;
+                                if (self->mCurrent1 < 0x90000 ||
+                                    self->mCurrent0 <= otherPos.x) {
+                                    i = state.index44;
+                                    for (; i < 0x20; i++) {
+                                        work.z = self->mRadius;
+                                        work.x = 0;
+                                        func_0203d388(&work, angle);
+                                        work.x += self->mCurrent0;
+                                        work.z += self->mCurrent1;
+                                        Vec2_Sub(&radialDelta, &work, &otherPos);
+                                        delta = radialDelta;
+                                        if (func_0203d5bc(&delta) < 0x40000LL) {
+                                            self->targetIndex = otherBall;
+                                            self->hit[i] = 1;
+                                            self->hitA[i] = 1;
+                                            self->hitC[i] = 1;
+                                            blocked = 1;
                                         }
+                                        angle = (s16)(angle + 0x800);
                                     }
                                 }
                             }
                         }
                     }
-                    otherBall++;
-                } while (otherBall < self->mpManager->ballCount);
+                }
             }
         }
 
@@ -471,8 +447,7 @@ final_checks:
         dot = Vec2_Len(&moveDelta);
         state.depth += 0x80;
         state.resolveCount++;
-    if (blocked == 1 && state.resolveCount < 0x21 && state.depth <= dot)
-        goto outer_loop;
+    } while (blocked == 1 && state.resolveCount < 0x21 && state.depth <= dot);
 
     /* Bounce: exit-pocket hits use hitB; everything else uses hitA except
        ball-vs-ball (hitC). */
@@ -514,7 +489,7 @@ final_checks:
             responseScale = FIX_MUL(dot, 0x1400);
             randomScale = ((((((u32)RandomIntInternal(&data_0209d4b8) >> 16) &
                 0x7fff) * 0x10) >> 15) << 12);
-            responseScale += FIX_MUL_SU(responseScale, randomScale >> 6);
+            responseScale += FIX_MUL(responseScale, randomScale >> 6);
             randomAngle = (u32)RandomIntInternal(&data_0209d4b8);
             func_0203d388(&response,
                 (s16)(((((randomAngle >> 16) & 0x7fff) << 12) >> 15) - 0x800));
@@ -526,7 +501,7 @@ final_checks:
             responseScale = -0x2000;
             randomScale = ((((((u32)RandomIntInternal(&data_0209d4b8) >> 16) &
                 0x7fff) * 0x10) >> 15) << 12);
-            responseScale += FIX_MUL_US(randomScale >> 5, -0x2000);
+            responseScale += FIX_MUL(randomScale >> 5, -0x2000);
             randomAngle = (u32)RandomIntInternal(&data_0209d4b8);
             func_0203d388(&response,
                 (s16)(((((randomAngle >> 16) & 0x7fff) << 12) >> 15) - 0x800));
@@ -535,7 +510,7 @@ final_checks:
             responseScale = FIX_MUL(dot, 0x1a00);
             randomScale = ((((((u32)RandomIntInternal(&data_0209d4b8) >> 16) &
                 0x7fff) * 0x10) >> 15) << 12);
-            responseScale += FIX_MUL_SU(responseScale, randomScale >> 6);
+            responseScale += FIX_MUL(responseScale, randomScale >> 6);
             if (self->mCurrent0 < 0x18000 && response.z > 0) {
                 response.x = 0;
                 response.z = 0x1000;
@@ -578,14 +553,14 @@ final_checks:
             } else {
                 volume = (-self->mVel1 << 7) / 0x6000;
                 if (volume > 0x7f)
-                    volume = 0x7f;
+                volume = 0x7f;
                 if (volume < 0)
-                    volume = 0;
+                volume = 0;
                 func_020126ac(0x16d, 5, volume, 0,
-                    func_020126e8(self->mCurrent0));
+                func_020126e8(self->mCurrent0));
                 if (volume >= 0x40)
-                    func_020126ac(0x16e, 5, volume, 0,
-                        func_020126e8(self->mCurrent0));
+                func_020126ac(0x16e, 5, volume, 0,
+                    func_020126e8(self->mCurrent0));
             }
             self->soundTimer = 5;
         }
@@ -619,15 +594,12 @@ final_checks:
     /* Holes: swallow the ball, or nudge it away if it only grazed. */
     dot = self->mRadius + 0x10000;
     square = FIX_MUL(dot, dot);
-    i = 0;
-    if (self->mpManager->holeCount <= 0)
-        return;
-    do {
-        other = i >= self->mpManager->holeCount ? (void *)0 : self->mpManager->holes[i];
+    for (i = 0; i < self->mpManager->holeCount; i++) {
+        other = GET_HOLE(self->mpManager, i);
         if (func_ov006_021115c4(other) == 0) {
             hazardDelta.x = self->mCurrent0;
             hazardDelta.z = self->mCurrent1;
-            other = i >= self->mpManager->holeCount ? (void *)0 : self->mpManager->holes[i];
+            other = GET_HOLE(self->mpManager, i);
             func_ov006_0211470c(&hazardPos, other);
             hazardDelta.x -= hazardPos.x;
             hazardDelta.z -= hazardPos.z;
@@ -635,15 +607,15 @@ final_checks:
             if (func_0203d5bc(&hazardDelta) < square) {
                 dot = self->mRadius + 0x10000 - Vec2_Len(&hazardDelta);
                 if (self->mRadius < dot) {
-                    other = i >= self->mpManager->holeCount ? (void *)0 : self->mpManager->holes[i];
-                    func_ov006_0211470c(&hazardPos2, other);
-                    self->hitX = hazardPos2.x;
-                    self->hitZ = hazardPos2.z;
-                    other = i >= self->mpManager->holeCount ? (void *)0 : self->mpManager->holes[i];
-                    func_ov006_021115cc(other);
-                    func_ov006_02111dcc(self, 0x80);
-                    self->state3a = 1;
-                    return;
+                other = GET_HOLE(self->mpManager, i);
+                func_ov006_0211470c(&hazardPos2, other);
+                self->hitX = hazardPos2.x;
+                self->hitZ = hazardPos2.z;
+                other = GET_HOLE(self->mpManager, i);
+                func_ov006_021115cc(other);
+                func_ov006_02111dcc(self, 0x80);
+                self->state3a = 1;
+                return;
                 }
                 correction = hazardDelta;
                 func_0203d434(&correction);
@@ -658,6 +630,5 @@ final_checks:
                 return;
             }
         }
-        i++;
-    } while (i < self->mpManager->holeCount);
+    }
 }
