@@ -70,8 +70,14 @@
     "functions_matched": 5,
     "functions_declared": 5,
     "compilerOnlyOutput": {
-      "requested": [],
-      "deadstripped": [],
+      "requested": [
+        "_ZN16daObjKaitendai_cD2Ev",
+        "_ZN10dBgActor_cD2Ev"
+      ],
+      "deadstripped": [
+        "_ZN10dBgActor_cD2Ev",
+        "_ZN16daObjKaitendai_cD2Ev"
+      ],
       "droppedSections": [
         5,
         6,
@@ -92,7 +98,11 @@
         21,
         22,
         23,
-        24
+        24,
+        35,
+        36,
+        37,
+        38
       ],
       "data": [
         "_ZTI7fBase_c",
@@ -134,6 +144,16 @@
     }
   },
   "compiler_only_output": [
+    {
+      "symbol": "_ZN16daObjKaitendai_cD2Ev",
+      "disposition": "deadstrip",
+      "reason": "compiler-emitted base-object destructor helper has no configured ROM symbol and no inbound relocation after the licensed leaf D1/D0 pair is retained"
+    },
+    {
+      "symbol": "_ZN10dBgActor_cD2Ev",
+      "disposition": "deadstrip",
+      "reason": "compiler-emitted base-object destructor helper has no configured ROM symbol and no inbound relocation after the licensed leaf D1/D0 pair is retained"
+    },
     {
       "symbol": "_ZTI7fBase_c",
       "disposition": "deadstrip-data",
