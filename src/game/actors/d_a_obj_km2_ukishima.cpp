@@ -43,6 +43,11 @@ struct UkishimaSpawnInfo {
 typedef char UkishimaSpawnInfo_size_must_be_0x1c[
     sizeof(UkishimaSpawnInfo) == 0x1c ? 1 : -1];
 
+/* 20.12; the shared setup helper writes this to mBobAmplitude.
+   Kept out of the class body: check_header_offsets treats an in-class
+   enum as an unparsed field. */
+enum { BOB_AMPLITUDE = 0xf50 };
+
 // @symbol daObjKm2_Ukishima_c_classInit
 extern "C" daObjKm2_Ukishima_c *daObjKm2_Ukishima_c_classInit()
 {
