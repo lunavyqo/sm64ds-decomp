@@ -167,7 +167,10 @@ struct dActor_c : dBase_c {
        `(Vector3 *)&mPosX` in a leaf — that overlay belongs here.
        Reference, not value: Vector3-by-value emits ~Vector3 D1.
        Typed extern "C" of mangled names on this header is still poison;
-       an overlay accessor is not. */
+       an overlay accessor is not.
+       A new in-class method here shifts mwccarm's file-local class
+       uniquifiers (`@class$NNN`, `Bundle$NNN`) in every actor TU;
+       update those compiler_only deadstrip rows with the new name. */
     Vector3 &Pos() { return *reinterpret_cast<Vector3 *>(&mPosX); }
     const Vector3 &Pos() const {
         return *reinterpret_cast<const Vector3 *>(&mPosX);
