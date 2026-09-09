@@ -15,9 +15,11 @@
  * Leftover: data_ov029_02113fd4 is an opaque 3-word file table;
  *   data_ov029_02113fc4 is the start-angle halfword. Nothing in this
  *   TU dereferences either.
- * Leftover: in-class operator new takes unsigned long and forwards to
- *   _ZN7fBase_cnwEj (unsigned int). Keep `return new daObjWc_Obj07_c`.
- * Leftover: inline destructor (out-of-line emits D0 before D1).
+ * Leftover: in-class operator new must be unsigned long (unsigned
+ *   int is `illegal 'operator' declaration`). fBase's is unsigned
+ *   int (`nwEj`). Keep `return new daObjWc_Obj07_c`.
+ * Leftover: inline destructor. Out-of-line still MATCHES D1/D0
+ *   bytes but emits D0 before D1 and a homeless leaf D2.
  * Leftover: g_profile_WC_UKISIMA lives outside this TU (S14).
  * Leftover: `return new` emits base D2 helpers (kaitendai, dBgActor);
  *   deadstrip like daObjKi_Ita_c / daObjKm1_Kuruma_c.

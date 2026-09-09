@@ -23,7 +23,7 @@ struct daObjWc_Obj07_c : daObjKaitendai_c {
     virtual s32 InitResources();    /* slot 0 */
 
     static void *operator new(unsigned long size) {
-        return _ZN7fBase_cnwEj((unsigned)size);
+        return _ZN7fBase_cnwEj(size);
     }
 };
 
