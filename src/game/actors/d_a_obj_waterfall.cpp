@@ -3,39 +3,52 @@
  * Waterfall mist.
  *
  * No model. InitResources succeeds with nothing to load; it only
- * picks a particle ID from the current course (data_0209f2f8): 0x71
- * on 0x16, 0xeb on 0x21, otherwise 0x24. Behavior (re)issues that
- * particle at this actor's position every frame, feeding last frame's
- * handle back so the emitter is recycled.
+ * picks a particle ID from the current course (data_0209f2f8, the
+ * LEVEL_ID byte): 0x71 on 0x16, 0xeb on 0x21, otherwise 0x24.
+ * Behavior (re)issues that particle at this actor's position every
+ * frame, feeding last frame's handle back so the emitter is recycled.
  *
  * daObjWaterfall_c_classInit is reconstructed (RTTI daObjWaterfall_c,
  * WATERFALL registry). Retail does not store that spelling.
  *
  * deslop
- * Leftover: Particle::System::New stays the mangled extern "C". The
- *   ROM name carries Fix12<int> by-value; declaring those types
- *   homes the args to the stack (notes/mwccarm-codegen.md 6az) and
- *   DIFFs the call. Scalar ints mangle to a different symbol.
- *   Do not put a typed extern "C" of the mangled name on
- *   Particle__System.h.
+ * Leftover: Particle::System::New is a TU-local inline that forwards
+ *   to the 5Fix12IiE reconstructed symbol. Declaring the real
+ *   Fix12<int> parameters will not convert from s32 mPosX (no ctor)
+ *   and the pun/temps DIFF. Declaring int parameters mangles to a
+ *   different symbol (reloc dest would be wrong even if bytes MATCH).
+ *   Do not put the typed mangled extern on Particle__System.h.
  * Leftover: in-class operator new takes unsigned long and forwards to
  *   _ZN7fBase_cnwEj (unsigned int). Keep `return new daObjWaterfall_c`.
  * Leftover: inline destructor (out-of-line emits D0 before D1).
- * Leftover: data_0209f2f8 is still the tree-wide course/sublevel id.
- * Leftover: three scalar mPosX/Y/Z into New. That is the call, not a
- *   Vector3 pun. dActor_c::Pos() is not on this branch (#2513).
- * Leftover: InitResources is `if (v != 0x16) { if (v == 0x21) } else`.
- *   `if / else if` is a size DIFF (999).
+ * Leftover: data_0209f2f8 is LEVEL_ID in verified.tsv; a local
+ *   `signed char &LEVEL_ID` alias size-DIFF 999. Rename is symbols.txt.
+ * Leftover: three scalar mPosX/Y/Z into New. A Vector3 overlay of
+ *   `&mPosX` size-DIFF 999 (z is the first stack arg, not an ldm).
  */
 
 #include "daObjWaterfall_c.h"
 
-extern "C" signed char data_0209f2f8;
+extern "C" s8 data_0209f2f8; /* LEVEL_ID */
 
-/* True signature is Fix12 by-value; see leftover. */
 extern "C" u32 _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(
     unsigned handle, unsigned effectID, int x, int y, int z,
     const void *dir, void *cb);
+
+namespace Particle {
+struct Callback;
+/* Forwarder only -- not the layout in Particle__System.h. Inlines to
+   the reconstructed 5Fix12IiE symbol so the call spells
+   Particle::System::New. See leftover. */
+struct System {
+    static u32 New(unsigned handle, unsigned effectID,
+                   int x, int y, int z, const void *dir, Callback *cb)
+    {
+        return _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(
+            handle, effectID, x, y, z, dir, cb);
+    }
+};
+}
 
 enum {
     kWaterfallMistDefault  = 0x24,
@@ -77,14 +90,14 @@ extern "C" WaterfallSpawnInfo g_profile_WATERFALL = {
 // @symbol _ZN16daObjWaterfall_c13InitResourcesEv
 s32 daObjWaterfall_c::InitResources()
 {
-    signed char v;
     mParticleID = kWaterfallMistDefault;
-    v = data_0209f2f8;
-    if (v != 0x16) {
-        if (v == 0x21)
-            mParticleID = kWaterfallMistCourse21;
-    } else {
+    switch (data_0209f2f8) {
+    case 0x16:
         mParticleID = kWaterfallMistCourse16;
+        break;
+    case 0x21:
+        mParticleID = kWaterfallMistCourse21;
+        break;
     }
     return 1;
 }
@@ -92,7 +105,7 @@ s32 daObjWaterfall_c::InitResources()
 // @symbol _ZN16daObjWaterfall_c8BehaviorEv
 s32 daObjWaterfall_c::Behavior()
 {
-    mParticleHandle = _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(
+    mParticleHandle = Particle::System::New(
         mParticleHandle, mParticleID, mPosX, mPosY, mPosZ, 0, 0);
     return 1;
 }
