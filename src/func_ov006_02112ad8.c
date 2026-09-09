@@ -1,5 +1,29 @@
 #include "types.h"
-/* The equal-arm owner selection below preserves mwccarm's address rematerialization. */
+
+/**
+ * Live table physics for one Smartball minigame ball.
+ *
+ * cMgSmartball_ball_c::SaveSnapshot calls this once the ball is no longer
+ * queued (mIsWaiting clear). It casts a 32-direction ring around the ball,
+ * walks it out of walls, bounces off bumpers and the spring, and swallows
+ * it into a hole.
+ *
+ * This file stays C: the real class has virtuals and cannot be included
+ * from here. Ball / Mgr are C shadows of cMgSmartball_ball_c and
+ * dScMgSmartball_c. Field names match notes/smartball-provenance.md.
+ *
+ * deslop
+ * Leftover: the symbol is still func_ov006_02112ad8 (no RTTI for methods).
+ * Leftover: #pragma opt_strength_reduction off.
+ * Leftover: FIX_MUL / FIX_MUL_SU / FIX_MUL_US -- signedness of the 20.12
+ *   product is load-bearing.
+ * Leftover: pos0..pos12 copies of the probe point (passing &work DIFFs).
+ * Leftover: ball-vs-ball and hole walks stay do-while (for re-reads the
+ *   count and DIFFs).
+ * Leftover: gotos outer_loop / final_checks.
+ * Leftover: each balls[] / holes[] read rematerializes its own null.
+ */
+
 typedef struct V2 {
     int x;
     int z;
@@ -9,27 +33,30 @@ typedef struct Mgr {
     char pad00[8];
     int flags08;
     char pad0c[0x4668 - 0x0c];
-    int entityCount;
-    int hazardCount;
-    int angleCount;
+    int ballCount;      /* 0x4668 -- tracked balls */
+    int holeCount;      /* 0x466c -- ana (holes) */
+    int kinokoCount;    /* 0x4670 -- mushrooms */
     char pad4674[0x4684 - 0x4674];
-    void *special;
-    void *entities[13];
-    void *angles[25];
-    void *hazards[1];
+    void *spring;       /* 0x4684 */
+    void *balls[13];    /* 0x4688 */
+    void *kinoko[25];   /* 0x46bc */
+    void *holes[1];     /* 0x4720 */
 } Mgr;
 
-typedef struct Obj {
+typedef struct Ball {
     char pad00[4];
-    Mgr *mgr;
-    int pos[2];
-    int oldPos[2];
+    Mgr *mpManager;
+    int mCurrent0;
+    int mCurrent1;
+    int mSnapshot0;
+    int mSnapshot1;
     char pad18[8];
-    int velX;
-    int velZ;
-    int radius;
-    int index;
-    char pad30[0x0a];
+    int mVel0;
+    int mVel1;
+    int mRadius;
+    int mIndex;
+    u8 mIsActive;     /* 0x30 */
+    char pad31[0x09];
     u8 state3a;
     u8 state3b;
     char pad3c[8];
@@ -47,10 +74,16 @@ typedef struct Obj {
     char padfc[0x124 - 0xfc];
     int soundTimer;
     u8 soundPlayed;
-} Obj;
+} Ball;
 
 typedef struct State {
-    int flags[7];
+    int hitTile;
+    int hitOther;    /* func_ov006_021120d4 */
+    int hitExit;
+    int hitKinoko;
+    int hitWing;
+    int hitSpring;
+    int resolveCount;
     int iteration;
     int depth;
     int zeroAngle;
@@ -70,16 +103,16 @@ extern void func_ov006_0211470c(V2 *out, void *obj);
 extern s64 func_0203d5bc(V2 *p);
 extern void func_0203d388(V2 *p, int angle);
 extern int func_0203d570(V2 *a, V2 *b);
-extern int func_ov006_021126b4(Obj *self, V2 *p);
-extern int func_ov006_02112504(Obj *self, V2 *p);
-extern int func_ov006_021122e0(Obj *self, V2 *p);
-extern int func_ov006_02112190(Obj *self, V2 *p);
-extern int func_ov006_02112030(Obj *self, V2 *p);
-extern int func_ov006_02111f8c(Obj *self, V2 *p);
-extern int func_ov006_02111ee8(Obj *self, V2 *p);
-extern int func_ov006_02111e90(Obj *self, V2 *p);
-extern int func_ov006_0211248c(Obj *self, V2 *p);
-extern int func_ov006_021120d4(Obj *self, V2 *p);
+extern int func_ov006_021126b4(Ball *self, V2 *p); /* out of bounds */
+extern int func_ov006_02112504(Ball *self, V2 *p); /* table tiles */
+extern int func_ov006_021122e0(Ball *self, V2 *p); /* exit pocket */
+extern int func_ov006_02112190(Ball *self, V2 *p); /* kinoko */
+extern int func_ov006_02112030(Ball *self, V2 *p);
+extern int func_ov006_02111f8c(Ball *self, V2 *p);
+extern int func_ov006_02111ee8(Ball *self, V2 *p); /* pushswitch */
+extern int func_ov006_02111e90(Ball *self, V2 *p); /* wing */
+extern int func_ov006_0211248c(Ball *self, V2 *p); /* spring */
+extern int func_ov006_021120d4(Ball *self, V2 *p);
 extern void Vec2_Sub(V2 *out, V2 *a, V2 *b);
 extern int func_0203d434(V2 *p);
 extern void func_0203d630(V2 *p, int scale);
@@ -90,10 +123,10 @@ extern void func_ov006_021146f4(V2 *out, void *obj);
 extern void func_02012718(void *id, int x);
 extern int func_020126e8(int x);
 extern void func_020126ac(int id, int type, int volume, int arg3, int arg4);
-extern void func_ov006_02111b90(Obj *self, int id, V2 *vel);
-extern int func_ov006_021115c4(void *obj);
-extern void func_ov006_021115cc(void *obj);
-extern void func_ov006_02111dcc(Obj *self, int value);
+extern void func_ov006_02111b90(Ball *self, int id, V2 *vel);
+extern int func_ov006_021115c4(void *obj);  /* hole already eating? */
+extern void func_ov006_021115cc(void *obj); /* swallow into hole */
+extern void func_ov006_02111dcc(Ball *self, int value);
 
 extern int data_0209d4b8;
 
@@ -103,18 +136,8 @@ extern int data_0209d4b8;
 #define FIX_MUL_US(a, b) \
     ((int)(((s64)((a) * (u64)(s64)(b)) + 0x800) >> 12))
 
-static void *GetEntity(Mgr *mgr, int i)
-{
-    return i < 13 ? mgr->entities[i] : (void *)0;
-}
-
-static void *GetHazard(Mgr *mgr, int i)
-{
-    return i < mgr->hazardCount ? mgr->hazards[i] : (void *)0;
-}
-
 #pragma opt_strength_reduction off
-void func_ov006_02112ad8(Obj *self)
+void func_ov006_02112ad8(Ball *self)
 {
     State state;
     V2 work;
@@ -159,60 +182,55 @@ void func_ov006_02112ad8(Obj *self)
     V2 hazardPos2;
     int blocked;
     int i;
-    int entityLoopIndex;
+    int otherBall;
     int angle;
     int responseScale;
     int dot;
     int volume;
     void *other;
-    void *fallback;
     Mgr *mgr;
     s64 square;
     int correctionZ;
     int correctionX;
-    int *velXPtr;
-    int *velZPtr;
 
-    savedVel.x = self->velX;
-    state.flags[0] = 0;
-    savedVel.z = self->velZ;
+    savedVel.x = self->mVel0;
+    state.hitTile = 0;
+    savedVel.z = self->mVel1;
     self->targetIndex = -1;
-    state.flags[1] = 0;
-    state.flags[2] = 0;
-    state.flags[3] = 0;
-    state.flags[4] = 0;
-    state.flags[5] = 0;
+    state.hitOther = 0;
+    state.hitExit = 0;
+    state.hitKinoko = 0;
+    state.hitWing = 0;
+    state.hitSpring = 0;
     state.iteration = 0;
-    state.flags[6] = 0;
+    state.resolveCount = 0;
     i = 0;
     state.iteration = 0;
-    do {
+    for (; i < 0x20; i++) {
         self->hitA[i] = (u8)state.iteration;
         self->hitC[i] = (u8)state.iteration;
         self->hitB[i] = (u8)state.iteration;
-        i++;
-    } while (i < 0x20);
+    }
     self->anyHit = (u8)state.iteration;
     self->specialHit = (u8)state.iteration;
     state.iteration = 0;
 
-    if (self->pos[1] >= 0x77000) {
+    /* Mark which mushrooms sit close enough to test this frame. */
+    if (self->mCurrent1 >= 0x77000) {
         int clearIndex = state.iteration;
-        do {
+        for (; clearIndex < 0x19; clearIndex++)
             self->nearby[clearIndex] = 0;
-            clearIndex++;
-        } while (clearIndex < 0x19);
     } else {
         int probeIndex = state.iteration;
-        do {
+        for (; probeIndex < 0x19; probeIndex++) {
             self->nearby[probeIndex] = 0;
-            if (probeIndex < self->mgr->angleCount) {
-                dist.x = self->pos[0];
-                dist.z = self->pos[1];
-                mgr = self->mgr;
+            if (probeIndex < self->mpManager->kinokoCount) {
+                dist.x = self->mCurrent0;
+                dist.z = self->mCurrent1;
+                mgr = self->mpManager;
                 func_ov006_0211470c(&pos0,
-                    probeIndex >= mgr->angleCount
-                        ? (void *)0 : mgr->angles[probeIndex]);
+                    probeIndex >= mgr->kinokoCount
+                        ? (void *)0 : mgr->kinoko[probeIndex]);
                 dist.x -= pos0.x;
                 dist.z -= pos0.z;
                 if (func_0203d5bc(&dist) <= 0x900000LL) {
@@ -220,8 +238,7 @@ void func_ov006_02112ad8(Obj *self)
                     state.iteration = 1;
                 }
             }
-            probeIndex++;
-        } while (probeIndex < 0x19);
+        }
     }
 
     state.depth = 0;
@@ -236,21 +253,23 @@ void func_ov006_02112ad8(Obj *self)
     state.zero48 = 0;
     state.zeroAngle = 0;
 
+    /* Walk the ball out of whatever it is overlapping, up to 32 times. */
 outer_loop:
+        /* 32 feelers, one every 0x800 (1/32 of a turn). */
         angle = state.zeroAngle;
         blocked = angle;
         i = angle;
-        do {
+        for (; i < 0x20; i++) {
             self->hit[i] = (u8)state.zero;
             work.x = state.zero;
             work.z = state.zero;
-            work.z += self->radius;
+            work.z += self->mRadius;
             func_0203d388(&work, angle);
-            dot = func_0203d570(&work, (V2 *)&self->velX);
+            dot = func_0203d570(&work, (V2 *)&self->mVel0);
             if (dot >= 0) {
-                work.x += self->pos[0];
-                work.z += self->pos[1];
-                if ((u8)self->mgr->flags08 == 0) {
+                work.x += self->mCurrent0;
+                work.z += self->mCurrent1;
+                if ((u8)self->mpManager->flags08 == 0) {
                     pos1 = work;
                     if (func_ov006_021126b4(self, &pos1) != 0) {
                         self->hit[i] = 1;
@@ -264,7 +283,7 @@ outer_loop:
                             self->hit[i] = 1;
                             self->hitA[i] = 1;
                             self->anyHit = 1;
-                            state.flags[0] = 1;
+                            state.hitTile = 1;
                             blocked = 1;
                         } else {
                             pos3 = work;
@@ -273,7 +292,7 @@ outer_loop:
                                 self->hitA[i] = 1;
                                 self->anyHit = 1;
                                 self->hitB[i] = 1;
-                                state.flags[2] = 1;
+                                state.hitExit = 1;
                                 blocked = 1;
                             }
                         }
@@ -292,7 +311,7 @@ outer_loop:
                             self->hitA[i] = 1;
                             self->anyHit = 1;
                             self->hitB[i] = 1;
-                            state.flags[2] = 1;
+                            state.hitExit = 1;
                             blocked = 1;
                             goto final_checks;
                         } else {
@@ -303,7 +322,7 @@ outer_loop:
                                     self->hitA[i] = 1;
                                     self->anyHit = 1;
                                     self->specialHit = 1;
-                                    state.flags[3] = 1;
+                                    state.hitKinoko = 1;
                                     blocked = 1;
                                     goto final_checks;
                                 }
@@ -335,7 +354,7 @@ outer_loop:
                                             self->hitA[i] = 1;
                                             self->anyHit = 1;
                                             blocked = 1;
-                                            state.flags[4] = 1;
+                                            state.hitWing = 1;
                                         }
                                     }
                                 }
@@ -344,8 +363,8 @@ outer_loop:
                     }
                 }
             } else {
-                work.x += self->pos[0];
-                work.z += self->pos[1];
+                work.x += self->mCurrent0;
+                work.z += self->mCurrent1;
             }
 
 final_checks:
@@ -357,7 +376,7 @@ final_checks:
                     self->anyHit = 1;
                     blocked = 1;
                     if (angle == 0)
-                        state.flags[5] = 1;
+                        state.hitSpring = 1;
                 } else {
                     pos12 = work;
                     if (func_ov006_021120d4(self, &pos12) != 0) {
@@ -365,75 +384,75 @@ final_checks:
                         self->hitA[i] = 1;
                         self->anyHit = 1;
                         blocked = 1;
-                        state.flags[1] = 1;
+                        state.hitOther = 1;
                     }
                 }
             }
             angle = (s16)(angle + 0x800);
-            i++;
-        } while (i < 0x20);
+        }
 
-        if (state.flags[6] < 0x11 && self->state3a == 0) {
-            entityLoopIndex = 0;
-            if (self->mgr->entityCount > 0) {
+        /* Ball-vs-ball: if another live ball is close, mark that ring. */
+        if (state.resolveCount < 0x11 && self->state3a == 0) {
+            otherBall = 0;
+            if (self->mpManager->ballCount > 0) {
                 do {
-                    if (entityLoopIndex != self->index) {
-                        other = entityLoopIndex >= 0xd ? state.null34
-                            : self->mgr->entities[entityLoopIndex];
-                        if (((Obj *)other)->state3a == 0) {
-                            other = entityLoopIndex >= 0xd ? state.null38
-                                : self->mgr->entities[entityLoopIndex];
-                            if (*(u8 *)((char *)other + 0x30) != 0) {
-                                other = entityLoopIndex >= 0xd
+                    if (otherBall != self->mIndex) {
+                        other = otherBall >= 0xd ? state.null34
+                            : self->mpManager->balls[otherBall];
+                        if (((Ball *)other)->state3a == 0) {
+                            other = otherBall >= 0xd ? state.null38
+                                : self->mpManager->balls[otherBall];
+                            if (((Ball *)other)->mIsActive != 0) {
+                                other = otherBall >= 0xd
                                     ? (void *)state.null3c
-                                    : self->mgr->entities[entityLoopIndex];
+                                    : self->mpManager->balls[otherBall];
                                 func_ov006_0211470c(&entityPos, other);
-                                Vec2_Sub(&entityDelta, (V2 *)self->pos,
+                                Vec2_Sub(&entityDelta, (V2 *)&self->mCurrent0,
                                     &entityPos);
                                 delta = entityDelta;
                                 if (func_0203d5bc(&delta) <= 0x100000LL) {
                                     angle = state.angle40;
-                                    mgr = self->mgr;
-                                    other = entityLoopIndex >= 0xd ? (void *)angle
-                                        : mgr->entities[entityLoopIndex];
+                                    mgr = self->mpManager;
+                                    other = otherBall >= 0xd ? (void *)angle
+                                        : mgr->balls[otherBall];
                                     func_ov006_0211470c(&entityPos2, other);
                                     otherPos = entityPos2;
-                                    if (self->pos[1] < 0x90000 ||
-                                        self->pos[0] <= otherPos.x) {
+                                    if (self->mCurrent1 < 0x90000 ||
+                                        self->mCurrent0 <= otherPos.x) {
                                         i = state.index44;
-                                        do {
-                                            work.z = self->radius;
+                                        for (; i < 0x20; i++) {
+                                            work.z = self->mRadius;
                                             work.x = 0;
                                             func_0203d388(&work, angle);
-                                            work.x += self->pos[0];
-                                            work.z += self->pos[1];
+                                            work.x += self->mCurrent0;
+                                            work.z += self->mCurrent1;
                                             Vec2_Sub(&radialDelta, &work, &otherPos);
                                             delta = radialDelta;
                                             if (func_0203d5bc(&delta) < 0x40000LL) {
-                                                self->targetIndex = entityLoopIndex;
+                                                self->targetIndex = otherBall;
                                                 self->hit[i] = 1;
                                                 self->hitA[i] = 1;
                                                 self->hitC[i] = 1;
                                                 blocked = 1;
                                             }
                                             angle = (s16)(angle + 0x800);
-                                            i++;
-                                        } while (i < 0x20);
+                                        }
                                     }
                                 }
                             }
                         }
                     }
-                    entityLoopIndex++;
-                } while (entityLoopIndex < self->mgr->entityCount);
+                    otherBall++;
+                } while (otherBall < self->mpManager->ballCount);
             }
         }
 
+        /* Push the ball out along the sum of hit normals. */
         normal.x = state.zero48;
         normal.z = state.zero48;
         angle = state.zero48;
         i = state.zero48;
-        do {
+        for (; i < 0x20; i++) {
             if (self->hit[i] == 1) {
                 unit.x = state.zero4c;
                 unit.z = state.baseZ;
@@ -442,33 +461,27 @@ final_checks:
                 normal.z += unit.z;
             }
             angle = (s16)(angle + 0x800);
-            i++;
-        } while (i < 0x20);
+        }
         func_0203d434(&normal);
         func_0203d630(&normal, state.baseZ);
-        {
-            V2 *position = (V2 *)self->pos;
-            Obj *owner = position
-                ? self : self;
-            int *pz = (int *)((int)owner + 0xc);
-            *(int *)((int)position) -=
-                normal.x;
-            *pz -= normal.z;
-            Vec2_Sub(&moveDelta, position,
-                (V2 *)self->oldPos);
-        }
+        self->mCurrent0 -= normal.x;
+        self->mCurrent1 -= normal.z;
+        Vec2_Sub(&moveDelta, (V2 *)&self->mCurrent0,
+            (V2 *)&self->mSnapshot0);
         dot = Vec2_Len(&moveDelta);
         state.depth += 0x80;
-        state.flags[6]++;
-    if (blocked == 1 && state.flags[6] < 0x21 && state.depth <= dot)
+        state.resolveCount++;
+    if (blocked == 1 && state.resolveCount < 0x21 && state.depth <= dot)
         goto outer_loop;
 
+    /* Bounce: exit-pocket hits use hitB; everything else uses hitA except
+       ball-vs-ball (hitC). */
     i = 0;
     response.x = 0;
     response.z = 0;
-    if (state.flags[2] == 1) {
+    if (state.hitExit == 1) {
         angle = 0;
-        do {
+        for (; i < 0x20; i++, angle += 0x10000) {
             if (self->hitB[i] == 1) {
                 radial.x = 0;
                 radial.z = 0x1000;
@@ -476,12 +489,10 @@ final_checks:
                 response.x -= radial.x;
                 response.z -= radial.z;
             }
-            i++;
-            angle += 0x10000;
-        } while (i < 0x20);
+        }
     } else {
         angle = 0;
-        do {
+        for (; i < 0x20; i++, angle += 0x10000) {
             if (self->hitA[i] == 1 && self->hitC[i] == 0) {
                 radial.x = 0;
                 radial.z = 0x1000;
@@ -489,17 +500,15 @@ final_checks:
                 response.x -= radial.x;
                 response.z -= radial.z;
             }
-            i++;
-            angle += 0x10000;
-        } while (i < 0x20);
+        }
     }
 
     if (response.x != 0 || response.z != 0) {
         func_0203d480(&normalized, &response);
-        dot = FIX_MUL(self->velX, response.x) + FIX_MUL(self->velZ, response.z);
-        if (state.flags[5] == 1) {
+        dot = FIX_MUL(self->mVel0, response.x) + FIX_MUL(self->mVel1, response.z);
+        if (state.hitSpring == 1) {
             responseScale = FIX_MUL(dot, 0x1800);
-        } else if (state.flags[0] == 1) {
+        } else if (state.hitTile == 1) {
             u32 randomScale;
             u32 randomAngle;
             responseScale = FIX_MUL(dot, 0x1400);
@@ -509,11 +518,11 @@ final_checks:
             randomAngle = (u32)RandomIntInternal(&data_0209d4b8);
             func_0203d388(&response,
                 (s16)(((((randomAngle >> 16) & 0x7fff) << 12) >> 15) - 0x800));
-        } else if (state.flags[3] == 1) {
+        } else if (state.hitKinoko == 1) {
             u32 randomScale;
             u32 randomAngle;
-            self->velX = 0;
-            self->velZ = 0;
+            self->mVel0 = 0;
+            self->mVel1 = 0;
             responseScale = -0x2000;
             randomScale = ((((((u32)RandomIntInternal(&data_0209d4b8) >> 16) &
                 0x7fff) * 0x10) >> 15) << 12);
@@ -521,117 +530,116 @@ final_checks:
             randomAngle = (u32)RandomIntInternal(&data_0209d4b8);
             func_0203d388(&response,
                 (s16)(((((randomAngle >> 16) & 0x7fff) << 12) >> 15) - 0x800));
-        } else if (state.flags[2] == 1) {
+        } else if (state.hitExit == 1) {
             u32 randomScale;
             responseScale = FIX_MUL(dot, 0x1a00);
             randomScale = ((((((u32)RandomIntInternal(&data_0209d4b8) >> 16) &
                 0x7fff) * 0x10) >> 15) << 12);
             responseScale += FIX_MUL_SU(responseScale, randomScale >> 6);
-            if (self->pos[0] < 0x18000 && response.z > 0) {
+            if (self->mCurrent0 < 0x18000 && response.z > 0) {
                 response.x = 0;
                 response.z = 0x1000;
             }
         } else {
             responseScale = FIX_MUL(dot, 0x1200);
         }
-        velXPtr = (int *)(int)
-            (&self->velX);
-        *velXPtr -= FIX_MUL(responseScale, response.x);
-        velZPtr = (int *)(int)
-            (&self->velZ);
-        *velZPtr -= FIX_MUL(responseScale, response.z);
+        self->mVel0 -= FIX_MUL(responseScale, response.x);
+        self->mVel1 -= FIX_MUL(responseScale, response.z);
     }
 
-    if (state.flags[5] == 1) {
-        if (self->pos[0] < 0xd0000)
+    /* Spring: snap onto it and take its downward speed. */
+    if (state.hitSpring == 1) {
+        if (self->mCurrent0 < 0xd0000)
             return;
-        if (self->pos[0] < 0xd8000) {
-            self->pos[0] = 0xd8000;
+        if (self->mCurrent0 < 0xd8000) {
+            self->mCurrent0 = 0xd8000;
             return;
         }
-        if (self->pos[0] < 0xe8000)
-            self->pos[0] = 0xe8000;
-        func_ov006_0211470c(&specialPos, self->mgr->special);
-        self->pos[1] = specialPos.z - 0x20001 - self->radius;
-        func_ov006_021146f4(&specialDelta0, self->mgr->special);
+        if (self->mCurrent0 < 0xe8000)
+            self->mCurrent0 = 0xe8000;
+        func_ov006_0211470c(&specialPos, self->mpManager->spring);
+        self->mCurrent1 = specialPos.z - 0x20001 - self->mRadius;
+        func_ov006_021146f4(&specialDelta0, self->mpManager->spring);
         if (specialDelta0.z >= -0x1000)
             return;
-        func_ov006_021146f4(&specialDelta1, self->mgr->special);
-        if (self->velZ < specialDelta1.z)
+        func_ov006_021146f4(&specialDelta1, self->mpManager->spring);
+        if (self->mVel1 < specialDelta1.z)
             return;
-        self->velX = 0;
-        func_ov006_021146f4(&specialDelta2, self->mgr->special);
-        self->velZ = specialDelta2.z;
-        if (self->velZ < -0x6000)
-            self->velZ = (self->velZ + 0x6000) / 4 - 0x6000;
+        self->mVel0 = 0;
+        func_ov006_021146f4(&specialDelta2, self->mpManager->spring);
+        self->mVel1 = specialDelta2.z;
+        if (self->mVel1 < -0x6000)
+            self->mVel1 = (self->mVel1 + 0x6000) / 4 - 0x6000;
 
         if (self->soundTimer == 0) {
-            if (self->velZ < -0x6000) {
-                func_02012718((void *)0x16d, self->pos[0]);
-                func_02012718((void *)0x16e, self->pos[0]);
+            if (self->mVel1 < -0x6000) {
+                func_02012718((void *)0x16d, self->mCurrent0);
+                func_02012718((void *)0x16e, self->mCurrent0);
             } else {
-                volume = (-self->velZ << 7) / 0x6000;
+                volume = (-self->mVel1 << 7) / 0x6000;
                 if (volume > 0x7f)
                     volume = 0x7f;
                 if (volume < 0)
                     volume = 0;
                 func_020126ac(0x16d, 5, volume, 0,
-                    func_020126e8(self->pos[0]));
+                    func_020126e8(self->mCurrent0));
                 if (volume >= 0x40)
                     func_020126ac(0x16e, 5, volume, 0,
-                        func_020126e8(self->pos[0]));
+                        func_020126e8(self->mCurrent0));
             }
             self->soundTimer = 5;
         }
         if (self->soundPlayed != 0)
             return;
-        if (self->velZ < -0x6000)
-            func_02012718((void *)0x16e, self->pos[0]);
+        if (self->mVel1 < -0x6000)
+            func_02012718((void *)0x16e, self->mCurrent0);
         self->soundPlayed = 1;
         return;
     }
 
-    if (state.flags[0] == 1) {
+    /* Collision sounds: tile, table-0x4674, exit pocket, wing. */
+    if (state.hitTile == 1) {
         event0.x = savedVel.x;
         event0.z = savedVel.z;
         func_ov006_02111b90(self, 0x171, &event0);
-    } else if (state.flags[1] == 1) {
+    } else if (state.hitOther == 1) {
         event1.x = savedVel.x;
         event1.z = savedVel.z;
         func_ov006_02111b90(self, 0x172, &event1);
-    } else if (state.flags[2] == 1) {
+    } else if (state.hitExit == 1) {
         event2.x = savedVel.x;
         event2.z = savedVel.z;
         func_ov006_02111b90(self, 0x16f, &event2);
-    } else if (state.flags[4] == 1) {
+    } else if (state.hitWing == 1) {
         event3.x = savedVel.x;
         event3.z = savedVel.z;
         func_ov006_02111b90(self, 0x1a3, &event3);
     }
 
-    dot = self->radius + 0x10000;
+    /* Holes: swallow the ball, or nudge it away if it only grazed. */
+    dot = self->mRadius + 0x10000;
     square = FIX_MUL(dot, dot);
     i = 0;
-    if (self->mgr->hazardCount <= 0)
+    if (self->mpManager->holeCount <= 0)
         return;
     do {
-        other = i >= self->mgr->hazardCount ? (void *)0 : self->mgr->hazards[i];
+        other = i >= self->mpManager->holeCount ? (void *)0 : self->mpManager->holes[i];
         if (func_ov006_021115c4(other) == 0) {
-            hazardDelta.x = self->pos[0];
-            hazardDelta.z = self->pos[1];
-            other = i >= self->mgr->hazardCount ? (void *)0 : self->mgr->hazards[i];
+            hazardDelta.x = self->mCurrent0;
+            hazardDelta.z = self->mCurrent1;
+            other = i >= self->mpManager->holeCount ? (void *)0 : self->mpManager->holes[i];
             func_ov006_0211470c(&hazardPos, other);
             hazardDelta.x -= hazardPos.x;
             hazardDelta.z -= hazardPos.z;
             hazardDelta.z *= 2;
             if (func_0203d5bc(&hazardDelta) < square) {
-                dot = self->radius + 0x10000 - Vec2_Len(&hazardDelta);
-                if (self->radius < dot) {
-                    other = i >= self->mgr->hazardCount ? (void *)0 : self->mgr->hazards[i];
+                dot = self->mRadius + 0x10000 - Vec2_Len(&hazardDelta);
+                if (self->mRadius < dot) {
+                    other = i >= self->mpManager->holeCount ? (void *)0 : self->mpManager->holes[i];
                     func_ov006_0211470c(&hazardPos2, other);
                     self->hitX = hazardPos2.x;
                     self->hitZ = hazardPos2.z;
-                    other = i >= self->mgr->hazardCount ? (void *)0 : self->mgr->hazards[i];
+                    other = i >= self->mpManager->holeCount ? (void *)0 : self->mpManager->holes[i];
                     func_ov006_021115cc(other);
                     func_ov006_02111dcc(self, 0x80);
                     self->state3a = 1;
@@ -645,15 +653,11 @@ final_checks:
                 correction.z /= 64;
                 correctionX = correction.x;
                 correctionZ = correction.z;
-                velXPtr = (int *)(int)
-                    (&self->velX);
-                *velXPtr -= correctionX;
-                velZPtr = (int *)(int)
-                    (&self->velZ);
-                *velZPtr -= correction.z;
+                self->mVel0 -= correctionX;
+                self->mVel1 -= correction.z;
                 return;
             }
         }
         i++;
-    } while (i < self->mgr->hazardCount);
+    } while (i < self->mpManager->holeCount);
 }
