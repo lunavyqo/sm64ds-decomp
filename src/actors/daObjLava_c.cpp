@@ -10,8 +10,11 @@
  * registry). Retail does not store that spelling.
  *
  * deslop
- * Leftover: ClosestPlayer position is a Vector3 overlay of mPosX
- *   (three separate member loads keep 0x5c/0x60/0x64).
+ * Leftover: use the shared header. Position is dActor_c::Pos(), not a
+ *   TU-local `(Vector3 *)&mPosX`. Same overlay, one home. Typed
+ *   extern "C" of mangled names on dActor_c.h is still poison; an
+ *   overlay accessor is not. Convert other `&mPosX` puns to Pos()
+ *   the same way, one enrolled file at a time.
  * Leftover: particle call is still func_02022c3c (wrapper around
  *   Particle::System::New that plants the default callback).
  * Leftover: in-class operator new takes unsigned long and forwards to
@@ -68,8 +71,9 @@ s32 daObjLava_c::InitResources()
 // @symbol _ZN11daObjLava_c8BehaviorEv
 s32 daObjLava_c::Behavior()
 {
-    Vector3 *pos = (Vector3 *)&ClosestPlayer()->mPosX;
+    Player *player = ClosestPlayer();
+    const Vector3 &pos = player->Pos();
     mEffectHandle = func_02022c3c(mEffectHandle, kLavaBubbleEffect,
-        pos->x, pos->y, pos->z, 0);
+        pos.x, pos.y, pos.z, 0);
     return 1;
 }
