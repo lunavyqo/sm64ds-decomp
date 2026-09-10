@@ -57,15 +57,21 @@ struct daBakubaku_c : dEnemyBase_c {
        depends on, and completing it is a codegen change (see that file). */
     void                      *mState;          /* 0x3b0 */
     ShadowModel                mShadowModel;    /* 0x3b4 */
-    u8                         pad_3dc[0x30];
-    /* InitResources copies the actor's own position here once, and nothing else
-       that is migrated writes it. */
+    s32                        mShadowMat[12];  /* 0x3dc -- DropShadow source; assignment of Matrix4x3 scalarizes */
     s32                        mSpawnPosX;      /* 0x40c */
     s32                        mSpawnPosY;      /* 0x410 */
     s32                        mSpawnPosZ;      /* 0x414 */
-    u8                         pad_418[0x12];
+    s32                        mTargetPosX;     /* 0x418 */
+    s32                        mTargetPosY;     /* 0x41c */
+    s32                        mTargetPosZ;     /* 0x420 */
+    s32                        mLungePhase;     /* 0x424 */
+    u8                         mMouthOpen;      /* 0x428 */
+    u8                         unk_429;         /* 0x429 */
     u16                        unk_42a;         /* 0x42a -- Behavior ticks it down */
-    u8                         pad_42c[0xc];
+    s32                        mSplashParticle; /* 0x42c */
+    s16                        mAngTarget;      /* 0x430 */
+    u8                         pad_432[2];
+    s32                        mDiveStartY;     /* 0x434 */
 
     /* The slots it overrides, found by diffing all 31 against dEnemyBase_c's. All six bodies
        are now real methods -- Behavior and InitResources were the last two still
@@ -78,7 +84,7 @@ struct daBakubaku_c : dEnemyBase_c {
     virtual int  OnAimedAtWithEgg();    /* slot 29 */
 
     static void *operator new(unsigned long size) {
-        return _ZN7fBase_cnwEj((unsigned)size);
+        return _ZN7fBase_cnwEj(size);
     }
 
     /* Declared last and inline so class instantiation emits the retail D1/D0
