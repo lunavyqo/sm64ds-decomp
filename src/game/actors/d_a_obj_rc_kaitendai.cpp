@@ -13,20 +13,25 @@
  *
  * deslop
  * Leftover: func_ov002_020b676c / func_ov002_020b66a8 are still the
- *   shared kaitendai setup/teardown; names are placeholders.
- * Leftover: data_ov036_02113b2c is an opaque 3-word file table;
- *   the two angle halfwords are still data_ov036_*. Nothing in this
- *   TU dereferences the table.
+ *   linker names of daObjKaitendai_c Init/Cleanup (the base leaves
+ *   those slots pure virtual). Naming belongs in ov002. That helper
+ *   types the table as SharedFilePtr *m[2] and CLPS_Block *clps.
+ * Leftover: the two start-angle halfwords are still data_ov036_*.
  * Leftover: g_profile_RC_KAITEN lives outside this TU (S14).
- * Leftover: `return new` emits base D2 helpers (kaitendai, dBgActor);
- *   deadstrip like daObjBk_Ukisima_c / daObjWc_Obj07_c.
  */
 
 #include "daObjRc_Kaitendai_c.h"
+#include "SharedFilePtr.h"
+
+struct CLPS_Block;
 
 struct ResourceDescriptor {
-    void *entries[3];
+    SharedFilePtr *model;
+    SharedFilePtr *collision;
+    CLPS_Block *clps;
 };
+typedef char ResourceDescriptor_size_must_be_0x0c[
+    sizeof(ResourceDescriptor) == 0x0c ? 1 : -1];
 
 extern "C" {
 int func_ov002_020b676c(daObjRc_Kaitendai_c *self, ResourceDescriptor *descriptor,
