@@ -17,7 +17,7 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * `daObjKm3_Dorifu_c` is the RTTI name.
  */
 struct daObjKm3_Dorifu_c : daObjDorifu_c {
-    /* Inline and first: out-of-line mwccarm emits D0 before D1. */
+    /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
     virtual ~daObjKm3_Dorifu_c() {}
     int CleanupResources();                /* slot  3 */
     int InitResources();                   /* slot  0 */
