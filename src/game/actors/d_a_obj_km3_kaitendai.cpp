@@ -9,7 +9,9 @@
  *
  * The three-word file table is defined in this TU (retail places it
  * before the type name, profile, and vtable). Keep that definition
- * above the class header.
+ * above the class header. func_ov002_020b676c types the slots as
+ * SharedFilePtr *m[2] and CLPS_Block *clps. ov047 sinit constructs
+ * those SharedFilePtrs as file IDs 1661 / 1662.
  *
  * daObjKm3_Kaitendai_c_classInit is reconstructed (RTTI
  * daObjKm3_Kaitendai_c, KM3_KAITENDAI registry). Retail does not
@@ -17,28 +19,36 @@
  *
  * deslop
  * Leftover: func_ov002_020b676c / func_ov002_020b66a8 are still the
- *   shared kaitendai setup/teardown; names are placeholders.
- * Leftover: data_ov047_02112334 is the 3-word file table; its three
- *   pointers and the two angle halfwords are still data_ov047_*.
- * Leftover: `return new` emits base D2 helpers (kaitendai, dBgActor);
- *   deadstrip like the other discs.
+ *   linker names of daObjKaitendai_c Init/Cleanup (the base leaves
+ *   those slots pure virtual). Naming belongs in ov002.
+ * Leftover: the BMD/KCL SharedFilePtrs and CLPS_Block are still
+ *   data_ov047_*; the two start-angle halfwords are still
+ *   data_ov047_02112320 / 02112324.
  */
 
+#include "SharedFilePtr.h"
+
+struct CLPS_Block;
+
 struct ResourceDescriptor {
-    void *entries[3];
+    SharedFilePtr *model;
+    SharedFilePtr *collision;
+    CLPS_Block *clps;
 };
+typedef char ResourceDescriptor_size_must_be_0x0c[
+    sizeof(ResourceDescriptor) == 0x0c ? 1 : -1];
 
 extern "C" {
-extern char data_ov047_02112610[];
-extern char data_ov047_02112608[];
-extern char data_ov047_02111bf4[];
+extern SharedFilePtr data_ov047_02112610;
+extern SharedFilePtr data_ov047_02112608;
+extern CLPS_Block data_ov047_02111bf4;
 }
 
 /* Retail data order: this descriptor, then type name, profile, vtable. */
 extern "C" ResourceDescriptor data_ov047_02112334 = {
-    data_ov047_02112610,
-    data_ov047_02112608,
-    data_ov047_02111bf4
+    &data_ov047_02112610,
+    &data_ov047_02112608,
+    &data_ov047_02111bf4
 };
 
 #include "daObjKm3_Kaitendai_c.h"
@@ -53,7 +63,7 @@ extern s16 data_ov047_02112324;
 
 struct KaitendaiSpawnInfo {
     daObjKm3_Kaitendai_c *(*classInit)();
-    s16 executePriority; /* +4 */
+    s16 executePriority; /* +4: also KM3_KAITENDAI registry id 0x009c = 156 */
     s16 renderPriority;  /* +6 */
     u32 actorFlags;
     Fix12i clipOffsetY;
