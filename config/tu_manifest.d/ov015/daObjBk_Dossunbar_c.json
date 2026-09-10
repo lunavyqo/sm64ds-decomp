@@ -48,108 +48,108 @@
       "ordinal": 3
     },
     {
-      "symbol": "func_ov015_02111ce0",
+      "symbol": "Dossunbar_SlideOut",
       "address": "0x02111ce0",
       "size": "0x00000048",
-      "legacy_source": "src/func_ov015_02111ce0.cpp",
+      "legacy_source": "src/Dossunbar_SlideOut.cpp",
       "ordinal": 4
     },
     {
-      "symbol": "func_ov015_02111d28",
+      "symbol": "Dossunbar_SlideOutEnter",
       "address": "0x02111d28",
       "size": "0x00000024",
-      "legacy_source": "src/func_ov015_02111d28.c",
+      "legacy_source": "src/Dossunbar_SlideOutEnter.c",
       "ordinal": 5
     },
     {
-      "symbol": "func_ov015_02111d4c",
+      "symbol": "Dossunbar_WaitHome",
       "address": "0x02111d4c",
       "size": "0x00000040",
-      "legacy_source": "src/func_ov015_02111d4c.c",
+      "legacy_source": "src/Dossunbar_WaitHome.c",
       "ordinal": 6
     },
     {
-      "symbol": "func_ov015_02111d8c",
+      "symbol": "Dossunbar_WaitHomeEnter",
       "address": "0x02111d8c",
       "size": "0x0000000c",
-      "legacy_source": "src/func_ov015_02111d8c.c",
+      "legacy_source": "src/Dossunbar_WaitHomeEnter.c",
       "ordinal": 7
     },
     {
-      "symbol": "func_ov015_02111d98",
+      "symbol": "Dossunbar_ReturnCoast",
       "address": "0x02111d98",
       "size": "0x0000003c",
-      "legacy_source": "src/func_ov015_02111d98.cpp",
+      "legacy_source": "src/Dossunbar_ReturnCoast.cpp",
       "ordinal": 8
     },
     {
-      "symbol": "func_ov015_02111dd4",
+      "symbol": "Dossunbar_ReturnCoastEnter",
       "address": "0x02111dd4",
       "size": "0x00000020",
-      "legacy_source": "src/func_ov015_02111dd4.c",
+      "legacy_source": "src/Dossunbar_ReturnCoastEnter.c",
       "ordinal": 9
     },
     {
-      "symbol": "func_ov015_02111df4",
+      "symbol": "Dossunbar_ReturnEase",
       "address": "0x02111df4",
       "size": "0x0000006c",
-      "legacy_source": "src/func_ov015_02111df4.c",
+      "legacy_source": "src/Dossunbar_ReturnEase.c",
       "ordinal": 10
     },
     {
-      "symbol": "func_ov015_02111e60",
+      "symbol": "Dossunbar_ReturnEaseEnter",
       "address": "0x02111e60",
       "size": "0x00000020",
-      "legacy_source": "src/func_ov015_02111e60.c",
+      "legacy_source": "src/Dossunbar_ReturnEaseEnter.c",
       "ordinal": 11
     },
     {
-      "symbol": "func_ov015_02111e80",
+      "symbol": "Dossunbar_WaitMid",
       "address": "0x02111e80",
       "size": "0x00000060",
-      "legacy_source": "src/func_ov015_02111e80.c",
+      "legacy_source": "src/Dossunbar_WaitMid.c",
       "ordinal": 12
     },
     {
-      "symbol": "func_ov015_02111ee0",
+      "symbol": "Dossunbar_WaitMidEnter",
       "address": "0x02111ee0",
       "size": "0x0000000c",
-      "legacy_source": "src/func_ov015_02111ee0.c",
+      "legacy_source": "src/Dossunbar_WaitMidEnter.c",
       "ordinal": 13
     },
     {
-      "symbol": "func_ov015_02111eec",
+      "symbol": "Dossunbar_SlideIn",
       "address": "0x02111eec",
       "size": "0x00000060",
-      "legacy_source": "src/func_ov015_02111eec.c",
+      "legacy_source": "src/Dossunbar_SlideIn.c",
       "ordinal": 14
     },
     {
-      "symbol": "func_ov015_02111f4c",
+      "symbol": "Dossunbar_SlideInEnter",
       "address": "0x02111f4c",
       "size": "0x00000020",
-      "legacy_source": "src/func_ov015_02111f4c.c",
+      "legacy_source": "src/Dossunbar_SlideInEnter.c",
       "ordinal": 15
     },
     {
-      "symbol": "func_ov015_02111f6c",
+      "symbol": "Dossunbar_WaitOut",
       "address": "0x02111f6c",
       "size": "0x00000040",
-      "legacy_source": "src/func_ov015_02111f6c.c",
+      "legacy_source": "src/Dossunbar_WaitOut.c",
       "ordinal": 16
     },
     {
-      "symbol": "func_ov015_02111fac",
+      "symbol": "Dossunbar_WaitOutEnter",
       "address": "0x02111fac",
       "size": "0x0000000c",
-      "legacy_source": "src/func_ov015_02111fac.c",
+      "legacy_source": "src/Dossunbar_WaitOutEnter.c",
       "ordinal": 17
     },
     {
-      "symbol": "func_ov015_02111fb8",
+      "symbol": "Dossunbar_SetState",
       "address": "0x02111fb8",
       "size": "0x0000004c",
-      "legacy_source": "src/func_ov015_02111fb8.c",
+      "legacy_source": "src/Dossunbar_SetState.c",
       "ordinal": 18
     },
     {
@@ -198,7 +198,7 @@
   "data": [],
   "bss": [],
   "notes": [
-    "Hand-curated from a tools/tubuild.py create starting point. The generator's five review items were all resolved here: func_ov015_02111ce0's own extern \"C\" block is kept as written; the func_ov015_02111fb8, dBgActor_c::UpdateModelPosAndRotY and dBgActor_c::UpdateClsnPosAndRot declarations were reconciled to one spelling each (the void return, which is what include/dBgActor_c.h declares); and the pointer-to-member typedef was restored to the Behavior file's spelling, which is the one the state dispatch needs.",
+    "Hand-curated from a tools/tubuild.py create starting point. The generator's five review items were all resolved here: Dossunbar_SlideOut's own extern \"C\" block is kept as written; the Dossunbar_SetState, dBgActor_c::UpdateModelPosAndRotY and dBgActor_c::UpdateClsnPosAndRot declarations were reconciled to one spelling each (the void return, which is what include/dBgActor_c.h declares); and the pointer-to-member typedef was restored to the Behavior file's spelling, which is the one the state dispatch needs.",
     "NAME. The cartridge's own _ZTS at ov015:0x0211451c spells 19daObjBk_Dossunbar_c, and the _ZTI/_ZTV chain at 0x02114510/0x0211458c binds it to this vtable. The tree's previous name MovingBar was COINED -- it occurs nowhere in the 9.0 MiB extracted cartridge, case-sensitive or case-folded, while Dossunbar occurs in both the RTTI string and the arm9 profile ids BK_DOSSUNBAR_L / BK_DOSSUNBAR_S. The rename was applied with tools/class_rename.py and the _ZTV row in config/arm9/overlays/ov015/symbols.txt was renamed in place at its unchanged address 0x0211458c; no alias row was added anywhere.",
     "TEXT ONLY. No delink entry in ov015 owns a .data or .bss section, so this entry claims .text and nothing else. The fourteen pointer-to-member constants at 0x021144a0, the two .bss dispatch tables at 0x021149ec and 0x02114a24 and the four SharedFilePtr objects are declared extern in the TU and defined nowhere; they are built by __sinit_ov015_02113048, which is a separate .init shard and not part of this TU.",
     "THE FOURTEEN STATE FUNCTIONS KEEP THEIR ADDRESS-DERIVED NAMES ON PURPOSE. Nothing in the cartridge names them, so renaming them would be a name-recovery act rather than a codegen one, and each of the thirteen state bodies is the target of a pointer-to-member record in UNOWNED .data that dsd resolves by symbol NAME: a rename that does not reach config/arm9/overlays/ov015/symbols.txt in the same commit links that record as zero and no byte gate at any stage reports it. Converting them to real members is the next concrete improvement for this class, not part of this promotion.",
