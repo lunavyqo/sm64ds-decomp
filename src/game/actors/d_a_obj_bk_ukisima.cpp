@@ -11,25 +11,25 @@
  *
  * deslop
  * Leftover: func_ov002_020b676c / func_ov002_020b66a8 are still the
- *   shared kaitendai setup/teardown; names are placeholders.
- * Leftover: data_ov015_021147a4 is an opaque 3-word file table;
- *   data_ov015_02114794 is the start-angle halfword. Nothing in this
- *   TU dereferences either.
- * Leftover: in-class operator new must be unsigned long (unsigned
- *   int is `illegal 'operator' declaration`). fBase's is unsigned
- *   int (`nwEj`). Keep `return new daObjBk_Ukisima_c`.
- * Leftover: inline destructor. Out-of-line still MATCHES D1/D0
- *   bytes but emits D0 before D1 and a homeless leaf D2.
+ *   linker names of daObjKaitendai_c Init/Cleanup (the base leaves
+ *   those slots pure virtual). Naming belongs in ov002. That helper
+ *   types the table as SharedFilePtr *m[2] and CLPS_Block *clps.
+ * Leftover: the start-angle halfword is still data_ov015_02114794.
  * Leftover: g_profile_BK_UKISIMA lives outside this TU (S14).
- * Leftover: `return new` emits base D2 helpers (kaitendai, dBgActor);
- *   deadstrip like daObjWc_Obj07_c / daObjKi_Ita_c.
  */
 
 #include "daObjBk_Ukisima_c.h"
+#include "SharedFilePtr.h"
+
+struct CLPS_Block;
 
 struct ResourceDescriptor {
-    void *entries[3];
+    SharedFilePtr *model;
+    SharedFilePtr *collision;
+    CLPS_Block *clps;
 };
+typedef char ResourceDescriptor_size_must_be_0x0c[
+    sizeof(ResourceDescriptor) == 0x0c ? 1 : -1];
 
 extern "C" {
 int func_ov002_020b676c(daObjBk_Ukisima_c *self, ResourceDescriptor *descriptor,
