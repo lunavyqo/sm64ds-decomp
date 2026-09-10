@@ -25,7 +25,7 @@ struct daObjLava_c : dActor_c {
     virtual s32 Behavior();      /* slot 6 */
 
     static void *operator new(unsigned long size) {
-        return _ZN7fBase_cnwEj((unsigned)size);
+        return _ZN7fBase_cnwEj(size);
     }
 };
 

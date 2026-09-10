@@ -10,16 +10,9 @@
  * registry). Retail does not store that spelling.
  *
  * deslop
- * Leftover: use the shared header. Position is dActor_c::Pos(), not a
- *   TU-local `(Vector3 *)&mPosX`. Same overlay, one home. Typed
- *   extern "C" of mangled names on dActor_c.h is still poison; an
- *   overlay accessor is not. Convert other `&mPosX` puns to Pos()
- *   the same way, one enrolled file at a time.
- * Leftover: particle call is still func_02022c3c (wrapper around
- *   Particle::System::New that plants the default callback).
- * Leftover: in-class operator new takes unsigned long and forwards to
- *   _ZN7fBase_cnwEj (unsigned int). Keep `return new daObjLava_c`.
- * Leftover: inline destructor (out-of-line emits D0 before D1).
+ * Leftover: particle call is still func_02022c3c, a 6-arg wrapper
+ *   around Particle::System::New that plants the default callback
+ *   at data_0209ee74+0x808.
  */
 
 #include "daObjLava_c.h"
@@ -40,7 +33,7 @@ extern "C" daObjLava_c *daObjLava_c_classInit()
 
 struct LavaSpawnInfo {
     daObjLava_c *(*classInit)();
-    s16 executePriority; /* +4 */
+    s16 executePriority; /* +4: also LAVA registry id 0x00c4 = 196 */
     s16 renderPriority;  /* +6 */
     u32 actorFlags;
     Fix12i clipOffsetY;
