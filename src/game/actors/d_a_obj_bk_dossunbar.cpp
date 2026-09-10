@@ -9,11 +9,11 @@
  * store those spellings.
  *
  * deslop
- * Leftover: state bodies stay extern "C" (Dossunbar_*). A C++ method
- *   would emit _ZN19daObjBk_Dossunbar_c* and miss the unowned PMF
- *   records. Klass stays incomplete: completing it as this class
- *   changes PMF representation. Tables 02114a24 / 021149ec are
- *   filled by __sinit_ov015_02113048, not this TU.
+ * Leftover: state bodies stay extern "C" (func_ov015_02111ce0..02111fb8).
+ *   A C++ method would emit _ZN19daObjBk_Dossunbar_c* and miss the
+ *   unowned PMF records. Klass stays incomplete: completing it as
+ *   this class changes PMF representation. Tables 02114a24 / 021149ec
+ *   are filled by __sinit_ov015_02113048, not this TU.
  * Leftover: Model::LoadFile, ModelBase::SetFile, dBgW_Kc::LoadFile,
  *   dBgW_KcMbg::SetFile, IsClsnInRange, Particle::System::NewSimple
  *   stay mangled (Fix12-by-value, wall 6az).
@@ -25,6 +25,8 @@
  *   ResourceDescriptor row changes reloc destinations. sinit file IDs
  *   0x58b / 0x58c / 0x58d / 0x58e. Text-only TU, so
  *   g_profile_BK_DOSSUNBAR_L / _S are not defined here (S14).
+ * Leftover: Cleanup's dBgW IsEnabled/Disable walk through
+ *   `(u8 *)&mMeshCollider`; a local dBgW* size-DIFF.
  * Leftover: func_01ffb0a4 / func_01ffb07c are MeshCollider ITCM
  *   (flag 0x35 / vec at +0x38). func_020393d4 stores the BeforeClsn
  *   callback; 020396d0 and Math_Function_0203b0fc / 0203b14c names
@@ -88,7 +90,7 @@ int func_01ffb07c(void *, void *);
 void func_020393d4(int *p, int v);
 void func_020396d0(int *p, int v);
 
-void Dossunbar_SetState(daObjBk_Dossunbar_c *self, int idx);
+void func_ov015_02111fb8(daObjBk_Dossunbar_c *self, int idx);
 }
 
 // @symbol daObjBk_Dossunbar_c_classInit_BK_DOSSUNBAR_S
@@ -141,7 +143,7 @@ s32 daObjBk_Dossunbar_c::InitResources()
     mHomePosX = mPosX;
     mHomePosY = mPosY;
     mHomePosZ = mPosZ;
-    Dossunbar_SetState(this, 5);
+    func_ov015_02111fb8(this, 5);
     return 1;
 }
 
@@ -175,8 +177,8 @@ s32 daObjBk_Dossunbar_c::CleanupResources()
 }
 
 /* Install mState and run that state's enter function. */
-// @symbol Dossunbar_SetState
-extern "C" void Dossunbar_SetState(daObjBk_Dossunbar_c *self, int idx)
+// @symbol func_ov015_02111fb8
+extern "C" void func_ov015_02111fb8(daObjBk_Dossunbar_c *self, int idx)
 {
     VtEntry *e = (VtEntry *)((char *)data_ov015_02114a24 + (idx << 3));
     int f1 = e->field1;
@@ -191,33 +193,33 @@ extern "C" void Dossunbar_SetState(daObjBk_Dossunbar_c *self, int idx)
 }
 
 /* State 0 enter: wait at the out position. */
-// @symbol Dossunbar_WaitOutEnter
-extern "C" void Dossunbar_WaitOutEnter(daObjBk_Dossunbar_c *self)
+// @symbol func_ov015_02111fac
+extern "C" void func_ov015_02111fac(daObjBk_Dossunbar_c *self)
 {
     self->mStateTimer = 20;
 }
 
 /* State 0 body. */
-// @symbol Dossunbar_WaitOut
-extern "C" void Dossunbar_WaitOut(daObjBk_Dossunbar_c *self)
+// @symbol func_ov015_02111f6c
+extern "C" void func_ov015_02111f6c(daObjBk_Dossunbar_c *self)
 {
     *(int *)(((int)self + 0x334)) -= 1;
     if (*(int *)((char *)self + 0x334) > 0)
         return;
-    Dossunbar_SetState(self, 1);
+    func_ov015_02111fb8(self, 1);
 }
 
 /* State 1 enter. */
-// @symbol Dossunbar_SlideInEnter
-extern "C" void Dossunbar_SlideInEnter(daObjBk_Dossunbar_c *self)
+// @symbol func_ov015_02111f4c
+extern "C" void func_ov015_02111f4c(daObjBk_Dossunbar_c *self)
 {
     self->mStateTimer = 10;
     Sound::PlayBank3(0xc3, *(Vector3 *)&self->mCamSpacePosX);
 }
 
 /* State 1 body: ease X towards home minus 0x168000, then wait-mid. */
-// @symbol Dossunbar_SlideIn
-extern "C" void Dossunbar_SlideIn(daObjBk_Dossunbar_c *self)
+// @symbol func_ov015_02111eec
+extern "C" void func_ov015_02111eec(daObjBk_Dossunbar_c *self)
 {
     Math_Function_0203b0fc(
         &self->mPosX, self->mHomePosX - 0x168000, 0x800, 0x46000);
@@ -228,19 +230,19 @@ extern "C" void Dossunbar_SlideIn(daObjBk_Dossunbar_c *self)
     if (*(int *)((char *)self + 0x334) > 0)
         return;
     self->mPosX = self->mHomePosX - 0x168000;
-    Dossunbar_SetState(self, 2);
+    func_ov015_02111fb8(self, 2);
 }
 
 /* State 2 enter. */
-// @symbol Dossunbar_WaitMidEnter
-extern "C" void Dossunbar_WaitMidEnter(daObjBk_Dossunbar_c *self)
+// @symbol func_ov015_02111ee0
+extern "C" void func_ov015_02111ee0(daObjBk_Dossunbar_c *self)
 {
     self->mStateTimer = 5;
 }
 
 /* State 2 body: small bar -> return-ease, large bar -> return-coast. */
-// @symbol Dossunbar_WaitMid
-extern "C" void Dossunbar_WaitMid(daObjBk_Dossunbar_c *self)
+// @symbol func_ov015_02111e80
+extern "C" void func_ov015_02111e80(daObjBk_Dossunbar_c *self)
 {
     /* Two spellings of +0x334 are load-bearing: the decrement keeps
        `add r2,r0,#0x334` and the re-read is `ldr r1,[r0,#0x334]`. */
@@ -248,22 +250,22 @@ extern "C" void Dossunbar_WaitMid(daObjBk_Dossunbar_c *self)
     if (*(int *)((char *)self + 0x334) > 0)
         return;
     if (self->mVariant == 0)
-        Dossunbar_SetState(self, 3);
+        func_ov015_02111fb8(self, 3);
     else
-        Dossunbar_SetState(self, 4);
+        func_ov015_02111fb8(self, 4);
 }
 
 /* State 3 enter. */
-// @symbol Dossunbar_ReturnEaseEnter
-extern "C" void Dossunbar_ReturnEaseEnter(daObjBk_Dossunbar_c *self)
+// @symbol func_ov015_02111e60
+extern "C" void func_ov015_02111e60(daObjBk_Dossunbar_c *self)
 {
     self->mStateTimer = 0x18;
     Sound::PlayBank3(0xc3, *(Vector3 *)&self->mCamSpacePosX);
 }
 
 /* State 3 body: ease X back to home, then wait-home. */
-// @symbol Dossunbar_ReturnEase
-extern "C" void Dossunbar_ReturnEase(daObjBk_Dossunbar_c *self)
+// @symbol func_ov015_02111df4
+extern "C" void func_ov015_02111df4(daObjBk_Dossunbar_c *self)
 {
     Math_Function_0203b14c(
         &self->mPosX, self->mHomePosX, 0x800, 0xb4000, 0x28000);
@@ -272,64 +274,64 @@ extern "C" void Dossunbar_ReturnEase(daObjBk_Dossunbar_c *self)
     if (*(int *)((char *)self + 0x334) > 0)
         return;
     self->mPosX = self->mHomePosX;
-    Dossunbar_SetState(self, 5);
+    func_ov015_02111fb8(self, 5);
 }
 
 /* State 4 enter: X speed rather than a timer. unk_0a4 is dActor_c's
    velocity X (with mVertSpeed / unk_0ac). */
-// @symbol Dossunbar_ReturnCoastEnter
-extern "C" void Dossunbar_ReturnCoastEnter(daObjBk_Dossunbar_c *self)
+// @symbol func_ov015_02111dd4
+extern "C" void func_ov015_02111dd4(daObjBk_Dossunbar_c *self)
 {
     self->unk_0a4 = 0xf000;
     Sound::PlayBank3(0xc3, *(Vector3 *)&self->mCamSpacePosX);
 }
 
 /* State 4 body: coast until X reaches home, then wait-home. */
-// @symbol Dossunbar_ReturnCoast
-extern "C" void Dossunbar_ReturnCoast(daObjBk_Dossunbar_c *self)
+// @symbol func_ov015_02111d98
+extern "C" void func_ov015_02111d98(daObjBk_Dossunbar_c *self)
 {
     _ZN8dActor_c22UpdatePosWithOnlySpeedEP5dCc_c(self, 0);
     if (self->mPosX < self->mHomePosX)
         return;
     self->mPosX = self->mHomePosX;
-    Dossunbar_SetState(self, 5);
+    func_ov015_02111fb8(self, 5);
 }
 
 /* State 5 enter -- InitResources starts the cycle here. */
-// @symbol Dossunbar_WaitHomeEnter
-extern "C" void Dossunbar_WaitHomeEnter(daObjBk_Dossunbar_c *self)
+// @symbol func_ov015_02111d8c
+extern "C" void func_ov015_02111d8c(daObjBk_Dossunbar_c *self)
 {
     self->mStateTimer = 10;
 }
 
 /* State 5 body. */
-// @symbol Dossunbar_WaitHome
-extern "C" void Dossunbar_WaitHome(daObjBk_Dossunbar_c *self)
+// @symbol func_ov015_02111d4c
+extern "C" void func_ov015_02111d4c(daObjBk_Dossunbar_c *self)
 {
     *(int *)(((int)self + 0x334)) -= 1;
     if (*(int *)((char *)self + 0x334) > 0)
         return;
-    Dossunbar_SetState(self, 6);
+    func_ov015_02111fb8(self, 6);
 }
 
 /* State 6 enter: X speed toward the out position. */
-// @symbol Dossunbar_SlideOutEnter
-extern "C" void Dossunbar_SlideOutEnter(daObjBk_Dossunbar_c *self)
+// @symbol func_ov015_02111d28
+extern "C" void func_ov015_02111d28(daObjBk_Dossunbar_c *self)
 {
     self->unk_0a4 = -0x14000;
     Sound::PlayBank3(0xc3, *(Vector3 *)&self->mCamSpacePosX);
 }
 
 /* State 6 body: travel until X is 0x1ea000 below home, then wait-out. */
-// @symbol Dossunbar_SlideOut
-extern "C" void Dossunbar_SlideOut(daObjBk_Dossunbar_c *self)
+// @symbol func_ov015_02111ce0
+extern "C" void func_ov015_02111ce0(daObjBk_Dossunbar_c *self)
 {
     _ZN8dActor_c22UpdatePosWithOnlySpeedEP5dCc_c(self, 0);
     int v = self->mHomePosX + (int)0xffe16000;
     if (self->mPosX > v)
         return;
     self->mPosX = v;
-    Dossunbar_SetState(self, 0);
+    func_ov015_02111fb8(self, 0);
 }
 
 // @symbol _ZN19daObjBk_Dossunbar_c15OnHitByMegaCharER6Player
