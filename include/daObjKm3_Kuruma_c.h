@@ -17,7 +17,7 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * daObjKm3_Kurumajiku_c.
  */
 struct daObjKm3_Kuruma_c : daObjKuruma_c {
-    /* Inline and first: out-of-line mwccarm emits D0 before D1. */
+    /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
     virtual ~daObjKm3_Kuruma_c() {}
     int CleanupResources();            /* slot  3 */
     int InitResources();               /* slot  0 */

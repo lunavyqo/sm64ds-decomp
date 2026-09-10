@@ -8,9 +8,8 @@
  * dBgW_Kc::LoadFile, slot 2 as CLPS into SetFile. ov047 sinit
  * constructs those SharedFilePtrs as file IDs 1663 / 1664.
  *
- * The three-word file table is defined in this TU (retail places it
- * between the typeinfo and the type name). Keep that definition
- * above the class header.
+ * The three-word file table is defined in this TU. Retail .data
+ * order is descriptor, type-name, profile, vtable.
  *
  * daObjKm3_Kuruma_c_classInit is reconstructed (RTTI daObjKm3_Kuruma_c,
  * KM3_KURUMA registry). Retail does not store that spelling.
@@ -41,7 +40,7 @@ extern SharedFilePtr data_ov047_02112630;
 extern CLPS_Block data_ov047_02111ab4;
 }
 
-/* Retail data order: this descriptor, then type name, profile, vtable. */
+/* Defined here because this TU owns the descriptor in overlay .data. */
 extern "C" ResourceDescriptor data_ov047_02112408 = {
     &data_ov047_02112638,
     &data_ov047_02112630,
