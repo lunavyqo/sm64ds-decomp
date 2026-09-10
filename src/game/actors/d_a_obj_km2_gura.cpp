@@ -7,33 +7,45 @@
  *
  * The three-word file table is defined in this TU (retail places it
  * between the typeinfo and the type name). Keep that definition after
- * the class header.
+ * the class header. func_ov002_020b6244 loads slot 0 with
+ * Model::LoadFile, slot 1 with dBgW_Kc::LoadFile, slot 2 as CLPS
+ * into SetFile. ov045 sinit constructs those SharedFilePtrs as
+ * file IDs 1631 / 1632.
  *
  * daObjKm2_Gura_c_classInit is reconstructed (RTTI daObjKm2_Gura_c,
  * KM2_GURA registry). Retail does not store that spelling.
  *
  * deslop
  * Leftover: func_ov002_020b6244 / func_ov002_020b60fc are still the
- *   shared tilting-slab setup/teardown; names are placeholders.
- * Leftover: the file table's three pointers are still data_ov045_*.
+ *   linker names of daObjGuragura_c Init/Cleanup (the base leaves
+ *   those slots pure virtual). Naming belongs in ov002.
+ * Leftover: the BMD/KCL SharedFilePtrs and CLPS_Block are still
+ *   data_ov045_*.
  */
 
 #include "daObjKm2_Gura_c.h"
+#include "SharedFilePtr.h"
+
+struct CLPS_Block;
 
 struct ResourceDescriptor {
-    void *entries[3];
+    SharedFilePtr *model;
+    SharedFilePtr *collision;
+    CLPS_Block *clps;
 };
+typedef char ResourceDescriptor_size_must_be_0x0c[
+    sizeof(ResourceDescriptor) == 0x0c ? 1 : -1];
 
 extern "C" {
-extern char data_ov045_02113220[];
-extern char data_ov045_02113228[];
-extern char data_ov045_021124f0[];
+extern SharedFilePtr data_ov045_02113220;
+extern SharedFilePtr data_ov045_02113228;
+extern CLPS_Block data_ov045_021124f0;
 }
 
 extern "C" ResourceDescriptor data_ov045_02112fdc = {
-    data_ov045_02113220,
-    data_ov045_02113228,
-    data_ov045_021124f0
+    &data_ov045_02113220,
+    &data_ov045_02113228,
+    &data_ov045_021124f0
 };
 
 extern "C" {
@@ -43,7 +55,7 @@ int func_ov002_020b60fc(daObjKm2_Gura_c *self, ResourceDescriptor *descriptor);
 
 struct GuraSpawnInfo {
     daObjKm2_Gura_c *(*classInit)();
-    s16 executePriority; /* +4 */
+    s16 executePriority; /* +4: also KM2_GURA registry id 0x008d = 141 */
     s16 renderPriority;  /* +6 */
     u32 actorFlags;
     Fix12i clipOffsetY;
