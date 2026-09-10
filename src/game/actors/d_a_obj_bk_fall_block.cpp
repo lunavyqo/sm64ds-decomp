@@ -1,6 +1,6 @@
 //cpp
 /**
- * Bob-omb Battlefield's falling block.
+ * Whomp's Fortress falling block.
  *
  * No fields. InitResources / CleanupResources hand this overlay's
  * model and collision files to daObjFallBlock_c's shared ov098

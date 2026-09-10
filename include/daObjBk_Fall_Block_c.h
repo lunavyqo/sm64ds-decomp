@@ -7,7 +7,7 @@
 extern "C" void *_ZN7fBase_cnwEj(unsigned size);
 
 /**
- * Bob-omb Battlefield's falling block. No fields of its own: the
+ * Whomp's Fortress falling block. No fields of its own: the
  * factory allocates 0x34c, which daObjFallBlock_c fills. Overrides
  * the two slots the base leaves null (InitResources,
  * CleanupResources) and hands this overlay's model/collision
@@ -16,8 +16,7 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * `daObjBk_Fall_Block_c` is the RTTI name.
  */
 struct daObjBk_Fall_Block_c : daObjFallBlock_c {
-    /* Inline and first: out-of-line mwccarm emits D0 before D1; retail
-       has D1 at 0x02112cf4 below D0 at 0x02112d44. */
+    /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
     virtual ~daObjBk_Fall_Block_c() {}
     virtual s32 CleanupResources(); /* slot 3 */
     virtual s32 InitResources();    /* slot 0 */
