@@ -1,6 +1,6 @@
 //cpp
 /**
- * Rainbow Ride's Tricky Triangles (`dorifu`). Twin of the BoB
+ * Rainbow Ride's Tricky Triangles (`dorifu`). Twin of the BitDW
  * leaf (`daObjKm1_Dorifu_c`) and the BitS leaf (`daObjKm3_Dorifu_c`).
  *
  * No fields of its own. InitResources / CleanupResources hand this
