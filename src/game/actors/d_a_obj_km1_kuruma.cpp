@@ -1,6 +1,6 @@
 //cpp
 /**
- * Bob-omb Battlefield's rickshaw cart (`kuruma`).
+ * Bowser in the Dark World's rickshaw cart (`kuruma`).
  *
  * No fields. InitResources / CleanupResources hand this overlay's
  * model and collision files to daObjKuruma_c's shared ov002 helpers.

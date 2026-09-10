@@ -7,7 +7,7 @@
 extern "C" void *_ZN7fBase_cnwEj(unsigned size);
 
 /**
- * Bob-omb Battlefield's rickshaw cart (`kuruma`). No fields of its
+ * Bowser in the Dark World's rickshaw cart (`kuruma`). No fields of its
  * own: the factory allocates 0x320 = sizeof(dBgActor_c), which
  * daObjKuruma_c fills. Overrides the two slots the base leaves null
  * (InitResources, CleanupResources) and hands this overlay's
@@ -17,9 +17,7 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * daObjKm1_Kurumajiku_c.
  */
 struct daObjKm1_Kuruma_c : daObjKuruma_c {
-    /* Declared last and inline so class instantiation emits the
-       retail D1/D0 pair in cartridge order without a separate leaf
-       D2 body. */
+    /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
     int CleanupResources();            /* slot  3 */
     int InitResources();               /* slot  0 */
 
