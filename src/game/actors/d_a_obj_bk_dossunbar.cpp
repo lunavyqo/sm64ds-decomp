@@ -11,22 +11,18 @@
  * deslop
  * Leftover: state bodies stay extern "C" (func_ov015_02111ce0..02111fb8).
  *   A C++ method would emit _ZN19daObjBk_Dossunbar_c* and miss the
- *   unowned PMF records. Klass stays incomplete: completing it as
- *   this class changes PMF representation. Tables 02114a24 / 021149ec
- *   are filled by __sinit_ov015_02113048, not this TU.
- * Leftover: Model::LoadFile, ModelBase::SetFile, dBgW_Kc::LoadFile,
- *   dBgW_KcMbg::SetFile, IsClsnInRange, Particle::System::NewSimple
- *   stay mangled (Fix12-by-value, wall 6az).
- * Leftover: two spellings of +0x334 (decrement vs re-read). A second
- *   mStateTimer load CSEs. unk_0a4 is dActor_c's X speed (velocity
- *   at 0xa4/a8/ac), not a field of this class.
- * Leftover: resource table is two { model, KCL, CLPS } rows. Init and
- *   Cleanup must keep the three column symbols 02114534/38/3c; a typed
- *   ResourceDescriptor row changes reloc destinations. sinit file IDs
- *   0x58b / 0x58c / 0x58d / 0x58e. Text-only TU, so
+ *   unowned PMF records. Tables 02114a24 / 021149ec are filled by
+ *   __sinit_ov015_02113048, not this TU.
+ * Leftover: dBgW_KcMbg::SetFile, IsClsnInRange, Particle::System::NewSimple
+ *   stay mangled (Fix12-by-value, wall 6az). SetFile as a method
+ *   size-DIFF Init.
+ * Leftover: unk_0a4 is dActor_c's X speed (velocity at 0xa4/a8/ac),
+ *   not a field of this class.
+ * Leftover: resource table is two { model, KCL, CLPS } rows. Init must
+ *   keep the three column symbols 02114534/38/3c; a typed
+ *   ResourceDescriptor[2] size-DIFF Init and changes reloc destinations.
+ *   sinit file IDs 0x58b / 0x58c / 0x58d / 0x58e. Text-only TU, so
  *   g_profile_BK_DOSSUNBAR_L / _S are not defined here (S14).
- * Leftover: Cleanup's dBgW IsEnabled/Disable walk through
- *   `(u8 *)&mMeshCollider`; a local dBgW* size-DIFF.
  * Leftover: func_01ffb0a4 / func_01ffb07c are MeshCollider ITCM
  *   (flag 0x35 / vec at +0x38). func_020393d4 stores the BeforeClsn
  *   callback; 020396d0 and Math_Function_0203b0fc / 0203b14c names
@@ -49,8 +45,7 @@ struct ResourceDescriptor {
 typedef char ResourceDescriptor_size_must_be_0x0c[
     sizeof(ResourceDescriptor) == 0x0c ? 1 : -1];
 
-struct Klass;
-typedef void (Klass::*PMF)();
+typedef void (daObjBk_Dossunbar_c::*PMF)();
 struct StateEntry { PMF handler; };
 
 /* The installer walks the enter-table records by hand as {ptr, adj}. */
@@ -64,31 +59,25 @@ enum { kMovingBarBigActorId = 0x35 };
 
 extern "C" {
 /* Three column symbols of one two-row {model, KCL, CLPS} table.
-   A typed ResourceDescriptor[2] changes Init/Cleanup reloc destinations. */
-extern char data_ov015_02114534[];
-extern char data_ov015_02114538[];
-extern int data_ov015_0211453c[];
+   A typed ResourceDescriptor[2] changes Init reloc destinations. */
+extern SharedFilePtr *data_ov015_02114534;
+extern SharedFilePtr *data_ov015_02114538;
+extern CLPS_Block *data_ov015_0211453c;
 extern StateEntry data_ov015_021149ec[];
 extern VtEntry data_ov015_02114a24[];
 
 void _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(u32 id, Fix12i x, Fix12i y, Fix12i z);
-void _ZN8dActor_c22UpdatePosWithOnlySpeedEP5dCc_c(void *, void *);
-void _ZN10dBgActor_c21UpdateModelPosAndRotYEv(void *);
-void _ZN10dBgActor_c19UpdateClsnPosAndRotEv(void *);
 int _ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_(void *, int, int);
-int _ZN5Model8LoadFileER13SharedFilePtr(void *);
-int _ZN9ModelBase7SetFileEP8BMD_Fileii(void *, int, int, int);
-int _ZN7dBgW_Kc8LoadFileER13SharedFilePtr(void *);
 int _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
     void *, int, void *, int, int, void *);
 int _ZN4dBgW21UpdatePosWithVelocityERS_P8dActor_cR5dBgPiR7Vector3P10Vector3_16S8_;
 
 void Math_Function_0203b0fc(int *p, int target, int scale, int max);
 void Math_Function_0203b14c(int *p, int target, int scale, int max, int extra);
-int func_01ffb0a4(void *);
-int func_01ffb07c(void *, void *);
-void func_020393d4(int *p, int v);
-void func_020396d0(int *p, int v);
+void func_01ffb0a4(dBgW_Kc *self);
+void func_01ffb07c(dBgW_Kc *self, const Vector3 *v);
+void func_020393d4(dBgW *self, void *fn);
+void func_020396d0(dBgW *self, int v);
 
 void func_ov015_02111fb8(daObjBk_Dossunbar_c *self, int idx);
 }
@@ -116,29 +105,29 @@ s32 daObjBk_Dossunbar_c::InitResources()
         mVariant = 0;
 
     int j0 = mVariant * 0xc;
-    int modelFile = _ZN5Model8LoadFileER13SharedFilePtr(
-        *(void **)((char *)data_ov015_02114534 + j0));
-    _ZN9ModelBase7SetFileEP8BMD_Fileii((char *)&mModel, modelFile, 1, -1);
-    _ZN10dBgActor_c21UpdateModelPosAndRotYEv((char *)this);
-    _ZN10dBgActor_c19UpdateClsnPosAndRotEv((char *)this);
+    void *modelFile = Model::LoadFile(
+        **(SharedFilePtr **)((char *)&data_ov015_02114534 + j0));
+    mModel.SetFile((BMD_File *)modelFile, 1, -1);
+    UpdateModelPosAndRotY();
+    UpdateClsnPosAndRot();
 
     int j = mVariant * 0xc;
-    int kclFile = _ZN7dBgW_Kc8LoadFileER13SharedFilePtr(
-        *(void **)((char *)data_ov015_02114538 + j));
+    void *kclFile = dBgW_Kc::LoadFile(
+        **(SharedFilePtr **)((char *)&data_ov015_02114538 + j));
     _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
-        (char *)&mMeshCollider, kclFile, (char *)&mClsnMat, 0x1000, mAngleY,
-        *(void **)((char *)data_ov015_0211453c + j));
+        &mMeshCollider, (int)kclFile, &mClsnMat, 0x1000, mAngleY,
+        *(void **)((char *)&data_ov015_0211453c + j));
     func_020393d4(
-        (int *)&mMeshCollider,
-        (int)&_ZN4dBgW21UpdatePosWithVelocityERS_P8dActor_cR5dBgPiR7Vector3P10Vector3_16S8_);
+        &mMeshCollider,
+        (void *)&_ZN4dBgW21UpdatePosWithVelocityERS_P8dActor_cR5dBgPiR7Vector3P10Vector3_16S8_);
 
     int tmp[3];
     tmp[0] = 0x1000;
     tmp[1] = 0;
     tmp[2] = 0;
-    func_01ffb0a4((char *)&mMeshCollider);
-    func_01ffb07c((char *)&mMeshCollider, tmp);
-    func_020396d0((int *)&mMeshCollider, 0xccd);
+    func_01ffb0a4(&mMeshCollider);
+    func_01ffb07c(&mMeshCollider, (const Vector3 *)tmp);
+    func_020396d0(&mMeshCollider, 0xccd);
 
     mHomePosX = mPosX;
     mHomePosY = mPosY;
@@ -150,7 +139,7 @@ s32 daObjBk_Dossunbar_c::InitResources()
 // @symbol _ZN19daObjBk_Dossunbar_c8BehaviorEv
 s32 daObjBk_Dossunbar_c::Behavior()
 {
-    (((Klass *)this)->*(data_ov015_021149ec[mState].handler))();
+    (this->*(data_ov015_021149ec[mState].handler))();
     UpdateModelPosAndRotY();
     if (_ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_(this, 0, 0))
         UpdateClsnPosAndRot();
@@ -167,12 +156,10 @@ s32 daObjBk_Dossunbar_c::Render()
 // @symbol _ZN19daObjBk_Dossunbar_c16CleanupResourcesEv
 s32 daObjBk_Dossunbar_c::CleanupResources()
 {
-    /* Must call through dBgW*, not dBgW_KcMbg. The u8 overlay is how
-       the ROM takes that address; a local dBgW* size-DIFF. */
-    if (((dBgW *)((char *)&(*(u8 *)&mMeshCollider)))->IsEnabled())
-        ((dBgW *)((char *)&(*(u8 *)&mMeshCollider)))->Disable();
-    ((SharedFilePtr *)(*(void **)(data_ov015_02114534 + mVariant * 0xc)))->Release();
-    ((SharedFilePtr *)(*(void **)(data_ov015_02114538 + mVariant * 0xc)))->Release();
+    if (mMeshCollider.IsEnabled())
+        mMeshCollider.Disable();
+    (*(SharedFilePtr **)((char *)&data_ov015_02114534 + mVariant * 0xc))->Release();
+    (*(SharedFilePtr **)((char *)&data_ov015_02114538 + mVariant * 0xc))->Release();
     return 1;
 }
 
@@ -203,8 +190,8 @@ extern "C" void func_ov015_02111fac(daObjBk_Dossunbar_c *self)
 // @symbol func_ov015_02111f6c
 extern "C" void func_ov015_02111f6c(daObjBk_Dossunbar_c *self)
 {
-    *(int *)(((int)self + 0x334)) -= 1;
-    if (*(int *)((char *)self + 0x334) > 0)
+    self->mStateTimer -= 1;
+    if (self->mStateTimer > 0)
         return;
     func_ov015_02111fb8(self, 1);
 }
@@ -223,11 +210,8 @@ extern "C" void func_ov015_02111eec(daObjBk_Dossunbar_c *self)
 {
     Math_Function_0203b0fc(
         &self->mPosX, self->mHomePosX - 0x168000, 0x800, 0x46000);
-    {
-        int *p = (int *)(((int)self + 0x334));
-        *p = *p - 1;
-    }
-    if (*(int *)((char *)self + 0x334) > 0)
+    self->mStateTimer -= 1;
+    if (self->mStateTimer > 0)
         return;
     self->mPosX = self->mHomePosX - 0x168000;
     func_ov015_02111fb8(self, 2);
@@ -244,10 +228,8 @@ extern "C" void func_ov015_02111ee0(daObjBk_Dossunbar_c *self)
 // @symbol func_ov015_02111e80
 extern "C" void func_ov015_02111e80(daObjBk_Dossunbar_c *self)
 {
-    /* Two spellings of +0x334 are load-bearing: the decrement keeps
-       `add r2,r0,#0x334` and the re-read is `ldr r1,[r0,#0x334]`. */
-    *(int *)((int)self + 0x334) -= 1;
-    if (*(int *)((char *)self + 0x334) > 0)
+    self->mStateTimer -= 1;
+    if (self->mStateTimer > 0)
         return;
     if (self->mVariant == 0)
         func_ov015_02111fb8(self, 3);
@@ -269,9 +251,8 @@ extern "C" void func_ov015_02111df4(daObjBk_Dossunbar_c *self)
 {
     Math_Function_0203b14c(
         &self->mPosX, self->mHomePosX, 0x800, 0xb4000, 0x28000);
-    *(int *)(((int)self + 0x334)) =
-        *(int *)(((int)self + 0x334)) - 1;
-    if (*(int *)((char *)self + 0x334) > 0)
+    self->mStateTimer -= 1;
+    if (self->mStateTimer > 0)
         return;
     self->mPosX = self->mHomePosX;
     func_ov015_02111fb8(self, 5);
@@ -290,7 +271,7 @@ extern "C" void func_ov015_02111dd4(daObjBk_Dossunbar_c *self)
 // @symbol func_ov015_02111d98
 extern "C" void func_ov015_02111d98(daObjBk_Dossunbar_c *self)
 {
-    _ZN8dActor_c22UpdatePosWithOnlySpeedEP5dCc_c(self, 0);
+    self->UpdatePosWithOnlySpeed(0);
     if (self->mPosX < self->mHomePosX)
         return;
     self->mPosX = self->mHomePosX;
@@ -308,8 +289,8 @@ extern "C" void func_ov015_02111d8c(daObjBk_Dossunbar_c *self)
 // @symbol func_ov015_02111d4c
 extern "C" void func_ov015_02111d4c(daObjBk_Dossunbar_c *self)
 {
-    *(int *)(((int)self + 0x334)) -= 1;
-    if (*(int *)((char *)self + 0x334) > 0)
+    self->mStateTimer -= 1;
+    if (self->mStateTimer > 0)
         return;
     func_ov015_02111fb8(self, 6);
 }
@@ -326,7 +307,7 @@ extern "C" void func_ov015_02111d28(daObjBk_Dossunbar_c *self)
 // @symbol func_ov015_02111ce0
 extern "C" void func_ov015_02111ce0(daObjBk_Dossunbar_c *self)
 {
-    _ZN8dActor_c22UpdatePosWithOnlySpeedEP5dCc_c(self, 0);
+    self->UpdatePosWithOnlySpeed(0);
     int v = self->mHomePosX + (int)0xffe16000;
     if (self->mPosX > v)
         return;
