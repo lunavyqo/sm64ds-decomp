@@ -16,7 +16,19 @@
  * Leftover: the symbol is still func_ov006_02112ad8 (no RTTI for methods).
  * Leftover: #pragma opt_strength_reduction off (drop DIFFs 53 words).
  * Leftover: pos1..pos12 copies of the probe point (passing &work DIFFs).
+ *   event0..3, specialDelta0..2, hazardPos/2, entityPos/2 are the same kind.
  * Leftover: goto final_checks on a kinoko hit (skips pos7..pos10).
+ * Leftover: state.iteration is a rematerialized zero and also the
+ *   "kinoko nearby" flag (set to 1). zero/zero48/zero4c/zeroAngle
+ *   are rematerialized zeros; angle40/index44/baseZ are offset names.
+ * Leftover: hit/hitA/hitB/hitC are wall / exit-pocket / ball-vs-ball
+ *   (see the comment at the bounce site). mCurrent0/1 are pos x/z.
+ * Leftover: func_02012718 is declared void*(id) here; decl_common
+ *   and the sibling func_020126ac take int.
+ * Leftover: volatile V2 savedVel is a match hack.
+ * Leftover: RandomIntInternal >> 16 & 0x7fff * 0x10 >> 15 << 12
+ *   tower (3x) and the angle one (2x); bounce loops use
+ *   (s16)(angle / 0x20) for i * 0x800.
  */
 
 typedef struct V2 {
