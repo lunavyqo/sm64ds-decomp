@@ -4,7 +4,7 @@
  *
  * No fields. InitResources / CleanupResources hand this overlay's
  * model and collision files to daObjUkiyuka_c's shared ov002 helpers.
- * Init also stores BOB_AMPLITUDE into mBobAmplitude.
+ * Init also stores kBobAmplitude into mBobAmplitude.
  *
  * daObjKm2_Ukishima_c_classInit is reconstructed (RTTI
  * daObjKm2_Ukishima_c, KM2_UKISHIMA registry). Retail does not store
@@ -53,10 +53,8 @@ struct UkishimaSpawnInfo {
 typedef char UkishimaSpawnInfo_size_must_be_0x1c[
     sizeof(UkishimaSpawnInfo) == 0x1c ? 1 : -1];
 
-/* 20.12; the shared setup helper writes this to mBobAmplitude.
-   Kept out of the class body: check_header_offsets treats an in-class
-   enum as an unparsed field. */
-enum { BOB_AMPLITUDE = 0xf50 };
+/* 20.12; the shared setup helper writes this to mBobAmplitude. */
+enum { kBobAmplitude = 0xf50 };
 
 // @symbol daObjKm2_Ukishima_c_classInit
 extern "C" daObjKm2_Ukishima_c *daObjKm2_Ukishima_c_classInit()
@@ -79,7 +77,7 @@ extern "C" UkishimaSpawnInfo g_profile_KM2_UKISHIMA = {
 // @symbol _ZN19daObjKm2_Ukishima_c13InitResourcesEv
 s32 daObjKm2_Ukishima_c::InitResources()
 {
-    return func_ov002_020b6584(this, &data_ov045_02112f08, BOB_AMPLITUDE);
+    return func_ov002_020b6584(this, &data_ov045_02112f08, kBobAmplitude);
 }
 
 // @symbol _ZN19daObjKm2_Ukishima_c16CleanupResourcesEv
