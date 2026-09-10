@@ -15,7 +15,9 @@
  *   Naming belongs in ov002. That helper loads **(SharedFilePtr**)fp,
  *   fp+4, fp+8 as model/KCL/CLPS.
  * Leftover: GetClsnPos is still the mangled call (Vector3-by-value
- *   return emits D1). start/end stay int[6] for the same reason.
+ *   return emits D1). startEnd is two Vector3 copies flattened
+ *   (start = pos; end = pos; start.y += 20; end.y = waterY); the
+ *   extra stores are decompiler dead stores, not an int[6] type.
  * Leftover: RestPos() overlays 0x320. The shared Init helper already
  *   stores pos there as three ints; daObjFloatBoard_c still calls
  *   that gap pad_320 (it overlaps the documented mWaterY at 0x324).
