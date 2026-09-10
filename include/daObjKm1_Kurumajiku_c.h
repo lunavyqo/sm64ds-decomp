@@ -7,7 +7,7 @@
 extern "C" void *_ZN7fBase_cnwEj(unsigned size);
 
 /**
- * Bob-omb Battlefield's rickshaw axle (`kurumajiku`). No fields of
+ * Bowser in the Dark World's rickshaw axle (`kurumajiku`). No fields of
  * its own: the factory allocates 0x330, which daObjKurumajiku_c
  * fills (four mounted-actor IDs at 0x320). Overrides the two slots
  * the base leaves null (InitResources, CleanupResources) and hands
@@ -18,7 +18,7 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * is daObjKm1_Kuruma_c.
  */
 struct daObjKm1_Kurumajiku_c : daObjKurumajiku_c {
-    /* Inline and first: out-of-line mwccarm emits D0 before D1. */
+    /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
     virtual ~daObjKm1_Kurumajiku_c() {}
     int CleanupResources();                /* slot  3 */
     int InitResources();                   /* slot  0 */

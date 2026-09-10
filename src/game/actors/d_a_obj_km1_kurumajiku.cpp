@@ -1,6 +1,6 @@
 //cpp
 /**
- * Bob-omb Battlefield's rickshaw axle (`kurumajiku`).
+ * Bowser in the Dark World's rickshaw axle (`kurumajiku`).
  *
  * No fields of its own. InitResources / CleanupResources hand this
  * overlay's model and collision files to daObjKurumajiku_c's shared
