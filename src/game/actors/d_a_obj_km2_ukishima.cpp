@@ -12,16 +12,26 @@
  *
  * deslop
  * Leftover: func_ov002_020b6584 / func_ov002_020b6424 are still the
- *   shared floating-floor setup/teardown; names are placeholders.
- * Leftover: data_ov045_02112f08 is an opaque 3-word file table.
- *   Nothing in this TU dereferences it.
+ *   linker names of daObjUkiyuka_c Init/Cleanup (the base leaves
+ *   those slots pure virtual). Naming belongs in ov002. That helper
+ *   loads slot 0 with Model::LoadFile, slot 1 with dBgW_Kc::LoadFile,
+ *   slot 2 as CLPS into SetFile, and stores arg 3 at mBobAmplitude.
+ * Leftover: g_profile_KM2_UKISHIMA is overlay data; this TU is
+ *   text-only so the definition here is a deadstripped duplicate.
  */
 
 #include "daObjKm2_Ukishima_c.h"
+#include "SharedFilePtr.h"
+
+struct CLPS_Block;
 
 struct ResourceDescriptor {
-    void *entries[3];
+    SharedFilePtr *model;
+    SharedFilePtr *collision;
+    CLPS_Block *clps;
 };
+typedef char ResourceDescriptor_size_must_be_0x0c[
+    sizeof(ResourceDescriptor) == 0x0c ? 1 : -1];
 
 extern "C" {
 int func_ov002_020b6584(daObjKm2_Ukishima_c *self, ResourceDescriptor *descriptor,
@@ -32,7 +42,7 @@ extern ResourceDescriptor data_ov045_02112f08;
 
 struct UkishimaSpawnInfo {
     daObjKm2_Ukishima_c *(*classInit)();
-    s16 executePriority; /* +4 */
+    s16 executePriority; /* +4: also KM2_UKISHIMA registry id 0x0091 = 145 */
     s16 renderPriority;  /* +6 */
     u32 actorFlags;
     Fix12i clipOffsetY;
