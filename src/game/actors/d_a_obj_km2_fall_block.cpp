@@ -12,17 +12,24 @@
  *
  * deslop
  * Leftover: func_ov098_0213a794 / func_ov098_0213a2cc are still the
- *   shared falling-block setup/teardown; names are placeholders.
- * Leftover: data_ov045_021130ac is an opaque 3-word file table.
- *   Nothing in this TU dereferences it.
+ *   linker names of daObjFallBlock_c Init/Cleanup. Naming belongs
+ *   in ov098. That helper loads slot 0 with Model::LoadFile, slot 1
+ *   with dBgW_Kc::LoadFile, slot 2 as CLPS into SetFile.
  * Leftover: g_profile_KM2_KUZURE lives outside this TU (S14).
  */
 
 #include "daObjKm2_Fall_Block_c.h"
+#include "SharedFilePtr.h"
+
+struct CLPS_Block;
 
 struct ResourceDescriptor {
-    void *entries[3];
+    SharedFilePtr *model;
+    SharedFilePtr *collision;
+    CLPS_Block *clps;
 };
+typedef char ResourceDescriptor_size_must_be_0x0c[
+    sizeof(ResourceDescriptor) == 0x0c ? 1 : -1];
 
 extern "C" {
 int func_ov098_0213a794(daObjKm2_Fall_Block_c *self, ResourceDescriptor *descriptor);
