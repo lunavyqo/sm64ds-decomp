@@ -17,9 +17,7 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * is a different class.
  */
 struct daObjFl_Gura_c : daObjGuragura_c {
-    /* Declared last and inline so class instantiation emits the
-       retail D1/D0 pair in cartridge order without a separate leaf
-       D2 body. */
+    /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
     int CleanupResources();            /* slot  3 */
     int InitResources();               /* slot  0 */
 
