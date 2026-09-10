@@ -163,14 +163,8 @@ struct dActor_c : dBase_c {
     virtual Vector3 OnAimedAtWithEggReturnVec();       /* slot 30 */
 
     /* --- non-virtual --- */
-    /* mPosX/Y/Z at 0x5c are one vector. Call this. Do not pun
-       `(Vector3 *)&mPosX` in a leaf — that overlay belongs here.
-       Reference, not value: Vector3-by-value emits ~Vector3 D1.
-       Typed extern "C" of mangled names on this header is still poison;
-       an overlay accessor is not.
-       A new in-class method here shifts mwccarm's file-local class
-       uniquifiers (`@class$NNN`, `Bundle$NNN`) in every actor TU;
-       update those compiler_only deadstrip rows with the new name. */
+    /* mPosX/Y/Z at 0x5c are one vector. Reference, not value:
+       Vector3-by-value emits ~Vector3 D1. */
     Vector3 &Pos() { return *reinterpret_cast<Vector3 *>(&mPosX); }
     const Vector3 &Pos() const {
         return *reinterpret_cast<const Vector3 *>(&mPosX);
