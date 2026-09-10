@@ -10,9 +10,8 @@
  * in mMountedActorIds. ov047 sinit constructs those SharedFilePtrs as
  * file IDs 1665 / 1666.
  *
- * The three-word file table is defined in this TU (retail places it
- * between the typeinfo and the type name). Keep that definition
- * above the class header.
+ * The three-word file table is defined in this TU. Retail .data
+ * order is descriptor, type-name, profile, vtable.
  *
  * daObjKm3_Kurumajiku_c_classInit is reconstructed (RTTI
  * daObjKm3_Kurumajiku_c, KM3_KURUMAJIKU registry). Retail does not
