@@ -10,21 +10,30 @@
  *   state/helper bodies; the ROM symbols are still the func_ov
  *   labels. Naming them as C++ methods would emit _ZN12daBakubaku_c*
  *   and miss those labels.
- * Leftover: Klass / StateEntry / SC pointer-to-member shadows.
- *   Completing Klass as daBakubaku_c makes mwccarm ICE (PMF
- *   representation). Behavior and SetState keep the incomplete class.
+ * Leftover: Klass stays incomplete (completing it as daBakubaku_c
+ *   ICEs mwccarm's PMF). Tables are { PMF enter; PMF main }, 0x10
+ *   apart (a7c/a8c/a9c/aac/abc). mState is a pointer to one entry.
  * Leftover: ModelAnim::SetAnim, dCcAcPos_c::Init, DropShadowRadHeight
  *   and Player::Hurt stay mangled (Fix12-by-value, wall 6az).
- * Leftover: mShadowMat / model-matrix copies use a 12-word ldm/stm
- *   overlay; Matrix4x3 assignment scalarizes.
+ * Leftover: *(M48 *)((char *)self + 0x368) is mModelAnim.mat4x3
+ *   (Model +0x1c). Matrix4x3 assignment scalarizes; the 12-word
+ *   overlay is load-bearing, same as mShadowMat.
+ * Leftover: 02111830 uses mModelAnim.Finished()/currFrame; 02111620
+ *   still walks +0x39c / +0x3a4 -- method form size-DIFF there.
+ * Leftover: ClosestPlayer is spelled three ways. Behavior uses the
+ *   method; 02111350 uses self->ClosestPlayer(); 02111254 / 02111620
+ *   still call the C wrapper and walk Player through 0x5c / 0x644 /
+ *   0x706 (method form size-DIFF those two). mStateTimer compares
+ *   stay unsigned short (ldrh); a signed field load DIFFs.
+ * Leftover: decl_common.h is here because 02113a48 / 02113a50 /
+ *   02113a8c are extern int there, so BMD/BCA handles are int[]
+ *   punned to SharedFilePtr and 02113a8c takes an &.
  * Leftover: BMD/BCA SharedFilePtrs still data_ov032_*; sinit file IDs
  *   661 / 662 / 663. State-table symbols still data_ov032_*.
  * Leftover: data_0209f32c is water height; particle/sound helpers
  *   func_02022c80 / 02022d00 / 02012694 / func_ov002_020c5cd8.
- * Leftover: func_ov032_02111254 / 02111620 still call the C
- *   ClosestPlayer wrapper and walk Player through 0x5c / 0x644 /
- *   0x706; Player* members size-DIFF those two. mStateTimer compares
- *   stay unsigned short (ldrh); a signed field load DIFFs.
+ * Leftover: gotos, dead-store in[2] pairs, and register-named
+ *   locals (r5, s3b0, v1/v2) are load-bearing S8/S15.
  */
 
 #include "daBakubaku_c.h"
@@ -37,7 +46,8 @@
 
 struct Klass;
 typedef void (Klass::*PMF)();
-struct StateEntry { char pad[8]; PMF handler; };
+/* Tables are 0x10 apart. SetState calls enter at +0; Behavior calls main at +8. */
+struct StateEntry { PMF enter; PMF main; };
 
 struct BakubakuSpawnInfo {
     daBakubaku_c *(*classInit)();
@@ -182,11 +192,11 @@ s32 daBakubaku_c::Behavior()
         return 1;
 
     DecIfAbove0_Short((unsigned short *)&mStateTimer);
-    DecIfAbove0_Short(&unk_42a);
+    DecIfAbove0_Short(&mChaseCooldown);
 
     StateEntry *state = (StateEntry *)mState;
-    if (state->handler != 0)
-        (((Klass *)this)->*(state->handler))();
+    if (state->main != 0)
+        (((Klass *)this)->*(state->main))();
 
     mAngleX = mPrevAngleX;
     mAngleY = mPrevAngleY;
@@ -258,10 +268,10 @@ extern "C" void func_ov032_02112044(daBakubaku_c *self)
 }
 
 /* Install mState (PMF table entry) and run its enter function. */
-// @symbol func_ov032_02111ff4
 struct SC;
 typedef int (SC::*SPMF)();
 struct SC { char pad[0x3b0]; SPMF *pp; };
+// @symbol func_ov032_02111ff4
 extern "C" int func_ov032_02111ff4(void *cv, void *pv)
 {
     SC *c = (SC *)cv;
@@ -295,7 +305,7 @@ extern "C" int func_ov032_02111e24(daBakubaku_c *self)
     _Z14ApproachLinearRiii(&self->mHorzSpeed, 0x5000, 0x333);
     if (func_ov032_02111350(self) == 1) {
         self->mStateTimer = 0x28;
-        self->unk_42a = 0x28;
+        self->mChaseCooldown = 0x28;
         ang = Vec3_HorzAngle(
             (const Vector3 *)&self->mPosX,
             (const Vector3 *)&self->mSpawnPosX);
@@ -362,9 +372,9 @@ extern "C" int func_ov032_02111d7c(daBakubaku_c *self)
 // @symbol func_ov032_02111d58
 extern "C" int func_ov032_02111d58(daBakubaku_c *self)
 {
-    self->mStateTimer = 300;
-    self->mModelAnim.speed = 8192;
-    self->mHorzSpeed = 40960;
+    self->mStateTimer = 0x12c;
+    self->mModelAnim.speed = 0x2000;
+    self->mHorzSpeed = 0xa000;
     return 1;
 }
 
@@ -382,7 +392,7 @@ init:
             &self->mModelAnim,
             *(BCA_File **)((unsigned char *)&data_ov032_02113a50 + 4),
             0, 0x1000, 0);
-        self->unk_42a = 0x64;
+        self->mChaseCooldown = 0x64;
         func_ov032_02111ff4(self, &data_ov032_02113a8c);
         return 1;
     }
@@ -513,7 +523,7 @@ afterblock: ;
             s16 a = self->mPrevAngleX;
             if (a < 0) a = -a;
             if (a < 0x100) {
-                self->unk_42a = 0x64;
+                self->mChaseCooldown = 0x64;
                 self->mAngTarget = self->mAngleY;
                 self->mFlags = 3;
                 self->mBodyClsn.flags &= ~2;
@@ -541,7 +551,7 @@ extern "C" int func_ov032_02111814(daBakubaku_c *self)
 {
     self->mLungePhase = 0;
     self->mMouthOpen = 0;
-    self->mHorzSpeed = 40960;
+    self->mHorzSpeed = 0xa000;
     return 1;
 }
 
@@ -594,7 +604,7 @@ afterblock: ;
     self->mMouthOpen = 0;
     if (AngleDiff(self->mPrevAngleX, 0) < 0x200) {
         self->mPrevAngleX = 0;
-        self->unk_42a = 0x64;
+        self->mChaseCooldown = 0x64;
         self->mAngTarget = self->mAngleY;
         self->mFlags = 3;
         _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(
@@ -643,8 +653,9 @@ extern "C" void func_ov032_021113fc(daBakubaku_c *self)
     u32 id1 = self->mBodyClsn.otherOwner;
     if (id1 != 0) {
         Player *f = (Player *)dActor_c::FindWithID(id1);
-        int isbf = (int)(f->actorID == kPlayerActorId);
-        if (isbf) {
+        /* Temporary is load-bearing: ROM materialises 0/1 then cmp. */
+        int isPlayer = (int)(f->actorID == kPlayerActorId);
+        if (isPlayer) {
             if (f->mIsVanish != 0) return;
             if (self->mBodyClsn.hitFlags & 0x10) {
                 self->SpawnMegaCharParticles(*f, 0);
@@ -672,8 +683,8 @@ extern "C" void func_ov032_021113fc(daBakubaku_c *self)
     u32 id2 = self->mHeadClsn.otherOwner;
     if (id2 == 0) return;
     Player *f2 = (Player *)dActor_c::FindWithID(id2);
-    int isbf2 = (int)(f2->actorID == kPlayerActorId);
-    if (isbf2 == 0) return;
+    int isPlayer2 = (int)(f2->actorID == kPlayerActorId);
+    if (isPlayer2 == 0) return;
 
     if (self->mHeadClsn.hitFlags & 0x10) {
         self->SpawnMegaCharParticles(*f2, 0);
@@ -720,7 +731,7 @@ extern "C" int func_ov032_02111254(daBakubaku_c *self)
     int *s;
     int *t;
     int d;
-    if (pl == 0 || *(unsigned short *)&self->unk_42a != 0)
+    if (pl == 0 || *(unsigned short *)&self->mChaseCooldown != 0)
         return 0;
     s = (int *)(pl + 0x5c);
     self->mTargetPosX = s[0];
