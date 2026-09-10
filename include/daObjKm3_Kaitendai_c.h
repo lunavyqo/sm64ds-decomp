@@ -17,8 +17,7 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * `daObjKm3_Kaitendai_c` is the RTTI name.
  */
 struct daObjKm3_Kaitendai_c : daObjKaitendai_c {
-    /* Inline and first: out-of-line mwccarm emits D0 before D1; retail
-       has D1 at 0x021112bc below D0 at 0x0211130c. */
+    /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
     virtual ~daObjKm3_Kaitendai_c() {}
     virtual s32 CleanupResources(); /* slot 3 */
     virtual s32 InitResources();    /* slot 0 */

@@ -7,9 +7,9 @@
  * helpers. Start angle is data_ov047_02112320, or
  * data_ov047_02112324 when param1's low byte is 1.
  *
- * The three-word file table is defined in this TU (retail places it
- * before the type name, profile, and vtable). Keep that definition
- * above the class header. func_ov002_020b676c types the slots as
+ * The three-word file table is defined in this TU. Retail .data
+ * order is descriptor, type-name, profile, vtable.
+ * func_ov002_020b676c types the slots as
  * SharedFilePtr *m[2] and CLPS_Block *clps. ov047 sinit constructs
  * those SharedFilePtrs as file IDs 1661 / 1662.
  *
@@ -22,8 +22,9 @@
  *   linker names of daObjKaitendai_c Init/Cleanup (the base leaves
  *   those slots pure virtual). Naming belongs in ov002.
  * Leftover: the BMD/KCL SharedFilePtrs and CLPS_Block are still
- *   data_ov047_*; the two start-angle halfwords are still
- *   data_ov047_02112320 / 02112324.
+ *   data_ov047_*. The two start-angle halfwords 02112320 / 02112324
+ *   sit 8 bytes before this TU's claimed .data (typeinfo at
+ *   02112328); they are not owned here.
  */
 
 #include "SharedFilePtr.h"
