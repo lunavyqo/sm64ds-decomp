@@ -1,6 +1,6 @@
 //cpp
 /**
- * Bob-omb Battlefield's spinning disc.
+ * Whomp's Fortress spinning disc.
  *
  * No fields. InitResources / CleanupResources hand this overlay's
  * model and collision files to daObjKaitendai_c's shared ov002
