@@ -31,7 +31,7 @@ struct daObjWcObj01_c : daObjFloatBoard_c {
 
 inline void *daObjWcObj01_c::operator new(unsigned long size)
 {
-    return _ZN7fBase_cnwEj((unsigned)size);
+    return _ZN7fBase_cnwEj(size);
 }
 
 typedef char daObjWcObj01_c_size_must_be_0x348[sizeof(daObjWcObj01_c) == 0x348 ? 1 : -1];
