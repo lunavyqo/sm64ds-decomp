@@ -5,9 +5,9 @@
  * No fields. InitResources / CleanupResources hand this overlay's
  * model and collision files to daObjGuragura_c's shared ov002 helpers.
  *
- * The three-word file table is defined in this TU (retail places it
- * between the typeinfo and the type name). Keep that definition after
- * the class header. func_ov002_020b6244 loads slot 0 with
+ * The three-word file table is defined in this TU. Retail .data
+ * order is descriptor, type-name, profile, vtable.
+ * func_ov002_020b6244 loads slot 0 with
  * Model::LoadFile, slot 1 with dBgW_Kc::LoadFile, slot 2 as CLPS
  * into SetFile. ov045 sinit constructs those SharedFilePtrs as
  * file IDs 1631 / 1632.

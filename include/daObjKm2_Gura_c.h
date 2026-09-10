@@ -16,8 +16,7 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * `daObjKm2_Gura_c` is the RTTI name. `guragura` is the wobble.
  */
 struct daObjKm2_Gura_c : daObjGuragura_c {
-    /* Inline and first: out-of-line mwccarm emits D0 before D1; retail
-       has D1 at 0x02111c30 below D0 at 0x02111c80. */
+    /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
     virtual ~daObjKm2_Gura_c() {}
     virtual s32 CleanupResources(); /* slot 3 */
     virtual s32 InitResources();    /* slot 0 */
