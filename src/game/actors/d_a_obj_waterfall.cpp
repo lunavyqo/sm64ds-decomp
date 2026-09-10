@@ -15,16 +15,15 @@
  * Leftover: Particle::System::New is a TU-local inline that forwards
  *   to the 5Fix12IiE reconstructed symbol. Declaring the real
  *   Fix12<int> parameters will not convert from s32 mPosX (no ctor)
- *   and the pun/temps DIFF. Declaring int parameters mangles to a
- *   different symbol (reloc dest would be wrong even if bytes MATCH).
- *   Do not put the typed mangled extern on Particle__System.h.
- * Leftover: in-class operator new takes unsigned long and forwards to
- *   _ZN7fBase_cnwEj (unsigned int). Keep `return new daObjWaterfall_c`.
- * Leftover: inline destructor (out-of-line emits D0 before D1).
+ *   and the pun/temps DIFF. Declaring int parameters mangle to a
+ *   different symbol. Do not put the typed mangled extern on
+ *   Particle__System.h.
  * Leftover: data_0209f2f8 is LEVEL_ID in verified.tsv; a local
  *   `signed char &LEVEL_ID` alias size-DIFF 999. Rename is symbols.txt.
  * Leftover: three scalar mPosX/Y/Z into New. A Vector3 overlay of
  *   `&mPosX` size-DIFF 999 (z is the first stack arg, not an ldm).
+ * Leftover: course ids 0x16 / 0x21 are still hex; no recovered
+ *   LEVEL_ID enum in this tree.
  */
 
 #include "daObjWaterfall_c.h"
@@ -64,7 +63,7 @@ extern "C" daObjWaterfall_c *daObjWaterfall_c_classInit()
 
 struct WaterfallSpawnInfo {
     daObjWaterfall_c *(*classInit)();
-    s16 executePriority; /* +4 */
+    s16 executePriority; /* +4: also WATERFALL registry id 0x00c5 = 197 */
     s16 renderPriority;  /* +6 */
     u32 actorFlags;
     Fix12i clipOffsetY;
