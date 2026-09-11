@@ -44,7 +44,7 @@
  *   [5] 0x02111a84  src/func_ov025_02111a84.cpp
  *   [6] 0x02111b64  src/_ZN7daDkk_c8BehaviorEv.cpp
  *   [7] 0x02111c24  src/_ZN7daDkk_c13InitResourcesEv.cpp
- *   [8] 0x02111cf4  src/d_a_dkk.c                         (factory, now `return new`)
+ * The factory is `return new` in this file.
  */
 
 /* INCLUDE ORDER IS LOAD-BEARING, the same way it is in the base class's own TU:
