@@ -1,21 +1,37 @@
 //cpp
-/* Genuine production translation unit for ov100/daStarGate_c.
+/* Star door (STAR_DOOR 354) -- ov100/daStarGate_c.
  *
- * SM64DS proves daStarGate_c through RTTI, the STAR_GATE profile, the factory's
+ * ov100 is mixed (PATH_LIFT / ROLLING_IRON_BALL / BUTTERFLY / UNCHAINED_CHOMP /
+ * FISH / DOOR / STAR_DOOR). RTTI names this class daStarGate_c; the debug table
+ * names STAR_DOOR. Historical project alias: StarDoor.
+ *
+ * SM64DS proves the class through RTTI, the STAR_GATE profile, the factory's
  * allocation/vptr shape, and the complete virtual table. Later source lineage
  * supplies the state and method spellings; their class ownership, PTMF layout,
- * argument count, bodies, call graph, and relocations are ROM-proven. Exact
- * original SM64DS source spellings are not preserved. Historical project alias:
- * StarDoor.
- *
- * The compiler owns the two-function state objects, their eight PTMF constants,
- * the resource initializer/destructor registration, class RTTI/vtable, profile,
- * and gate configuration table. The intact-TU manifest verifies their exact
- * section order, bytes, symbols, and all 64 non-text relocation destinations.
+ * argument count, bodies, call graph, and relocations are ROM-proven.
  *
  * mwccarm emits function sections in reverse source order. Keep the ROM-high
  * factory first and the ROM-low destructor last; the D1/D0/D2 group itself is
  * compiler-ordered.
+ *
+ * deslop
+ * Leftover: Camera::GoBehindPlayer / SetFlag_3 stay mangled (no Camera.h;
+ *   SetFlag_3 is not on Camera.h). This TU's St_OpenClose_Init / Main.
+ * Leftover: func_ov100_02144fcc / 02145014 / 02145070 / 02144f84 stay those
+ *   ROM labels. 02144fcc keeps the ellipsis: St_StayClosed_Main passes
+ *   (this, player); the body is 0-arg.
+ * Leftover: func_02012694 sound at mCamSpacePosX (TalkingToPlayer_Init,
+ *   OpenClose_Init / Main).
+ * Leftover: StarGateVector3 POD for data_ov100_02148948, messagePos, tmp,
+ *   vec -- Vector3's inline dtor is non-POD; a Vector3 BSS object would
+ *   register in sinit.
+ * Leftover: data_ov100_02148934 model handle (SharedFilePtr.h has no fields;
+ *   StarGateModelFilePtr is the 8-byte wrapper). data_ov100_02148390 gate
+ *   table.
+ * Leftover: *(Vector3 *)&mPosX / mScaleX / unk_0a4 (dActor_c consecutive
+ *   s32s; a Vector3 member is not this class).
+ * Leftover: data_0209caa0 +0x41 character byte (SaveData.mCharacter).
+ *   SaveData.h shifts this TU's @432..@446 PTMF uniquifiers in symbols.txt.
  */
 #include "daStarGate_c.h"
 #include "Player.h"
@@ -26,7 +42,6 @@ struct Camera;
 
 extern "C" {
 int func_ov100_02144fcc(...);
-int _Z14ApproachLinearRiii(int &x, int a, int b);
 unsigned char DecIfAbove0_Byte(unsigned char *p);
 void func_02012694(int soundID, void *position, ...);
 void _ZN6Camera14GoBehindPlayerEj(Camera *self, unsigned int a);
@@ -44,6 +59,8 @@ void Vec3_Sub(Vector3* out, Vector3* a, Vector3* b);
 u8 IsAreaShowing(int areaID);
 void Matrix4x3_FromRotationY(Matrix4x3 *matrix, int angle);
 }
+
+int ApproachLinear(int &x, int a, int b);
 
 extern u8 data_0209f250;
 extern Camera *data_0209f318;
@@ -284,9 +301,9 @@ bool daStarGate_c::St_Wait_Main(Player *player)
         entry = &data_ov100_02148390[param1];
         isSpecial = entry->numStars == 0x50;
         notEnoughStars = (int)NumStars() < entry->numStars;
-        isMario = *(unsigned char *)((char *)data_0209caa0 + 0x41) == 0;
+        isMario = ((unsigned char *)data_0209caa0)[0x41] == 0;
 
-        if (*(int *)((char *)data_0209caa0 + 4) & (0x8000 << entry->saveFlag))
+        if (data_0209caa0[1] & (0x8000 << entry->saveFlag))
             goto tryOpen;
         if (isSpecial) {
             if (mScaleZ <= 0)
@@ -374,8 +391,7 @@ bool daStarGate_c::St_Unlocking_Init(Player *player)
 bool daStarGate_c::St_Unlocking_Main(Player *player)
 {
     if (!player->IsOpeningDoorWithStar()) {
-        daStarGateInfo *entry = (daStarGateInfo *)
-            ((char *)data_ov100_02148390 + param1 * 6);
+        daStarGateInfo *entry = &data_ov100_02148390[param1];
         s8 sh = entry->saveFlag;
         data_0209caa0[1] |= 0x8000 << sh;
         TryOpenDoor(player);
@@ -403,12 +419,12 @@ bool daStarGate_c::St_OpenClose_Init(Player *)
 // @symbol _ZN12daStarGate_c17St_OpenClose_MainEP6Player
 bool daStarGate_c::St_OpenClose_Main(Player *player)
 {
-    int r5;
+    int ready;
     StarGateVector3 vec;
     int gy, gz, vd;
 
-    r5 = func_ov100_02144fcc();
-    if (_Z14ApproachLinearRiii(mHorzSpeed, mTerminalVelocity, 0x8000) != 0) {
+    ready = func_ov100_02144fcc();
+    if (ApproachLinear(mHorzSpeed, mTerminalVelocity, 0x8000) != 0) {
         if (mTerminalVelocity != 0) {
             if (mCloseDoorTimer == 0) {
                 mCloseDoorTimer = 0x1c;
@@ -418,7 +434,7 @@ bool daStarGate_c::St_OpenClose_Main(Player *player)
             } else if (mCloseDoorTimer == 8) {
                 _ZN6Camera14GoBehindPlayerEj(data_0209f318, data_0209f250);
             }
-        } else if (r5 != 0) {
+        } else if (ready != 0) {
             ChangeState(&ST_WAIT, player);
             {
                 int t;
