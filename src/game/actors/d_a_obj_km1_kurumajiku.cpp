@@ -32,7 +32,7 @@ struct CLPS_Block;
 
 struct ResourceDescriptor {
     SharedFilePtr *model;
-    SharedFilePtr *collision;
+    SharedFilePtr *kcl;
     CLPS_Block *clps;
 };
 typedef char ResourceDescriptor_size_must_be_0x0c[

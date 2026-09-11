@@ -20,8 +20,8 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
 struct daObjKm1_Kurumajiku_c : daObjKurumajiku_c {
     /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
     virtual ~daObjKm1_Kurumajiku_c() {}
-    int CleanupResources();                /* slot  3 */
-    int InitResources();                   /* slot  0 */
+    virtual s32 CleanupResources(); /* slot 3 */
+    virtual s32 InitResources();    /* slot 0 */
 
     static void *operator new(unsigned long size) {
         return _ZN7fBase_cnwEj(size);
