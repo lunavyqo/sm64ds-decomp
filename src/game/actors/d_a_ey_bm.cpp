@@ -1,21 +1,38 @@
 //cpp
-/* Genuine production translation unit for ov071/daEyBm_c.
+/* Mr. I projectile (EYEKUN_BEAM 264) -- ov071/daEyBm_c.
  *
- * daEyBm_c_classInit and g_profile_EYEKUN_BEAM are reconstructed source-style
- * names. SM64DS proves the daEyBm_c RTTI identity, EYEKUN_BEAM registry ID,
- * descriptor/factory relationship, and object shape; later EAD lineage
- * supplies the spelling prior. Exact original SM64DS symbols are not
- * preserved. Historical project aliases: MrI_Projectile_Spawn and
- * MrI_Projectile_SpawnInfo. The private helper spellings are inferred; their
- * class ownership, bodies, calls and ordering are proven.
+ * ov071 is mixed (COFFIN / SCUTTLEBUG / MR_I / BIG_MR_I / MR_I_PROJECTILE).
+ * RTTI at ov071:0x02122db8 names this class daEyBm_c; the debug table names
+ * EYEKUN_BEAM. Historical project aliases: MrI_Projectile_Spawn and
+ * MrI_Projectile_SpawnInfo. Private helper spellings are inferred; class
+ * ownership, bodies, calls and ordering are proven.
+ *
+ * common.h FIRST: InitResources assigns IDENTITY_MATRIX4X3 onto mMatrix, and
+ * the ROM copies it as three 4-word ldm/stm pairs. common.h's flat s32 m[12]
+ * is that copy; math/Matrix.h's nested {Matrix3x3 r; Vector3 t;} splits it.
+ * UpdateShadow writes translation through m[9..11].
  *
  * mwccarm emits ordinary function sections in reverse source order. Keep the
  * ROM-high factory first and OnYoshiTryEat last. InitResources is the key
  * function; together with the inline destructor in the real header this
  * naturally emits retail D1 then D0 and the class RTTI/vtable, without D2 or a
  * forcing object.
+ *
+ * deslop leftovers:
+ * - dCcAcPos_c::Init / dBgCh_Actr::Init / DropShadowRadHeight / Player::Hurt
+ *   6az: this TU passes Fix12<int> by value; the header method form size-DIFFs.
+ *   dBgCh_Actr::Init also mangles Fix12i as `i` while the ROM is Fix12<int>.
+ * - Particle::System::New / NewUnkCallback818: not shared-header declared.
+ * - dBgCh_Actr_UpdateDiscreteNoLava_veneer (UpdateCollision): the named
+ *   UpdateDiscreteNoLava method is WRONG-DEST (ROM 0x02038420).
+ * - data_ov071_021230b8 collision-offset words; overlay .data owns them.
+ * - DaEyBmVector3Words: Vector3's empty D1 would instantiate in this TU.
+ * - UpdateCollision R10dBgCh_Actr: a pointer would generate identical ARM.
+ * - S14: g_profile_EYEKUN_BEAM stays outside the licensed .text.
+ * - no Camera.h.
  */
 
+#include "common.h"
 #include "daEyBm_c.h"
 #include "dBgCh_Gnd.h"
 #include "Particle__System.h"
@@ -43,28 +60,13 @@ struct DaEyBmSpawnInfo {
 typedef char DaEyBmSpawnInfo_size_must_be_0x1c[
     sizeof(DaEyBmSpawnInfo) == 0x1c ? 1 : -1];
 
-/* ROM ordinal 12 -- class initializer, 0x02121f9c, size 0x48. Natural new
- * targets the wrong allocator; retain the measured actor construction seam. */
-extern "C" {
-extern void *_ZN7fBase_cnwEj(u32 size);
-extern void _ZN8dActor_cC2Ev(dActor_c *actor);
-extern void _ZN11ShadowModelC1Ev(ShadowModel *shadow);
-extern void _ZN10dCcAcPos_cC1Ev(dCcAcPos_c *collision);
-extern void _ZN10dBgCh_ActrC1Ev(dBgCh_Actr *collision);
-
+/* ROM ordinal 12 -- class initializer, 0x02121f9c, size 0x48. Leaf
+ * operator new forwards fBase_c::operator new; the implicit constructor
+ * emits the measured dActor_c C2, vptr store, and three member C1s. */
 // @symbol daEyBm_c_classInit
-daEyBm_c *daEyBm_c_classInit()
+extern "C" daEyBm_c *daEyBm_c_classInit()
 {
-    daEyBm_c *actor = (daEyBm_c *)_ZN7fBase_cnwEj(sizeof(daEyBm_c));
-    if (actor) {
-        _ZN8dActor_cC2Ev(actor);
-        *(int *)actor = (int)&_ZTV8daEyBm_c[2];
-        _ZN11ShadowModelC1Ev(&actor->mShadowModel);
-        _ZN10dCcAcPos_cC1Ev(&actor->mdCcAcPos_c);
-        _ZN10dBgCh_ActrC1Ev(&actor->mWithMeshClsn);
-    }
-    return actor;
-}
+    return new daEyBm_c();
 }
 
 extern "C" DaEyBmSpawnInfo g_profile_EYEKUN_BEAM = {
@@ -79,8 +81,6 @@ extern "C" DaEyBmSpawnInfo g_profile_EYEKUN_BEAM = {
 };
 
 /* ROM ordinal 11 -- InitResources, 0x02121eb4, size 0xe8. */
-struct DaEyBmMatrixWords { s32 words[12]; };
-
 extern "C" {
 /* Known by-value Fix12 compiler walls: these exact ABI imports preserve the
  * retail register calling convention while the owned objects remain typed. */
@@ -111,8 +111,7 @@ int daEyBm_c::InitResources()
     mTerminalVelocity = 0;
     mHorzSpeed = 0xa000;
     mLifeTimer = 0x96;
-    *(DaEyBmMatrixWords *)&mMatrix =
-        *(DaEyBmMatrixWords *)&IDENTITY_MATRIX4X3;
+    mMatrix = IDENTITY_MATRIX4X3;
     UpdateShadow();
     return 1;
 }
@@ -204,9 +203,9 @@ extern "C" void _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix1
 
 void daEyBm_c::UpdateShadow()
 {
-    mMatrix.t.x = mPosX >> 3;
-    mMatrix.t.y = mPosY >> 3;
-    mMatrix.t.z = mPosZ >> 3;
+    mMatrix.m[9] = mPosX >> 3;
+    mMatrix.m[10] = mPosY >> 3;
+    mMatrix.m[11] = mPosZ >> 3;
 
     dBgCh_Gnd ground;
     ground.SetObjAndPos(*(Vector3 *)&mPosX, this);
@@ -254,8 +253,9 @@ void daEyBm_c::HurtPlayer()
 }
 
 /* ROM ordinal 4 -- inferred daEyBm_c::UpdateCollision,
- * 0x02121b50, size 0x54. The reference parameter is retained because the
- * retail caller passes the owned collision subobject explicitly in r1. */
+ * 0x02121b50, size 0x54. The coined mangling uses a reference; a pointer
+ * would generate identical ARM. The retail caller passes the owned
+ * collision subobject explicitly in r1. */
 extern "C" void dBgCh_Actr_UpdateDiscreteNoLava_veneer(dBgCh_Actr *collision);
 
 void daEyBm_c::UpdateCollision(dBgCh_Actr &collision)
