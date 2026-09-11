@@ -55,17 +55,17 @@ struct daPkn_c : dEnemyBase_c {
     dCcAc_c           mdCcAc_c1;  /* 0x380 */
     dCcAc_c           mdCcAc_c2;  /* 0x3b4 */
     dCcAcPos_c    mdCcAcPos_c; /* 0x3e8 */
-    Vector3                      mPipeScale;            /* 0x428 */
-    Vector3                      mFirePos;              /* 0x434 */
-    Vector3                      mSpawnPos;             /* 0x440 */
-    Vector3                      mHomePos;              /* 0x44c */
+    Vector3                      mBubbleScale;          /* 0x428 -- sleep-bubble Model */
+    Vector3                      mBubblePos;            /* 0x434 -- sleep-bubble world pos */
+    Vector3                      mHeadClsnOffset;       /* 0x440 -- head cylinder; rewritten every frame */
+    Vector3                      mHomePos;              /* 0x44c -- spawn point; InitResources copies 0x440 once */
     s32                          mState;                /* 0x458 */
     u8                           mClsnEnabled;          /* 0x45c */
     u8                           unk_45d;               /* 0x45d */
     u8  pad_45e[0x2];
     s32                          unk_460;               /* 0x460 */
     s32                          unk_464;               /* 0x464 */
-    s16                          mInitAngleY;           /* 0x468 */
+    s16                          mTargetAngleY;         /* 0x468 -- yaw toward player; rewritten every frame */
     u8  pad_46a[0x2];
     s32                          unk_46c;               /* 0x46c */
     s32                          mParticleHandle;       /* 0x470 */

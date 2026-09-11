@@ -20,24 +20,18 @@
  * - Particle::System::New / NewSimple, Sound::PlaySub / PlayLong, Player::Hurt
  *   / Bounce stay mangled (Fix12<int> by value, 6az)
  * - Animation::Finished / WillHitFrame keep +0x160 (ModelAnim MI +0x50)
- * - (int)this + 0x440 in InitResources (named `mHomePos = mSpawnPos` DIFFs)
+ * - (int)this + 0x440 in InitResources (named `mHomePos = mHeadClsnOffset` DIFFs)
  * - mStateTimer unsigned halfword increment (ldrh; ++mStateTimer is ldrsh)
  * - func_ov084_0212f204 / 0212f460 named fields size-DIFF (keep offset soup)
  * - PknMtx43 / PknVec3 POD copies (Vector3 / nested Matrix4x3 scalarize)
  * - data_ov084_* SharedFilePtr handles and the PMF table at 0x02130e80
  *   (text-only TU; sinit-owned BSS)
- * - common.h first (0212ec60 twelve-word Matrix4x3 copy)
  *
  * Boundary, layout and compiler experiments are recorded in
  * notes/data/class-facts/daPkn_c.json and
  * notes/agents/handoffs/pr-2450-source-review-fixes.md.
  */
 
-/* common.h MUST COME FIRST. It and math/Matrix.h both define Matrix4x3;
- * whichever a TU sees first stands. daPkn_c.h reaches the nested
- * `Matrix3x3 r; Vector3 t` spelling through ModelAnim.h, and func_ov084_0212ec60
- * copies the scratch matrix in one assignment -- against the nested form that
- * copy scalarizes. common.h's flat `s32 m[12]` keeps the cartridge's ldm/stm. */
 #include "common.h"
 #include "daPkn_c.h"
 #include "decl_Animation.h"
@@ -50,7 +44,7 @@
    of `.file`, which is the second word, so one spelling serves all of them. */
 struct PknSharedFile { int id; void *file; };
 extern PknSharedFile data_ov084_02130dfc;   /* the plant's own model */
-extern PknSharedFile data_ov002_0210da38;   /* the pipe, shared out of ov002 */
+extern PknSharedFile data_ov002_0210da38;   /* BUBBLE_MODEL_PTR -- sleep bubble, shared out of ov002 */
 extern PknSharedFile data_ov084_02130df4;   /* idle animation */
 extern PknSharedFile data_ov084_02130e0c;   /* recoil animation */
 extern PknSharedFile data_ov084_02130e14;   /* lunge animation */
@@ -120,9 +114,9 @@ void  _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void *self, vo
 
 /* -- shared tables -- */
 extern s16 data_02082214[];              /* the sin/cos table, two shorts a step */
-extern int data_ov084_0213030c[];        /* per-frame horizontal fire offset */
-extern int data_ov084_02130334[];        /* per-frame vertical fire offset */
-extern u8  data_ov084_021302ec[];        /* the five bones the head angle sums */
+extern int data_ov084_0213030c[];        /* per-frame particle X/Z offset (0212f460, 0xfb) */
+extern int data_ov084_02130334[];        /* per-frame particle Y offset */
+extern u8  data_ov084_021302ec[];        /* five indices {0,3,4,5,6}; 0212ec60 sums s16 at [i]*0x34+0x1c into ang[1] (dead -- later y-adjust reads ang[0]==0, so the offset is constant 0x32000). 0x34 is not BMD_Bone (0x40). */
 extern PknMtx43 data_020a0e68;           /* the shared scratch matrix */
 
 void  _Z14ApproachLinearRsss(s16 *val, s16 target, s16 step);
@@ -168,9 +162,10 @@ extern "C" daPkn_c *daPkn_c_classInit()
  * Unlike FirePiranhaPlantBig's, this one DOES check its loads: a failed SetFile
  * on either model returns 0 rather than carrying on.
  *
- * The tail computes where the plant's fire comes from: 0xe0 along the facing
- * angle out of the shared sin/cos table at data_02082214, and 0x37800 above the
- * spawn position.
+ * The tail seeds the sleep-bubble position: 0xe0 along the facing angle out
+ * of the shared sin/cos table at data_02082214, and 0x37800 above mPosY.
+ * 0212ec60 rewrites mBubblePos every frame. PIRANHA_PLANT (250) does not
+ * breathe fire -- that is daFPkn_c.
  *
  * The remaining SetAnim/Init bridges are described at their declarations.
  * Their measured alternatives are recorded in the continuation handoff;
@@ -197,7 +192,7 @@ int daPkn_c::InitResources()
     mScaleY = 0x1000;
     mScaleZ = 0x1000;
     mState = 0;
-    mInitAngleY = mPrevAngleY;
+    mTargetAngleY = mPrevAngleY;
     unk_464 = 0x7fffffff;
     unk_460 = 0;
     mClsnEnabled = 0;
@@ -206,13 +201,13 @@ int daPkn_c::InitResources()
     unk_108 = 3;
     unk_46c = 0;
     _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(&mWithMeshClsn, this, 0x64000, 0x64000, 0, 0);
-    mSpawnPos.x = mPosX;
-    mSpawnPos.y = mPosY;
-    mSpawnPos.z = mPosZ;
+    mHeadClsnOffset.x = mPosX;
+    mHeadClsnOffset.y = mPosY;
+    mHeadClsnOffset.z = mPosZ;
     {
         s16 *tbl = data_02082214;
         /* The add sits INSIDE the integer cast, which is load-bearing here:
-           not interchangeable with `&mSpawnPos`. */
+           not interchangeable with `&mHeadClsnOffset`. */
         Vector3* home = (Vector3*)(((int)this + 0x440));
         mHomePos = *home;
         /* The shift must be LOGICAL so the angle wraps -- on the signed s16 it
@@ -226,9 +221,9 @@ int daPkn_c::InitResources()
         int z = cosv * 0xe0 + z0;
         int y = y0 + 0x37800;
         int x = sinv * 0xe0 + mPosX;
-        mFirePos.x = x;
-        mFirePos.y = y;
-        mFirePos.z = z;
+        mBubblePos.x = x;
+        mBubblePos.y = y;
+        mBubblePos.z = z;
     }
     unk_474 = 0;
     mParticleHandle = unk_474;
@@ -287,7 +282,7 @@ int daPkn_c::Behavior()
         mdCcAc_c1.Update();
         mdCcAc_c2.Update();
         if (mState == 2) {
-            mdCcAcPos_c.SetPosRelativeToActor(mSpawnPos);
+            mdCcAcPos_c.SetPosRelativeToActor(mHeadClsnOffset);
             mdCcAcPos_c.Update();
         }
     }
@@ -301,7 +296,7 @@ int daPkn_c::Behavior()
 /*
  * The six-slot `struct Obj` this file used to cast both models to was their own
  * vtable, and the slot it called is Render -- ModelAnim's for the plant, Model's
- * for the pipe it sits in.
+ * for the sleep bubble (BUBBLE_MODEL_PTR).
  *
  * `mModelAnim.file` is a BCA_File * where the raw field was an int, so the
  * comparison against the second word of data_ov084_02130df4 needs the cast the
@@ -313,7 +308,7 @@ int daPkn_c::Render()
         return 1;
     mModelAnim.Render((Vector3 *)&mScaleX);
     if ((int)mModelAnim.file == (int)data_ov084_02130df4.file)
-        mModel.Render(&mPipeScale);
+        mModel.Render(&mBubbleScale);
     return 1;
 }
 
@@ -382,8 +377,8 @@ void func_ov084_0212fa7c(daPkn_c *c) {
             _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&c->mModelAnim, data_ov084_02130e0c.file, 0x40000000, 0x1000, 0);
             c->mState = 3;
             func_02012694(0x175, &c->mCamSpacePosX);
-            _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(0xfe, c->mFirePos.x, c->mFirePos.y, c->mFirePos.z);
-            _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(0xff, c->mFirePos.x, c->mFirePos.y, c->mFirePos.z);
+            _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(0xfe, c->mBubblePos.x, c->mBubblePos.y, c->mBubblePos.z);
+            _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(0xff, c->mBubblePos.x, c->mBubblePos.y, c->mBubblePos.z);
             return;
         }
     }
@@ -716,7 +711,7 @@ void func_ov084_0212f298(daPkn_c *c)
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212f204
 extern "C" {  /* Retained C-linkage helper. */
-/* Named unk_460 / mPosX / mInitAngleY / mAngleY size-DIFF this body. */
+/* Named unk_460 / mPosX / mTargetAngleY / mAngleY size-DIFF this body. */
 void func_ov084_0212f204(char* r4){
   struct Vector3 v;
   *(char**)(r4 + 0x460) = _ZN8dActor_c13ClosestPlayerEv();
@@ -746,7 +741,7 @@ extern "C" {  /* Retained C-linkage helper. */
 int func_ov084_0212f1d0(daPkn_c *c) {
     char *p = (char *)c->unk_460;
     if (p == 0) return 0;
-    /* Player mVertSpeed at +0xa8 / mHorzSpeed at +0x98 -- no Player.h. */
+    /* Player mVertSpeed at +0xa8 / mHorzSpeed at +0x98. */
     if (*(int*)(p + 0xa8) > 0xa000) return 1;
     return *(int*)(p + 0x98) > 0xa000;
 }
@@ -888,8 +883,6 @@ fail:
 extern "C" {  /* Retained C-linkage helper. */
 void func_ov084_0212ec60(daPkn_c *self)
 {
-    /* PknMtx43 / PknVec3 keep the twelve- and three-word copies; named
-       Matrix4x3 / Vector3 assignment scalarizes. */
     char *c = (char *)self;
     volatile s16 ang[3];
     struct { PknMtx43 saved; PknVec3 tv; PknVec3 v; } L;
@@ -959,7 +952,7 @@ void func_ov084_0212ec60(daPkn_c *self)
 // @symbol _ZN7daPkn_c16OnAimedAtWithEggEv
 /* daPkn_c::OnAimedAtWithEgg - recovered from vtable slot identity */
 s32 daPkn_c::OnAimedAtWithEgg() {
-    return 286720;
+    return 0x46000;
 }
 
 /* -------------------------------------------------------------------------- */
