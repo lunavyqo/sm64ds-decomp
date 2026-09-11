@@ -185,7 +185,7 @@ typedef struct {
     int f4fc;
 } T;
 
-#define LAUNDER_ADDR(x) ((int)(x))
+
 
 extern "C" {
     extern int data_ov078_02126ee0[];
@@ -572,10 +572,11 @@ int func_ov078_02123d3c(char* c)
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov078_02123eb8(int *t)
 {
-    t[0x27] = -0x2000;
-    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt((void*)((char *)t + 0x2cc), (void*)(data_ov078_02126f28[1]), 0, 0, 0x1000, 0);
-    *(short *)((char *)t + 0x100) = 0x32;
-    t[0x26] = 0xa000;
+    daBombking_c *self = (daBombking_c *)t;
+    self->mVertAccel = -0x2000;
+    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&self->mBlendModelAnim, (void*)(data_ov078_02126f28[1]), 0, 0, 0x1000, 0);
+    self->mStateTimer = 0x32;
+    self->mHorzSpeed = 0xa000;
     return 1;
 }
 }
@@ -712,7 +713,7 @@ int func_ov078_021240a0(char* c)
             else if (d > 0x4000)
                 d = lim;
             {
-                short* p = (short*)((unsigned long long)((int)c + 0x4fa) & 0xFFFFFFFFFFFFFFFFULL);
+                short *p = (short *)(c + 0x4fa);
                 *p = (short)(*p + d);
             }
         } else {
@@ -1087,8 +1088,7 @@ extern "C" int func_ov078_02124cf4(unsigned char* thiz)
         func_ov078_02125c24((char*)thiz, 0x7d0000);
         func_0200fa8c((int*)thiz, 1);
         thiz[0x499] = 1;
-        int* p = (int*)((unsigned long long)((int)thiz + 0x500) & 0xFFFFFFFFFFFFFFFFULL);
-        *p = *p - 1;
+        ((daBombking_c *)thiz)->mHealth -= 1;
     }
     if (*(int*)(thiz + 0x500) > 0) {
         KingBobOmb_SetState(thiz, &data_ov078_021270ec);
@@ -1226,7 +1226,7 @@ done:
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov078_021250d0(char *c)
 {
-    int *flags = (int *)LAUNDER_ADDR(c + 0x354);
+    int *flags = (int *)(c + 0x354);
     *flags |= 2;
     *(int *)(c + 0x9c) = 0;
     *(int *)(c + 0x98) = 0;
@@ -1994,7 +1994,7 @@ int daBombking_c::InitResources()
     func_02035550(&mWithMeshClsn);
     mAnimSpeed = 1;
     mHealth = 3;
-    mStarID = (*(s32 *)&param1) & 0xf;
+    mStarID = param1 & 0xf;
     mStarTracked = TrackStar(mStarID, 2);
     {
     int z = 0;
@@ -2004,10 +2004,7 @@ int daBombking_c::InitResources()
     }
     }
     mPhase = ((unsigned int)RandomIntInternal(&data_0209e650) >> 0x1e) & 1;
-    {
-        int *p = (int *)((char *)&mPhase);
-        *p = *p + 1;
-    }
+    mPhase = mPhase + 1;
     mInitAngleY = mAngleY;
     KingBobOmb_SetState(this, &data_ov078_0212710c);
     return 1;
