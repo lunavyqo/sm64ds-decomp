@@ -14,7 +14,7 @@ extern "C" void _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(
  * Invisible climbable pole. Mario grabs mClsn.
  */
 struct daBar_c : dActor_c {
-    u8 pad_0d0[0x4];       /* 0x0d0 */
+    u8 pad_0d0[0x4];       /* 0x0d0 unused */
     dCcAc_c mClsn;         /* 0x0d4 climb cylinder */
 
     virtual ~daBar_c() {}
@@ -45,7 +45,7 @@ typedef char daBar_c_size_must_be_0x108[
 
 struct DaBarSpawnInfo {
     daBar_c *(*classInit)();
-    s16 executeOrder;      /* +4: also BAR registry id 0x011f = 287 */
+    s16 executeOrder;      /* +4 behavior/execute priority */
     s16 drawOrder;         /* +6 render priority */
     u32 actorFlags;
     Fix12i clipOffsetY;
