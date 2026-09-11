@@ -75,7 +75,9 @@ struct daBmb_c : dEnemyBase_c {
     /* Behavior's state selector: it branches on == 5 (skip almost everything),
        == 4 (the egg/Chuckya hand-off) and == 0 (allow the wall bounce). */
     s32                          mState;                /* 0x3dc */
-    s32                          unk_3e0;               /* 0x3e0 -- InitResources stores 2; no reader */
+    /* InitResources stores 2. func_ov102_0214ae1c reads it as Player::Hurt's
+       damage; ov078/daBombking_c 02123864 writes 0 on a spawned bob-omb. */
+    s32                          unk_3e0;               /* 0x3e0 */
     u8  pad_3e4[0x4];
     u16                          unk_3e8;               /* 0x3e8 -- zeroed by InitResources */
     u16                          unk_3ea;               /* 0x3ea -- zeroed by InitResources */
