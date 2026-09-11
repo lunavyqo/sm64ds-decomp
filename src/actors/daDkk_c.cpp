@@ -262,8 +262,9 @@ extern "C" int func_ov025_021119a4(char *c)
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daDkk_c16OnAimedAtWithEggEv
 /* Vtable slot 29, override of dActor_c::OnAimedAtWithEgg. `mov r0,#0xce000; bx
- * lr'. 0xce000 is a Fix12i egg auto-aim lock-on radius of 206.0 -- much wider
- * than dActor_c's own default of 20.0 (0x14000). */
+ * lr'. Slot 29's return is added to pos.y (a height), same as daOts. 0xce000
+ * is a Fix12i of 206.0 -- much taller than dActor_c's own default of 20.0
+ * (0x14000). */
 int daDkk_c::OnAimedAtWithEgg()
 {
     return 0xce000;
