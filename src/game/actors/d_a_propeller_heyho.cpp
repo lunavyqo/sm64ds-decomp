@@ -143,7 +143,7 @@ void daPropeller_Heyho_c::OnTurnIntoEgg(Player &player)
 /* recovered: renamed to Class_Method */
 /* daPropeller_Heyho_c::OnAimedAtWithEgg - recovered from vtable slot identity */
 s32 daPropeller_Heyho_c::OnAimedAtWithEgg() {
-    return 176128;
+    return 0x2b000; /* Fix12 egg-aim HEIGHT added to pos.y, per dEnemyBase_c.h slot-29 */
 }
 
 /* -------------------------------------------------------------------------- */
@@ -198,10 +198,6 @@ int daPropeller_Heyho_c::InitResources()
 /* recovered: named members + shared header, real C++ method */
 #include "daPropeller_Heyho_c.h"
 
-/* This file used to open with `struct dEnemyBase_c { char pad[0x800]; };` and work a
- * `char *c` through raw offsets. daPropeller_Heyho_c.h now supplies the real chain, so the
- * stand-in is gone and every offset is a named field.
- */
 #include "Player.h"
 extern daPropeller_Heyho_c::State data_ov070_021235cc;
 extern daPropeller_Heyho_c::State data_ov070_021235bc;
@@ -612,7 +608,7 @@ extern void _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(void* self, void* bca, i
 int func_ov070_0211fa80(daPropeller_Heyho_c *c) {
     c->mHitDuringAttack = 0;
     c->mStateTimer = 0x3f;
-    c->mDeathFx = 0;
+    c->mStateStep = 0;
     c->mTargetAngY = c->HorzAngleToCPlayerOrAng();
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&c->mModelAnim, (void*)((int *)&data_ov070_02123518)[1], 0x40000000, 0x1000, 0);
     return 1;
@@ -668,14 +664,14 @@ int func_ov070_0211f6e0(char* c)
     ApproachAngle((s16*)(c + 0x96), 0, 0x100, 0x1000, 0x1000);
 
     if (_ZN9Animation8FinishedEv(c + 0x350)) {
-        if (self->mDeathFx == 0) {
+        if (self->mStateStep == 0) {
             _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(c + 0x300, (void*)((int *)&data_ov070_02123510)[1], 0, 0x1000, 0);
-            self->mDeathFx = 1;
+            self->mStateStep = 1;
         }
         if (self->mHitDuringAttack == 1) {
             if (data_0209f2f8 != 0x16)
                 self->mHomePosY += 0x12c000;
-            self->mDeathFx = 0;
+            self->mStateStep = 0;
             self->mCooldown = 0x5a;
             FlyGuy_ChangeState(self, &data_ov070_0212359c);
             return 1;
@@ -769,7 +765,7 @@ int func_ov070_0211f6e0(char* c)
 extern "C" {
 extern void _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(void* self, void* bca, int a, int fix, unsigned int j);
 int func_ov070_0211f694(daPropeller_Heyho_c *c) {
-    c->mDeathFx = 0;
+    c->mStateStep = 0;
     if (c->mHitDuringAttack == 0) {
         _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&c->mModelAnim, (void*)((int *)&data_ov070_02123508)[1], 0x40000000, 0x1000, 0);
     }
@@ -792,7 +788,7 @@ int func_ov070_0211f62c(char *c)
     if (_ZN9Animation8FinishedEv(c + 0x350) != 0) {
         if (data_0209f2f8 != 0x16)
             ((daPropeller_Heyho_c *)c)->mHomePosY += 0x12c000;
-        ((daPropeller_Heyho_c *)c)->mDeathFx = 0;
+        ((daPropeller_Heyho_c *)c)->mStateStep = 0;
         ((daPropeller_Heyho_c *)c)->mCooldown = 0x5a;
         FlyGuy_ChangeState((daPropeller_Heyho_c *)c, &data_ov070_0212359c);
     }
@@ -919,7 +915,7 @@ extern "C" void _Z14ApproachLinearRsss(void* v, short a, short b);
 
 extern "C" int func_ov070_0211f368(daPropeller_Heyho_c* c)
 {
-    if (c->mDeathFx != 0) {
+    if (c->mStateStep != 0) {
         Vector3 v;
         int x, y, z;
         x = c->mPosX;
@@ -983,7 +979,7 @@ extern "C" void func_ov070_0211f100(daPropeller_Heyho_c* c)
 
     r4 = (s32)c->mdCcAc_c.hitFlags;
     if (r4 & 0x40000) {
-        c->mDeathFx = 1;
+        c->mStateStep = 1;
         FlyGuy_ChangeState(c, &data_ov070_021235bc);
         return;
     }
@@ -993,7 +989,7 @@ extern "C" void func_ov070_0211f100(daPropeller_Heyho_c* c)
         return;
     }
     if (r4 & 0x67c0) {
-        c->mDeathFx = 0;
+        c->mStateStep = 0;
         FlyGuy_ChangeState(c, &data_ov070_021235bc);
         return;
     }
@@ -1022,7 +1018,7 @@ extern "C" void func_ov070_0211f100(daPropeller_Heyho_c* c)
     }
 
     if (r5->mIsMetal == 1 || r5->IsOnShell() == 1) {
-        c->mDeathFx = 0;
+        c->mStateStep = 0;
         FlyGuy_ChangeState(c, &data_ov070_021235bc);
         return;
     }
@@ -1040,7 +1036,7 @@ extern "C" void func_ov070_0211f100(daPropeller_Heyho_c* c)
         return;
 
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&c->mModelAnim, (void*)((int *)&data_ov070_02123528)[1], 0x40000000, 0x1000, 0);
-    c->mDeathFx = 1;
+    c->mStateStep = 1;
     c->mHitDuringAttack = 1;
 }
 

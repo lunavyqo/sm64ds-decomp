@@ -20,8 +20,7 @@
  *
  * SIZE IS THE ROM'S OWN, not a rounded-up field span: `daPropeller_Heyho_c_classInit` calls
  * `fBase_c::operator new(1000)` -- 0x3e8 -- and stores `_ZTV19daPropeller_Heyho_c`,
- * so that literal IS this class's sizeof. The observed fields only span to
- * 0x3e8; trailing pad is unread space this TU does not touch.
+ * so that literal IS this class's sizeof. mTargetAngY closes the object at 0x3e8.
  *
  * THE NAME IS THE CARTRIDGE'S OWN. ov070 0x0212312c holds the length-prefixed
  * string `19daPropeller_Heyho_c`. Fly Guy is the English enemy; the class is
@@ -61,8 +60,9 @@ struct daPropeller_Heyho_c : dEnemyBase_c {
     State                       *mCurrentState;         /* 0x3bc */
     /* InitResources copies mPosX/Y/Z here. Wander/chase compare Vec3_Dist
        against this triple; several states rewrite it from the live position
-       and add a Y lift (0xc8000 / 0x12c000).
-       [InitResources / func_ov070_0211fd98 / func_ov070_0211fae4 /
+       and add a Y lift (0xc8000 / 0x12c000). 0211fd98 only reads it;
+       0211f62c writes `+= 0x12c000`.
+       [InitResources / func_ov070_0211f62c / func_ov070_0211fae4 /
         func_ov070_0211f6e0, in src/game/actors/d_a_propeller_heyho.cpp] */
     s32                          mHomePosX;             /* 0x3c0 */
     s32                          mHomePosY;             /* 0x3c4 */
@@ -75,18 +75,19 @@ struct daPropeller_Heyho_c : dEnemyBase_c {
     u16                          mCooldown;             /* 0x3cc */
     u8  pad_3ce[0x2];
     /* Particle uniqueIDs: System::New 0x13a and NewUnkCallback818 0x13b in
-       the defeated-state helper, only while mDeathFx is set.
+       the defeated-state helper, only while mStateStep is set.
        [func_ov070_0211f368, in src/game/actors/d_a_propeller_heyho.cpp] */
     u32                          mParticle0;            /* 0x3d0 */
     u32                          mParticle1;            /* 0x3d4 */
-    /* Defeated-state fire-death latch (hitFlags 0x40000 stores 1, other
-       deaths store 0) and the "second anim started" step in the dive.
-       [func_ov070_0211f100 / func_ov070_0211f368 / func_ov070_0211f6e0,
-        in src/game/actors/d_a_propeller_heyho.cpp] */
-    s32                          mDeathFx;              /* 0x3d8 */
+    /* Per-state step/sub-phase word. Dive init (0211fa80), retreat init
+       (0211f694), and return-to-wander (0211f62c) write 0; 0211f100 writes
+       1 when the HURT anim starts.
+       [func_ov070_0211fa80 / func_ov070_0211f694 / func_ov070_0211f62c /
+        func_ov070_0211f100, in src/game/actors/d_a_propeller_heyho.cpp] */
+    s32                          mStateStep;            /* 0x3d8 */
     /* Set 1 when collision starts the hurt anim during the hover-attack
-       state; dive/hurt inits clear it. Dive's finished-anim path only
-       returns to wander while this is 1.
+       state; only the dive init (0211fa80) clears it. 0211f694 only reads
+       it. Dive's finished-anim path only returns to wander while this is 1.
        [func_ov070_0211f100 / func_ov070_0211fa80 / func_ov070_0211f6e0 /
         func_ov070_0211f694, in src/game/actors/d_a_propeller_heyho.cpp] */
     s32                          mHitDuringAttack;      /* 0x3dc */
@@ -97,8 +98,7 @@ struct daPropeller_Heyho_c : dEnemyBase_c {
     s32                          mCanSpitFire;          /* 0x3e0 */
     u8  pad_3e4[0x2];
     /* Heading toward the player or home. Chase/fire/dive inits and
-       ApproachAngle targets write it; 0x300+0xe6 in the wander helper is
-       this same halfword, not a ModelAnim field.
+       ApproachAngle targets write it.
        [func_ov070_0211fa80 / func_ov070_0211fae4 / func_ov070_0211fd98 /
         func_ov070_0211f48c / func_ov070_0211f6e0,
         in src/game/actors/d_a_propeller_heyho.cpp] */
