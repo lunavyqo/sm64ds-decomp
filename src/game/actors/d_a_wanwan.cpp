@@ -22,8 +22,7 @@
  *   including Stump.h pulls dBgActor_c/common.h and would change
  *   this TU's matrix copies.
  * Leftover: `(Vector3 *)&mPosX` / `&mScaleX` stay; Pos() is not on
- *   this branch's dActor_c. unk_578 is the second Vector3[7] and
- *   has no matched reader in this TU.
+ *   this branch's dActor_c.
  * Leftover: BMD/BCA handles still data_ov014_*; sinit file IDs
  *   belong with that sinit. Text-only TU, so g_profile_WANWAN is
  *   not defined here (S14).
