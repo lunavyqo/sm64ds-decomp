@@ -4,7 +4,8 @@
  *
  * InitResources loads the shared float-board model and collision, then
  * if the board spawned above the water it raycasts down onto the surface
- * (or the first hit under it) before remembering that rest pose.
+ * (or the first hit under it) and writes that Y into mPosY. It then
+ * copies mPosX/Y/Z onto unk_320, mWaterY, unk_328.
  *
  * daObjWcObj06_c_classInit is reconstructed (RTTI daObjWcObj06_c,
  * WC_OBJ06 registry). Retail does not store that spelling.
@@ -18,9 +19,6 @@
  *   return emits D1). startEnd is two Vector3 copies flattened
  *   (start = pos; end = pos; start.y += 20; end.y = waterY); the
  *   extra stores are decompiler dead stores, not an int[6] type.
- * Leftover: RestPos() overlays 0x320. The shared Init helper already
- *   stores pos there as three ints; daObjFloatBoard_c still calls
- *   that gap pad_320 (it overlaps the documented mWaterY at 0x324).
  * Leftover: g_profile_WC_OBJ06 is ov029 data outside this TU (S14).
  */
 
@@ -84,9 +82,9 @@ int daObjWcObj06_c::InitResources()
                 mPosY = hit[1];
             }
         }
-        RestPos().x = mPosX;
-        RestPos().y = mPosY;
-        RestPos().z = mPosZ;
+        unk_320 = mPosX;
+        mWaterY = mPosY;
+        unk_328 = mPosZ;
         return 1;
     }
     return 0;

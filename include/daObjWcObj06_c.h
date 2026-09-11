@@ -22,11 +22,6 @@ struct daObjWcObj06_c : daObjFloatBoard_c {
 
     static void *operator new(unsigned long size);
     virtual ~daObjWcObj06_c() {}
-
-    /* Rest pose after the water drop. Y is the water height. */
-    Vector3 &RestPos() {
-        return *reinterpret_cast<Vector3 *>((char *)this + 0x320);
-    }
 };
 
 inline void *daObjWcObj06_c::operator new(unsigned long size)
