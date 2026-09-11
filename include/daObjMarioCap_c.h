@@ -17,6 +17,8 @@
 #include "ShadowModel.h"
 #include "dBgCh_Actr.h"
 
+extern "C" void *_ZN7fBase_cnwEj(unsigned size);
+
 /* Derives from dEnemyBase_c, and both witnesses agree offset for offset:
  *
  *   daObjMarioCap_c_classInit (ov002) allocates 0x410, calls _ZN12dEnemyBase_cC2Ev, stores
@@ -58,9 +60,9 @@ struct daObjMarioCap_c : dEnemyBase_c {
     dBgCh_Actr        mWithMeshClsn;          /* 0x144 */
     ModelAnim           mModelAnim;             /* 0x300 */
     ShadowModel         mShadowModel;           /* 0x364 */
-    u8  pad_38c[0x30];
-    s32 unk_3bc;                                /* 0x3bc */
-    s32 unk_3c0;                                /* 0x3c0 */
+    Matrix4x3           unk_38c;                /* 0x38c -- drop-shadow matrix */
+    s32 unk_3bc;                                /* 0x3bc -- PMF holder* */
+    s32 unk_3c0;                                /* 0x3c0 -- Player* */
     s32 unk_3c4;                                /* 0x3c4 */
     s32 unk_3c8;                                /* 0x3c8 */
     s32 unk_3cc;                                /* 0x3cc */
@@ -68,11 +70,18 @@ struct daObjMarioCap_c : dEnemyBase_c {
     s32 unk_3ec;                                /* 0x3ec */
     s32 mType;                                  /* 0x3f0 */
     s32 mModelIndex;                            /* 0x3f4 */
-    u8  pad_3f8[0x7];
+    u8  pad_3f8[0x4];
+    s16 unk_3fc;                                /* 0x3fc */
+    u8  unk_3fe;                                /* 0x3fe */
     u8  unk_3ff;                                /* 0x3ff */
     u8  unk_400;                                /* 0x400 */
     u8  unk_401;                                /* 0x401 */
-    u8  pad_402[0xe];
+    u8  unk_402;                                /* 0x402 */
+    u8  unk_403;                                /* 0x403 */
+    u16 unk_404;                                /* 0x404 */
+    u8  pad_406[0x2];
+    s32 unk_408;                                /* 0x408 */
+    s32 unk_40c;                                /* 0x40c */
 
     /* INLINE, AND DECLARED FIRST. The cartridge puts D1 at 0x020b6f18 below
        D0 at 0x020b6f68 and carries no D2, which is exactly what mwccarm 2004
@@ -96,6 +105,13 @@ struct daObjMarioCap_c : dEnemyBase_c {
     int Render();
     void OnPendingDestroy();
     void OnTurnIntoEgg(Player &player);  /* slot 19, ov002 0x020b81e0 */
+
+    /* Leaf until fBase_c can declare operator new (#2570). unsigned long, not
+       unsigned int: size_t is unsigned int on this include path and mangles
+       nwEj, colliding with fBase_c's own allocator. */
+    static void *operator new(unsigned long size) {
+        return _ZN7fBase_cnwEj((unsigned)size);
+    }
 };
 
 typedef char daObjMarioCap_c_size_must_be_0x410[sizeof(daObjMarioCap_c) == 0x410 ? 1 : -1];
