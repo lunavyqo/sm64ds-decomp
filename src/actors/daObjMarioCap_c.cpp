@@ -18,15 +18,16 @@
  *   0x020b8b98) sits between the licensed range and the factory and does not
  *   reproduce, so folding `return new daObjMarioCap_c()` would punch a hole
  *   in .text. Leaf operator new is on the class for when that join is legal.
- * - _ZN15daObjMarioCap_c13InitResourcesEv held out (pinned 2004/b56 is 8
- *   bytes long; no `complete` marker).
+ * - _ZN15daObjMarioCap_c13InitResourcesEv held out (cartridge 0x4c8 at
+ *   0x020b86d0..0x020b8b98; pinned 2004/b56 emits 0x4d0, 8 bytes over;
+ *   no `complete` marker).
  * - dActor_c::SetRanges stays mangled (header omits it; 6az).
  * - ModelAnim::SetAnim / DropShadowRadHeight / ReflectAngle stay mangled:
  *   Fix12<int> by value has no implicit int conversion (6az).
  * - ModelBase::ApplyOpacity stays mangled: the header takes one u32, the
  *   ROM call site passes two zeros.
  * - dBgCh_Actr::GetFloorResult / GetWallResult stay mangled (not declared).
- * - PMF stand-in (MistPmfSelf / Holder / C) -- a PMF on the real
+ * - PMF stand-in (CapStateSelf / Holder / C) -- a PMF on the real
  *   dEnemyBase_c makes mwccarm ICE rather than a diagnostic.
  * - data_ov002_0210de* / 0210df* handles -- symbols.txt has no recovered
  *   names, so they are not coined.
@@ -73,9 +74,9 @@ struct AnimRec { void *f0; void *file; };
  * codegen, not decoration. Letting the PMF bind to the real dEnemyBase_c
  * makes mwccarm abort with an internal compiler error rather than a
  * diagnostic. */
-struct MistPmfSelf { char pad[0x800]; };
-typedef void (MistPmfSelf::*MistPmf)();
-struct Holder { char pad[8]; MistPmf fn; };
+struct CapStateSelf { char pad[0x800]; };
+typedef void (CapStateSelf::*CapStatePmf)();
+struct Holder { char pad[8]; CapStatePmf fn; };
 
 /* func_ov002_020b7f2c's own view of the same slot, with the class shaped so
  * the member pointer it stores and immediately calls is laid out the way the
@@ -239,7 +240,7 @@ int daObjMarioCap_c::Behavior()
     {
         Holder *q = *(Holder **)&unk_3bc;
         if (q->fn != 0) {
-            (((MistPmfSelf *)this)->*(q->fn))();
+            (((CapStateSelf *)this)->*(q->fn))();
         }
     }
 
@@ -350,10 +351,6 @@ s32 daObjMarioCap_c::OnYoshiTryEat() {
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 23 -- _ZN15daObjMarioCap_c13OnTurnIntoEggER6Player, 0x020b81e0  */
-/*                                                                            */
-/* Vtable slot 19. The ROM returns nothing: dActor_c declares slot 19 as `int` */
-/* and the cartridge simply leaves r0 alone on the way out, so the declared    */
-/* return type is the ancestor's and no value is produced here.                */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjMarioCap_c13OnTurnIntoEggER6Player
 void daObjMarioCap_c::OnTurnIntoEgg(Player &player)

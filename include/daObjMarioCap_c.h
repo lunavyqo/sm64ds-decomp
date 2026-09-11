@@ -38,22 +38,9 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * SIZE 0x410, the literal in daObjMarioCap_c_classInit's fBase_c::operator new. CapIcon is 0x1c, so
  * 0x3d0 + 0x1c = 0x3ec closes onto the scalars below it.
  *
- * THE CLASS USED TO BE CALLED WaterfallMist, and the previous revision of this comment
- * said the name was "probably wrong" but left it. It is wrong, and the RTTI settles it
- * outright rather than by inference: build/rtti.json has a record at ov002 0x021095ac,
- * mangled 15daObjMarioCap_c, whose `vtable` field is 0x021095f0 -- the very address the
- * tree was calling _ZTV13WaterfallMist. The circumstantial evidence all points the same
- * way: the factory is daObjMarioCap_c_classInit, and the class holds a CapIcon.
- *
- * The historical WaterfallMist_Spawn and WaterfallMist_SpawnInfo aliases belong
- * to a different actor: daObjWaterfall_c_classInit allocates 220 bytes
- * and stores the vtable at 0x021094a0, whose RTTI record is daObjWaterfall_c. For that
- * class the name is apt, so it stays. The defect was one name serving two classes.
- *
- * The separate 0x021094a0 table-name defect is now fixed: it is configured as
- * _ZTV16daObjWaterfall_c, matching the adjacent retail RTTI. The preceding
- * 0x021093e0 table still belongs to the distinct daObjLava_c actor represented
- * in this tree by daObjLava_c.
+ * This class used to be named WaterfallMist; RTTI ov002:0x021095ac names
+ * 15daObjMarioCap_c at vtable 0x021095f0, and the waterfall name belongs to
+ * daObjWaterfall_c.
  */
 struct daObjMarioCap_c : dEnemyBase_c {
     dCcAc_c  mdCcAc_c;    /* 0x110 */
