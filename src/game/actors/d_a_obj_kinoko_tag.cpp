@@ -1,29 +1,69 @@
 //cpp
 /* Genuine production translation unit for ov002/daObjKinokoTag_c.
  *
- * RTTI and the contiguous linker run prove that both tag factories belong to
- * this class TU. mwccarm emits ordinary text sections in reverse source order,
- * so the ROM-high factory is defined first. InitResources is the key function;
+ * RTTI ov002:0x02108c94 / 0x02108ca0 names daObjKinokoTag_c.
+ * overlay_actors.md maps MEGA_MUSHROOM_CREATE_TAG(319) and
+ * MEGA_MUSHROOM_TAG(320); the ROM debug table names those profiles
+ * KINOKO_CREATE_TAG and KINOKO_TAG. Both factories construct this class.
+ * Historical aliases: MegaMushroomTag_Spawn / MegaMushroomTag_SpawnInfo
+ * and daObjKinokoTag_c_Spawn / MegaMushroomCreateTag_SpawnInfo.
+ * Private helper spellings are inferred; their class ownership, bodies,
+ * calls, and ordering are byte/relocation proven.
+ *
+ * mwccarm emits ordinary text sections in reverse source order, so the
+ * ROM-high factory is defined first. InitResources is the key function;
  * with the inline destructor in the real header, the compiler naturally owns
  * retail D1/D0 plus the class RTTI, type name, and vtable.
  *
- * Both factories construct the same ROM-proven RTTI class. A single
- * daObjKinokoTag_c_classInit spelling would therefore collide, so their
- * evidence-bounded C ABI aliases remain unresolved. Both factories keep
- * retail's measured allocator/base/member/vptr seam because a natural new
- * expression targets the wrong global allocator relocation.
+ * deslop leftovers:
+ * - dCcAc_c::Init 6az: InitResources passes Fix12<int> by value; the header
+ *   method form size-DIFFs (notes/mwccarm-codegen.md 6az).
+ * - KinokoPositionWords: a local Vector3 would emit vague-linkage ~Vector3.
+ * - *(Vector3 *)&mPosX addressing shape (a Vector3 member at 0x05c is a
+ *   dActor_c campaign, not this leaf).
+ * - data_ov002_0210da30 is the ov002 SharedFilePtr handle; symbols.txt has
+ *   no recovered name, so it is not coined. SharedFilePtr.h has no fields.
+ * - mushroom backlink at external-object offset 0x32c (actor ID 0x1b);
+ *   no trustworthy real header for that actor exists on this base.
+ * - Vec3_Dist: no shared header this TU can take without a campaign.
+ * - no Player.h / Camera.h.
+ * - leaf operator new until #2570.
  */
 
 #include "daObjKinokoTag_c.h"
-#include "decl_common.h"
 #include "Model.h"
 #include "SharedFilePtr.h"
 
-extern "C" {
-extern void *_ZN7fBase_cnwEj(u32 size);
-extern void _ZN8dActor_cC2Ev(dActor_c *actor);
-extern void _ZN7dCcAc_cC1Ev(dCcAc_c *clsn);
+/* POD view used only to preserve the three-word Vector3 call ABI without
+ * emitting Vector3's vague-linkage destructor. */
+struct KinokoPositionWords {
+    Fix12i x;
+    Fix12i y;
+    Fix12i z;
+};
 
+typedef char KinokoPositionWords_size_must_be_0xc[
+    sizeof(KinokoPositionWords) == 0xc ? 1 : -1];
+
+/* Typed owner for the two 0x1c actor/process profile descriptors at
+ * ov002:0x02108cb4 and 0x02108cd0. Field roles are recovered from
+ * fBase_c/dActor_c consumers; exact original member spellings are not
+ * preserved. */
+struct KinokoTagSpawnInfo {
+    daObjKinokoTag_c *(*classInit)();
+    s16 profileIDAndExecuteOrder;
+    s16 drawOrder;
+    u32 actorFlags;
+    Fix12i clipOffsetY;
+    Fix12i clipRadius;
+    Fix12i clipDistance;
+    Fix12i farDistance;
+};
+
+typedef char KinokoTagSpawnInfo_size_must_be_0x1c[
+    sizeof(KinokoTagSpawnInfo) == 0x1c ? 1 : -1];
+
+extern "C" {
 extern SharedFilePtr data_ov002_0210da30;
 extern Fix12i Vec3_Dist(const Vector3 *, const Vector3 *);
 
@@ -34,30 +74,13 @@ extern void _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(
     dCcAc_c *, dActor_c *, Fix12i, Fix12i, u32, u32);
 }
 
-extern "C" daObjKinokoTag_c *daObjKinokoTag_c_classInit_KINOKO_TAG();
-extern "C" daObjKinokoTag_c *daObjKinokoTag_c_classInit_KINOKO_CREATE_TAG();
-
 /* ROM ordinal 8 -- evidence-bounded actor-table C ABI factory. */
 // @symbol daObjKinokoTag_c_classInit_KINOKO_TAG
-/* Reconstructed source-style name: SM64DS proves daObjKinokoTag_c through
- * RTTI, allocation size, vtable identity, and the KINOKO_TAG registry
- * profile; later EAD lineage supplies classInit. Exact original spelling is
- * not preserved. Historical alias: MegaMushroomTag_Spawn. */
 extern "C" daObjKinokoTag_c *daObjKinokoTag_c_classInit_KINOKO_TAG()
 {
-    daObjKinokoTag_c *tag =
-        (daObjKinokoTag_c *)_ZN7fBase_cnwEj(sizeof(daObjKinokoTag_c));
-    if (tag) {
-        _ZN8dActor_cC2Ev(tag);
-        *(int *)tag = (int)&_ZTV16daObjKinokoTag_c[2];
-        _ZN7dCcAc_cC1Ev(&tag->mMovingCylinderClsn);
-    }
-    return tag;
+    return new daObjKinokoTag_c();
 }
 
-/* Reconstructed profile-global spelling from the literal ROM registry ID.
- * Exact original SM64DS spelling is not preserved. Historical project alias:
- * MegaMushroomTag_SpawnInfo. */
 extern "C" KinokoTagSpawnInfo g_profile_KINOKO_TAG = {
     daObjKinokoTag_c_classInit_KINOKO_TAG,
     0x0140,
@@ -71,25 +94,11 @@ extern "C" KinokoTagSpawnInfo g_profile_KINOKO_TAG = {
 
 /* ROM ordinal 7 -- class-anchored inferred actor-table C ABI factory. */
 // @symbol daObjKinokoTag_c_classInit_KINOKO_CREATE_TAG
-/* Reconstructed source-style name: SM64DS proves daObjKinokoTag_c through
- * RTTI, allocation size, vtable identity, and the KINOKO_CREATE_TAG registry
- * profile; later EAD lineage supplies classInit. Exact original spelling is
- * not preserved. Historical alias: daObjKinokoTag_c_Spawn. */
 extern "C" daObjKinokoTag_c *daObjKinokoTag_c_classInit_KINOKO_CREATE_TAG()
 {
-    daObjKinokoTag_c *tag =
-        (daObjKinokoTag_c *)_ZN7fBase_cnwEj(sizeof(daObjKinokoTag_c));
-    if (tag) {
-        _ZN8dActor_cC2Ev(tag);
-        *(int *)tag = (int)&_ZTV16daObjKinokoTag_c[2];
-        _ZN7dCcAc_cC1Ev(&tag->mMovingCylinderClsn);
-    }
-    return tag;
+    return new daObjKinokoTag_c();
 }
 
-/* Reconstructed profile-global spelling from the literal ROM registry ID.
- * Exact original SM64DS spelling is not preserved. Historical project alias:
- * MegaMushroomCreateTag_SpawnInfo. */
 extern "C" KinokoTagSpawnInfo g_profile_KINOKO_CREATE_TAG = {
     daObjKinokoTag_c_classInit_KINOKO_CREATE_TAG,
     0x013f,
