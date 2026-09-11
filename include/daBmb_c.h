@@ -47,8 +47,6 @@
 #include "TextureTransformer.h"
 #include "dBgCh_Actr.h"
 
-extern "C" void *_ZN7fBase_cnwEj(unsigned size);
-
 struct daBmb_c : dEnemyBase_c {
     dCcAc_c           mdCc_c;         /* 0x110 */
     dBgCh_Actr                 mWithMeshClsn;         /* 0x144 */
@@ -146,10 +144,6 @@ struct daBmb_c : dEnemyBase_c {
     void State3();
     int  State4();
     void State5();
-
-    static void *operator new(unsigned long size) {
-        return _ZN7fBase_cnwEj((unsigned)size);
-    }
 };
 
 typedef char daBmb_c_size_must_be_0x400[sizeof(daBmb_c) == 0x400 ? 1 : -1];

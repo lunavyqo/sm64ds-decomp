@@ -13,8 +13,7 @@
  *   contradicts the file-scope region -- member form links Undefined). Do
  *   not coin names for the rest.
  * Leftover: SetAnim / dCcAc_c::Init / DropShadowRadHeight /
- *   KillByInvincibleChar stay mangled (Fix12-by-value, 6az). GetFloorResult
- *   is not on dBgCh_Actr.h.
+ *   KillByInvincibleChar stay mangled (Fix12-by-value, 6az).
  * Leftover: 0214bf64 keeps Bmb_Bf64Obj (member form fails link). common.h
  *   first (matrix copy). Player+8 param1 and Player+0xc8 belong on those
  *   classes. data_ov102_* handles. S14 no g_profile_BOMBHEI in this TU.
@@ -197,7 +196,6 @@ void  _ZN8dActor_c9UpdatePosEP5dCc_c(void *, void *);
 
 int   _ZNK10dBgCh_Actr10IsOnGroundEv(void *);
 int   _ZNK10dBgCh_Actr8IsOnWallEv(void *);
-void *_ZNK10dBgCh_Actr14GetFloorResultEv(void *);
 
 /* dCcAc_c::Init stays scalar: it carries Fix12<int> BY VALUE, which mwccarm
    passes differently at the call site (6az). dBgCh_Actr::Init MATCH as a
@@ -213,7 +211,6 @@ void  _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(void *, dActor_c *a, Fix12i r, F
    call sites bind the same address through the reference instead. */
 void  _Z14ApproachLinearRsss(short &v, short target, short step);
 void  _ZN9Animation7AdvanceEv(void *a);
-int   _ZN8dActor_c13DistToCPlayerEv(void *p);
 void  func_ov102_0214b3b8(void *c);
 
 extern signed char   data_0209f2f8;
@@ -230,7 +227,8 @@ extern unsigned char data_0209f2d8;
  * lays .text down in reverse source order.
  *
  * C LINKAGE IS LOAD-BEARING -- the ROM symbol is the bare name.
- * `return new daBmb_c()` MATCHES (size 0x50); the synthesized ctor stores
+ * `return new daBmb_c()` MATCHES (size 0x50); it inherits
+ * `fBase_c::operator new(unsigned long)`. The synthesized ctor stores
  * `_ZTV7daBmb_c + 2` because this TU defines the vtable.
  *
  * Reconstructed source-style name: SM64DS proves daBmb_c through RTTI,
@@ -400,7 +398,7 @@ int daBmb_c::Behavior()
             }
 
             if (mWithMeshClsn.IsOnGround()) {
-                if (SurfaceInfo_TestFlag0x20((int*)((char*)_ZNK10dBgCh_Actr14GetFloorResultEv((char *)&mWithMeshClsn)+4))) {
+                if (SurfaceInfo_TestFlag0x20((int *)((char *)mWithMeshClsn.GetFloorResult() + 4))) {
                     func_ov102_0214ae1c(this);
                     return 1;
                 }
@@ -769,13 +767,12 @@ void func_ov102_0214bc20(char* c)
 
 // @symbol _ZN7daBmb_c6State4Ev
 int daBmb_c::State4() {
-    void *c = this;
-    if (_ZNK10dBgCh_Actr10IsOnGroundEv((char*)c + 0x144) == 0) {
-        int r = _ZNK10dBgCh_Actr8IsOnWallEv((char*)c + 0x144);
+    if (mWithMeshClsn.IsOnGround() == 0) {
+        int r = mWithMeshClsn.IsOnWall();
         if (r == 0) return r;
     }
-    func_ov102_0214b384(c, 4);
-    *(int*)((char*)c + 0x98) = 0;
+    func_ov102_0214b384(this, 4);
+    mHorzSpeed = 0;
     return 0;
 }
 
@@ -871,20 +868,19 @@ void func_ov102_0214baa0(char *self)
 // @symbol _ZN7daBmb_c6State5Ev
 void daBmb_c::State5()
 {
-    char *c = (char *)this;
-    if (_ZN8dActor_c13DistToCPlayerEv(c) < 0x7d0000)
+    if (DistToCPlayer() < 0x7d0000)
         return;
-    if ((*(int*)(c + 0xb0) & 8) == 0) {
+    if ((*(int *)((char *)this + 0xb0) & 8) == 0) {
         int b = (data_0209f2d8 == 1);
         if (b == 0)
             return;
     }
-    func_ov102_0214c0b8(c);
+    func_ov102_0214c0b8(this);
     {
-        int* f = (int*)(((int)c + 0xb0));
+        int *f = (int *)(((int)this + 0xb0));
         *f = *f | 0x10000001;
     }
-    *(unsigned char*)(c + 0x3f3) = 1;
+    mShouldRender = 1;
 }
 
 /* ==========================================================================
