@@ -26,8 +26,6 @@
  * - Behavior case 2 keeps `((int)this + 0x8c) & U64` / `+ 0x90` for mAngleX /
  *   mAngleZ: named stores size-DIFF (999 words).
  * - (long long)sinv * 0x19000 in case 1: a plain int mul size-DIFFs.
- * - func_ov098_0213a0e8 +0x49d / func_ov098_0213a0a8 +0x440 are fields on
- *   actor 0xb2, not this class (no Player.h).
  * - common.h first: func_ov098_0213a23c's mat4x3 stores stay word writes
  *   against the flat s32 m[12] spelling.
  * - S14: no g_profile for this abstract class; leaves own their records.
@@ -88,7 +86,7 @@ s32 daObjFallBlock_c::Behavior()
     is53 = (int)(actorID == 0x53);
     if (is53 != 0) {
         if (mSuppressed != 0) {
-            if (mShakeKind == 0)
+            if (mLinkedStarID == 0)
                 func_ov098_0213a0e8(this);
             else
                 func_ov098_0213a0a8(this);
@@ -107,7 +105,7 @@ s32 daObjFallBlock_c::Behavior()
 
     is53 = (int)(actorID == 0x53);
     if (is53 == 0) {
-        if (mNotGroupHead == 0) {
+        if (mPrevInGroup == 0) {
             p = this;
             all = 1;
             while (1) {
@@ -148,13 +146,13 @@ s32 daObjFallBlock_c::Behavior()
             Sound::PlayBank3(0x2d, *(Vector3 *)&mCamSpacePosX);
             mStateTimer = 0x5a;
         } else {
-            sinv = data_02082214[(*(u16 *)&mFallSpeed >> 4) << 1];
+            sinv = data_02082214[(*(u16 *)&mBobPhase >> 4) << 1];
             /* (long long) is load-bearing: a plain int mul size-DIFFs. */
             mPosY =
                 mRestPos.y
                 + (int)(((long long)sinv * 0x19000 + 0x800) >> 12);
             {
-                s16 *p338 = &mFallSpeed;
+                s16 *p338 = &mBobPhase;
                 *p338 = (s16)(*p338 + 0x3000);
             }
         }
@@ -171,7 +169,7 @@ s32 daObjFallBlock_c::Behavior()
         yaw = mAngleZ;
         if (yaw > -0x400) {
             if (yaw < 0x400) {
-                s16 *p336 = &mShakeY;
+                s16 *p336 = &mTiltVelZ;
                 *p336 = (s16)(*p336 + 0x40);
             }
         }
@@ -181,7 +179,7 @@ s32 daObjFallBlock_c::Behavior()
             s16 t = *(s16 *)(((int)c + 0x8c) & U64);
             t = (s16)(t + mShakeX);
             *(s16 *)(((int)c + 0x8c) & U64) = t;
-            t = (s16)(*(s16 *)(((int)c + 0x90) & U64) + mShakeY);
+            t = (s16)(*(s16 *)(((int)c + 0x90) & U64) + mTiltVelZ);
             *(s16 *)(((int)c + 0x90) & U64) = t;
             UpdatePos(0);
         }
@@ -323,8 +321,8 @@ void daObjFallBlock_c::Kill()
        instructions. The ROM materialises the comparison into a register first
        and then tests THAT: cmp/moveq #1/movne #0/cmp #0/movne, five. Writing
        the int is what asks for the second shape. */
-    int isBigBlock = (actorID == 0x8b);
-    if (isBigBlock) {
+    int isFallBlockBfs = (actorID == 0x8b);
+    if (isFallBlockBfs) {
         id = 0x49;
     }
     _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(id, pos.x, pos.y, pos.z);
@@ -351,7 +349,7 @@ void func_ov098_0213a148(daObjFallBlock_c *c)
     c->mAngleX = 0;
     c->mAngleZ = 0;
     c->mShakeX = 0;
-    c->mShakeY = 0;
+    c->mTiltVelZ = 0;
     c->unk_0a4 = 0;
     c->mVertSpeed = 0;
     c->unk_0ac = 0;
@@ -367,10 +365,11 @@ extern "C" {
 void func_ov098_0213a0e8(daObjFallBlock_c *r5)
 {
     dActor_c *r1;
-    r1 = dActor_c::FindWithActorID(0xb2, 0);
+    r1 = dActor_c::FindWithActorID(0xb2, 0); /* POWER_STAR */
     while (r1) {
+        /* POWER_STAR +0x49d */
         if (*(unsigned char *)((char *)r1 + 0x49d) == (r5->param1 & 0xf)) {
-            r5->mShakeKind = (s32)r1->uniqueID;
+            r5->mLinkedStarID = (s32)r1->uniqueID;
         }
         r1 = dActor_c::FindWithActorID(0xb2, r1);
     }
@@ -384,9 +383,9 @@ void func_ov098_0213a0e8(daObjFallBlock_c *r5)
 extern "C" {
 int func_ov098_0213a0a8(daObjFallBlock_c *c)
 {
-    dActor_c *a = dActor_c::FindWithID((unsigned int)c->mShakeKind);
+    dActor_c *a = dActor_c::FindWithID((unsigned int)c->mLinkedStarID);
     if (a == 0) return _ZN7fBase_c18MarkForDestructionEv(c);
-    int v = *(int *)((char *)a + 0x440);
+    int v = *(int *)((char *)a + 0x440); /* POWER_STAR +0x440 */
     if (v == 4) { v = 0; c->mSuppressed = 0; }
     return v;
 }
@@ -409,7 +408,7 @@ void func_ov098_0213a00c(daObjFallBlock_c *c)
                 if (AngleDiff(ang, c->mAngleY) < 0x4000)
                     c->mNextInGroup = (daObjFallBlock_c *)r;
                 else
-                    c->mNotGroupHead = (s32)r;
+                    c->mPrevInGroup = (daObjFallBlock_c *)r;
             }
         }
         r = dActor_c::FindWithActorID(c->actorID, r);
