@@ -2,7 +2,7 @@
 /* Production translation unit for ov017/daObjKsWater_c, hand-curated.
  * 7 function(s), .text 0x021111a0..0x021114b8.
  *
- * The rising water inside the sunken ship (profile KS_MIZU, actor 62).
+ * The draining water inside the sunken ship (profile KS_MIZU, actor 62).
  * RTTI ov017:0x02111bb4 names daObjKsWater_c; _ZTS at 0x02111bc0;
  * _ZTV address point 0x02111bf8; g_profile_KS_MIZU at 0x02111bd4.
  * overlay_actors.md: ov017 SHIP_WATER(62). Ugly RTTI name is final.

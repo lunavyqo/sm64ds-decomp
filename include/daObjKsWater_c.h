@@ -6,10 +6,10 @@
 
 extern "C" void *_ZN7fBase_cnwEj(unsigned size);
 
-/* daObjKsWater_c -- the rising water inside the sunken ship (profile KS_MIZU,
+/* daObjKsWater_c -- the draining water inside the sunken ship (profile KS_MIZU,
  * actor 62, ov017). It sits still until every treasure chest in the room has
- * been opened, then climbs, frame by frame, until it has risen 0x92e000 from
- * where it began.
+ * been opened, then sinks, frame by frame (mPosY -= 0x5000), until it has
+ * dropped 0x92e000 from where it began.
  *
  * WHAT THE CARTRIDGE PROVES ABOUT THE NAME AND THE SHAPE:
  *   _ZTS  ov017 0x02111bc0  "14daObjKsWater_c"
@@ -49,12 +49,12 @@ struct daObjKsWater_c : dBgActor_c {
     TextureTransformer mTextureTransformer;       /* 0x320 -- scrolls the water's
                                                      surface texture every frame */
     s32 mOriginalPosY;                            /* 0x334 -- the height it starts
-                                                     at, and the one the rise is
+                                                     at, and the one the drain is
                                                      measured against */
     u8  mChestsOpen;                              /* 0x338 -- latched once every
                                                      actor-ID-0xd chest is open */
     u8  pad_339[0x3];
-    s32 mSoundID;                                 /* 0x33c -- the looping rising-
+    s32 mSoundID;                                 /* 0x33c -- the looping draining-
                                                      water sound's handle */
 
     static void *operator new(unsigned long size) {
