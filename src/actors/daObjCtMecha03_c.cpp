@@ -33,7 +33,7 @@
  *   [5] 0x0211a1a0  src/_ZN16daObjCtMecha03_c6RenderEv.cpp
  *   [6] 0x0211a1c8  src/_ZN16daObjCtMecha03_c8BehaviorEv.cpp
  *   [7] 0x0211a358  src/_ZN16daObjCtMecha03_c13InitResourcesEv.cpp
- *   [8] 0x0211a45c  src/d_a_obj_ct_mecha03.c
+ * The factory is `return new` in this file.
  */
 
 #include "common.h"
@@ -208,7 +208,7 @@ int daObjCtMecha03_c::CleanupResources()
 /* ROM ordinal 3 -- func_ov065_0211a114, 0x0211a114, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_0211a114
-/* Rebuilds the collider matrix from the actor's Y/Z angles and copies the
+/* Writes mModel.mat4x3 from the actor's Y/Z angles and copies the
    actor position into its translation row. */
 extern "C" int func_ov065_0211a114(daObjCtMecha03_c *c)
 {
