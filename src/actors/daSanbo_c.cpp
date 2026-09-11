@@ -61,6 +61,17 @@
  * constants in address order. The existing initializer remains a separate
  * source owner; this text-only promotion does not reconstruct its table.
  *
+ * deslop
+ * Leftover: dCcAc_c::Init / dBgCh_Actr::Init / DropShadowRadHeight /
+ *   IsTooFarAwayFromPlayer stay mangled (Fix12-by-value, 6az; dBgCh Init
+ *   header Fix12i mangles as int -- this TU's InitResources call).
+ *   dActor_c::Spawn s8/s16 by-value at some sites. func_02038414 is the
+ *   veneer to dBgCh_Actr::UpdateDiscreteNoLava_2. Player+8 param1 belongs
+ *   on Player. data_ov096_* SharedFilePtr handles (Init LoadFile / Cleanup
+ *   Release) and state records (func_ov096_02136928). S14 no
+ *   g_profile_SANBO. Helpers stay offset soup. common.h first (mMatrix
+ *   IDENTITY copy). unk_3a8 stays the placeholder.
+ *
  * ov096 delinks no .data at all, so this is a text-only entry: it licenses one
  * .text span and nothing else. Owning every virtual makes mwcc emit the vtable
  * and the whole RTTI group regardless of declaration order, and each of those
@@ -175,36 +186,21 @@ extern Matrix4x3 IDENTITY_MATRIX4X3;
 /* ROM ordinal 35 -- daSanbo_c_classInit_SANBO, 0x02136d60, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol daSanbo_c_classInit_SANBO
-extern "C" int *daSanbo_c_classInit_SANBO(void)
+/* The registry factory behind the SANBO profile. `return new daSanbo_c()`
+ * MATCHES (size 0x50); the synthesized ctor stores `_ZTV9daSanbo_c + 2`. */
+extern "C" daSanbo_c *daSanbo_c_classInit_SANBO(void)
 {
-    int *p = (int *)_ZN7fBase_cnwEj(944);
-    if (p) {
-        _ZN8dActor_cC2Ev(p);
-        p[0] = (int)&_ZTV9daSanbo_c[2];
-        _ZN5ModelC1Ev((char *)p + 0xd4);
-        _ZN11ShadowModelC1Ev((char *)p + 0x124);
-        _ZN7dCcAc_cC1Ev((char *)p + 0x14c);
-        _ZN10dBgCh_ActrC1Ev((char *)p + 0x180);
-    }
-    return p;
+    return new daSanbo_c();
 }
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 34 -- daSanbo_c_classInit_SANBO_BODY, 0x02136d10, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol daSanbo_c_classInit_SANBO_BODY
-extern "C" int *daSanbo_c_classInit_SANBO_BODY(void)
+/* Same class, SANBO_BODY profile (actor id 0xf1). */
+extern "C" daSanbo_c *daSanbo_c_classInit_SANBO_BODY(void)
 {
-    int *p = (int *)_ZN7fBase_cnwEj(944);
-    if (p) {
-        _ZN8dActor_cC2Ev(p);
-        p[0] = (int)&_ZTV9daSanbo_c[2];
-        _ZN5ModelC1Ev((char *)p + 0xd4);
-        _ZN11ShadowModelC1Ev((char *)p + 0x124);
-        _ZN7dCcAc_cC1Ev((char *)p + 0x14c);
-        _ZN10dBgCh_ActrC1Ev((char *)p + 0x180);
-    }
-    return p;
+    return new daSanbo_c();
 }
 
 /* -------------------------------------------------------------------------- */
@@ -250,8 +246,8 @@ int daSanbo_c::InitResources()
     if (mShadowModel.InitCylinder() == 0)
         return 0;
 
-    _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(((char*)this) + 0x14c, ((char*)this), 0x3c000, 0x78000, 0x200004, 0x6eff0);
-    _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(((char*)this) + 0x180, ((char*)this), 0x3c000, 0x3c000, 0, 0);
+    _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(&mdCcAc_c, this, 0x3c000, 0x78000, 0x200004, 0x6eff0);
+    _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(&mWithMeshClsn, this, 0x3c000, 0x3c000, 0, 0);
 
     mVertAccel = -0x2000;
     mTerminalVelocity = -0x3c000;
