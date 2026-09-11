@@ -25,8 +25,8 @@
  *
  * SIZE IS THE ROM'S OWN, not a rounded-up field span: `daBmb_c_classInit` calls
  * `fBase_c::operator new(1024)` -- 0x400 -- and stores `_ZTV7daBmb_c`,
- * so that literal IS this class's sizeof. The observed fields only span to
- * 0x3f8; the difference is trailing space no source reads.
+ * so that literal IS this class's sizeof. Particle handles at 0x3f8 / 0x3fc
+ * are written and read (0214b53c).
  *
  * THE NAME IS THE CARTRIDGE'S OWN. ov102 0x0214e4fc holds the bytes
  * "7daBmb_c\0" -- the length-prefixed mangled type name -- and _ZTI7daBmb_c at
@@ -96,12 +96,11 @@ struct daBmb_c : dEnemyBase_c {
        collision volume's hit bit and clears mFlags bit 0), 4 starts clear,
        anything else starts live. Behavior reads it again for the egg path. */
     u8                           mVariant;              /* 0x3f5 */
-    /* A latch: while non-zero Behavior does nothing but call func_ov102_0214ae1c
-       and return. InitResources clears it, and nothing matched sets it, so what
-       the latch MEANS is not evidenced -- only that it diverts the whole frame. */
+    /* ov078/daBombking_c 02123864 sets 1; Behavior explodes via 0214ae1c. */
     u8                           unk_3f6;               /* 0x3f6 */
-    /* 0214b53c writes particle handles at +0x3f8 / +0x3fc. Live pad. */
-    u8                           unk_3f7[0x9];
+    u8                           pad_3f7;               /* 0x3f7 */
+    u32                          unk_3f8;               /* 0x3f8 -- 0214b53c particle handle, eff 0x13 */
+    u32                          unk_3fc;               /* 0x3fc -- 0214b53c particle handle, eff 0x19 */
 
     /* --- vtable --- */
 

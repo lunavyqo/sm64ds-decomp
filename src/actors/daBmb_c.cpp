@@ -22,19 +22,19 @@
  * - *(this+0x128) |= 2 / *(this+0xb0) &= ~1u / *(this+0xc8)=0 are
  *   load-bearing (not mdCc_c.flags / mFlags / a new dActor_c field).
  * - State1 named mPrevAngleY / unk_3ee / mAngleY 1-word DIFF; keeps
- *   (char*)this+0x94 / +0x8e / +0x3ee. +0x35c is ModelAnim.speed.
+ *   (char*)this+0x94 / +0x8e / +0x3ee. State1's this+0x35c is
+ *   mModelAnim.speed; arm 0's Player*+0x35c is Player::mGrabbedByActor.
  * - func_ov102_0214bf64 / 0214bd90 (arms 0/2) stay free functions: member
  *   form is byte-clean then mwldarm Undefined (block-scope extern "C"
  *   contradicts the file-scope region; func_0200fc44 4-arg vs 3-arg).
  * - func_ov102_* ROM labels (0214ad14 / 0214ae1c / 0214b384 are
  *   cross-module). data_ov102_* handles. S14 no g_profile_BOMBHEI.
- * - no Player.h: OnTurnIntoEgg keeps Player+0x6d8 (mPlayerNo) and
- *   _ZN6Player4HealEi; decl_Player.h has neither.
  * - func_0203568c / func_02035684: dBgCh_Actr radius/height stores; no setter.
  */
 
 #include "common.h"
 #include "daBmb_c.h"
+#include "Player.h"
 #include "Sound.h"
 #include "SharedFilePtr.h"
 #include "dBgCh_Gnd.h"
@@ -66,7 +66,7 @@ struct Bmb_Bf64Obj {
     int fa8;                  /* 0xa8 */
     char gac[0x350 - 0xac];
     char f350[0x35c - 0x350]; /* 0x350 -- Animation */
-    int f35c;                 /* 0x35c */
+    int f35c;                 /* 0x35c -- mModelAnim.speed on this object */
     char g360[0x38c - 0x360];
     void* f38c;               /* 0x38c */
     char g390[0x3c4 - 0x390];
@@ -113,7 +113,6 @@ void  func_ov102_0214c0b8(void *self);
 /* -- other modules -- */
 void  GiveCoins(int who, int count);
 int   SurfaceInfo_TestFlag0x20(int *si);
-int   _ZN6Player4HealEi(void *self, int amt);
 
 void  _ZN12dEnemyBase_c12UpdateWMClsnER10dBgCh_Actrj(void *, void *, unsigned int);
 void  _ZN12dEnemyBase_c20KillByInvincibleCharERK10Vector3_16R6Player5Fix12IiE(void *, void *, void *, unsigned int);
@@ -132,7 +131,7 @@ void *_ZNK10dBgCh_Actr14GetFloorResultEv(void *);
    VALUE (6az). dBgCh_Actr::Init's header is Fix12i, which mangles as i;
    ROM is Fix12<int>. */
 void  _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(void *, dActor_c *a, Fix12i r, Fix12i h, unsigned int d, unsigned int e);
-void  _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void *, dActor_c *a, Fix12i b, Fix12i c, Vector3_16 *d, Fix12i e);
+void  _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void *, dActor_c *a, Fix12i b, Fix12i c, Vector3_16 *d, Vector3_16 *e);
 
 /* Hoisted out of four member bodies.  A class member function may not sit in a
    block-scope linkage specification, so daBmb_c::State1/3/4/5 cannot carry their
@@ -490,6 +489,7 @@ void func_ov102_0214bf64(void *ov)
             _Z14ApproachLinearRiii(o->f98, 0x10000, 0x1000);
             s16 target = Vec3_HorzAngle(&o->f5c, (Bmb_Vec3*)((char*)o->f38c + 0x5c));
             if (o->f3f5 == 3) {
+                /* Player::mGrabbedByActor: stop turning toward a held player. */
                 int b = (*(int*)((char*)o->f38c + 0x35c) != 0);
                 if (b)
                     target = o->f94;
@@ -853,9 +853,9 @@ void func_ov102_0214b988(void *thiz)
 /* ==========================================================================
  * ROM ordinal 16 -- func_ov102_0214b53c, 0x0214b53c, size 0x44c.
  *
- * The volatile pins and the chained u32 masks are load-bearing: they are what
- * hold the cartridge's stack layout and its compare destinations.  Do not
- * simplify them.
+ * The volatile pins are load-bearing: they hold the cartridge's stack layout.
+ * Do not simplify them.  The shard's chained `& 0xFFFFFFFFu` masks were
+ * C-only and were dropped; the plain `&&` MATCHES.
  * ======================================================================== */
 
 extern "C" {
@@ -1364,8 +1364,8 @@ void daBmb_c::OnTurnIntoEgg(Player &player)
 {
     if (unk_108 == 1) {
         Sound::PlayBank3(0x11, *(Vector3 *)&mCamSpacePosX);
-        GiveCoins(*(unsigned char *)((char *)&player + 0x6d8), 1);
-        _ZN6Player4HealEi(&player, 0x100);
+        GiveCoins(player.mPlayerNo, 1);
+        player.Heal(0x100);
     }
     func_ov102_0214baa0((char *)this);
 }
