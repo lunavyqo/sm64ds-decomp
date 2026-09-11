@@ -5,6 +5,10 @@
  * No fields. InitResources / CleanupResources hand this overlay's
  * model and collision files to daObjUkiyuka_c's shared ov002 helpers.
  * Init also stores kBobAmplitude into mBobAmplitude.
+ * func_ov002_020b6584 loads slot 0 with Model::LoadFile, slot 1
+ * with dBgW_Kc::LoadFile, slot 2 as CLPS into SetFile, copies
+ * mPosY to mRestY, and stores arg 3 at mBobAmplitude. ov045 sinit
+ * constructs those SharedFilePtrs as file IDs 1643 / 1644.
  *
  * daObjKm2_Ukishima_c_classInit is reconstructed (RTTI
  * daObjKm2_Ukishima_c, KM2_UKISHIMA registry). Retail does not store
@@ -13,9 +17,8 @@
  * deslop
  * Leftover: func_ov002_020b6584 / func_ov002_020b6424 are still the
  *   linker names of daObjUkiyuka_c Init/Cleanup (the base leaves
- *   those slots pure virtual). Naming belongs in ov002. That helper
- *   loads slot 0 with Model::LoadFile, slot 1 with dBgW_Kc::LoadFile,
- *   slot 2 as CLPS into SetFile, and stores arg 3 at mBobAmplitude.
+ *   those slots pure virtual). Naming belongs in ov002.
+ * Leftover: the file table is still data_ov045_02112f08.
  * Leftover: g_profile_KM2_UKISHIMA is overlay data; this TU is
  *   text-only so the definition here is a deadstripped duplicate.
  */
