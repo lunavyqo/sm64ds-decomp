@@ -1,5 +1,5 @@
 //cpp
-/* daDgr_c -- Grindel (ov025 GRINDEL 162).
+/* daDgr_c -- Spindel (actor 163 DONGURU).
  * deslop
  *
  * Leftover:
@@ -20,18 +20,6 @@
  * the highest-address ROM function is written FIRST here. Do not reorder.
  * The factory leads; the inline destructor in include/daDgr_c.h emits the
  * retail D1/D0 pair (0x021111a0 then 0x021111e4) with no D2.
- *
- * Assembled from these legacy one-function sources (ROM address order):
- *   [0] 0x021111a0  src/_ZN7daDgr_cD1Ev.cpp
- *   [1] 0x021111e4  src/_ZN7daDgr_cD0Ev.cpp
- *   [2] 0x0211123c  src/func_ov025_0211123c.cpp
- *   [3] 0x021112e0  src/func_ov025_021112e0.cpp
- *   [4] 0x02111344  src/func_ov025_02111344.c
- *   [5] 0x02111384  src/_ZN7daDgr_c16CleanupResourcesEv.cpp
- *   [6] 0x021113c8  src/_ZN7daDgr_c6RenderEv.cpp
- *   [7] 0x021113f0  src/_ZN7daDgr_c8BehaviorEv.cpp
- *   [8] 0x021117dc  src/_ZN7daDgr_c13InitResourcesEv.cpp
- *   [9] 0x02111898  src/d_a_dgr.c
  */
 
 /* common.h MUST COME FIRST. It and math/Matrix.h both define Matrix4x3;
@@ -60,8 +48,6 @@ struct KCL_File;
 
 /* shadow struct 'CLPS_Block' */
 struct CLPS_Block;
-
-#define LAUNDER(p) (p)
 
 extern "C" {
 extern void Matrix4x3_FromRotationX(void *, int);
@@ -99,9 +85,9 @@ extern "C" daDgr_c *daDgr_c_classInit()
 /* ROM ordinal 8 -- _ZN7daDgr_c13InitResourcesEv, 0x021117dc, size 0xbc */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daDgr_c13InitResourcesEv
-/* daDgr_c::InitResources -- vtable slot 0. Loads Grindel's model and KCL,
+/* daDgr_c::InitResources -- vtable slot 0. Loads Spindel's model and KCL,
  * points the mesh collider's update hook at dBgW::UpdatePosAndAngs, zeroes
- * the facing angle the KCL was baked against, and parks the grind state.
+ * the facing angle the KCL was baked against, and parks the roll state.
  *
  * The func_ov025_* helpers still take a `char *`: decl_common.h spells them
  * that way and this file does not own that header. */
@@ -124,8 +110,8 @@ s32 daDgr_c::InitResources()
     mBasePosY = mPosY;
     mAngleXSpeed = 0;
     mPhaseTimer = 0;
-    mSwingStage = 0;
-    mSwingDir = 0;
+    mRollStage = 0;
+    mRollDir = 0;
     mDustParticle2 = 0;
     mDustParticle1 = mDustParticle2;
     return 1;
@@ -137,29 +123,24 @@ s32 daDgr_c::InitResources()
 // @symbol _ZN7daDgr_c8BehaviorEv
 /* daDgr_c::Behavior -- vtable slot 6, ov025 0x021113f0.
  *
- * Grindel. mPhaseTimer is the phase counter, mSwingStage the stage counter
- * (-1 is the "hold at the end" sentinel), mSwingDir the direction flag. The swing
- * speed comes from `10 - mSwingStage' folded to a magnitude and bucketed to 1/2/4,
- * so the platform eases in and out; mBasePosY holds the resting height that the
- * sine offset from data_02082214 is added to. Two dust particle systems
- * (mDustParticle1, mDustParticle2) trail either end, and the last frame of each swing shakes
- * the ground.
+ * Spindel. It rolls about X and translates along Z. mPhaseTimer is the phase
+ * counter, mRollStage the stage counter (-1 is the "hold at the end" sentinel),
+ * mRollDir the direction flag. The roll speed comes from `10 - mRollStage'
+ * folded to a magnitude and bucketed to 1/2/4, so the roller eases in and out;
+ * mBasePosY holds the resting height that the sine offset from data_02082214
+ * is added to. Two dust particle systems (mDustParticle1, mDustParticle2)
+ * trail either end, and the last frame of each roll shakes the ground.
  *
  * IsClsnInRange, Earthquake and Particle::System::New all carry Fix12<int> by
  * value in their mangled names (wall 6az), so all three stay extern-C free
  * functions.
- *
- * LAUNDER() is a no-op macro the legacy file used to MARK its read-modify-write
- * sites. It is kept, with its name, so the marking survives -- it emits nothing
- * and it is not the reason those sites take an address. Every one of them now
- * names the member: `(s8 *)LAUNDER(&mSwingStage)', not `(s8 *)LAUNDER(self + 0x328)'.
  *
  * Swept greedily against build_pin.verify -- 33 substitutions, 33 kept once the
  * three real obstacles were fixed: `mAngleY' is read UNSIGNED at the table-index
  * sites (an s16 read costs four words, the same finding daObjC1_Trap_c::InitResources
  * produced), the three func_ov025_* helpers are declared `char *' in
  * decl_common.h so `this' needs a cast, and the two-step `b = self + 0x300;
- * b + 0x28' was just mSwingStage reached the long way round.
+ * b + 0x28' was just mRollStage reached the long way round.
  */
 s32 daDgr_c::Behavior()
 {
@@ -167,12 +148,12 @@ s32 daDgr_c::Behavior()
     s32 n;
     s32 m;
 
-    if (mSwingStage == -1) {
+    if (mRollStage == -1) {
         if (mPhaseTimer == 0x20) {
-            mSwingStage = 0;
+            mRollStage = 0;
             mPhaseTimer = 0;
         } else {
-            u16 *cnt = (u16 *)LAUNDER(&mPhaseTimer);
+            u16 *cnt = (u16 *)(&mPhaseTimer);
             (*cnt)++;
             unk_0ac = 0;
             mAngleXSpeed = 0;
@@ -184,7 +165,7 @@ s32 daDgr_c::Behavior()
         }
     }
 
-    n = 10 - mSwingStage;
+    n = 10 - mRollStage;
     if (n < 0) {
         s32 neg = -1;
         n = n * neg;
@@ -196,12 +177,12 @@ s32 daDgr_c::Behavior()
     if (mPhaseTimer == n + 8) {
         s8 *p;
         mPhaseTimer = 0;
-        p = (s8 *)LAUNDER(&mSwingStage);
+        p = (s8 *)(&mRollStage);
         *p = (s8)(*p + 1);
-        if (mSwingStage == 0x14) {
-            u8 *pd = (u8 *)LAUNDER(&mSwingDir);
+        if (mRollStage == 0x14) {
+            u8 *pd = (u8 *)(&mRollDir);
             *pd = (u8)(*pd ^ 1);
-            mSwingStage = -1;
+            mRollStage = -1;
         }
     }
 
@@ -216,7 +197,7 @@ s32 daDgr_c::Behavior()
     m = n << 3;
 
     if (mPhaseTimer < m) {
-        if (mSwingDir == 0) {
+        if (mRollDir == 0) {
             unk_0ac = 0x14000 / n;
             mAngleXSpeed = (s16)(0x400 / n);
         } else {
@@ -225,8 +206,8 @@ s32 daDgr_c::Behavior()
         }
 
         {
-            s32 *pz = (s32 *)LAUNDER(&mPosZ);
-            s16 *pr = (s16 *)LAUNDER(&mAngleX);
+            s32 *pz = (s32 *)(&mPosZ);
+            s16 *pr = (s16 *)(&mAngleX);
             *pz = *pz + unk_0ac;
             *pr = (s16)(*pr + mAngleXSpeed);
             if ((mAngleX & 0x1fff) < 0x320) {
@@ -287,7 +268,7 @@ s32 daDgr_c::Behavior()
     }
 
     {
-        u16 *cnt = (u16 *)LAUNDER(&mPhaseTimer);
+        u16 *cnt = (u16 *)(&mPhaseTimer);
         (*cnt)++;
     }
     return 1;
