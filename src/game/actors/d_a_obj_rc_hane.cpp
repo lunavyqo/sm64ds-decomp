@@ -135,9 +135,10 @@ s32 daObjRc_Hane_c::InitResources()
     mModel.SetFile(file, 1, -1);
 
     /* Two independent bits of the spawn parameter: bit 0 mirrors the wing,
-       bit 8 lets it make noise. A mirrored wing starts a quarter-turn tipped
-       and half a turn around, so a mirrored pair reads as one pair of wings
-       rather than two copies of the same one. */
+       bit 8 lets it make noise. A mirrored wing starts tipped by 0x2400
+       (not a quarter turn; quarter = 0x4000) and half a turn around Y/Z,
+       so a mirrored pair reads as one pair of wings rather than two copies
+       of the same one. */
     mReverseMotion = param1 & 1;
     mPlaySound = (param1 >> 8) & 1;
     if (mReverseMotion != 0) {
@@ -162,9 +163,9 @@ s32 daObjRc_Hane_c::Behavior()
 {
     /* mFrame << 10 wraps the frame counter into a full 16-bit turn, and >> 4
        brings it back to the table's entries -- the round trip through s16 is
-       what makes the cycle wrap for free. Each entry is a PAIR: [0] drives
-       yaw (<< 13), [1] drives pitch (<< 11), so the wing sweeps twice as far
-       sideways as it does up and down.
+       what makes the cycle wrap for free. data_02082214[2i] is sin (yaw,
+       << 13), [2i+1] is cos of the same angle (pitch, << 11): 90° apart,
+       and the yaw amplitude is 4× the pitch, not 2×.
 
        The two branches differ only in the SIGN of the yaw term: a mirrored
        wing sweeps the other way, but still pitches up on the same beat. */
