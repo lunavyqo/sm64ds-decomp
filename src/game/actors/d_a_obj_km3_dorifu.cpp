@@ -14,12 +14,13 @@
  * daObjKm3_Dorifu_c, KM3_DORIFU registry). Retail does not
  * store that spelling.
  *
+ * This TU is text-only. Retail overlay data order is typeinfo,
+ * type-name, profile, five-entry file table, vtable.
+ *
  * deslop
- * Leftover: data_ov047_02112508 is overlay data this TU does not
- *   own; the BMD/KCL SharedFilePtrs and CLPS_Block are still
- *   data_ov047_*.
- * Leftover: g_profile_KM3_DORIFU is overlay data; this TU is
- *   text-only so a definition here would be a deadstripped duplicate.
+ * Leftover: data_ov047_02112508 and g_profile_KM3_DORIFU are
+ *   overlay data this TU does not own; the BMD/KCL SharedFilePtrs
+ *   and CLPS_Block are still data_ov047_*.
  */
 
 #include "daObjKm3_Dorifu_c.h"
