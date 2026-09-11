@@ -55,7 +55,7 @@ struct FlyingCarpetSpawnInfo {
     Fix12i rangeOffsetY;
     Fix12i range;
     Fix12i drawDistance;
-    u32 unk_18;
+    u32 farDistance;
 };
 
 typedef char FlyingCarpetSpawnInfo_size_must_be_0x1c[
