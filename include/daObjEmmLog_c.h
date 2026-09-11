@@ -15,12 +15,12 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * destructor stores two vptrs. Factory allocates 0x328. Overrides
  * InitResources, CleanupResources, Behavior, Render.
  *
- * mSpinAngle sits at 0x31e in dBgActor_c's tail padding; mBasePosY /
+ * mBobPhase sits at 0x31e in dBgActor_c's tail padding; mBasePosY /
  * mBobAmplitude follow. InitResources seeds all three; Behavior advances
- * the angle and bobs mPosY on a sine of it.
+ * the phase and bobs mPosY on a sine of it. Nothing writes mAngle*.
  */
 struct daObjEmmLog_c : dBgActor_c {
-    s16 mSpinAngle;         /* 0x31e -- seeded from mAngleX, += 0x200 per Behavior */
+    s16 mBobPhase;          /* 0x31e -- seeded from mAngleX, += 0x200 per Behavior */
     s32 mBasePosY;          /* 0x320 -- InitResources copies mPosY */
     s32 mBobAmplitude;      /* 0x324 -- 0x64000, or the spawn byte * 0xa000 */
 

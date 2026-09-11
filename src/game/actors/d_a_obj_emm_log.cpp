@@ -2,8 +2,8 @@
 /**
  * Tiny-Huge Island rolling log -- ov052/daObjEmmLog_c (7 functions).
  *
- * ROM run 0x021111a0..0x02111440. Spins at a fixed rate and rides up and
- * down on a sine of its own spin angle.
+ * ROM run 0x021111a0..0x02111440. Bobs mPosY on a sine of mBobPhase;
+ * nothing writes mAngle*.
  *
  * FUNCTION ORDER IS DELIBERATELY THE REVERSE OF THE ROM'S -- mwccarm 2004/b56
  * emits one .text section per function in the reverse of source order.
@@ -72,7 +72,7 @@ s32 daObjEmmLog_c::InitResources()
     else
         mBobAmplitude = amplitude * 0xa000;
 
-    mSpinAngle = mAngleX;
+    mBobPhase = mAngleX;
     return 1;
 }
 
@@ -81,12 +81,12 @@ s32 daObjEmmLog_c::Behavior()
 {
     func_020393a4(&mMeshCollider, 0x600000);
 
-    int idx = (u16)mSpinAngle >> 4;
+    int idx = (u16)mBobPhase >> 4;
     int s = *(short *)((char *)data_02082214 + (idx << 2));
     int m = (int)(((long long)mBobAmplitude * s + 0x800) >> 12);
     mPosY = mBasePosY + m;
 
-    mSpinAngle += 0x200;
+    mBobPhase += 0x200;
 
     UpdateModelPosAndRotY();
     UpdateClsnPosAndRot();
