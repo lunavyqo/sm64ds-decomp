@@ -39,8 +39,6 @@
  * - Sound::PlayLong: not in Sound.h; mSoundID is the recycled handle.
  * - data_ov072_02122b20 / 02122b40 / 02122b58 / 02122b64: BMD handle, two
  *   course points, and the twelve-PMF state table; overlay .data owns them.
- * - State3 FindWithActorID(0x111) writes SnowmanHead+0x336 (unk_336); this
- *   TU does not include that class's header.
  * - State1 / State3 keep (int)this+0x3a2 for mSubstate++; named
  *   mSubstate = mSubstate + 1 size-DIFFs.
  * - AdvancePath: PathPtr::GetNode / NumNodes as methods size-DIFF (14 words);
@@ -52,6 +50,7 @@
 
 #include "common.h"
 #include "daBgSnmBdy_c.h"
+#include "SnowmanHead.h"
 #include "SharedFilePtr.h"
 #include "dBgCh_Gnd.h"
 #include "Player.h"
@@ -408,8 +407,8 @@ int daBgSnmBdy_c::State3()
                 mSoundID, 3, 0x8a,
                 (const Vector3 *)&mCamSpacePosX, 0);
             if (d < 0x17c000) {
-                dActor_c *actor = dActor_c::FindWithActorID(0x111, 0);
-                *(unsigned char *)((unsigned char *)actor + 0x336) = 1;
+                dActor_c *head = dActor_c::FindWithActorID(0x111, 0); /* BIG_SNOWMAN_HEAD */
+                ((SnowmanHead *)head)->unk_336 = 1;
                 func_0201267c(0x114, &mCamSpacePosX);
                 mVertSpeed = 0x1d000;
                 mHorzSpeed = 0xe000;
