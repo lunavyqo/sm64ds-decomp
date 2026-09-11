@@ -14,7 +14,7 @@
  *   mangled in this TU -- both take Fix12<int> by value (wall 6az);
  *   a method call homes the argument and size-DIFFs InitResources /
  *   Behavior.
- * Leftover: func_020393a4 / func_020393d4 are 8-byte stores into
+ * Leftover: func_020393a4 / func_020393d4 are 4-byte stores into
  *   dBgW+0x0c and dBgW+0x18 (beforeClsnCallback). This TU calls
  *   them; naming belongs with dBgW in arm9.
  * Leftover: Sound::PlayLong is declared in this TU; Sound.h still
