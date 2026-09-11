@@ -185,10 +185,11 @@ int daObjC1_Trap_c::InitResources()
         mPlayerDist = 0;
 
         index = ((int)(u16)mAngleY >> 4) * 2;
-        sinAngle = data_02082214[index + 1];
-        cosAngle = data_02082214[index];
-        z = mPosZ + cosAngle * 0x15d;
-        x = mPosX - sinAngle * 0x15d;
+        /* data_02082214[2i] = sin, [2i+1] = cos (dScStarSel COS()). */
+        cosAngle = data_02082214[index + 1];
+        sinAngle = data_02082214[index];
+        z = mPosZ + sinAngle * 0x15d;
+        x = mPosX - cosAngle * 0x15d;
         y = mPosY;
         position.x = x;
         position.y = y;
@@ -199,10 +200,10 @@ int daObjC1_Trap_c::InitResources()
         ((daObjC1_Trap_c *)spawned)->mSpawnerID = uniqueID;
 
         index = ((int)(u16)mAngleY >> 4) * 2;
-        cosAngle = data_02082214[index];
-        sinAngle = data_02082214[index + 1];
-        z = mPosZ - cosAngle * 0x15d;
-        x = sinAngle * 0x15d + mPosX;
+        sinAngle = data_02082214[index];
+        cosAngle = data_02082214[index + 1];
+        z = mPosZ - sinAngle * 0x15d;
+        x = cosAngle * 0x15d + mPosX;
         y = mPosY;
         position.x = x;
         position.y = y;
@@ -276,12 +277,12 @@ void daObjC1_Trap_c::UpdateModelTransform()
 {
     int angleY = (int)(u16)mAngleY >> 4;
     int angleZ = (int)(u16)mAngleZ >> 4;
-    int cosZ = data_02082214[angleZ * 2];
-    int sinY = data_02082214[angleY * 2 + 1];
-    int cosY = data_02082214[angleY * 2];
-    int radius = cosZ * 5;
-    int offsetX = (int)(((s64)radius * sinY + 0x800) >> 12);
-    int offsetZ = (int)(((s64)radius * cosY + 0x800) >> 12);
+    int sinZ = data_02082214[angleZ * 2];
+    int cosY = data_02082214[angleY * 2 + 1];
+    int sinY = data_02082214[angleY * 2];
+    int radius = sinZ * 5;
+    int offsetX = (int)(((s64)radius * cosY + 0x800) >> 12);
+    int offsetZ = (int)(((s64)radius * sinY + 0x800) >> 12);
     int x = (mPosX - offsetX) >> 3;
     int y = mPosY >> 3;
     int z = (mPosZ + offsetZ) >> 3;
