@@ -28,7 +28,7 @@
  * - Sound::PlayLong: Behavior's long water sound; Sound.h has no PlayLong.
  * - SharedFilePtr +4: InitResources' TextureTransformer::Prepare reads the
  *   BMD at data_ov029_021142fc +4; SharedFilePtr.h has no fields.
- * - data_ov029_02112b2c / 02112fb8 / 02112fec clock-Y / BTA / CLPS handles;
+ * - data_ov029_02112b2c / 02112fb8 / 02112fec WDW water-level / BTA / CLPS handles;
  *   this TU consumes them, overlay .data owns them.
  * - S14: g_profile_WC_MIZU stays outside the licensed .text.
  * - Behavior pointer forms at +0x340 / +0x60 / +0x342 / +0x74 / +0x124:
