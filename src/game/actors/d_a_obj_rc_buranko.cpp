@@ -35,7 +35,7 @@
  * Leftover: dBgW_KcMbg::SetFile and dBgActor_c::IsClsnInRange stay mangled
  *   in this TU -- both take Fix12<int> by value (wall 6az); a method call
  *   homes the argument and size-DIFFs InitResources / Behavior.
- * Leftover: func_020393d4 is an 8-byte store into dBgW+0x18
+ * Leftover: func_020393d4 is a 4-byte store into dBgW+0x18
  *   (beforeClsnCallback). This TU stores dBgW::UpdatePosWithTransform;
  *   dBgW.h has no setter.
  * Leftover: Matrix4x3_FromRotationXYZExt has no shared header; declared
