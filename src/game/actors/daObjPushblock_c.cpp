@@ -259,8 +259,8 @@ int daObjPushblock_c::CleanupResources()
 // @symbol _ZN16daObjPushblock_c8OnPushedER8dActor_c
 /* recovered: named members + real C++ method */
 /* daObjPushblock_c::OnPushed(dActor_c &) -- slot 25. Takes the pusher's facing as its
- * own slide direction and picks the speed from the pusher's state: 2 (a dash?)
- * gets the fast 0x8000, anything else 0x4000. */
+ * own slide direction and picks the speed from the pusher's character id:
+ * 2 (Wario) gets the fast 0x8000, anything else 0x4000. */
 /* THE MISSING RETURN IS DELIBERATE AND LOAD-BEARING. The header declares slot 25
  * as `int`, but this body sets no return value and the ROM's 0x2c bytes leave r0
  * holding whatever the caller had. Adding `return 0;` to satisfy the declaration
