@@ -12,14 +12,11 @@
  * FL_GURA registry). Retail does not store that spelling.
  *
  * deslop
- * Leftover: func_ov002_020b6244 / func_ov002_020b60fc are still the
- *   linker names of daObjGuragura_c Init/Cleanup (the base leaves
- *   those slots pure virtual). Naming belongs in ov002.
+ * Leftover: func_ov002_020b6244 / func_ov002_020b60fc are still
+ *   linker names. Naming belongs in ov002.
  * Leftover: data_ov064_0211adb0 is overlay .rodata this TU does not
  *   own; the BMD/KCL SharedFilePtrs and CLPS_Block are still
  *   data_ov064_*.
- * Leftover: g_profile_FL_GURA is overlay data; this TU is text-only
- *   so the definition here is a deadstripped duplicate.
  */
 
 #include "daObjFl_Gura_c.h"

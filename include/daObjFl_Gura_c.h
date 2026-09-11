@@ -13,19 +13,17 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * CleanupResources) and hands this overlay's model/collision
  * descriptor to the shared ov002 helpers.
  *
- * `daObjFl_Gura_c` is the RTTI name. MetalNetLift in this overlay
- * is a different class.
+ * `daObjFl_Gura_c` is the RTTI name. `guragura` is the wobble.
  */
 struct daObjFl_Gura_c : daObjGuragura_c {
     /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
-    int CleanupResources();            /* slot  3 */
-    int InitResources();               /* slot  0 */
+    virtual ~daObjFl_Gura_c() {}
+    virtual s32 CleanupResources(); /* slot 3 */
+    virtual s32 InitResources();    /* slot 0 */
 
     static void *operator new(unsigned long size) {
         return _ZN7fBase_cnwEj(size);
     }
-
-    virtual ~daObjFl_Gura_c() {}
 };
 
 typedef char daObjFl_Gura_c_size_must_be_0x350[
