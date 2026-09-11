@@ -75,8 +75,7 @@
  * Leftover: SetAnim / dCcAc_c::Init / dBgCh_Actr::Init / DropShadowRadHeight
  *   stay mangled (Fix12-by-value, 6az; dBgCh Init header Fix12i mangles as
  *   int). Player+8 param1 / +0x6d9 / +0x6ce belong on Player. data_ov085_*
- *   handles. S14 no g_profile_MIP. Helpers that stay offset soup cite this
- *   TU's callees, not a sibling. common.h first (shadow matrix copy).
+ *   handles. S14 no g_profile_MIP. common.h first (shadow matrix copy).
  */
 #include "common.h"
 #include "daMip_c.h"
@@ -460,8 +459,8 @@ int daMip_c::StateTalkMain()
 // @symbol _ZN7daMip_c13StateTalkInitEv
 int daMip_c::StateTalkInit()
 {
-    int *p = (int *)this;
-    p[263] = 0; return 1;
+    mActionStep = 0;
+    return 1;
 }
 
 /* -------------------------------------------------------------------------- */
@@ -988,7 +987,7 @@ int daMip_c::StateFleeMain()
       *((s32 *) (c + 0x60)) = node.y;
       *((s32 *) (c + 0x64)) = node.z;
       {
-        s32 *p = (s32 *) ((int) (((long long) ((int) (c + 0x448)))));
+        s32 *p = (s32 *)(c + 0x448);
         *p = (*p) + (*((s32 *) (c + 0x44c)));
       }
       if ((*((s32 *) (c + 0x448))) >= (*((s32 *) (c + 0x444))))
@@ -1488,17 +1487,13 @@ void daMip_c::RenderMirrorImage()
  * address -- run on whatever mState points at. It is kept verbatim because there
  * is no recovered type for the descriptor to call a member through.
  *
- * TWO SPELLINGS HERE ARE LOAD-BEARING, both measured against the pre-image
- * rather than assumed:
+ * `_ZN9Animation7AdvanceEv((char *)this + 0x350)` must offset from THIS.
+ * 0x350 is mModelAnim's Animation base at +0x50; `(char *)&mModelAnim + 0x50`
+ * costs a word.
  *
- *   `_ZN9Animation7AdvanceEv((char *)this + 0x350)` must offset from THIS.
- *   0x350 is mModelAnim's Animation base at +0x50, and writing it that way --
- *   `(char *)&mModelAnim + 0x50` -- costs a word. Offsetting from a typed
- *   sub-object's ADDRESS is not the same as offsetting from `this`.
- *
- *   The `(long long)(int)` round-trip on mEatenTimer stays. Removing it changes
- *   the size. Every other round-trip and every other offset in this function
- *   came out free -- the idiom is per-site, not per-function. */
+ * The `(long long)(int)` round-trip on c+0x42a (mEatenTimer) is measured:
+ * replacing it with `c + 0x42a` or `mEatenTimer = mEatenTimer + 1` size-DIFFs
+ * Behavior (0x5cc). The same round-trip on c+0x448 is a no-op and was dropped. */
 int daMip_c::Behavior()
 {
     /* A LOCAL COORDINATE TRIPLE, NOT A Vector3 OBJECT. Vector3 declares a
