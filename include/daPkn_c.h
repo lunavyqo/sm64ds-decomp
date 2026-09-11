@@ -44,6 +44,10 @@
 #include "dCcAcPos_c.h"
 #include "dBgCh_Actr.h"
 
+/* Leaf until #2570: fBase_c still has no in-class operator new, so this
+   class forwards the `new daPkn_c()` allocation to the retail allocator. */
+extern "C" void *_ZN7fBase_cnwEj(unsigned size);
+
 struct daPkn_c : dEnemyBase_c {
     ModelAnim                    mModelAnim;            /* 0x110 */
     Model                        mModel;                /* 0x174 */
@@ -95,6 +99,10 @@ struct daPkn_c : dEnemyBase_c {
     int InitResources();
     void OnPendingDestroy();
     int Render();
+
+    static void *operator new(unsigned long size) {
+        return _ZN7fBase_cnwEj((unsigned)size);
+    }
 };
 
 typedef char daPkn_c_size_must_be_0x47c[sizeof(daPkn_c) == 0x47c ? 1 : -1];
@@ -102,11 +110,10 @@ typedef char daPkn_c_size_must_be_0x47c[sizeof(daPkn_c) == 0x47c ? 1 : -1];
 /* The class's own vtable, declared next to the class rather than restated in
    the one translation unit that stores it. config/arm9/overlays/ov084/symbols.txt
    binds _ZTV7daPkn_c to the public ADDRESS POINT at 0x02130c28; mwcc's own
-   emitted symbol addresses the vtable OBJECT two words lower, so the factory in
-   src/actors/daPkn_c.cpp addresses it as `_ZTV7daPkn_c + 2` (int-indexed, eight
-   bytes) to agree with the addend-8 vptr stores the compiler emits in the
-   destructor. include/decl_common.h already carries the same declaration for
-   the C shards that read it. */
+   emitted symbol addresses the vtable OBJECT two words lower, so `new daPkn_c()`
+   and the inline destructor store `_ZTV7daPkn_c + 2` (int-indexed, eight bytes).
+   include/decl_common.h already carries the same declaration for the C shards
+   that read it. */
 extern int _ZTV7daPkn_c[];
 
 #endif /* DAPKN_C_H */
