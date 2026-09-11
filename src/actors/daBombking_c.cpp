@@ -33,6 +33,18 @@
  * group has a compiler-chosen order of its own; see the destructor comment in
  * the class header for what was measured on this TU.
  *
+ * deslop
+ * Leftover: BlendModelAnim::SetAnim / dCcAcPos_c::Init / dBgCh_Actr::Init /
+ *   DropShadowRadHeight stay mangled (Fix12-by-value, 6az; dBgCh Init header
+ *   Fix12i mangles as int -- this TU's InitResources call). dActor_c::Spawn
+ *   s8/s16 by-value (func_ov078_02125350). Player+8 param1 / +0x6ce talk flag
+ *   / +0xc8 mtx ptr belong on Player. Camera+0x114 / +0x154 belong on Camera.
+ *   data_ov078_* SharedFilePtr handles (Init LoadFile / Cleanup Release) and
+ *   state records (KingBobOmb_SetState). func_02035550 is the unnamed
+ *   dBgCh_Actr mFlags |= 0x4000 setter (no method on the header). S14 no
+ *   g_profile_BOMBKING. Helpers stay offset soup. common.h first (M12
+ *   shadow/hold matrix copies at 0x434 and 0x4a4).
+ *
  * Folded from 52 one-function sources, each of which was its own file in src/
  * before this promotion and none of which is in the tree any more.  Listed by
  * the symbol assigned in the repository's symbols.txt, in ROM order:
@@ -102,17 +114,17 @@
  *   func_ov078_02125350: #pragma opt_common_subs off   [NOT carried -- review]
  */
 
-/* Includes: union of the legacy files', first-seen in ROM-ascending
- * processing order. NOT verified for header ordering constraints (e.g. a
- * common.h-before-X rule) -- watch for new compile errors after this. */
-#include "daBombking_c.h"
-#include "types.h"
+/* common.h FIRST: daBombking_c.h reaches math/Matrix.h through BlendModelAnim.h,
+ * and that header spells Matrix4x3 as {Matrix3x3 r; Vector3 t;} where common.h
+ * spells it flat as s32 m[12]. Helpers whole-struct-assign the shadow/hold
+ * matrices through M12; only the flat spelling reproduces the block move. */
 #include "common.h"
+#include "daBombking_c.h"
+#include "SharedFilePtr.h"
+#include "dBgCh_Gnd.h"
 #include "decl_common.h"
 #include "decl_Animation.h"
 #include "decl_Message.h"
-#include "dBgCh_Gnd.h"
-#include "SharedFilePtr.h"
 
 /* Remaining reconstruction views. Reconciled by hand against include/: every type
  * the real headers already define (Vector3, Matrix4x3, Fix12<int>, u8/u16/s16,
@@ -253,13 +265,8 @@ void _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(vo
 extern Matrix4x3 IDENTITY_MATRIX4X3;
 extern void Matrix4x3_ApplyInPlaceToTranslation(void *m, int x, int y, int z);
 extern void Matrix4x3_ApplyInPlaceToRotationXYZExt(void *m, int x, int y, int z);
-extern BMD_File* _ZN5Model8LoadFileER13SharedFilePtr(SharedFilePtr* f);
-extern void _ZN9ModelBase7SetFileEP8BMD_Fileii(void* self, BMD_File* f, int a, int b);
-extern void _ZN11ShadowModel12InitCylinderEv(void* self);
-extern void* _ZN9Animation8LoadFileER13SharedFilePtr(SharedFilePtr* f);
 extern void _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(void* self, dActor_c* a, Vector3* v, Fix12i r, Fix12i h, unsigned int e, unsigned int g);
 extern void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void* self, dActor_c* a, Fix12i r, Fix12i h, Vector3_16* p, Vector3_16* q);
-extern unsigned char _ZN8dActor_c9TrackStarEjj(void* self, unsigned int a, unsigned int b);
 }
 
 
@@ -1798,19 +1805,19 @@ void func_ov078_02125f8c(void* c_){
 // @symbol _ZN12daBombking_c16CleanupResourcesEv
 int daBombking_c::CleanupResources()
 {
-    ((SharedFilePtr*)data_ov078_02126f38)->Release();
-    ((SharedFilePtr*)data_ov078_02126f00)->Release();
-    ((SharedFilePtr*)data_ov078_02126f20)->Release();
-    ((SharedFilePtr*)data_ov078_02126f10)->Release();
-    ((SharedFilePtr*)data_ov078_02126f08)->Release();
-    ((SharedFilePtr*)data_ov078_02126f18)->Release();
-    ((SharedFilePtr*)data_ov078_02126ee0)->Release();
-    ((SharedFilePtr*)data_ov078_02126ef0)->Release();
-    ((SharedFilePtr*)data_ov078_02126f40)->Release();
-    ((SharedFilePtr*)data_ov078_02126f30)->Release();
-    ((SharedFilePtr*)data_ov078_02126ee8)->Release();
-    ((SharedFilePtr*)data_ov078_02126f28)->Release();
-    ((SharedFilePtr*)data_ov078_02126ef8)->Release();
+    ((SharedFilePtr *)data_ov078_02126f38)->Release();
+    ((SharedFilePtr *)data_ov078_02126f00)->Release();
+    ((SharedFilePtr *)data_ov078_02126f20)->Release();
+    ((SharedFilePtr *)data_ov078_02126f10)->Release();
+    ((SharedFilePtr *)data_ov078_02126f08)->Release();
+    ((SharedFilePtr *)data_ov078_02126f18)->Release();
+    ((SharedFilePtr *)data_ov078_02126ee0)->Release();
+    ((SharedFilePtr *)data_ov078_02126ef0)->Release();
+    ((SharedFilePtr *)data_ov078_02126f40)->Release();
+    ((SharedFilePtr *)data_ov078_02126f30)->Release();
+    ((SharedFilePtr *)data_ov078_02126ee8)->Release();
+    ((SharedFilePtr *)data_ov078_02126f28)->Release();
+    ((SharedFilePtr *)data_ov078_02126ef8)->Release();
     return 1;
 }
 
@@ -1830,13 +1837,13 @@ void daBombking_c::OnPendingDestroy()
 /* recovered: named members + shared header, real C++ method */
 int daBombking_c::Render()
 {
-    void *r1 = (void*)*(int*)((char*)&mHeldActor);
+    void *r1 = mHeldActor;
     if (r1 != 0) {
-        int r0 = *(int*)((char*)&mFlags);
+        int r0 = mFlags;
         int flag = (r0 & 0x4000) ? 1 : 0;
         if (flag != 0) {
-            if (*(int*)((char*)r1 + 0xc8) != 0) {
-                func_ov078_02125f8c(((void *)this));
+            if (*(int *)((char *)r1 + 0xc8) != 0) {
+                func_ov078_02125f8c(this);
             }
         }
     }
@@ -1853,25 +1860,15 @@ int daBombking_c::Render()
 
 
 extern "C" {
-extern int _ZN8dActor_c13DistToCPlayerEv(void *self);
 extern unsigned short DecIfAbove0_Short(unsigned short *p);
 extern unsigned char DecIfAbove0_Byte(unsigned char *p);
-extern void _ZN8dActor_c9UpdatePosEP5dCc_c(void *self, void *clsn);
-extern void _ZN8dActor_c22UpdatePosWithOnlySpeedEP5dCc_c(void *self, void *clsn);
-extern void _ZN12dEnemyBase_c12UpdateWMClsnER10dBgCh_Actrj(void *self, void *wmc, unsigned int flags);
-extern int _ZNK10dBgCh_Actr8IsOnWallEv(void *self);
-extern int _ZNK10dBgCh_Actr10IsOnGroundEv(void *self);
-extern void _ZN10dCcAcPos_c21SetPosRelativeToActorERK7Vector3(void *self, const Vector3 *v);
-extern void _ZN5dCc_c5ClearEv(void *self);
-extern void _ZN5dCc_c6UpdateEv(void *self);
-
 }
 
 int daBombking_c::Behavior()
 {
     char *self = (char *)this;
 
-    if (_ZN8dActor_c13DistToCPlayerEv(this) < 0x1770000) {
+    if (DistToCPlayer() < 0x1770000) {
         *(daBombking_c **)((char *)data_0209f318 + 0x114) = this;
     }
 
@@ -1885,10 +1882,10 @@ int daBombking_c::Behavior()
     mBlendModelAnim.Advance();
 
     if ((char *)mState == (char *)data_ov078_0212707c) {
-        void *r1 = *(void **)(self + 0x494);
+        void *r1 = mHeldActor;
         int b;
         if (r1 != 0) {
-            b = (*(int *)(self + 0xb0) & 0x4000) != 0;
+            b = (mFlags & 0x4000) != 0;
             if (b != 0 && *(int *)((char *)r1 + 0xc8) != 0) {
                 goto skip_de0;
             }
@@ -1899,23 +1896,23 @@ int daBombking_c::Behavior()
         return 1;
     }
 
-    DecIfAbove0_Short((unsigned short *)(self + 0x100));
+    DecIfAbove0_Short((unsigned short *)&mStateTimer);
     DecIfAbove0_Byte(&mTimer505);
     DecIfAbove0_Byte(&mTimer504);
 
     if ((char *)mState != (char *)data_ov078_021270bc) {
-        _ZN8dActor_c9UpdatePosEP5dCc_c(self, self + 0x33c);
+        UpdatePos(&mdCcAcPos_c);
     } else {
-        _ZN8dActor_c22UpdatePosWithOnlySpeedEP5dCc_c(self, self + 0x33c);
+        UpdatePosWithOnlySpeed(&mdCcAcPos_c);
     }
 
-    if ((char *)mState != (char *)data_ov078_021270bc || *(unsigned char *)(self + 0x499) == 1) {
-        _ZN12dEnemyBase_c12UpdateWMClsnER10dBgCh_Actrj(self, self + 0x110, 0);
+    if ((char *)mState != (char *)data_ov078_021270bc || mActionStep == 1) {
+        UpdateWMClsn(mWithMeshClsn, 0);
     }
 
     if ((char *)mState == (char *)data_ov078_0212703c || (char *)mState == (char *)data_ov078_021270fc) {
-        if (_ZNK10dBgCh_Actr8IsOnWallEv(self + 0x110) != 0
-            || _ZNK10dBgCh_Actr10IsOnGroundEv(self + 0x110) == 0
+        if (mWithMeshClsn.IsOnWall() != 0
+            || mWithMeshClsn.IsOnGround() == 0
             || (mArenaPosY - 0x28000) > mPosY) {
             KingBobOmb_SetState(self, data_ov078_021270bc);
         }
@@ -1926,19 +1923,19 @@ int daBombking_c::Behavior()
         v.x = data_ov078_02126e00.x;
         v.y = data_ov078_02126e00.y;
         v.z = data_ov078_02126e00.z;
-        _ZN10dCcAcPos_c21SetPosRelativeToActorERK7Vector3(self + 0x33c, &v);
+        mdCcAcPos_c.SetPosRelativeToActor(v);
     }
     {
         Vector3 v;
         v.x = data_ov078_02126e00.x;
         v.y = data_ov078_02126e00.y;
         v.z = data_ov078_02126e00.z;
-        _ZN10dCcAcPos_c21SetPosRelativeToActorERK7Vector3(self + 0x37c, &v);
+        mdCcAcPos_c_37c.SetPosRelativeToActor(v);
     }
-    _ZN5dCc_c5ClearEv(self + 0x33c);
-    _ZN5dCc_c6UpdateEv(self + 0x33c);
-    _ZN5dCc_c5ClearEv(self + 0x37c);
-    _ZN5dCc_c6UpdateEv(self + 0x37c);
+    mdCcAcPos_c.Clear();
+    mdCcAcPos_c.Update();
+    mdCcAcPos_c_37c.Clear();
+    mdCcAcPos_c_37c.Update();
 
     func_ov078_02125de0(self);
     func_ov078_02125c98(self);
@@ -1957,35 +1954,35 @@ int daBombking_c::Behavior()
    below still use their existing ROM-backed data declarations. */
 int daBombking_c::InitResources()
 {
-    BMD_File* f;
+    BMD_File *f;
     Vector3 v0;
     Vector3 v1;
     int i;
-    f = _ZN5Model8LoadFileER13SharedFilePtr((SharedFilePtr*)data_ov078_02126f38);
-    _ZN9ModelBase7SetFileEP8BMD_Fileii(((char*)this)+0x2cc, f, 1, 1);
-    _ZN11ShadowModel12InitCylinderEv((char*)&(*(u8 *)&mShadowModel));
-    _ZN9Animation8LoadFileER13SharedFilePtr((SharedFilePtr*)data_ov078_02126f00);
-    _ZN9Animation8LoadFileER13SharedFilePtr((SharedFilePtr*)data_ov078_02126f20);
-    _ZN9Animation8LoadFileER13SharedFilePtr((SharedFilePtr*)data_ov078_02126f10);
-    _ZN9Animation8LoadFileER13SharedFilePtr((SharedFilePtr*)data_ov078_02126f08);
-    _ZN9Animation8LoadFileER13SharedFilePtr((SharedFilePtr*)data_ov078_02126f18);
-    _ZN9Animation8LoadFileER13SharedFilePtr((SharedFilePtr*)data_ov078_02126ee0);
-    _ZN9Animation8LoadFileER13SharedFilePtr((SharedFilePtr*)data_ov078_02126ef0);
-    _ZN9Animation8LoadFileER13SharedFilePtr((SharedFilePtr*)data_ov078_02126f40);
-    _ZN9Animation8LoadFileER13SharedFilePtr((SharedFilePtr*)data_ov078_02126f30);
-    _ZN9Animation8LoadFileER13SharedFilePtr((SharedFilePtr*)data_ov078_02126ee8);
-    _ZN9Animation8LoadFileER13SharedFilePtr((SharedFilePtr*)data_ov078_02126f28);
-    _ZN9Animation8LoadFileER13SharedFilePtr((SharedFilePtr*)data_ov078_02126ef8);
+    f = (BMD_File *)Model::LoadFile(*(SharedFilePtr *)data_ov078_02126f38);
+    mBlendModelAnim.SetFile(f, 1, 1);
+    mShadowModel.InitCylinder();
+    Animation::LoadFile(*(SharedFilePtr *)data_ov078_02126f00);
+    Animation::LoadFile(*(SharedFilePtr *)data_ov078_02126f20);
+    Animation::LoadFile(*(SharedFilePtr *)data_ov078_02126f10);
+    Animation::LoadFile(*(SharedFilePtr *)data_ov078_02126f08);
+    Animation::LoadFile(*(SharedFilePtr *)data_ov078_02126f18);
+    Animation::LoadFile(*(SharedFilePtr *)data_ov078_02126ee0);
+    Animation::LoadFile(*(SharedFilePtr *)data_ov078_02126ef0);
+    Animation::LoadFile(*(SharedFilePtr *)data_ov078_02126f40);
+    Animation::LoadFile(*(SharedFilePtr *)data_ov078_02126f30);
+    Animation::LoadFile(*(SharedFilePtr *)data_ov078_02126ee8);
+    Animation::LoadFile(*(SharedFilePtr *)data_ov078_02126f28);
+    Animation::LoadFile(*(SharedFilePtr *)data_ov078_02126ef8);
     mVertAccel = -0x2000;
     mTerminalVelocity = -0x3c000;
     v0.x = data_ov078_02126e00.x;
     v0.y = data_ov078_02126e00.y;
     v0.z = data_ov078_02126e00.z;
-    _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(((char*)this)+0x33c, (dActor_c*)((char*)this), &v0, 0x78000, 0xc8000, 0x200004, 0x206000);
+    _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(&mdCcAcPos_c, this, &v0, 0x78000, 0xc8000, 0x200004, 0x206000);
     v1.x = data_ov078_02126e00.x;
     v1.y = data_ov078_02126e00.y;
     v1.z = data_ov078_02126e00.z;
-    _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(((char*)this)+0x37c, (dActor_c*)((char*)this), &v1, 0xc8000, 0xc8000, 0x200000, 0x207000);
+    _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(&mdCcAcPos_c_37c, this, &v1, 0xc8000, 0xc8000, 0x200000, 0x207000);
     unk_498 = 0x1f;
     mHomePosX = mPosX;
     mHomePosY = mPosY;
@@ -1993,26 +1990,26 @@ int daBombking_c::InitResources()
     mArenaPosX = 0xb1d000;
     mArenaPosY = 0x1060000;
     mArenaPosZ = 0xfee15000;
-    _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(((char*)this)+0x110, (dActor_c*)((char*)this), 0x190000, 0x190000, 0, 0);
-    func_02035550((char*)&(*(dBgCh_Actr *)&mWithMeshClsn));
+    _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(&mWithMeshClsn, this, 0x190000, 0x190000, 0, 0);
+    func_02035550(&mWithMeshClsn);
     mAnimSpeed = 1;
     mHealth = 3;
     mStarID = (*(s32 *)&param1) & 0xf;
-    mStarTracked = _ZN8dActor_c9TrackStarEjj(((char*)this), mStarID, 2);
+    mStarTracked = TrackStar(mStarID, 2);
     {
     int z = 0;
     for (i = 0; i < 2; i++) {
-        *(int*)(((char*)this)+0x424+i*4) = z;
-        *(unsigned char*)(((char*)this)+0x42c+i) = (unsigned char)z;
+        mSpawnedId[i] = z;
+        mSpawnedThrown[i] = (unsigned char)z;
     }
     }
     mPhase = ((unsigned int)RandomIntInternal(&data_0209e650) >> 0x1e) & 1;
     {
-        int *p = (int*)((char*)&mPhase);
+        int *p = (int *)((char *)&mPhase);
         *p = *p + 1;
     }
     mInitAngleY = mAngleY;
-    KingBobOmb_SetState(((char*)this), &data_ov078_0212710c);
+    KingBobOmb_SetState(this, &data_ov078_0212710c);
     return 1;
 }
 
@@ -2034,28 +2031,9 @@ s32 daBombking_c::OnAimedAtWithEgg() {
 /* -------------------------------------------------------------------------- */
 /* The factory immediately follows ordinal 50 and ends at the .init boundary. */
 // @symbol daBombking_c_classInit
-extern "C" {
-extern void *_ZN7fBase_cnwEj(unsigned int size);
-extern void _ZN12dEnemyBase_cC2Ev(void *self);
-extern void _ZN10dBgCh_ActrC1Ev(void *self);
-extern void _ZN14BlendModelAnimC1Ev(void *self);
-extern void _ZN10dCcAcPos_cC1Ev(void *self);
-extern void _ZN11CommonModelC1Ev(void *self);
-extern void _ZN11ShadowModelC1Ev(void *self);
-
-int *daBombking_c_classInit(void)
+/* The registry factory behind the BOMBKING profile. `return new daBombking_c()`
+ * MATCHES (size 0x64); the synthesized ctor stores `_ZTV12daBombking_c + 2`. */
+extern "C" daBombking_c *daBombking_c_classInit(void)
 {
-    int *p = (int *)_ZN7fBase_cnwEj(1292);
-    if (p) {
-        _ZN12dEnemyBase_cC2Ev(p);
-        p[0] = (int)&_ZTV12daBombking_c[2];
-        _ZN10dBgCh_ActrC1Ev((char *)p + 0x110);
-        _ZN14BlendModelAnimC1Ev((char *)p + 0x2cc);
-        _ZN10dCcAcPos_cC1Ev((char *)p + 0x33c);
-        _ZN10dCcAcPos_cC1Ev((char *)p + 0x37c);
-        _ZN11CommonModelC1Ev((char *)p + 0x3bc);
-        _ZN11ShadowModelC1Ev((char *)p + 0x3f8);
-    }
-    return p;
-}
+    return new daBombking_c();
 }
