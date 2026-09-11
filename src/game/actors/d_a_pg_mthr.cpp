@@ -16,8 +16,6 @@
  *   DropShadow 0x100->0x110). dBgCh_Actr::Init stays mangled: header
  *   Fix12i mangles as int; ROM is Fix12<int> (method form links
  *   Undefined).
- * Leftover: 02111fac member form size-DIFF 0x230->0x224 (U8P
- *   increment and 0x300+0x84 spelling of mMessageId).
  * Leftover: common.h must be first. 02111d28 copies Matrix4x3 as
  *   twelve uniform words; the nested Matrix.h spelling scalarizes.
  * Leftover: BMD/BCA/BTP handles still data_ov018_*; decl_common
@@ -36,8 +34,6 @@
 #include "TextureSequence.h"
 #include "dBgCh_Gnd.h"
 #include "Animation.h"
-
-#define U8P(base, off) ((u8 *)((unsigned int)(base) + (off)))
 
 extern "C" {
 extern struct dActor_c* _ZN8dActor_c10FindWithIDEj(u32 id);
@@ -313,14 +309,14 @@ int func_ov018_021121dc(char* c){
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov018_02111fac(char *c)
 {
-    /* Member form (mTalkStep / mPlayer / mMessageId / mGaveStar) size-DIFF
-       0x230 -> 0x224. U8P increment and the 0x300+0x84 spelling of mMessageId
-       are load-bearing. */
-    switch (*(unsigned char *)(c + 0x388)) {
+    /* Whole-function member form size-DIFF 0x230 -> 0x224. Named-field
+       pointer increment of mTalkStep / mTalkTimer MATCH'd.
+       *(s16 *)(c + 0x300 + 0x84) for mMessageId stays. */
+    switch (((daPgMthr_c *)c)->mTalkStep) {
     case 0:
         if (*(int *)(c + 0x194) & 0x8000000) {
             if (_ZN6Player9StartTalkER7fBase_cb(*(void **)(c + 0x374), c, 1)) {
-                u8 *p = U8P(c, 0x388);
+                u8 *p = &((daPgMthr_c *)c)->mTalkStep;
                 *p = *p + 1;
             }
         } else {
@@ -342,7 +338,7 @@ int func_ov018_02111fac(char *c)
                         *(void **)(c + 0x374), c, *(s16 *)(c + 0x300 + 0x84), v, 0, 0)) {
                     func_0201267c(0xdf, c + 0x74);
                     {
-                        u8 *p = U8P(c, 0x388);
+                        u8 *p = &((daPgMthr_c *)c)->mTalkStep;
                         *p = *p + 1;
                     }
                 }
@@ -362,13 +358,13 @@ int func_ov018_02111fac(char *c)
             }
             _ZN6Player9DropActorEv(*(void **)(c + 0x374));
             {
-                u8 *p = U8P(c, 0x388);
+                u8 *p = &((daPgMthr_c *)c)->mTalkStep;
                 *p = *p + 1;
             }
         }
         break;
     case 3:
-        if (!DecIfAbove0_Byte(U8P(c, 0x389)))
+        if (!DecIfAbove0_Byte(&((daPgMthr_c *)c)->mTalkTimer))
             func_ov018_021123d0(c, 0);
         break;
     }
@@ -510,6 +506,7 @@ void func_ov018_02111bf0(void* cv, void* wv){
     // demand a first (should get r4), then b (r1), then dst (r2)
     int a = *(int*)((char*)src + 4);
     int b = *(int*)((char*)src + 8);
+    /* Measured: `= a` DIFFs 4 words. The tautology is load-bearing. */
     *(int*)((char*)dst + 0) = b ? a : a;
     *(int*)((char*)dst + 4) = b;
     int t = *(int*)((char*)src + 0xc);
