@@ -88,8 +88,6 @@
  * - data_ov002_0210d6f4 CLPS handle: this TU claims .text only.
  * - InitResources 0x32a: named mCoinTimerSeed CSE's the field address.
  *   Keep (u16*)(c+0x300)[0x15] / ((int)c+0x32a).
- * - dActor_c::FindWithActorID stays mangled: not declared on include/dActor_c.h
- *   (shared-header edit is out of scope).
  * - Event::SetBit stays mangled: no Event header.
  *
  * Consolidated from these legacy one-function sources (ROM address order):
