@@ -25,7 +25,7 @@ typedef char daKpFrSpawnInfo_size_must_be_0x1c[
 /* Manually curated translation unit -- ov070/daKpFr_c (21 function(s)).
  * tubuild create refused this TU (legacy bodies wrapped in extern "C" { }),
  * so it began as a reverse-ROM-order concatenation. It now uses the real
- * class, typed members, Player/collision headers, a typed retail factory seam,
+ * class, typed members, Player/collision headers, `return new daKpFr_c()`,
  * and compiler-owned inline lifecycle. mwcc emits one .text section per
  * ordinary definition in reverse source order; the destructor variant group
  * is emitted first as retail D1 then D0, with no D2.
@@ -52,34 +52,33 @@ typedef char daKpFrSpawnInfo_size_must_be_0x1c[
  *   [18] 0x02122104  src/_ZN8daKpFr_c8BehaviorEv.cpp
  *   [19] 0x02122124  src/_ZN8daKpFr_c13InitResourcesEv.cpp
  *   [20] 0x021221fc  src/daKpFr_c_Spawn.c
+ *
+ * deslop
+ * Leftover: dCcAc_c::Init / dBgCh_Actr::Init stay mangled (Fix12-by-value, 6az;
+ *   dBgCh Init header Fix12i mangles as int -- this TU's InitResources call).
+ *   DropShadowRadHeight, Particle::System::NewUnkCallback818 stay mangled
+ *   (Fix12-by-value, 6az -- this TU). GetFloorResult stays mangled (not in
+ *   dBgCh_Actr.h -- this TU's func_ov070_02121d50). M48 array-wrapper for
+ *   IDENTITY_MATRIX4X3 copy (nested math/Matrix.h spelling via ShadowModel.h
+ *   -- this TU). data_ov070_021236ec state table is sinit-owned BSS, not this
+ *   TU's data claim. dBgCh_Actr_UpdateContinuous_Veneer (ROM calls the veneer,
+ *   not UpdateContinuous -- this TU). (long long) smull in
+ *   func_ov070_02121d50 (MATCH addressing form). POD Fix12i[3] locals
+ *   instead of Vector3 (standalone Vector3 dtor -- this TU). Synthesized
+ *   ctor from `return new` emits vague-linkage `_ZN9Matrix4x3D1Ev` over
+ *   mMatrix (deadstrip; no ROM symbol).
  */
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 20 -- class initializer, 0x021221fc, size 0x48 */
 /* -------------------------------------------------------------------------- */
-/* Natural `new daKpFr_c` targets `_Znwm`, not the retail actor allocator.
- * Keep this one typed C-ABI construction seam at the actor-table boundary. */
-extern "C" {
-extern void *_ZN7fBase_cnwEj(u32 size);
-extern void _ZN8dActor_cC2Ev(dActor_c *actor);
-extern void _ZN11ShadowModelC1Ev(ShadowModel *shadow);
-extern void _ZN7dCcAc_cC1Ev(dCcAc_c *clsn);
-extern void _ZN10dBgCh_ActrC1Ev(dBgCh_Actr *clsn);
-extern int _ZTV8daKpFr_c[];
-
+/* The registry factory behind the KERONPA_FIRE profile.
+ * `return new daKpFr_c()` MATCHES (size 0x48); the synthesized ctor stores
+ * `_ZTV8daKpFr_c + 2`. Historical aliases: daKpFr_c_Spawn, FlameChompFire_Spawn. */
 // @symbol daKpFr_c_classInit
-daKpFr_c *daKpFr_c_classInit(void)
+extern "C" daKpFr_c *daKpFr_c_classInit(void)
 {
-    daKpFr_c *actor = (daKpFr_c *)_ZN7fBase_cnwEj(sizeof(daKpFr_c));
-    if (actor) {
-        _ZN8dActor_cC2Ev(actor);
-        *(int *)actor = (int)&_ZTV8daKpFr_c[2];
-        _ZN11ShadowModelC1Ev(&actor->mShadowModel);
-        _ZN7dCcAc_cC1Ev(&actor->mdCcAc_c);
-        _ZN10dBgCh_ActrC1Ev(&actor->mWithMeshClsn);
-    }
-    return actor;
-}
+    return new daKpFr_c();
 }
 
 /* Reconstructed source-style names: SM64DS proves the daKpFr_c RTTI identity,
@@ -103,9 +102,11 @@ extern "C" daKpFrSpawnInfo g_profile_KERONPA_FIRE = {
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKpFr_c13InitResourcesEv
 #include "decl_common.h"
-/* Array-only wrapper preserves retail's ldm/stm matrix copy in C++ mode. */
+/* Array-only wrapper preserves retail's ldm/stm matrix copy in C++ mode.
+ * Nested math/Matrix.h spelling (via ShadowModel.h) scalarizes otherwise. */
 struct M48 { int w[12]; };
 extern "C" {
+/* Fix12-by-value, 6az. dBgCh_Actr::Init header Fix12i mangles as int. */
 extern void _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(dCcAc_c*, dActor_c*, Fix12i, Fix12i, unsigned int, unsigned int);
 extern void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(dBgCh_Actr*, dActor_c*, Fix12i, Fix12i, void*, int);
 extern int IDENTITY_MATRIX4X3[];
@@ -297,6 +298,7 @@ int func_ov070_02121eb0(void *c) {
 /* ROM ordinal 7 -- func_ov070_02121e14, 0x02121e14, size 0x9c */
 /* -------------------------------------------------------------------------- */
 extern "C" {
+/* Fix12-by-value, 6az -- header method form homes the class args. */
 extern void _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(
     dActor_c *actor, ShadowModel *shadow, Matrix4x3 *matrix,
     Fix12i radius, Fix12i depth, u32 opacity);
@@ -322,7 +324,8 @@ void func_ov070_02121e14(char *raw) {
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_02121d50
 /* GetFloorResult is not declared in the shared header yet; keep only that
- * proven typed ABI seam and the exact UpdateContinuous veneer. */
+ * proven typed ABI seam. ROM calls the UpdateContinuous veneer, not the
+ * method. (long long) smull is the MATCH addressing form. */
 namespace cstd { int fdiv(int a, int b); }
 
 extern "C" void dBgCh_Actr_UpdateContinuous_Veneer(void* c);
