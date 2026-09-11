@@ -21,7 +21,8 @@ struct daSCre_c : dActor_c {
         return _ZN7fBase_cnwEj(size);
     }
 
-    /* x/y/z sit in a row on dActor_c; Spawn wants a Vector3. */
+    /* mPosX/Y/Z at 0x5c are one vector. Reference, not value:
+       Vector3-by-value emits ~Vector3 D1. */
     const Vector3 &Pos() const {
         return *reinterpret_cast<const Vector3 *>(&mPosX);
     }

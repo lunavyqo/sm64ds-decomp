@@ -11,8 +11,7 @@
  *
  * deslop
  * Leftover: Pos() is a leaf overlay of mPosX/Y/Z. dActor_c::Pos() is
- *   the shared home (#2513); this branch does not have it. A stack
- *   Vector3 DIFF'd.
+ *   #2513, not this branch.
  */
 
 #include "daSCre_c.h"
