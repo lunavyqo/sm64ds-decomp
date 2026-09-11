@@ -19,8 +19,8 @@
  *
  * deslop
  * Leftover: func_ov002_020b6c54 / func_ov002_020b6ac8 are still the
- *   linker names of daObjKurumajiku_c Init/Cleanup (the base leaves
- *   those slots pure virtual). Naming belongs in ov002.
+ *   linker names of the shared ov002 setup/teardown helpers. Naming
+ *   belongs in ov002.
  * Leftover: the BMD/KCL SharedFilePtrs and CLPS_Block are still
  *   data_ov047_*.
  */
