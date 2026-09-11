@@ -160,9 +160,9 @@ s32 daObjC0_Switch_c::CleanupResources()
  * mPosY and mPressed are the same fields InitResources touches.
  * dActor_c::FindWithActorID walks every actor of a given actorID (0x22, this
  * class's own -- SWITCH_PILLAR 34). This one no-ops if already pressed;
- * otherwise it sinks, marks itself pressed, then walks every OTHER
- * actorID-0x22 pillar looking for one already pressed, and if it finds one,
- * sets the shared group flag in data_0209caa0[2] that InitResources reads. */
+ * otherwise it sinks, marks itself pressed, then returns at the first
+ * non-this actorID-0x22 pillar and, if that one is already pressed, sets
+ * the shared group flag in data_0209caa0[2] that InitResources reads. */
 void daObjC0_Switch_c::OnGroundPounded(dActor_c &other)
 {
     if (mPressed) return;

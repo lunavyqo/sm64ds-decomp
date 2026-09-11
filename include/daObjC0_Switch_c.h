@@ -24,14 +24,14 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * The coined `SwitchPillar` spelling this class used to carry is gone; the
  * ROM's own type string is where the class name now comes from.
  *
- * Six of the 32 slots point inside ov012 -- 0, 3, 6, 9, 16, 17 and 21 -- and
+ * Seven of the 32 slots point inside ov012 -- 0, 3, 6, 9, 16, 17 and 21 -- and
  * every other slot still holds dBgActor_c's arm9 word, so nothing else is
  * overridden.
  *
  * mPressed is this pillar's own pressed state. InitResources and
  * OnGroundPounded both guard on and set it; OnGroundPounded no-ops if already
- * set, then walks every other actorID-0x22 instance and, on finding one
- * already pressed, sets a shared flag in data_0209caa0[2].
+ * set, then returns at the first non-this actorID-0x22 pillar and, if that
+ * one is already pressed, sets a shared flag in data_0209caa0[2].
  *
  * The destructor is declared LAST and INLINE on purpose. Class instantiation
  * via the factory's `new` emits the retail D1/D0 pair in cartridge order
