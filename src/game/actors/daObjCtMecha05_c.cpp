@@ -6,8 +6,8 @@
  * Leftover:
  * - dBgW_KcMbg::SetFile / DropShadowScaleXYZ / dBgActor_c::IsClsnInRange
  *   stay mangled (Fix12-by-value, 6az)
- * - func_020393d4 / func_020393a4 / func_02039394 store/load dBgW+0x1c
- *   (no setter)
+ * - func_020393d4 stores dBgW+0x18 (beforeClsnCallback); func_020393a4
+ *   stores +0x0c; func_02039394 stores +0x10 (no setter)
  * - func_ov065_0211ac0c / func_ov065_0211ad70 stay address-named
  *   (symbols.txt; naming them as methods would miss those labels)
  * - data_ov065_0211c0c8 / data_ov065_0211d26c; TTC_MovingBar_ModelFile /
@@ -31,7 +31,7 @@
  *   [5] 0x0211ad70  src/func_ov065_0211ad70.c
  *   [6] 0x0211ae08  src/_ZN16daObjCtMecha05_c8BehaviorEv.cpp
  *   [7] 0x0211b1d4  src/_ZN16daObjCtMecha05_c13InitResourcesEv.cpp
- *   [8] 0x0211b328  src/d_a_obj_ct_mecha05.cpp
+ * The factory is `return new` in this file.
  */
 
 #include "common.h"
