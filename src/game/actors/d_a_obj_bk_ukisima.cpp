@@ -5,6 +5,8 @@
  * No fields. InitResources / CleanupResources hand this overlay's
  * model and collision files to daObjKaitendai_c's shared ov002
  * helpers, plus a starting angle at data_ov015_02114794.
+ * func_ov002_020b676c types the slots as SharedFilePtr *m[2]
+ * and CLPS_Block *clps.
  *
  * daObjBk_Ukisima_c_classInit is reconstructed (RTTI daObjBk_Ukisima_c,
  * BK_UKISIMA registry). Retail does not store that spelling.
@@ -12,8 +14,7 @@
  * deslop
  * Leftover: func_ov002_020b676c / func_ov002_020b66a8 are still the
  *   linker names of daObjKaitendai_c Init/Cleanup (the base leaves
- *   those slots pure virtual). Naming belongs in ov002. That helper
- *   types the table as SharedFilePtr *m[2] and CLPS_Block *clps.
+ *   those slots pure virtual). Naming belongs in ov002.
  * Leftover: the start-angle halfword is still data_ov015_02114794.
  * Leftover: g_profile_BK_UKISIMA lives outside this TU (S14).
  */
