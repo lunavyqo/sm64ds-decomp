@@ -12,8 +12,9 @@
  *   already members; arms 0/2 stay free functions (block-scope extern "C"
  *   contradicts the file-scope region -- member form links Undefined). Do
  *   not coin names for the rest.
- * Leftover: SetAnim / dCcAc_c::Init / DropShadowRadHeight /
- *   KillByInvincibleChar stay mangled (Fix12-by-value, 6az).
+ * Leftover: SetAnim / dCcAc_c::Init / dBgCh_Actr::Init /
+ *   DropShadowRadHeight / KillByInvincibleChar stay mangled
+ *   (Fix12-by-value, 6az; dBgCh Init header Fix12i mangles as int).
  * Leftover: 0214bf64 keeps Bmb_Bf64Obj (member form fails link). common.h
  *   first (matrix copy). Player+8 param1 and Player+0xc8 belong on those
  *   classes. data_ov102_* handles. S14 no g_profile_BOMBHEI in this TU.
@@ -197,10 +198,11 @@ void  _ZN8dActor_c9UpdatePosEP5dCc_c(void *, void *);
 int   _ZNK10dBgCh_Actr10IsOnGroundEv(void *);
 int   _ZNK10dBgCh_Actr8IsOnWallEv(void *);
 
-/* dCcAc_c::Init stays scalar: it carries Fix12<int> BY VALUE, which mwccarm
-   passes differently at the call site (6az). dBgCh_Actr::Init MATCH as a
-   method. */
+/* dCcAc_c::Init and dBgCh_Actr::Init stay mangled. Header Init uses Fix12i
+   (s32 / `i`); the ROM symbols are Fix12<int> (`5Fix12IiE`). Method form
+   links Undefined (full-ROM #2571). */
 void  _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(void *, dActor_c *a, Fix12i r, Fix12i h, unsigned int d, unsigned int e);
+void  _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void *, dActor_c *a, Fix12i b, Fix12i c, Vector3_16 *d, Vector3_16 *e);
 
 /* Hoisted out of four member bodies.  A class member function may not sit in a
    block-scope linkage specification, so daBmb_c::State1/3/4/5 cannot carry their
@@ -311,7 +313,7 @@ int daBmb_c::InitResources()
     mScaleZ = 0x1000;
     mCarrier = 0;
     unk_3f2 = 0;
-    mWithMeshClsn.Init(this, 0x32000, 0x32000, 0, 0);
+    _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(&mWithMeshClsn, this, 0x32000, 0x32000, 0, 0);
     mWithMeshClsn.StartDetectingWater();
     mShouldRender = 1;
     /* dActor_c does not name 0xc8 yet -- it is padding between mClipResult and

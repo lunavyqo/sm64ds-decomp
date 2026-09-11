@@ -13,8 +13,9 @@
  * Leftover: ModelAnim::SetAnim, TextureSequence::SetFile,
  *   dCcAc_c::Init, DropShadowRadHeight stay mangled (Fix12-by-value
  *   method form size-DIFF: SetAnim 0x58->0x64, Init 0x1ac->0x1c4,
- *   DropShadow 0x100->0x110). dBgCh_Actr::Init MATCH as a method
- *   (Fix12i is s32).
+ *   DropShadow 0x100->0x110). dBgCh_Actr::Init stays mangled: header
+ *   Fix12i mangles as int; ROM is Fix12<int> (method form links
+ *   Undefined).
  * Leftover: 02111fac member form size-DIFF 0x230->0x224 (U8P
  *   increment and 0x300+0x84 spelling of mMessageId).
  * Leftover: common.h must be first. 02111d28 copies Matrix4x3 as
@@ -123,7 +124,7 @@ int daPgMthr_c::InitResources()
     mScaleX = 0x1000;
     mScaleY = 0x1000;
     mScaleZ = 0x1000;
-    mWithMeshClsn.Init(this, 0x32000, 0x32000, 0, 0);
+    _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(&mWithMeshClsn, this, 0x32000, 0x32000, 0, 0);
     Vector3 pos;
     pos.x = mPosX;
     pos.y = mPosY;
