@@ -15,16 +15,10 @@
  *   apart (a7c/a8c/a9c/aac/abc). mState is a pointer to one entry.
  * Leftover: ModelAnim::SetAnim, dCcAcPos_c::Init, DropShadowRadHeight
  *   and Player::Hurt stay mangled (Fix12-by-value, wall 6az).
- * Leftover: *(M48 *)((char *)self + 0x368) is mModelAnim.mat4x3
- *   (Model +0x1c). Matrix4x3 assignment scalarizes; the 12-word
- *   overlay is load-bearing, same as mShadowMat.
- * Leftover: 02111830 uses mModelAnim.Finished()/currFrame; 02111620
- *   still walks +0x39c / +0x3a4 -- method form size-DIFF there.
- * Leftover: ClosestPlayer is spelled three ways. Behavior uses the
- *   method; 02111350 uses self->ClosestPlayer(); 02111254 / 02111620
- *   still call the C wrapper and walk Player through 0x5c / 0x644 /
- *   0x706 (method form size-DIFF those two). mStateTimer compares
- *   stay unsigned short (ldrh); a signed field load DIFFs.
+ *   dBgCh_Actr::Init stays mangled: header Fix12i mangles as int;
+ *   ROM is Fix12<int> (method form links Undefined).
+ * Leftover: common.h must be first. Nested Matrix.h spelling
+ *   scalarizes the 12-word mat4x3 / mShadowMat copies.
  * Leftover: decl_common.h is here because 02113a48 / 02113a50 /
  *   02113a8c are extern int there, so BMD/BCA handles are int[]
  *   punned to SharedFilePtr and 02113a8c takes an &.
@@ -33,11 +27,11 @@
  * Leftover: data_0209f32c is water height; particle/sound helpers
  *   func_02022c80 / 02022d00 / 02012694 / func_ov002_020c5cd8.
  * Leftover: gotos, dead-store in[2] pairs, and register-named
- *   locals (r5, s3b0, v1/v2) are load-bearing S8/S15.
+ *   locals (r5, v1/v2) are load-bearing S8/S15.
  */
 
-#include "daBakubaku_c.h"
 #include "common.h"
+#include "daBakubaku_c.h"
 #include "types.h"
 #include "decl_common.h"
 #include "dCc_c.h"
@@ -62,8 +56,6 @@ struct BakubakuSpawnInfo {
 typedef char BakubakuSpawnInfo_size_must_be_0x1c[
     sizeof(BakubakuSpawnInfo) == 0x1c ? 1 : -1];
 
-typedef struct { int w[12]; } M48;
-
 extern "C" {
 extern int data_ov032_02113a40[];
 extern int data_ov032_02113abc[];
@@ -83,7 +75,6 @@ void func_ov032_021113fc(daBakubaku_c *self);
 int func_ov032_02111ff4(void *self, void *state);
 void func_ov032_02112044(daBakubaku_c *self);
 
-char *_ZN8dActor_c13ClosestPlayerEv(char *c);
 int Vec3_HorzDist(const Vector3 *a, const Vector3 *b);
 int AngleDiff(int a, int b);
 s16 Vec3_HorzAngle(const Vector3 *a, const Vector3 *b);
@@ -98,7 +89,6 @@ void Matrix4x3_FromRotationY(void *m, s16 angY);
 void Matrix4x3_ApplyInPlaceToRotationX(void *m, s16 angX);
 void MulVec3Mat4x3(void *in, void *m, void *out);
 
-int _ZN9Animation8FinishedEv(void *self);
 void _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(
     void *self, void *bca, int a, int fix, unsigned int b);
 void _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(
@@ -205,7 +195,7 @@ s32 daBakubaku_c::Behavior()
     UpdateWMClsn(mWithMeshClsn, 0);
     func_ov032_02112044(this);
 
-    if (mState != (void *)data_ov032_02113aac) {
+    if (mState != data_ov032_02113aac) {
         mModelAnim.speed = 0x1000;
     } else {
         mModelAnim.speed = 0x2000;
@@ -258,11 +248,11 @@ extern "C" void func_ov032_02112044(daBakubaku_c *self)
     Matrix4x3_FromTranslation(data_020a0e68, v.x, v.y, v.z);
     Matrix4x3_ApplyInPlaceToRotationXYZExt(
         data_020a0e68, self->mAngleX, self->mAngleY, self->mAngleZ);
-    *(M48 *)((char *)self + 0x368) = *(M48 *)data_020a0e68;
+    self->mModelAnim.mat4x3 = *(Matrix4x3 *)data_020a0e68;
     Matrix4x3_FromTranslation(
         data_020a0e68, self->mPosX >> 3,
         (self->mPosY - 0x5a000) >> 3, self->mPosZ >> 3);
-    *(M48 *)self->mShadowMat = *(M48 *)data_020a0e68;
+    *(Matrix4x3 *)self->mShadowMat = *(Matrix4x3 *)data_020a0e68;
     _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(
         self, &self->mShadowModel, self->mShadowMat, 0xfa000, 0x258000, 0xf);
 }
@@ -274,12 +264,12 @@ struct SC { char pad[0x3b0]; SPMF *pp; };
 // @symbol func_ov032_02111ff4
 extern "C" int func_ov032_02111ff4(void *cv, void *pv)
 {
-    SC *c = (SC *)cv;
+    daBakubaku_c *c = (daBakubaku_c *)cv;
     SPMF *p = (SPMF *)pv;
-    c->pp = p;
-    SPMF *q = c->pp;
+    c->mState = p;
+    SPMF *q = (SPMF *)c->mState;
     if (*q == 0) return 1;
-    return (c->**q)();
+    return (((SC *)c)->*(*q))();
 }
 
 /* Wander-enter: random yaw and state timer. */
@@ -331,6 +321,7 @@ extern "C" int func_ov032_02111e24(daBakubaku_c *self)
         func_ov032_02111ff4(self, data_ov032_02113aac);
         return 1;
     }
+    /* Measured: signed mStateTimer load DIFFs 1 word (ldrh vs ldrsh). */
     if (*(unsigned short *)&self->mStateTimer == 0) {
         unsigned int r = (unsigned int)RandomIntInternal(data_0209e650);
         if (((r >> 8) & 3) == 0) {
@@ -363,6 +354,7 @@ extern "C" int func_ov032_02111d7c(daBakubaku_c *self)
         func_ov032_02111ff4(self, data_ov032_02113aac);
         return 1;
     }
+    /* Measured: signed mStateTimer load DIFFs 1 word (ldrh vs ldrsh). */
     if (*(unsigned short *)&self->mStateTimer == 0)
         func_ov032_02111ff4(self, &data_ov032_02113a8c);
     return 1;
@@ -382,6 +374,7 @@ extern "C" int func_ov032_02111d58(daBakubaku_c *self)
 // @symbol func_ov032_02111b9c
 extern "C" int func_ov032_02111b9c(daBakubaku_c *self)
 {
+    /* Measured: signed mStateTimer load DIFFs 1 word (ldrh vs ldrsh). */
     if (*(unsigned short *)&self->mStateTimer != 0) {
         if (func_ov032_02111350(self) == 1) goto init;
         if (func_ov032_02111254(self) != 0) goto track;
@@ -559,10 +552,7 @@ extern "C" int func_ov032_02111814(daBakubaku_c *self)
 // @symbol func_ov032_02111620
 extern "C" int func_ov032_02111620(daBakubaku_c *self)
 {
-    unsigned char *c = (unsigned char *)self;
-    unsigned char *r5;
-
-    r5 = (unsigned char *)_ZN8dActor_c13ClosestPlayerEv((char *)c);
+    Player *r5 = self->ClosestPlayer();
     if (r5 == 0)
         return 1;
 
@@ -595,7 +585,7 @@ matrixblock:
 afterblock: ;
 
     if (self->mLungePhase == 0) {
-        if (_ZN9Animation8FinishedEv((char *)self + 0x39c) == 0)
+        if (self->mModelAnim.Finished() == 0)
             goto player_path;
     }
 
@@ -618,7 +608,7 @@ player_path:
     {
         int vec[3];
         unsigned int n;
-        int *p = (int *)(r5 + 0x5c);
+        int *p = (int *)&r5->mPosX;
         vec[0] = p[0];
         vec[1] = p[1];
         vec[2] = p[2];
@@ -630,7 +620,7 @@ player_path:
                 Vec3_VertAngle((const Vector3 *)&self->mPosX, (const Vector3 *)vec),
                 0x200);
         }
-        n = (unsigned int)(*(int *)((char *)self + 0x3a4) << 4) >> 0x10;
+        n = (unsigned int)(self->mModelAnim.currFrame << 4) >> 0x10;
         if (n > 0x14 && n < 0x3c)
             self->mMouthOpen = 1;
         else
@@ -694,9 +684,8 @@ extern "C" void func_ov032_021113fc(daBakubaku_c *self)
         return;
     }
 
-    int *s3b0 = (int *)self->mState;
-    if (s3b0 == data_ov032_02113abc) return;
-    if (s3b0 == data_ov032_02113a7c) return;
+    if (self->mState == data_ov032_02113abc) return;
+    if (self->mState == data_ov032_02113a7c) return;
 
     Vector3 hv;
     hv.x = self->mPosX;
@@ -717,7 +706,7 @@ extern "C" int func_ov032_02111350(daBakubaku_c *self)
             (struct Vector3 *)&self->mSpawnPosX,
             (struct Vector3 *)&self->mPosX) > 0x4b0000)
         return 1;
-    if ((char *)self->mState != (char *)data_ov032_02113abc) {
+    if (self->mState != data_ov032_02113abc) {
         if (data_0209f32c[0] < self->mPosY) return 1;
     }
     return 0;
@@ -727,22 +716,22 @@ extern "C" int func_ov032_02111350(daBakubaku_c *self)
 // @symbol func_ov032_02111254
 extern "C" int func_ov032_02111254(daBakubaku_c *self)
 {
-    char *pl = (char *)_ZN8dActor_c13ClosestPlayerEv((char *)self);
+    Player *pl = self->ClosestPlayer();
     int *s;
-    int *t;
+    void *t;
     int d;
-    if (pl == 0 || *(unsigned short *)&self->mChaseCooldown != 0)
+    if (pl == 0 || self->mChaseCooldown != 0)
         return 0;
-    s = (int *)(pl + 0x5c);
+    s = (int *)&pl->mPosX;
     self->mTargetPosX = s[0];
     self->mTargetPosY = s[1];
     self->mTargetPosZ = s[2];
-    t = (int *)self->mState;
+    t = self->mState;
     if (t != data_ov032_02113abc && t != data_ov032_02113a7c) {
-        if (*(unsigned char *)(pl + 0x706) == 0)
+        if (pl->mIsUnderwater == 0)
             return 0;
     }
-    d = *(int *)(pl + 0x644) - data_0209f32c[0];
+    d = pl->mGroundY - data_0209f32c[0];
     if (d < 0) d = -d;
     if (d < 0xb4000)
         return 0;

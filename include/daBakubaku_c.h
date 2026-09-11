@@ -25,7 +25,7 @@ struct daBakubaku_c : dEnemyBase_c {
        completing the pointed-to class as daBakubaku_c makes mwccarm ICE. */
     void                      *mState;          /* 0x3b0 */
     ShadowModel                mShadowModel;    /* 0x3b4 */
-    s32                        mShadowMat[12];  /* 0x3dc -- DropShadow source; assignment of Matrix4x3 scalarizes */
+    s32                        mShadowMat[12];  /* 0x3dc -- DropShadow source */
     s32                        mSpawnPosX;      /* 0x40c */
     s32                        mSpawnPosY;      /* 0x410 */
     s32                        mSpawnPosZ;      /* 0x414 */
