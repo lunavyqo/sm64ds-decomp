@@ -1,28 +1,42 @@
 //cpp
 /* Production translation unit for ov065/daObjCtMecha04_c.
  *
- * mwccarm emits ordinary functions in reverse source order, so the nine
+ * deslop
+ *
+ * Leftover:
+ * - TextureTransformer::SetFile / dBgW_KcMbg::SetFile / DropShadowScaleXYZ /
+ *   dBgActor_c::IsClsnInRange stay mangled (Fix12-by-value, 6az)
+ * - func_020393c4 / func_020393bc store/load dBgW+0x1c (no setter)
+ * - Sound::PlayLong TU-local mangled (Sound.h has PlayBank3 only)
+ * - data_ov065_* handles; this TU is text-only (S14 no g_profile_CT_MECHA04*)
+ * - SharedFilePtr +4 BMD (Prepare; header has no fields)
+ * - common.h first (UpdateShadow mShadowMat.m[9..11] needs the flat 12-word spelling)
+ * - return new emits homeless _ZN10dBgActor_cD2Ev; compiler-only policy deadstrips it
+ *
+ * mwccarm emits ordinary functions in reverse source order, so the eleven
  * definitions below intentionally run from the highest retail address back
- * toward the compiler-owned destructor group.
+ * toward the compiler-owned destructor group. Keep the factories first.
  *
  * UpdateShadow, MoveActorOnBelt, and AfterClsnCallback are descriptive
  * reconstructions. The member/static forms and parameter spellings of the
  * latter two are also inferred; the manifest records the evidence boundary.
  *
  * Superseded one-function sources (ROM address order):
- *   [0] 0x0211a494  src/_ZN16daObjCtMecha04_cD1Ev.cpp
- *   [1] 0x0211a4e8  src/_ZN16daObjCtMecha04_cD0Ev.cpp
- *   [2] 0x0211a550  src/_ZN16daObjCtMecha04_c12UpdateShadowEv.cpp
- *   [3] 0x0211a638  src/_ZN16daObjCtMecha04_c16CleanupResourcesEv.cpp
- *   [4] 0x0211a69c  src/_ZN16daObjCtMecha04_c6RenderEv.cpp
- *   [5] 0x0211a6d0  src/_ZN16daObjCtMecha04_c8BehaviorEv.cpp
- *   [6] 0x0211a870  src/_ZN16daObjCtMecha04_c13InitResourcesEv.cpp
- *   [7] 0x0211aa38  src/_ZN16daObjCtMecha04_c15MoveActorOnBeltER8dActor_c.cpp
- *   [8] 0x0211aacc  src/_ZN16daObjCtMecha04_c17AfterClsnCallbackEP4dBgWP8dActor_cS3_.cpp
+ *   [0]  0x0211a494  src/_ZN16daObjCtMecha04_cD1Ev.cpp
+ *   [1]  0x0211a4e8  src/_ZN16daObjCtMecha04_cD0Ev.cpp
+ *   [2]  0x0211a550  src/_ZN16daObjCtMecha04_c12UpdateShadowEv.cpp
+ *   [3]  0x0211a638  src/_ZN16daObjCtMecha04_c16CleanupResourcesEv.cpp
+ *   [4]  0x0211a69c  src/_ZN16daObjCtMecha04_c6RenderEv.cpp
+ *   [5]  0x0211a6d0  src/_ZN16daObjCtMecha04_c8BehaviorEv.cpp
+ *   [6]  0x0211a870  src/_ZN16daObjCtMecha04_c13InitResourcesEv.cpp
+ *   [7]  0x0211aa38  src/_ZN16daObjCtMecha04_c15MoveActorOnBeltER8dActor_c.cpp
+ *   [8]  0x0211aacc  src/_ZN16daObjCtMecha04_c17AfterClsnCallbackEP4dBgWP8dActor_cS3_.cpp
+ *   [9]  0x0211aae0  src/d_a_obj_ct_mecha04_ct_mecha04l.cpp
+ *   [10] 0x0211ab20  src/d_a_obj_ct_mecha04_ct_mecha04s.cpp
  */
 
+#include "common.h"
 #include "daObjCtMecha04_c.h"
-#include "decl_common.h"
 #include "SharedFilePtr.h"
 #include "dBgW.h"
 #include "types.h"
@@ -36,6 +50,8 @@ struct Entry3 {
     void *c;
 };
 
+int ApproachLinear(int &r, int t, int step);
+
 /* Fix12-by-value calls retain their measured raw ABI declarations. Natural
  * class-typed declarations make mwccarm home arguments absent from retail. */
 extern "C" {
@@ -43,12 +59,13 @@ extern void Matrix4x3_FromRotationY(Matrix4x3 *matrix, s16 angle);
 extern void _ZN8dActor_c18DropShadowScaleXYZER11ShadowModelR9Matrix4x35Fix12IiES5_S5_j(
     dActor_c *actor, ShadowModel *shadow, Matrix4x3 *matrix,
     int scaleX, int scaleY, int scaleZ, u32 opacity);
+extern char data_ov065_0211d16c[];
 extern char data_ov065_0211d194[];
 extern char data_ov065_0211d198[];
 extern char data_ov065_0211d19c[];
 extern void func_020393c4(void *p, void *v);
+extern int func_020393bc(int *p);
 extern int _ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_(void *self, int a, int b);
-extern int _Z14ApproachLinearRiii(int *r, int t, int step);
 extern u16 DecIfAbove0_Short(u16 *p);
 extern int RandomIntInternal(int *seed);
 extern void *_ZN5Sound8PlayLongEjjjRK7Vector3s(
@@ -63,6 +80,24 @@ extern void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Bloc
     void *, KCL_File *f, const Matrix4x3 &m, int fix, short sh,
     CLPS_Block &b);
 extern s16 data_02082214[];
+}
+
+/* -------------------------------------------------------------------------- */
+/* ROM ordinal 10 -- daObjCtMecha04_c_classInit_CT_MECHA04S, 0x0211ab20, size 0x40 */
+/* -------------------------------------------------------------------------- */
+// @symbol daObjCtMecha04_c_classInit_CT_MECHA04S
+extern "C" daObjCtMecha04_c *daObjCtMecha04_c_classInit_CT_MECHA04S()
+{
+    return new daObjCtMecha04_c();
+}
+
+/* -------------------------------------------------------------------------- */
+/* ROM ordinal 9 -- daObjCtMecha04_c_classInit_CT_MECHA04L, 0x0211aae0, size 0x40 */
+/* -------------------------------------------------------------------------- */
+// @symbol daObjCtMecha04_c_classInit_CT_MECHA04L
+extern "C" daObjCtMecha04_c *daObjCtMecha04_c_classInit_CT_MECHA04L()
+{
+    return new daObjCtMecha04_c();
 }
 
 /* -------------------------------------------------------------------------- */
@@ -140,7 +175,7 @@ int daObjCtMecha04_c::InitResources()
         *(BTA_File *)animationFiles[variant]);
 
     _ZN18TextureTransformer7SetFileER8BTA_Filei5Fix12IiEj(
-        (TextureTransformer *)((char *)&mTextureTransformer),
+        &mTextureTransformer,
         *(BTA_File *)animationFiles[mVariant], 0, 0x1000, 0);
 
     UpdateModelPosAndRotY();
@@ -191,15 +226,14 @@ int daObjCtMecha04_c::Behavior()
         _ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_(this, 0, 0);
     } else {
         if (((mFlags & 8) ? 1 : 0) == 0) {
-            if (func_020393bc((int *)((char *)&mMeshCollider)) == 0) {
+            if (func_020393bc((int *)&mMeshCollider) == 0) {
                 func_020393c4(&mMeshCollider,
                               (void *)&daObjCtMecha04_c::AfterClsnCallback);
             }
 
             if (data_0209f2c0 == 2) {
-                if (_Z14ApproachLinearRiii(
-                        (int *)((char *)&mBeltSpeed), mTargetBeltSpeed, 0xcc) != 0
-                    && DecIfAbove0_Short((u16 *)((char *)&mDirectionTimer)) == 0) {
+                if (ApproachLinear(mBeltSpeed, mTargetBeltSpeed, 0xcc) != 0
+                    && DecIfAbove0_Short((u16 *)&mDirectionTimer) == 0) {
                     unsigned int randomValue = (u16)(
                         (unsigned int)RandomIntInternal(&data_0209e650) >> 0x10);
                     mDirectionTimer = (s16)(((int)randomValue % 7) * 0x14 + 0xa);
