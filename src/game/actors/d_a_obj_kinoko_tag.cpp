@@ -23,8 +23,7 @@
  *   dActor_c campaign, not this leaf).
  * - data_ov002_0210da30 is the ov002 SharedFilePtr handle; symbols.txt has
  *   no recovered name, so it is not coined. SharedFilePtr.h has no fields.
- * - mushroom backlink at external-object offset 0x32c (actor ID 0x1b);
- *   no trustworthy real header for that actor exists on this base.
+ * - PILE / Stump.h +0x32c backlink (actor ID 0x1b).
  * - Vec3_Dist: no shared header this TU can take without a campaign.
  * - no Player.h / Camera.h.
  * - leaf operator new until #2570.
@@ -127,24 +126,22 @@ s32 daObjKinokoTag_c::InitResources()
 s32 daObjKinokoTag_c::Behavior()
 {
     dActor_c *other;
-    s32 isCreateTag = (s32)(actorID == 0x140);
-    if (isCreateTag) {
-        if (!mSearchedForMushroom) {
+    s32 isKinokoTag = (s32)(actorID == 0x140);
+    if (isKinokoTag) {
+        if (!mSearchedForPile) {
             other = FindWithActorID(0x1b, 0);
             while (other != 0) {
                 if (Vec3_Dist((Vector3 *)&mPosX,
                               (Vector3 *)&other->mPosX) < 0x96000) {
-                    mHasLinkedMushroom = 1;
-                    /* The mushroom class header is not trustworthy on this
-                     * base. Keep its independently witnessed backlink at
-                     * external-object offset 0x32c as the narrow seam. */
+                    mHasLinkedPile = 1;
+                    /* PILE / Stump.h +0x32c */
                     *(dActor_c **)((u8 *)other + 0x32c) = this;
-                    mSearchedForMushroom = 1;
+                    mSearchedForPile = 1;
                     return 1;
                 }
                 other = FindWithActorID(0x1b, other);
             }
-            mSearchedForMushroom = 1;
+            mSearchedForPile = 1;
         }
     }
 
@@ -160,10 +157,10 @@ s32 daObjKinokoTag_c::Behavior()
             MarkForDestruction();
     }
 
-    isCreateTag = (s32)(actorID == 0x140);
-    if (isCreateTag) {
-        if (mHasLinkedMushroom == 1) {
-            if (mLinkedMushroomGone)
+    isKinokoTag = (s32)(actorID == 0x140);
+    if (isKinokoTag) {
+        if (mHasLinkedPile == 1) {
+            if (mLinkedPileGone)
                 SpawnMegaMushroom();
         } else {
             TrySpawnMegaMushroom();

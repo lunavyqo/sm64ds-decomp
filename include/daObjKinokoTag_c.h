@@ -19,14 +19,14 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * operator new. Both construct dCcAc_c at 0x0d4; D1 tears it down before
  * ~dActor_c. dActor_c ends at 0x0d0; pad_0d0 is the 4-byte gap before
  * mMovingCylinderClsn. 0xd4 + 0x34 = 0x108, and 0x108..0x110 is this
- * class's POD. The 3-byte alignment after mLinkedMushroomGone is implicit.
+ * class's POD. The 3-byte alignment after mLinkedPileGone is implicit.
  *
  * The 31-slot table has the same extent as dActor_c and overrides only
  * InitResources (0), CleanupResources (3), Behavior (6), and the D1/D0
  * pair (16/17). Behavior establishes the five bytes after the collider.
  * The backlink consumer at ov091 0x02133498 is the independent witness
- * for mLinkedMushroomGone: when its linked actor is this tag kind
- * (actor ID 0x140), it writes that byte before the tag respawns the mushroom.
+ * for mLinkedPileGone: PILE (Stump, actor 0x1b) writes that byte when its
+ * linked actor is KINOKO_TAG (0x140), before the tag respawns the mushroom.
  *
  * Both factories belong to this TU. A single daObjKinokoTag_c_classInit
  * spelling would collide, so the profile-qualified C ABI aliases remain. */
@@ -34,11 +34,11 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
 struct daObjKinokoTag_c : dActor_c {
     u8       pad_0d0[0x4];
     dCcAc_c  mMovingCylinderClsn; /* 0x0d4 */
-    u8       mHasLinkedMushroom;   /* 0x0108 */
+    u8       mHasLinkedPile;       /* 0x0108 */
     u8       mGroupId;             /* 0x0109 */
     u8       mHasMatchingTag;      /* 0x010a */
-    u8       mSearchedForMushroom; /* 0x010b */
-    u8       mLinkedMushroomGone;  /* 0x010c */
+    u8       mSearchedForPile;     /* 0x010b */
+    u8       mLinkedPileGone;      /* 0x010c */
 
     /* InitResources is the first out-of-line virtual/key function. Together
      * with this inline destructor, mwccarm owns the retail D1/D0 pair and the
