@@ -6,21 +6,20 @@
  * model and collision files to daObjKaitendai_c's shared ov002
  * helpers. Start angle is data_ov047_02112320, or
  * data_ov047_02112324 when param1's low byte is 1.
+ * func_ov002_020b676c loads slot 0 with Model::LoadFile, slot 1 with
+ * dBgW_Kc::LoadFile, slot 2 as CLPS into SetFile. ov047 sinit
+ * constructs those SharedFilePtrs as file IDs 1661 / 1662.
  *
  * The three-word file table is defined in this TU. Retail .data
- * order is descriptor, type-name, profile, vtable.
- * func_ov002_020b676c types the slots as
- * SharedFilePtr *m[2] and CLPS_Block *clps. ov047 sinit constructs
- * those SharedFilePtrs as file IDs 1661 / 1662.
+ * order is typeinfo, descriptor, type-name, profile, vtable.
  *
  * daObjKm3_Kaitendai_c_classInit is reconstructed (RTTI
  * daObjKm3_Kaitendai_c, KM3_KAITENDAI registry). Retail does not
  * store that spelling.
  *
  * deslop
- * Leftover: func_ov002_020b676c / func_ov002_020b66a8 are still the
- *   linker names of daObjKaitendai_c Init/Cleanup (the base leaves
- *   those slots pure virtual). Naming belongs in ov002.
+ * Leftover: func_ov002_020b676c / func_ov002_020b66a8 are still
+ *   linker names. Naming belongs in ov002.
  * Leftover: the BMD/KCL SharedFilePtrs and CLPS_Block are still
  *   data_ov047_*. The two start-angle halfwords 02112320 / 02112324
  *   sit 8 bytes before this TU's claimed .data (typeinfo at
@@ -33,7 +32,7 @@ struct CLPS_Block;
 
 struct ResourceDescriptor {
     SharedFilePtr *model;
-    SharedFilePtr *collision;
+    SharedFilePtr *kcl;
     CLPS_Block *clps;
 };
 typedef char ResourceDescriptor_size_must_be_0x0c[
@@ -45,7 +44,7 @@ extern SharedFilePtr data_ov047_02112608;
 extern CLPS_Block data_ov047_02111bf4;
 }
 
-/* Retail data order: this descriptor, then type name, profile, vtable. */
+/* Defined here because this TU owns the descriptor in overlay .data. */
 extern "C" ResourceDescriptor data_ov047_02112334 = {
     &data_ov047_02112610,
     &data_ov047_02112608,
@@ -55,9 +54,9 @@ extern "C" ResourceDescriptor data_ov047_02112334 = {
 #include "daObjKm3_Kaitendai_c.h"
 
 extern "C" {
-int func_ov002_020b676c(daObjKm3_Kaitendai_c *self, ResourceDescriptor *descriptor,
+s32 func_ov002_020b676c(daObjKm3_Kaitendai_c *self, ResourceDescriptor *descriptor,
                         s16 angle);
-int func_ov002_020b66a8(daObjKm3_Kaitendai_c *self, ResourceDescriptor *descriptor);
+s32 func_ov002_020b66a8(daObjKm3_Kaitendai_c *self, ResourceDescriptor *descriptor);
 extern s16 data_ov047_02112320;
 extern s16 data_ov047_02112324;
 }

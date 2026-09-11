@@ -7,12 +7,12 @@
 extern "C" void *_ZN7fBase_cnwEj(unsigned size);
 
 /**
- * Bowser in the Sky's spinning disc. No fields of its own: the
- * factory allocates 0x320 = sizeof(dBgActor_c), which
- * daObjKaitendai_c fills. Overrides the two slots the base leaves
- * null (InitResources, CleanupResources) and hands this overlay's
- * model/collision descriptor to the shared ov002 helpers. Start
- * angle is one of two statics, chosen by param1.
+ * Bowser in the Sky's spinning disc. No fields of its own:
+ * sizeof(daObjKm3_Kaitendai_c) == 0x320 == sizeof(dBgActor_c).
+ * Overrides the two slots the base leaves null (InitResources,
+ * CleanupResources) and hands this overlay's model/collision
+ * descriptor to the shared ov002 helpers. Start angle is one of two
+ * statics, chosen by param1's low byte.
  *
  * `daObjKm3_Kaitendai_c` is the RTTI name.
  */
