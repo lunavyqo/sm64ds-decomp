@@ -93,8 +93,9 @@
  * - dBgCh_Actr::Init / dCcAc_c::Init / DropShadowRadHeight / ReflectAngle 6az
  *   (Fix12i mangles as i; ROM is Fix12<int> -- method form Undefined)
  * - Particle::System::New / NewSimple: no method declaration in include/
- * - Player::Heal / GiveCoins / player +0x6d8/+0x706: no Player.h
  * - Behavior 0x100: named ++mStateTimer size-DIFF vs unsigned-short launder
+ *   (0x38c stays unk_38c: naming it mStateTimer shadowed dEnemyBase_c::mStateTimer
+ *   at 0x100. Distinct field; this leftover is the 0x100 u16 launder.)
  * - struct C PMF stand-in (mwccarm PMF representation depends on the class)
  * - SharedFilePtr has no recovered fields; handles stay data_ov002_*
  * - decl_common.h stays out (3 of 11 declarations disagree with MATCH bodies)
@@ -107,6 +108,7 @@
 #include "da1up_c.h"
 #include "dBgCh_Actr.h"
 #include "dBgCh_Gnd.h"
+#include "Player.h"
 #include "Sound.h"
 #include "SharedFilePtr.h"
 
