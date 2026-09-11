@@ -144,9 +144,8 @@ int daObjIceBoard_c::CleanupResources()
 // @symbol _ZN15daObjIceBoard_c15OnGroundPoundedER8dActor_c
 /* daObjIceBoard_c::OnGroundPounded -- vtable slot 21, ov018 0x021128e0.
  *
- * param1 is fBase_c's own field. The trailing unqualified Kill() reaches this
- * class's own slot-31 override through the vtable. kind 2 is the ground-pound
- * actor kind that triggers the sheet's own Kill. */
+ * param1 is the player's character id; 2 is Wario. The trailing unqualified
+ * Kill() reaches this class's own slot-31 override through the vtable. */
 void daObjIceBoard_c::OnGroundPounded(dActor_c &other)
 {
     if (&other == 0) return;
