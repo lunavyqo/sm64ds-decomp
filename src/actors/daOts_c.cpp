@@ -1,11 +1,12 @@
 //cpp
 /* daOts_c -- shared base of the three Bully variants (BULLY 215 / BIG_BULLY 216
- * / ICE_DONKETU), ov064 0x02115ee0..0x02116d1c.
+ * / CHILL_BULLY 217 (debug ICE_DONKETU)), ov064 0x02115ee0..0x02116d1c.
  *
  * ov064 is mixed (treasure chest, metal net lift, LLL tilting platform, Bowser
  * puzzle, rotating firebar, lava bubble, bully, water ring, jet stream, clam).
  * RTTI names this class daOts_c; overlay_actors maps the three children to
- * BULLY / BIG_BULLY / ICE_DONKETU. Ugly RTTI name is final.
+ * BULLY 215 / BIG_BULLY 216 / CHILL_BULLY 217 (debug ICE_DONKETU). Ugly RTTI
+ * name is final.
  *
  * One translation unit, twenty-two functions, the way the cartridge's own build
  * had it. This replaces twenty-two one-function shards; their content is
@@ -77,7 +78,6 @@
  * - 0x398..0x3f9 stay children's padding (annexing would shrink Bully /
  *   BigBully / daIDonketu_c pads; out of this TU). Helpers reach them as
  *   offset soup.
- * - Player +0x6f9 / +0x6fb via char* (no Player.h).
  * - func_ov064_* helpers keep cartridge addresses (no identifiers).
  * - daOts_c.h first: nested Matrix4x3 for mModelAnim.mat4x3.t (02116bac).
  *   common.h's flat m[12] would stand down if it came first.
@@ -103,12 +103,13 @@
 
 /* The resource block mFileTable points at. CleanupResources releases files[0..4];
  * SetAnim loads the BCA at each SharedFilePtr +4; OnAimedAtWithEgg reads
- * eggAimSpeed; 02115f98 / 021165d8 / 0211616c read the rest. */
+ * eggAimHeight (slot-29 return, added to pos.y); 02115f98 / 021165d8 / 0211616c
+ * read the rest. */
 struct BullyResourceConfig {
     SharedFilePtr *files[5];    /* +0x00 */
     s32 knockbackScale;         /* +0x14 */
     u8 pad_18[0xc];
-    Fix12i eggAimSpeed;         /* +0x24 */
+    Fix12i eggAimHeight;        /* +0x24 */
     s32 unk_28;
     s32 cliffDown;              /* +0x2c */
     u32 particleId;             /* +0x30 */
@@ -288,7 +289,7 @@ extern "C" void func_ov064_02116754(daOts_c* self)
             v[0] = 0x2000;
             v[1] = 0;
             v[2] = 0;
-            _ZN12dEnemyBase_c20KillByInvincibleCharERK10Vector3_16R6Player5Fix12IiE(self, v, r4, ((BullyResourceConfig *)self->mFileTable)->eggAimSpeed);
+            _ZN12dEnemyBase_c20KillByInvincibleCharERK10Vector3_16R6Player5Fix12IiE(self, v, r4, ((BullyResourceConfig *)self->mFileTable)->eggAimHeight);
             self->PlayHitSound();
             return;
         }
@@ -708,11 +709,11 @@ void func_ov064_02115f98(daOts_c* a0, char* a1)
 int daOts_c::OnAimedAtWithEgg()
 {
     BullyResourceConfig *config = (BullyResourceConfig *)mFileTable;
-    Fix12i aimSpeed = 0x14000;
+    Fix12i aimHeight = 0x14000;
     if (config != 0)
-        aimSpeed = config->eggAimSpeed;
+        aimHeight = config->eggAimHeight;
 
-    return aimSpeed;
+    return aimHeight;
 }
 
 /* -------------------------------------------------------------------------- */

@@ -86,12 +86,13 @@
 struct daOts_c : dEnemyBase_c {
     ModelAnim           mModelAnim;             /* 0x110 */
     dBgCh_Actr        mWithMeshClsn;          /* 0x174 */
-    /* All three children declare a field here, which is what makes it the base's
-       rather than any one of theirs. Bully is the only one that says what it is,
-       and says it twice: InitResources points it at data_ov064_0211b834, and
-       CleanupResources releases five SharedFilePtrs through it. BigBully's own
-       header called it a u8; two of the three call it a word, and the use above
-       is a pointer, so a word it is. */
+    /* Pointer to a per-variant config block (this TU casts it 16 times). All
+       three children declare a field here, which is what makes it the base's
+       rather than any one of theirs. Bully::InitResources points it at
+       data_ov064_0211b834; daOts_c::CleanupResources (inherited by Bully)
+       releases five SharedFilePtrs through it. BigBully's own header called it
+       a u8; two of the three call it a word, and the use above is a pointer, so
+       a word it is. */
     s32                 mFileTable;             /* 0x330 */
     /* Particle::System::New unique ids. func_ov064_0211616c stores both; the
        eight bytes were pad_334 while untyped. */
