@@ -9,8 +9,8 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * Wet-Dry World's square floating board.
  *
  * A daObjFloatBoard_c leaf: no fields of its own. InitResources loads
- * this stage's files, then drops the board onto the water (or the first
- * hit under it).
+ * WC_OBJ01's model/KCL/CLPS, then drops the board onto the water (or
+ * the first hit under it).
  */
 
 #ifdef __cplusplus
@@ -22,11 +22,6 @@ struct daObjWcObj01_c : daObjFloatBoard_c {
 
     static void *operator new(unsigned long size);
     virtual ~daObjWcObj01_c() {}
-
-    /* Rest pose after the water drop. Y is the water height. */
-    Vector3 &RestPos() {
-        return *reinterpret_cast<Vector3 *>((char *)this + 0x320);
-    }
 };
 
 inline void *daObjWcObj01_c::operator new(unsigned long size)

@@ -10,17 +10,15 @@
  * WC_OBJ01 registry). Retail does not store that spelling.
  *
  * deslop
- * Leftover: func_ov002_020b5e58 is still the linker name of
- *   daObjFloatBoard_c Init (slot 0 is pure virtual on the base).
- *   Naming belongs in ov002. That helper loads **(SharedFilePtr**)fp,
- *   fp+4, fp+8 as model/KCL/CLPS.
+ * Leftover: func_ov002_020b5e58 is still the linker name. It is the
+ *   shared float-board file-load helper in ov002, not this class's
+ *   InitResources (slot 0 is pure virtual on the base). Naming
+ *   belongs in ov002. That helper loads **(SharedFilePtr**)fp, fp+4,
+ *   fp+8 as model/KCL/CLPS.
  * Leftover: GetClsnPos is still the mangled call (Vector3-by-value
  *   return emits D1). startEnd is two Vector3 copies flattened
  *   (start = pos; end = pos; start.y += 20; end.y = waterY); the
  *   extra stores are decompiler dead stores, not an int[6] type.
- * Leftover: RestPos() overlays 0x320. The shared Init helper already
- *   stores pos there as three ints; daObjFloatBoard_c still calls
- *   that gap pad_320 (it overlaps the documented mWaterY at 0x324).
  * Leftover: g_profile_WC_OBJ01 is ov029 data outside this TU (S14).
  */
 
@@ -84,9 +82,10 @@ int daObjWcObj01_c::InitResources()
                 mPosY = hit[1];
             }
         }
-        RestPos().x = mPosX;
-        RestPos().y = mPosY;
-        RestPos().z = mPosZ;
+        /* pad_320 lives in dBgActor_c tail padding at 0x31e, not here. */
+        *(int *)((char *)this + 0x320) = mPosX;
+        mWaterY = mPosY;
+        *(int *)((char *)this + 0x328) = mPosZ;
         return 1;
     }
     return 0;
