@@ -9,7 +9,7 @@
  * constructs those SharedFilePtrs as file IDs 1663 / 1664.
  *
  * The three-word file table is defined in this TU. Retail .data
- * order is descriptor, type-name, profile, vtable.
+ * order is typeinfo, descriptor, type-name, profile, vtable.
  *
  * daObjKm3_Kuruma_c_classInit is reconstructed (RTTI daObjKm3_Kuruma_c,
  * KM3_KURUMA registry). Retail does not store that spelling.
@@ -28,7 +28,7 @@ struct CLPS_Block;
 
 struct ResourceDescriptor {
     SharedFilePtr *model;
-    SharedFilePtr *collision;
+    SharedFilePtr *kcl;
     CLPS_Block *clps;
 };
 typedef char ResourceDescriptor_size_must_be_0x0c[
@@ -50,8 +50,8 @@ extern "C" ResourceDescriptor data_ov047_02112408 = {
 #include "daObjKm3_Kuruma_c.h"
 
 extern "C" {
-int func_ov002_020b6958(daObjKm3_Kuruma_c *self, ResourceDescriptor *descriptor);
-int func_ov002_020b68b0(daObjKm3_Kuruma_c *self, ResourceDescriptor *descriptor);
+s32 func_ov002_020b6958(daObjKm3_Kuruma_c *self, ResourceDescriptor *descriptor);
+s32 func_ov002_020b68b0(daObjKm3_Kuruma_c *self, ResourceDescriptor *descriptor);
 }
 
 struct KurumaSpawnInfo {
