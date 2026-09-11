@@ -1,11 +1,27 @@
 //cpp
 /* Production translation unit for ov010/daObjC1_Trap_c.
+ * deslop
+ *
+ * Castle trap doors (profile C1_TRAP / TRAP(36)). ov010 also LIGHT_BEAM /
+ * PEACH_PAINTING / ROTATING_COG_BIG. RTTI ov010:0x02112aa0 names
+ * daObjC1_Trap_c as a direct dBgActor_c subclass; ugly RTTI name is final.
  *
  * The seventeen functions are defined in reverse ROM order because mwccarm
  * emits ordinary function sections in reverse source order. InitResources is
  * the class's out-of-line key function; its vtable references the inline
  * destructor in daObjC1_Trap_c.h, which makes the compiler emit retail's D1
  * then D0 pair without a D2 or a forcing helper.
+ *
+ * Leftover:
+ * - dBgW_KcMbg::SetFile stays mangled (Fix12<int> by value, wall 6az)
+ * - TrapVector3 POD locals; Vector3's empty destructor would add an
+ *   unrelated helper to this TU
+ * - InitResources mAngleY uses (int)this+0x8e (named member CSE/size-DIFF)
+ * - func_020393c4 stores dBgW+0x1c (no setter)
+ * - data_ov010_02112d08 / 02112d00 SharedFilePtr handles; data_ov010_021122f8
+ *   CLPS; data_ov010_02112d28 PMF table (sinit-owned)
+ * - common.h first via dBgActor_c.h (Matrix4x3 copies in UpdateModel/Collision)
+ * - func_ov010_02111984 three-argument C ABI collider adapter
  */
 
 #include "daObjC1_Trap_c.h"
@@ -37,18 +53,10 @@ typedef char TrapSpawnInfo_size_must_be_0x1c[
 
 typedef void (daObjC1_Trap_c::*TrapState)();
 
-/* Fix12-by-value methods, the actor factory, callback registration, and the
- * actor allocator/constructor sequence are measured ABI seams. The remaining
- * declarations are genuine free functions or ROM-address globals. */
+/* Fix12-by-value SetFile and the TrapVector3 POD seam are measured ABI walls.
+ * The remaining declarations are genuine free functions or ROM-address
+ * globals. */
 extern "C" {
-extern int _ZTV14daObjC1_Trap_c[];
-extern void *_ZN7fBase_cnwEj(u32 size);
-extern void _ZN10dBgActor_cC2Ev(dBgActor_c *actor);
-extern void _ZN5ModelC1Ev(Model *model);
-
-extern dActor_c *_ZN8dActor_c5SpawnEjjRK7Vector3PK10Vector3_16as(
-    u32 actorID, u32 param, const TrapVector3 *pos, const void *rot,
-    int areaID, int deathTableID);
 extern void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
     dBgW_KcMbg *collider, void *file, const Matrix4x3 *matrix,
     int scale, s16 angleY, CLPS_Block *clps);
@@ -74,23 +82,18 @@ void func_ov010_02111984(
     int unused, daObjC1_Trap_c *trap, dActor_c *other);
 }
 
-extern "C" daObjC1_Trap_c *daObjC1_Trap_c_classInit();
-
 /* ROM ordinal 16: the actor-table factory is a genuine C ABI boundary. */
 /* Reconstructed source-style name: SM64DS proves daObjC1_Trap_c through RTTI,
  * allocation size, vtable identity, and the C1_TRAP registry profile;
  * later EAD lineage supplies classInit. Exact original spelling is not
- * preserved. Historical alias: Trap_Spawn. */
+ * preserved. Historical alias: Trap_Spawn.
+ *
+ * Every instruction the cartridge has here falls out of the one `new`.
+ * The header's inline operator new keeps the allocation on fBase_c::operator
+ * new; without it the call relocates to the unavailable global `_Znwm`. */
 extern "C" daObjC1_Trap_c *daObjC1_Trap_c_classInit()
 {
-    daObjC1_Trap_c *trap =
-        (daObjC1_Trap_c *)_ZN7fBase_cnwEj(sizeof(daObjC1_Trap_c));
-    if (trap) {
-        _ZN10dBgActor_cC2Ev(trap);
-        *(int *)trap = (int)&_ZTV14daObjC1_Trap_c[2];
-        _ZN5ModelC1Ev(&trap->mDoorModel);
-    }
-    return trap;
+    return new daObjC1_Trap_c();
 }
 
 extern "C" TrapSpawnInfo g_profile_C1_TRAP = {
@@ -190,8 +193,9 @@ int daObjC1_Trap_c::InitResources()
         position.x = x;
         position.y = y;
         position.z = z;
-        spawned = _ZN8dActor_c5SpawnEjjRK7Vector3PK10Vector3_16as(
-            0x24, 0, &position, &mAngleX, mAreaId, -1);
+        spawned = dActor_c::Spawn(
+            0x24, 0, *(const Vector3 *)&position,
+            (const Vector3_16 *)&mAngleX, mAreaId, -1);
         ((daObjC1_Trap_c *)spawned)->mSpawnerID = uniqueID;
 
         index = ((int)(u16)mAngleY >> 4) * 2;
@@ -203,8 +207,9 @@ int daObjC1_Trap_c::InitResources()
         position.x = x;
         position.y = y;
         position.z = z;
-        spawned = _ZN8dActor_c5SpawnEjjRK7Vector3PK10Vector3_16as(
-            0x24, 1, &position, &mAngleX, mAreaId, -1);
+        spawned = dActor_c::Spawn(
+            0x24, 1, *(const Vector3 *)&position,
+            (const Vector3_16 *)&mAngleX, mAreaId, -1);
         ((daObjC1_Trap_c *)spawned)->mSpawnerID = uniqueID;
         return 1;
     }
@@ -223,8 +228,8 @@ int daObjC1_Trap_c::InitResources()
     mState = 0;
 
     if ((param1 & 0xff) == 1) {
-        /* This measured address form prevents mwccarm from folding the
-         * read-modify-write into a shorter sequence than retail. */
+        /* Named `mAngleY = mAngleY + 0x8000` size-DIFFs InitResources
+         * (addressing shape / CSE). Keep the MATCH form. */
         s16 *angleY = (s16 *)((int)this + 0x8e);
         *angleY = *angleY + 0x8000;
     }
