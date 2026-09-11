@@ -8,8 +8,9 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
 /**
  * Jolly Roger Bay floating plank (`ita` = board).
  *
- * A daObjFloatBoard_c leaf: no fields of its own. InitResources loads
- * this stage's files; CleanupResources is the base's.
+ * A daObjFloatBoard_c leaf: no fields of its own. InitResources hands
+ * this overlay's files to the shared ov002 helper; CleanupResources
+ * is the base's.
  */
 
 #ifdef __cplusplus
