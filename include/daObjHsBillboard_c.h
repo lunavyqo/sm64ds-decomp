@@ -6,9 +6,10 @@
 
 extern "C" void *_ZN7fBase_cnwEj(unsigned size);
 
-/* Slide decoration billboard. ov031's four profiles --
- * SLIDE_DECORATION_SILVER_STAR / YELLOW_STAR / ORANGE_SMILEY / BLUE_SMILEY
- * (HS_MOON / HS_STAR / HS_Y_STAR / HS_B_STAR) -- share this one class.
+/* Slide decoration billboard. ov031 actors 302-305 share this one class.
+ * ROM debug names: HS_MOON / HS_STAR / HS_Y_STAR / HS_B_STAR.
+ * overlay_actors.md community names (not synonyms of those debug strings):
+ * SLIDE_DECORATION_SILVER_STAR / YELLOW_STAR / ORANGE_SMILEY / BLUE_SMILEY.
  *
  * ROM-proven identity: _ZTI18daObjHsBillboard_c / _ZTS18daObjHsBillboard_c at
  * ov031:0x021118e8/0x021118f4 spell "18daObjHsBillboard_c"; the typeinfo base
