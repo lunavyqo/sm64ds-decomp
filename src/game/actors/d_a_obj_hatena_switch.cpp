@@ -130,8 +130,8 @@ void daObjHatenaSwitch_c::HandleClsn(dActor_c &other)
     u16 actorID = other.actorID;
     int isPlayer = (int)(actorID == 0xbf);
     if (isPlayer == 0) {
-        int isYoshi = (int)(actorID == 0xc2);
-        if (isYoshi == 0)
+        int isCrate = (int)(actorID == 0xc2);
+        if (isCrate == 0)
             return;
     }
 
