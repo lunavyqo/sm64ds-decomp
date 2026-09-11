@@ -5,6 +5,9 @@
  * No fields. InitResources / CleanupResources hand this overlay's
  * model and collision files to daObjFallBlock_c's shared ov098
  * helpers.
+ * func_ov098_0213a794 loads slot 0 with Model::LoadFile, slot 1
+ * with dBgW_Kc::LoadFile, slot 2 as CLPS into SetFile. ov015 sinit
+ * constructs those SharedFilePtrs as file IDs 1423 / 1424.
  *
  * daObjBk_Fall_Block_c_classInit is reconstructed (RTTI
  * daObjBk_Fall_Block_c, BK_DOWN_B registry). Retail does not store
@@ -12,9 +15,11 @@
  *
  * deslop
  * Leftover: func_ov098_0213a794 / func_ov098_0213a2cc are still the
- *   linker names of daObjFallBlock_c Init/Cleanup. Naming belongs
- *   in ov098. That helper loads slot 0 with Model::LoadFile, slot 1
- *   with dBgW_Kc::LoadFile, slot 2 as CLPS into SetFile.
+ *   linker names of daObjFallBlock_c Init/Cleanup (the base leaves
+ *   those slots pure virtual). Naming belongs in ov098.
+ * Leftover: data_ov015_02114880 is overlay .data this TU does not
+ *   own; the BMD/KCL SharedFilePtrs and CLPS_Block are still
+ *   data_ov015_*.
  * Leftover: g_profile_BK_DOWN_B lives outside this TU (S14).
  */
 
