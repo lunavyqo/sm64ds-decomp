@@ -5,8 +5,9 @@
 
 extern "C" void *_ZN7fBase_cnwEj(unsigned size);
 
-/* Ice slide manager. overlay_actors.md maps ov019 ICE_SLIDE_MANAGER (356);
- * the sibling RACING_PENGUIN (259) is a different class and is not this TU.
+/* Ice slide manager. ROM debug string is SLIDER_MANAGER (356);
+ * overlay_actors.md's project name is ICE_SLIDE_MANAGER. The sibling
+ * RACING_PENGUIN (259) is a different class and is not this TU.
  *
  * THE CLASS NAME IS THE CARTRIDGE'S OWN. Measured in
  * extracted/overlays/overlay_0019.bin (ov019 base 0x021111a0): the vtable
