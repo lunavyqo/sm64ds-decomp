@@ -94,7 +94,7 @@ struct daMky_c : dActor_c {
     s32 unk_3bc;            /* 0x3bc */
     u8  pad_3c0[6];
     u8  mActionTimer;       /* 0x3c6 -- EnterState10 arms 0x1e; DecIfAbove0_Byte */
-    u8  pad_3c7;
+    u8  unk_3c7;            /* 0x3c7 -- this TU switches on it; not padding */
     u8  mHasSpawnedCap;     /* 0x3c8 */
     u8  pad_3c9;
     u8  mAnimIdx;           /* 0x3ca -- 02111a00 indexes data_ov030_02115bc8 */

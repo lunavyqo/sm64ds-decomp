@@ -1117,7 +1117,7 @@ int daMky_c::EnterState7()
   s16 s;
   int mul = 0x4b000;
   int rnd = 0x800;
-  *((int *) ((int) (((s64) ((int) (c + 0xb0)))))) &= ~0x80000;
+  mFlags &= ~0x80000;
   _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(c + 0xd4, data_ov030_02115d08[1], 0x40000000, 0x1000, 0);
   *((int *) (c + 0x98)) = 0xa000;
   *((int *) (c + 0xa8)) = 0;
