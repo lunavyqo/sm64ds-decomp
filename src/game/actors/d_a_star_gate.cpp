@@ -1,9 +1,10 @@
 //cpp
-/* Star door (STAR_DOOR 354) -- ov100/daStarGate_c.
+/* Star door (STAR_GATE 354) -- ov100/daStarGate_c.
  *
  * ov100 is mixed (PATH_LIFT / ROLLING_IRON_BALL / BUTTERFLY / UNCHAINED_CHOMP /
  * FISH / DOOR / STAR_DOOR). RTTI names this class daStarGate_c; the debug table
- * names STAR_DOOR. Historical project alias: StarDoor.
+ * names STAR_GATE. overlay_actors.md's project name is STAR_DOOR.
+ * Historical project alias: StarDoor.
  *
  * SM64DS proves the class through RTTI, the STAR_GATE profile, the factory's
  * allocation/vptr shape, and the complete virtual table. Later source lineage
