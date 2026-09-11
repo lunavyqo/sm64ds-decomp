@@ -18,14 +18,13 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  */
 struct daObjKm1_Kuruma_c : daObjKuruma_c {
     /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
+    virtual ~daObjKm1_Kuruma_c() {}
     int CleanupResources();            /* slot  3 */
     int InitResources();               /* slot  0 */
 
     static void *operator new(unsigned long size) {
         return _ZN7fBase_cnwEj(size);
     }
-
-    virtual ~daObjKm1_Kuruma_c() {}
 };
 
 typedef char daObjKm1_Kuruma_c_size_must_be_0x320[
