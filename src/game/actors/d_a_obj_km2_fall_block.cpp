@@ -12,10 +12,12 @@
  *
  * deslop
  * Leftover: func_ov098_0213a794 / func_ov098_0213a2cc are still the
- *   linker names of daObjFallBlock_c Init/Cleanup. Naming belongs
- *   in ov098. That helper loads slot 0 with Model::LoadFile, slot 1
- *   with dBgW_Kc::LoadFile, slot 2 as CLPS into SetFile.
- * Leftover: g_profile_KM2_KUZURE lives outside this TU (S14).
+ *   linker names of daObjFallBlock_c Init/Cleanup (the base leaves
+ *   those slots pure virtual). Naming belongs in ov098. That helper
+ *   loads slot 0 with Model::LoadFile, slot 1 with dBgW_Kc::LoadFile,
+ *   slot 2 as CLPS into SetFile.
+ * Leftover: the BMD/KCL SharedFilePtrs and CLPS_Block are still
+ *   data_ov045_*. g_profile_KM2_KUZURE lives outside this TU (S14).
  */
 
 #include "daObjKm2_Fall_Block_c.h"

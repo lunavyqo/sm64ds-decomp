@@ -16,8 +16,7 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * `daObjKm2_Fall_Block_c` is the RTTI name.
  */
 struct daObjKm2_Fall_Block_c : daObjFallBlock_c {
-    /* Inline and first: out-of-line mwccarm emits D0 before D1; retail
-       has D1 at 0x02111d48 below D0 at 0x02111d98. */
+    /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
     virtual ~daObjKm2_Fall_Block_c() {}
     virtual s32 CleanupResources(); /* slot 3 */
     virtual s32 InitResources();    /* slot 0 */
