@@ -50,8 +50,9 @@ struct daKpFr_c : dActor_c {
     ShadowModel        mShadowModel;           /* 0x0d4 */
     dCcAc_c mdCcAc_c;    /* 0x0fc */
     dBgCh_Actr       mWithMeshClsn;          /* 0x130 */
-    /* InitResources assigns IDENTITY_MATRIX4X3 into this slot, Render passes
-       it to DropShadowRadHeight, and its translation lives at 0x310. */
+    /* InitResources assigns IDENTITY_MATRIX4X3 into this slot.
+       func_ov070_02121e14, called from Behavior, fills the translation and
+       passes it to DropShadowRadHeight. Render does not drop the shadow. */
     Matrix4x3          mMatrix;                /* 0x2ec */
     daKpFrState       *mStateMethods;          /* 0x31c */
     s32                mStateResult;           /* 0x320 */
