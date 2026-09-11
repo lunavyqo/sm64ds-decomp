@@ -16,7 +16,6 @@
  */
 
 #include "daObjLava_c.h"
-#include "Player.h"
 
 enum {
     kLavaBubbleEffect = 0xb7
@@ -64,7 +63,7 @@ s32 daObjLava_c::InitResources()
 // @symbol _ZN11daObjLava_c8BehaviorEv
 s32 daObjLava_c::Behavior()
 {
-    Player *player = ClosestPlayer();
+    dActor_c *player = (dActor_c *)ClosestPlayer();
     const Vector3 &pos = player->Pos();
     mEffectHandle = func_02022c3c(mEffectHandle, kLavaBubbleEffect,
         pos.x, pos.y, pos.z, 0);

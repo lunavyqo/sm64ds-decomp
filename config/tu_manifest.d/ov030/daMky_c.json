@@ -555,10 +555,10 @@
       "requested": [
         "_ZN7daMky_cD2Ev",
         "_ZN7Vector3D1Ev",
-        "_ZN21Bundle$732daMky_c_cppD1Ev"
+        "_ZN21Bundle$724daMky_c_cppD1Ev"
       ],
       "deadstripped": [
-        "_ZN21Bundle$732daMky_c_cppD1Ev",
+        "_ZN21Bundle$724daMky_c_cppD1Ev",
         "_ZN7Vector3D1Ev",
         "_ZN7daMky_cD2Ev"
       ],

@@ -1097,7 +1097,7 @@
             "evidence": "DSD exposes owned constructor-table symbols globally"
           },
           {
-            "symbol": "@222",
+            "symbol": "@214",
             "from": "STB_LOCAL",
             "to": "STB_GLOBAL",
             "evidence": "the compiler-local registration node is an initializer relocation destination"
@@ -1130,7 +1130,7 @@
           },
           {
             "symbolIndex": 15,
-            "symbol": "@222",
+            "symbol": "@214",
             "from": "STB_LOCAL",
             "to": "STB_GLOBAL"
           }
@@ -1196,7 +1196,7 @@
         ],
         "licensedSymbols": [
           ".p__sinit_d_a_obj_kb1_billboard.cpp",
-          "@222",
+          "@214",
           "_ZTI19daObjKb1Billboard_c",
           "_ZTS19daObjKb1Billboard_c",
           "_ZTV19daObjKb1Billboard_c",
@@ -1797,7 +1797,7 @@
             "evidence": "DSD exposes owned constructor-table symbols globally"
           },
           {
-            "symbol": "@222",
+            "symbol": "@214",
             "from": "STB_LOCAL",
             "to": "STB_GLOBAL",
             "evidence": "the compiler-local registration node is an initializer relocation destination"
@@ -1830,7 +1830,7 @@
           },
           {
             "symbolIndex": 15,
-            "symbol": "@222",
+            "symbol": "@214",
             "from": "STB_LOCAL",
             "to": "STB_GLOBAL"
           }
@@ -1896,7 +1896,7 @@
         ],
         "licensedSymbols": [
           ".p__sinit_d_a_obj_kb1_billboard.cpp",
-          "@222",
+          "@214",
           "_ZTI19daObjKb1Billboard_c",
           "_ZTS19daObjKb1Billboard_c",
           "_ZTV19daObjKb1Billboard_c",

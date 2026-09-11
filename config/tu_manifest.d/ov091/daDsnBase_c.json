@@ -113,12 +113,12 @@
         "_ZN11daDsnBase_cD1Ev",
         "_ZN11daDsnBase_cD0Ev",
         "_ZN7Vector3D1Ev",
-        "_ZN25@class$432daDsnBase_c_cppD1Ev"
+        "_ZN25@class$424daDsnBase_c_cppD1Ev"
       ],
       "deadstripped": [
         "_ZN11daDsnBase_cD0Ev",
         "_ZN11daDsnBase_cD1Ev",
-        "_ZN25@class$432daDsnBase_c_cppD1Ev",
+        "_ZN25@class$424daDsnBase_c_cppD1Ev",
         "_ZN7Vector3D1Ev"
       ],
       "droppedSections": [
