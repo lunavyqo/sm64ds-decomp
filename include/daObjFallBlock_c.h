@@ -48,18 +48,22 @@
  *          exactly on the next field.
  *   0x32c  the Y below which the block is gone. Case 2 compares the actor's own Y
  *          at 0x60 against it and calls slot 31 when it drops under.
- *   0x330  which of the two shake routines case 0 runs.
+ *   0x330  unique ID of a linked actor 0xb2. On actorID 0x53 (FALL_BLOCK_LLL)
+ *          with mSuppressed set, Behavior calls func_ov098_0213a0e8 to fill it
+ *          (when 0) or func_ov098_0213a0a8 to poll it (when set).
  *   0x334  the shake step added to mAngleX each frame in case 2.
- *   0x336  the same for mAngleY.
- *   0x338  the fall speed, stepped from a sine table in case 1.
+ *   0x336  the same for mAngleZ (0x90), not mAngleY.
+ *   0x338  shake-phase, walked through the sine table in case 1 to bob Y.
  *   0x33a  the per-state frame counter, walked down by DecIfAbove0_Short.
  *   0x33c  the state, 0..3 -- the switch this whole function is built on.
  *   0x33e  set when case 0 should start shaking.
  *   0x33f  the respawn delay. While it runs the collider is disabled and Behavior
  *          returns early.
  *   0x340  this block's "ready" flag, and the one the group walk tests.
+ *   0x341  grouping latch. func_ov098_0213a00c returns early once this is set.
  *   0x342  suppresses Render as well as Behavior, for actor id 0x53.
- *   0x344  non-zero means this block is not the head of a group.
+ *   0x344  pointer to a same-id neighbour behind this block (angle diff
+ *          >= 0x4000). Zero means this block is the head of the forward chain.
  *   0x348  the next block in the group. Behavior walks the chain twice through it,
  *          once to see whether every member's 0x340 is set and once to trip them
  *          all together.
@@ -88,7 +92,7 @@ struct daObjFallBlock_c : dBgActor_c {
     u8   mShakeRequested;               /* 0x33e */
     u8   mRespawnDelay;                 /* 0x33f */
     u8   mReady;                        /* 0x340 */
-    u8   pad_341[0x1];
+    u8   unk_341;                       /* 0x341 -- grouping latch, written by func_ov098_0213a00c */
     u8   mSuppressed;                   /* 0x342 */
     u8   pad_343[0x1];
     s32  mNotGroupHead;                 /* 0x344 */
@@ -182,7 +186,7 @@ struct daObjFallBlock_c {
     u8  mShakeRequested;    /* 0x33e */
     u8  mRespawnDelay;      /* 0x33f */
     u8  mReady;             /* 0x340 */
-    u8  pad_341[0x1];
+    u8  unk_341;            /* 0x341 */
     u8  mSuppressed;        /* 0x342 */
     u8  pad_343[0x1];
     s32 mNotGroupHead;      /* 0x344 */
