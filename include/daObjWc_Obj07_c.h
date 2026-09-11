@@ -7,17 +7,16 @@
 extern "C" void *_ZN7fBase_cnwEj(unsigned size);
 
 /**
- * Wet-Dry World's spinning disc. No fields of its own: the factory
- * allocates 0x320 = sizeof(dBgActor_c), which daObjKaitendai_c fills.
- * Overrides the two slots the base leaves null (InitResources,
- * CleanupResources) and hands this overlay's model/collision
- * descriptor to the shared ov002 helpers.
+ * Wet-Dry World's spinning disc. No fields of its own: the
+ * factory allocates 0x320 = sizeof(dBgActor_c), which
+ * daObjKaitendai_c fills. Overrides the two slots the base leaves
+ * null (InitResources, CleanupResources) and hands this overlay's
+ * model/collision descriptor to the shared ov002 helpers.
  *
  * `daObjWc_Obj07_c` is the RTTI name. Coined name was RotatingPlatformWdw.
  */
 struct daObjWc_Obj07_c : daObjKaitendai_c {
-    /* Inline and first: out-of-line mwccarm emits D0 before D1; retail
-       has D1 at 0x02112080 below D0 at 0x021120d0. */
+    /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
     virtual ~daObjWc_Obj07_c() {}
     virtual s32 CleanupResources(); /* slot 3 */
     virtual s32 InitResources();    /* slot 0 */
