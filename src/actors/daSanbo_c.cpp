@@ -69,8 +69,8 @@
  *   veneer to dBgCh_Actr::UpdateDiscreteNoLava_2. Player+8 param1 belongs
  *   on Player. data_ov096_* SharedFilePtr handles (Init LoadFile / Cleanup
  *   Release) and state records (func_ov096_02136928). S14 no
- *   g_profile_SANBO. Helpers stay offset soup. common.h first (mMatrix
- *   IDENTITY copy). unk_3a8 stays the placeholder.
+ *   g_profile_SANBO. common.h first (mMatrix IDENTITY copy).
+ *   unk_3a8 stays the placeholder.
  *
  * ov096 delinks no .data at all, so this is a text-only entry: it licenses one
  * .text span and nothing else. Owning every virtual makes mwcc emit the vtable
@@ -82,13 +82,15 @@
  * provenance -- is notes/data/class-facts/daSanbo_c.json.
  */
 
-/* ORDER IS LOAD-BEARING -- see the Matrix4x3 note above. */
+/* common.h first: Matrix4x3 must stay the flat s32[12] spelling. */
 #include "common.h"
 #include "daSanbo_c.h"
 #include "types.h"
 #include "SharedFilePtr.h"
 #include "decl_common.h"
 #include "Player.h"
+
+enum { SANBO_HEAD = 0xf0, SANBO_BODY = 0xf1 };
 
 /* Declarations retained from the individually matched fragments. These ABI
  * bridges and raw helper layouts remain reconstruction work; their presence
@@ -197,7 +199,7 @@ extern "C" daSanbo_c *daSanbo_c_classInit_SANBO_BODY(void)
  * itself for destruction. */
 void daSanbo_c::OnTurnIntoEgg(Player &player)
 {
-    int flag = (actorID == 0xf0);
+    int flag = (actorID == SANBO_HEAD);
     if (flag)
         GivePlayerCoins(player, 1, 2);
     MarkForDestruction();
@@ -212,7 +214,7 @@ int daSanbo_c::InitResources()
 {
     int t;
 
-    t = (actorID == 0xf0);
+    t = (actorID == SANBO_HEAD);
     if (t != false) {
         void* m = Model::LoadFile(*(SharedFilePtr *)data_ov096_02137b20);
         mModel.SetFile((BMD_File *)m, 1, 1);
@@ -220,7 +222,7 @@ int daSanbo_c::InitResources()
         LoadBlueCoinModel(((char*)this));
         unk_3a8 = 1;
     } else {
-        t = (actorID == 0xf1);
+        t = (actorID == SANBO_BODY);
         if (t != false) {
             void* m = Model::LoadFile(*(SharedFilePtr *)data_ov096_02137b28);
             if (mModel.SetFile((BMD_File *)m, 1, 1) == 0)
@@ -238,7 +240,7 @@ int daSanbo_c::InitResources()
     mTerminalVelocity = -0x3c000;
     mHorzSpeed = 0x3000;
 
-    t = (actorID == 0xf0);
+    t = (actorID == SANBO_HEAD);
     if (t != false) {
         mRootPosX = mPosX;
         mRootPosY = mPosY;
@@ -249,7 +251,7 @@ int daSanbo_c::InitResources()
         mPrevSegment = 0;
         mNextSegment = 0;
     } else {
-        t = (actorID == 0xf1);
+        t = (actorID == SANBO_BODY);
         if (t != false) {
             mScaleX = 0;
             mScaleY = 0;
@@ -313,7 +315,7 @@ int daSanbo_c::Render()
 void daSanbo_c::OnPendingDestroy()
 {
     int r1 = *(unsigned short *)((char *)&actorID);
-    r1 = (r1 == 0xf1);
+    r1 = (r1 == SANBO_BODY);
     if (r1) return;
     daSanbo_c *p = mNextSegment;
     if (!p) return;
@@ -331,13 +333,13 @@ void daSanbo_c::OnPendingDestroy()
 int daSanbo_c::CleanupResources()
 {
   int id = actorID;
-  int a = (id == 0xf0);
+  int a = (id == SANBO_HEAD);
   if (a) {
     UnloadBlueCoinModel(((char *)this));
     ((SharedFilePtr *)(data_ov096_02137b20))->Release();
     ((SharedFilePtr *)(data_ov096_02137b28))->Release();
   } else {
-    a = (id == 0xf1);
+    a = (id == SANBO_BODY);
     if (a) {
       ((SharedFilePtr *)(data_ov096_02137b28))->Release();
     }
@@ -502,7 +504,7 @@ int func_ov096_021365d4(char* c) {
     if (func_ov096_02135838(c) < 4) {
         if (DecIfAbove0_Byte((unsigned char*)(c + 0x3ac)) == 0) {
             void* sp = _ZN8dActor_c5SpawnEjjRK7Vector3PK10Vector3_16as(
-                0xf1, *(unsigned int*)(c + 4), (struct Vector3*)(c + 0x5c), c + 0x8c,
+                SANBO_BODY, *(unsigned int*)(c + 4), (struct Vector3*)(c + 0x5c), c + 0x8c,
                 *(signed char*)(c + 0xcc), -1);
             if (sp != 0) {
                 *(void**)(c + 0x394) = sp;
@@ -531,7 +533,7 @@ int func_ov096_021365d4(char* c) {
 // @symbol func_ov096_02136534
 extern "C" int func_ov096_02136534(char *c)
 {
-    int b = (int)(*(unsigned short *)(c + 0xc) == 0xf0);
+    int b = (int)(*(unsigned short *)(c + 0xc) == SANBO_HEAD);
     if (b != 0) {
         dActor_c::Spawn(0x122, 2, *(Vector3 *)(c + 0x5c), (Vector3_16 *)0, *(signed char *)(c + 0xcc), -1);
     }
@@ -693,7 +695,7 @@ int func_ov096_02136264(char* self)
 // @symbol func_ov096_02136134
 /* recovered: shared common types */
 extern "C" int func_ov096_02136134(char* c){
-  int cond = (*(unsigned short*)(c+0xc) == 0xf0);
+  int cond = (*(unsigned short*)(c+0xc) == SANBO_HEAD);
   if(cond){
     _ZN8dActor_c5SpawnEjjRK7Vector3PK10Vector3_16as(0x122, 2, (struct Vector3*)(c+0x5c), 0, *(signed char*)(c+0xcc), -1);
   }
@@ -721,7 +723,7 @@ extern "C" int func_ov096_02136134(char* c){
 // @symbol func_ov096_021360c4
 extern "C" {
 int func_ov096_021360c4(char *c) {
-    int eq = (*(unsigned short*)(c+0xc) == 0xf0) ? 1 : 0;
+    int eq = (*(unsigned short*)(c+0xc) == SANBO_HEAD) ? 1 : 0;
     if (eq != 0) {
         *(short*)(c+0x8c) = *(short*)(c+0x8c) - 0x1000;
     }
@@ -746,7 +748,7 @@ extern "C" void func_ov096_02135efc(void* cv)
     enum Bool b;
 
     if (((daSanbo_c *)c)->mState == 5) {
-        b = (enum Bool)(*(unsigned short*)(c + 0xc) == 0xf0);
+        b = (enum Bool)(*(unsigned short*)(c + 0xc) == SANBO_HEAD);
         if (b) {
             int y1, y2;
 
@@ -857,6 +859,7 @@ void func_ov096_02135948(char* c)
     int st38c;
     char* q;
     struct Vector3 pos;
+    /* Five arrays: collapsing to one int vv[3] DIFFs this helper 23 words. */
     int vv1[3];
     int vv2[3];
     int vv3[3];
@@ -869,7 +872,7 @@ void func_ov096_02135948(char* c)
         _ZN5Sound9PlayBank0EjRK7Vector3(9, c + 0x74);
         func_ov096_02135800(c);
         {
-            int b = (*(unsigned short*)(c + 0xc) == 0xf0);
+            int b = (*(unsigned short*)(c + 0xc) == SANBO_HEAD);
             if (b) {
                 _ZN8dActor_c5SpawnEjjRK7Vector3PK10Vector3_16as(
                     0x122, 2, c + 0x5c, 0, *(signed char*)(c + 0xcc), -1);
@@ -1061,7 +1064,7 @@ int func_ov096_02135838(char *c) {
 // @symbol func_ov096_02135800
 extern "C" void func_ov096_02135800(char* c){
   daSanbo_c *segment = (daSanbo_c *)c;
-  int b = (segment->actorID == 0xf0);
+  int b = (segment->actorID == SANBO_HEAD);
   if(b) return;
   daSanbo_c *next = segment->mNextSegment;
   daSanbo_c *prev = segment->mPrevSegment;
@@ -1080,7 +1083,7 @@ char *func_ov096_021357b4(char *cc){
     daSanbo_c *p = c->mPrevSegment;
     if(p==0) return (char *)c;
     while(p){
-        unsigned r2 = (p->actorID != 0xf0) ? 1u : 0u;
+        unsigned r2 = (p->actorID != SANBO_HEAD) ? 1u : 0u;
         if(!r2) return (char *)p;
         p = p->mPrevSegment;
     }
