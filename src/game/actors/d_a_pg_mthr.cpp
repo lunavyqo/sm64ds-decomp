@@ -1,70 +1,39 @@
 //cpp
-/* PROMOTED translation unit -- ov018/daPgMthr_c (23 function(s)).
+/**
+ * Cool Cool Mountain mother penguin (`pg_mthr`). Walks, talks, and
+ * can spawn POWER_STAR (actor 0xb2).
  *
- * This one file is the production source for the whole class: the ROM build
- * takes every one of these functions from a single object, the way the
- * cartridge's own build did. It licenses the contiguous .text run
- * 0x02111848..0x021126d4 in ov018 (config/tu_manifest.d/ov018/daPgMthr_c.json,
- * config/arm9/overlays/ov018/delinks.txt), where twenty-two separate
- * one-function entries used to stand.
+ * daPgMthr_c_classInit is reconstructed (RTTI daPgMthr_c, PENGUIN_MOTHER
+ * registry). Retail does not store that spelling.
  *
- * THE TWENTY-THIRD IS THE FACTORY, FOLDED IN LATER. daPgMthr_c_classInit
- * (historical alias MotherPenguin_Spawn) at 0x0211267c is the PENGUIN_MOTHER
- * registry profile's spawn function. It sits
- * immediately after InitResources in the ROM's own .text order, inside this
- * TU's recovered boundary, and was outside only because this promotion
- * predated the profile-reconstruction campaign. It keeps C linkage and brings
- * no new include with it.
- *
- * WRITTEN IN REVERSE ROM ORDER. mwccarm 2004/b56 emits one .text section per
- * function in the REVERSE of source order, so the highest-address ROM function
- * is written FIRST here and the lowest LAST. Do not reorder: the whole-range
- * link checks emission order and refuses anything else.
- *
- * The class name is the cartridge's own: 0x02113988 holds the bytes
- * the NUL-terminated string 10daPgMthr_c and 0x0211397c is its type_info, whose base word is
- * 0x0208e390 = _ZTI8dActor_c. Nothing here is coined.
- *
- * The destructor is DEFINED IN THE CLASS BODY in include/daPgMthr_c.h, not out
- * of line here. The cartridge keeps D1 (0x02111848) BELOW D0 (0x02111898), and
- * an out-of-line member definition makes mwccarm emit the group D0-then-D1 plus
- * a homeless D2, which the whole-range link refuses with `licensed .text
- * functions are not emitted in ROM address order`. In the class body the group
- * comes out ROM-ascending and no D2 is emitted, while the destructor stays the
- * first virtual declared and so remains the key function -- which is why
- * _ZTI/_ZTS/_ZTV are emitted into this object at all. There is no explicit
- * _ZTV reference in this source: the vptr stores are the ones the compiler
- * generates for that in-class destructor, so neither vtable spelling question
- * (bare symbol vs &_ZTV[2]) arises here.
- *
- * common.h IS INCLUDED FIRST, DELIBERATELY. Matrix4x3 has two 0x30-byte
- * spellings under one guard and whichever a TU sees first stands.
- * func_ov018_02111d28 copies a whole matrix, and the ROM copies it as twelve
- * uniform words (ldm/stm x3) -- the flat `s32 m[12]` spelling in common.h. The
- * nested `{Matrix3x3 r; Vector3 t;}` spelling in include/math/Matrix.h
- * scalarizes the last three words into ldr/str pairs and costs an extra live
- * register, which is exactly how the byte diff failed before the reorder.
- *
- * Assembled from twenty-two legacy one-function sources that this promotion
- * deletes; their ROM addresses are the `// @symbol` markers below, and the
- * manifest entry records the pre-promotion round.
+ * deslop
+ * Leftover: func_ov018_021118fc..021123d0 are this TU's own helpers;
+ *   the ROM symbols are still the func_ov labels. Naming them as C++
+ *   methods would emit _ZN10daPgMthr_c* and miss those labels.
+ * Leftover: Klass/C stays incomplete (PMF call through mState).
+ *   Tables at data_ov018_02113c4c are 0x10 apart; 021123d0 indexes
+ *   them, 02112398/0211235c run enter/main.
+ * Leftover: ModelAnim::SetAnim, TextureSequence::SetFile,
+ *   dCcAc_c::Init, dBgCh_Actr::Init, DropShadowRadHeight stay mangled
+ *   (Fix12-by-value, wall 6az).
+ * Leftover: common.h must be first. 02111d28 copies Matrix4x3 as
+ *   twelve uniform words; the nested Matrix.h spelling scalarizes.
+ * Leftover: BMD/BCA/BTP handles still data_ov018_*; decl_common
+ *   spells 02112c0c as int[]. Text-only TU, so g_profile_PENGUIN_MOTHER
+ *   is not defined here (S14).
+ * Leftover: Player talk/message helpers and func_0201267c names
+ *   belong with those callees. +0x388/+0x389/+0x386 stay in pad_378
+ *   until those bytes are named from this TU's own writes.
  */
 
-/* Includes: the union of the twenty-two legacy files', reconciled. */
-/* common.h FIRST, deliberately: Matrix4x3 has two 0x30-byte spellings under
- * one guard, and whichever a TU sees first stands. func_ov018_02111d28 copies
- * a whole Matrix4x3, and the ROM copies it as twelve uniform words
- * (ldm/stm x3) -- the flat `s32 m[12]` spelling. The nested `{Matrix3x3 r;
- * Vector3 t;}` spelling in include/math/Matrix.h scalarizes the last three
- * words into ldr/str pairs and costs an extra live register. */
 #include "common.h"
 #include "daPgMthr_c.h"
 #include "types.h"
 #include "decl_common.h"
-#include "daObjSm_Lift_c.h"
 #include "SharedFilePtr.h"
 #include "TextureSequence.h"
 #include "dBgCh_Gnd.h"
+#include "Animation.h"
 
 #define U8P(base, off) ((u8 *)((unsigned int)(base) + (off)))
 
@@ -117,71 +86,15 @@ extern void *_ZN15TextureSequence8LoadFileER13SharedFilePtr(void *f);
 extern int _ZN11ShadowModel12InitCylinderEv(void *self);
 extern void _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(void *self, void *act, int a, int b, unsigned int c2, unsigned int d);
 extern void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void *self, void *act, int a, int b, void *c2, void *d);
-/* TUBUILD CONFLICT -- alternate declaration of Vec3_HorzAngle, from the legacy file for func_ov018_02111e28, NOT applied: extern "C" short Vec3_HorzAngle(const void *a, const void *b); */
-/* TUBUILD CONFLICT -- alternate declaration of _Z14ApproachLinearRsss, from the legacy file for func_ov018_02111e28, NOT applied: extern "C" void _Z14ApproachLinearRsss(short *dst, short target, short rate); */
-/* TUBUILD CONFLICT -- alternate declaration of Vec3_Dist, from the legacy file for func_ov018_02111e28, NOT applied: extern "C" int Vec3_Dist(const void *a, const void *b); */
-/* TUBUILD CONFLICT -- alternate declaration of func_ov018_021123d0, from the legacy file for func_ov018_02111e28, NOT applied: extern "C" void func_ov018_021123d0(char *c); */
-/* TUBUILD CONFLICT -- alternate declaration of func_ov018_021123d0, from the legacy file for func_ov018_02111f1c, NOT applied: extern "C" void func_ov018_021123d0(char *c, int x); */
-/* TUBUILD CONFLICT -- alternate declaration of Vec3_HorzAngle, from the legacy file for func_ov018_02111fac, NOT applied: extern short Vec3_HorzAngle(void *a, void *b); */
-/* TUBUILD CONFLICT -- alternate declaration of _Z14ApproachLinearRsss, from the legacy file for func_ov018_02111fac, NOT applied: extern int _Z14ApproachLinearRsss(void *dst, short a, short b); */
-/* TUBUILD CONFLICT -- alternate declaration of Matrix4x3_ApplyInPlaceToRotationY, from the legacy file for func_ov018_02111fac, NOT applied: extern void Matrix4x3_ApplyInPlaceToRotationY(void *m, short a); */
-/* TUBUILD CONFLICT -- alternate declaration of func_0201267c, from the legacy file for func_ov018_02111fac, NOT applied: extern void func_0201267c(int id, void *p); */
-/* TUBUILD CONFLICT -- alternate declaration of func_ov018_021123d0, from the legacy file for func_ov018_02111fac, NOT applied: extern int func_ov018_021123d0(void *c, int b); */
-/* TUBUILD CONFLICT -- alternate declaration of func_ov018_02111a48, from the legacy file for func_ov018_02111fac, NOT applied: extern void func_ov018_02111a48(void *c, void *p); */
-/* TUBUILD CONFLICT -- alternate declaration of _ZN8dActor_c13ClosestPlayerEv, from the legacy file for func_ov018_02112234, NOT applied: extern char* _ZN8dActor_c13ClosestPlayerEv(char* thisptr); */
-/* TUBUILD CONFLICT -- alternate declaration of func_ov018_02111a48, from the legacy file for func_ov018_02112234, NOT applied: extern void func_ov018_02111a48(char* c, char* p); */
-/* TUBUILD CONFLICT -- alternate declaration of func_ov018_02111bf0, from the legacy file for func_ov018_02112234, NOT applied: extern void func_ov018_02111bf0(char* c, char* p); */
-/* TUBUILD CONFLICT -- alternate declaration of func_0201267c, from the legacy file for func_ov018_02112234, NOT applied: extern void func_0201267c(int a, char* p); */
-/* TUBUILD CONFLICT -- alternate declaration of _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj, from the legacy file for func_ov018_021122ec, NOT applied: extern int _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(void*,int,int,int,unsigned int); */
-/* TUBUILD CONFLICT -- alternate declaration of _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj, from the legacy file for func_ov018_021122ec, NOT applied: extern int _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(void*,int,int,int,unsigned int); */
-/* TUBUILD CONFLICT -- alternate declaration of func_ov018_02111d28, from the legacy file for _ZN10daPgMthr_c13InitResourcesEv, NOT applied: extern void func_ov018_02111d28(char *c, int r1); */
-
-/* The folded factory's own dependencies, restated here rather than pulled in
-   through decl_Actor.h / decl_ActorBase.h / decl_ModelAnim.h / decl_dCcAc_c.h /
-   decl_ShadowModel.h / decl_TextureSequence.h / decl_dBgCh_Actr.h as the legacy
-   file did. Adding seven headers to a twenty-two-function TU is exactly the
-   change that could move a byte in a member that already matches, and none of
-   them is needed: these seven are the only names the factory adds, and the
-   eighth, _ZTV10daPgMthr_c, is already declared by the decl_common.h this TU
-   includes. So the fold introduces no new include at all. */
-extern void *_ZN7fBase_cnwEj(unsigned size);
-extern void _ZN8dActor_cC2Ev(void *self);
-extern void _ZN9ModelAnimC1Ev(void *self);
-extern void _ZN15TextureSequenceC1Ev(void *self);
-extern void _ZN11ShadowModelC1Ev(void *self);
-extern void _ZN7dCcAc_cC1Ev(void *self);
-extern void _ZN10dBgCh_ActrC1Ev(void *self);
 }
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 22 -- daPgMthr_c_classInit, 0x0211267c, size 0x58              */
 /* -------------------------------------------------------------------------- */
 // @symbol daPgMthr_c_classInit
-/* recovered: vtable identified, globals resolved */
-/* resolved: VT0 = _ZTV10daPgMthr_c */
-/* The PENGUIN_MOTHER profile's factory, and the highest-address member of this
-   TU, so it is written first. 908 = 0x38c is the whole object; the inlined
-   dActor_c constructor runs first, this class stores its own vptr over the
-   base's, and the five members are then constructed in declaration order --
-   ModelAnim 0xd4, TextureSequence 0x138, ShadowModel 0x14c, dCcAc_c 0x174,
-   dBgCh_Actr 0x1a8 -- which is what closes the class on 0x38c.
-
-   The vptr store here is the plain bare-symbol one the legacy file carried,
-   not the &_ZTV[2] form the compiler generates for the in-class destructor;
-   the two coexist because _ZTV10daPgMthr_c IS the address point. */
-extern "C" int *daPgMthr_c_classInit(void)
+extern "C" daPgMthr_c *daPgMthr_c_classInit()
 {
-    int *p = (int *)_ZN7fBase_cnwEj(908);
-    if (p) {
-        _ZN8dActor_cC2Ev(p);
-        p[0] = (int)_ZTV10daPgMthr_c;
-        _ZN9ModelAnimC1Ev((char *)p + 0xd4);
-        _ZN15TextureSequenceC1Ev((char *)p + 0x138);
-        _ZN11ShadowModelC1Ev((char *)p + 0x14c);
-        _ZN7dCcAc_cC1Ev((char *)p + 0x174);
-        _ZN10dBgCh_ActrC1Ev((char *)p + 0x1a8);
-    }
-    return p;
+    return new daPgMthr_c();
 }
 
 /* -------------------------------------------------------------------------- */
@@ -192,16 +105,17 @@ extern "C" int *daPgMthr_c_classInit(void)
 /* recovered: named members + shared header, real C++ method */
 int daPgMthr_c::InitResources()
 {
-    void *m = _ZN5Model8LoadFileER13SharedFilePtr(&data_ov018_02113c00);
-    _ZN9ModelBase7SetFileEP8BMD_Fileii(&mModelAnim, m, 1, 1);
+    void *m = Model::LoadFile(data_ov018_02113c00);
+    mModelAnim.SetFile((BMD_File *)m, 1, 1);
     for (int i = 0; i < 2; i++)
-        _ZN9Animation8LoadFileER13SharedFilePtr((void*)data_ov018_02112c0c[i]);
+        Animation::LoadFile(*(SharedFilePtr *)data_ov018_02112c0c[i]);
     for (int i = 0; i < 2; i++) {
-        void *t = (void*)data_ov018_02112c04[i];
-        _ZN15TextureSequence8LoadFileER13SharedFilePtr(t);
-        TextureSequence::Prepare(*(BMD_File *)((int *)&data_ov018_02113c00)[1], *(BTP_File *)((int*)t)[1]);
+        SharedFilePtr *t = data_ov018_02112c04[i];
+        TextureSequence::LoadFile(*t);
+        TextureSequence::Prepare(*(BMD_File *)((int *)&data_ov018_02113c00)[1], *(BTP_File *)((int *)t)[1]);
     }
-    if (_ZN11ShadowModel12InitCylinderEv((char *)&mShadowModel) == 0) return 0;
+    if (mShadowModel.InitCylinder() == 0)
+        return 0;
     _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(&mdCcAc_c, this, 0x104000, 0x12c000, 0x4800004, 0x900000);
     func_ov018_021123d0((char *)this, 0);
     mVertAccel = -0x2000;
@@ -295,7 +209,7 @@ int daPgMthr_c::CleanupResources()
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov018_021123d0(char *self, int i) {
-    *(char **)(self + 0x370) = data_ov018_02113c4c + (i << 4);
+    ((daPgMthr_c *)self)->mState = data_ov018_02113c4c + (i << 4);
     func_ov018_02112398((C *)self);
 }
 }
@@ -344,6 +258,7 @@ int func_ov018_021122ec(char* c){
  */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov018_02112234(char* c) {
+    daPgMthr_c *self = (daPgMthr_c *)c;
     void* a;
     int v;
     char* p;
@@ -356,9 +271,9 @@ int func_ov018_02112234(char* c) {
             v = *(int*)((char*)a + 0x358);
         func_ov018_02111968(c, a, (char*)v);
     }
-    p = _ZN8dActor_c13ClosestPlayerEv(c);
+    p = (char *)self->ClosestPlayer();
     func_ov018_02111a48(c, p);
-    _ZN8dActor_c9UpdatePosEP5dCc_c(c, c + 0x174);
+    self->UpdatePos(&self->mdCcAc_c);
     func_ov018_02111bf0(c, c + 0x1a8);
     if (*(unsigned char*)(c + 0x386) == 0 && *(unsigned char*)(c + 0x387) == 0) {
         unsigned int x = ((unsigned int)*(int*)(c + 0x12c) << 4) >> 16;
