@@ -85,6 +85,19 @@
  * 3 020afc44, 4 020afbb4, 5 020afa98, 6 020afa6c, 7 020af950, 8 020af924,
  * 9 020af838, 10 020af7cc, 11 020afa50, 12 020af908, 13 020af724.
  * Every member's ROM ordinal, address and size is on the banner above it.
+ * Leftover fold adds the two classInit factories at 0x020b0530/0x020b0580,
+ * so the licensed run is 38 functions through 0x020b05d0.
+ *
+ * deslop
+ * Leftover (cited MATCH walls):
+ * - dBgCh_Actr::Init / dCcAc_c::Init / DropShadowRadHeight / ReflectAngle 6az
+ *   (Fix12i mangles as i; ROM is Fix12<int> -- method form Undefined)
+ * - Particle::System::New / NewSimple: no method declaration in include/
+ * - Player::Heal / GiveCoins / player +0x6d8/+0x706: no Player.h
+ * - Behavior 0x100: named ++mStateTimer size-DIFF vs unsigned-short launder
+ * - struct C PMF stand-in (mwccarm PMF representation depends on the class)
+ * - SharedFilePtr has no recovered fields; handles stay data_ov002_*
+ * - decl_common.h stays out (3 of 11 declarations disagree with MATCH bodies)
  */
 
 #pragma defer_codegen off
@@ -94,10 +107,8 @@
 #include "da1up_c.h"
 #include "dBgCh_Actr.h"
 #include "dBgCh_Gnd.h"
-#include "Player.h"
 #include "Sound.h"
 #include "SharedFilePtr.h"
-#include "decl_dBgCh_Actr.h"
 
 /* The only two intra-TU calls that run UPWARD in ROM address order, so the only
    two that ROM-ascending source order cannot satisfy from the definition above:
@@ -303,7 +314,7 @@ int func_ov002_020af218(char* c, int range){
 extern "C" {
 int func_ov002_020af248(char* c, int n){
   extern int _ZN8dActor_c24KillAndTrackInDeathTableEv(void*);
-  int v = ((da1up_c*)c)->mStateTimer;
+  int v = ((da1up_c*)c)->unk_38c;
   if(v < n) return 0;
   if(v < n + 0x28){
     *(unsigned char*)(c+0x38f) = (v & 1) != 0;
@@ -591,7 +602,7 @@ void func_ov002_020af7cc(char* c)
     *(int*)(c + 0x384) = 0;
     *(int*)(c + 0x388) = 0;
     *(unsigned short*)(c + 0x100) = 0xffff;
-    ((da1up_c*)c)->mStateTimer = 0xffff;
+    ((da1up_c*)c)->unk_38c = 0xffff;
 }
 }
 
@@ -1026,16 +1037,9 @@ void func_ov002_020aff10(char* c){
    definition is already visible with C linkage. */
 extern "C" {
 void _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(unsigned int id, int x, int y, int z);
-int _ZN12dEnemyBase_c14UpdateYoshiEatER10dBgCh_Actr(char* c, char* clsn);
-void _ZN5dCc_c5ClearEv(char* c);
-void _ZN5dCc_c6UpdateEv(char* c);
-BMD_File* _ZN5Model8LoadFileER13SharedFilePtr(SharedFilePtr* f);
-int _ZN9ModelBase7SetFileEP8BMD_Fileii(void* thiz, BMD_File* f, int a, int b);
-int _ZN11ShadowModel12InitCylinderEv(void* thiz);
 void _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(void* thiz, dActor_c* a, int r, int h, unsigned int e, unsigned int g);
 void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void* thiz, dActor_c* a, int r, int h, Vector3_16* p, int q);
 int IsStarCollectedInCurLevel(int a);
-void _ZN7fBase_c18MarkForDestructionEv(void* thiz);
 }
 
 /* Ordinal 34 dispatches through a pointer-to-member-function, and mwccarm's
@@ -1059,14 +1063,14 @@ struct ModelCache { int pad0; BMD_File* file; };
 /* Vtable slot 3. */
 int da1up_c::CleanupResources()
 {
-  extern void* data_ov002_0210d9d8;
-  extern void* data_ov002_0210da30;
+  extern SharedFilePtr data_ov002_0210d9d8;
+  extern SharedFilePtr data_ov002_0210da30;
 
   int s = mMushroomType;
   if (s != 0xb && s != 0xc){
     int b = (actorID == 0x114);
-    if (b != 0) ((SharedFilePtr *)(&data_ov002_0210d9d8))->Release();
-    else ((SharedFilePtr *)(&data_ov002_0210da30))->Release();
+    if (b != 0) data_ov002_0210d9d8.Release();
+    else data_ov002_0210da30.Release();
   }
   if ((unsigned int)(mMushroomType - 0xb) <= 1)
     _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(0xd2, mPosX, mPosY + 0x28000, mPosZ);
@@ -1113,9 +1117,9 @@ int da1up_c::Behavior()
 {
   extern PMF data_ov002_0210dc00[];
 
-  if(_ZN12dEnemyBase_c14UpdateYoshiEatER10dBgCh_Actr(((char*)this), ((char*)this)+0x144) != 0){
+  if(UpdateYoshiEat(mWithMeshClsn) != 0){
     func_ov002_020af4ec(((char*)this));
-    _ZN5dCc_c5ClearEv((char*)&mdCcAc_c);
+    mdCcAc_c.Clear();
     return 1;
   }
   mEatingPlayer = 0;
@@ -1123,15 +1127,17 @@ int da1up_c::Behavior()
     int old = unk_388;
     C* self = (C*)((char*)this);
     (self->*data_ov002_0210dc00[mMushroomType])();
+    /* Named ++mStateTimer / mStateTimer = 0 size-DIFF vs this recovered
+       unsigned-short launder; keep MATCH form. */
     ++*(unsigned short*)((void*)(int)(((char*)this) + 0x100));
-    ++mStateTimer;
+    ++unk_38c;
     if(old != unk_388){
       *(unsigned short*)((void*)(int)(((char*)this) + 0x100)) = 0;
-      mStateTimer = 0;
+      unk_38c = 0;
     }
   }
-  _ZN5dCc_c5ClearEv((char*)&mdCcAc_c);
-  _ZN5dCc_c6UpdateEv((char*)&mdCcAc_c);
+  mdCcAc_c.Clear();
+  mdCcAc_c.Update();
   func_ov002_020af4ec(((char*)this));
   return 1;
 }
@@ -1160,31 +1166,31 @@ int da1up_c::InitResources()
     isKind0 = (actorID == 0x114);
     if (isKind0) {
         if ((unsigned int)(mMushroomType - 0xb) <= 1) {
-            if (_ZN9ModelBase7SetFileEP8BMD_Fileii(((char*)this) + 0x300, data_ov002_0210d9b8.file, 1, 1) == 0)
+            if (mModel.SetFile(data_ov002_0210d9b8.file, 1, 1) == 0)
                 return 0;
         } else {
-            f = _ZN5Model8LoadFileER13SharedFilePtr(&data_ov002_0210d9d8);
-            if (_ZN9ModelBase7SetFileEP8BMD_Fileii(((char*)this) + 0x300, f, 1, 1) == 0)
+            f = (BMD_File*)Model::LoadFile(data_ov002_0210d9d8);
+            if (mModel.SetFile(f, 1, 1) == 0)
                 return 0;
         }
     } else {
         if ((unsigned int)(mMushroomType - 0xb) <= 1) {
-            if (_ZN9ModelBase7SetFileEP8BMD_Fileii(((char*)this) + 0x300, data_ov002_0210d9b8.file, 1, 1) == 0)
+            if (mModel.SetFile(data_ov002_0210d9b8.file, 1, 1) == 0)
                 return 0;
         } else {
-            f = _ZN5Model8LoadFileER13SharedFilePtr(&data_ov002_0210da30);
-            if (_ZN9ModelBase7SetFileEP8BMD_Fileii(((char*)this) + 0x300, f, 1, 1) == 0)
+            f = (BMD_File*)Model::LoadFile(data_ov002_0210da30);
+            if (mModel.SetFile(f, 1, 1) == 0)
                 return 0;
         }
     }
 
-    if (_ZN11ShadowModel12InitCylinderEv((char*)&mShadowModel) == 0)
+    if (mShadowModel.InitCylinder() == 0)
         return 0;
 
     if (mMushroomType == 6 || mMushroomType == 8 || (unsigned int)(mMushroomType - 0xb) <= 1) {
         _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(((char*)this) + 0x110, (dActor_c*)((char*)this), 0x64000, 0x40000, 0x100002, 0);
         if ((unsigned int)(mMushroomType - 0xb) <= 1) {
-            *(int*)((long long)((char*)&mdCcAc_c.vulnFlags)) |= 0x8000;
+            mdCcAc_c.vulnFlags |= 0x8000;
         }
     } else {
         isKind115 = (actorID == 0x115);
@@ -1197,10 +1203,10 @@ int da1up_c::InitResources()
 
     unk_388 = 0;
     if (data_ov002_020ff040[mMushroomType] == 0) {
-        *(int*)((long long)((char*)&mdCcAc_c.flags)) |= 1;
+        mdCcAc_c.flags |= 1;
     }
     if (data_ov002_020ff050[mMushroomType] == 0) {
-        *(int*)((long long)((char*)&mFlags)) &= ~1;
+        mFlags &= ~1;
     }
     if ((unsigned int)(mMushroomType - 0xb) <= 1) {
         unk_38e = 1;
@@ -1215,14 +1221,36 @@ int da1up_c::InitResources()
     mVertAccel = -0x2000;
     mTerminalVelocity = -0x32000;
     _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(((char*)this) + 0x144, (dActor_c*)((char*)this), 0x32000, 0x32000, 0, 0);
-    _ZN10dBgCh_Actr13SetLimMovFlagEv((char*)&mWithMeshClsn);
+    mWithMeshClsn.SetLimMovFlag();
     unk_394 = 0;
 
     if (data_0209f2f8 == 7 && mPosY == 0xdac000 && mPosZ == 0
         && (data_0209f220 == 1 || IsStarCollectedInCurLevel(1) == 0)) {
-        _ZN7fBase_c18MarkForDestructionEv(((char*)this));
+        MarkForDestruction();
         return 0;
     }
 
     return 1;
+}
+
+/* -------------------------------------------------------------------------- */
+/* ROM ordinal 36 -- da1up_c_classInit_SCALEUP_KINOKO, 0x020b0530, size 0x50   */
+/* -------------------------------------------------------------------------- */
+/* MEGA_MUSHROOM (277 / SCALEUP_KINOKO). Leaf operator new routes to
+   fBase_c::operator new; the implicit constructor inlines the dEnemyBase_c
+   base step, vptr store, and the four member constructors. */
+// @symbol da1up_c_classInit_SCALEUP_KINOKO
+extern "C" da1up_c *da1up_c_classInit_SCALEUP_KINOKO()
+{
+    return new da1up_c();
+}
+
+/* -------------------------------------------------------------------------- */
+/* ROM ordinal 37 -- da1up_c_classInit_ONEUPKINOKO, 0x020b0580, size 0x50      */
+/* -------------------------------------------------------------------------- */
+/* ONE_UP_MUSHROOM (276 / ONEUPKINOKO). Same class, second profile. */
+// @symbol da1up_c_classInit_ONEUPKINOKO
+extern "C" da1up_c *da1up_c_classInit_ONEUPKINOKO()
+{
+    return new da1up_c();
 }
