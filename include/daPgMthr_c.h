@@ -27,8 +27,6 @@
 
 #include "dActor_c.h"
 
-extern "C" void *_ZN7fBase_cnwEj(unsigned size);
-
 struct daPgMthr_c : dActor_c {
     u8  pad_0d0[0x4];
     ModelAnim mModelAnim;            /* 0x0d4 */
@@ -60,10 +58,6 @@ struct daPgMthr_c : dActor_c {
     virtual int Behavior();                      /* slot 6 */
     virtual int Render();                        /* slot 9 */
     virtual void OnPendingDestroy();             /* slot 12 */
-
-    static void *operator new(unsigned long size) {
-        return _ZN7fBase_cnwEj(size);
-    }
 };
 
 typedef char MotherPenguin_size_must_be_0x38c[sizeof(daPgMthr_c) == 0x38c ? 1 : -1];
