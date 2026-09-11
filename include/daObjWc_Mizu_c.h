@@ -63,50 +63,6 @@ struct daObjWc_Mizu_c : dBgActor_c {
 
 typedef char daObjWc_Mizu_c_size_must_be_0x348[sizeof(daObjWc_Mizu_c) == 0x348 ? 1 : -1];
 
-#else
-
-/* The C spelling of the same object, flat. Same arrangement as
-   include/ShadowModel.h.
-
-   NOTHING COMPILES THIS BRANCH TODAY. It was kept for a D0 file that was said
-   to be a C translation unit; it never was, and the whole class was absorbed
-   into src/game/actors/d_a_obj_wc_mizu.cpp. Every remaining includer of this
-   header is //cpp, so the #if arm above is the one that builds. Left in place
-   rather than deleted because the offsets below are measured and are the only
-   flat record of this layout; delete it once nothing wants that record. */
-struct daObjWc_Mizu_c {
-    u8  pad_000[0x8];
-    s32 mParam;            /* 0x008 */
-    u8  pad_00c[0x54];
-    s32 mPosY;            /* 0x060 */
-    u8  pad_064[0x8];
-    s32 mPrevPosY;            /* 0x06c */
-    u8  pad_070[0x1e];
-    s16 mAngleY;            /* 0x08e */
-    u8  pad_090[0x3c];
-    s8  mAreaId;            /* 0x0cc */
-    u8  pad_0cd[0x7];
-    /* Model member, named by _ZN5ModelD1Ev at +0xd4 -- a relocation the ROM build checks.
-       D1 and not D2, so it is this type and not an inlined base. The marker's pad stopped
-       short of the object, so the member also takes over unk_0dc (+0x8 = data), which the
-       header declared separately inside it. */
-    Model mModel;            /* 0x0d4 */
-    /* dBgW_KcMbg member. The cartridge's own ~daObjWc_Mizu_c calls _ZN10dBgW_KcMbgD1Ev at
-       +0x124 (D0/D1), a relocation the ROM build checks; recovered by
-       tools/dtor_members.py. D1 and not D2, so it is this type and not an inlined base. */
-    dBgW_KcMbg mMeshCollider;            /* 0x124 */
-    u8  pad_2ec[0x34];
-    TextureTransformer mTextureTransformer; /* 0x320 */
-    s32 mTargetPosY;            /* 0x334 */
-    u8  mUseSpawnPosY;            /* 0x338 */
-    u8  pad_339[0x3];
-    s32 mSoundID;            /* 0x33c */
-    u8  mTrueAreaID;            /* 0x340 */
-    u8  pad_341;
-    s16 mPhaseAngle;            /* 0x342 */
-    s32 mWaterHeight;            /* 0x344 */
-};
-
 #endif /* __cplusplus */
 
 #endif /* DAOBJWC_MIZU_C_H */
