@@ -9,25 +9,20 @@
 
 #include "dBgActor_c.h"
 
-/* No header existed under any name -- confirmed against build/rtti.json (RTTI
- * record ov025:0x02113730, mangled `7daDgr_c`) and against include/decl_common.h,
- * which carried only a bare `extern int _ZTV7daDgr_c[];` placeholder. The RTTI
- * name is used exactly as spelled; no pretty name is coined.
+extern "C" void *_ZN7fBase_cnwEj(unsigned size);
+
+/* Grindel (ov025 GRINDEL 162). RTTI ov025:0x02113730 names `7daDgr_c`;
+ * overlay_actors maps the profile to GRINDEL, not daDkk_c (DONKAKU, same
+ * overlay). No pretty name is coined.
  *
  * BASE: dBgActor_c, direct. The RTTI edge (base_key ov002:0x021089ec, offset 0)
- * agrees with the destructor: func_ov025_021111a0 (D1, vtable slot 16) stores
- * exactly two vtables in sequence -- `data_ov025_02113760` (its own) then
- * `_ZTV10dBgActor_c` -- which is what one intermediate-free inlined base looks
- * like. dBgActor_c's own destructor is declared inline in its class body, so
- * every direct child inlines its body rather than calling it out of line.
+ * agrees with the destructor: D1 stores exactly two vtables -- `_ZTV7daDgr_c`
+ * then `_ZTV10dBgActor_c` -- one intermediate-free inlined base.
  *
- * SIZE IS 0x334 (820 decimal), THE LITERAL THE FACTORY PASSES TO operator new --
- * not the field span a naive read of the destructor gives. The factory,
- * daDgr_c_classInit, is a trivial-constructor shape: `fBase_c::operator
- * new(820)`, `dBgActor_c::dBgActor_c()`, store `_ZTV7daDgr_c`. No dedicated
- * "daDgr_c()" constructor exists in the ROM -- the derived class's own ctor
- * body is empty and gets folded into the factory, the same shape
- * include/BigBrickBlock.h's family uses.
+ * SIZE IS 0x334 (820 decimal), THE LITERAL THE FACTORY PASSES TO operator new.
+ * The factory is `return new daDgr_c()`: leaf `operator new(unsigned long)`
+ * forwards `_ZN7fBase_cnwEj`, the implicit ctor calls `dBgActor_c()` and
+ * stores `_ZTV7daDgr_c`. No dedicated `daDgr_c()` body exists in the ROM.
  *
  * MEMBERS. dBgActor_c ends at 0x320; daDgr_c adds 0x14 more bytes and destructs
  * none of them (func_ov025_021111a0 tears down only dBgActor_c's own Model and
@@ -75,6 +70,13 @@ struct daDgr_c : dBgActor_c {
     u8  pad_32a[0x2];
     u32 mDustParticle1;
     u32 mDustParticle2;
+
+    /* Leaf allocator until #2570 merges a shared fBase_c::operator new.
+       `unsigned long` is size_t on this ABI; `unsigned int` is illegal. */
+    static void *operator new(unsigned long size)
+    {
+        return _ZN7fBase_cnwEj((unsigned)size);
+    }
 
     /* --- vtable, in ROM order. Do not reorder. ---
      * DECLARED INLINE, AND FIRST. This is measured against the cartridge, not
