@@ -12,8 +12,9 @@
  * Leftover: func_ov030_* helpers stay those ROM labels (tick PMFs and
  *   free functions). EnterState0..10 are already members; do not coin
  *   names for the rest.
- * Leftover: SetAnim / dCcAc_c::Init / DropShadowRadHeight /
- *   IsTooFarAwayFromPlayer stay mangled (Fix12-by-value, 6az).
+ * Leftover: SetAnim / dCcAc_c::Init / dBgCh_Actr::Init /
+ *   DropShadowRadHeight / IsTooFarAwayFromPlayer stay mangled
+ *   (Fix12-by-value, 6az; dBgCh Init header Fix12i mangles as int).
  * Leftover: common.h first (02112094 matrix copy). Player+8 param1
  *   and cap +0xc8 belong on those classes. data_ov030_* handles.
  *   Factories live in d_a_mky_monkey_*.c (after this TU's .text).
@@ -2125,6 +2126,7 @@ extern "C" {
 
 void  _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(void *self, void *file, int idx, int speed, u32 flags);
 void  _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(void *self, void *actor, int a, int b, u32 c, u32 d);
+void  _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void *self, void *actor, int a, int b, void *v0, void *v1);
 int   _ZN8dActor_c22IsTooFarAwayFromPlayerE5Fix12IiE(void *self, int d);
 int   _ZN8SaveData16HasPlayerLostCapEv(void);
 
@@ -2249,7 +2251,7 @@ s32 daMky_c::InitResources()
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModelAnim, data_ov030_02115cf0[1], 0, 0x1000, 0);
     mModelAnim.speed = 0x1000;
     _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(&mdCcAc_c, this, 0x28000, 0x64000, 0x800004, 0x49000);
-    mWithMeshClsn.Init(this, 0x32000, 0x32000, 0, 0);
+    _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(&mWithMeshClsn, this, 0x32000, 0x32000, 0, 0);
     mVertAccel = -0x2000;
     mTerminalVelocity = -0x3c000;
     mPerchPosX = mPosX;
