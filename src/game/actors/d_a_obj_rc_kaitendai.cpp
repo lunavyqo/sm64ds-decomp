@@ -14,9 +14,9 @@
  * deslop
  * Leftover: func_ov002_020b676c / func_ov002_020b66a8 are still the
  *   linker names of daObjKaitendai_c Init/Cleanup (the base leaves
- *   those slots pure virtual). Naming belongs in ov002. That helper
- *   types the table as SharedFilePtr *m[2] and CLPS_Block *clps.
- * Leftover: the two start-angle halfwords are still data_ov036_*.
+ *   those slots pure virtual). Naming belongs in ov002.
+ * Leftover: the two start-angle halfwords 02113b18 / 02113b1c sit
+ *   8 bytes before typeinfo at 02113b20; they are not owned here.
  * Leftover: g_profile_RC_KAITEN lives outside this TU (S14).
  */
 

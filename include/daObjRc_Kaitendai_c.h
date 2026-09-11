@@ -17,8 +17,7 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
  * `daObjRc_Kaitendai_c` is the RTTI name. Coined name was RotatingPlatformRr.
  */
 struct daObjRc_Kaitendai_c : daObjKaitendai_c {
-    /* Inline and first: out-of-line mwccarm emits D0 before D1; retail
-       has D1 at 0x02111444 below D0 at 0x02111494. */
+    /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
     virtual ~daObjRc_Kaitendai_c() {}
     virtual s32 CleanupResources(); /* slot 3 */
     virtual s32 InitResources();    /* slot 0 */
