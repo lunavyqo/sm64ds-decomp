@@ -70,7 +70,6 @@ void _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(u32 id, Fix12i x, Fix12i y, 
 int _ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_(void *, int, int);
 int _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
     void *, int, void *, int, int, void *);
-int _ZN4dBgW21UpdatePosWithVelocityERS_P8dActor_cR5dBgPiR7Vector3P10Vector3_16S8_;
 
 void Math_Function_0203b0fc(int *p, int target, int scale, int max);
 void Math_Function_0203b14c(int *p, int target, int scale, int max, int extra);
@@ -119,7 +118,7 @@ s32 daObjBk_Dossunbar_c::InitResources()
         *(void **)((char *)&data_ov015_0211453c + j));
     func_020393d4(
         &mMeshCollider,
-        (void *)&_ZN4dBgW21UpdatePosWithVelocityERS_P8dActor_cR5dBgPiR7Vector3P10Vector3_16S8_);
+        (void *)&dBgW::UpdatePosWithVelocity);
 
     int tmp[3];
     tmp[0] = 0x1000;
