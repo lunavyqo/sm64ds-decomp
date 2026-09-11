@@ -31,8 +31,7 @@
  *   [6]  0x0211a870  src/_ZN16daObjCtMecha04_c13InitResourcesEv.cpp
  *   [7]  0x0211aa38  src/_ZN16daObjCtMecha04_c15MoveActorOnBeltER8dActor_c.cpp
  *   [8]  0x0211aacc  src/_ZN16daObjCtMecha04_c17AfterClsnCallbackEP4dBgWP8dActor_cS3_.cpp
- *   [9]  0x0211aae0  src/d_a_obj_ct_mecha04_ct_mecha04l.cpp
- *   [10] 0x0211ab20  src/d_a_obj_ct_mecha04_ct_mecha04s.cpp
+ * The two factories (CT_MECHA04L / CT_MECHA04S) are `return new` in this file.
  */
 
 #include "common.h"
@@ -42,8 +41,8 @@
 #include "types.h"
 #include "dBgCh_Gnd.h"
 
-/* The three resource tables are arrays of 12-byte records. Their entries
- * retain address-based names because the ROM does not preserve source names. */
+/* One 2-row {model, collision, clps} table indexed by mVariant.
+ * 0211d194 / 0211d198 / 0211d19c are the three columns of row 0. */
 struct Entry3 {
     void *a;
     void *b;
