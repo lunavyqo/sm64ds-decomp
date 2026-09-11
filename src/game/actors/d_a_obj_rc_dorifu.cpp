@@ -10,8 +10,8 @@
  * ov036 sinit constructs those SharedFilePtrs as file IDs
  * 1690 / 1691, 1692 / 1693, 1694 / 1695, 1696 / 1697, 1698 / 1699.
  *
- * The five-entry table is defined in this TU (retail places it
- * after the profile, before the vtable).
+ * The five-entry table is defined in this TU. Retail .data
+ * order is typeinfo, type-name, profile, table, vtable.
  *
  * daObjRc_Dorifu_c_classInit is reconstructed (RTTI
  * daObjRc_Dorifu_c, RC_DORIFU registry). Retail does not
@@ -19,7 +19,8 @@
  *
  * deslop
  * Leftover: the BMD/KCL SharedFilePtrs and CLPS_Block are still
- *   data_ov036_*.
+ *   data_ov036_*. The CLPS words sit before this TU's claimed
+ *   .data (typeinfo at 0x02113e4c); the SharedFilePtrs are BSS.
  */
 
 #include "daObjRc_Dorifu_c.h"
