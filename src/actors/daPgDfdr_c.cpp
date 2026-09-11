@@ -26,7 +26,6 @@
  *   stride-0xc step symbols (02113a1c / 20 / 24 / 26); this TU consumes
  *   them, overlay .data owns them.
  * - S14: g_profile_PENGUIN_DEFENDER stays outside the licensed .text.
- * - Player::IsInsideOfCannon via decl_Player.h (no Player.h).
  * - func_ov027_02111a28 keeps the (int)c+0x3d9 / +0x3d4 pointer forms and
  *   the c+0x378 / +0x380 / +0x74 loads: named mStepIndex++ / mDistanceLeft
  *   -= / mModelAnim.currFrame / file / mCamSpacePosX CSE the field address.
