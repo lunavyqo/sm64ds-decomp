@@ -42,7 +42,7 @@
  *   data_ov078_* SharedFilePtr handles (Init LoadFile / Cleanup Release) and
  *   state records (KingBobOmb_SetState). func_02035550 is the unnamed
  *   dBgCh_Actr mFlags |= 0x4000 setter (no method on the header). S14 no
- *   g_profile_BOMBKING. Helpers stay offset soup. common.h first (M12
+ *   g_profile_BOMBKING. common.h first (M12
  *   shadow/hold matrix copies at 0x434 and 0x4a4).
  *
  * Folded from 52 one-function sources, each of which was its own file in src/
@@ -110,8 +110,9 @@
  * Any OTHER pragma is FILE-GLOBAL last-wins (opt_propagation,
  * optimize_for_size) and is still left out: carried into a merged TU it
  * would silently recompile every other member. Decide those by hand:
- *   func_ov078_02125350: #pragma opt_strength_reduction off   [NOT carried -- review]
- *   func_ov078_02125350: #pragma opt_common_subs off   [NOT carried -- review]
+ *   func_ov078_02125448: opt_strength_reduction off / opt_common_subs off
+ *     carried, #pragma push/pop around the member (not 02125350).
+ *   InitResources: opt_strength_reduction off carried, push/pop.
  */
 
 /* common.h FIRST: daBombking_c.h reaches math/Matrix.h through BlendModelAnim.h,
@@ -120,6 +121,7 @@
  * matrices through M12; only the flat spelling reproduces the block move. */
 #include "common.h"
 #include "daBombking_c.h"
+#include "daBmb_c.h"
 #include "SharedFilePtr.h"
 #include "dBgCh_Gnd.h"
 #include "decl_common.h"
@@ -164,27 +166,6 @@ struct CView {
     char pad434[0x494-0x434];
     int field_494;
 };
-
-typedef struct {
-    char pad0[0x98];
-    int f98;
-    int f9c;
-    char pad_a0[0x2c];
-    signed char fcc;
-    char pad_cd[0x1ff];
-    char anim[0x158];
-    int arr[29];
-    char pad498;
-    signed char f499;
-    char pad49a[2];
-    int f49c;
-    int f4a0;
-    char pad4a4[0x48];
-    int f4ec[3];
-    int f4f8;
-    int f4fc;
-} T;
-
 
 
 extern "C" {
@@ -338,10 +319,10 @@ extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov078_02123864(char* r7) {
   int i = 0;
   do {
-    char* a = (char*)_ZN8dActor_c10FindWithIDEj(((unsigned int*)(r7 + 0x424))[i]);
-    if (a) {
-      *(int*)(a + 0x3e0) = 0;
-      *(unsigned char*)(a + 0x3f6) = 1;
+    daBmb_c *bmb = (daBmb_c *)_ZN8dActor_c10FindWithIDEj(((unsigned int*)(r7 + 0x424))[i]);
+    if (bmb) {
+      bmb->unk_3e0 = 0;
+      bmb->unk_3f6 = 1;
     }
     i++;
   } while (i < 2);
@@ -1322,29 +1303,29 @@ int func_ov078_021250f8(char* c) {
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov078_02125350(int sl)
 {
-    T* t = (T*)sl;
+    daBombking_c *self = (daBombking_c *)sl;
     int i;
     int r;
 
-    t->f4fc = 1;
-    t->f9c = -0x2000;
-    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt((void*)(t->anim), (void*)(data_ov078_02126ef0[1]), 0, 0x40000000, 0x1000, 0);
+    self->mAnimSpeed = 1;
+    self->mVertAccel = -0x2000;
+    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&self->mBlendModelAnim, (void*)(data_ov078_02126ef0[1]), 0, 0x40000000, 0x1000, 0);
 
-    t->f98 = 0;
+    self->mHorzSpeed = 0;
 
-    for (i = 0; i < t->f4a0; i++) {
-        if (t->arr[i] == 0) {
+    for (i = 0; i < self->mPhase; i++) {
+        if (self->mSpawnedId[i] == 0) {
             r = _ZN8dActor_c5SpawnEjjRK7Vector3PK10Vector3_16as(
-                0xce, 2, t->f4ec, 0, t->fcc, -1);
+                0xce, 2, (Vector3 *)&self->mThrowPosX, 0, self->mAreaId, -1);
             if (r != 0) {
-                t->arr[i] = *(int*)(r + 4);
-                t->f49c = i;
+                self->mSpawnedId[i] = *(int*)(r + 4);
+                self->mSpawnSlot = i;
                 return 1;
             }
         }
     }
 
-    t->f499 = 0;
+    self->mActionStep = 0;
     return 1;
 }
 }
@@ -1897,8 +1878,8 @@ int daBombking_c::Behavior()
     }
 
     DecIfAbove0_Short((unsigned short *)&mStateTimer);
-    DecIfAbove0_Byte(&mTimer505);
-    DecIfAbove0_Byte(&mTimer504);
+    DecIfAbove0_Byte(&unk_505);
+    DecIfAbove0_Byte(&unk_504);
 
     if ((char *)mState != (char *)data_ov078_021270bc) {
         UpdatePos(&mdCcAcPos_c);
@@ -1930,12 +1911,12 @@ int daBombking_c::Behavior()
         v.x = data_ov078_02126e00.x;
         v.y = data_ov078_02126e00.y;
         v.z = data_ov078_02126e00.z;
-        mdCcAcPos_c_37c.SetPosRelativeToActor(v);
+        mdCcAcPos_c2.SetPosRelativeToActor(v);
     }
     mdCcAcPos_c.Clear();
     mdCcAcPos_c.Update();
-    mdCcAcPos_c_37c.Clear();
-    mdCcAcPos_c_37c.Update();
+    mdCcAcPos_c2.Clear();
+    mdCcAcPos_c2.Update();
 
     func_ov078_02125de0(self);
     func_ov078_02125c98(self);
@@ -1982,7 +1963,7 @@ int daBombking_c::InitResources()
     v1.x = data_ov078_02126e00.x;
     v1.y = data_ov078_02126e00.y;
     v1.z = data_ov078_02126e00.z;
-    _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(&mdCcAcPos_c_37c, this, &v1, 0xc8000, 0xc8000, 0x200000, 0x207000);
+    _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(&mdCcAcPos_c2, this, &v1, 0xc8000, 0xc8000, 0x200000, 0x207000);
     unk_498 = 0x1f;
     mHomePosX = mPosX;
     mHomePosY = mPosY;

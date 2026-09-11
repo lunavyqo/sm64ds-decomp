@@ -93,8 +93,8 @@ struct daBmb_c : dEnemyBase_c {
        anything else starts live. Behavior reads it again for the egg path. */
     u8                           mVariant;              /* 0x3f5 */
     /* A latch: while non-zero Behavior does nothing but call func_ov102_0214ae1c
-       and return. InitResources clears it, and nothing matched sets it, so what
-       the latch MEANS is not evidenced -- only that it diverts the whole frame. */
+       and return. InitResources clears it; ov078/daBombking_c 02123864 writes 1
+       on a spawned bob-omb. */
     u8                           unk_3f6;               /* 0x3f6 */
     u8  pad_3f7[0x9];
 

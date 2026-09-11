@@ -43,7 +43,7 @@ struct daBombking_c : dEnemyBase_c {
     dBgCh_Actr mWithMeshClsn;       /* 0x110 */
     BlendModelAnim mBlendModelAnim;   /* 0x2cc */
     dCcAcPos_c mdCcAcPos_c;/* 0x33c */
-    dCcAcPos_c mdCcAcPos_c_37c;/* 0x37c */
+    dCcAcPos_c mdCcAcPos_c2;/* 0x37c */
     CommonModel mCommonModel;         /* 0x3bc */
     ShadowModel mShadowModel;         /* 0x3f8 */
     /* The reconstructed state dispatcher uses two member-pointer records.
@@ -90,15 +90,15 @@ struct daBombking_c : dEnemyBase_c {
     s16 mTargetAngY;                  /* 0x4fa */
     s32 mAnimSpeed;                   /* 0x4fc */
     s32 mHealth;                      /* 0x500 */
-    u8  mTimer504;                    /* 0x504 */
-    u8  mTimer505;                    /* 0x505 */
+    u8  unk_504;                      /* 0x504 -- DecIfAbove0_Byte; armed to 0x64 */
+    u8  unk_505;                      /* 0x505 -- DecIfAbove0_Byte; armed to 5 / 0xf / 0x14 */
     /* 1 while fight BGM layer 3 is up. */
     u8  mMusicLayer3;                 /* 0x506 */
     u8  mStarTracked;                 /* 0x507 */
     u8  mIntroTalked;                 /* 0x508 */
     u8  mStarID;                      /* 0x509 */
     /* Counts while mMusicLayer3; resets the fight when it exceeds 0xc8. */
-    u8  mTimer50a;                    /* 0x50a */
+    u8  unk_50a;                      /* 0x50a */
     u8  pad_50b[0x1];
 
     /* --- vtable --- */
@@ -200,13 +200,13 @@ struct daBombking_c {
     s16 mTargetAngY;            /* 0x4fa */
     s32 mAnimSpeed;            /* 0x4fc */
     s32 mHealth;            /* 0x500 */
-    u8  mTimer504;            /* 0x504 */
-    u8  mTimer505;            /* 0x505 */
+    u8  unk_504;            /* 0x504 */
+    u8  unk_505;            /* 0x505 */
     u8  mMusicLayer3;            /* 0x506 */
     u8  mStarTracked;            /* 0x507 */
     u8  mIntroTalked;            /* 0x508 */
     u8  mStarID;            /* 0x509 */
-    u8  mTimer50a;            /* 0x50a */
+    u8  unk_50a;            /* 0x50a */
 };
 
 #endif /* __cplusplus */
