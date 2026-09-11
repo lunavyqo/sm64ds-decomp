@@ -10,20 +10,21 @@
  * Leftover: func_ov018_021118fc..021123d0 are this TU's own helpers;
  *   the ROM symbols are still the func_ov labels. Naming them as C++
  *   methods would emit _ZN10daPgMthr_c* and miss those labels.
- * Leftover: Klass/C stays incomplete (PMF call through mState).
- *   Tables at data_ov018_02113c4c are 0x10 apart; 021123d0 indexes
- *   them, 02112398/0211235c run enter/main.
  * Leftover: ModelAnim::SetAnim, TextureSequence::SetFile,
- *   dCcAc_c::Init, dBgCh_Actr::Init, DropShadowRadHeight stay mangled
- *   (Fix12-by-value, wall 6az).
+ *   dCcAc_c::Init, DropShadowRadHeight stay mangled (Fix12-by-value
+ *   method form size-DIFF: SetAnim 0x58->0x64, Init 0x1ac->0x1c4,
+ *   DropShadow 0x100->0x110). dBgCh_Actr::Init MATCH as a method
+ *   (Fix12i is s32).
+ * Leftover: 02111fac member form size-DIFF 0x230->0x224 (U8P
+ *   increment and 0x300+0x84 spelling of mMessageId).
  * Leftover: common.h must be first. 02111d28 copies Matrix4x3 as
  *   twelve uniform words; the nested Matrix.h spelling scalarizes.
  * Leftover: BMD/BCA/BTP handles still data_ov018_*; decl_common
  *   spells 02112c0c as int[]. Text-only TU, so g_profile_PENGUIN_MOTHER
  *   is not defined here (S14).
  * Leftover: Player talk/message helpers and func_0201267c names
- *   belong with those callees. +0x388/+0x389/+0x386 stay in pad_378
- *   until those bytes are named from this TU's own writes.
+ *   belong with those callees. Player+0x358/+0x360 held-actor slots
+ *   belong on Player.
  */
 
 #include "common.h"
@@ -72,10 +73,9 @@ extern void _ZN8dActor_c9UpdatePosEP5dCc_c(char* thisptr, char* clsn);
 extern int data_ov018_02113be8[];
 extern int data_ov018_02113bf0[];
 extern char data_ov018_02113c4c[];
-struct C; typedef void (C::*PMF)();
-struct C { char pad[0x370]; PMF *pp; };
-extern void func_ov018_02112398(C *c);
-extern void func_ov018_0211235c(C *c);
+typedef void (daPgMthr_c::*PMF)();
+extern void func_ov018_02112398(daPgMthr_c *self);
+extern void func_ov018_0211235c(daPgMthr_c *self);
 extern SharedFilePtr data_ov018_02113c00;
 extern SharedFilePtr *data_ov018_02112c04[2];
 extern void func_ov018_02111d28(dActor_c *self);
@@ -123,7 +123,7 @@ int daPgMthr_c::InitResources()
     mScaleX = 0x1000;
     mScaleY = 0x1000;
     mScaleZ = 0x1000;
-    _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(&mWithMeshClsn, this, 0x32000, 0x32000, 0, 0);
+    mWithMeshClsn.Init(this, 0x32000, 0x32000, 0, 0);
     Vector3 pos;
     pos.x = mPosX;
     pos.y = mPosY;
@@ -138,7 +138,7 @@ int daPgMthr_c::InitResources()
     mHomePosX = mPosX;
     mHomePosY = mPosY;
     mHomePosZ = mPosZ;
-    unk_374 = 0;
+    mPlayer = 0;
     func_ov018_02111d28(this);
     return 1;
 }
@@ -150,7 +150,7 @@ int daPgMthr_c::InitResources()
 /* recovered: named members + shared header, real C++ method */
 int daPgMthr_c::Behavior()
 {
-    func_ov018_0211235c((C *)this);
+    func_ov018_0211235c(this);
     mModelAnim.Animation::Advance();
     mTextureSequence.Advance();
     mdCcAc_c.Clear();
@@ -208,21 +208,28 @@ int daPgMthr_c::CleanupResources()
 /* ROM ordinal 16 -- func_ov018_021123d0, 0x021123d0, size 0x1c */
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
-void func_ov018_021123d0(char *self, int i) {
-    ((daPgMthr_c *)self)->mState = data_ov018_02113c4c + (i << 4);
-    func_ov018_02112398((C *)self);
+void func_ov018_021123d0(char *c, int i) {
+    daPgMthr_c *self = (daPgMthr_c *)c;
+    self->mState = data_ov018_02113c4c + (i << 4);
+    func_ov018_02112398(self);
 }
 }
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 15 -- func_ov018_02112398, 0x02112398, size 0x38 */
 /* -------------------------------------------------------------------------- */
-extern "C" void func_ov018_02112398(C *c) { PMF *p = c->pp; (c->**p)(); }
+extern "C" void func_ov018_02112398(daPgMthr_c *self) {
+    PMF *p = (PMF *)self->mState;
+    (self->* *p)();
+}
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 14 -- func_ov018_0211235c, 0x0211235c, size 0x3c */
 /* -------------------------------------------------------------------------- */
-extern "C" void func_ov018_0211235c(C *c) { PMF *p = c->pp + 1; (c->**p)(); }
+extern "C" void func_ov018_0211235c(daPgMthr_c *self) {
+    PMF *p = (PMF *)self->mState + 1;
+    (self->* *p)();
+}
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 13 -- func_ov018_021122ec, 0x021122ec, size 0x70 */
@@ -235,16 +242,16 @@ extern "C" void func_ov018_0211235c(C *c) { PMF *p = c->pp + 1; (c->**p)(); }
  * touches is a daPgMthr_c offset: +0xd4 is mModelAnim, +0x138 is
  * mTextureSequence, +0x98 is dActor_c::mHorzSpeed, +0x374 is unk_374. The
  * offsets are written raw, the way the neighbouring .c-derived helpers write
- * them, because the ROM reaches +0x130 (inside mModelAnim) and +0x37c (inside
- * the trailing remainder), which no header names. */
+ * them, because the ROM reaches +0x130 (inside mModelAnim). */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov018_021122ec(char* c){
-  _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((char*)c+0xd4, (BCA_File *)data_ov018_02113bf0[1], 0, 0x1000, 0);
+  daPgMthr_c *self = (daPgMthr_c *)c;
+  _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModelAnim, (BCA_File *)data_ov018_02113bf0[1], 0, 0x1000, 0);
   *(int*)(c+0x130)=0x1000;
-  _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj((char*)c+0x138, *(BTP_File *)data_ov018_02113be8[1], 0, 0x1000, 0);
-  *(int*)(c+0x98)=0;
-  *(int*)(c+0x374)=0;
-  *(int*)(c+0x37c)=0;
+  _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(&self->mTextureSequence, *(BTP_File *)data_ov018_02113be8[1], 0, 0x1000, 0);
+  self->mHorzSpeed = 0;
+  self->mPlayer = 0;
+  self->unk_37c = 0;
   return 1;
 }
 }
@@ -262,7 +269,7 @@ int func_ov018_02112234(char* c) {
     void* a;
     int v;
     char* p;
-    if (*(unsigned char*)(c + 0x386) != 0)
+    if (self->mGaveStar != 0)
         func_ov018_02111b3c(c);
     a = func_ov018_021118fc(c);
     v = 0;
@@ -274,11 +281,11 @@ int func_ov018_02112234(char* c) {
     p = (char *)self->ClosestPlayer();
     func_ov018_02111a48(c, p);
     self->UpdatePos(&self->mdCcAc_c);
-    func_ov018_02111bf0(c, c + 0x1a8);
-    if (*(unsigned char*)(c + 0x386) == 0 && *(unsigned char*)(c + 0x387) == 0) {
+    func_ov018_02111bf0(c, &self->mWithMeshClsn);
+    if (self->mGaveStar == 0 && self->mHoldingBaby == 0) {
         unsigned int x = ((unsigned int)*(int*)(c + 0x12c) << 4) >> 16;
         if (x == 0x10 || x == 0x25)
-            func_0201267c(0xdf, c + 0x74);
+            func_0201267c(0xdf, &self->mCamSpacePosX);
     }
     return 1;
 }
@@ -289,11 +296,12 @@ int func_ov018_02112234(char* c) {
 /* -------------------------------------------------------------------------- */
 extern "C" {
 int func_ov018_021121dc(char* c){
-  _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(c+0xd4, (BCA_File *)data_ov018_02113bf0[1], 0, 0x1000, 0);
+  daPgMthr_c *self = (daPgMthr_c *)c;
+  _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModelAnim, (BCA_File *)data_ov018_02113bf0[1], 0, 0x1000, 0);
   *(int*)(c+0x130)=0x1000;
-  *(unsigned char*)(c+0x388)=0;
-  *(unsigned char*)(c+0x389)=0x3c;
-  *(int*)(c+0x37c)=1;
+  self->mTalkStep = 0;
+  self->mTalkTimer = 0x3c;
+  self->unk_37c = 1;
   return 1;
 }
 }
@@ -304,6 +312,9 @@ int func_ov018_021121dc(char* c){
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov018_02111fac(char *c)
 {
+    /* Member form (mTalkStep / mPlayer / mMessageId / mGaveStar) size-DIFF
+       0x230 -> 0x224. U8P increment and the 0x300+0x84 spelling of mMessageId
+       are load-bearing. */
     switch (*(unsigned char *)(c + 0x388)) {
     case 0:
         if (*(int *)(c + 0x194) & 0x8000000) {
@@ -383,39 +394,41 @@ int func_ov018_02111fac(char *c)
    types breaks the byte match. See notes/mwccarm-codegen.md 6az. */
 extern "C" int func_ov018_02111f1c(char *c)
 {
-    if (*(int *)(c + 0x374) == 0 && *(unsigned char *)(c + 0x386) == 0)
+    daPgMthr_c *self = (daPgMthr_c *)c;
+    if (self->mPlayer == 0 && self->mGaveStar == 0)
         func_ov018_021123d0(c, 0);
-    *(int *)(c + 0x98) = 0x5000;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((ModelAnim *)(c + 0xd4), (BCA_File *)data_ov018_02113c08[1], 0, 0x1000, 0);
+    self->mHorzSpeed = 0x5000;
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModelAnim, (BCA_File *)data_ov018_02113c08[1], 0, 0x1000, 0);
     *(int *)(c + 0x130) = 0x1000;
-    _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj((TextureSequence *)(c + 0x138), *(BTP_File *)data_ov018_02113bf8[1], 0, 0x1000, 0);
-    *(int *)(c + 0x37c) = 2;
+    _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(&self->mTextureSequence, *(BTP_File *)data_ov018_02113bf8[1], 0, 0x1000, 0);
+    self->unk_37c = 2;
     return 1;
 }
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 8 -- func_ov018_02111e28, 0x02111e28, size 0xf4 */
 /* -------------------------------------------------------------------------- */
-extern "C" int func_ov018_02111e28(dActor_c *self)
+extern "C" int func_ov018_02111e28(dActor_c *act)
 {
-    char *s = (char*)self;
-    _Z14ApproachLinearRsss((s16 *)(s + 0x8e),
-        Vec3_HorzAngle((Vector3 *)(s + 0x5c), (Vector3 *)(*(char**)(s + 0x374) + 0x5c)), 0x514);
-    *(short*)(s + 0x94) = *(short*)(s + 0x8e);
-    self->UpdatePos((dCc_c*)(s + 0x174));
-    func_ov018_02111bf0(s, s + 0x1a8);
-    func_ov018_02111a48(s, *(char**)(s + 0x374));
+    daPgMthr_c *self = (daPgMthr_c *)act;
+    char *s = (char *)self;
+    _Z14ApproachLinearRsss(&self->mAngleY,
+        Vec3_HorzAngle((Vector3 *)&self->mPosX, (Vector3 *)((char *)self->mPlayer + 0x5c)), 0x514);
+    self->mPrevAngleY = self->mAngleY;
+    self->UpdatePos(&self->mdCcAc_c);
+    func_ov018_02111bf0(s, &self->mWithMeshClsn);
+    func_ov018_02111a48(s, (char *)self->mPlayer);
     unsigned int v = (unsigned int)(*(int*)(s + 0x12c) << 4) >> 0x10;
     if (v == 9 || v == 0x15)
-        func_0201267c(0xde, s + 0x74);
-    char *p2 = *(char**)(s + 0x374);
+        func_0201267c(0xde, &self->mCamSpacePosX);
+    char *p2 = (char *)self->mPlayer;
     int r;
     if (*(int*)(p2 + 8) == 3)
         r = (*(int*)(p2 + 0x360) != 0);
     else
         r = (*(int*)(p2 + 0x358) != 0);
-    if (r == 0 || Vec3_Dist((Vector3 *)(s + 0x364), (Vector3 *)(p2 + 0x5c)) > 0x5dc000) {
-        *(int*)(s + 0x374) = 0;
+    if (r == 0 || Vec3_Dist((Vector3 *)&self->mHomePosX, (Vector3 *)((char *)self->mPlayer + 0x5c)) > 0x5dc000) {
+        self->mPlayer = 0;
         func_ov018_021123d0(s, 0);
     }
     return 1;
@@ -430,19 +443,20 @@ extern "C" int func_ov018_02111e28(dActor_c *self)
    ROM name carries by-value class parameters (e.g. Fix12<int>), which
    mwccarm passes differently at the call site, so declaring the true
    types breaks the byte match. See notes/mwccarm-codegen.md 6az. */
-extern "C" void func_ov018_02111d28(dActor_c *self)
+extern "C" void func_ov018_02111d28(dActor_c *act)
 {
-    char *s = (char*)self;
-    Matrix4x3_FromRotationY(s + 0xf0, *(short*)(s + 0x8e));
-    *(int*)(s + 0x114) = *(int*)(s + 0x5c) >> 3;
-    *(int*)(s + 0x118) = *(int*)(s + 0x60) >> 3;
-    *(int*)(s + 0x11c) = *(int*)(s + 0x64) >> 3;
-    _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(self, *(ShadowModel*)(s + 0x14c), *(Matrix4x3*)(s + 0xf0), 0x140000, 0x50000, 0xf);
-    if (*(short*)(s + 0x380) != 0 || *(short*)(s + 0x382) != 0) {
+    daPgMthr_c *self = (daPgMthr_c *)act;
+    char *s = (char *)self;
+    Matrix4x3_FromRotationY(s + 0xf0, self->mAngleY);
+    *(int*)(s + 0x114) = self->mPosX >> 3;
+    *(int*)(s + 0x118) = self->mPosY >> 3;
+    *(int*)(s + 0x11c) = self->mPosZ >> 3;
+    _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(self, self->mShadowModel, *(Matrix4x3*)(s + 0xf0), 0x140000, 0x50000, 0xf);
+    if (self->mLookAngX != 0 || self->mLookAngY != 0) {
         Matrix4x3 *dst = (Matrix4x3*)((*(char**)(s + 0xe8)) + 0xf0);
         data_020a0e68 = *dst;
-        Matrix4x3_ApplyInPlaceToRotationY(&data_020a0e68, *(short*)(s + 0x382));
-        Matrix4x3_ApplyInPlaceToRotationX(&data_020a0e68, *(short*)(s + 0x380));
+        Matrix4x3_ApplyInPlaceToRotationY(&data_020a0e68, self->mLookAngY);
+        Matrix4x3_ApplyInPlaceToRotationX(&data_020a0e68, self->mLookAngX);
         *(Matrix4x3*)((*(char**)(s + 0xe8)) + 0xf0) = data_020a0e68;
     }
 }
@@ -525,19 +539,20 @@ void func_ov018_02111bf0(void* cv, void* wv){
 /* recovered: shared common types */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov018_02111b3c(char* c) {
-  char* p = _ZN8dActor_c13ClosestPlayerEv(c);
+  daPgMthr_c *self = (daPgMthr_c *)c;
+  Player *p = self->ClosestPlayer();
   char* r1;
   if (p == 0) return;
-  if (Vec3_Dist((struct Vector3*)(c+0x364), (struct Vector3*)(p+0x5c)) > 0x5dc000) return;
-  if (*(int*)(p+8) == 3) r1 = *(char**)(p+0x360);
-  else r1 = *(char**)(p+0x358);
+  if (Vec3_Dist((Vector3 *)&self->mHomePosX, (Vector3 *)((char *)p + 0x5c)) > 0x5dc000) return;
+  if (*(int*)((char*)p+8) == 3) r1 = *(char**)((char*)p+0x360);
+  else r1 = *(char**)((char*)p+0x358);
   if (r1 == 0) return;
   {
     int b = (int)(*(u16*)(r1+0xc) == 0x100);
     if (b == 0) return;
   }
   if (*(int*)(r1+8) != 0) return;
-  *(char**)(c+0x374) = p;
+  self->mPlayer = p;
   func_ov018_021123d0(c, 2);
 }
 }
@@ -552,6 +567,7 @@ void func_ov018_02111b3c(char* c) {
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov018_02111a48(char* a, char* b)
 {
+    daPgMthr_c *self = (daPgMthr_c *)a;
     Fix12i dist;
     s16 horzAngle;
     s16 delta, vert;
@@ -562,10 +578,10 @@ void func_ov018_02111a48(char* a, char* b)
 
     if (b == 0) return;
 
-    dist = Vec3_HorzDist((Vector3*)(a + 0x5c), (Vector3*)(b + 0x5c));
-    horzAngle = Vec3_HorzAngle((Vector3*)(a + 0x5c), (Vector3*)(b + 0x5c));
+    dist = Vec3_HorzDist((Vector3*)&self->mPosX, (Vector3*)(b + 0x5c));
+    horzAngle = Vec3_HorzAngle((Vector3*)&self->mPosX, (Vector3*)(b + 0x5c));
 
-    if (dist < 0x1c2000 && AngleDiff(horzAngle, *(s16*)(a + 0x8e)) < 0x1400) {
+    if (dist < 0x1c2000 && AngleDiff(horzAngle, self->mAngleY) < 0x1400) {
         tz = *(Fix12i*)(b + 0x64);
         ty = *(Fix12i*)(b + 0x60) + 0x640000;
         tx = *(Fix12i*)(b + 0x5c);
@@ -577,14 +593,14 @@ void func_ov018_02111a48(char* a, char* b)
         v1.y = *(Fix12i*)(q + 0x28);
         v1.z = *(Fix12i*)(q + 0x2c);
         vert = Vec3_VertAngle(&v1, &v0);
-        delta = horzAngle - *(s16*)(a + 0x8e);
+        delta = horzAngle - self->mAngleY;
     } else {
         vert = 0;
         delta = 0;
     }
 
-    _Z14ApproachLinearRsss((s16*)(a + 0x382), delta, 0x250);
-    _Z14ApproachLinearRsss((s16*)(a + 0x380), vert, 0x250);
+    _Z14ApproachLinearRsss(&self->mLookAngY, delta, 0x250);
+    _Z14ApproachLinearRsss(&self->mLookAngX, vert, 0x250);
 }
 }
 
@@ -593,6 +609,7 @@ void func_ov018_02111a48(char* a, char* b)
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov018_02111968(char* c, void* found, char* held){
+  daPgMthr_c *self = (daPgMthr_c *)c;
   char* a = held;
   void* v = found;
   if (a) {
@@ -600,29 +617,29 @@ void func_ov018_02111968(char* c, void* found, char* held){
     b = b == 0x100;
     if (b != false) {
       if (*(int*)(a+8) == 1) {
-        *(int*)(c+0x374) = (int)v;
-        *(short*)(c+0x384) = 0xae;
-        *(char*)(c+0x387) = 1;
+        self->mPlayer = (Player *)v;
+        self->mMessageId = 0xae;
+        self->mHoldingBaby = 1;
         func_ov018_021123d0(c, 1);
         return;
       }
     }
   }
-  if (*(unsigned char*)(c+0x386)) return;
+  if (self->mGaveStar) return;
   if (a) {
     int b = *(unsigned short*)(a+0xc);
     b = b == 0x100;
     if (b != false) {
       if (*(int*)(a+8) == 0) {
-        *(short*)(c+0x384) = 0xad;
+        self->mMessageId = 0xad;
         goto tail;
       }
     }
   }
-  if (*(unsigned char*)(c+0x387)) return;
-  *(short*)(c+0x384) = 0xac;
+  if (self->mHoldingBaby) return;
+  self->mMessageId = 0xac;
 tail:
-  *(int*)(c+0x374) = (int)v;
+  self->mPlayer = (Player *)v;
   func_ov018_021123d0(c, 1);
 }
 }
@@ -632,19 +649,20 @@ tail:
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 struct dActor_c* func_ov018_021118fc(char* c) {
+    daPgMthr_c *self = (daPgMthr_c *)c;
     struct dActor_c* r4 = 0;
-    if (*(u32*)(c + 0x194) & 0x8000000) {
-        struct dActor_c* a = _ZN8dActor_c10FindWithIDEj(*(u32*)(c + 0x198));
+    if (self->mdCcAc_c.hitFlags & 0x8000000) {
+        struct dActor_c* a = dActor_c::FindWithID(self->mdCcAc_c.otherOwner);
         if (a) {
             int ok = (a->actorID == 0xbf) ? 1 : (int)r4;
             if (ok) {
-                if (a != *(struct dActor_c**)(c + 0x378))
+                if (a != self->mLastPlayer)
                     r4 = a;
-                *(struct dActor_c**)(c + 0x378) = a;
+                self->mLastPlayer = a;
             }
         }
     } else {
-        *(struct dActor_c**)(c + 0x378) = r4;
+        self->mLastPlayer = r4;
     }
     return r4;
 }
