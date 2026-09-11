@@ -7,9 +7,8 @@
 
 extern "C" void *_ZN7fBase_cnwEj(unsigned size);
 
-/* Tiny-Huge Island's huge water plane (profile HUGE_WATER 107). ov032 is
- * JRB: HUGE_COVER(106) is the lid daObjTdFuta_c; this is the water, not
- * the cover.
+/* Huge water plane (profile HUGE_WATER / TD_WATER 107). ov032 also has
+ * HUGE_COVER(106) / daObjTdFuta_c.
  *
  * WHAT THE CARTRIDGE PROVES ABOUT THE NAME AND THE SHAPE:
  *   _ZTS  ov032 0x0211396c  "14daObjTdWater_c"

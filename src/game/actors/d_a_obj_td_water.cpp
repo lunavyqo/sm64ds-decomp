@@ -2,10 +2,9 @@
 /* Production translation unit for ov032/daObjTdWater_c, hand-curated.
  * 7 function(s), .text 0x02112698..0x021128f0.
  *
- * Tiny-Huge Island's huge water plane (profile HUGE_WATER 107). ov032 is
- * JRB: HUGE_COVER(106) is the lid daObjTdFuta_c; this is the water, not
- * the cover. RTTI ov032:0x02113960 names daObjTdWater_c; g_profile_TD_WATER
- * is at 0x02113980.
+ * Huge water plane (profile HUGE_WATER / TD_WATER 107). ov032 also has
+ * HUGE_COVER(106) / daObjTdFuta_c. RTTI ov032:0x02113960 names
+ * daObjTdWater_c; g_profile_TD_WATER is at 0x02113980.
  *
  * WHAT THE CARTRIDGE PROVES ABOUT THE NAME AND THE SHAPE:
  *   _ZTS  ov032 0x0211396c  "14daObjTdWater_c"
