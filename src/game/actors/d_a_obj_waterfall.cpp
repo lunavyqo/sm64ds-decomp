@@ -22,8 +22,6 @@
  *   `signed char &LEVEL_ID` alias size-DIFF 999. Rename is symbols.txt.
  * Leftover: three scalar mPosX/Y/Z into New. A Vector3 overlay of
  *   `&mPosX` size-DIFF 999 (z is the first stack arg, not an ldm).
- * Leftover: course ids 0x16 / 0x21 are still hex; no recovered
- *   LEVEL_ID enum in this tree.
  */
 
 #include "daObjWaterfall_c.h"
@@ -50,6 +48,8 @@ struct System {
 }
 
 enum {
+    kCourse16 = 0x16,
+    kCourse21 = 0x21,
     kWaterfallMistDefault  = 0x24,
     kWaterfallMistCourse16 = 0x71,
     kWaterfallMistCourse21 = 0xeb
@@ -91,10 +91,10 @@ s32 daObjWaterfall_c::InitResources()
 {
     mParticleID = kWaterfallMistDefault;
     switch (data_0209f2f8) {
-    case 0x16:
+    case kCourse16:
         mParticleID = kWaterfallMistCourse16;
         break;
-    case 0x21:
+    case kCourse21:
         mParticleID = kWaterfallMistCourse21;
         break;
     }

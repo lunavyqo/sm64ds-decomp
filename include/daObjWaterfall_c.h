@@ -24,8 +24,7 @@ struct daObjWaterfall_c : dActor_c {
        Nothing dereferences it. */
     u32 mParticleHandle; /* 0x0d8 */
 
-    /* Inline and first: out-of-line mwccarm emits D0 before D1; retail
-       has D1 at 0x020b6e08 below D0 at 0x020b6e2c. */
+    /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
     virtual ~daObjWaterfall_c() {}
     virtual s32 InitResources(); /* slot 0 */
     virtual s32 Behavior();      /* slot 6 */
