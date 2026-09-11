@@ -48,7 +48,7 @@ int func_ov002_020b3344(daObjAbuku_c *);
 int _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(
     dCcAc_c *, dActor_c *, Fix12i, Fix12i, unsigned int, unsigned int);
 int SurfaceInfo_TestFlag0x20(int* p);
-short data_02082214[];
+extern short data_02082214[];
 void _Z14ApproachLinearRiii(int *p, int b, int c);
 unsigned short DecIfAbove0_Short(unsigned short *p);
 unsigned int _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(
