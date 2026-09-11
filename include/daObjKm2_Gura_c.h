@@ -18,8 +18,8 @@ extern "C" void *_ZN7fBase_cnwEj(unsigned size);
 struct daObjKm2_Gura_c : daObjGuragura_c {
     /* Inline empty dtor: mwccarm emits D1 then D0, no D2. */
     virtual ~daObjKm2_Gura_c() {}
-    virtual s32 CleanupResources(); /* slot 3 */
-    virtual s32 InitResources();    /* slot 0 */
+    s32 CleanupResources(); /* slot 3 */
+    s32 InitResources();    /* slot 0 */
 
     static void *operator new(unsigned long size) {
         return _ZN7fBase_cnwEj(size);
