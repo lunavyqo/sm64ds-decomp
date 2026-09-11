@@ -18,7 +18,6 @@
  *   int* +0x5c copy.
  * - data_ov002_0210d9a8 is the ov002 SharedFilePtr handle; symbols.txt has
  *   no recovered name, so it is not coined. SharedFilePtr.h has no fields.
- * - _ZN9PowerStar13AddStarMarkerEv stays mangled (no PowerStar.h).
  * - func_02012790 collection jingle 0x25 (020f0438).
  */
 
