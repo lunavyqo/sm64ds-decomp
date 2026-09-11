@@ -4,9 +4,9 @@
  *
  * Chill Bully (CHILL_BULLY 217) -- ov027/daIDonketu_c. ov027 is mixed
  * (SLIDING_ICE_SPAWNER / SLIDING_ICE / CHILL_BULLY / BUBBA / SNOWMAN_BREATH).
- * RTTI names this class daIDonketu_c; the debug table names CHILL_BULLY;
- * the registry profile is ICE_DONKETU. This is the chill bully, not Bubba /
- * sliding ice / penguin.
+ * RTTI names this class daIDonketu_c; the debug table names ICE_DONKETU;
+ * overlay_actors.md's project name is CHILL_BULLY. This is the chill bully,
+ * not Bubba / sliding ice / penguin.
  *
  * The file stem follows the snake_case scheme in
  * notes/tu-naming-and-swallowers.md sec 1 (tools/tu_names.py):
