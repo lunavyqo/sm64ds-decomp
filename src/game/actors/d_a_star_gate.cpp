@@ -146,7 +146,6 @@ extern "C" StarGateSpawnInfo g_profile_STAR_GATE = {
     0
 };
 
-/* ROM ordinal 19 -- daStarGate_c_classInit, 0x021461d4, size 0x38. */
 // @symbol daStarGate_c_classInit
 extern "C" daStarGate_c *daStarGate_c_classInit()
 {
@@ -154,7 +153,6 @@ extern "C" daStarGate_c *daStarGate_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 18 -- _ZN12daStarGate_c13InitResourcesEv, 0x0214612c, size 0xa8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c13InitResourcesEv
 int daStarGate_c::InitResources()
@@ -175,7 +173,6 @@ int daStarGate_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 17 -- _ZN12daStarGate_c8BehaviorEv, 0x021460dc, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c8BehaviorEv
 int daStarGate_c::Behavior()
@@ -187,7 +184,6 @@ int daStarGate_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 16 -- _ZN12daStarGate_c6RenderEv, 0x02145fe4, size 0xf8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c6RenderEv
 int daStarGate_c::Render()
@@ -211,7 +207,6 @@ int daStarGate_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 15 -- _ZN12daStarGate_c16OnPendingDestroyEv, 0x02145fe0, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c16OnPendingDestroyEv
 void daStarGate_c::OnPendingDestroy()
@@ -219,7 +214,6 @@ void daStarGate_c::OnPendingDestroy()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 14 -- _ZN12daStarGate_c16CleanupResourcesEv, 0x02145fbc, size 0x24 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c16CleanupResourcesEv
 int daStarGate_c::CleanupResources()
@@ -229,7 +223,6 @@ int daStarGate_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 13 -- _ZN12daStarGate_c11ChangeStateEPNS_5StateEP6Player, 0x02145f68, size 0x54 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c11ChangeStateEPNS_5StateEP6Player
 bool daStarGate_c::ChangeState(State *nextState, Player *player)
@@ -241,7 +234,6 @@ bool daStarGate_c::ChangeState(State *nextState, Player *player)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 12 -- _ZN12daStarGate_c26CalculateRelativePlayerPosEv, 0x02145f00, size 0x68 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c26CalculateRelativePlayerPosEv
 Player *daStarGate_c::CalculateRelativePlayerPos()
@@ -255,7 +247,6 @@ Player *daStarGate_c::CalculateRelativePlayerPos()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 11 -- _ZN12daStarGate_c17IsInFrontOfPlayerEP6Player, 0x02145e74, size 0x8c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c17IsInFrontOfPlayerEP6Player
 bool daStarGate_c::IsInFrontOfPlayer(Player *player)
@@ -274,7 +265,6 @@ fail:
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- _ZN12daStarGate_c11TryOpenDoorEP6Player, 0x02145e10, size 0x64 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c11TryOpenDoorEP6Player
 void daStarGate_c::TryOpenDoor(Player *player)
@@ -289,7 +279,6 @@ void daStarGate_c::TryOpenDoor(Player *player)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- _ZN12daStarGate_c12St_Wait_MainEP6Player, 0x02145c58, size 0x1b8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c12St_Wait_MainEP6Player
 bool daStarGate_c::St_Wait_Main(Player *player)
@@ -348,7 +337,6 @@ bool daStarGate_c::St_Wait_Main(Player *player)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- _ZN12daStarGate_c23St_TalkingToPlayer_InitEP6Player, 0x02145c2c, size 0x2c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c23St_TalkingToPlayer_InitEP6Player
 bool daStarGate_c::St_TalkingToPlayer_Init(Player *)
@@ -359,7 +347,6 @@ bool daStarGate_c::St_TalkingToPlayer_Init(Player *)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN12daStarGate_c23St_TalkingToPlayer_MainEP6Player, 0x02145b9c, size 0x90 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c23St_TalkingToPlayer_MainEP6Player
 bool daStarGate_c::St_TalkingToPlayer_Main(Player *player)
@@ -376,7 +363,6 @@ bool daStarGate_c::St_TalkingToPlayer_Main(Player *player)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN12daStarGate_c17St_Unlocking_InitEP6Player, 0x02145b7c, size 0x20 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c17St_Unlocking_InitEP6Player
 bool daStarGate_c::St_Unlocking_Init(Player *player)
@@ -386,7 +372,6 @@ bool daStarGate_c::St_Unlocking_Init(Player *player)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN12daStarGate_c17St_Unlocking_MainEP6Player, 0x02145b10, size 0x6c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c17St_Unlocking_MainEP6Player
 bool daStarGate_c::St_Unlocking_Main(Player *player)
@@ -401,7 +386,6 @@ bool daStarGate_c::St_Unlocking_Main(Player *player)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN12daStarGate_c17St_OpenClose_InitEP6Player, 0x02145ab4, size 0x5c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c17St_OpenClose_InitEP6Player
 bool daStarGate_c::St_OpenClose_Init(Player *)
@@ -415,7 +399,6 @@ bool daStarGate_c::St_OpenClose_Init(Player *)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN12daStarGate_c17St_OpenClose_MainEP6Player, 0x02145988, size 0x12c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c17St_OpenClose_MainEP6Player
 bool daStarGate_c::St_OpenClose_Main(Player *player)
@@ -463,7 +446,6 @@ bool daStarGate_c::St_OpenClose_Main(Player *player)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN12daStarGate_c18St_StayClosed_MainEP6Player, 0x02145948, size 0x40 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daStarGate_c18St_StayClosed_MainEP6Player
 bool daStarGate_c::St_StayClosed_Main(Player *player)
