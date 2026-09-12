@@ -59,7 +59,6 @@ extern CLPS_Block    data_ov017_02111a94;
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- daObjKsWater_c_classInit, 0x02111480, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjKsWater_c_classInit
 /* Reconstructed source-style name; exact original SM64DS spelling is not
@@ -78,7 +77,6 @@ extern "C" daObjKsWater_c *daObjKsWater_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN14daObjKsWater_c13InitResourcesEv, 0x021113c0, size 0xc0 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjKsWater_c13InitResourcesEv
 int daObjKsWater_c::InitResources()
@@ -102,7 +100,6 @@ int daObjKsWater_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN14daObjKsWater_c8BehaviorEv, 0x021112c4, size 0xfc */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjKsWater_c8BehaviorEv
 int daObjKsWater_c::Behavior()
@@ -137,7 +134,6 @@ int daObjKsWater_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN14daObjKsWater_c6RenderEv, 0x02111290, size 0x34 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjKsWater_c6RenderEv
 int daObjKsWater_c::Render()
@@ -148,7 +144,6 @@ int daObjKsWater_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN14daObjKsWater_c16CleanupResourcesEv, 0x0211124c, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjKsWater_c16CleanupResourcesEv
 int daObjKsWater_c::CleanupResources()
@@ -162,8 +157,6 @@ int daObjKsWater_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN14daObjKsWater_cD0Ev, 0x021111ec, size 0x60          */
-/* ROM ordinal 0 -- _ZN14daObjKsWater_cD1Ev, 0x021111a0, size 0x4c          */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjKsWater_cD1Ev
 // @symbol _ZN14daObjKsWater_cD0Ev
