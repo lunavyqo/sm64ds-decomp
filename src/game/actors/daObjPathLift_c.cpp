@@ -62,7 +62,6 @@ extern SharedFilePtr data_ov100_02148a54;
 extern SharedFilePtr data_ov100_02148a5c;
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN15daObjPathLift_c13InitResourcesEv, 0x021471e0, size 0x148 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjPathLift_c13InitResourcesEv
 int daObjPathLift_c::InitResources()
@@ -103,7 +102,6 @@ int daObjPathLift_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN15daObjPathLift_c8BehaviorEv, 0x021470f4, size 0xec */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjPathLift_c8BehaviorEv
 int daObjPathLift_c::Behavior()
@@ -133,7 +131,6 @@ int daObjPathLift_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN15daObjPathLift_c6RenderEv, 0x021470a4, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjPathLift_c6RenderEv
 int daObjPathLift_c::Render()
@@ -149,7 +146,6 @@ int daObjPathLift_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN15daObjPathLift_c16CleanupResourcesEv, 0x02147054, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjPathLift_c16CleanupResourcesEv
 int daObjPathLift_c::CleanupResources()
@@ -164,7 +160,6 @@ int daObjPathLift_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov100_0214700c, 0x0214700c, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov100_0214700c
 extern "C" int func_ov100_0214700c(daObjPathLift_c *self)
@@ -182,7 +177,6 @@ extern "C" int func_ov100_0214700c(daObjPathLift_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov100_02146e70, 0x02146e70, size 0x19c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov100_02146e70
 extern "C" void func_ov100_02146e70(daObjPathLift_c *self)
@@ -229,8 +223,3 @@ extern "C" void func_ov100_02146e70(daObjPathLift_c *self)
             groundDepth, scaleZ, 0xf);
     }
 }
-
-/* ROM ordinals 0/1 are emitted by the inline virtual destructor:
- *   _ZN15daObjPathLift_cD1Ev  0x02146d7c  size 0x70
- *   _ZN15daObjPathLift_cD0Ev  0x02146dec  size 0x84
- */
