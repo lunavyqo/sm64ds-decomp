@@ -82,7 +82,7 @@ void func_ov010_02111984(
     int unused, daObjC1_Trap_c *trap, dActor_c *other);
 }
 
-/* ROM ordinal 16: the actor-table factory is a genuine C ABI boundary. */
+
 /* Reconstructed source-style name: SM64DS proves daObjC1_Trap_c through RTTI,
  * allocation size, vtable identity, and the C1_TRAP registry profile;
  * later EAD lineage supplies classInit. Exact original spelling is not
@@ -107,7 +107,7 @@ extern "C" TrapSpawnInfo g_profile_C1_TRAP = {
     0
 };
 
-/* ROM ordinal 15: collider callback adapter; its three-argument ABI is
+/*
  * registered directly in InitResources. */
 extern "C" void func_ov010_02111984(
     int unused, daObjC1_Trap_c *trap, dActor_c *other)
@@ -115,7 +115,7 @@ extern "C" void func_ov010_02111984(
     trap->OnCollision(*other);
 }
 
-/* ROM ordinal 14. */
+
 void daObjC1_Trap_c::OnCollision(dActor_c &other)
 {
     daObjC1_Trap_c *spawner;
@@ -165,7 +165,7 @@ void daObjC1_Trap_c::OnCollision(dActor_c &other)
         spawner->mTrapActive = 1;
 }
 
-/* ROM ordinal 13; key function and vtable owner. */
+
 int daObjC1_Trap_c::InitResources()
 {
     mTrapActive = 0;
@@ -237,7 +237,7 @@ int daObjC1_Trap_c::InitResources()
     return 1;
 }
 
-/* ROM ordinal 12. */
+
 int daObjC1_Trap_c::Behavior()
 {
     if (mIsSpawner) {
@@ -252,7 +252,7 @@ int daObjC1_Trap_c::Behavior()
     return 1;
 }
 
-/* ROM ordinal 11. */
+
 int daObjC1_Trap_c::Render()
 {
     if (!mIsSpawner)
@@ -260,7 +260,7 @@ int daObjC1_Trap_c::Render()
     return 1;
 }
 
-/* ROM ordinal 10. */
+
 int daObjC1_Trap_c::CleanupResources()
 {
     if (mMeshCollider.IsEnabled())
@@ -272,7 +272,7 @@ int daObjC1_Trap_c::CleanupResources()
     return 1;
 }
 
-/* ROM ordinal 9. */
+
 void daObjC1_Trap_c::UpdateModelTransform()
 {
     int angleY = (int)(u16)mAngleY >> 4;
@@ -293,7 +293,7 @@ void daObjC1_Trap_c::UpdateModelTransform()
     mDoorModel.mat4x3 = data_020a0e68;
 }
 
-/* ROM ordinal 8. */
+
 void daObjC1_Trap_c::UpdateCollisionTransform()
 {
     Matrix4x3_FromTranslation(
@@ -304,7 +304,7 @@ void daObjC1_Trap_c::UpdateCollisionTransform()
     mMeshCollider.Transform(mDoorMat, mAngleY);
 }
 
-/* ROM ordinal 7. */
+
 daObjC1_Trap_c *daObjC1_Trap_c::GetSpawner()
 {
     if (mSpawnerID == 0) {
@@ -319,7 +319,7 @@ daObjC1_Trap_c *daObjC1_Trap_c::GetSpawner()
     return spawner;
 }
 
-/* ROM ordinal 6. */
+
 void daObjC1_Trap_c::State0()
 {
     Player *player = ClosestPlayer();
@@ -338,7 +338,7 @@ void daObjC1_Trap_c::State0()
     Sound::PlayBank3(0xe, *(Vector3 *)&mCamSpacePosX);
 }
 
-/* ROM ordinal 5. */
+
 void daObjC1_Trap_c::State1()
 {
     daObjC1_Trap_c *spawner = GetSpawner();
@@ -354,7 +354,7 @@ void daObjC1_Trap_c::State1()
     }
 }
 
-/* ROM ordinal 4. */
+
 void daObjC1_Trap_c::State2()
 {
     daObjC1_Trap_c *spawner = GetSpawner();
@@ -362,7 +362,7 @@ void daObjC1_Trap_c::State2()
         mState = 3;
 }
 
-/* ROM ordinal 3. */
+
 void daObjC1_Trap_c::State3()
 {
     mAngleZ += 0x400;
@@ -372,11 +372,11 @@ void daObjC1_Trap_c::State3()
     }
 }
 
-/* ROM ordinal 2. */
+
 void daObjC1_Trap_c::State4()
 {
     mAngleZ = -0x3c00;
 }
 
-/* ROM ordinals 1 and 0 are emitted from the inline destructor and the
+/*
  * InitResources-owned vtable: D1 at 0x021111a0, D0 at 0x021111ec. */
