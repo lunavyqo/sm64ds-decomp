@@ -59,7 +59,6 @@ void func_ov002_020bc488(daObjWakame_c *t);
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- daObjWakame_c_classInit, 0x020bc5a8, size 0x38 */
 /* -------------------------------------------------------------------------- */
 /* Reconstructed source-style name: SM64DS proves daObjWakame_c through RTTI,
  * allocation size, vtable identity, and the WAKAME registry profile;
@@ -78,7 +77,6 @@ extern "C" daObjWakame_c *daObjWakame_c_classInit(void)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN13daObjWakame_c13InitResourcesEv, 0x020bc540, size 0x68 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN13daObjWakame_c13InitResourcesEv
 s32 daObjWakame_c::InitResources()
@@ -94,7 +92,6 @@ s32 daObjWakame_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN13daObjWakame_c8BehaviorEv, 0x020bc520, size 0x20 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN13daObjWakame_c8BehaviorEv
 /* The ROM's `add r0, r0, #0x124` then `bl 0x02015c3c` is this call and the
@@ -108,7 +105,6 @@ s32 daObjWakame_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN13daObjWakame_c6RenderEv, 0x020bc4f8, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN13daObjWakame_c6RenderEv
 /* A REAL VIRTUAL DISPATCH, and the ROM insists on it: `ldr r2,[r0,#0xd4]!` loads
@@ -123,7 +119,6 @@ s32 daObjWakame_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN13daObjWakame_c16CleanupResourcesEv, 0x020bc4c8, size 0x30 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN13daObjWakame_c16CleanupResourcesEv
 s32 daObjWakame_c::CleanupResources()
@@ -134,7 +129,6 @@ s32 daObjWakame_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov002_020bc488, 0x020bc488, size 0x40 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020bc488
 /* Posts the actor's placement into the model's transform. The >> 3 is the
@@ -148,7 +142,6 @@ extern "C" void func_ov002_020bc488(daObjWakame_c *t)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN13daObjWakame_cD0Ev, 0x020bc444, size 0x44 */
 /* -------------------------------------------------------------------------- */
 /* _ZN13daObjWakame_cD0Ev (vtable slot 17, the deleting destructor) is NOT
  * hand-written here. A hand-written mangled D0 next to a real out-of-line D1
@@ -157,7 +150,6 @@ extern "C" void func_ov002_020bc488(daObjWakame_c *t)
  * the inline operator delete, which is why nothing here mentions a heap. */
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 0 -- _ZN13daObjWakame_cD1Ev, 0x020bc414, size 0x30 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN13daObjWakame_cD1Ev
 /* recovered: real C++ destructor -- the compiler emits the whole body.
