@@ -107,7 +107,7 @@ extern "C" BattanCollisionFilePtr data_ov023_02112080;
 BattanModelFilePtr data_ov023_02112088(1558);
 BattanCollisionFilePtr data_ov023_02112080(1559);
 
-/* ROM ordinal 8 -- class initializer, 0x02111728, size 0x38. */
+
 // @symbol daObjFm_Battan_c_classInit
 /* Every instruction the cartridge has here falls out of the one `new`.
  * sizeof(daObjFm_Battan_c) is 0x37c; the leaf operator new forwards to
@@ -130,7 +130,7 @@ extern "C" BattanSpawnInfo g_profile_FM_BATTAN = {
     0x01000000
 };
 
-/* ROM ordinal 7 -- InitResources, 0x02111670, size 0xb8. */
+
 // @symbol _ZN16daObjFm_Battan_c13InitResourcesEv
 int daObjFm_Battan_c::InitResources()
 {
@@ -157,7 +157,7 @@ int daObjFm_Battan_c::InitResources()
     return 1;
 }
 
-/* ROM ordinal 6 -- Behavior, 0x021113b0, size 0x2c0. */
+
 // @symbol _ZN16daObjFm_Battan_c8BehaviorEv
 int daObjFm_Battan_c::Behavior()
 {
@@ -241,7 +241,7 @@ int daObjFm_Battan_c::Behavior()
     return 1;
 }
 
-/* ROM ordinal 5 -- Render, 0x02111388, size 0x28. */
+
 // @symbol _ZN16daObjFm_Battan_c6RenderEv
 int daObjFm_Battan_c::Render()
 {
@@ -249,7 +249,7 @@ int daObjFm_Battan_c::Render()
     return 1;
 }
 
-/* ROM ordinal 4 -- CleanupResources, 0x02111350, size 0x38. */
+
 // @symbol _ZN16daObjFm_Battan_c16CleanupResourcesEv
 int daObjFm_Battan_c::CleanupResources()
 {
@@ -259,8 +259,6 @@ int daObjFm_Battan_c::CleanupResources()
     return 1;
 }
 
-/* ROM ordinal 3 -- inferred daObjFm_Battan_c::UpdateModelTransform,
- * 0x02111308, size 0x48. */
 // @symbol _ZN16daObjFm_Battan_c20UpdateModelTransformEv
 void daObjFm_Battan_c::UpdateModelTransform()
 {
@@ -271,8 +269,6 @@ void daObjFm_Battan_c::UpdateModelTransform()
     mModel.mat4x3.m[11] = mPosZ >> 3;
 }
 
-/* ROM ordinal 2 -- inferred daObjFm_Battan_c::UpdateShadow,
- * 0x0211124c, size 0xbc. */
 // @symbol _ZN16daObjFm_Battan_c12UpdateShadowEv
 int daObjFm_Battan_c::UpdateShadow()
 {
