@@ -50,8 +50,6 @@ void func_ov013_02111430(daObjClock_c *self);
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- daObjClock_c_classInit_CLOCK_LONG, 0x02111674, size 0x38        */
-/* ROM ordinal 7 -- daObjClock_c_classInit_CLOCK_SHORT, 0x0211163c, size 0x38       */
 /* -------------------------------------------------------------------------- */
 /* ONE CLASS, TWO PROFILES. CLOCK_LONG (actor 293) and CLOCK_SHORT (actor 292)
  * each own a descriptor and a byte-identical factory; both install the same
@@ -105,7 +103,6 @@ extern "C" ClockSpawnInfo g_profile_CLOCK_SHORT = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN12daObjClock_c13InitResourcesEv, 0x021115cc, size 0x70 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daObjClock_c13InitResourcesEv
 /* recovered: typed actor, model, and shared-file ownership */
@@ -126,7 +123,6 @@ int daObjClock_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN12daObjClock_c8BehaviorEv, 0x021114cc, size 0x100 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daObjClock_c8BehaviorEv
 /* recovered: real C++ method over inherited actor fields */
@@ -152,7 +148,6 @@ int daObjClock_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN12daObjClock_c6RenderEv, 0x021114a4, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daObjClock_c6RenderEv
 /* recovered: real C++ method over the owned Model */
@@ -163,7 +158,6 @@ int daObjClock_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN12daObjClock_c16CleanupResourcesEv, 0x02111478, size 0x2c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daObjClock_c16CleanupResourcesEv
 /* recovered: typed file ownership through the shared class APIs */
@@ -174,7 +168,6 @@ int daObjClock_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov013_02111430, 0x02111430, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov013_02111430
 /* Not a vtable slot and not provably a member, so it keeps its func_ name.
@@ -191,8 +184,6 @@ void func_ov013_02111430(daObjClock_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN12daObjClock_cD0Ev, 0x021113ec, size 0x44              */
-/* ROM ordinal 0 -- _ZN12daObjClock_cD1Ev, 0x021113bc, size 0x30              */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daObjClock_cD1Ev
 // @symbol _ZN12daObjClock_cD0Ev
