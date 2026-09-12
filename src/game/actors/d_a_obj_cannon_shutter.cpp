@@ -79,7 +79,6 @@ typedef char CannonShutterSpawnInfo_size_must_be_0x1c[
     sizeof(CannonShutterSpawnInfo) == 0x1c ? 1 : -1];
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- class initializer, 0x020bcccc, size 0x30                   */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjCannonShutter_c_classInit
 /* Reconstructed source-style name: SM64DS proves daObjCannonShutter_c through
@@ -112,7 +111,6 @@ extern "C" CannonShutterSpawnInfo g_profile_CANNON_SHUTTER = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN20daObjCannonShutter_c13InitResourcesEv, 0x020bcc20, 0xac */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN20daObjCannonShutter_c13InitResourcesEv
 int daObjCannonShutter_c::InitResources()
@@ -136,7 +134,6 @@ int daObjCannonShutter_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN20daObjCannonShutter_c8BehaviorEv, 0x020bca78, 0x1a8    */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN20daObjCannonShutter_c8BehaviorEv
 int daObjCannonShutter_c::Behavior()
@@ -195,7 +192,6 @@ int daObjCannonShutter_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN20daObjCannonShutter_c6RenderEv, 0x020bc9f4, size 0x84  */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN20daObjCannonShutter_c6RenderEv
 int daObjCannonShutter_c::Render()
@@ -209,7 +205,6 @@ int daObjCannonShutter_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN20daObjCannonShutter_c16CleanupResourcesEv, 0x020bc9b0, 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN20daObjCannonShutter_c16CleanupResourcesEv
 int daObjCannonShutter_c::CleanupResources()
@@ -223,7 +218,6 @@ int daObjCannonShutter_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov002_020bc990, 0x020bc990, size 0x20                 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020bc990
 /* Inbound "start opening" trigger from ov084. Plays sound 0x47 and sets
@@ -238,8 +232,6 @@ void func_ov002_020bc990(void *actor)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN20daObjCannonShutter_cD0Ev, 0x020bc938, size 0x58       */
-/* ROM ordinal 0 -- _ZN20daObjCannonShutter_cD1Ev, 0x020bc8f4, size 0x44       */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN20daObjCannonShutter_cD1Ev
 // @symbol _ZN20daObjCannonShutter_cD0Ev
