@@ -84,7 +84,7 @@ extern void _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(unsigned int n, int x
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- daDkk_c_classInit, 0x02111cf4, size 0x4c */
+
 /* -------------------------------------------------------------------------- */
 // @symbol daDkk_c_classInit
 /* Reconstructed source-style name: SM64DS proves daDkk_c through RTTI,
@@ -103,7 +103,7 @@ extern "C" daDkk_c *daDkk_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN7daDkk_c13InitResourcesEv, 0x02111c24, size 0xd0 */
+
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daDkk_c13InitResourcesEv
 /* Vtable slot 0, override of a slot daDsnBase_c leaves pure, and this class's
@@ -146,7 +146,7 @@ int daDkk_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN7daDkk_c8BehaviorEv, 0x02111b64, size 0xc0 */
+
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daDkk_c8BehaviorEv
 /* Vtable slot 6, the other slot daDsnBase_c leaves pure.
@@ -178,7 +178,7 @@ int daDkk_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- func_ov025_02111a84, 0x02111a84, size 0xe0 */
+
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov025_02111a84
 /* mState 5, the fall. Integrates the drop, and on reaching the stored ground
@@ -216,7 +216,7 @@ extern "C" void func_ov025_02111a84(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- func_ov025_021119f4, 0x021119f4, size 0x90 */
+
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov025_021119f4
 /* mState 6, the pause after landing. Counts 0x39e down; at zero it either
@@ -240,7 +240,7 @@ extern "C" void func_ov025_021119f4(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov025_021119a4, 0x021119a4, size 0x50 */
+
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov025_021119a4
 /* mState 7, the turn. Steps mAngleY toward the target angle at 0x39c; once
@@ -258,7 +258,7 @@ extern "C" int func_ov025_021119a4(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN7daDkk_c16OnAimedAtWithEggEv, 0x0211199c, size 0x8 */
+
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daDkk_c16OnAimedAtWithEggEv
 /* Vtable slot 29, override of dActor_c::OnAimedAtWithEgg. `mov r0,#0xce000; bx
@@ -271,7 +271,7 @@ int daDkk_c::OnAimedAtWithEgg()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinals 1 and 0 -- _ZN7daDkk_cD0Ev (0x02111928) and _ZN7daDkk_cD1Ev
+/*
  * (0x021118c8) are deliberately NOT written here. include/daDkk_c.h defines
  * ~daDkk_c() in the class body, and that is what makes mwccarm emit the pair in
  * the cartridge's D1-then-D0 order with no D2. What the two superseded shards
