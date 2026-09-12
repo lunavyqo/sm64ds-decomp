@@ -18,7 +18,6 @@
  * notes/tu-reconstruction-pilot-report.md sec 3 for the one documented exception
  * (a destructor's D0/D1/D2 group has compiler-chosen order).
  *
- * Assembled from these legacy one-function sources, all now deleted (ROM address
  * order):
  *   [0] 0x021115c4  src/_ZN12daIDonketu_cD1Ev.cpp
  *   [1] 0x02111618  src/_ZN12daIDonketu_cD0Ev.cpp
@@ -54,7 +53,6 @@ extern int data_ov027_021138f4[];
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- daIDonketu_c_classInit, 0x0211186c, size 0x5c             */
 /* -------------------------------------------------------------------------- */
 // @symbol daIDonketu_c_classInit
 /* Reconstructed source-style name: SM64DS proves daIDonketu_c through RTTI,
@@ -77,7 +75,6 @@ extern "C" daIDonketu_c *daIDonketu_c_classInit(void)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN12daIDonketu_c13InitResourcesEv, 0x0211181c, size 0x50  */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daIDonketu_c13InitResourcesEv
 /* daIDonketu_c::InitResources -- vtable slot 0, ov027 0x0211181c.
@@ -95,7 +92,6 @@ int daIDonketu_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN12daIDonketu_c8BehaviorEv, 0x02111770, size 0xac        */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daIDonketu_c8BehaviorEv
 /* daIDonketu_c::Behavior -- vtable slot 6, ov027 0x02111770, and THE KEY FUNCTION
@@ -130,7 +126,6 @@ int daIDonketu_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN12daIDonketu_c16UpdateDeathStateEv, 0x021116f0,         */
 /* size 0x80                                                                   */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daIDonketu_c16UpdateDeathStateEv
@@ -152,7 +147,6 @@ void daIDonketu_c::UpdateDeathState()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN12daIDonketu_c14UpdateRunStateEv, 0x02111680, size 0x70 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daIDonketu_c14UpdateRunStateEv
 /* daIDonketu_c::UpdateRunState -- vtable slot 31, daOts_c's state-1 hook. The
@@ -186,7 +180,6 @@ int daIDonketu_c::UpdateRunState()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinals 0 and 1 -- _ZN12daIDonketu_cD1Ev 0x021115c4 size 0x54 and      */
 /* _ZN12daIDonketu_cD0Ev 0x02111618 size 0x68 -- are NOT written here.         */
 /*                                                                            */
 /* The destructor is defined INLINE in include/daIDonketu_c.h. Written         */
