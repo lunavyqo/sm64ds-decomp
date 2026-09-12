@@ -64,7 +64,6 @@ extern SharedFilePtr data_ov029_02114270;
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- daObjWc_Obj03_c_classInit, 0x02111a84, size 0x40 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjWc_Obj03_c_classInit
 /* Historical alias: WaterDiamond_Spawn -- this entry point carried the
@@ -87,7 +86,6 @@ extern "C" daObjWc_Obj03_c *daObjWc_Obj03_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- _ZN15daObjWc_Obj03_c13InitResourcesEv, 0x02111a04, size 0x80 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj03_c13InitResourcesEv
 int daObjWc_Obj03_c::InitResources()
@@ -103,7 +101,6 @@ int daObjWc_Obj03_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN15daObjWc_Obj03_c8BehaviorEv, 0x02111954, size 0xb0 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj03_c8BehaviorEv
 int daObjWc_Obj03_c::Behavior()
@@ -135,7 +132,6 @@ int daObjWc_Obj03_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN15daObjWc_Obj03_c6RenderEv, 0x0211192c, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj03_c6RenderEv
 int daObjWc_Obj03_c::Render()
@@ -145,7 +141,6 @@ int daObjWc_Obj03_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN15daObjWc_Obj03_c16CleanupResourcesEv, 0x02111908, size 0x24 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj03_c16CleanupResourcesEv
 /* daObjWc_Obj03_c::CleanupResources -- vtable slot 3. Releases the one shared
@@ -158,7 +153,6 @@ int daObjWc_Obj03_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN15daObjWc_Obj03_c20UpdateModelTransformEv, 0x021118c8, size 0x40 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj03_c20UpdateModelTransformEv
 void daObjWc_Obj03_c::UpdateModelTransform()
@@ -170,7 +164,6 @@ void daObjWc_Obj03_c::UpdateModelTransform()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN15daObjWc_Obj03_c10SetWaterIDEv, 0x02111850, size 0x78 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj03_c10SetWaterIDEv
 void daObjWc_Obj03_c::SetWaterID()
@@ -190,7 +183,6 @@ done:
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN15daObjWc_Obj03_c19CheckClsnWithPlayerEv, 0x021117ac, size 0xa4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj03_c19CheckClsnWithPlayerEv
 void daObjWc_Obj03_c::CheckClsnWithPlayer()
@@ -218,8 +210,6 @@ void daObjWc_Obj03_c::CheckClsnWithPlayer()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN15daObjWc_Obj03_cD0Ev, 0x02111760, size 0x4c */
-/* ROM ordinal 0 -- _ZN15daObjWc_Obj03_cD1Ev, 0x02111728, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj03_cD1Ev
 // @symbol _ZN15daObjWc_Obj03_cD0Ev
