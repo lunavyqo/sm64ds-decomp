@@ -70,7 +70,6 @@ void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- daObjIceBoard_c_classInit, 0x02112a44, size 0x30 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjIceBoard_c_classInit
 /* Every instruction the cartridge has here falls out of the one `new`.
@@ -86,7 +85,6 @@ extern "C" daObjIceBoard_c *daObjIceBoard_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- _ZN15daObjIceBoard_c13InitResourcesEv, 0x021129c0, size 0x84 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjIceBoard_c13InitResourcesEv
 int daObjIceBoard_c::InitResources()
@@ -104,7 +102,6 @@ int daObjIceBoard_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN15daObjIceBoard_c8BehaviorEv, 0x02112990, size 0x30 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjIceBoard_c8BehaviorEv
 int daObjIceBoard_c::Behavior()
@@ -115,7 +112,6 @@ int daObjIceBoard_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN15daObjIceBoard_c6RenderEv, 0x02112968, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjIceBoard_c6RenderEv
 int daObjIceBoard_c::Render()
@@ -125,7 +121,6 @@ int daObjIceBoard_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN15daObjIceBoard_c16CleanupResourcesEv, 0x02112924, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjIceBoard_c16CleanupResourcesEv
 int daObjIceBoard_c::CleanupResources()
@@ -139,7 +134,6 @@ int daObjIceBoard_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN15daObjIceBoard_c15OnGroundPoundedER8dActor_c, 0x021128e0, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjIceBoard_c15OnGroundPoundedER8dActor_c
 /* daObjIceBoard_c::OnGroundPounded -- vtable slot 21, ov018 0x021128e0.
@@ -154,7 +148,6 @@ void daObjIceBoard_c::OnGroundPounded(dActor_c &other)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN15daObjIceBoard_c4KillEv, 0x02112880, size 0x60 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjIceBoard_c4KillEv
 /* daObjIceBoard_c::Kill() at ov018 0x02112880, 0x60 bytes -- vtable slot 31.
@@ -188,7 +181,6 @@ void daObjIceBoard_c::Kill()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN15daObjIceBoard_c15OnHitByMegaCharER6Player, 0x02112858, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjIceBoard_c15OnHitByMegaCharER6Player
 /* daObjIceBoard_c::OnHitByMegaChar -- vtable slot 27, ov018 0x02112858.
@@ -202,8 +194,6 @@ void daObjIceBoard_c::OnHitByMegaChar(Player &player)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN15daObjIceBoard_cD0Ev, 0x02112800, size 0x58        */
-/* ROM ordinal 0 -- _ZN15daObjIceBoard_cD1Ev, 0x021127bc, size 0x44        */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjIceBoard_cD1Ev
 // @symbol _ZN15daObjIceBoard_cD0Ev
