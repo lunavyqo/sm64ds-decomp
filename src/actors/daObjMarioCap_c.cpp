@@ -199,7 +199,6 @@ extern int            *data_ov002_020ff0c4[];
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 28 -- _ZN15daObjMarioCap_c8BehaviorEv, 0x020b84a8, size 0x228   */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjMarioCap_c8BehaviorEv
 int daObjMarioCap_c::Behavior()
@@ -271,7 +270,6 @@ int daObjMarioCap_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 27 -- _ZN15daObjMarioCap_c6RenderEv, 0x020b83c4, size 0xe4      */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjMarioCap_c6RenderEv
 int daObjMarioCap_c::Render()
@@ -292,7 +290,6 @@ int daObjMarioCap_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 26 -- _ZN15daObjMarioCap_c16OnPendingDestroyEv, 0x020b8394      */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjMarioCap_c16OnPendingDestroyEv
 void daObjMarioCap_c::OnPendingDestroy()
@@ -303,7 +300,6 @@ void daObjMarioCap_c::OnPendingDestroy()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 25 -- _ZN15daObjMarioCap_c16CleanupResourcesEv, 0x020b8284      */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjMarioCap_c16CleanupResourcesEv
 int daObjMarioCap_c::CleanupResources()
@@ -338,7 +334,6 @@ int daObjMarioCap_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 24 -- _ZN15daObjMarioCap_c13OnYoshiTryEatEv, 0x020b8270         */
 /*                                                                            */
 /* The key function: the first out-of-line virtual this class declares after   */
 /* the inline destructor, so the vtable and RTTI group land in this TU.        */
@@ -350,7 +345,6 @@ s32 daObjMarioCap_c::OnYoshiTryEat() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 23 -- _ZN15daObjMarioCap_c13OnTurnIntoEggER6Player, 0x020b81e0  */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjMarioCap_c13OnTurnIntoEggER6Player
 void daObjMarioCap_c::OnTurnIntoEgg(Player &player)
@@ -366,7 +360,6 @@ void daObjMarioCap_c::OnTurnIntoEgg(Player &player)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 22 -- func_ov002_020b7f7c, 0x020b7f7c, size 0x264               */
 /*                                                                            */
 /* Render-matrix update: syncs render angles outside fixed-angle states, uses  */
 /* the override matrix at +0xc8 if set, otherwise builds translation*rotation  */
@@ -452,13 +445,11 @@ extern "C" void func_ov002_020b7f7c(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 21 -- func_ov002_020b7f2c, 0x020b7f2c, size 0x50                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b7f2c
 extern "C" int func_ov002_020b7f2c(C *c, PMF *p) { c->pp = p; PMF *q = c->pp; if (*q == 0) return 0; return (c->**q)(); }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 20 -- func_ov002_020b7f24, 0x020b7f24, size 0x8                 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b7f24
 extern "C" int func_ov002_020b7f24(void)
@@ -467,7 +458,6 @@ extern "C" int func_ov002_020b7f24(void)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 19 -- func_ov002_020b7e1c, 0x020b7e1c, size 0x108               */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b7e1c
 extern "C" int func_ov002_020b7e1c(char* self) {
@@ -497,7 +487,6 @@ extern "C" int func_ov002_020b7e1c(char* self) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 18 -- func_ov002_020b7e08, 0x020b7e08, size 0x14                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b7e08
 extern "C" int func_ov002_020b7e08(char *p)
@@ -507,7 +496,6 @@ extern "C" int func_ov002_020b7e08(char *p)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 17 -- func_ov002_020b7d9c, 0x020b7d9c, size 0x6c                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b7d9c
 extern "C" int func_ov002_020b7d9c(char* c)
@@ -525,7 +513,6 @@ extern "C" int func_ov002_020b7d9c(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 16 -- func_ov002_020b7d94, 0x020b7d94, size 0x8                 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b7d94
 extern "C" int func_ov002_020b7d94(void)
@@ -534,7 +521,6 @@ extern "C" int func_ov002_020b7d94(void)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 15 -- func_ov002_020b7d6c, 0x020b7d6c, size 0x28                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b7d6c
 extern "C" int func_ov002_020b7d6c(char* c) {
@@ -544,7 +530,6 @@ extern "C" int func_ov002_020b7d6c(char* c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 14 -- func_ov002_020b7d58, 0x020b7d58, size 0x14                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b7d58
 extern "C" int func_ov002_020b7d58(char *p)
@@ -554,7 +539,6 @@ extern "C" int func_ov002_020b7d58(char *p)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 13 -- func_ov002_020b7cec, 0x020b7cec, size 0x6c                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b7cec
 extern "C" int func_ov002_020b7cec(char* c)
@@ -572,7 +556,6 @@ extern "C" int func_ov002_020b7cec(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 12 -- func_ov002_020b7cdc, 0x020b7cdc, size 0x10                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b7cdc
 extern "C" int func_ov002_020b7cdc(int *p)
@@ -582,7 +565,6 @@ extern "C" int func_ov002_020b7cdc(int *p)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 11 -- func_ov002_020b7c30, 0x020b7c30, size 0xac                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b7c30
 extern "C" int func_ov002_020b7c30(void* c) {
@@ -605,7 +587,6 @@ extern "C" int func_ov002_020b7c30(void* c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- func_ov002_020b7b70, 0x020b7b70, size 0xc0                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b7b70
 extern "C" int func_ov002_020b7b70(char* c)
@@ -645,7 +626,6 @@ extern "C" int func_ov002_020b7b70(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- func_ov002_020b781c, 0x020b781c, size 0x354                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b781c
 extern "C" int func_ov002_020b781c(char *c)
@@ -734,7 +714,6 @@ extern "C" int func_ov002_020b781c(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- func_ov002_020b76ec, 0x020b76ec, size 0x130                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b76ec
 extern "C" int func_ov002_020b76ec(char *selfv)
@@ -784,7 +763,6 @@ extern "C" int func_ov002_020b76ec(char *selfv)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- func_ov002_020b74d0, 0x020b74d0, size 0x21c                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b74d0
 extern "C" int func_ov002_020b74d0(char *c) {
@@ -860,7 +838,6 @@ extern "C" int func_ov002_020b74d0(char *c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- func_ov002_020b7330, 0x020b7330, size 0x1a0                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b7330
 extern "C" int func_ov002_020b7330(char* self)
@@ -913,7 +890,6 @@ extern "C" int func_ov002_020b7330(char* self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- func_ov002_020b7200, 0x020b7200, size 0x130                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b7200
 extern "C" int func_ov002_020b7200(char* c)
@@ -968,7 +944,6 @@ extern "C" int func_ov002_020b7200(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- func_ov002_020b71f0, 0x020b71f0, size 0x10                 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b71f0
 extern "C" int func_ov002_020b71f0(int *p)
@@ -978,7 +953,6 @@ extern "C" int func_ov002_020b71f0(int *p)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov002_020b71e8, 0x020b71e8, size 0x8                  */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b71e8
 extern "C" int func_ov002_020b71e8(void)
@@ -987,7 +961,6 @@ extern "C" int func_ov002_020b71e8(void)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov002_020b6fcc, 0x020b6fcc, size 0x21c                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b6fcc
 extern "C" void func_ov002_020b6fcc(void* selfv)
