@@ -30,28 +30,6 @@ typedef char daKpFrSpawnInfo_size_must_be_0x1c[
  * ordinary definition in reverse source order; the destructor variant group
  * is emitted first as retail D1 then D0, with no D2.
  *
- * Assembled from these legacy one-function sources (ROM address order):
- *   [0] 0x02121b48  src/_ZN8daKpFr_cD1Ev.cpp
- *   [1] 0x02121b88  src/_ZN8daKpFr_cD0Ev.cpp
- *   [2] 0x02121bdc  src/_ZN8daKpFr_c13OnYoshiTryEatEv.cpp
- *   [3] 0x02121be4  src/func_ov070_02121be4.cpp
- *   [4] 0x02121c8c  src/func_ov070_02121c8c.c
- *   [5] 0x02121cbc  src/func_ov070_02121cbc.c
- *   [6] 0x02121d50  src/func_ov070_02121d50.cpp
- *   [7] 0x02121e14  src/func_ov070_02121e14.cpp
- *   [8] 0x02121eb0  src/func_ov070_02121eb0.c
- *   [9] 0x02121ef8  src/func_ov070_02121ef8.c
- *   [10] 0x02121f18  src/func_ov070_02121f18.cpp
- *   [11] 0x02121fb0  src/func_ov070_02121fb0.c
- *   [12] 0x02121fd0  src/func_ov070_02121fd0.cpp
- *   [13] 0x0212200c  src/func_ov070_0212200c.cpp
- *   [14] 0x02122044  src/func_ov070_02122044.c
- *   [15] 0x02122060  src/_ZN8daKpFr_c16CleanupResourcesEv.cpp
- *   [16] 0x02122068  src/_ZN8daKpFr_c16OnPendingDestroyEv.cpp
- *   [17] 0x0212206c  src/_ZN8daKpFr_c6RenderEv.cpp
- *   [18] 0x02122104  src/_ZN8daKpFr_c8BehaviorEv.cpp
- *   [19] 0x02122124  src/_ZN8daKpFr_c13InitResourcesEv.cpp
- *   [20] 0x021221fc  src/daKpFr_c_Spawn.c
  *
  * deslop
  * Leftover: dCcAc_c::Init / dBgCh_Actr::Init stay mangled (Fix12-by-value, 6az;
@@ -70,7 +48,6 @@ typedef char daKpFrSpawnInfo_size_must_be_0x1c[
  */
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 20 -- class initializer, 0x021221fc, size 0x48 */
 /* -------------------------------------------------------------------------- */
 /* The registry factory behind the KERONPA_FIRE profile.
  * `return new daKpFr_c()` MATCHES (size 0x48); the synthesized ctor stores
@@ -98,7 +75,6 @@ extern "C" daKpFrSpawnInfo g_profile_KERONPA_FIRE = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 19 -- _ZN8daKpFr_c13InitResourcesEv, 0x02122124, size 0xd8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKpFr_c13InitResourcesEv
 #include "decl_common.h"
@@ -129,7 +105,6 @@ int daKpFr_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 18 -- _ZN8daKpFr_c8BehaviorEv, 0x02122104, size 0x20 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKpFr_c8BehaviorEv
 int daKpFr_c::Behavior()
@@ -140,7 +115,6 @@ int daKpFr_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 17 -- _ZN8daKpFr_c6RenderEv, 0x0212206c, size 0x98 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKpFr_c6RenderEv
 /* Particle__System.h owns Vector3_16f but does not yet declare this member;
@@ -164,7 +138,6 @@ int daKpFr_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 16 -- _ZN8daKpFr_c16OnPendingDestroyEv, 0x02122068, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKpFr_c16OnPendingDestroyEv
 
@@ -173,7 +146,6 @@ void daKpFr_c::OnPendingDestroy()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 15 -- _ZN8daKpFr_c16CleanupResourcesEv, 0x02122060, size 0x8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKpFr_c16CleanupResourcesEv
 
@@ -183,7 +155,6 @@ int daKpFr_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 14 -- func_ov070_02122044, 0x02122044, size 0x1c */
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* Unresolved func_ placeholder; retain its current C ABI spelling. */
 extern "C" daKpFrState data_ov070_021236ec[];
@@ -198,7 +169,6 @@ void func_ov070_02122044(void *vself, int idx)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 13 -- func_ov070_0212200c, 0x0212200c, size 0x38 */
 /* -------------------------------------------------------------------------- */
 extern "C" void func_ov070_0212200c(void *raw) {
     daKpFr_c *self = (daKpFr_c *)raw;
@@ -207,7 +177,6 @@ extern "C" void func_ov070_0212200c(void *raw) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 12 -- func_ov070_02121fd0, 0x02121fd0, size 0x3c */
 /* -------------------------------------------------------------------------- */
 extern "C" void func_ov070_02121fd0(char *raw) {
     daKpFr_c *self = (daKpFr_c *)raw;
@@ -216,7 +185,6 @@ extern "C" void func_ov070_02121fd0(char *raw) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 11 -- func_ov070_02121fb0, 0x02121fb0, size 0x20 */
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* Unresolved func_ placeholder; retain its current C ABI spelling. */
 // @symbol func_ov070_02121fb0
@@ -231,7 +199,6 @@ int func_ov070_02121fb0(char *raw)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- func_ov070_02121f18, 0x02121f18, size 0x98 */
 /* -------------------------------------------------------------------------- */
 int ApproachLinear(short &value, short target, short step);
 
@@ -264,7 +231,6 @@ int func_ov070_02121f18(char* raw) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- func_ov070_02121ef8, 0x02121ef8, size 0x20 */
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* Unresolved func_ placeholder; retain its current C ABI spelling. */
 int func_ov070_02121ef8(char *raw)
@@ -277,7 +243,6 @@ int func_ov070_02121ef8(char *raw)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- func_ov070_02121eb0, 0x02121eb0, size 0x48 */
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* Unresolved func_ placeholder; retain its current C ABI spelling. */
 extern void func_ov070_02121c8c(void *t);
@@ -295,7 +260,6 @@ int func_ov070_02121eb0(void *c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- func_ov070_02121e14, 0x02121e14, size 0x9c */
 /* -------------------------------------------------------------------------- */
 extern "C" {
 /* Fix12-by-value, 6az -- header method form homes the class args. */
@@ -320,7 +284,6 @@ void func_ov070_02121e14(char *raw) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- func_ov070_02121d50, 0x02121d50, size 0xc4 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_02121d50
 /* GetFloorResult is not declared in the shared header yet; keep only that
@@ -349,7 +312,6 @@ extern "C" void func_ov070_02121d50(void* vself, void* vclsn) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- func_ov070_02121cbc, 0x02121cbc, size 0x94 */
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* Unresolved func_ placeholder; retain its current C ABI spelling. */
 extern void func_ov070_02122044(void* c, int a);
@@ -379,7 +341,6 @@ void func_ov070_02121cbc(char* raw){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- func_ov070_02121c8c, 0x02121c8c, size 0x30 */
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* Unresolved func_ placeholder; retain its current C ABI spelling. */
 extern void func_02012694(int id, void *pos);
@@ -393,7 +354,6 @@ void func_ov070_02121c8c(void *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov070_02121be4, 0x02121be4, size 0xa8 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_02121be4
 extern "C" void func_ov070_02121be4(void *raw)
@@ -422,7 +382,6 @@ extern "C" void func_ov070_02121be4(void *raw)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN8daKpFr_c13OnYoshiTryEatEv, 0x02121bdc, size 0x8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKpFr_c13OnYoshiTryEatEv
 
@@ -432,7 +391,6 @@ int daKpFr_c::OnYoshiTryEat()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN8daKpFr_cD0Ev, 0x02121b88, size 0x54 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKpFr_cD0Ev
 
@@ -440,7 +398,6 @@ int daKpFr_c::OnYoshiTryEat()
  * makes mwcc emit the retail deleting variant after D1. */
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 0 -- _ZN8daKpFr_cD1Ev, 0x02121b48, size 0x40 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKpFr_cD1Ev
 
