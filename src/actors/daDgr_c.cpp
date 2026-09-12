@@ -73,7 +73,7 @@ extern int _ZN4dBgW16UpdatePosAndAngsERS_P8dActor_cR5dBgPiR7Vector3P10Vector3_16
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- daDgr_c_classInit, 0x02111898, size 0x30 */
+
 /* -------------------------------------------------------------------------- */
 // @symbol daDgr_c_classInit
 extern "C" daDgr_c *daDgr_c_classInit()
@@ -82,7 +82,7 @@ extern "C" daDgr_c *daDgr_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- _ZN7daDgr_c13InitResourcesEv, 0x021117dc, size 0xbc */
+
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daDgr_c13InitResourcesEv
 /* daDgr_c::InitResources -- vtable slot 0. Loads Spindel's model and KCL,
@@ -118,7 +118,7 @@ s32 daDgr_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN7daDgr_c8BehaviorEv, 0x021113f0, size 0x3ec */
+
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daDgr_c8BehaviorEv
 /* daDgr_c::Behavior -- vtable slot 6, ov025 0x021113f0.
@@ -275,7 +275,7 @@ s32 daDgr_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN7daDgr_c6RenderEv, 0x021113c8, size 0x28 */
+
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daDgr_c6RenderEv
 /* daDgr_c::Render -- vtable slot 9. Real C++ method over the shared header;
@@ -284,7 +284,7 @@ s32 daDgr_c::Behavior()
 s32 daDgr_c::Render() { mModel.Render(0); return 1; }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN7daDgr_c16CleanupResourcesEv, 0x02111384, size 0x44 */
+
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daDgr_c16CleanupResourcesEv
 /* daDgr_c::CleanupResources -- vtable slot 3. Real C++ method over the shared
@@ -298,7 +298,7 @@ s32 daDgr_c::CleanupResources() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- func_ov025_02111344, 0x02111344, size 0x40 */
+
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov025_02111344
 /* Added by hand: `tubuild create` writes @symbol markers only for mangled or
@@ -317,7 +317,7 @@ void func_ov025_02111344(char *t)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov025_021112e0, 0x021112e0, size 0x64 */
+
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov025_021112e0
 extern "C" {
@@ -336,7 +336,7 @@ void func_ov025_021112e0(char* self){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov025_0211123c, 0x0211123c, size 0xa4 */
+
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov025_0211123c
 extern "C" {
@@ -363,7 +363,7 @@ int func_ov025_0211123c(char* c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinals 1 and 0 -- _ZN7daDgr_cD0Ev (0x021111e4, size 0x58) and
+/*
  *                         _ZN7daDgr_cD1Ev (0x021111a0, size 0x44)             */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daDgr_cD1Ev
