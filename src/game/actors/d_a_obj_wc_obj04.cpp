@@ -51,7 +51,6 @@ extern int _ZN4dBgW22UpdatePosWithTransformERS_P8dActor_cR5dBgPiR7Vector3P10Vect
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- daObjWc_Obj04_c_classInit, 0x02112964, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjWc_Obj04_c_classInit
 /* Historical alias: SwitchActivatedPlank_Spawn -- this entry point carried the
@@ -73,7 +72,6 @@ extern "C" daObjWc_Obj04_c *daObjWc_Obj04_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN15daObjWc_Obj04_c13InitResourcesEv, 0x021128b0, size 0xb4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj04_c13InitResourcesEv
 int daObjWc_Obj04_c::InitResources()
@@ -97,7 +95,6 @@ int daObjWc_Obj04_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN15daObjWc_Obj04_c8BehaviorEv, 0x021127cc, size 0xe4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj04_c8BehaviorEv
 #pragma optimize_for_size on
@@ -145,7 +142,6 @@ int daObjWc_Obj04_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN15daObjWc_Obj04_c6RenderEv, 0x02112794, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj04_c6RenderEv
 int daObjWc_Obj04_c::Render()
@@ -157,7 +153,6 @@ int daObjWc_Obj04_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN15daObjWc_Obj04_c16CleanupResourcesEv, 0x02112750, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj04_c16CleanupResourcesEv
 int daObjWc_Obj04_c::CleanupResources()
@@ -171,7 +166,6 @@ int daObjWc_Obj04_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov029_02112710, 0x02112710, size 0x40 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov029_02112710
 extern "C" void func_ov029_02112710(daObjWc_Obj04_c *t)
@@ -183,7 +177,6 @@ extern "C" void func_ov029_02112710(daObjWc_Obj04_c *t)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov029_021126dc, 0x021126dc, size 0x34 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov029_021126dc
 extern "C" void func_ov029_021126dc(daObjWc_Obj04_c *c)
@@ -195,8 +188,6 @@ extern "C" void func_ov029_021126dc(daObjWc_Obj04_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN15daObjWc_Obj04_cD0Ev, 0x0211267c, size 0x60 */
-/* ROM ordinal 0 -- _ZN15daObjWc_Obj04_cD1Ev, 0x02112630, size 0x4c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj04_cD1Ev
 // @symbol _ZN15daObjWc_Obj04_cD0Ev
@@ -216,5 +207,5 @@ extern "C" void func_ov029_021126dc(daObjWc_Obj04_c *c)
  * heap through dActor_c's inline operator delete.
  */
 
-/* Closes the `optimize_for_size on` opened above ROM ordinal 6. */
+/* Closes the `optimize_for_size on` opened above. */
 #pragma optimize_for_size off
