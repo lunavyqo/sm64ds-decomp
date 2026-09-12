@@ -60,7 +60,6 @@ typedef char SCoinSpawnInfo_size_must_be_0x1c[
     sizeof(SCoinSpawnInfo) == 0x1c ? 1 : -1];
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- daSCoin_c_classInit, 0x020f085c, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol daSCoin_c_classInit
 extern "C" daSCoin_c *daSCoin_c_classInit()
@@ -75,7 +74,6 @@ extern "C" SCoinSpawnInfo g_profile_SECRET_COIN = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN9daSCoin_c13InitResourcesEv, 0x020f07dc, size 0x80 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN9daSCoin_c13InitResourcesEv
 s32 daSCoin_c::InitResources()
@@ -93,7 +91,6 @@ s32 daSCoin_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN9daSCoin_c8BehaviorEv, 0x020f06c0, size 0x11c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN9daSCoin_c8BehaviorEv
 s32 daSCoin_c::Behavior()
@@ -139,7 +136,6 @@ s32 daSCoin_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN9daSCoin_c16CleanupResourcesEv, 0x020f069c, size 0x24 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN9daSCoin_c16CleanupResourcesEv
 s32 daSCoin_c::CleanupResources()
@@ -149,7 +145,6 @@ s32 daSCoin_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- func_ov002_020f05f4, 0x020f05f4, size 0xa8 */
 /* -------------------------------------------------------------------------- */
 extern "C" void func_ov002_020f05f4(void *self)
 {
@@ -181,7 +176,6 @@ extern "C" void func_ov002_020f05f4(void *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov002_020f051c, 0x020f051c, size 0xd8 */
 /* -------------------------------------------------------------------------- */
 extern "C" void func_ov002_020f051c(void *self)
 {
@@ -221,7 +215,6 @@ extern "C" void func_ov002_020f051c(void *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov002_020f0438, 0x020f0438, size 0xe4 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020f0438
 extern "C" void func_ov002_020f0438(void *self)
@@ -246,7 +239,6 @@ extern "C" void func_ov002_020f0438(void *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinals 1 and 0 -- one inline definition, two ROM-visible variants:   */
 /*   _ZN9daSCoin_cD1Ev  0x020f03c4  size 0x30  (complete-object destructor)   */
 /*   _ZN9daSCoin_cD0Ev  0x020f03f4  size 0x44  (deleting destructor)          */
 /* -------------------------------------------------------------------------- */
