@@ -75,7 +75,6 @@ void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- daObjRcBuranko_c_classInit, 0x02111414, size 0x30         */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjRcBuranko_c_classInit
 /* Reconstructed source-style name: SM64DS proves daObjRcBuranko_c through
@@ -88,7 +87,6 @@ extern "C" daObjRcBuranko_c *daObjRcBuranko_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN16daObjRcBuranko_c13InitResourcesEv, 0x0211137c, size 0x98 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjRcBuranko_c13InitResourcesEv
 int daObjRcBuranko_c::InitResources()
@@ -113,7 +111,6 @@ int daObjRcBuranko_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN16daObjRcBuranko_c8BehaviorEv, 0x021112f0, size 0x8c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjRcBuranko_c8BehaviorEv
 int daObjRcBuranko_c::Behavior()
@@ -136,7 +133,6 @@ int daObjRcBuranko_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN16daObjRcBuranko_c6RenderEv, 0x021112c8, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjRcBuranko_c6RenderEv
 int daObjRcBuranko_c::Render()
@@ -146,7 +142,6 @@ int daObjRcBuranko_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN16daObjRcBuranko_c16CleanupResourcesEv, 0x02111284, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjRcBuranko_c16CleanupResourcesEv
 int daObjRcBuranko_c::CleanupResources()
@@ -160,7 +155,6 @@ int daObjRcBuranko_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov036_0211123c, 0x0211123c, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov036_0211123c
 /* Private "put the model where the actor is" helper: rebuilds mModel.mat4x3
@@ -179,8 +173,6 @@ void func_ov036_0211123c(daObjRcBuranko_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN16daObjRcBuranko_cD0Ev, 0x021111e4, size 0x58        */
-/* ROM ordinal 0 -- _ZN16daObjRcBuranko_cD1Ev, 0x021111a0, size 0x44        */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjRcBuranko_cD1Ev
 // @symbol _ZN16daObjRcBuranko_cD0Ev
