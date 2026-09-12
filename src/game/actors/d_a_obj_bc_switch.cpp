@@ -129,7 +129,6 @@ extern void func_ov002_020f1578(daObjBC_Switch_c *c, char *arg);
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- daObjBC_Switch_c_classInit, 0x020f15cc, size 0x30 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjBC_Switch_c_classInit
 /* Reconstructed source-style name: the ROM proves daObjBC_Switch_c and the
@@ -147,7 +146,6 @@ extern "C" daObjBC_Switch_c *daObjBC_Switch_c_classInit(void)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- func_ov002_020f15b8, 0x020f15b8, size 0x14 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020f15b8
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -157,7 +155,6 @@ void func_ov002_020f15b8(void* a, void* b, void* c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- func_ov002_020f1578, 0x020f1578, size 0x40 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020f1578
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -172,7 +169,6 @@ void func_ov002_020f1578(daObjBC_Switch_c *c, char *arg){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN16daObjBC_Switch_c13InitResourcesEv, 0x020f1468, size 0x110 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjBC_Switch_c13InitResourcesEv
 /* recovered: named members + shared header, real C++ method
@@ -258,7 +254,6 @@ done:
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN16daObjBC_Switch_c8BehaviorEv, 0x020f12c8, size 0x1a0 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjBC_Switch_c8BehaviorEv
 /* recovered: named members + shared header, real C++ method
@@ -332,7 +327,6 @@ s32 daObjBC_Switch_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN16daObjBC_Switch_c6RenderEv, 0x020f1290, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjBC_Switch_c6RenderEv
 /* recovered: named members + shared header, real C++ method
@@ -349,7 +343,6 @@ int daObjBC_Switch_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN16daObjBC_Switch_c16CleanupResourcesEv, 0x020f124c, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjBC_Switch_c16CleanupResourcesEv
 /* recovered: named members + shared header, real C++ method
@@ -367,7 +360,6 @@ int daObjBC_Switch_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN16daObjBC_Switch_cD0Ev, 0x020f11f4, size 0x58 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjBC_Switch_cD0Ev
 /* recovered: real C++ deleting destructor -- the compiler emits the whole body
@@ -391,7 +383,6 @@ int daObjBC_Switch_c::CleanupResources()
  */
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 0 -- _ZN16daObjBC_Switch_cD1Ev, 0x020f11b0, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjBC_Switch_cD1Ev
 /* recovered: real C++ destructor -- the compiler emits the whole body
