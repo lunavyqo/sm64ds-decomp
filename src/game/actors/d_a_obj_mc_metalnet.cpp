@@ -54,7 +54,6 @@ void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- daObjMc_Metalnet_c_classInit, 0x02112048, size 0x30 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjMc_Metalnet_c_classInit
 /* Reconstructed source-style name. Historical alias: MetalNet_Spawn.
@@ -70,7 +69,6 @@ extern "C" daObjMc_Metalnet_c *daObjMc_Metalnet_c_classInit(void)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN18daObjMc_Metalnet_c13InitResourcesEv, 0x02111f40, size 0x108 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjMc_Metalnet_c13InitResourcesEv
 /* Load the model, place it, hand the collision mesh to the collider -- and then
@@ -113,7 +111,6 @@ keep:
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN18daObjMc_Metalnet_c8BehaviorEv, 0x02111ed0, size 0x70 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjMc_Metalnet_c8BehaviorEv
 /* The net never moves, but it still re-derives its collider transform every
@@ -142,7 +139,6 @@ s32 daObjMc_Metalnet_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN18daObjMc_Metalnet_c6RenderEv, 0x02111ea8, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjMc_Metalnet_c6RenderEv
 s32 daObjMc_Metalnet_c::Render()
@@ -152,7 +148,6 @@ s32 daObjMc_Metalnet_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN18daObjMc_Metalnet_c16OnPendingDestroyEv, 0x02111ea4, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjMc_Metalnet_c16OnPendingDestroyEv
 /* Four bytes: a bare `bx lr`. The override exists to occupy slot 12 so that
@@ -162,7 +157,6 @@ void daObjMc_Metalnet_c::OnPendingDestroy()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN18daObjMc_Metalnet_c16CleanupResourcesEv, 0x02111e60, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjMc_Metalnet_c16CleanupResourcesEv
 s32 daObjMc_Metalnet_c::CleanupResources()
@@ -176,8 +170,6 @@ s32 daObjMc_Metalnet_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN18daObjMc_Metalnet_cD0Ev, 0x02111e08, size 0x58        */
-/* ROM ordinal 0 -- _ZN18daObjMc_Metalnet_cD1Ev, 0x02111dc4, size 0x44        */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjMc_Metalnet_cD1Ev
 // @symbol _ZN18daObjMc_Metalnet_cD0Ev
