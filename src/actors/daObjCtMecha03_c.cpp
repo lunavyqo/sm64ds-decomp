@@ -24,15 +24,6 @@
  * names: ov065's symbols.txt spells them that way, so they are C-linkage
  * free functions here rather than members.
  *
- * Superseded one-function sources (ROM address order):
- *   [0] 0x02119f3c  src/_ZN16daObjCtMecha03_cD1Ev.cpp
- *   [1] 0x02119f88  src/_ZN16daObjCtMecha03_cD0Ev.cpp
- *   [2] 0x02119fe8  src/func_ov065_02119fe8.cpp
- *   [3] 0x0211a114  src/func_ov065_0211a114.c
- *   [4] 0x0211a15c  src/_ZN16daObjCtMecha03_c16CleanupResourcesEv.cpp
- *   [5] 0x0211a1a0  src/_ZN16daObjCtMecha03_c6RenderEv.cpp
- *   [6] 0x0211a1c8  src/_ZN16daObjCtMecha03_c8BehaviorEv.cpp
- *   [7] 0x0211a358  src/_ZN16daObjCtMecha03_c13InitResourcesEv.cpp
  * The factory is `return new` in this file.
  */
 
@@ -84,7 +75,6 @@ extern int data_ov035_02112198;
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- daObjCtMecha03_c_classInit, 0x0211a45c, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjCtMecha03_c_classInit
 extern "C" daObjCtMecha03_c *daObjCtMecha03_c_classInit()
@@ -93,7 +83,6 @@ extern "C" daObjCtMecha03_c *daObjCtMecha03_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN16daObjCtMecha03_c13InitResourcesEv, 0x0211a358, size 0x104 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha03_c13InitResourcesEv
 int daObjCtMecha03_c::InitResources()
@@ -129,7 +118,6 @@ int daObjCtMecha03_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN16daObjCtMecha03_c8BehaviorEv, 0x0211a1c8, size 0x190 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha03_c8BehaviorEv
 int daObjCtMecha03_c::Behavior()
@@ -182,7 +170,6 @@ int daObjCtMecha03_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN16daObjCtMecha03_c6RenderEv, 0x0211a1a0, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha03_c6RenderEv
 int daObjCtMecha03_c::Render()
@@ -192,7 +179,6 @@ int daObjCtMecha03_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN16daObjCtMecha03_c16CleanupResourcesEv, 0x0211a15c, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha03_c16CleanupResourcesEv
 int daObjCtMecha03_c::CleanupResources()
@@ -205,7 +191,6 @@ int daObjCtMecha03_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov065_0211a114, 0x0211a114, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_0211a114
 /* Writes mModel.mat4x3 from the actor's Y/Z angles and copies the
@@ -221,7 +206,6 @@ extern "C" int func_ov065_0211a114(daObjCtMecha03_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov065_02119fe8, 0x02119fe8, size 0x12c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_02119fe8
 /* Drops the pendulum's shadow: swings a fixed offset through the actor's
@@ -263,8 +247,6 @@ extern "C" void func_ov065_02119fe8(daObjCtMecha03_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN16daObjCtMecha03_cD0Ev, 0x02119f88, size 0x60        */
-/* ROM ordinal 0 -- _ZN16daObjCtMecha03_cD1Ev, 0x02119f3c, size 0x4c        */
 /* -------------------------------------------------------------------------- */
 /* No separate body lives here. The inline virtual destructor in the directly
  * included class header makes mwccarm emit retail's D1 then D0 order without

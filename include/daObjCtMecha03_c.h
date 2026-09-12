@@ -10,9 +10,8 @@
 #define DAOBJCTMECHA03_C_H
 #include "types.h"
 
-extern "C" void *_ZN7fBase_cnwEj(unsigned size);
-
 #ifdef __cplusplus
+extern "C" void *_ZN7fBase_cnwEj(unsigned size);
 #include "dBgActor_c.h"
 #include "ShadowModel.h"
 
