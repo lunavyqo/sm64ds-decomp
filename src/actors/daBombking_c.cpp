@@ -265,7 +265,6 @@ extern void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void* se
 daBombking_c::~daBombking_c() {}
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 0 -- _ZN12daBombking_cD1Ev, 0x02123740, size 0x58 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daBombking_cD1Ev
 /* recovered: real C++ destructor -- the compiler emits the whole body
@@ -280,7 +279,6 @@ daBombking_c::~daBombking_c() {}
  * header. Both halves are load-bearing; see the block above the definition.
  */
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN12daBombking_cD0Ev, 0x02123798, size 0x6c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daBombking_cD0Ev
 /* recovered: real C++ deleting destructor -- the compiler emits the whole body
@@ -297,7 +295,6 @@ daBombking_c::~daBombking_c() {}
  */
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov078_02123804, 0x02123804, size 0x60 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02123804
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -312,7 +309,6 @@ int func_ov078_02123804(char *c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov078_02123864, 0x02123864, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02123864
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -330,7 +326,6 @@ void func_ov078_02123864(char* r7) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- func_ov078_021238ac, 0x021238ac, size 0x190 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_021238ac
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -385,7 +380,6 @@ int func_ov078_021238ac(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- func_ov078_02123a3c, 0x02123a3c, size 0x64 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02123a3c
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -400,7 +394,6 @@ int func_ov078_02123a3c(char* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- func_ov078_02123aa0, 0x02123aa0, size 0x124 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02123aa0
 /* recovered: shared common types, declarations from a shared header */
@@ -433,7 +426,6 @@ int func_ov078_02123aa0(char* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- func_ov078_02123bc4, 0x02123bc4, size 0x5c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02123bc4
 /* This caller retains the reconstructed SetAnim ABI declaration above.
@@ -448,7 +440,6 @@ extern "C" int func_ov078_02123bc4(char* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- func_ov078_02123c20, 0x02123c20, size 0xd0 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02123c20
 extern "C" {
@@ -483,7 +474,6 @@ int func_ov078_02123c20(char* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- func_ov078_02123cf0, 0x02123cf0, size 0x4c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02123cf0
 struct BCA_File;
@@ -494,7 +484,6 @@ int func_ov078_02123cf0(char* c){
 }}
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- func_ov078_02123d3c, 0x02123d3c, size 0x17c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02123d3c
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -547,7 +536,6 @@ int func_ov078_02123d3c(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 11 -- func_ov078_02123eb8, 0x02123eb8, size 0x64 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02123eb8
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -563,7 +551,6 @@ int func_ov078_02123eb8(int *t)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 12 -- func_ov078_02123f1c, 0x02123f1c, size 0x98 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02123f1c
 extern "C" int func_ov078_02123f1c(CView* c)
@@ -587,7 +574,6 @@ L6c:
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 13 -- func_ov078_02123fb4, 0x02123fb4, size 0x4c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02123fb4
 extern "C" {
@@ -599,7 +585,6 @@ int func_ov078_02123fb4(char *c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 14 -- func_ov078_02124000, 0x02124000, size 0x60 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02124000
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -615,7 +600,6 @@ int func_ov078_02124000(char* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 15 -- func_ov078_02124060, 0x02124060, size 0x40 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02124060
 extern "C" {
@@ -628,7 +612,6 @@ int func_ov078_02124060(char *c){
 #pragma push
 #pragma opt_propagation off
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 16 -- func_ov078_021240a0, 0x021240a0, size 0x320 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_021240a0
 /* recovered: shared common types, declarations from a shared header */
@@ -729,7 +712,6 @@ int func_ov078_021240a0(char* c)
 #pragma pop
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 17 -- func_ov078_021243c0, 0x021243c0, size 0xb0 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_021243c0
 extern "C" {
@@ -749,7 +731,6 @@ int func_ov078_021243c0(char* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 18 -- func_ov078_02124470, 0x02124470, size 0x60 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02124470
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -765,7 +746,6 @@ int func_ov078_02124470(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 19 -- func_ov078_021244d0, 0x021244d0, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_021244d0
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -777,7 +757,6 @@ int func_ov078_021244d0(char *c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 20 -- func_ov078_02124520, 0x02124520, size 0x258 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02124520
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -859,7 +838,6 @@ int func_ov078_02124520(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 21 -- func_ov078_02124778, 0x02124778, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02124778
 extern "C" {
@@ -870,7 +848,6 @@ int func_ov078_02124778(char *c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 22 -- func_ov078_021247bc, 0x021247bc, size 0x384 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_021247bc
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -976,7 +953,6 @@ int func_ov078_021247bc(void *thiz)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 23 -- func_ov078_02124b40, 0x02124b40, size 0x84 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02124b40
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -997,7 +973,6 @@ int func_ov078_02124b40(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 24 -- func_ov078_02124bc4, 0x02124bc4, size 0xd0 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02124bc4
 extern "C" {
@@ -1031,7 +1006,6 @@ int func_ov078_02124bc4(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 25 -- func_ov078_02124c94, 0x02124c94, size 0x60 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02124c94
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -1049,7 +1023,6 @@ int func_ov078_02124c94(char *p) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 26 -- func_ov078_02124cf4, 0x02124cf4, size 0x1a8 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02124cf4
 /* recovered: shared common types, declarations from a shared header */
@@ -1096,7 +1069,6 @@ done:
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 27 -- func_ov078_02124e9c, 0x02124e9c, size 0x8c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02124e9c
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -1116,7 +1088,6 @@ int func_ov078_02124e9c(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 28 -- func_ov078_02124f28, 0x02124f28, size 0x1a8 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02124f28
 /* recovered: shared common types, declarations from a shared header */
@@ -1201,7 +1172,6 @@ done:
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 29 -- func_ov078_021250d0, 0x021250d0, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_021250d0
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -1217,7 +1187,6 @@ int func_ov078_021250d0(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 30 -- func_ov078_021250f8, 0x021250f8, size 0x258 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_021250f8
 /* recovered: shared common types, declarations from a shared header */
@@ -1297,7 +1266,6 @@ int func_ov078_021250f8(char* c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 31 -- func_ov078_02125350, 0x02125350, size 0xf8 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02125350
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -1334,7 +1302,6 @@ int func_ov078_02125350(int sl)
 #pragma opt_strength_reduction off
 #pragma opt_common_subs off
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 32 -- func_ov078_02125448, 0x02125448, size 0x2ec */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02125448
 /* recovered: shared common types, declarations from a shared header */
@@ -1447,7 +1414,6 @@ int func_ov078_02125448(char* c)
 #pragma pop
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 33 -- func_ov078_02125734, 0x02125734, size 0x5c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02125734
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -1461,7 +1427,6 @@ int func_ov078_02125734(char *c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 34 -- func_ov078_02125790, 0x02125790, size 0x154 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02125790
 /* recovered: shared common types, declarations from a shared header */
@@ -1501,7 +1466,6 @@ extern "C" int func_ov078_02125790(char* self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 35 -- func_ov078_021258e4, 0x021258e4, size 0x6c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_021258e4
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -1518,7 +1482,6 @@ int func_ov078_021258e4(int *t)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 36 -- func_ov078_02125950, 0x02125950, size 0x94 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02125950
 /* recovered: shared common types, declarations from a shared header */
@@ -1549,7 +1512,6 @@ extern "C" int func_ov078_02125950(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 37 -- func_ov078_021259e4, 0x021259e4, size 0x8 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_021259e4
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -1560,7 +1522,6 @@ int func_ov078_021259e4(void)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 38 -- func_ov078_021259ec, 0x021259ec, size 0x1dc */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_021259ec
 /* recovered: shared common types, declarations from a shared header */
@@ -1633,7 +1594,6 @@ int func_ov078_021259ec(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 39 -- func_ov078_02125bc8, 0x02125bc8, size 0x5c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02125bc8
 extern "C" int func_ov078_02125bc8(char* c) {
@@ -1646,7 +1606,6 @@ extern "C" int func_ov078_02125bc8(char* c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 40 -- func_ov078_02125c24, 0x02125c24, size 0x24 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02125c24
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -1656,7 +1615,6 @@ void func_ov078_02125c24(char* c, int strength) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 41 -- KingBobOmb_SetState, 0x02125c48, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol KingBobOmb_SetState
 extern "C" int KingBobOmb_SetState(void *cv, void *pv) {
@@ -1669,7 +1627,6 @@ extern "C" int KingBobOmb_SetState(void *cv, void *pv) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 42 -- func_ov078_02125c98, 0x02125c98, size 0x148 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02125c98
 /* recovered: shared common types */
@@ -1707,7 +1664,6 @@ extern "C" void func_ov078_02125c98(void* cv) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 43 -- func_ov078_02125de0, 0x02125de0, size 0x1ac */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02125de0
 /* recovered: shared common types */
@@ -1758,7 +1714,6 @@ void func_ov078_02125de0(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 44 -- func_ov078_02125f8c, 0x02125f8c, size 0x68 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov078_02125f8c
 /* recovered: shared common types, declarations from a shared header */
@@ -1781,7 +1736,6 @@ void func_ov078_02125f8c(void* c_){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 45 -- _ZN12daBombking_c16CleanupResourcesEv, 0x02125ff4, size 0xb4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daBombking_c16CleanupResourcesEv
 int daBombking_c::CleanupResources()
@@ -1803,7 +1757,6 @@ int daBombking_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 46 -- _ZN12daBombking_c16OnPendingDestroyEv, 0x021260a8, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daBombking_c16OnPendingDestroyEv
 void daBombking_c::OnPendingDestroy()
@@ -1811,7 +1764,6 @@ void daBombking_c::OnPendingDestroy()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 47 -- _ZN12daBombking_c6RenderEv, 0x021260ac, size 0x58 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daBombking_c6RenderEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
@@ -1833,7 +1785,6 @@ int daBombking_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 48 -- _ZN12daBombking_c8BehaviorEv, 0x02126104, size 0x264 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daBombking_c8BehaviorEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
@@ -1926,7 +1877,6 @@ int daBombking_c::Behavior()
 #pragma push
 #pragma opt_strength_reduction off
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 49 -- _ZN12daBombking_c13InitResourcesEv, 0x02126368, size 0x28c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daBombking_c13InitResourcesEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
@@ -1994,7 +1944,6 @@ int daBombking_c::InitResources()
 #pragma pop
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 50 -- _ZN12daBombking_c16OnAimedAtWithEggEv, 0x021265f4, size 0x8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daBombking_c16OnAimedAtWithEggEv
 // recovered name: KingBobOmb_OnAimedAtWithEgg
@@ -2005,7 +1954,6 @@ s32 daBombking_c::OnAimedAtWithEgg() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 51 -- daBombking_c_classInit, 0x021265fc, size 0x64            */
 /* -------------------------------------------------------------------------- */
 /* The factory immediately follows ordinal 50 and ends at the .init boundary. */
 // @symbol daBombking_c_classInit
