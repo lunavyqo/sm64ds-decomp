@@ -21,16 +21,6 @@
  * reconstructions. The member/static forms and parameter spellings of the
  * latter two are also inferred; the manifest records the evidence boundary.
  *
- * Superseded one-function sources (ROM address order):
- *   [0]  0x0211a494  src/_ZN16daObjCtMecha04_cD1Ev.cpp
- *   [1]  0x0211a4e8  src/_ZN16daObjCtMecha04_cD0Ev.cpp
- *   [2]  0x0211a550  src/_ZN16daObjCtMecha04_c12UpdateShadowEv.cpp
- *   [3]  0x0211a638  src/_ZN16daObjCtMecha04_c16CleanupResourcesEv.cpp
- *   [4]  0x0211a69c  src/_ZN16daObjCtMecha04_c6RenderEv.cpp
- *   [5]  0x0211a6d0  src/_ZN16daObjCtMecha04_c8BehaviorEv.cpp
- *   [6]  0x0211a870  src/_ZN16daObjCtMecha04_c13InitResourcesEv.cpp
- *   [7]  0x0211aa38  src/_ZN16daObjCtMecha04_c15MoveActorOnBeltER8dActor_c.cpp
- *   [8]  0x0211aacc  src/_ZN16daObjCtMecha04_c17AfterClsnCallbackEP4dBgWP8dActor_cS3_.cpp
  * The two factories (CT_MECHA04L / CT_MECHA04S) are `return new` in this file.
  */
 
@@ -82,7 +72,6 @@ extern s16 data_02082214[];
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- daObjCtMecha04_c_classInit_CT_MECHA04S, 0x0211ab20, size 0x40 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjCtMecha04_c_classInit_CT_MECHA04S
 extern "C" daObjCtMecha04_c *daObjCtMecha04_c_classInit_CT_MECHA04S()
@@ -91,7 +80,6 @@ extern "C" daObjCtMecha04_c *daObjCtMecha04_c_classInit_CT_MECHA04S()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- daObjCtMecha04_c_classInit_CT_MECHA04L, 0x0211aae0, size 0x40 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjCtMecha04_c_classInit_CT_MECHA04L
 extern "C" daObjCtMecha04_c *daObjCtMecha04_c_classInit_CT_MECHA04L()
@@ -100,7 +88,6 @@ extern "C" daObjCtMecha04_c *daObjCtMecha04_c_classInit_CT_MECHA04L()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- _ZN16daObjCtMecha04_c17AfterClsnCallbackEP4dBgWP8dActor_cS3_, 0x0211aacc, size 0x14 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha04_c17AfterClsnCallbackEP4dBgWP8dActor_cS3_
 /* Inferred descriptive name and observed three-register callback ABI. The
@@ -112,7 +99,6 @@ void daObjCtMecha04_c::AfterClsnCallback(dBgW *collider, dActor_c *owner,
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN16daObjCtMecha04_c15MoveActorOnBeltER8dActor_c, 0x0211aa38, size 0x94 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha04_c15MoveActorOnBeltER8dActor_c
 /* Inferred descriptive name. The collision callback supplies this conveyor as
@@ -139,7 +125,6 @@ void daObjCtMecha04_c::MoveActorOnBelt(dActor_c &actor)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN16daObjCtMecha04_c13InitResourcesEv, 0x0211a870, size 0x1c8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha04_c13InitResourcesEv
 int daObjCtMecha04_c::InitResources()
@@ -215,7 +200,6 @@ int daObjCtMecha04_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN16daObjCtMecha04_c8BehaviorEv, 0x0211a6d0, size 0x1a0 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha04_c8BehaviorEv
 int daObjCtMecha04_c::Behavior()
@@ -262,7 +246,6 @@ int daObjCtMecha04_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN16daObjCtMecha04_c6RenderEv, 0x0211a69c, size 0x34 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha04_c6RenderEv
 int daObjCtMecha04_c::Render()
@@ -273,7 +256,6 @@ int daObjCtMecha04_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN16daObjCtMecha04_c16CleanupResourcesEv, 0x0211a638, size 0x64 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha04_c16CleanupResourcesEv
 int daObjCtMecha04_c::CleanupResources()
@@ -286,7 +268,6 @@ int daObjCtMecha04_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN16daObjCtMecha04_c12UpdateShadowEv, 0x0211a550, size 0xe8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha04_c12UpdateShadowEv
 /* Inferred descriptive name. The owned ShadowModel and its matrix are fixed by
@@ -320,8 +301,6 @@ void daObjCtMecha04_c::UpdateShadow()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN16daObjCtMecha04_cD0Ev, 0x0211a4e8, size 0x68        */
-/* ROM ordinal 0 -- _ZN16daObjCtMecha04_cD1Ev, 0x0211a494, size 0x54        */
 /* -------------------------------------------------------------------------- */
 /* No separate body lives here. The inline virtual destructor in the directly
  * included class header makes mwccarm emit retail's D1 then D0 order without
