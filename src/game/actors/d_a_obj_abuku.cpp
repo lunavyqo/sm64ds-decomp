@@ -58,7 +58,6 @@ void _ZN6Player4HealEi(dActor_c *player, int amount);
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- class initializer, 0x020b3568, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjAbuku_c_classInit
 extern "C" daObjAbuku_c *daObjAbuku_c_classInit()
@@ -78,7 +77,6 @@ extern "C" AbukuSpawnInfo g_profile_OBJ_ABUKU = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN12daObjAbuku_c13InitResourcesEv, 0x020b3518, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daObjAbuku_c13InitResourcesEv
 int daObjAbuku_c::InitResources() {
@@ -89,7 +87,6 @@ int daObjAbuku_c::InitResources() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN12daObjAbuku_c8BehaviorEv, 0x020b33dc, size 0x13c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daObjAbuku_c8BehaviorEv
 int daObjAbuku_c::Behavior()
@@ -123,7 +120,6 @@ int daObjAbuku_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov002_020b3344, 0x020b3344, size 0x98 */
 /* -------------------------------------------------------------------------- */
 extern "C" {
 int func_ov002_020b3344(daObjAbuku_c *c){
@@ -148,7 +144,6 @@ int func_ov002_020b3344(daObjAbuku_c *c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov002_020b330c, 0x020b330c, size 0x38 */
 /* -------------------------------------------------------------------------- */
 extern "C" {
 void func_ov002_020b330c(daObjAbuku_c *c){
