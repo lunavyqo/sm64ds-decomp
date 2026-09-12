@@ -86,7 +86,6 @@ extern Elem data_ov027_02113ce4[];
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 15 -- daPgDfdr_c_classInit, 0x0211207c, size 0x48              */
 /* -------------------------------------------------------------------------- */
 // @symbol daPgDfdr_c_classInit
 extern "C" daPgDfdr_c *daPgDfdr_c_classInit()
@@ -95,7 +94,6 @@ extern "C" daPgDfdr_c *daPgDfdr_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 14 -- _ZN10daPgDfdr_c13InitResourcesEv, 0x02111eb4, size 0x1c8  */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN10daPgDfdr_c13InitResourcesEv
 s32 daPgDfdr_c::InitResources()
@@ -149,7 +147,6 @@ s32 daPgDfdr_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 13 -- _ZN10daPgDfdr_c8BehaviorEv, 0x02111e34, size 0x80         */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN10daPgDfdr_c8BehaviorEv
 s32 daPgDfdr_c::Behavior()
@@ -170,7 +167,6 @@ s32 daPgDfdr_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 12 -- _ZN10daPgDfdr_c6RenderEv, 0x02111e00, size 0x34           */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN10daPgDfdr_c6RenderEv
 s32 daPgDfdr_c::Render()
@@ -181,7 +177,6 @@ s32 daPgDfdr_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 11 -- _ZN10daPgDfdr_c16OnPendingDestroyEv, 0x02111dfc, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN10daPgDfdr_c16OnPendingDestroyEv
 void daPgDfdr_c::OnPendingDestroy()
@@ -189,7 +184,6 @@ void daPgDfdr_c::OnPendingDestroy()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- _ZN10daPgDfdr_c16CleanupResourcesEv, 0x02111d8c, 0x70     */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN10daPgDfdr_c16CleanupResourcesEv
 s32 daPgDfdr_c::CleanupResources()
@@ -208,7 +202,6 @@ s32 daPgDfdr_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- func_ov027_02111d70, 0x02111d70, size 0x1c                 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov027_02111d70
 extern "C" void func_ov027_02111d70(void *self, int idx)
@@ -219,7 +212,6 @@ extern "C" void func_ov027_02111d70(void *self, int idx)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- func_ov027_02111d38, 0x02111d38, size 0x38                 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov027_02111d38
 extern "C" void func_ov027_02111d38(void *cv)
@@ -230,7 +222,6 @@ extern "C" void func_ov027_02111d38(void *cv)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- func_ov027_02111cfc, 0x02111cfc, size 0x3c                 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov027_02111cfc
 extern "C" void func_ov027_02111cfc(void *cv)
@@ -241,7 +232,6 @@ extern "C" void func_ov027_02111cfc(void *cv)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- func_ov027_02111ca8, 0x02111ca8, size 0x54                 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov027_02111ca8
 extern "C" int func_ov027_02111ca8(daPgDfdr_c *self)
@@ -254,7 +244,6 @@ extern "C" int func_ov027_02111ca8(daPgDfdr_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- func_ov027_02111c48, 0x02111c48, size 0x60                 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov027_02111c48
 extern "C" int func_ov027_02111c48(daPgDfdr_c *self)
@@ -270,7 +259,6 @@ extern "C" int func_ov027_02111c48(daPgDfdr_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- func_ov027_02111b2c, 0x02111b2c, size 0x11c                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov027_02111b2c
 extern "C" void func_ov027_02111b2c(daPgDfdr_c *self)
@@ -289,7 +277,6 @@ extern "C" void func_ov027_02111b2c(daPgDfdr_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov027_02111a28, 0x02111a28, size 0x104                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov027_02111a28
 extern "C" int func_ov027_02111a28(char *c)
@@ -333,7 +320,6 @@ extern "C" int func_ov027_02111a28(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov027_02111994, 0x02111994, size 0x94                 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov027_02111994
 extern "C" void func_ov027_02111994(daPgDfdr_c *self)
