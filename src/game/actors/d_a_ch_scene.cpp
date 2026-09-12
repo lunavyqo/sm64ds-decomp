@@ -59,7 +59,6 @@ extern FaderColor data_0209f5e8;
 extern Matrix4x3 data_020a0e68;
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- daChScene_c_classInit, 0x020b0f24, size 0x30 */
 /* -------------------------------------------------------------------------- */
 // @symbol daChScene_c_classInit
 /* Reconstructed source-style name: SM64DS proves daChScene_c through RTTI,
@@ -74,7 +73,6 @@ extern "C" daChScene_c *daChScene_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN11daChScene_c13InitResourcesEv, 0x020b0d88, size 0x19c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN11daChScene_c13InitResourcesEv
 s32 daChScene_c::InitResources()
@@ -116,7 +114,6 @@ s32 daChScene_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN11daChScene_c8BehaviorEv, 0x020b0a84, size 0x304 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN11daChScene_c8BehaviorEv
 s32 daChScene_c::Behavior()
@@ -208,7 +205,6 @@ s32 daChScene_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN11daChScene_c6RenderEv, 0x020b0a7c, size 0x8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN11daChScene_c6RenderEv
 s32 daChScene_c::Render()
@@ -217,7 +213,6 @@ s32 daChScene_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN11daChScene_c16OnPendingDestroyEv, 0x020b0a78, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN11daChScene_c16OnPendingDestroyEv
 void daChScene_c::OnPendingDestroy()
@@ -225,7 +220,6 @@ void daChScene_c::OnPendingDestroy()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN11daChScene_c16CleanupResourcesEv, 0x020b0a70, size 0x8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN11daChScene_c16CleanupResourcesEv
 s32 daChScene_c::CleanupResources()
@@ -234,7 +228,6 @@ s32 daChScene_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov002_020b0a0c, 0x020b0a0c, size 0x64 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020b0a0c
 extern "C" {
