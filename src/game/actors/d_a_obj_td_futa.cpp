@@ -69,7 +69,6 @@ void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- daObjTdFuta_c_classInit, 0x02112668, size 0x30            */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjTdFuta_c_classInit
 /* Every instruction the cartridge has here falls out of the one `new`.
@@ -85,7 +84,6 @@ extern "C" daObjTdFuta_c *daObjTdFuta_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN13daObjTdFuta_c13InitResourcesEv, 0x021125d4, size 0x94 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN13daObjTdFuta_c13InitResourcesEv
 s32 daObjTdFuta_c::InitResources()
@@ -103,7 +101,6 @@ s32 daObjTdFuta_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN13daObjTdFuta_c8BehaviorEv, 0x021125b0, size 0x24 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN13daObjTdFuta_c8BehaviorEv
 s32 daObjTdFuta_c::Behavior()
@@ -113,7 +110,6 @@ s32 daObjTdFuta_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN13daObjTdFuta_c6RenderEv, 0x02112588, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN13daObjTdFuta_c6RenderEv
 s32 daObjTdFuta_c::Render()
@@ -123,7 +119,6 @@ s32 daObjTdFuta_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN13daObjTdFuta_c16CleanupResourcesEv, 0x02112544, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN13daObjTdFuta_c16CleanupResourcesEv
 s32 daObjTdFuta_c::CleanupResources()
@@ -137,8 +132,6 @@ s32 daObjTdFuta_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN13daObjTdFuta_cD0Ev, 0x021124ec, size 0x58            */
-/* ROM ordinal 0 -- _ZN13daObjTdFuta_cD1Ev, 0x021124a8, size 0x44            */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN13daObjTdFuta_cD1Ev
 // @symbol _ZN13daObjTdFuta_cD0Ev
