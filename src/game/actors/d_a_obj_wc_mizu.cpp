@@ -83,7 +83,6 @@ extern s16 data_02082214[];
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- daObjWc_Mizu_c_classInit, 0x021125f8, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjWc_Mizu_c_classInit
 /* Reconstructed source-style name; exact original SM64DS spelling is not
@@ -94,7 +93,6 @@ extern "C" daObjWc_Mizu_c *daObjWc_Mizu_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN14daObjWc_Mizu_c13InitResourcesEv, 0x021124d0, size 0x128 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjWc_Mizu_c13InitResourcesEv
 int daObjWc_Mizu_c::InitResources()
@@ -135,7 +133,6 @@ int daObjWc_Mizu_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN14daObjWc_Mizu_c8BehaviorEv, 0x02112354, size 0x17c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjWc_Mizu_c8BehaviorEv
 int daObjWc_Mizu_c::Behavior()
@@ -197,7 +194,6 @@ int daObjWc_Mizu_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN14daObjWc_Mizu_c6RenderEv, 0x02112320, size 0x34 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjWc_Mizu_c6RenderEv
 int daObjWc_Mizu_c::Render()
@@ -208,7 +204,6 @@ int daObjWc_Mizu_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN14daObjWc_Mizu_c16CleanupResourcesEv, 0x021122dc, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjWc_Mizu_c16CleanupResourcesEv
 int daObjWc_Mizu_c::CleanupResources()
@@ -222,7 +217,6 @@ int daObjWc_Mizu_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov029_021122b4, 0x021122b4, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov029_021122b4
 extern "C" void func_ov029_021122b4(daObjWc_Mizu_c *self)
@@ -233,7 +227,6 @@ extern "C" void func_ov029_021122b4(daObjWc_Mizu_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov029_02112250, 0x02112250, size 0x64 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov029_02112250
 extern "C" void func_ov029_02112250(daObjWc_Mizu_c *self)
@@ -246,8 +239,6 @@ extern "C" void func_ov029_02112250(daObjWc_Mizu_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN14daObjWc_Mizu_cD0Ev, 0x021121f0, size 0x60 */
-/* ROM ordinal 0 -- _ZN14daObjWc_Mizu_cD1Ev, 0x021121a4, size 0x4c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjWc_Mizu_cD1Ev
 // @symbol _ZN14daObjWc_Mizu_cD0Ev
