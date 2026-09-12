@@ -60,7 +60,7 @@ struct DaEyBmSpawnInfo {
 typedef char DaEyBmSpawnInfo_size_must_be_0x1c[
     sizeof(DaEyBmSpawnInfo) == 0x1c ? 1 : -1];
 
-/* ROM ordinal 12 -- class initializer, 0x02121f9c, size 0x48. Leaf
+/* Leaf
  * operator new forwards fBase_c::operator new; the implicit constructor
  * emits the measured dActor_c C2, vptr store, and three member C1s. */
 // @symbol daEyBm_c_classInit
@@ -80,7 +80,7 @@ extern "C" DaEyBmSpawnInfo g_profile_EYEKUN_BEAM = {
     0x01000000
 };
 
-/* ROM ordinal 11 -- InitResources, 0x02121eb4, size 0xe8. */
+
 extern "C" {
 /* Known by-value Fix12 compiler walls: these exact ABI imports preserve the
  * retail register calling convention while the owned objects remain typed. */
@@ -116,7 +116,7 @@ int daEyBm_c::InitResources()
     return 1;
 }
 
-/* ROM ordinal 10 -- Behavior, 0x02121d80, size 0x134. */
+
 extern "C" {
 extern void Matrix4x3_FromRotationY(Matrix4x3 *matrix, s16 angle);
 extern void Matrix4x3_ApplyInPlaceToRotationX(Matrix4x3 *matrix, s16 angle);
@@ -168,7 +168,7 @@ int daEyBm_c::Behavior()
     return 1;
 }
 
-/* ROM ordinal 9 -- Render, 0x02121d14, size 0x6c. */
+
 extern "C" u32 _ZN8Particle6System17NewUnkCallback818Ejj5Fix12IiES2_S2_PK11Vector3_16f(
     u32 handle, u32 effectID, Fix12i x, Fix12i y, Fix12i z,
     const Vector3_16f *rotation);
@@ -184,19 +184,17 @@ int daEyBm_c::Render()
     return 1;
 }
 
-/* ROM ordinal 8 -- OnPendingDestroy, 0x02121d10, size 0x4. */
+
 void daEyBm_c::OnPendingDestroy()
 {
 }
 
-/* ROM ordinal 7 -- CleanupResources, 0x02121d08, size 0x8. */
+
 int daEyBm_c::CleanupResources()
 {
     return 1;
 }
 
-/* ROM ordinal 6 -- inferred daEyBm_c::UpdateShadow,
- * 0x02121c6c, size 0x9c. */
 extern "C" void _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(
     dActor_c *actor, ShadowModel *shadow, Matrix4x3 *matrix,
     Fix12i radius, Fix12i depth, u32 opacity);
@@ -218,7 +216,7 @@ void daEyBm_c::UpdateShadow()
         this, &mShadowModel, &mMatrix, 0x50000, depth, 0xf);
 }
 
-/* ROM ordinal 5 -- inferred daEyBm_c::HurtPlayer,
+/*
  * 0x02121ba4, size 0xc8. Player::Hurt retains the measured by-value Fix12
  * ABI seam; Player itself and all accessed fields are the real type. */
 extern "C" void _ZN6Player4HurtERK7Vector3j5Fix12IiEjjj(
@@ -252,7 +250,7 @@ void daEyBm_c::HurtPlayer()
     SpawnDestroyEffect();
 }
 
-/* ROM ordinal 4 -- inferred daEyBm_c::UpdateCollision,
+/*
  * 0x02121b50, size 0x54. The coined mangling uses a reference; a pointer
  * would generate identical ARM. The retail caller passes the owned
  * collision subobject explicitly in r1. */
@@ -265,7 +263,7 @@ void daEyBm_c::UpdateCollision(dBgCh_Actr &collision)
         SpawnDestroyEffect();
 }
 
-/* ROM ordinal 3 -- inferred daEyBm_c::SpawnDestroyEffect,
+/*
  * 0x02121b08, size 0x48. Particle::System::New is not yet shared-header
  * declared, so this exact typed ABI import remains local. */
 extern "C" u32 _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(
@@ -280,11 +278,11 @@ void daEyBm_c::SpawnDestroyEffect()
     MarkForDestruction();
 }
 
-/* ROM ordinal 2 -- OnYoshiTryEat, 0x02121b00, size 0x8. */
+
 int daEyBm_c::OnYoshiTryEat()
 {
     return 4;
 }
 
-/* ROM ordinals 0/1 -- D1 0x02121a6c and D0 0x02121aac. The inline class
+/* The inline class
  * destructor and InitResources vtable instantiation emit both naturally. */
