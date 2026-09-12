@@ -6,34 +6,6 @@
  * of source order). Conflicting declarations were reconciled by hand; see
  * the manifest notes.
  *
- * Assembled from these legacy one-function sources (ROM address order):
- *   [0] 0x0211f000  src/_ZN19daPropeller_Heyho_cD1Ev.cpp
- *   [1] 0x0211f048  src/_ZN19daPropeller_Heyho_cD0Ev.cpp
- *   [2] 0x0211f0a4  src/func_ov070_0211f0a4.cpp
- *   [3] 0x0211f100  src/func_ov070_0211f100.cpp
- *   [4] 0x0211f368  src/func_ov070_0211f368.cpp
- *   [5] 0x0211f450  src/func_ov070_0211f450.c
- *   [6] 0x0211f48c  src/func_ov070_0211f48c.c
- *   [7] 0x0211f5f0  src/func_ov070_0211f5f0.cpp
- *   [8] 0x0211f62c  src/func_ov070_0211f62c.c
- *   [9] 0x0211f694  src/func_ov070_0211f694.cpp
- *   [10] 0x0211f6e0  src/func_ov070_0211f6e0.c
- *   [11] 0x0211fa80  src/func_ov070_0211fa80.c
- *   [12] 0x0211fae4  src/func_ov070_0211fae4.c
- *   [13] 0x0211fd60  src/func_ov070_0211fd60.c
- *   [14] 0x0211fd98  src/func_ov070_0211fd98.c
- *   [15] 0x0211ffa8  src/func_ov070_0211ffa8.cpp
- *   [16] 0x02120020  src/FlyGuy_ChangeState.cpp
- *   [17] 0x02120070  src/func_ov070_02120070.cpp
- *   [18] 0x02120150  src/_ZN19daPropeller_Heyho_c16CleanupResourcesEv.cpp
- *   [19] 0x021201bc  src/_ZN19daPropeller_Heyho_c16OnPendingDestroyEv.cpp
- *   [20] 0x021201c0  src/_ZN19daPropeller_Heyho_c6RenderEv.cpp
- *   [21] 0x02120210  src/_ZN19daPropeller_Heyho_c8BehaviorEv.cpp
- *   [22] 0x021203b4  src/_ZN19daPropeller_Heyho_c13InitResourcesEv.cpp
- *   [23] 0x021204e4  src/_ZN19daPropeller_Heyho_c16OnAimedAtWithEggEv.cpp
- *   [24] 0x021204ec  src/_ZN19daPropeller_Heyho_c13OnTurnIntoEggER6Player.cpp
- *   [25] 0x02120518  src/_ZN19daPropeller_Heyho_c13OnYoshiTryEatEv.cpp
- *   [26] 0x02120520  src/FlyGuy_Spawn.c
  *
  * deslop
  * Leftover: dCcAc_c::Init / dBgCh_Actr::Init stay mangled (Fix12-by-value, 6az;
@@ -94,7 +66,6 @@ struct V3w { int w[3]; };  /* array-wrapper: C++ scalarizes a plain struct copy;
 struct V3h { short h[3]; };
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 26 -- daPropeller_Heyho_c_classInit, 0x02120520, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol daPropeller_Heyho_c_classInit
 /* The registry factory behind the PROPELLER_HEYHO profile.
@@ -106,7 +77,6 @@ extern "C" daPropeller_Heyho_c *daPropeller_Heyho_c_classInit(void)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 25 -- _ZN19daPropeller_Heyho_c13OnYoshiTryEatEv, 0x02120518, size 0x8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN19daPropeller_Heyho_c13OnYoshiTryEatEv
 #include "daPropeller_Heyho_c.h"
@@ -116,7 +86,6 @@ s32 daPropeller_Heyho_c::OnYoshiTryEat() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 24 -- _ZN19daPropeller_Heyho_c13OnTurnIntoEggER6Player, 0x021204ec, size 0x2c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN19daPropeller_Heyho_c13OnTurnIntoEggER6Player
 // recovered name: FlyGuy_OnTurnIntoEgg
@@ -135,7 +104,6 @@ void daPropeller_Heyho_c::OnTurnIntoEgg(Player &player)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 23 -- _ZN19daPropeller_Heyho_c16OnAimedAtWithEggEv, 0x021204e4, size 0x8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN19daPropeller_Heyho_c16OnAimedAtWithEggEv
 #include "daPropeller_Heyho_c.h"
@@ -147,7 +115,6 @@ s32 daPropeller_Heyho_c::OnAimedAtWithEgg() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 22 -- _ZN19daPropeller_Heyho_c13InitResourcesEv, 0x021203b4, size 0x130 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN19daPropeller_Heyho_c13InitResourcesEv
 /* recovered: named members + shared header, real C++ method */
@@ -192,7 +159,6 @@ int daPropeller_Heyho_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 21 -- _ZN19daPropeller_Heyho_c8BehaviorEv, 0x02120210, size 0x1a4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN19daPropeller_Heyho_c8BehaviorEv
 /* recovered: named members + shared header, real C++ method */
@@ -282,7 +248,6 @@ int daPropeller_Heyho_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 20 -- _ZN19daPropeller_Heyho_c6RenderEv, 0x021201c0, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN19daPropeller_Heyho_c6RenderEv
 /* recovered: named members + shared header, real C++ method */
@@ -297,7 +262,6 @@ int daPropeller_Heyho_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 19 -- _ZN19daPropeller_Heyho_c16OnPendingDestroyEv, 0x021201bc, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN19daPropeller_Heyho_c16OnPendingDestroyEv
 /* recovered: shared header, real C++ method
@@ -311,7 +275,6 @@ void daPropeller_Heyho_c::OnPendingDestroy()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 18 -- _ZN19daPropeller_Heyho_c16CleanupResourcesEv, 0x02120150, size 0x6c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN19daPropeller_Heyho_c16CleanupResourcesEv
 /* recovered: shared header, real C++ method
@@ -340,7 +303,6 @@ int daPropeller_Heyho_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 17 -- func_ov070_02120070, 0x02120070, size 0xe0 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_02120070
 /* recovered: shared common types */
@@ -370,7 +332,6 @@ void func_ov070_02120070(daPropeller_Heyho_c* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 16 -- FlyGuy_ChangeState, 0x02120020, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol FlyGuy_ChangeState
 extern "C" int FlyGuy_ChangeState(daPropeller_Heyho_c *c, daPropeller_Heyho_c::State *p)
@@ -383,7 +344,6 @@ extern "C" int FlyGuy_ChangeState(daPropeller_Heyho_c *c, daPropeller_Heyho_c::S
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 15 -- func_ov070_0211ffa8, 0x0211ffa8, size 0x78 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_0211ffa8
 extern "C" {
@@ -399,7 +359,6 @@ int func_ov070_0211ffa8(daPropeller_Heyho_c* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 14 -- func_ov070_0211fd98, 0x0211fd98, size 0x210 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_0211fd98
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -477,7 +436,6 @@ int func_ov070_0211fd98(daPropeller_Heyho_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 13 -- func_ov070_0211fd60, 0x0211fd60, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_0211fd60
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -490,7 +448,6 @@ int func_ov070_0211fd60(daPropeller_Heyho_c *p) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 12 -- func_ov070_0211fae4, 0x0211fae4, size 0x27c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_0211fae4
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -599,7 +556,6 @@ int func_ov070_0211fae4(daPropeller_Heyho_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 11 -- func_ov070_0211fa80, 0x0211fa80, size 0x64 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_0211fa80
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -616,7 +572,6 @@ int func_ov070_0211fa80(daPropeller_Heyho_c *c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- func_ov070_0211f6e0, 0x0211f6e0, size 0x3a0 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_0211f6e0
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -759,7 +714,6 @@ int func_ov070_0211f6e0(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- func_ov070_0211f694, 0x0211f694, size 0x4c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_0211f694
 extern "C" {
@@ -774,7 +728,6 @@ int func_ov070_0211f694(daPropeller_Heyho_c *c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- func_ov070_0211f62c, 0x0211f62c, size 0x68 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_0211f62c
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -797,7 +750,6 @@ int func_ov070_0211f62c(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- func_ov070_0211f5f0, 0x0211f5f0, size 0x3c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_0211f5f0
 struct BCA_File;
@@ -819,7 +771,6 @@ extern "C" int func_ov070_0211f5f0(daPropeller_Heyho_c *c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- func_ov070_0211f48c, 0x0211f48c, size 0x164 */
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 // @symbol func_ov070_0211f48c
@@ -883,7 +834,6 @@ hitframe:
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- func_ov070_0211f450, 0x0211f450, size 0x3c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_0211f450
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -900,7 +850,6 @@ short func_ov070_0211f450(daPropeller_Heyho_c *c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- func_ov070_0211f368, 0x0211f368, size 0xe8 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_0211f368
 /* recovered: shared common types */
@@ -937,7 +886,6 @@ extern "C" int func_ov070_0211f368(daPropeller_Heyho_c* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov070_0211f100, 0x0211f100, size 0x268 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_0211f100
 typedef int s32;
@@ -1041,7 +989,6 @@ extern "C" void func_ov070_0211f100(daPropeller_Heyho_c* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov070_0211f0a4, 0x0211f0a4, size 0x5c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov070_0211f0a4
 /* recovered: shared common types */
