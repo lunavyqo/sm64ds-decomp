@@ -120,7 +120,6 @@ extern void func_ov065_0211696c(char *c);
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 22 -- daYurei_Mucho_c_classInit, 0x02116f48, size 0x50          */
 /* -------------------------------------------------------------------------- */
 // @symbol daYurei_Mucho_c_classInit
 /* The registry factory behind the YUREI_MUCHO / SNUFIT profile. `return new
@@ -133,7 +132,6 @@ extern "C" daYurei_Mucho_c *daYurei_Mucho_c_classInit(void)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 21 -- _ZN15daYurei_Mucho_c13OnYoshiTryEatEv, 0x02116f40, size 0x8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daYurei_Mucho_c13OnYoshiTryEatEv
 /* dActor_c vtable slot 18. */
@@ -143,7 +141,6 @@ s32 daYurei_Mucho_c::OnYoshiTryEat()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 20 -- _ZN15daYurei_Mucho_c13OnTurnIntoEggER6Player, 0x02116f14, size 0x2c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daYurei_Mucho_c13OnTurnIntoEggER6Player
 /* dActor_c vtable slot 19, confirmed by address: _ZTV15daYurei_Mucho_c
@@ -159,7 +156,6 @@ void daYurei_Mucho_c::OnTurnIntoEgg(Player &player)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 19 -- _ZN15daYurei_Mucho_c16OnAimedAtWithEggEv, 0x02116f0c, size 0x8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daYurei_Mucho_c16OnAimedAtWithEggEv
 /* dActor_c vtable slot 29. */
@@ -169,7 +165,6 @@ s32 daYurei_Mucho_c::OnAimedAtWithEgg()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 18 -- _ZN15daYurei_Mucho_c13InitResourcesEv, 0x02116e10, size 0xfc */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daYurei_Mucho_c13InitResourcesEv
 /* Both Init methods are declared. The current dCcAc_c fixed-point aggregate
@@ -197,7 +192,6 @@ int daYurei_Mucho_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 17 -- _ZN15daYurei_Mucho_c8BehaviorEv, 0x02116b84, size 0x28c   */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daYurei_Mucho_c8BehaviorEv
 /* dActor_c vtable slot 6. */
@@ -287,7 +281,6 @@ int daYurei_Mucho_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 16 -- _ZN15daYurei_Mucho_c6RenderEv, 0x02116b34, size 0x50      */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daYurei_Mucho_c6RenderEv
 /* dActor_c vtable slot 9. */
@@ -300,7 +293,6 @@ int daYurei_Mucho_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 15 -- _ZN15daYurei_Mucho_c16OnPendingDestroyEv, 0x02116b30, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daYurei_Mucho_c16OnPendingDestroyEv
 /* fBase_c slot 12. Empty in the ROM: four bytes, `bx lr`. */
@@ -309,7 +301,6 @@ void daYurei_Mucho_c::OnPendingDestroy()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 14 -- _ZN15daYurei_Mucho_c16CleanupResourcesEv, 0x02116ae8, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daYurei_Mucho_c16CleanupResourcesEv
 /* dActor_c vtable slot 3. Releases the four files InitResources claimed.
@@ -332,7 +323,6 @@ int daYurei_Mucho_c::CleanupResources()
 extern "C" {
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 13 -- func_ov065_0211696c, 0x0211696c, size 0x17c              */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_0211696c
 /* Rebuilds the model matrix from the actor's position and Z/X/Y angles, then
@@ -378,7 +368,6 @@ void func_ov065_0211696c(char *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 12 -- func_ov065_0211691c, 0x0211691c, size 0x50               */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_0211691c
 /* The state setter. Stores the State into mCurrentState, RE-READS it -- the ROM
@@ -401,7 +390,6 @@ int func_ov065_0211691c(daYurei_Mucho_c *c, daYurei_Mucho_c::State *s)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 11 -- func_ov065_021168a8, 0x021168a8, size 0x74               */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_021168a8
 /* State entry hook at 0x0211d670 +0x00: randomise the facing angle and the
@@ -419,7 +407,6 @@ int func_ov065_021168a8(daYurei_Mucho_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- func_ov065_02116744, 0x02116744, size 0x164              */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_02116744
 /* State main hook at 0x0211d670 +0x08: drift, and switch to the attack state
@@ -471,7 +458,6 @@ int func_ov065_02116744(daYurei_Mucho_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- func_ov065_0211672c, 0x0211672c, size 0x18                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_0211672c
 /* State entry hook at 0x0211d680 +0x00: stop the actor dead. */
@@ -484,7 +470,6 @@ int func_ov065_0211672c(daYurei_Mucho_c *p)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- func_ov065_021165d8, 0x021165d8, size 0x154               */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_021165d8
 /* State main hook at 0x0211d680 +0x08: steer toward the nearest non-vanishing
@@ -532,7 +517,6 @@ int func_ov065_021165d8(daYurei_Mucho_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- func_ov065_02116588, 0x02116588, size 0x50                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_02116588
 /* State entry hook at 0x0211d650 +0x00: start the attack animation. As at
@@ -548,7 +532,6 @@ short func_ov065_02116588(daYurei_Mucho_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- func_ov065_02116364, 0x02116364, size 0x224               */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_02116364
 /* State main hook at 0x0211d650 +0x08: aim, and spawn the projectile (profile
@@ -613,7 +596,6 @@ int func_ov065_02116364(daYurei_Mucho_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- func_ov065_02116328, 0x02116328, size 0x3c                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_02116328
 /* State entry hook at 0x0211d660 +0x00: the bumped-from-below pop. */
@@ -630,7 +612,6 @@ int func_ov065_02116328(daYurei_Mucho_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- func_ov065_021162c0, 0x021162c0, size 0x68                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_021162c0
 /* State main hook at 0x0211d660 +0x08.
@@ -651,7 +632,6 @@ int func_ov065_021162c0(daYurei_Mucho_c *t)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov065_02115ff0, 0x02115ff0, size 0x2d0               */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_02115ff0
 /* The collision response, called once from Behavior. */
@@ -735,7 +715,6 @@ void func_ov065_02115ff0(char *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov065_02115f84, 0x02115f84, size 0x6c                */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov065_02115f84
 /* The death helper: poof, drop the coins, unregister. */
@@ -754,8 +733,6 @@ int func_ov065_02115f84(daYurei_Mucho_c *c)
 }  /* extern "C" */
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN15daYurei_Mucho_cD0Ev, 0x02115f28, size 0x5c           */
-/* ROM ordinal 0 -- _ZN15daYurei_Mucho_cD1Ev, 0x02115ee0, size 0x48           */
 /* -------------------------------------------------------------------------- */
 /* No separate body lives here. The inline virtual destructor in the directly
  * included class header makes mwccarm emit retail's D1 then D0 pair without
