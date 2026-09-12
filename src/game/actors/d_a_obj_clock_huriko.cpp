@@ -52,7 +52,6 @@ extern SharedFilePtr data_ov013_02112280;
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- daObjClockHuriko_c_classInit, 0x02111384, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjClockHuriko_c_classInit
 /* Reconstructed source-style name: SM64DS proves daObjClockHuriko_c through RTTI,
@@ -65,7 +64,6 @@ extern "C" daObjClockHuriko_c *daObjClockHuriko_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN18daObjClockHuriko_c13InitResourcesEv, 0x0211133c, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjClockHuriko_c13InitResourcesEv
 // recovered name: daObjClockHuriko_c::InitResources
@@ -82,7 +80,6 @@ s32 daObjClockHuriko_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN18daObjClockHuriko_c8BehaviorEv, 0x021112a8, size 0x94 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjClockHuriko_c8BehaviorEv
 /* daObjClockHuriko_c::Behavior -- vtable slot 6, ov013 0x021112a8. The
@@ -119,14 +116,12 @@ s32 daObjClockHuriko_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN18daObjClockHuriko_c6RenderEv, 0x02111280, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjClockHuriko_c6RenderEv
 /* daObjClockHuriko_c::Render -- vtable slot 9, ov013 0x02111280. */
 s32 daObjClockHuriko_c::Render() { mModel.Render(0); return 1; }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov013_02111238, 0x02111238, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov013_02111238
 /* Not a vtable slot and not provably a member, so it keeps its func_ name.
@@ -143,7 +138,6 @@ void func_ov013_02111238(daObjClockHuriko_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN18daObjClockHuriko_c16CleanupResourcesEv, 0x02111214, size 0x24 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjClockHuriko_c16CleanupResourcesEv
 /* daObjClockHuriko_c::CleanupResources -- vtable slot 3, ov013 0x02111214.
@@ -155,7 +149,6 @@ s32 daObjClockHuriko_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 0 -- _ZN18daObjClockHuriko_cD1Ev, 0x021111a0, size 0x30 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjClockHuriko_cD1Ev
 // @symbol _ZN18daObjClockHuriko_cD0Ev
