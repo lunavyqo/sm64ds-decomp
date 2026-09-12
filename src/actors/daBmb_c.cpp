@@ -151,7 +151,6 @@ extern unsigned char data_0209f2d8;
 }
 
 /* ==========================================================================
- * ROM ordinal 34 -- daBmb_c_classInit, 0x0214c6f8, size 0x50.
  *
  * The registry factory.  It is the TOP of the cartridge's contiguous run
  * (0x0214c748 is where daShl_c starts), so it is written FIRST here: mwccarm
@@ -179,7 +178,6 @@ daBmb_c *daBmb_c_classInit(void)
 }
 
 /* ==========================================================================
- * ROM ordinal 33 -- daBmb_c::OnYoshiTryEat, 0x0214c6e4, size 0x14.
  * Vtable slot 18.  THE KEY FUNCTION: the first out-of-line virtual this class
  * declares, so this TU owns _ZTV7daBmb_c, _ZTI7daBmb_c and _ZTS7daBmb_c.
  * ======================================================================== */
@@ -191,7 +189,6 @@ s32 daBmb_c::OnYoshiTryEat() {
 }
 
 /* ==========================================================================
- * ROM ordinal 32 -- daBmb_c::InitResources, 0x0214c510, size 0x1d4.
  * Vtable slot 0.
  *
  * param1's low three bits pick the variant: 2 is the one that starts inert --
@@ -256,7 +253,6 @@ int daBmb_c::InitResources()
 }
 
 /* ==========================================================================
- * ROM ordinal 31 -- daBmb_c::Behavior, 0x0214c1bc, size 0x354.
  * Vtable slot 6.
  * ======================================================================== */
 
@@ -376,7 +372,6 @@ int daBmb_c::Behavior()
 }
 
 /* ==========================================================================
- * ROM ordinal 30 -- daBmb_c::Render, 0x0214c168, size 0x54.
  * Vtable slot 9.
  * ======================================================================== */
 
@@ -395,7 +390,6 @@ int daBmb_c::Render()
 }
 
 /* ==========================================================================
- * ROM ordinal 29 -- daBmb_c::CleanupResources, 0x0214c12c, size 0x3c.
  * Vtable slot 3.  Releases the three shared files InitResources claimed and
  * touches no field of its own.
  * ======================================================================== */
@@ -410,7 +404,6 @@ int daBmb_c::CleanupResources()
 }
 
 /* ==========================================================================
- * ROM ordinal 28 -- func_ov102_0214c0b8, 0x0214c0b8, size 0x74.
  * ======================================================================== */
 
 extern "C" {
@@ -435,7 +428,6 @@ void func_ov102_0214c0b8(void *cv)
 }
 
 /* ==========================================================================
- * ROM ordinal 27 -- func_ov102_0214bf64, 0x0214bf64, size 0x154.
  *
  * mState arm 0, and it STAYS A FREE FUNCTION.  The conversion itself is byte-clean
  * -- compiled as daBmb_c::State0() it emits exactly 0x154 -- but the TU then will
@@ -505,7 +497,6 @@ void func_ov102_0214bf64(void *ov)
 }
 
 /* ==========================================================================
- * ROM ordinal 26 -- func_ov102_0214beb4, 0x0214beb4, size 0xb0.
  * ======================================================================== */
 
 extern "C" {
@@ -536,7 +527,6 @@ void func_ov102_0214beb4(void *cv)
 }
 
 /* ==========================================================================
- * ROM ordinal 25 -- daBmb_c::State1, 0x0214be1c, size 0x98.
  *
  * mState arm 1 (COINED NAME -- ov102 carries this address and no identifier;
  * func_ov102_0214b03c switching on mState is what proves the index): turns the facing angle (+0x94) toward the stored target angle (+0x3ee) at 0x400 a
@@ -563,7 +553,6 @@ void daBmb_c::State1() {
 }
 
 /* ==========================================================================
- * ROM ordinal 24 -- func_ov102_0214bd90, 0x0214bd90, size 0x8c.
  *
  * mState arm 2, and it STAYS A FREE FUNCTION for the same reason arm 0 does, with
  * a harder instance of it: this body recovered func_0200fc44 with FOUR parameters
@@ -600,7 +589,6 @@ void func_ov102_0214bd90(char* r4){
 }
 
 /* ==========================================================================
- * ROM ordinal 23 -- func_ov102_0214bd20, 0x0214bd20, size 0x70.
  * ======================================================================== */
 
 extern "C" {
@@ -625,7 +613,6 @@ void func_ov102_0214bd20(char* c)
 }
 
 /* ==========================================================================
- * ROM ordinal 22 -- daBmb_c::State3, 0x0214bcc8, size 0x58.
  *
  * mState arm 3 (COINED NAME -- ov102 carries this address and no identifier;
  * func_ov102_0214b03c switching on mState is what proves the index): the held arm: on mFlags bit 0x400 it runs func_ov102_0214b3b8 (which checks
@@ -658,7 +645,6 @@ void daBmb_c::State3()
 }
 
 /* ==========================================================================
- * ROM ordinal 21 -- func_ov102_0214bc20, 0x0214bc20, size 0xa8.
  * ======================================================================== */
 
 extern "C" {
@@ -689,7 +675,6 @@ void func_ov102_0214bc20(char* c)
 }
 
 /* ==========================================================================
- * ROM ordinal 20 -- daBmb_c::State4, 0x0214bbd8, size 0x48.
  *
  * mState arm 4 (COINED NAME -- ov102 carries this address and no identifier;
  * func_ov102_0214b03c switching on mState is what proves the index): the thrown arm: unless the collision actor reports neither ground nor wall contact
@@ -708,7 +693,6 @@ int daBmb_c::State4() {
 }
 
 /* ==========================================================================
- * ROM ordinal 19 -- func_ov102_0214baa0, 0x0214baa0, size 0x138.
  *
  * VOID, and that is measured, not stylistic.  The separate shard this came from
  * was `void`; daBmb_c::OnTurnIntoEgg's shard independently declared it `int` and
@@ -787,7 +771,6 @@ void func_ov102_0214baa0(char *self)
 }
 
 /* ==========================================================================
- * ROM ordinal 18 -- daBmb_c::State5, 0x0214ba30, size 0x70.
  *
  * mState arm 5 (COINED NAME -- ov102 carries this address and no identifier;
  * func_ov102_0214b03c switching on mState is what proves the index): the dormant arm, which func_ov102_0214baa0 puts the actor into after clearing
@@ -816,7 +799,6 @@ void daBmb_c::State5()
 }
 
 /* ==========================================================================
- * ROM ordinal 17 -- func_ov102_0214b988, 0x0214b988, size 0xa8.
  * ======================================================================== */
 
 extern "C" {
@@ -851,7 +833,6 @@ void func_ov102_0214b988(void *thiz)
 }
 
 /* ==========================================================================
- * ROM ordinal 16 -- func_ov102_0214b53c, 0x0214b53c, size 0x44c.
  *
  * The volatile pins are load-bearing: they hold the cartridge's stack layout.
  * Do not simplify them.  The shard's chained `& 0xFFFFFFFFu` masks were
@@ -1033,7 +1014,6 @@ void func_ov102_0214b53c(char *c)
 }
 
 /* ==========================================================================
- * ROM ordinal 15 -- func_ov102_0214b444, 0x0214b444, size 0xf8.
  * ======================================================================== */
 
 extern "C" {
@@ -1080,7 +1060,6 @@ void func_ov102_0214b444(void *cv)
 }
 
 /* ==========================================================================
- * ROM ordinal 14 -- func_ov102_0214b3f0, 0x0214b3f0, size 0x54.
  * ======================================================================== */
 
 extern "C" {
@@ -1102,7 +1081,6 @@ do_call:
 }
 
 /* ==========================================================================
- * ROM ordinal 13 -- func_ov102_0214b3b8, 0x0214b3b8, size 0x38.
  * ======================================================================== */
 
 extern "C" {
@@ -1122,7 +1100,6 @@ void func_ov102_0214b3b8(void *c)
 }
 
 /* ==========================================================================
- * ROM ordinal 12 -- func_ov102_0214b384, 0x0214b384, size 0x34.
  *
  * CALLED FROM OUTSIDE THIS TU: ov078 0x0212519c, and ov102's own
  * QuestionBlock run at 0x02149278.  It keeps external linkage.
@@ -1143,7 +1120,6 @@ void func_ov102_0214b384(void *arg0, unsigned int arg1) {
 }
 
 /* ==========================================================================
- * ROM ordinal 11 -- func_ov102_0214b248, 0x0214b248, size 0x13c.
  * ======================================================================== */
 
 extern "C" {
@@ -1199,7 +1175,6 @@ int func_ov102_0214b248(void *cv)
 }
 
 /* ==========================================================================
- * ROM ordinal 10 -- func_ov102_0214b128, 0x0214b128, size 0x120.
  * ======================================================================== */
 
 extern "C" {
@@ -1248,7 +1223,6 @@ void func_ov102_0214b128(void *cv) {
 }
 
 /* ==========================================================================
- * ROM ordinal 9 -- func_ov102_0214b03c, 0x0214b03c, size 0xec.
  * ======================================================================== */
 
 extern "C" {
@@ -1279,7 +1253,6 @@ void func_ov102_0214b03c(void *cv){
 }
 
 /* ==========================================================================
- * ROM ordinal 8 -- func_ov102_0214ae1c, 0x0214ae1c, size 0x220.
  *
  * CALLED FROM OUTSIDE THIS TU: ov014 0x021122c0 and ov098 0x0213ad80.  It
  * keeps external linkage.
@@ -1355,7 +1328,6 @@ void func_ov102_0214ae1c(void *cv) {
 }
 
 /* ==========================================================================
- * ROM ordinal 7 -- daBmb_c::OnTurnIntoEgg, 0x0214adc8, size 0x54.
  * Vtable slot 19.
  * ======================================================================== */
 
@@ -1371,7 +1343,6 @@ void daBmb_c::OnTurnIntoEgg(Player &player)
 }
 
 /* ==========================================================================
- * ROM ordinal 6 -- func_ov102_0214ad40, 0x0214ad40, size 0x88.
  * ======================================================================== */
 
 extern "C" {
@@ -1405,7 +1376,6 @@ void func_ov102_0214ad40(void *cv)
 }
 
 /* ==========================================================================
- * ROM ordinal 5 -- func_ov102_0214ad14, 0x0214ad14, size 0x2c.
  *
  * CALLED FROM OUTSIDE THIS TU: ov002 0x020f1740, ov078 0x02125284, and
  * ov102's own QuestionBlock run at 0x0214926c.  It keeps external linkage.
@@ -1426,7 +1396,6 @@ void func_ov102_0214ad14(void *c)
 }
 
 /* ==========================================================================
- * ROM ordinal 4 -- func_ov102_0214ab1c, 0x0214ab1c, size 0x1f8.
  * ======================================================================== */
 
 extern "C" {
@@ -1523,7 +1492,6 @@ ret0:
 }
 
 /* ==========================================================================
- * ROM ordinal 3 -- func_ov102_0214aa18, 0x0214aa18, size 0x104.
  * ======================================================================== */
 
 extern "C" {
@@ -1567,7 +1535,6 @@ int func_ov102_0214aa18(void *selfv)
 }
 
 /* ==========================================================================
- * ROM ordinal 2 -- daBmb_c::OnAimedAtWithEgg, 0x0214aa10, size 0x8.
  * Vtable slot 29.
  *
  * Below this, at 0x0214a9b4 and 0x0214a96c, the compiler emits D0 and D1 from
