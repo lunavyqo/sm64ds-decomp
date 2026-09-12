@@ -22,15 +22,6 @@
  * definitions below intentionally run from the highest retail address back
  * toward the compiler-owned destructor group. Keep the factory first.
  *
- * Superseded one-function sources (ROM address order):
- *   [0] 0x0211ab60  src/_ZN16daObjCtMecha05_cD1Ev.cpp
- *   [1] 0x0211abac  src/_ZN16daObjCtMecha05_cD0Ev.cpp
- *   [2] 0x0211ac0c  src/func_ov065_0211ac0c.c
- *   [3] 0x0211ad04  src/_ZN16daObjCtMecha05_c16CleanupResourcesEv.cpp
- *   [4] 0x0211ad48  src/_ZN16daObjCtMecha05_c6RenderEv.cpp
- *   [5] 0x0211ad70  src/func_ov065_0211ad70.c
- *   [6] 0x0211ae08  src/_ZN16daObjCtMecha05_c8BehaviorEv.cpp
- *   [7] 0x0211b1d4  src/_ZN16daObjCtMecha05_c13InitResourcesEv.cpp
  * The factory is `return new` in this file.
  */
 
@@ -106,7 +97,6 @@ extern "C" CtMecha05SpawnInfo g_profile_CT_MECHA05 = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- daObjCtMecha05_c_classInit, 0x0211b328, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjCtMecha05_c_classInit
 extern "C" daObjCtMecha05_c *daObjCtMecha05_c_classInit()
@@ -115,7 +105,6 @@ extern "C" daObjCtMecha05_c *daObjCtMecha05_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN16daObjCtMecha05_c13InitResourcesEv, 0x0211b1d4, size 0x154 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha05_c13InitResourcesEv
 int daObjCtMecha05_c::InitResources()
@@ -154,7 +143,6 @@ int daObjCtMecha05_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN16daObjCtMecha05_c8BehaviorEv, 0x0211ae08, size 0x3cc */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha05_c8BehaviorEv
 /* mHorzSpeed is reused here as a fix12 travel accumulator rather than a
@@ -257,7 +245,6 @@ Lend:
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- func_ov065_0211ad70, 0x0211ad70, size 0x98 */
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* Address-named TU-local helper; original spelling unknown. */
 void func_ov065_0211ad70(daObjCtMecha05_c *actor)
@@ -280,7 +267,6 @@ void func_ov065_0211ad70(daObjCtMecha05_c *actor)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN16daObjCtMecha05_c6RenderEv, 0x0211ad48, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha05_c6RenderEv
 int daObjCtMecha05_c::Render()
@@ -290,7 +276,6 @@ int daObjCtMecha05_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN16daObjCtMecha05_c16CleanupResourcesEv, 0x0211ad04, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjCtMecha05_c16CleanupResourcesEv
 int daObjCtMecha05_c::CleanupResources()
@@ -303,7 +288,6 @@ int daObjCtMecha05_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov065_0211ac0c, 0x0211ac0c, size 0xf8 */
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* Address-named TU-local helper; original spelling unknown. */
 void func_ov065_0211ac0c(daObjCtMecha05_c *actor)
@@ -339,7 +323,6 @@ void func_ov065_0211ac0c(daObjCtMecha05_c *actor)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinals 1 and 0 -- compiler-owned destructor variants.                */
 /*   _ZN16daObjCtMecha05_cD1Ev  0x0211ab60  size 0x4c  (complete-object)      */
 /*   _ZN16daObjCtMecha05_cD0Ev  0x0211abac  size 0x60  (deleting)            */
 /* -------------------------------------------------------------------------- */
