@@ -29,15 +29,6 @@
  * 16 D1, 17 D0. Slot 31 is dBgActor_c::Kill at 0x020ee55c in both tables --
  * inherited, not overridden.
  *
- * Assembled from these legacy one-function sources (ROM address order):
- *   [0] 0x02112e0c  src/_ZN20daObjWanwanShutter_cD1Ev.cpp
- *   [1] 0x02112e50  src/_ZN20daObjWanwanShutter_cD0Ev.cpp
- *   [2] 0x02112ea8  src/func_ov014_02112ea8.cpp
- *   [3] 0x02112f3c  src/_ZN20daObjWanwanShutter_c16CleanupResourcesEv.cpp
- *   [4] 0x02112f80  src/_ZN20daObjWanwanShutter_c6RenderEv.cpp
- *   [5] 0x02112fc0  src/_ZN20daObjWanwanShutter_c8BehaviorEv.cpp
- *   [6] 0x02112ffc  src/_ZN20daObjWanwanShutter_c13InitResourcesEv.cpp
- *   [7] 0x0211307c  src/daObjWanwanShutter_c_classInit.c
  */
 
 /* daObjWanwanShutter_c.h FIRST: it pulls in dBgActor_c.h, which must reach
@@ -72,7 +63,6 @@ extern CLPS_Block    data_ov014_02114558;
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- daObjWanwanShutter_c_classInit, 0x0211307c, size 0x30 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjWanwanShutter_c_classInit
 /* Reconstructed source-style name. Historical alias: ChainChompFence_Spawn.
@@ -88,7 +78,6 @@ extern "C" daObjWanwanShutter_c *daObjWanwanShutter_c_classInit(void)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN20daObjWanwanShutter_c13InitResourcesEv, 0x02112ffc, size 0x80 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN20daObjWanwanShutter_c13InitResourcesEv
 /* Vtable slot 0. Loads the fence's model and collision mesh and plants both at
@@ -112,7 +101,6 @@ int daObjWanwanShutter_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN20daObjWanwanShutter_c8BehaviorEv, 0x02112fc0, size 0x3c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN20daObjWanwanShutter_c8BehaviorEv
 int daObjWanwanShutter_c::Behavior()
@@ -126,7 +114,6 @@ int daObjWanwanShutter_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN20daObjWanwanShutter_c6RenderEv, 0x02112f80, size 0x40 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN20daObjWanwanShutter_c6RenderEv
 int daObjWanwanShutter_c::Render()
@@ -138,7 +125,6 @@ int daObjWanwanShutter_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN20daObjWanwanShutter_c16CleanupResourcesEv, 0x02112f3c, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN20daObjWanwanShutter_c16CleanupResourcesEv
 int daObjWanwanShutter_c::CleanupResources()
@@ -151,7 +137,6 @@ int daObjWanwanShutter_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov014_02112ea8, 0x02112ea8, size 0x94 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov014_02112ea8
 /* The chomp's "break the fence" trigger, reached from daWanwan_c when the
@@ -187,8 +172,6 @@ extern "C" void func_ov014_02112ea8(daObjWanwanShutter_c *a)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN20daObjWanwanShutter_cD0Ev, 0x02112e50, size 0x58 */
-/* ROM ordinal 0 -- _ZN20daObjWanwanShutter_cD1Ev, 0x02112e0c, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN20daObjWanwanShutter_cD1Ev
 // @symbol _ZN20daObjWanwanShutter_cD0Ev
