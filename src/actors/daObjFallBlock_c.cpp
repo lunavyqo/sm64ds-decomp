@@ -61,7 +61,6 @@ extern signed char data_0209f2f8;
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 11 -- _ZN16daObjFallBlock_c8BehaviorEv, 0x0213a36c, size 0x428 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjFallBlock_c8BehaviorEv
 /* daObjFallBlock_c::Behavior - the whole fall-block state machine; see the
@@ -234,7 +233,6 @@ s32 daObjFallBlock_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- _ZN16daObjFallBlock_c6RenderEv, 0x0213a314, size 0x58 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjFallBlock_c6RenderEv
 s32 daObjFallBlock_c::Render()
@@ -246,7 +244,6 @@ s32 daObjFallBlock_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- func_ov098_0213a2cc, 0x0213a2cc, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov098_0213a2cc
 /* Shared CleanupResources body for the four leaves. Keeps the C name because
@@ -263,7 +260,6 @@ int func_ov098_0213a2cc(daObjFallBlock_c *t, SharedFilePtr **f)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- _ZN16daObjFallBlock_c15OnHitByMegaCharER6Player, 0x0213a284, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjFallBlock_c15OnHitByMegaCharER6Player
 /* `player` is never read, matching the ROM body, which only ever takes the
@@ -278,7 +274,6 @@ void daObjFallBlock_c::OnHitByMegaChar(Player &player)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- func_ov098_0213a23c, 0x0213a23c, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov098_0213a23c
 extern "C" {
@@ -292,7 +287,6 @@ void func_ov098_0213a23c(daObjFallBlock_c *t)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN16daObjFallBlock_c4KillEv, 0x0213a17c, size 0xc0 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjFallBlock_c4KillEv
 /* daObjFallBlock_c::Kill() at ov098 0x0213a17c, 0xc0 bytes -- vtable slot 31.
@@ -339,7 +333,6 @@ void daObjFallBlock_c::Kill()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- func_ov098_0213a148, 0x0213a148, size 0x34 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov098_0213a148
 extern "C" {
@@ -358,7 +351,6 @@ void func_ov098_0213a148(daObjFallBlock_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- func_ov098_0213a0e8, 0x0213a0e8, size 0x60 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov098_0213a0e8
 extern "C" {
@@ -377,7 +369,6 @@ void func_ov098_0213a0e8(daObjFallBlock_c *r5)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov098_0213a0a8, 0x0213a0a8, size 0x40 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov098_0213a0a8
 extern "C" {
@@ -392,7 +383,6 @@ int func_ov098_0213a0a8(daObjFallBlock_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov098_0213a00c, 0x0213a00c, size 0x9c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov098_0213a00c
 void func_ov098_0213a00c(daObjFallBlock_c *c)
@@ -417,7 +407,6 @@ void func_ov098_0213a00c(daObjFallBlock_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN16daObjFallBlock_cD1Ev, 0x02139fc8, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjFallBlock_cD1Ev
 // @symbol _ZN16daObjFallBlock_cD0Ev
