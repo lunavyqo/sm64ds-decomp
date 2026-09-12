@@ -67,7 +67,6 @@ void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- daObjC0_Switch_c_classInit, 0x02111420, size 0x30 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjC0_Switch_c_classInit
 /* Reconstructed source-style name: SM64DS proves daObjC0_Switch_c through RTTI,
@@ -88,7 +87,6 @@ extern "C" daObjC0_Switch_c *daObjC0_Switch_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN16daObjC0_Switch_c13InitResourcesEv, 0x02111370, size 0xb0 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjC0_Switch_c13InitResourcesEv
 /* daObjC0_Switch_c::InitResources -- vtable slot 0, ov012 0x02111370.
@@ -120,7 +118,6 @@ int daObjC0_Switch_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN16daObjC0_Switch_c8BehaviorEv, 0x0211134c, size 0x24 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjC0_Switch_c8BehaviorEv
 s32 daObjC0_Switch_c::Behavior()
@@ -130,7 +127,6 @@ s32 daObjC0_Switch_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN16daObjC0_Switch_c6RenderEv, 0x02111324, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjC0_Switch_c6RenderEv
 s32 daObjC0_Switch_c::Render()
@@ -140,7 +136,6 @@ s32 daObjC0_Switch_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN16daObjC0_Switch_c16CleanupResourcesEv, 0x021112ec, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjC0_Switch_c16CleanupResourcesEv
 s32 daObjC0_Switch_c::CleanupResources()
@@ -152,7 +147,6 @@ s32 daObjC0_Switch_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN16daObjC0_Switch_c15OnGroundPoundedER8dActor_c, 0x0211123c, size 0xb0 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjC0_Switch_c15OnGroundPoundedER8dActor_c
 /* daObjC0_Switch_c::OnGroundPounded -- vtable slot 21, ov012 0x0211123c.
@@ -184,7 +178,6 @@ check:
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinals 0 and 1 -- _ZN16daObjC0_Switch_cD1Ev 0x021111a0 size 0x44 and   */
 /* _ZN16daObjC0_Switch_cD0Ev 0x021111e4 size 0x58 -- are NOT written here.      */
 /*                                                                             */
 /* The destructor body is INLINE in include/daObjC0_Switch_c.h and declared     */
