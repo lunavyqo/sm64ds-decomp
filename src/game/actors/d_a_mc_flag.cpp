@@ -32,7 +32,6 @@ void _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(ModelAnim *self,
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- daMcFlag_c_classInit, 0x021121f0, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol daMcFlag_c_classInit
 extern "C" daMcFlag_c *daMcFlag_c_classInit()
@@ -41,7 +40,6 @@ extern "C" daMcFlag_c *daMcFlag_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN10daMcFlag_c13InitResourcesEv, 0x02112190, size 0x60 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN10daMcFlag_c13InitResourcesEv
 s32 daMcFlag_c::InitResources()
@@ -54,7 +52,6 @@ s32 daMcFlag_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN10daMcFlag_c8BehaviorEv, 0x02112144, size 0x4c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN10daMcFlag_c8BehaviorEv
 s32 daMcFlag_c::Behavior()
@@ -68,7 +65,6 @@ s32 daMcFlag_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN10daMcFlag_c6RenderEv, 0x0211211c, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN10daMcFlag_c6RenderEv
 s32 daMcFlag_c::Render()
@@ -78,7 +74,6 @@ s32 daMcFlag_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN10daMcFlag_c16CleanupResourcesEv, 0x021120ec, size 0x30 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN10daMcFlag_c16CleanupResourcesEv
 s32 daMcFlag_c::CleanupResources()
@@ -89,7 +84,6 @@ s32 daMcFlag_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinals 1 and 0 -- one inline definition, two ROM-visible variants:   */
 /*   _ZN10daMcFlag_cD1Ev  0x02112078  size 0x30  (complete-object destructor) */
 /*   _ZN10daMcFlag_cD0Ev  0x021120a8  size 0x44  (deleting destructor)        */
 /* -------------------------------------------------------------------------- */
