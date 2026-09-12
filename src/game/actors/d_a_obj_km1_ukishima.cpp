@@ -51,7 +51,6 @@ void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- daObjKm1_Ukishima_c_classInit, 0x021113cc, size 0x30      */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjKm1_Ukishima_c_classInit
 /* Reconstructed source-style name: SM64DS proves daObjKm1_Ukishima_c through
@@ -68,7 +67,6 @@ extern "C" daObjKm1_Ukishima_c *daObjKm1_Ukishima_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN19daObjKm1_Ukishima_c13InitResourcesEv, 0x02111320, size 0xac */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN19daObjKm1_Ukishima_c13InitResourcesEv
 /* dBgW_KcMbg::SetFile takes Fix12<int> by value. An ordinary member call
@@ -96,7 +94,6 @@ s32 daObjKm1_Ukishima_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN19daObjKm1_Ukishima_c8BehaviorEv, 0x021112a8, size 0x78 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN19daObjKm1_Ukishima_c8BehaviorEv
 /* IsClsnInRange takes two Fix12<int> by value; see InitResources for why that
@@ -123,7 +120,6 @@ s32 daObjKm1_Ukishima_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN19daObjKm1_Ukishima_c6RenderEv, 0x02111280, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN19daObjKm1_Ukishima_c6RenderEv
 s32 daObjKm1_Ukishima_c::Render()
@@ -133,7 +129,6 @@ s32 daObjKm1_Ukishima_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN19daObjKm1_Ukishima_c16CleanupResourcesEv, 0x0211123c, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN19daObjKm1_Ukishima_c16CleanupResourcesEv
 s32 daObjKm1_Ukishima_c::CleanupResources()
@@ -147,8 +142,6 @@ s32 daObjKm1_Ukishima_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN19daObjKm1_Ukishima_cD0Ev, 0x021111e4, size 0x58       */
-/* ROM ordinal 0 -- _ZN19daObjKm1_Ukishima_cD1Ev, 0x021111a0, size 0x44       */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN19daObjKm1_Ukishima_cD1Ev
 // @symbol _ZN19daObjKm1_Ukishima_cD0Ev
