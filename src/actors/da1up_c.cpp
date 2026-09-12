@@ -84,7 +84,6 @@
  * 0 020aff10, 1 020afe4c, 2 020afd10,
  * 3 020afc44, 4 020afbb4, 5 020afa98, 6 020afa6c, 7 020af950, 8 020af924,
  * 9 020af838, 10 020af7cc, 11 020afa50, 12 020af908, 13 020af724.
- * Every member's ROM ordinal, address and size is on the banner above it.
  * Leftover fold adds the two classInit factories at 0x020b0530/0x020b0580,
  * so the licensed run is 38 functions through 0x020b05d0.
  *
@@ -123,7 +122,6 @@ void func_ov002_020af924(char *c);
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinals 0 and 1 -- _ZN7da1up_cD1Ev, 0x020aee40, size 0x48              */
 /*                         _ZN7da1up_cD0Ev, 0x020aee88, size 0x5c              */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7da1up_cD1Ev
@@ -143,7 +141,6 @@ da1up_c::~da1up_c()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov002_020aeee4, 0x020aeee4, size 0xc0 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020aeee4
 extern "C" {
@@ -175,7 +172,6 @@ void func_ov002_020aeee4(char* c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov002_020aefa4, 0x020aefa4, size 0x14 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020aefa4
 /* MEASURED: this definition must stay `void`. Declaring it `int` -- so that
@@ -191,7 +187,6 @@ void func_ov002_020aefa4(char *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- func_ov002_020aefb8, 0x020aefb8, size 0x108 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020aefb8
 /* The shard carried shadow `dActor_c`/`dEnemyBase_c` tags to name three
@@ -233,7 +228,6 @@ void func_ov002_020aefb8(char* self) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- func_ov002_020af0c0, 0x020af0c0, size 0x11c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020af0c0
 extern "C" {
@@ -275,7 +269,6 @@ void func_ov002_020af0c0(char* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- func_ov002_020af1dc, 0x020af1dc, size 0x3c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020af1dc
 extern "C" {
@@ -290,7 +283,6 @@ int func_ov002_020af1dc(char* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- func_ov002_020af218, 0x020af218, size 0x30 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020af218
 /* The second parameter is DECLARED AND UNUSED, and that is the point: five
@@ -310,7 +302,6 @@ int func_ov002_020af218(char* c, int range){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- func_ov002_020af248, 0x020af248, size 0x68 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020af248
 extern "C" {
@@ -342,7 +333,6 @@ void func_ov002_020bdf8c(Player* player);
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- _ZN7da1up_c13OnTurnIntoEggER6Player, 0x020af2b0, size 0xf0 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7da1up_c13OnTurnIntoEggER6Player
 /* Vtable slot 19, verified against config/arm9/overlays/ov002/relocs.txt:
@@ -373,7 +363,6 @@ void da1up_c::OnTurnIntoEgg(Player &player)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- _ZN7da1up_c13OnYoshiTryEatEv, 0x020af3a0, size 0x8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7da1up_c13OnYoshiTryEatEv
 /* Vtable slot 18. Two instructions: mov r0,#4; bx lr. */
@@ -383,7 +372,6 @@ s32 da1up_c::OnYoshiTryEat()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 11 -- func_ov002_020af3a8, 0x020af3a8, size 0xcc */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020af3a8
 extern "C" {
@@ -421,7 +409,6 @@ void func_ov002_020af3a8(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 12 -- func_ov002_020af474, 0x020af474, size 0x78 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020af474
 extern "C" {
@@ -449,7 +436,6 @@ void func_ov002_020af474(char* o)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 13 -- func_ov002_020af4ec, 0x020af4ec, size 0x198 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020af4ec
 extern "C" {
@@ -512,7 +498,6 @@ void func_ov002_020af4ec(void* self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 14 -- func_ov002_020af684, 0x020af684, size 0xa0 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020af684
 /* Shared with the egg-turn hook and dispatch indices 8 and 6. This helper
@@ -553,7 +538,6 @@ void func_ov002_020af684(char* self, int target, char* player){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 15 -- func_ov002_020af724, 0x020af724, size 0xa8 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020af724
 /* Dispatch-table index 13. */
@@ -589,7 +573,6 @@ void func_ov002_020af724(unsigned char *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 16 -- func_ov002_020af7cc, 0x020af7cc, size 0x6c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020af7cc
 /* Dispatch-table index 10. */
@@ -609,7 +592,6 @@ void func_ov002_020af7cc(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 17 -- func_ov002_020af838, 0x020af838, size 0xd0 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020af838
 /* Dispatch-table index 9. */
@@ -642,7 +624,6 @@ void func_ov002_020af838(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 18 -- func_ov002_020af908, 0x020af908, size 0x1c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020af908
 /* Dispatch-table index 12. */
@@ -654,7 +635,6 @@ void func_ov002_020af908(char *self) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 19 -- func_ov002_020af924, 0x020af924, size 0x2c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020af924
 /* Dispatch-table index 8. */
@@ -668,7 +648,6 @@ void func_ov002_020af924(char* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 20 -- func_ov002_020af950, 0x020af950, size 0x100 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020af950
 /* Dispatch-table index 7. */
@@ -720,7 +699,6 @@ void func_ov002_020af950(char *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 21 -- func_ov002_020afa50, 0x020afa50, size 0x1c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020afa50
 /* Dispatch-table index 11. */
@@ -732,7 +710,6 @@ void func_ov002_020afa50(char *self) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 22 -- func_ov002_020afa6c, 0x020afa6c, size 0x2c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020afa6c
 /* Dispatch-table index 6. */
@@ -746,7 +723,6 @@ void func_ov002_020afa6c(char* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 23 -- func_ov002_020afa98, 0x020afa98, size 0x11c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020afa98
 /* Dispatch-table index 5. */
@@ -801,7 +777,6 @@ void func_ov002_020afa98(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 24 -- func_ov002_020afbb4, 0x020afbb4, size 0x90 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020afbb4
 /* Dispatch-table index 4. The two `func_ov002_020aefb8()` calls really do pass
@@ -841,7 +816,6 @@ void func_ov002_020afbb4(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 25 -- func_ov002_020afc44, 0x020afc44, size 0x24 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020afc44
 /* Dispatch-table index 3. */
@@ -855,7 +829,6 @@ int func_ov002_020afc44(char* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 26 -- func_ov002_020afc68, 0x020afc68, size 0xa8 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020afc68
 extern "C" {
@@ -883,7 +856,6 @@ void func_ov002_020afc68(unsigned char *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 27 -- func_ov002_020afd10, 0x020afd10, size 0xd4 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020afd10
 /* Dispatch-table index 2. */
@@ -931,7 +903,6 @@ void func_ov002_020afd10(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 28 -- func_ov002_020afde4, 0x020afde4, size 0x68 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020afde4
 extern "C" {
@@ -952,7 +923,6 @@ void func_ov002_020afde4(char* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 29 -- func_ov002_020afe4c, 0x020afe4c, size 0xc4 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020afe4c
 /* Dispatch-table index 1. */
@@ -994,7 +964,6 @@ void func_ov002_020afe4c(char* c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 30 -- func_ov002_020aff10, 0x020aff10, size 0xd8 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov002_020aff10
 /* Dispatch-table index 0 -- the state the actor starts in. */
@@ -1059,7 +1028,6 @@ struct C {
 struct ModelCache { int pad0; BMD_File* file; };
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 31 -- _ZN7da1up_c16CleanupResourcesEv, 0x020affe8, size 0x84 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7da1up_c16CleanupResourcesEv
 /* Vtable slot 3. */
@@ -1080,7 +1048,6 @@ int da1up_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 32 -- _ZN7da1up_c16OnPendingDestroyEv, 0x020b006c, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7da1up_c16OnPendingDestroyEv
 /* Vtable slot 12. One instruction: bx lr. */
@@ -1089,7 +1056,6 @@ void da1up_c::OnPendingDestroy()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 33 -- _ZN7da1up_c6RenderEv, 0x020b0070, size 0x78 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7da1up_c6RenderEv
 /* Vtable slot 9. */
@@ -1107,7 +1073,6 @@ int da1up_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 34 -- _ZN7da1up_c8BehaviorEv, 0x020b00e8, size 0xd8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7da1up_c8BehaviorEv
 /* Vtable slot 6, and the ONLY reader of the 14-element dispatch array at
@@ -1145,7 +1110,6 @@ int da1up_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 35 -- _ZN7da1up_c13InitResourcesEv, 0x020b01c0, size 0x370 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7da1up_c13InitResourcesEv
 /* Vtable slot 0, the largest member in the TU, and -- because the destructor is
@@ -1236,7 +1200,6 @@ int da1up_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 36 -- da1up_c_classInit_SCALEUP_KINOKO, 0x020b0530, size 0x50   */
 /* -------------------------------------------------------------------------- */
 /* MEGA_MUSHROOM (277 / SCALEUP_KINOKO). Leaf operator new routes to
    fBase_c::operator new; the implicit constructor inlines the dEnemyBase_c
@@ -1248,7 +1211,6 @@ extern "C" da1up_c *da1up_c_classInit_SCALEUP_KINOKO()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 37 -- da1up_c_classInit_ONEUPKINOKO, 0x020b0580, size 0x50      */
 /* -------------------------------------------------------------------------- */
 /* ONE_UP_MUSHROOM (276 / ONEUPKINOKO). Same class, second profile. */
 // @symbol da1up_c_classInit_ONEUPKINOKO
