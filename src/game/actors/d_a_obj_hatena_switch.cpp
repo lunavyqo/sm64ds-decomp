@@ -93,7 +93,7 @@ extern u8 data_0209d684;
 extern u8 data_0209d660;
 extern u32 data_0209caa0[];
 
-/* ROM ordinal 12 -- class initializer, 0x020b56d8, size 0x5c.
+/*
  * Every instruction the cartridge has here falls out of the one `new`.
  * Reconstructed spelling from ROM RTTI plus later EAD lineage; historical
  * alias QuestionSwitch_Spawn. */
@@ -115,7 +115,7 @@ extern "C" HatenaSwitchSpawnInfo g_profile_HATENA_SWITCH = {
     0
 };
 
-/* ROM ordinal 11 -- inferred static callback, 0x020b56c4, size 0x14. */
+
 // @symbol _ZN19daObjHatenaSwitch_c17AfterClsnCallbackEP4dBgWP8dActor_cS3_
 void daObjHatenaSwitch_c::AfterClsnCallback(
     dBgW *collider, dActor_c *owner, dActor_c *other)
@@ -123,7 +123,7 @@ void daObjHatenaSwitch_c::AfterClsnCallback(
     ((daObjHatenaSwitch_c *)owner)->HandleClsn(*other);
 }
 
-/* ROM ordinal 10 -- inferred collision handler, 0x020b567c, size 0x48. */
+
 // @symbol _ZN19daObjHatenaSwitch_c10HandleClsnER8dActor_c
 void daObjHatenaSwitch_c::HandleClsn(dActor_c &other)
 {
@@ -139,7 +139,7 @@ void daObjHatenaSwitch_c::HandleClsn(dActor_c &other)
         mPressedThisFrame = 1;
 }
 
-/* ROM ordinal 9 -- key function, 0x020b5500, size 0x17c. */
+
 // @symbol _ZN19daObjHatenaSwitch_c13InitResourcesEv
 s32 daObjHatenaSwitch_c::InitResources()
 {
@@ -184,7 +184,7 @@ s32 daObjHatenaSwitch_c::InitResources()
     return 1;
 }
 
-/* ROM ordinal 8 -- Behavior, 0x020b51dc, size 0x324. */
+
 // @symbol _ZN19daObjHatenaSwitch_c8BehaviorEv
 s32 daObjHatenaSwitch_c::Behavior()
 {
@@ -287,7 +287,7 @@ s32 daObjHatenaSwitch_c::Behavior()
     return 1;
 }
 
-/* ROM ordinal 7 -- Render, 0x020b51ac, size 0x30. */
+
 // @symbol _ZN19daObjHatenaSwitch_c6RenderEv
 s32 daObjHatenaSwitch_c::Render()
 {
@@ -295,7 +295,7 @@ s32 daObjHatenaSwitch_c::Render()
     return 1;
 }
 
-/* ROM ordinal 6 -- CleanupResources, 0x020b512c, size 0x80. */
+
 // @symbol _ZN19daObjHatenaSwitch_c16CleanupResourcesEv
 s32 daObjHatenaSwitch_c::CleanupResources()
 {
@@ -310,7 +310,7 @@ s32 daObjHatenaSwitch_c::CleanupResources()
     return 1;
 }
 
-/* ROM ordinal 5 -- inferred model transform, 0x020b50a0, size 0x8c. */
+
 // @symbol _ZN19daObjHatenaSwitch_c20UpdateModelTransformEv
 void daObjHatenaSwitch_c::UpdateModelTransform()
 {
@@ -325,7 +325,7 @@ void daObjHatenaSwitch_c::UpdateModelTransform()
         *(HatenaMatrixWords *)&mModelAnim.mat4x3;
 }
 
-/* ROM ordinal 4 -- inferred collision transform, 0x020b503c, size 0x64. */
+
 // @symbol _ZN19daObjHatenaSwitch_c19UpdateClsnTransformEv
 void daObjHatenaSwitch_c::UpdateClsnTransform()
 {
@@ -337,7 +337,7 @@ void daObjHatenaSwitch_c::UpdateClsnTransform()
     mActiveMeshCollider->Transform(mClsnMat, mAngleY);
 }
 
-/* ROM ordinal 3 -- inferred collision state, 0x020b4fd0, size 0x6c. */
+
 // @symbol _ZN19daObjHatenaSwitch_c15UpdateClsnStateEv
 s32 daObjHatenaSwitch_c::UpdateClsnState()
 {
@@ -354,12 +354,12 @@ s32 daObjHatenaSwitch_c::UpdateClsnState()
     return 0;
 }
 
-/* ROM ordinal 2 -- vtable slot 21, 0x020b4fc4, size 0x0c. */
+
 // @symbol _ZN19daObjHatenaSwitch_c15OnGroundPoundedER8dActor_c
 void daObjHatenaSwitch_c::OnGroundPounded(dActor_c &other)
 {
     mPressTimer = 0;
 }
 
-/* ROM ordinals 0/1 -- D1 at 0x020b4ed8 and D0 at 0x020b4f44 are emitted
+/*
  * naturally by the inline destructor and InitResources vtable instantiation. */
