@@ -71,7 +71,6 @@ void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
 namespace Event { s32 GetBit(u32 bit); }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- daObjTdWater_c_classInit, 0x021128b8, size 0x38           */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjTdWater_c_classInit
 /* Reconstructed source-style name. Historical alias: HugeWater_Spawn.
@@ -86,7 +85,6 @@ extern "C" daObjTdWater_c *daObjTdWater_c_classInit(void)
     return new daObjTdWater_c();
 }
 
-/* ROM ordinal 5 -- ...13InitResourcesEv, 0x021127f0, size 0xc8 */
 // @symbol _ZN14daObjTdWater_c13InitResourcesEv
 s32 daObjTdWater_c::InitResources()
 {
@@ -116,7 +114,6 @@ s32 daObjTdWater_c::InitResources()
     return Event::GetBit(0xe) == 0;
 }
 
-/* ROM ordinal 4 -- ...8BehaviorEv, 0x021127bc, size 0x34 */
 // @symbol _ZN14daObjTdWater_c8BehaviorEv
 s32 daObjTdWater_c::Behavior()
 {
@@ -128,7 +125,6 @@ s32 daObjTdWater_c::Behavior()
     return 1;
 }
 
-/* ROM ordinal 3 -- ...6RenderEv, 0x02112788, size 0x34 */
 // @symbol _ZN14daObjTdWater_c6RenderEv
 s32 daObjTdWater_c::Render()
 {
@@ -137,7 +133,6 @@ s32 daObjTdWater_c::Render()
     return 1;
 }
 
-/* ROM ordinal 2 -- ...16CleanupResourcesEv, 0x02112744, size 0x44 */
 // @symbol _ZN14daObjTdWater_c16CleanupResourcesEv
 s32 daObjTdWater_c::CleanupResources()
 {
@@ -149,7 +144,6 @@ s32 daObjTdWater_c::CleanupResources()
     return 1;
 }
 
-/* ROM ordinals 1 and 0 -- D0 0x021126e4 size 0x60, D1 0x02112698 size 0x4c */
 // @symbol _ZN14daObjTdWater_cD0Ev
 // @symbol _ZN14daObjTdWater_cD1Ev
 /* NOT WRITTEN HERE ON PURPOSE. The inline `~daObjTdWater_c() {}` in the
