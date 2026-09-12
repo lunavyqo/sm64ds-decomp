@@ -75,7 +75,6 @@ u32 PlayLong(u32 handle, u32 bank, u32 soundId, const Vector3 &pos, s16 pitch);
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- daObjPushblock_c_classInit, 0x020b910c, size 0x3c         */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjPushblock_c_classInit
 /* Reconstructed source-style name: SM64DS proves daObjPushblock_c through RTTI,
@@ -92,7 +91,6 @@ extern "C" daObjPushblock_c *daObjPushblock_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- _ZN16daObjPushblock_c13InitResourcesEv, 0x020b8fe0, size 0x12c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjPushblock_c13InitResourcesEv
 /* recovered: vtable identified, shared common types, declarations from a shared header
@@ -138,7 +136,6 @@ int daObjPushblock_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN16daObjPushblock_c8BehaviorEv, 0x020b8dd4, size 0x20c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjPushblock_c8BehaviorEv
 /* recovered: renamed to Class_Method, RTTI class fields named, declarations from a shared header
@@ -220,7 +217,6 @@ int daObjPushblock_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN16daObjPushblock_c6RenderEv, 0x020b8dac, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjPushblock_c6RenderEv
 /* daObjPushblock_c::Render -- vtable slot 9, ov002 0x020b8dac. Attributed by the
@@ -237,7 +233,6 @@ int daObjPushblock_c::Render() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN16daObjPushblock_c16CleanupResourcesEv, 0x020b8d68, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjPushblock_c16CleanupResourcesEv
 /* recovered: real C++ method */
@@ -254,7 +249,6 @@ int daObjPushblock_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN16daObjPushblock_c8OnPushedER8dActor_c, 0x020b8d3c, size 0x2c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjPushblock_c8OnPushedER8dActor_c
 /* recovered: named members + real C++ method */
@@ -287,7 +281,6 @@ int daObjPushblock_c::OnPushed(dActor_c &other)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN16daObjPushblock_c15OnHitByMegaCharER6Player, 0x020b8d14, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjPushblock_c15OnHitByMegaCharER6Player
 /* daObjPushblock_c::OnHitByMegaChar -- vtable slot 27, ov002 0x020b8d14. Attributed by
@@ -306,7 +299,6 @@ void daObjPushblock_c::OnHitByMegaChar(Player &player)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN16daObjPushblock_c4KillEv, 0x020b8c9c, size 0x78 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN16daObjPushblock_c4KillEv
 /* daObjPushblock_c::Kill() -- vtable slot 31, ov002 0x020b8c9c. Attributed by the
