@@ -47,7 +47,6 @@ extern int data_ov039_021118e0;
 #pragma opt_propagation off
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- daObjKumo_c_classInit, 0x0211137c, size 0x38             */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjKumo_c_classInit
 /* Every instruction the cartridge has here falls out of the one `new`.
@@ -61,7 +60,6 @@ extern "C" daObjKumo_c *daObjKumo_c_classInit(void)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN11daObjKumo_c13InitResourcesEv, 0x0211132c, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN11daObjKumo_c13InitResourcesEv
 int daObjKumo_c::InitResources()
@@ -74,7 +72,6 @@ int daObjKumo_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN11daObjKumo_c8BehaviorEv, 0x021112a0, size 0x8c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN11daObjKumo_c8BehaviorEv
 int daObjKumo_c::Behavior()
@@ -96,7 +93,6 @@ int daObjKumo_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN11daObjKumo_c6RenderEv, 0x02111278, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN11daObjKumo_c6RenderEv
 int daObjKumo_c::Render()
@@ -106,7 +102,6 @@ int daObjKumo_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN11daObjKumo_c16CleanupResourcesEv, 0x02111254, size 0x24 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN11daObjKumo_c16CleanupResourcesEv
 int daObjKumo_c::CleanupResources()
@@ -116,7 +111,6 @@ int daObjKumo_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov039_02111214, 0x02111214, size 0x40 */
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov039_02111214(daObjKumo_c *t)
@@ -129,8 +123,6 @@ void func_ov039_02111214(daObjKumo_c *t)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN11daObjKumo_cD0Ev, 0x021111d0, size 0x44               */
-/* ROM ordinal 0 -- _ZN11daObjKumo_cD1Ev, 0x021111a0, size 0x30               */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN11daObjKumo_cD1Ev
 // @symbol _ZN11daObjKumo_cD0Ev
