@@ -137,7 +137,6 @@ int   _ZN5Sound8PlayLongEjjjRK7Vector3s(u32 handle, u32 b, u32 c, void *pos, u32
 }
 
 /* ==========================================================================
- * ROM ordinal 23 -- daPkn_c_classInit, 0x02130110, size 0x64.
  *
  * Allocates sizeof(daPkn_c) (0x47c) through the leaf operator new and
  * inlines the implicit constructor: dEnemyBase_c C2, vptr store, then the
@@ -151,7 +150,6 @@ extern "C" daPkn_c *daPkn_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 22 -- _ZN7daPkn_c13InitResourcesEv, 0x0212feb4, size 0x25c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daPkn_c13InitResourcesEv
 /*
@@ -233,7 +231,6 @@ int daPkn_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 21 -- _ZN7daPkn_c8BehaviorEv, 0x0212fd4c, size 0x168 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daPkn_c8BehaviorEv
 int daPkn_c::Behavior()
@@ -290,7 +287,6 @@ int daPkn_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 20 -- _ZN7daPkn_c6RenderEv, 0x0212fcdc, size 0x70 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daPkn_c6RenderEv
 /*
@@ -313,7 +309,6 @@ int daPkn_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 19 -- _ZN7daPkn_c16OnPendingDestroyEv, 0x0212fcd8, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daPkn_c16OnPendingDestroyEv
 /*
@@ -324,7 +319,6 @@ void daPkn_c::OnPendingDestroy()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 18 -- _ZN7daPkn_c16CleanupResourcesEv, 0x0212fc84, size 0x54 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daPkn_c16CleanupResourcesEv
 int daPkn_c::CleanupResources()
@@ -340,7 +334,6 @@ int daPkn_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 17 -- func_ov084_0212fc10, 0x0212fc10, size 0x74 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212fc10
 extern "C" {  /* Retained C-linkage helper. */
@@ -359,7 +352,6 @@ void func_ov084_0212fc10(daPkn_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 16 -- func_ov084_0212fa7c, 0x0212fa7c, size 0x194 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212fa7c
 /* daPkn state 1: the PMF record at ov084:0x02130ba4 targets this body.
@@ -395,7 +387,6 @@ void func_ov084_0212fa7c(daPkn_c *c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 15 -- func_ov084_0212f6d8, 0x0212f6d8, size 0x3a4 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212f6d8
 extern "C" {  /* Retained C-linkage helper. */
@@ -533,7 +524,6 @@ void func_ov084_0212f6d8(daPkn_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 14 -- func_ov084_0212f630, 0x0212f630, size 0xa8 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212f630
 extern "C" void func_ov084_0212f630(daPkn_c *c)
@@ -548,7 +538,6 @@ extern "C" void func_ov084_0212f630(daPkn_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 13 -- func_ov084_0212f588, 0x0212f588, size 0xa8 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212f588
 extern "C" void func_ov084_0212f588(daPkn_c *c)
@@ -569,7 +558,6 @@ extern "C" void func_ov084_0212f588(daPkn_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 12 -- func_ov084_0212f460, 0x0212f460, size 0x128 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212f460
 /* Named mStateTimer / mPos* / mAngleY / mParticleHandle size-DIFF this body. */
@@ -621,7 +609,6 @@ void func_ov084_0212f460(void *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 11 -- func_ov084_0212f33c, 0x0212f33c, size 0x124 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212f33c
 void func_ov084_0212f33c(daPkn_c *c)
@@ -663,7 +650,6 @@ void func_ov084_0212f33c(daPkn_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- func_ov084_0212f2dc, 0x0212f2dc, size 0x60 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212f2dc
 extern "C" {  /* Retained C-linkage helper. */
@@ -678,7 +664,6 @@ void func_ov084_0212f2dc(daPkn_c *c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- func_ov084_0212f298, 0x0212f298, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212f298
 /* State 8 is reached through the void PMF table and has no result consumer.
@@ -707,7 +692,6 @@ void func_ov084_0212f298(daPkn_c *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- func_ov084_0212f204, 0x0212f204, size 0x94 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212f204
 extern "C" {  /* Retained C-linkage helper. */
@@ -734,7 +718,6 @@ void func_ov084_0212f204(char* r4){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- func_ov084_0212f1d0, 0x0212f1d0, size 0x34 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212f1d0
 extern "C" {  /* Retained C-linkage helper. */
@@ -748,7 +731,6 @@ int func_ov084_0212f1d0(daPkn_c *c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- func_ov084_0212ef00, 0x0212ef00, size 0x2d0 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212ef00
 extern "C" {  /* Retained C-linkage helper. */
@@ -877,7 +859,6 @@ fail:
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- func_ov084_0212ec60, 0x0212ec60, size 0x2a0 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212ec60
 extern "C" {  /* Retained C-linkage helper. */
@@ -947,7 +928,6 @@ void func_ov084_0212ec60(daPkn_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN7daPkn_c16OnAimedAtWithEggEv, 0x0212ec58, size 0x8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daPkn_c16OnAimedAtWithEggEv
 /* daPkn_c::OnAimedAtWithEgg - recovered from vtable slot identity */
@@ -956,7 +936,6 @@ s32 daPkn_c::OnAimedAtWithEgg() {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov084_0212ec04, 0x0212ec04, size 0x54 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212ec04
 extern "C" {  /* Retained C-linkage helper. */
@@ -970,7 +949,6 @@ void func_ov084_0212ec04(daPkn_c *c, int arg) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov084_0212ebb4, 0x0212ebb4, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov084_0212ebb4
 extern "C" {  /* Retained C-linkage helper. */
