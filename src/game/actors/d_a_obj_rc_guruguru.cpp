@@ -47,7 +47,6 @@ void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- daObjRc_Guruguru_c_classInit, 0x02111f5c, size 0x30       */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjRc_Guruguru_c_classInit
 /* Reconstructed source-style name: SM64DS proves daObjRc_Guruguru_c through
@@ -66,7 +65,6 @@ extern "C" daObjRc_Guruguru_c *daObjRc_Guruguru_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN18daObjRc_Guruguru_c13InitResourcesEv, 0x02111eb0, size 0xac */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjRc_Guruguru_c13InitResourcesEv
 /* dBgW_KcMbg::SetFile takes Fix12<int> by value. An ordinary member call
@@ -97,7 +95,6 @@ s32 daObjRc_Guruguru_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN18daObjRc_Guruguru_c8BehaviorEv, 0x02111e20, size 0x90 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjRc_Guruguru_c8BehaviorEv
 /* IsClsnInRange takes two Fix12<int> by value; see InitResources for why that
@@ -126,7 +123,6 @@ s32 daObjRc_Guruguru_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN18daObjRc_Guruguru_c6RenderEv, 0x02111df8, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjRc_Guruguru_c6RenderEv
 s32 daObjRc_Guruguru_c::Render()
@@ -136,7 +132,6 @@ s32 daObjRc_Guruguru_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN18daObjRc_Guruguru_c16CleanupResourcesEv, 0x02111db0, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjRc_Guruguru_c16CleanupResourcesEv
 s32 daObjRc_Guruguru_c::CleanupResources()
@@ -150,8 +145,6 @@ s32 daObjRc_Guruguru_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN18daObjRc_Guruguru_cD0Ev, 0x02111d58, size 0x58        */
-/* ROM ordinal 0 -- _ZN18daObjRc_Guruguru_cD1Ev, 0x02111d14, size 0x44        */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN18daObjRc_Guruguru_cD1Ev
 // @symbol _ZN18daObjRc_Guruguru_cD0Ev
