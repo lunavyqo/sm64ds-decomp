@@ -54,7 +54,6 @@ extern int _ZN4dBgW22UpdatePosWithTransformERS_P8dActor_cR5dBgPiR7Vector3P10Vect
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- daObjWc_Obj02_c_classInit, 0x021116f8, size 0x30 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjWc_Obj02_c_classInit
 /* Reconstructed source-style name; exact original SM64DS spelling is not
@@ -66,7 +65,6 @@ extern "C" daObjWc_Obj02_c *daObjWc_Obj02_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- func_ov029_021116e4, 0x021116e4, size 0x14 */
 /* -------------------------------------------------------------------------- */
 // Arg-shifting tail-call veneer. Drops the first argument and forwards the next two;
 // #pragma long_calls emits the pooled `ldr ip,[pc,#8]; bx ip` absolute tail-call.
@@ -86,7 +84,6 @@ extern "C" int func_ov029_021116e4(void *a, void *b, void *c)
 #pragma long_calls off
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- func_ov029_021116c4, 0x021116c4, size 0x20 */
 /* -------------------------------------------------------------------------- */
 /* BeforeClsn helper: if the other actor's actorID (dActor_c+0x0c) is PLAYER
  * (0xbf), arm mTriggered. The unsigned char temporary is load-bearing. */
@@ -98,7 +95,6 @@ extern "C" void func_ov029_021116c4(char *a, char *b)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN15daObjWc_Obj02_c13InitResourcesEv, 0x021115f8, size 0xcc */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj02_c13InitResourcesEv
 int daObjWc_Obj02_c::InitResources()
@@ -136,7 +132,6 @@ int daObjWc_Obj02_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN15daObjWc_Obj02_c8BehaviorEv, 0x02111484, size 0x174 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj02_c8BehaviorEv
 int daObjWc_Obj02_c::Behavior()
@@ -201,7 +196,6 @@ int daObjWc_Obj02_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN15daObjWc_Obj02_c6RenderEv, 0x0211145c, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj02_c6RenderEv
 int daObjWc_Obj02_c::Render()
@@ -211,7 +205,6 @@ int daObjWc_Obj02_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN15daObjWc_Obj02_c16CleanupResourcesEv, 0x02111418, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjWc_Obj02_c16CleanupResourcesEv
 int daObjWc_Obj02_c::CleanupResources()
