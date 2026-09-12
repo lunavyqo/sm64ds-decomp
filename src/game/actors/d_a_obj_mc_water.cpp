@@ -69,7 +69,6 @@ extern int data_0209f32c;
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- daObjMcWater_c_classInit, 0x02111d8c, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjMcWater_c_classInit
 /* Reconstructed source-style name; exact original SM64DS spelling is not
@@ -80,7 +79,6 @@ extern "C" daObjMcWater_c *daObjMcWater_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN14daObjMcWater_c13InitResourcesEv, 0x02111c74, size 0x118 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjMcWater_c13InitResourcesEv
 int daObjMcWater_c::InitResources()
@@ -117,7 +115,6 @@ int daObjMcWater_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN14daObjMcWater_c8BehaviorEv, 0x02111c4c, size 0x28 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjMcWater_c8BehaviorEv
 int daObjMcWater_c::Behavior()
@@ -128,7 +125,6 @@ int daObjMcWater_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN14daObjMcWater_c6RenderEv, 0x02111c18, size 0x34 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjMcWater_c6RenderEv
 int daObjMcWater_c::Render()
@@ -139,7 +135,6 @@ int daObjMcWater_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN14daObjMcWater_c16CleanupResourcesEv, 0x02111bd4, size 0x44 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjMcWater_c16CleanupResourcesEv
 int daObjMcWater_c::CleanupResources()
@@ -152,7 +147,6 @@ int daObjMcWater_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov009_02111b1c, 0x02111b1c, size 0xb8 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov009_02111b1c
 extern "C" void func_ov009_02111b1c(daObjMcWater_c *self)
@@ -172,8 +166,6 @@ extern "C" void func_ov009_02111b1c(daObjMcWater_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN14daObjMcWater_cD0Ev, 0x02111abc, size 0x60         */
-/* ROM ordinal 0 -- _ZN14daObjMcWater_cD1Ev, 0x02111a70, size 0x4c         */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjMcWater_cD1Ev
 // @symbol _ZN14daObjMcWater_cD0Ev
