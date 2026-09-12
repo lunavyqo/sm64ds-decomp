@@ -73,7 +73,6 @@ extern void _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(
     dCcAc_c *, dActor_c *, Fix12i, Fix12i, u32, u32);
 }
 
-/* ROM ordinal 8 -- evidence-bounded actor-table C ABI factory. */
 // @symbol daObjKinokoTag_c_classInit_KINOKO_TAG
 extern "C" daObjKinokoTag_c *daObjKinokoTag_c_classInit_KINOKO_TAG()
 {
@@ -91,7 +90,6 @@ extern "C" KinokoTagSpawnInfo g_profile_KINOKO_TAG = {
     0
 };
 
-/* ROM ordinal 7 -- class-anchored inferred actor-table C ABI factory. */
 // @symbol daObjKinokoTag_c_classInit_KINOKO_CREATE_TAG
 extern "C" daObjKinokoTag_c *daObjKinokoTag_c_classInit_KINOKO_CREATE_TAG()
 {
@@ -109,7 +107,6 @@ extern "C" KinokoTagSpawnInfo g_profile_KINOKO_CREATE_TAG = {
     0
 };
 
-/* ROM ordinal 6 -- key function and class-data owner. */
 // @symbol _ZN16daObjKinokoTag_c13InitResourcesEv
 s32 daObjKinokoTag_c::InitResources()
 {
@@ -121,7 +118,6 @@ s32 daObjKinokoTag_c::InitResources()
     return 1;
 }
 
-/* ROM ordinal 5. */
 // @symbol _ZN16daObjKinokoTag_c8BehaviorEv
 s32 daObjKinokoTag_c::Behavior()
 {
@@ -172,7 +168,6 @@ s32 daObjKinokoTag_c::Behavior()
     return 1;
 }
 
-/* ROM ordinal 4. */
 // @symbol _ZN16daObjKinokoTag_c16CleanupResourcesEv
 s32 daObjKinokoTag_c::CleanupResources()
 {
@@ -180,7 +175,6 @@ s32 daObjKinokoTag_c::CleanupResources()
     return 1;
 }
 
-/* ROM ordinal 3 -- inferred private helper spelling. */
 // @symbol _ZN16daObjKinokoTag_c20TrySpawnMegaMushroomEv
 void daObjKinokoTag_c::TrySpawnMegaMushroom()
 {
@@ -191,7 +185,6 @@ void daObjKinokoTag_c::TrySpawnMegaMushroom()
     SpawnMegaMushroom();
 }
 
-/* ROM ordinal 2 -- inferred private helper spelling. */
 // @symbol _ZN16daObjKinokoTag_c17SpawnMegaMushroomEv
 void daObjKinokoTag_c::SpawnMegaMushroom()
 {
