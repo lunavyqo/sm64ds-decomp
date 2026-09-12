@@ -41,29 +41,6 @@
  * No factory: the class is abstract (slots 0 and 6 are zero). Children own
  * daDonketu_c_classInit / daBDonketu_c_classInit / daIDonketu_c_classInit.
  *
- * Assembled from these legacy one-function sources (ROM address order):
- *   [0] 0x02115ee0  src/_ZN7daOts_cD1Ev.cpp
- *   [1] 0x02115f28  src/_ZN7daOts_cD0Ev.cpp
- *   [2] 0x02115f84  src/_ZN7daOts_c16OnAimedAtWithEggEv.cpp
- *   [3] 0x02115f98  src/func_ov064_02115f98.c
- *   [4] 0x02116110  src/func_ov064_02116110.cpp
- *   [5] 0x0211616c  src/func_ov064_0211616c.c
- *   [6] 0x02116220  src/func_ov064_02116220.cpp
- *   [7] 0x02116348  src/_ZN7daOts_c14PlayDeathSoundEv.cpp
- *   [8] 0x0211635c  src/_ZN7daOts_c17PlayShellHitSoundEv.cpp
- *   [9] 0x02116360  src/_ZN7daOts_c12PlayHitSoundEv.cpp
- *   [10] 0x02116374  src/_ZN7daOts_c13PlayStepSoundEv.cpp
- *   [11] 0x021163bc  src/_ZN7daOts_c16UpdateDeathStateEv.cpp
- *   [12] 0x021163c0  src/func_ov064_021163c0.cpp
- *   [13] 0x02116460  src/func_ov064_02116460.cpp
- *   [14] 0x02116560  src/func_ov064_02116560.cpp
- *   [15] 0x021165d4  src/_ZN7daOts_c14UpdateRunStateEv.cpp
- *   [16] 0x021165d8  src/func_ov064_021165d8.cpp
- *   [17] 0x021166f0  src/func_ov064_021166f0.c
- *   [18] 0x02116754  src/func_ov064_02116754.cpp
- *   [19] 0x02116bac  src/func_ov064_02116bac.cpp
- *   [20] 0x02116ca0  src/_ZN7daOts_c16CleanupResourcesEv.cpp
- *   [21] 0x02116cf0  src/_ZN7daOts_c6RenderEv.cpp
  *
  * deslop leftovers:
  * - SetAnim 6az: helpers pass Fix12<int> by value; header method form size-DIFFs.
@@ -164,7 +141,6 @@ void func_ov064_02116220(daOts_c* c);
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 21 -- _ZN7daOts_c6RenderEv, 0x02116cf0, size 0x2c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daOts_c6RenderEv
 /* recovered: named members + shared header, real C++ method -- vtable slot 9
@@ -181,7 +157,6 @@ int daOts_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 20 -- _ZN7daOts_c16CleanupResourcesEv, 0x02116ca0, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daOts_c16CleanupResourcesEv
 /* recovered: named members + shared header, real C++ method -- vtable slot 3
@@ -210,7 +185,6 @@ int daOts_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 19 -- func_ov064_02116bac, 0x02116bac, size 0xf4 */
 /* -------------------------------------------------------------------------- */
 extern "C" void func_ov064_02116bac(daOts_c* self){
   char* r6 = (char*)self;
@@ -231,7 +205,6 @@ extern "C" void func_ov064_02116bac(daOts_c* self){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 18 -- func_ov064_02116754, 0x02116754, size 0x458 */
 /* -------------------------------------------------------------------------- */
 extern "C" void func_ov064_02116754(daOts_c* self)
 {
@@ -363,7 +336,6 @@ extern "C" void func_ov064_02116754(daOts_c* self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 17 -- func_ov064_021166f0, 0x021166f0, size 0x64 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov064_021166f0
 extern "C" {  /* .c-derived member: C linkage for the whole block */
@@ -381,7 +353,6 @@ int func_ov064_021166f0(daOts_c *t)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 16 -- func_ov064_021165d8, 0x021165d8, size 0x118 */
 /* -------------------------------------------------------------------------- */
 extern "C" void func_ov064_021165d8(daOts_c* c)
 {
@@ -418,7 +389,6 @@ extern "C" void func_ov064_021165d8(daOts_c* c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 15 -- _ZN7daOts_c14UpdateRunStateEv, 0x021165d4, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daOts_c14UpdateRunStateEv
 int daOts_c::UpdateRunState()
@@ -426,7 +396,6 @@ int daOts_c::UpdateRunState()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 14 -- func_ov064_02116560, 0x02116560, size 0x74 */
 /* -------------------------------------------------------------------------- */
 extern "C" int func_ov064_02116560(daOts_c* c){
   char *p = (char *)c;
@@ -438,7 +407,6 @@ extern "C" int func_ov064_02116560(daOts_c* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 13 -- func_ov064_02116460, 0x02116460, size 0x100 */
 /* -------------------------------------------------------------------------- */
 extern "C" void func_ov064_02116460(daOts_c *self)
 {
@@ -469,7 +437,6 @@ extern "C" void func_ov064_02116460(daOts_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 12 -- func_ov064_021163c0, 0x021163c0, size 0xa0 */
 /* -------------------------------------------------------------------------- */
 extern "C" void func_ov064_021163c0(char *c)
 {
@@ -492,7 +459,6 @@ extern "C" void func_ov064_021163c0(char *c)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 11 -- _ZN7daOts_c16UpdateDeathStateEv, 0x021163bc, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daOts_c16UpdateDeathStateEv
 void daOts_c::UpdateDeathState()
@@ -500,7 +466,6 @@ void daOts_c::UpdateDeathState()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- _ZN7daOts_c13PlayStepSoundEv, 0x02116374, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daOts_c13PlayStepSoundEv
 void daOts_c::PlayStepSound()
@@ -513,7 +478,6 @@ void daOts_c::PlayStepSound()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- _ZN7daOts_c12PlayHitSoundEv, 0x02116360, size 0x14 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daOts_c12PlayHitSoundEv
 void daOts_c::PlayHitSound()
@@ -522,7 +486,6 @@ void daOts_c::PlayHitSound()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- _ZN7daOts_c17PlayShellHitSoundEv, 0x0211635c, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daOts_c17PlayShellHitSoundEv
 void daOts_c::PlayShellHitSound()
@@ -530,7 +493,6 @@ void daOts_c::PlayShellHitSound()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN7daOts_c14PlayDeathSoundEv, 0x02116348, size 0x14 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daOts_c14PlayDeathSoundEv
 void daOts_c::PlayDeathSound()
@@ -539,7 +501,6 @@ void daOts_c::PlayDeathSound()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- func_ov064_02116220, 0x02116220, size 0x128 */
 /* -------------------------------------------------------------------------- */
 extern "C" void func_ov064_02116220(daOts_c* c){
   dBgCh_Gnd rg;
@@ -578,7 +539,6 @@ extern "C" void func_ov064_02116220(daOts_c* c){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- func_ov064_0211616c, 0x0211616c, size 0xb4 */
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov064_0211616c(daOts_c* c) {
@@ -610,7 +570,6 @@ int func_ov064_0211616c(daOts_c* c) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- func_ov064_02116110, 0x02116110, size 0x5c */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov064_02116110
 extern "C" int func_ov064_02116110(daOts_c *self, short step){
@@ -623,7 +582,6 @@ extern "C" int func_ov064_02116110(daOts_c *self, short step){
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov064_02115f98, 0x02115f98, size 0x178 */
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov064_02115f98(daOts_c* a0, char* a1)
@@ -703,7 +661,6 @@ void func_ov064_02115f98(daOts_c* a0, char* a1)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN7daOts_c16OnAimedAtWithEggEv, 0x02115f84, size 0x14 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daOts_c16OnAimedAtWithEggEv
 int daOts_c::OnAimedAtWithEgg()
@@ -717,7 +674,6 @@ int daOts_c::OnAimedAtWithEgg()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN7daOts_cD0Ev, 0x02115f28, size 0x5c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daOts_cD0Ev
 /* recovered: real C++ deleting destructor, defined inline in the header
@@ -735,7 +691,6 @@ int daOts_c::OnAimedAtWithEgg()
  */
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 0 -- _ZN7daOts_cD1Ev, 0x02115ee0, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daOts_cD1Ev
 /* recovered: real C++ destructor, defined inline in the header
