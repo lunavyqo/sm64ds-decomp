@@ -50,7 +50,6 @@ typedef char BrqSpawnInfo_size_must_be_0x1c[
     sizeof(BrqSpawnInfo) == 0x1c ? 1 : -1];
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 18 -- daBrq_c_classInit, 0x021210ac, size 0x6c */
 /* -------------------------------------------------------------------------- */
 // @symbol daBrq_c_classInit
 extern "C" daBrq_c *daBrq_c_classInit()
@@ -70,7 +69,6 @@ extern "C" BrqSpawnInfo g_profile_BIRIKYU = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 17 -- _ZN7daBrq_c13InitResourcesEv, 0x02120eec, size 0x1c0 */
 /* -------------------------------------------------------------------------- */
 /* recovered: named members + shared header, real C++ method.
  * SetRanges / dCcAcPos_c::Init / dBgCh_Actr::Init stay mangled (Fix12 by
@@ -142,7 +140,6 @@ int daBrq_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 16 -- _ZN7daBrq_c8BehaviorEv, 0x02120e8c, size 0x60 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daBrq_c8BehaviorEv
 int daBrq_c::Behavior()
@@ -157,7 +154,6 @@ int daBrq_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 15 -- _ZN7daBrq_c6RenderEv, 0x02120e24, size 0x68 */
 /* -------------------------------------------------------------------------- */
 /* recovered: named members + shared header, real C++ method */
 // @symbol _ZN7daBrq_c6RenderEv
@@ -175,7 +171,6 @@ int daBrq_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 14 -- _ZN7daBrq_c16OnPendingDestroyEv, 0x02120e20, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daBrq_c16OnPendingDestroyEv
 void daBrq_c::OnPendingDestroy()
@@ -183,7 +178,6 @@ void daBrq_c::OnPendingDestroy()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 13 -- _ZN7daBrq_c16CleanupResourcesEv, 0x02120dc4, size 0x5c */
 /* -------------------------------------------------------------------------- */
 #include "SharedFilePtr.h"
 
@@ -209,7 +203,6 @@ int daBrq_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 12 -- _ZN7daBrq_c8SetStateEi, 0x02120da8, size 0x1c */
 /* -------------------------------------------------------------------------- */
 extern BrqStateHandlers data_ov070_02123668[];
 // @symbol _ZN7daBrq_c8SetStateEi
@@ -220,7 +213,6 @@ void daBrq_c::SetState(s32 state)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 11 -- _ZN7daBrq_c10EnterStateEv, 0x02120d70, size 0x38 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daBrq_c10EnterStateEv
 void daBrq_c::EnterState()
@@ -230,7 +222,6 @@ void daBrq_c::EnterState()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- _ZN7daBrq_c11UpdateStateEv, 0x02120d34, size 0x3c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daBrq_c11UpdateStateEv
 void daBrq_c::UpdateState()
@@ -240,7 +231,6 @@ void daBrq_c::UpdateState()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- _ZN7daBrq_c18EnterCooldownStateEv, 0x02120ce4, size 0x50 */
 /* -------------------------------------------------------------------------- */
 extern "C" void _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(
     ModelAnim *model, BCA_File *file, int flags, int speed, u32 startFrame);
@@ -257,7 +247,6 @@ s32 daBrq_c::EnterCooldownState()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- _ZN7daBrq_c19UpdateCooldownStateEv, 0x02120cac, size 0x38 */
 /* -------------------------------------------------------------------------- */
 /* (Animation: real header type in scope) */
 
@@ -275,7 +264,6 @@ s32 daBrq_c::UpdateCooldownState()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- _ZN7daBrq_c16EnterActiveStateEv, 0x02120bf8, size 0xb4 */
 /* -------------------------------------------------------------------------- */
 typedef int Fix12i;
 struct BCA_File; struct BTP_File; struct BTA_File;
@@ -316,7 +304,6 @@ s32 daBrq_c::EnterActiveState()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN7daBrq_c17UpdateActiveStateEv, 0x021209e4, size 0x214 */
 /* -------------------------------------------------------------------------- */
 /* recovered: real class fields and member state handler */
 void ApproachLinear(s32 &value, s32 target, s32 step);
@@ -392,7 +379,6 @@ s32 daBrq_c::UpdateActiveState()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN7daBrq_c18EnterDefeatedStateEv, 0x02120910, size 0xd4 */
 /* -------------------------------------------------------------------------- */
 /* recovered: real class fields and member state handler */
 namespace Sound {
@@ -426,7 +412,6 @@ s32 daBrq_c::EnterDefeatedState()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN7daBrq_c19UpdateDefeatedStateEv, 0x021208a4, size 0x6c */
 /* -------------------------------------------------------------------------- */
 /* The ROM calls the interworking veneer at 0x02038420, not the direct
  * dBgCh_Actr::UpdateDiscreteNoLava body at 0x02037024. */
@@ -452,7 +437,6 @@ done:
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- _ZN7daBrq_c20UpdateModelTransformEv, 0x02120724, size 0x180 */
 /* -------------------------------------------------------------------------- */
 #include "dBgCh_Gnd.h"
 extern "C" void Matrix4x3_FromRotationXYZExt(
@@ -509,7 +493,6 @@ void daBrq_c::UpdateModelTransform()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN7daBrq_c21HandlePlayerCollisionEv, 0x02120644, size 0xe0 */
 /* -------------------------------------------------------------------------- */
 #include "Player.h"
 extern "C" short Vec3_HorzAngle(const Vector3 *from, const Vector3 *to);
@@ -553,11 +536,9 @@ foundPlayer:
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN7daBrq_cD0Ev, 0x021205d0, size 0x74 */
 /* -------------------------------------------------------------------------- */
 /* The inline destructor and InitResources key function emit the retail D1/D0
  * group without a retained D2 or forcing helper. */
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 0 -- _ZN7daBrq_cD1Ev, 0x02120570, size 0x60 */
 /* -------------------------------------------------------------------------- */
