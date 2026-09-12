@@ -29,32 +29,6 @@ typedef char daKrpaSpawnInfo_size_must_be_0x1c[
  * ordinary definition in reverse source order; the destructor variant group
  * is emitted first as retail D1 then D0, with no D2.
  *
- * Assembled from these legacy one-function sources (ROM address order):
- *   [0] 0x02121118  src/_ZN8daKrpa_cD1Ev.cpp
- *   [1] 0x02121160  src/_ZN8daKrpa_cD0Ev.cpp
- *   [2] 0x021211bc  src/_ZN8daKrpa_c13OnYoshiTryEatEv.cpp
- *   [3] 0x021211c4  src/func_ov070_021211c4.cpp
- *   [4] 0x02121298  src/func_ov070_02121298.cpp
- *   [5] 0x02121310  src/func_ov070_02121310.cpp
- *   [6] 0x021213cc  src/func_ov070_021213cc.c
- *   [7] 0x02121438  src/func_ov070_02121438.cpp
- *   [8] 0x021214f8  src/func_ov070_021214f8.cpp
- *   [9] 0x02121548  src/func_ov070_02121548.c
- *   [10] 0x0212156c  src/func_ov070_0212156c.c
- *   [11] 0x021216b8  src/func_ov070_021216b8.c
- *   [12] 0x02121710  src/func_ov070_02121710.cpp
- *   [13] 0x021217ac  src/func_ov070_021217ac.c
- *   [14] 0x0212180c  src/func_ov070_0212180c.cpp
- *   [15] 0x02121848  src/func_ov070_02121848.cpp
- *   [16] 0x02121880  src/func_ov070_02121880.c
- *   [17] 0x0212189c  src/_ZN8daKrpa_c16CleanupResourcesEv.cpp
- *   [18] 0x021218c0  src/_ZN8daKrpa_c16OnPendingDestroyEv.cpp
- *   [19] 0x021218c4  src/_ZN8daKrpa_c6RenderEv.cpp
- *   [20] 0x021218f4  src/_ZN8daKrpa_c8BehaviorEv.cpp
- *   [21] 0x02121914  src/_ZN8daKrpa_c13InitResourcesEv.cpp
- *   [22] 0x02121a64  src/func_ov070_02121a64.c
- *   [23] 0x02121ae0  src/func_ov070_02121ae0.c
- *   [24] 0x02121af8  src/daKrpa_c_Spawn.c
  *
  * deslop
  * Leftover:
@@ -72,7 +46,6 @@ typedef char daKrpaSpawnInfo_size_must_be_0x1c[
  */
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 24 -- class initializer, 0x02121af8, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol daKrpa_c_classInit
 /* `return new daKrpa_c()` MATCHES (size 0x50); the leaf unsigned-long
@@ -100,7 +73,6 @@ extern "C" daKrpaSpawnInfo g_profile_KERONPA = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 23 -- func_ov070_02121ae0, 0x02121ae0, size 0x18 */
 /* -------------------------------------------------------------------------- */
 extern "C" void func_ov070_02121ae0(
     daKrpaFrameController *controller, u32 *frames, u32 count, u32 mode)
@@ -112,7 +84,6 @@ extern "C" void func_ov070_02121ae0(
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 22 -- func_ov070_02121a64, 0x02121a64, size 0x7c */
 /* -------------------------------------------------------------------------- */
 extern "C" u32 func_ov070_02121a64(daKrpaFrameController *controller)
 {
@@ -130,7 +101,6 @@ extern "C" u32 func_ov070_02121a64(daKrpaFrameController *controller)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 21 -- _ZN8daKrpa_c13InitResourcesEv, 0x02121914, size 0x150 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKrpa_c13InitResourcesEv
 /* The Fix12-by-value Init methods are typed ABI seams: ordinary method calls
@@ -187,7 +157,6 @@ int daKrpa_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 20 -- _ZN8daKrpa_c8BehaviorEv, 0x021218f4, size 0x20 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKrpa_c8BehaviorEv
 extern "C" {
@@ -203,7 +172,6 @@ int daKrpa_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 19 -- _ZN8daKrpa_c6RenderEv, 0x021218c4, size 0x30 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKrpa_c6RenderEv
 int daKrpa_c::Render()
@@ -213,7 +181,6 @@ int daKrpa_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 18 -- _ZN8daKrpa_c16OnPendingDestroyEv, 0x021218c0, size 0x4 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKrpa_c16OnPendingDestroyEv
 
@@ -222,7 +189,6 @@ void daKrpa_c::OnPendingDestroy()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 17 -- _ZN8daKrpa_c16CleanupResourcesEv, 0x0212189c, size 0x24 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKrpa_c16CleanupResourcesEv
 
@@ -233,7 +199,6 @@ int daKrpa_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 16 -- func_ov070_02121880, 0x02121880, size 0x1c */
 /* -------------------------------------------------------------------------- */
 extern "C" {  /* Unresolved func_ names retain their current C ABI spelling. */
 extern daKrpaState data_ov070_021236ac[];
@@ -245,7 +210,6 @@ void func_ov070_02121880(daKrpa_c *self, int state) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 15 -- func_ov070_02121848, 0x02121848, size 0x38 */
 /* -------------------------------------------------------------------------- */
 extern "C" void func_ov070_02121848(daKrpa_c *self)
 {
@@ -254,7 +218,6 @@ extern "C" void func_ov070_02121848(daKrpa_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 14 -- func_ov070_0212180c, 0x0212180c, size 0x3c */
 /* -------------------------------------------------------------------------- */
 extern "C" void func_ov070_0212180c(daKrpa_c *self)
 {
@@ -263,7 +226,6 @@ extern "C" void func_ov070_0212180c(daKrpa_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 13 -- func_ov070_021217ac, 0x021217ac, size 0x60 */
 /* -------------------------------------------------------------------------- */
 /* SetAnim is another proven Fix12-by-value caller seam. */
 extern "C" {
@@ -286,7 +248,6 @@ int func_ov070_021217ac(daKrpa_c *self) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 12 -- func_ov070_02121710, 0x02121710, size 0x9c */
 /* -------------------------------------------------------------------------- */
 extern "C" {
 extern u8 DecIfAbove0_Byte(u8 *value);
@@ -316,7 +277,6 @@ int func_ov070_02121710(daKrpa_c *self) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 11 -- func_ov070_021216b8, 0x021216b8, size 0x58 */
 /* -------------------------------------------------------------------------- */
 extern "C" {
 int func_ov070_021216b8(daKrpa_c *self) {
@@ -331,7 +291,6 @@ int func_ov070_021216b8(daKrpa_c *self) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- func_ov070_0212156c, 0x0212156c, size 0x14c */
 /* -------------------------------------------------------------------------- */
 extern "C" {
 extern short data_02082214[];
@@ -371,7 +330,6 @@ int func_ov070_0212156c(daKrpa_c *self) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- func_ov070_02121548, 0x02121548, size 0x24 */
 /* -------------------------------------------------------------------------- */
 extern "C" int func_ov070_02121548(daKrpa_c *self)
 {
@@ -381,7 +339,6 @@ extern "C" int func_ov070_02121548(daKrpa_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- func_ov070_021214f8, 0x021214f8, size 0x50 */
 /* -------------------------------------------------------------------------- */
 extern "C" int func_ov070_021214f8(daKrpa_c *self)
 {
@@ -398,7 +355,6 @@ extern "C" int func_ov070_021214f8(daKrpa_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- func_ov070_02121438, 0x02121438, size 0xc0 */
 /* -------------------------------------------------------------------------- */
 /* Particle::System::NewSimple is not yet declared by its shared header; retain
  * this typed ABI import without guessing the unresolved state's source name. */
@@ -429,7 +385,6 @@ extern "C" int func_ov070_02121438(daKrpa_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- func_ov070_021213cc, 0x021213cc, size 0x6c */
 /* -------------------------------------------------------------------------- */
 /* The collision update veneer is retained because it is the retail call
  * destination; the rest are ordinary real class calls. */
@@ -452,7 +407,6 @@ end:
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- func_ov070_02121310, 0x02121310, size 0xbc */
 /* -------------------------------------------------------------------------- */
 /* DropShadowRadHeight is a Fix12-by-value caller seam for the same codegen
  * reason as the two Init imports above. */
@@ -482,7 +436,6 @@ extern "C" void func_ov070_02121310(daKrpa_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- func_ov070_02121298, 0x02121298, size 0x78 */
 /* -------------------------------------------------------------------------- */
 int ApproachLinear(short &value, short target, short step);
 extern "C" {
@@ -506,7 +459,6 @@ extern "C" void func_ov070_02121298(daKrpa_c *self) {
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov070_021211c4, 0x021211c4, size 0xd4 */
 /* -------------------------------------------------------------------------- */
 extern "C" void func_ov070_021211c4(daKrpa_c *self)
 {
@@ -530,7 +482,6 @@ extern "C" void func_ov070_021211c4(daKrpa_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN8daKrpa_c13OnYoshiTryEatEv, 0x021211bc, size 0x8 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKrpa_c13OnYoshiTryEatEv
 
@@ -540,7 +491,6 @@ int daKrpa_c::OnYoshiTryEat()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN8daKrpa_cD0Ev, 0x02121160, size 0x5c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKrpa_cD0Ev
 
@@ -548,7 +498,6 @@ int daKrpa_c::OnYoshiTryEat()
  * makes mwcc emit the retail deleting variant after D1. */
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 0 -- _ZN8daKrpa_cD1Ev, 0x02121118, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN8daKrpa_cD1Ev
 
