@@ -108,7 +108,6 @@ void Matrix4x3_ApplyInPlaceToRotationZ(Matrix4x3 *m, short ang);
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- daObjRc_Hane_c_classInit, 0x02111904, size 0x38           */
 /* -------------------------------------------------------------------------- */
 // @symbol daObjRc_Hane_c_classInit
 /* Reconstructed source-style name: SM64DS proves daObjRc_Hane_c through RTTI,
@@ -126,7 +125,6 @@ extern "C" daObjRc_Hane_c *daObjRc_Hane_c_classInit()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- _ZN14daObjRc_Hane_c13InitResourcesEv, 0x02111854, size 0xb0 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjRc_Hane_c13InitResourcesEv
 s32 daObjRc_Hane_c::InitResources()
@@ -156,7 +154,6 @@ s32 daObjRc_Hane_c::InitResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- _ZN14daObjRc_Hane_c8BehaviorEv, 0x021116c0, size 0x194 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjRc_Hane_c8BehaviorEv
 s32 daObjRc_Hane_c::Behavior()
@@ -203,7 +200,6 @@ s32 daObjRc_Hane_c::Behavior()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- _ZN14daObjRc_Hane_c6RenderEv, 0x0211169c, size 0x24 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjRc_Hane_c6RenderEv
 s32 daObjRc_Hane_c::Render()
@@ -213,7 +209,6 @@ s32 daObjRc_Hane_c::Render()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov036_02111618, 0x02111618, size 0x84 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov036_02111618
 /* This class's private "put the model where the actor is" helper, and the
@@ -243,7 +238,6 @@ void func_ov036_02111618(daObjRc_Hane_c *self)
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- _ZN14daObjRc_Hane_c16CleanupResourcesEv, 0x021115f4, size 0x24 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjRc_Hane_c16CleanupResourcesEv
 s32 daObjRc_Hane_c::CleanupResources()
@@ -253,8 +247,6 @@ s32 daObjRc_Hane_c::CleanupResources()
 }
 
 /* -------------------------------------------------------------------------- */
-/* ROM ordinal 1 -- _ZN14daObjRc_Hane_cD0Ev, 0x021115b0, size 0x44        */
-/* ROM ordinal 0 -- _ZN14daObjRc_Hane_cD1Ev, 0x02111580, size 0x30        */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN14daObjRc_Hane_cD1Ev
 // @symbol _ZN14daObjRc_Hane_cD0Ev
