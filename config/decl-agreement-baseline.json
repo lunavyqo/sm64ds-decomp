@@ -4446,7 +4446,6 @@
    "src/game/actors/d_a_obj_km3_dorifu.cpp": ["arity:1", "return:void"],
    "src/game/actors/d_a_obj_rc_carpet.cpp": ["arity:1", "return:void"],
    "src/game/actors/d_a_obj_rc_dorifu.cpp": ["arity:1", "return:void"],
-   "src/game/actors/d_a_tree.cpp": ["arity:1", "return:void"],
    "src/game/actors/d_a_wanwan.cpp": ["return:void"],
    "src/minigames/d_s_mg_trampoline2.cpp": ["arity:1", "return:void"]
   },
@@ -4715,7 +4714,6 @@
    "src/game/actors/d_a_obj_ks_water.cpp": ["param:#4 void *", "param:#5 unsigned int", "return:unsigned int"],
    "src/game/actors/d_a_obj_wc_mizu.cpp": ["param:#4 void *", "param:#5 unsigned int", "return:unsigned int"],
    "src/game/actors/d_a_obj_wc_obj05.cpp": ["param:#4 void *", "param:#5 unsigned int"],
-   "src/game/actors/d_a_set_se.cpp": ["param:#4 void *", "param:#5 unsigned int", "return:unsigned int"],
    "src/unnamed/ov063/func_ov063_0211c7b0.c": ["param:#4 void *", "param:#5 unsigned int", "return:unsigned int"],
    "src/unnamed/ov063/func_ov063_0211c89c.c": ["param:#4 const Vec3 *", "param:#5 unsigned int"],
    "src/unnamed/ov063/func_ov063_0211cc18.c": ["param:#4 const Vector3 *", "param:#5 unsigned int", "return:unsigned int"]
@@ -6698,8 +6696,7 @@
    "src/func_ov100_021424c0.c": ["param:#2 int"]
   },
   "_ZN8dActor_cD2Ev": {
-   "include/decl_Actor.h": ["arity:1", "return:void"],
-   "src/game/actors/d_a_cam_tag.cpp": ["arity:1", "return:void"]
+   "include/decl_Actor.h": ["arity:1", "return:void"]
   },
   "_ZN8dCcPos_c4InitERK7Vector35Fix12IiES4_jj": {
    "src/_ZN12Flamethrower13InitResourcesEv.cpp": ["param:#2 Vec3 *"],
