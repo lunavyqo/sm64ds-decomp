@@ -516,8 +516,7 @@
    "include/decl_common.h": ["return:int"]
   },
   "IsPlayerWarping": {
-   "include/decl_common.h": ["return:int"],
-   "src/game/actors/d_a_warpkun.cpp": ["return:int"]
+   "include/decl_common.h": ["return:int"]
   },
   "IsStarCollected": {
    "src/_ZN11BobOmbBuddy13InitResourcesEv.cpp": ["param:#1 int"],
@@ -3986,8 +3985,7 @@
   "_ZN5dCc_c5ClearEv": {
    "src/_ZN6Player17St_PunchKick_InitEv.cpp": ["return:int"],
    "src/actors/daMky_c.cpp": ["return:int"],
-   "src/func_ov098_0213814c.cpp": ["return:int"],
-   "src/game/actors/d_a_tree.cpp": ["return:int"]
+   "src/func_ov098_0213814c.cpp": ["return:int"]
   },
   "_ZN5dCc_c6UpdateEv": {
    "src/_ZN6Player17St_PunchKick_InitEv.cpp": ["return:int"],
@@ -5286,8 +5284,7 @@
   },
   "_ZN8dCcPos_cD1Ev": {
    "src/d_a_obj_fl_koma_u.cpp": ["arity:1", "return:void"],
-   "src/d_a_obj_flamethrower.cpp": ["arity:1", "return:void"],
-   "src/game/actors/d_a_tree.cpp": ["arity:1", "return:void"]
+   "src/d_a_obj_flamethrower.cpp": ["arity:1", "return:void"]
   },
   "_ZN8dM3dGLinD2Ev": {
    "include/decl_common.h": ["arity:1", "return:void"]
@@ -5617,7 +5614,7 @@
    "src/func_ov063_021166ac.cpp": ["mangled:3 parameter(s)"],
    "src/func_ov064_02119f1c.cpp": ["mangled:3 parameter(s)"],
    "src/func_ov094_021361d8.c": ["mangled:3 parameter(s)"],
-   "src/game/actors/d_a_tree.cpp": ["mangled:3 parameter(s)"],
+   "src/game/actors/d_a_tree.cpp": ["mangled:3 parameter(s)", "param:#1 Model *"],
    "src/unnamed/ov063/func_ov063_0211640c.c": ["mangled:3 parameter(s)"]
   },
   "_ZN9ModelBase7SetFileEP8BMD_Fileii": {
@@ -6113,7 +6110,6 @@
    "src/game/actors/d_a_obj_km3_dorifu.cpp": ["param:#2 int", "param:#3 int", "param:#4 void *", "param:#5 void *"],
    "src/game/actors/d_a_obj_rc_carpet.cpp": ["param:#2 int", "param:#3 int", "param:#4 void *", "param:#5 void *"],
    "src/game/actors/d_a_obj_rc_dorifu.cpp": ["param:#2 int", "param:#3 int", "param:#4 void *", "param:#5 void *"],
-   "src/game/actors/d_a_tree.cpp": ["param:#2 int", "param:#3 int"],
    "src/game/actors/d_a_wanwan.cpp": ["param:#2 int", "param:#3 int", "param:#4 void *", "param:#5 void *", "return:int"],
    "src/game/actors/daPiano_c/d_a_piano.cpp": ["param:#2 int", "param:#3 int", "param:#4 void *", "param:#5 void *"],
    "src/minigames/d_s_mg_bsc.cpp": ["param:#2 int", "param:#3 int", "param:#4 void *", "param:#5 void *"],
@@ -6474,8 +6470,7 @@
    "src/func_ov075_0211427c.c": ["return:int []"],
    "src/func_ov075_0211afb0.c": ["return:int"],
    "src/func_ov080_02125fd0.c": ["return:int"],
-   "src/func_ov080_0212677c.c": ["return:int"],
-   "src/game/actors/d_a_tree.cpp": ["return:int"]
+   "src/func_ov080_0212677c.c": ["return:int"]
   },
   "data_0209b41c": {
    "src/_ZN14CutsceneObject6RenderEv.cpp": ["return:M48"],
@@ -7116,7 +7111,7 @@
    "src/game/actors/WingFeather/_ZN11WingFeather13InitResourcesEv.cpp": ["return:char *"],
    "src/game/actors/d_a_set_se.cpp": ["return:Camera *"],
    "src/game/actors/d_a_star_gate.cpp": ["return:Camera *"],
-   "src/game/actors/d_a_tree.cpp": ["return:int"],
+   "src/game/actors/d_a_tree.cpp": ["return:CamState *"],
    "src/unnamed/ov063/func_ov063_02117b0c.c": ["return:char *"]
   },
   "data_0209f31c": {
@@ -7220,8 +7215,7 @@
    "src/__sinit_02074e84.cpp": ["return:char"],
    "src/func_0200af20.c": ["return:char []"],
    "src/func_0200d954.c": ["return:int"],
-   "src/func_ov075_021152d4.cpp": ["return:Clipper"],
-   "src/game/actors/d_a_tree.cpp": ["return:int"]
+   "src/func_ov075_021152d4.cpp": ["return:Clipper"]
   },
   "data_0209f498": {
    "src/_ZN5Stage16CheckCameraInputEv.cpp": ["return:CamInput []"]
@@ -8202,6 +8196,9 @@
   },
   "data_ov002_0210bc88": {
    "src/func_ov002_020f6c34.c": ["return:int []"]
+  },
+  "data_ov002_0210c080": {
+   "src/game/actors/d_a_sound_obj.cpp": ["return:SoundObjRow []"]
   },
   "data_ov002_0210d754": {
    "src/game/actors/d_a_obj_ice_board.cpp": ["return:CLPS_Block"]
