@@ -37,10 +37,12 @@
  * - func_020179b4 (Model::LoadFile + ModelBase::SetFile, releasing on
  *   failure), func_02016a14/604 (material slots), func_02053200: no header.
  * - data_ov006_* handles/constants: this TU's names for unowned data.
- * - The eight func_ov006_* members stay free: each is called by a plain
- *   `bl` from a still-unpromoted `.c` shard below the run (12 sites in
- *   seven shards), and a C shard cannot name a C++ member. They convert
- *   when those shards promote, not before.
+ * - The eight func_ov006_* members keep their labels: each is called by a
+ *   plain `bl` from a still-unpromoted `.c` shard below the run (12 sites in
+ *   seven shards). A C shard can declare the mangled symbol, so this is a
+ *   migration dependency on those shards and their TU configuration, not an
+ *   inability to name the member; converting them is deferred work this PR
+ *   does not reserve. The labels are inferred, not original spellings.
  * - Five measured load-bearing spellings, each commented at its site: the
  *   int* Mtx zeroing (7734), flag reuse (StateHold), the volatile v[2]
  *   store (StateMove), the same-on-both-arms select with Pair record

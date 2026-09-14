@@ -76,10 +76,14 @@ struct dMg3DHeyhoObjAdapter_c {
  *   StateIdle     <- 0x0213b040, 0x0213b048 and 0x0213b058
  *   StateRespawn  <- 0x0213b038 (EnterRespawn) and 0x0213b088
  *
- * Eight members of the same run keep their `func_ov006_*` names: each is
- * called by a plain `bl` from a still-unpromoted `.c` shard below the run,
- * and a C shard cannot name a C++ member. They convert when those shards are
- * promoted, not before. See src/actors/dMgJump3DMario_c.cpp.
+ * Eight members of the same run keep their `func_ov006_*` names. That is a
+ * migration dependency, not a limit on what can be spelled: each is called by
+ * a plain `bl` from a still-unpromoted `.c` shard below the run, and while a C
+ * shard cannot name a C++ member by its source spelling, it can declare the
+ * mangled linker symbol, as this tree does elsewhere. Converting them means
+ * rewriting those call sites and their TU configuration, which this PR does
+ * not reserve. The `func_ov006_*` names are inferred labels and carry no claim
+ * about the original spellings. See src/actors/dMgJump3DMario_c.cpp.
  */
 struct dMgJump3DMario_c : dMg3DHeyhoObjAdapter_c {
     dMgJump3DMario_c();

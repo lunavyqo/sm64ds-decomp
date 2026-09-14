@@ -13,9 +13,14 @@
  * reverse source order. Do not reorder.
  *
  * deslop leftovers:
- * - The two func_ov003_* helpers stay free: the ROM gives neither a mangled
- *   name, so neither was a class member with external linkage. Both take
- *   the object and are called only from inside the class region.
+ * - The two func_ov003_* helpers are written free here, and that is a
+ *   reconstruction choice, not a deduction. The image preserves no original
+ *   linker symbol table, so `func_ov003_*` are address-derived analysis
+ *   labels; their absence from the reconstructed mangled set is evidence of
+ *   nothing about the original spelling. Both take the object and are called
+ *   only from inside the class region -- worth narrowing later on call,
+ *   layout or codegen grounds. Until then the original ownership and form
+ *   stay uncertain; the free form is what this TU reproduces.
  * - `#pragma opt_strength_reduction off` is file-global last-wins;
  *   func_ov003_020b060c needs it (glyph-loop induction) and the other eight
  *   members verify with it set, so it costs nothing. No narrower form.
