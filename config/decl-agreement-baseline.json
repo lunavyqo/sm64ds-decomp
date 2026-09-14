@@ -2332,7 +2332,6 @@
    "src/func_ov006_020ca310.cpp": ["param:#1 short &"],
    "src/func_ov006_020cb2b4.c": ["return:void"],
    "src/func_ov026_02111b24.c": ["return:void"],
-   "src/game/actors/WingFeather/_ZN11WingFeather8BehaviorEv.cpp": ["return:void"],
    "src/minigames/d_s_mg_trampoline2.cpp": ["return:void"]
   },
   "_Z23LoadMinimapChangeObjecti5Fix12IiEh": {
@@ -3763,7 +3762,6 @@
    "src/func_ov006_020cce0c.c": ["return:struct BMD_File *"],
    "src/func_ov080_021274ac.c": ["return:int"],
    "src/func_ov091_02133254.cpp": ["param:#1 SharedFilePtr &", "return:BMD_File *"],
-   "src/game/actors/WingFeather/_ZN11WingFeather13InitResourcesEv.cpp": ["param:#1 SharedFilePtr &", "return:BMD_File *"],
    "src/game/actors/d_a_obj_bk_dossunbar.cpp": ["return:int"],
    "src/game/actors/daTrs_c/_ZN7daTrs_c13InitResourcesEv.cpp": ["return:int"],
    "src/minigames/d_s_mg_trampoline2.cpp": ["param:#1 SharedFilePtr &", "return:BMD_File *"]
@@ -4731,7 +4729,6 @@
    "src/func_ov100_0214272c.cpp": ["return:void"],
    "src/func_ov100_02142918.cpp": ["return:void"],
    "src/func_ov102_021498e0.cpp": ["return:void"],
-   "src/game/actors/WingFeather/_ZN11WingFeather8BehaviorEv.cpp": ["return:void"],
    "src/game/actors/d_a_krpa.cpp": ["return:unsigned int"],
    "src/game/actors/d_a_obj_abuku.cpp": ["return:void"],
    "src/game/actors/d_a_obj_bk_dossunbar.cpp": ["return:void"],
@@ -6165,8 +6162,8 @@
    "src/func_ov098_02138734.cpp": ["arity:1"],
    "src/func_ov098_021388bc.cpp": ["arity:1"],
    "src/func_ov098_021389f8.cpp": ["arity:1"],
-   "src/game/actors/WingFeather/_ZN11WingFeather8BehaviorEv.cpp": ["arity:1"],
    "src/game/actors/d_a_kp_fr.cpp": ["arity:1"],
+   "src/game/actors/daFeather_c/daFeather_c.cpp": ["arity:1"],
    "src/game/actors/daObjPushblock_c.cpp": ["arity:1"],
    "src/game/actors/daPiano_c/_ZN8MadPiano8BehaviorEv.cpp": ["arity:1"]
   },
@@ -7113,7 +7110,6 @@
    "src/func_ov100_02144950.c": ["return:char *"],
    "src/func_ov102_021492d4.c": ["return:char []"],
    "src/func_ov102_0214953c.c": ["return:int"],
-   "src/game/actors/WingFeather/_ZN11WingFeather13InitResourcesEv.cpp": ["return:char *"],
    "src/game/actors/d_a_set_se.cpp": ["return:Camera *"],
    "src/game/actors/d_a_star_gate.cpp": ["return:Camera *"],
    "src/game/actors/d_a_tree.cpp": ["return:int"],
@@ -8331,8 +8327,7 @@
   "data_ov002_0210da58": {
    "src/_ZN13QuestionBlock13InitResourcesEv.cpp": ["return:char"],
    "src/_ZN13QuestionBlock16CleanupResourcesEv.cpp": ["return:char []"],
-   "src/game/actors/WingFeather/_ZN11WingFeather13InitResourcesEv.cpp": ["return:SharedFilePtr"],
-   "src/game/actors/WingFeather/_ZN11WingFeather16CleanupResourcesEv.cpp": ["return:int []"]
+   "src/game/actors/daFeather_c/daFeather_c.cpp": ["return:SharedFilePtr"]
   },
   "data_ov002_0210dc70": {
    "src/__sinit_ov002_02100c50.c": ["return:Pair []"]
