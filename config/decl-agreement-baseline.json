@@ -19123,9 +19123,6 @@
    "src/unnamed/ov063/func_ov063_02116d38.c": ["return:int"],
    "src/unnamed/ov063/func_ov063_02119274.c": ["return:int"]
   },
-  "func_ov063_0211c6f8": {
-   "src/game/actors/daTrsTrap_c/_ZN11daTrsTrap_c8BehaviorEv.cpp": ["return:int"]
-  },
   "func_ov063_0211cae8": {
    "src/func_ov020_0211174c.c": ["param:#2 unsigned int"]
   },
