@@ -287,7 +287,6 @@ src/d_a_coin_coin.c:
 src/game/actors/daFeather_c/daFeather_c.cpp:
     complete
     .text start:0x020b2ba0 end:0x020b3298
-    .data start:0x02108868 end:0x02108884
 
 src/game/actors/d_a_obj_abuku.cpp:
     complete

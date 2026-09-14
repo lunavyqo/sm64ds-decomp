@@ -29,9 +29,9 @@
  * - data_0209f2d8 game-mode flag, data_02082214 sin/cos table,
  *   data_020a0e68 scratch matrix, data_ov002_0210da58 file handle: ROM labels.
  * - func_ov002_020b2c44 keeps its ROM label (unowned helper, typed this).
- * - g_profile_FEATHER stays carved (unowned) between the owned _ZTI/_ZTS
- *   and the proven-then-stripped vtable (deadstrip-data); the profile is
- *   not reconstructed in this TU.
+ * - g_profile_FEATHER stays carved (unowned) between the stripped _ZTI/_ZTS
+ *   and the stripped vtable (all three deadstrip-data, BBH-leaf shape);
+ *   the profile is not reconstructed in this TU.
  */
 
 #include "common.h"
