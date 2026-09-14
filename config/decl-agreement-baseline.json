@@ -756,6 +756,7 @@
    "src/game/actors/d_a_obj_hs_billboard.cpp": ["param:#2 short"],
    "src/game/actors/d_a_obj_kb1_billboard.cpp": ["param:#2 short"],
    "src/game/actors/d_a_obj_wakame.cpp": ["param:#2 short"],
+   "src/game/actors/d_a_tree.cpp": ["param:#2 short"],
    "src/game/actors/daObjPathLift_c.cpp": ["param:#2 short"]
   },
   "Matrix4x3_FromRotationZ": {
@@ -1714,7 +1715,7 @@
   "Vec3_AsrInPlace": {
    "include/decl_common.h": ["return:void"],
    "src/func_ov060_02117db8.c": ["param:#1 Vec3 *", "return:void"],
-   "src/game/actors/d_a_tree.cpp": ["return:void"]
+   "src/game/actors/d_a_tree.cpp": ["param:#1 Vector3 *"]
   },
   "Vec3_Dist": {
    "src/_ZN10BrickBlock8BehaviorEv.cpp": ["param:#1 const void *", "param:#2 const void *"],
@@ -3989,8 +3990,7 @@
   },
   "_ZN5dCc_c6UpdateEv": {
    "src/_ZN6Player17St_PunchKick_InitEv.cpp": ["return:int"],
-   "src/func_ov100_021424c0.c": ["return:int"],
-   "src/game/actors/d_a_tree.cpp": ["return:int"]
+   "src/func_ov100_021424c0.c": ["return:int"]
   },
   "_ZN6Camera11ChangeStateEPNS_5StateE": {
    "src/_ZN6Camera13InitResourcesEv.cpp": ["param:#2 Camera_State *"],
@@ -4478,8 +4478,7 @@
    "src/func_ov002_020ecfc8.c": ["param:#4 unsigned int"],
    "src/func_ov102_0214d0bc.cpp": ["return:int"],
    "src/func_ov102_0214d148.cpp": ["return:int"],
-   "src/game/actors/d_a_obj_abuku.cpp": ["return:int"],
-   "src/game/actors/d_a_warpkun.cpp": ["return:int"]
+   "src/game/actors/d_a_obj_abuku.cpp": ["return:int"]
   },
   "_ZN7dCcAc_cD1Ev": {
    "include/decl_dCcAc_c.h": ["arity:1", "return:void"]
@@ -5262,8 +5261,7 @@
    "include/decl_Actor.h": ["return:int"]
   },
   "_ZN8dActor_c9SetRangesE5Fix12IiES1_S1_S1_": {
-   "src/_ZN5Unagi13InitResourcesEv.cpp": ["param:#1 char *"],
-   "src/game/actors/d_a_warpkun.cpp": ["return:int"]
+   "src/_ZN5Unagi13InitResourcesEv.cpp": ["param:#1 char *"]
   },
   "_ZN8dActor_c9TrackStarEjj": {
    "src/_ZN7Wiggler13InitResourcesEv.cpp": ["return:int"],
@@ -5614,7 +5612,7 @@
    "src/func_ov063_021166ac.cpp": ["mangled:3 parameter(s)"],
    "src/func_ov064_02119f1c.cpp": ["mangled:3 parameter(s)"],
    "src/func_ov094_021361d8.c": ["mangled:3 parameter(s)"],
-   "src/game/actors/d_a_tree.cpp": ["mangled:3 parameter(s)", "param:#1 Model *"],
+   "src/game/actors/d_a_tree.cpp": ["mangled:3 parameter(s)"],
    "src/unnamed/ov063/func_ov063_0211640c.c": ["mangled:3 parameter(s)"]
   },
   "_ZN9ModelBase7SetFileEP8BMD_Fileii": {
@@ -14211,6 +14209,7 @@
    "src/func_02038824.cpp": ["param:#1 A *"]
   },
   "func_020393a4": {
+   "src/actors/daObjFloatBoard_c.cpp": ["param:#1 dBgW_KcMbg *"],
    "src/game/actors/d_a_obj_bk_rotebar.cpp": ["param:#1 dBgW *"],
    "src/game/actors/d_a_obj_emm_log.cpp": ["param:#1 dBgW *"],
    "src/game/actors/daObjCtMecha05_c.cpp": ["param:#1 dBgW *"],
