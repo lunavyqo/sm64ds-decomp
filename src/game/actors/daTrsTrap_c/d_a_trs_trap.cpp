@@ -35,8 +35,11 @@
  * - SharedFilePtr+4 is the loaded KCL file: the handle's layout is still
  *   unrecovered (SharedFilePtr.h), and the ROM re-reads the word rather than
  *   keeping dBgW_Kc::LoadFile's return.
- * - The dispatch table stays bound to an opaque C: a pointer to member of
- *   the polymorphic daTrsTrap_c does not share the {ptr, adj} record shape.
+ * - The dispatch table is a pointer-to-member of daTrsTrap_c itself. An
+ *   earlier draft bound it to an opaque forward-declared class on the theory
+ *   that a polymorphic receiver changes the {ptr, adj} record shape; that is
+ *   false here -- under 2004/b56 the real class gives byte-identical bodies
+ *   and relocation records for all 8 functions.
  * - Behavior spells mStateTimer twice on purpose (this+0x14c, then
  *   this+0x100 plus 0x4c): unifying them shares one address computation and
  *   comes out one instruction short (0x88, not 0x8c).
@@ -57,9 +60,8 @@ extern SharedFilePtr *data_ov063_0211e28c[];
 extern CLPS_Block *data_ov063_0211e9e8[];
 extern s32 data_ov063_0211e9f8[];
 
-/* The opaque class the four dispatch records are bound to (see above). */
-struct C;
-typedef void (C::*PMF)();
+/* The four dispatch records, bound to this trap's own class (see above). */
+typedef void (daTrsTrap_c::*PMF)();
 extern PMF data_ov063_0211ef38[];
 
 /* --------------------------------------------------------------------------
@@ -224,7 +226,7 @@ int daTrsTrap_c::Behavior()
 {
     unsigned char before = mState;
     int idx = mIndex;
-    (((C *)this)->*data_ov063_0211ef38[idx])();
+    (this->*data_ov063_0211ef38[idx])();
     /* The increment and the reset below spell the same word two ways on
        purpose: the increment materializes this+0x14c, the reset this+0x100
        plus 0x4c, and unifying them lets the compiler share one address
