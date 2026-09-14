@@ -10836,6 +10836,12 @@
    "src/__sinit_ov062_0211d6fc.c": ["return:S8 []"],
    "src/func_ov062_0211bd10.c": ["return:void *"]
   },
+  "data_ov063_0211e27c": {
+   "src/game/actors/daTrsTrap_c/d_a_trs_trap.cpp": ["return:SharedFilePtr * []"]
+  },
+  "data_ov063_0211e28c": {
+   "src/game/actors/daTrsTrap_c/d_a_trs_trap.cpp": ["return:SharedFilePtr * []"]
+  },
   "data_ov063_0211edc4": {
    "src/game/actors/daTrs_c/_ZN7daTrs_c16CleanupResourcesEv.cpp": ["return:SharedFilePtr"]
   },
@@ -19122,9 +19128,6 @@
   },
   "func_ov063_0211cae8": {
    "src/func_ov020_0211174c.c": ["param:#2 unsigned int"]
-  },
-  "func_ov063_0211d28c": {
-   "src/game/actors/daTrsTrap_c/_ZN11daTrsTrap_c13InitResourcesEv.cpp": ["arity:0"]
   },
   "func_ov063_0211d5f4": {
    "src/game/actors/daPiano_c/_ZN8MadPiano13InitResourcesEv.cpp": ["param:#1 MadPiano *"],
