@@ -7,9 +7,15 @@
  * registry). Retail does not store that spelling.
  *
  * deslop
- * Leftover: func_ov018_021118fc..021123d0 are this TU's own helpers;
- *   the ROM symbols are still the func_ov labels. Naming them as C++
- *   methods would emit _ZN10daPgMthr_c* and miss those labels.
+ * Leftover: func_ov018_021118fc..021123d0 are written free here, and
+ *   that is a reconstruction choice, not a deduction. The image preserves
+ *   no original mangled symbol table, so the func_ov labels are
+ *   address-derived repository names; the exact historical function
+ *   spellings remain unknown. All four are defined in this file, take the
+ *   object as their first parameter, and are called only from inside it
+ *   (one extern decl also lives in decl_common.h) -- worth narrowing to
+ *   real daPgMthr_c members later by renaming source and config together.
+ *   Until then the original ownership and form stay uncertain.
  * Leftover: ModelAnim::SetAnim, TextureSequence::SetFile,
  *   dCcAc_c::Init, DropShadowRadHeight stay mangled (Fix12-by-value
  *   method form size-DIFF: SetAnim 0x58->0x64, Init 0x1ac->0x1c4,
