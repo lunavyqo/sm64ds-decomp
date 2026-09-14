@@ -87,9 +87,11 @@ extern "C" {
 
 /* No header declares these (checked include/decl_common.h and its decl_Actor
  * siblings at promotion).
- * DecIfAbove0_Byte's call sites all pass char * + 0x39e; RandomIntInternal's
- * pass the RNG state; these spellings serve both. */
-extern int DecIfAbove0_Byte(char *);
+ * DecIfAbove0_Byte is spelled from its definition at src/DecIfAbove0_Byte.c --
+ * unsigned char in, unsigned char out. A call site cannot evidence either: the
+ * casts and the int temporaries below are the caller's, not the callee's
+ * interface. RandomIntInternal's sites pass the RNG state. */
+extern u8 DecIfAbove0_Byte(u8 *);
 extern int RandomIntInternal(void *);
 extern int data_0209e650[];
 
@@ -213,7 +215,7 @@ extern "C" void func_ov091_02133020(char *c)
 // @symbol func_ov091_02132ff4
 extern "C" void func_ov091_02132ff4(char *c)
 {
-    int r = DecIfAbove0_Byte(c + 0x39e);
+    int r = DecIfAbove0_Byte((u8 *)c + 0x39e);
     if (r == 0)
         *(s32 *)(c + 0x398) = 2;
 }
@@ -265,7 +267,7 @@ extern "C" void func_ov091_02132f04(char *c)
 // @symbol func_ov091_02132e98
 extern "C" void func_ov091_02132e98(char *c)
 {
-    if (DecIfAbove0_Byte(c + 0x39e) != 0)
+    if (DecIfAbove0_Byte((u8 *)c + 0x39e) != 0)
         return;
     *(s32 *)(c + 0x398) = 4;
     unsigned int r = RandomIntInternal(data_0209e650);
@@ -278,7 +280,7 @@ extern "C" void func_ov091_02132e98(char *c)
 // @symbol func_ov091_02132e64
 extern "C" void func_ov091_02132e64(char *c)
 {
-    int r = DecIfAbove0_Byte(c + 0x39e);
+    int r = DecIfAbove0_Byte((u8 *)c + 0x39e);
     if (r == 0) {
         *(s32 *)(c + 0x398) = 0;
         *(u8 *)(c + 0x39e) = 0x28;
