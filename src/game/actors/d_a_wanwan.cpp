@@ -59,7 +59,7 @@ void func_ov014_0211236c(char *c);
 void func_ov014_021122dc(char *c);
 void func_ov014_02112788(char *c);
 void func_ov014_02111ebc(void *c, int i);
-int _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(
+void _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(
     void *self, void *actor, void *pos, int fix, int t, unsigned a, unsigned b);
 }
 

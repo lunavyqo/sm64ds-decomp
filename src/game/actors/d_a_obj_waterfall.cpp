@@ -28,7 +28,7 @@
 
 extern "C" s8 data_0209f2f8; /* LEVEL_ID */
 
-extern "C" u32 _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(
+extern "C" int _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(
     unsigned handle, unsigned effectID, int x, int y, int z,
     const void *dir, void *cb);
 
@@ -38,7 +38,7 @@ struct Callback;
    the reconstructed 5Fix12IiE symbol so the call spells
    Particle::System::New. See leftover. */
 struct System {
-    static u32 New(unsigned handle, unsigned effectID,
+    static int New(unsigned handle, unsigned effectID,
                    int x, int y, int z, const void *dir, Callback *cb)
     {
         return _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(
