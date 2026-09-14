@@ -85,7 +85,8 @@ struct DsnBaseFileTable {
  * ------------------------------------------------------------------------ */
 extern "C" {
 
-/* No header declares these (checked include/decl_*.h at promotion).
+/* No header declares these (checked include/decl_common.h and its decl_Actor
+ * siblings at promotion).
  * DecIfAbove0_Byte's call sites all pass char * + 0x39e; RandomIntInternal's
  * pass the RNG state; these spellings serve both. */
 extern int DecIfAbove0_Byte(char *);
