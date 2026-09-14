@@ -38,7 +38,7 @@ typedef char ResourceDescriptor_size_must_be_0x0c[
 
 extern "C" int func_ov002_020b5e58(void *self, ResourceDescriptor *data);
 extern "C" ResourceDescriptor data_ov029_02113f00;
-extern "C" void _ZN9dBgCh_Lin10GetClsnPosEv(s32 *out, dBgCh_Lin *self);
+extern "C" void _ZN9dBgCh_Lin10GetClsnPosEv(Vector3 *out, dBgCh_Lin *self);
 
 enum {
     kRayStartAboveFix12 = 0x14000 /* 20.0 */
@@ -78,7 +78,7 @@ int daObjWcObj06_c::InitResources()
             if (line.DetectClsn() == 0) {
                 mPosY = waterY;
             } else {
-                _ZN9dBgCh_Lin10GetClsnPosEv(hit, &line);
+                _ZN9dBgCh_Lin10GetClsnPosEv((Vector3 *)hit, &line);
                 mPosY = hit[1];
             }
         }
