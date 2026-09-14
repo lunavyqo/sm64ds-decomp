@@ -91,9 +91,22 @@ int *Vec3_AsrInPlace(Vector3 *v, int shift);
  * sizeof is unsigned long here, so the `new` expression mangles _Znwm,
  * which has no ROM home; the cartridge calls _Znwj. */
 void *_Znwj(unsigned int size);
-/* Retail passes a trailing zero the 1-param ModelBase::ApplyOpacity cannot
- * spell; the header member form drops the word and size-DIFFs. */
-void _ZN9ModelBase12ApplyOpacityEj(Model *self, u32 op, int z);
+/* ApplyOpacity takes a second parameter its own body ignores, so the extern
+ * spells two where include/ModelBase.h spells one. MEASURED, not inferred
+ * from this call: 0x02016a9c is a four-instruction thunk -- `add r0, r0, #8`
+ * then a literal-pool `bx` to 0x020461b4 -- which forwards r1..r3 untouched,
+ * and 0x020461b4 never reads r2 (it overwrites it with its own loop index).
+ * But every one of the 25 `bl` sites to 0x02016a9c in the cartridge writes r2
+ * in the words before the branch: 15 set 0, 8 set 1, 2 move a live register
+ * in. A word no caller needed would be left alone at some of them, and would
+ * not carry two different values; a parameter the callee happens not to use
+ * looks exactly like this. The mangled name is the decomp's own coinage --
+ * neither "ApplyOpacity" nor "9ModelBase" occurs anywhere in the ROM image --
+ * so its single-`unsigned int` mangling is not the cartridge's word on arity.
+ * Giving ModelBase::ApplyOpacity the parameter for real renames the symbol
+ * and touches every caller in the tree; that is its own change, not this
+ * TU's. Until then the cross-TU extern is where the measurement is spelled. */
+void _ZN9ModelBase12ApplyOpacityEj(Model *self, u32 op, int unused);
 
 extern TreeNode *data_ov002_02110a48[kNumVariants];
 extern u16 data_ov002_0210abb8[];
