@@ -2595,10 +2595,7 @@
   },
   "_ZN10dBgW_KcMbgD1Ev": {
    "include/decl_dBgW_KcMbg.h": ["arity:1", "return:void"],
-   "src/d_a_obj_cv_news_lift.cpp": ["arity:1", "return:void"],
-   "src/game/actors/d_a_obj_km1_dorifu.cpp": ["arity:1", "return:void"],
-   "src/game/actors/d_a_obj_km3_dorifu.cpp": ["arity:1", "return:void"],
-   "src/game/actors/d_a_obj_rc_dorifu.cpp": ["arity:1", "return:void"]
+   "src/d_a_obj_cv_news_lift.cpp": ["arity:1", "return:void"]
   },
   "_ZN10dCcAcPos_c21SetPosRelativeToActorERK7Vector3": {
    "src/_ZN10BulletBill8BehaviorEv.cpp": ["param:#2 const Vector3 *"],
@@ -2698,7 +2695,6 @@
    "src/_ZN8Goomboss13InitResourcesEv.cpp": ["return:void"],
    "src/_ZN9RabbitKey13InitResourcesEv.cpp": ["return:void"],
    "src/actors/Goomboss.cpp": ["return:void"],
-   "src/actors/daBombking_c.cpp": ["return:void"],
    "src/func_ov002_020e5948.c": ["return:void"],
    "src/func_ov006_020c092c.cpp": ["return:void"],
    "src/game/actors/d_a_wanwan.cpp": ["return:void"]
@@ -3074,10 +3070,10 @@
    "src/func_ov075_02114ddc.cpp": ["param:#2 void *"]
   },
   "_ZN14BlendModelAnimC1Ev": {
-   "src/func_ov006_020c0a48.c": ["return:int"],
-   "src/func_ov006_020c1d80.c": ["return:int"],
-   "src/func_ov006_020c221c.c": ["return:int"],
-   "src/func_ov006_020c33dc.c": ["return:int"]
+   "include/decl_BlendModelAnim.h": ["return:void"],
+   "src/d_a_iwante.cpp": ["return:void"],
+   "src/d_a_king_donketu.cpp": ["return:void"],
+   "src/d_a_moray.c": ["return:void"]
   },
   "_ZN14BlendModelAnimD1Ev": {
    "include/decl_BlendModelAnim.h": ["arity:1", "return:void"],
@@ -4155,8 +4151,7 @@
    "src/func_ov002_020b6958.c": ["arity:0", "mangled:0 parameter(s)", "return:int"],
    "src/func_ov080_021274ac.c": ["kind:data"],
    "src/func_ov091_02131ef0.c": ["arity:0", "mangled:0 parameter(s)", "return:int"],
-   "src/func_ov091_02131f9c.c": ["kind:data"],
-   "src/game/actors/d_a_obj_bk_dossunbar.cpp": ["kind:data"]
+   "src/func_ov091_02131f9c.c": ["kind:data"]
   },
   "_ZN4dBgW22UpdatePosWithTransformERS_P8dActor_cR5dBgPiR7Vector3P10Vector3_16S8_": {
    "src/_ZN10LavaSeesaw13InitResourcesEv.cpp": ["arity:0", "mangled:0 parameter(s)"],
@@ -7258,9 +7253,7 @@
    "src/func_ov002_020d0178.c": ["arity:1", "return:void"],
    "src/func_ov002_020d6dac.c": ["arity:1", "return:void"],
    "src/func_ov002_020d8a50.c": ["arity:1", "return:void"],
-   "src/func_ov077_02126300.c": ["arity:1", "return:void"],
-   "src/game/actors/d_a_obj_wc_obj01.cpp": ["arity:1", "return:void"],
-   "src/game/actors/d_a_obj_wc_obj06.cpp": ["arity:1", "return:void"]
+   "src/func_ov077_02126300.c": ["arity:1", "return:void"]
   },
   "_ZNK10dBgCh_Actr10IsOnGroundEv": {
    "src/func_ov064_02118644.c": ["param:#1 int"]
@@ -9719,7 +9712,7 @@
    "src/_ZN6Klepto13InitResourcesEv.cpp": ["return:SharedFilePtr"],
    "src/_ZN6Player16CleanupResourcesEv.cpp": ["return:char []"],
    "src/__sinit_ov002_02100560.c": ["return:void *"],
-   "src/actors/daMky_c.cpp": ["return:SharedFilePtr_"]
+   "src/actors/daMky_c.cpp": ["return:SharedFilePtr"]
   },
   "data_ov002_0210d9a8": {
    "src/_ZN13TreasureChest13InitResourcesEv.cpp": ["return:SharedFilePtr"],
@@ -9743,7 +9736,7 @@
    "src/_ZN6Klepto13InitResourcesEv.cpp": ["return:SharedFilePtr"],
    "src/_ZN6Player16CleanupResourcesEv.cpp": ["return:char []"],
    "src/__sinit_ov002_02100560.c": ["return:void *"],
-   "src/actors/daMky_c.cpp": ["return:SharedFilePtr_"]
+   "src/actors/daMky_c.cpp": ["return:SharedFilePtr"]
   },
   "data_ov002_0210d9c8": {
    "src/__sinit_ov002_02100560.c": ["return:void *"]
@@ -9822,7 +9815,7 @@
    "src/_ZN6Klepto13InitResourcesEv.cpp": ["return:SharedFilePtr"],
    "src/_ZN6Player16CleanupResourcesEv.cpp": ["return:char []"],
    "src/__sinit_ov002_02100560.c": ["return:void *"],
-   "src/actors/daMky_c.cpp": ["return:SharedFilePtr_"]
+   "src/actors/daMky_c.cpp": ["return:SharedFilePtr"]
   },
   "data_ov002_0210da58": {
    "src/_ZN13QuestionBlock13InitResourcesEv.cpp": ["return:char"],
@@ -11552,6 +11545,12 @@
   "data_ov015_02113654": {
    "src/game/actors/d_a_obj_bk_rotebar.cpp": ["return:CLPS_Block"]
   },
+  "data_ov015_02114538": {
+   "src/game/actors/d_a_obj_bk_dossunbar.cpp": ["return:SharedFilePtr *"]
+  },
+  "data_ov015_0211453c": {
+   "src/game/actors/d_a_obj_bk_dossunbar.cpp": ["return:CLPS_Block *"]
+  },
   "data_ov015_02114880": {
    "src/game/actors/d_a_obj_bk_fall_block.cpp": ["return:ResourceDescriptor"]
   },
@@ -11566,7 +11565,10 @@
    "src/__sinit_ov015_02112fdc.c": ["return:int []"]
   },
   "data_ov015_021149ec": {
-   "src/game/actors/d_a_obj_bk_dossunbar.cpp": ["return:TabEnt []"]
+   "src/game/actors/d_a_obj_bk_dossunbar.cpp": ["return:StateEntry []"]
+  },
+  "data_ov015_02114a24": {
+   "src/game/actors/d_a_obj_bk_dossunbar.cpp": ["return:VtEntry []"]
   },
   "data_ov015_02114a5c": {
    "src/_ZN9TowerStep13InitResourcesEv.cpp": ["return:SharedFilePtr"],
@@ -11585,7 +11587,7 @@
    "src/game/actors/d_a_obj_bk_rotebar.cpp": ["return:SharedFilePtr"]
   },
   "data_ov016_02114b8c": {
-   "src/game/actors/d_a_obj_ki_ita.cpp": ["return:void * []"]
+   "src/game/actors/d_a_obj_ki_ita.cpp": ["return:ResourceDescriptor"]
   },
   "data_ov016_02114d20": {
    "src/_ZN5Unagi16CleanupResourcesEv.cpp": ["return:SharedFilePtr"],
@@ -11867,6 +11869,12 @@
   "data_ov029_02112fec": {
    "src/game/actors/d_a_obj_wc_mizu.cpp": ["return:CLPS_Block"]
   },
+  "data_ov029_02113be8": {
+   "src/game/actors/d_a_obj_wc_obj01.cpp": ["return:ResourceDescriptor"]
+  },
+  "data_ov029_02113f00": {
+   "src/game/actors/d_a_obj_wc_obj06.cpp": ["return:ResourceDescriptor"]
+  },
   "data_ov029_02114248": {
    "src/game/actors/d_a_obj_wc_obj02.cpp": ["return:SharedFilePtr"]
   },
@@ -11889,7 +11897,7 @@
    "src/game/actors/d_a_obj_wc_obj04.cpp": ["return:SharedFilePtr"]
   },
   "data_ov030_02114824": {
-   "src/actors/daMky_c.cpp": ["return:SharedFilePtr_ * []"]
+   "src/actors/daMky_c.cpp": ["return:SharedFilePtr * []"]
   },
   "data_ov030_02115c80": {
    "src/_ZN13daObjHmBskt_c13InitResourcesEv.cpp": ["return:SharedFilePtr"]
@@ -11902,7 +11910,7 @@
   },
   "data_ov030_02115d00": {
    "src/__sinit_ov030_02114924.c": ["return:void *"],
-   "src/actors/daMky_c.cpp": ["return:SharedFilePtr_"]
+   "src/actors/daMky_c.cpp": ["return:SharedFilePtr"]
   },
   "data_ov030_02115ddc": {
    "src/__sinit_ov030_02114924.c": ["return:void *"]
@@ -12080,6 +12088,12 @@
   "data_ov045_021125b0": {
    "src/_ZN17ExtendingPlatform13InitResourcesEv.cpp": ["return:CLPS_Block"]
   },
+  "data_ov045_02112f08": {
+   "src/game/actors/d_a_obj_km2_ukishima.cpp": ["return:ResourceDescriptor"]
+  },
+  "data_ov045_021130ac": {
+   "src/game/actors/d_a_obj_km2_fall_block.cpp": ["return:ResourceDescriptor"]
+  },
   "data_ov045_021131d0": {
    "src/__sinit_ov045_02112280.c": ["return:int []"]
   },
@@ -12087,28 +12101,28 @@
    "src/__sinit_ov045_02112280.c": ["return:int []"]
   },
   "data_ov045_02113220": {
-   "src/game/actors/d_a_obj_km2_gura.cpp": ["return:char []"]
+   "src/game/actors/d_a_obj_km2_gura.cpp": ["return:SharedFilePtr"]
   },
   "data_ov045_02113228": {
-   "src/game/actors/d_a_obj_km2_gura.cpp": ["return:char []"]
+   "src/game/actors/d_a_obj_km2_gura.cpp": ["return:SharedFilePtr"]
   },
   "data_ov047_021125e0": {
-   "src/game/actors/d_a_obj_km3_kurumajiku.cpp": ["return:char []"]
+   "src/game/actors/d_a_obj_km3_kurumajiku.cpp": ["return:SharedFilePtr"]
   },
   "data_ov047_021125e8": {
-   "src/game/actors/d_a_obj_km3_kurumajiku.cpp": ["return:char []"]
+   "src/game/actors/d_a_obj_km3_kurumajiku.cpp": ["return:SharedFilePtr"]
   },
   "data_ov047_02112608": {
-   "src/game/actors/d_a_obj_km3_kaitendai.cpp": ["return:char []"]
+   "src/game/actors/d_a_obj_km3_kaitendai.cpp": ["return:SharedFilePtr"]
   },
   "data_ov047_02112610": {
-   "src/game/actors/d_a_obj_km3_kaitendai.cpp": ["return:char []"]
+   "src/game/actors/d_a_obj_km3_kaitendai.cpp": ["return:SharedFilePtr"]
   },
   "data_ov047_02112630": {
-   "src/game/actors/d_a_obj_km3_kuruma.cpp": ["return:char []"]
+   "src/game/actors/d_a_obj_km3_kuruma.cpp": ["return:SharedFilePtr"]
   },
   "data_ov047_02112638": {
-   "src/game/actors/d_a_obj_km3_kuruma.cpp": ["return:char []"]
+   "src/game/actors/d_a_obj_km3_kuruma.cpp": ["return:SharedFilePtr"]
   },
   "data_ov060_0211927c": {
    "src/_ZN6Bowser16CleanupResourcesEv.cpp": ["return:SharedFilePtr * []"]
@@ -12359,6 +12373,9 @@
   },
   "data_ov063_0211edf4": {
    "src/game/actors/daTrs_c/_ZN7daTrs_c16CleanupResourcesEv.cpp": ["return:SharedFilePtr"]
+  },
+  "data_ov064_0211adb0": {
+   "src/game/actors/d_a_obj_fl_gura.cpp": ["return:ResourceDescriptor"]
   },
   "data_ov064_0211adbc": {
    "src/_ZN15RotatingFirebar16CleanupResourcesEv.cpp": ["return:int []"]
