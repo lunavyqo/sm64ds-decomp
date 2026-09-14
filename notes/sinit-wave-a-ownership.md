@@ -155,7 +155,8 @@ The second half copies four PMFs into `data_ov063_0211efbc` in this order:
 
 All four targets are in daPiano_c's TU.  The two table consumers are
 `0x0211ddf0` and `0x0211de38`, in
-`src/unnamed/ov063/func_ov063_0211ddac.cpp` and `...0211ddf4.cpp`; they expose
+`src/game/actors/daPiano_c/d_a_piano.cpp`, which absorbed the 0211ddac and
+0211ddf4 helpers; they expose
 the destination as two entries of two PMFs.  All resource consumers also remain
 inside daPiano_c: CleanupResources consumes all three handles and InitResources
 loads the model/animation/collision handles.  No external or unmapped consumer
