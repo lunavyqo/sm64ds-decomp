@@ -33,9 +33,9 @@
  * cannot license the 0x02115ee0 range under one-range-per-file delinks.
  *
  * unk_5cc (state) and unk_5cf (variant) keep their placeholder spellings:
- * the ov063 state helper src/func_ov063_021166ac.cpp names them, and renaming
- * is that TU's follow-up, not this header's. Their roles are documented
- * below, not in the spelling.
+ * the ov063 state helper src/game/actors/daTrs_c/func_ov063_021166ac.cpp
+ * names them, and renaming is that TU's follow-up, not this header's.
+ * Their roles are documented below, not in the spelling.
  */
 #ifndef DATRS_C_H
 #define DATRS_C_H

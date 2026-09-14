@@ -13,10 +13,13 @@
  * .text down in reverse source order.
  *
  * C LINKAGE IS LOAD-BEARING -- the ROM symbols are the bare names.
- * `return new daTrs_c()` MATCHES: the leaf operator new forwards
- * `_ZN7fBase_cnwEj`, and the synthesized ctor stores the vtable between the
- * dCapEnemy_c base construction and the six member constructions, which is
- * the ROM's own order. Leaf operator new forwards until #2570.
+ * Typed C-ABI seam, daTBasket_c precedent. `return new daTrs_c()` reproduces
+ * every instruction but emits the vptr store against _ZTV7daTrs_c+8, the
+ * emitting-TU spelling, while this TU only imports the vtable (it stays a
+ * ROM blob homed outside this TU) and the ROM symbol IS the slot array:
+ * text-only production isolation cannot rewrite a nonzero RTTI addend, so
+ * the hand-rolled bodies keep every imported-symbol reference at +0.
+ * Leaf operator new forwards until #2570.
  *
  * Reconstructed source-style names: SM64DS proves daTrs_c through RTTI,
  * allocation size, vtable identity, and the TERESA / BOSS_TERESA registry
@@ -27,17 +30,53 @@
 #include "daTrs_c.h"
 
 extern "C" {
+extern void _ZN11dCapEnemy_cC2Ev(void *self);
+extern void _ZN10dCcAcPos_cC1Ev(void *self);
+extern void _ZN10dBgCh_ActrC1Ev(void *self);
+extern void _ZN9ModelAnimC1Ev(void *self);
+extern void _ZN5ModelC1Ev(void *self);
+extern void _ZN11ShadowModelC1Ev(void *self);
+}
+
+/* Importing-TU spelling: &_ZTV[0]. [2] is the emitting-TU form and lands +8
+ * past the slot array (measured WRONG at linkcheck; production isolate
+ * refuses the nonzero RTTI addend outright). */
+extern int _ZTV7daTrs_c[];
+
+extern "C" {
 
 // @symbol daTrs_c_classInit_TERESA
 daTrs_c *daTrs_c_classInit_TERESA(void)
 {
-    return new daTrs_c();
+    daTrs_c *actor = (daTrs_c *)_ZN7fBase_cnwEj(sizeof(daTrs_c));
+    if (actor) {
+        _ZN11dCapEnemy_cC2Ev(actor);
+        *(int *)actor = (int)&_ZTV7daTrs_c[0];
+        _ZN10dCcAcPos_cC1Ev(&actor->mdCcAcPos_c);
+        _ZN10dBgCh_ActrC1Ev(&actor->mWithMeshClsn);
+        _ZN9ModelAnimC1Ev(&actor->mModelAnim);
+        _ZN5ModelC1Ev(&actor->mBodyModel);
+        _ZN11ShadowModelC1Ev(&actor->mShadowModel1);
+        _ZN11ShadowModelC1Ev(&actor->mShadowModel2);
+    }
+    return actor;
 }
 
 // @symbol daTrs_c_classInit_BOSS_TERESA
 daTrs_c *daTrs_c_classInit_BOSS_TERESA(void)
 {
-    return new daTrs_c();
+    daTrs_c *actor = (daTrs_c *)_ZN7fBase_cnwEj(sizeof(daTrs_c));
+    if (actor) {
+        _ZN11dCapEnemy_cC2Ev(actor);
+        *(int *)actor = (int)&_ZTV7daTrs_c[0];
+        _ZN10dCcAcPos_cC1Ev(&actor->mdCcAcPos_c);
+        _ZN10dBgCh_ActrC1Ev(&actor->mWithMeshClsn);
+        _ZN9ModelAnimC1Ev(&actor->mModelAnim);
+        _ZN5ModelC1Ev(&actor->mBodyModel);
+        _ZN11ShadowModelC1Ev(&actor->mShadowModel1);
+        _ZN11ShadowModelC1Ev(&actor->mShadowModel2);
+    }
+    return actor;
 }
 
 }
