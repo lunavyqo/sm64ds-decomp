@@ -440,6 +440,21 @@ def normalise_type(text, aliases, decay_arrays):
     expanded = []
     for t in toks:
         expanded.extend(aliases[t].split() if t in aliases else [t])
+    # East const and west const spell ONE type. A `const` standing before the first
+    # `*`/`&` qualifies the base type, so `Vector3 const &` and `const Vector3 &` are
+    # the same reference and reading them as a contradiction is a false positive --
+    # one that outranks a real definition once the mark-adoption pass below lets the
+    # tree's own converted definitions be seen.
+    #
+    # A `const` AFTER a pointer token qualifies that pointer level instead, and
+    # hoisting it would conflate genuinely different types: `T * const *` is a
+    # pointer to a const pointer to T, which is not `const T **`. Those stay put.
+    first_ptr = next((i for i, tok in enumerate(expanded) if tok in ("*", "&")),
+                     len(expanded))
+    head = expanded[:first_ptr]
+    if "const" in head:
+        expanded = (["const"] + [tok for tok in head if tok != "const"]
+                    + expanded[first_ptr:])
     ptr = [t for t in expanded if t in ("*", "&")]
     base = [t for t in expanded if t not in ("*", "&")]
     base = _canon_scalar(base)
@@ -1041,6 +1056,7 @@ def _raw_types(text, name):
 def parse_file(rel, text, aliases):
     """(declarations, definitions, unparsed_count) found in one file."""
     code, marks = scrub(text)
+    orphans = []
     newlines = line_index(text)
     default_linkage = "C" if rel.endswith(".c") else "C++"
     # `int f()` means zero parameters in C++ and nothing at all in C. A `.h` is
@@ -1113,7 +1129,12 @@ def parse_file(rel, text, aliases):
             if ("::" in rest or mangled_scope) and not marked:
                 # An out-of-line member, or a function inside `namespace N { ... }`,
                 # with no `@symbol` line: the linker name is mangled and not
-                # recoverable from the text, so claim nothing.
+                # recoverable from the text, so claim nothing -- unless the file
+                # carries a single `@symbol` line and this is its single such
+                # definition, in which case the mark names it. See the adoption
+                # pass at the end of this function.
+                orphans.append((symbol, rel, line, ret, params, linkage, member,
+                                _raw_types(rest, name) | file_types))
                 continue
             defs.append(Record(symbol, rel, line, ret, params, True,
                                "C" if linkage == "C" else linkage, True, member,
@@ -1176,6 +1197,29 @@ def parse_file(rel, text, aliases):
                 continue
             decls.append(Record(name, rel, line, ret, params, is_fn, linkage,
                                 False, False, _raw_types(piece, name) | file_types))
+    # A delinked shard is one function in a file named for its mangled symbol, and
+    # it states that symbol on an `@symbol` line at the top. The loop above only
+    # honours a mark sitting between the previous statement and the declarator, so
+    # the moment such a file declares a helper above its definition -- which the
+    # converted ones routinely do -- the mark falls out of window and the definition
+    # is discarded as unnameable. That silently cost 1180 of this tree's real C++
+    # definitions their say: `_reference()` then has no definition to consult and
+    # falls back to a plurality vote among the very unconverted shards the
+    # conversion campaign exists to retire, so a converted `const Vector3 &` loses
+    # to twenty-odd reconstructed `Vector3 *` spellings that the ROM's own mangled
+    # name (`RK7Vector3`) refutes.
+    #
+    # Adopt the mark only when it is unambiguous: exactly one `@symbol` line in the
+    # file, exactly one definition that went unnamed, and no definition already
+    # claiming that symbol. A file with two marks or two orphans says nothing about
+    # which belongs to which, and still claims nothing.
+    if len(marks) == 1 and len(orphans) == 1:
+        symbol = marks[0][1]
+        if not any(d.symbol == symbol for d in defs):
+            _, o_rel, o_line, o_ret, o_params, o_linkage, o_member, o_types = orphans[0]
+            defs.append(Record(symbol, o_rel, o_line, o_ret, o_params, True,
+                               "C" if o_linkage == "C" else o_linkage, True,
+                               o_member, o_types))
     return decls, defs, unparsed
 
 
@@ -1339,6 +1383,31 @@ def _reference(symbol, decls, defs):
     return best[0], "plurality"
 
 
+def _declines_to_answer(a, b):
+    """True when one spelling is `void *` and the other is any other object pointer.
+
+    `void *` is not a claim about the pointee -- it is the absence of one. It is
+    what an unpromoted C shard can say and no more: those files reconstruct the
+    object as an opaque `char buf[0x50]` and have no type to name. C converts
+    between `void *` and any object pointer without a cast, and both occupy one
+    register identically, so a declaration spelling `void *` neither agrees nor
+    disagrees with one spelling `T *` -- it declines to answer, and a gate that
+    reads silence as contradiction is measuring the promotion campaign's progress
+    rather than a defect.
+
+    Two DIFFERENT named pointees (`Vector3 *` vs `dActor_c *`) still contradict,
+    and so does `void *` against any non-pointer: `int` is a real claim, and one
+    of the two sides is then genuinely wrong.
+    """
+    if a == b:
+        return False
+    if a == "void *":
+        return b.endswith("*")
+    if b == "void *":
+        return a.endswith("*")
+    return False
+
+
 def disagreements(decls, defs, unmangled, root=REPO):
     """[(record dict)] for every declaration that contradicts its reference.
 
@@ -1387,6 +1456,13 @@ def disagreements(decls, defs, unmangled, root=REPO):
                                                 "#%d %s" % (i + 1, a),
                                                 "#%d a pointer (the implicit this)"
                                                 % (i + 1,)))
+                            continue
+                        # Promoting ONE caller to a real C++ type flips the
+                        # plurality and would otherwise red every shard that
+                        # has not been promoted yet -- nine files for the
+                        # `dBgCh_Gnd` constructor alone, not one of them
+                        # touched by the PR that flipped it.
+                        if _declines_to_answer(a, b):
                             continue
                         if a != b:
                             out.append(_finding(symbol, "param", d, ref, basis,
