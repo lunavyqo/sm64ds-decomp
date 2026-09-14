@@ -10,7 +10,7 @@
  *
  * Proof: RTTI names this class daPiano_c; the registry holds
  * g_profile_PIANO; the factory allocates sizeof(daPiano_c) (0x6e4) and
- * punches &_ZTV9daPiano_c; ov063's roster (FallBlockBbh, the bookshelf
+ * punches &_ZTV9daPiano_c; ov063's roster (daObjTh_Fall_Block_c, the bookshelf
  * trap) is Big Boo's Haunt.
  *
  * common.h's flat Matrix4x3 (s32 m[12]) stands in this TU: dBgActor_c.h
