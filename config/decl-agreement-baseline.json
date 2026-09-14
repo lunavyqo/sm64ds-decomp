@@ -48,8 +48,7 @@
    "src/game/actors/daBrq_c.cpp": ["param:#1 Vector3 *", "param:#2 Vector3 *", "param:#3 Vector3 *"],
    "src/game/actors/daObjCtMecha05_c.cpp": ["param:#1 const Vector3 *", "param:#2 const Vector3 *", "param:#3 Vector3 *"],
    "src/game/actors/daObjPushblock_c.cpp": ["param:#1 Vector3 *", "param:#2 Vector3 *", "param:#3 Vector3 *"],
-   "src/minigames/d_s_mg_trampoline2.cpp": ["param:#1 Vector3 *", "param:#2 Vector3 *", "param:#3 Vector3 *"],
-   "src/unnamed/ov063/func_ov063_0211d5f4.c": ["param:#1 Vector3 *", "param:#2 Vector3 *", "param:#3 Vector3 *"]
+   "src/minigames/d_s_mg_trampoline2.cpp": ["param:#1 Vector3 *", "param:#2 Vector3 *", "param:#3 Vector3 *"]
   },
   "AngleDiff": {
    "src/_ZN6Player15St_Balloon_MainEv.cpp": ["param:#2 short"],
@@ -569,8 +568,7 @@
    "src/func_ov084_0212cda0.c": ["param:#1 Vector3 *"],
    "src/func_ov085_0212d73c.c": ["param:#1 Vector3 *"],
    "src/game/actors/d_a_wanwan.cpp": ["param:#1 Vector3 *"],
-   "src/unnamed/ov063/func_ov063_02117cdc.c": ["param:#1 int *"],
-   "src/unnamed/ov063/func_ov063_0211d8cc.cpp": ["param:#1 Vector3 *"]
+   "src/unnamed/ov063/func_ov063_02117cdc.c": ["param:#1 int *"]
   },
   "LoadArchive": {
    "src/func_ov075_0211977c.c": ["return:void"]
@@ -2306,8 +2304,7 @@
    "src/game/actors/d_a_pg_mthr.cpp": ["return:int"],
    "src/unnamed/ov063/func_ov063_02116a1c.c": ["param:#2 int", "param:#3 int"],
    "src/unnamed/ov063/func_ov063_02116fac.c": ["param:#3 int"],
-   "src/unnamed/ov063/func_ov063_02117cdc.c": ["return:int"],
-   "src/unnamed/ov063/func_ov063_0211d8cc.cpp": ["return:int"]
+   "src/unnamed/ov063/func_ov063_02117cdc.c": ["return:int"]
   },
   "_Z15ApproachLinear2Riii": {
    "src/_ZN4Toad8BehaviorEv.cpp": ["return:void"]
@@ -6168,7 +6165,7 @@
    "src/game/actors/WingFeather/_ZN11WingFeather8BehaviorEv.cpp": ["arity:1"],
    "src/game/actors/d_a_kp_fr.cpp": ["arity:1"],
    "src/game/actors/daObjPushblock_c.cpp": ["arity:1"],
-   "src/game/actors/daPiano_c/_ZN8MadPiano8BehaviorEv.cpp": ["arity:1"]
+   "src/game/actors/daPiano_c/d_a_piano.cpp": ["arity:1"]
   },
   "dBgCh_Actr_UpdateDiscreteNoLava_veneer": {
    "src/_ZN10BowserFire8BehaviorEv.cpp": ["arity:1"],
@@ -19697,13 +19694,13 @@
    "src/_ZN13QuestionBlock16CleanupResourcesEv.cpp": ["return:char []"]
   },
   "gPianoAttackAnimationFile": {
-   "src/game/actors/daPiano_c/_ZN8MadPiano13InitResourcesEv.cpp": ["return:SharedFilePtr"]
+   "src/game/actors/daPiano_c/__sinit_ov063_0211e5fc.c": ["return:SharedFilePtrLayout"]
   },
   "gPianoCollisionFile": {
-   "src/game/actors/daPiano_c/_ZN8MadPiano13InitResourcesEv.cpp": ["return:SharedFilePtr"]
+   "src/game/actors/daPiano_c/__sinit_ov063_0211e5fc.c": ["return:SharedFilePtrLayout"]
   },
   "gPianoModelFile": {
-   "src/game/actors/daPiano_c/_ZN8MadPiano13InitResourcesEv.cpp": ["return:SharedFilePtr"]
+   "src/game/actors/daPiano_c/__sinit_ov063_0211e5fc.c": ["return:SharedFilePtrLayout"]
   },
   "nds_print": {
    "src/ShowCrashScreen.c": ["param:#2 const void *"],
