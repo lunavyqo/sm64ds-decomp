@@ -1615,7 +1615,7 @@
    "src/_ZN8YoshiEgg16CleanupResourcesEv.cpp": ["arity:1"],
    "src/actors/daPkn_c.cpp": ["arity:1"],
    "src/actors/daSanbo_c.cpp": ["arity:1"],
-   "src/game/actors/daTrs_c/_ZN7daTrs_c16CleanupResourcesEv.cpp": ["arity:1"]
+   "src/game/actors/daTrs_c/d_a_trs_cleanup_render.cpp": ["arity:1"]
   },
   "UpdateMinimap": {
    "src/_ZN7Minimap8BehaviorEv.cpp": ["param:#1 int *", "param:#2 int", "param:#3 int", "param:#4 int", "param:#5 int"]
@@ -2693,7 +2693,7 @@
    "src/game/actors/daTrs_c/_ZN7daTrs_c8BehaviorEv.cpp": ["param:#2 const Vector3 *"]
   },
   "_ZN11dCapEnemy_c6AddCapEj": {
-   "include/decl_dCapEnemy_c.h": ["return:int"]
+   "src/_ZN7daKrb_c13InitResourcesEv.cpp": ["return:void"]
   },
   "_ZN11dScMgBase_c15OnHitByMegaCharEv": {
    "src/actors/dScMgD3DBase_c.cpp": ["arity:0"]
@@ -3765,7 +3765,6 @@
    "src/func_ov091_02133254.cpp": ["param:#1 SharedFilePtr &", "return:BMD_File *"],
    "src/game/actors/WingFeather/_ZN11WingFeather13InitResourcesEv.cpp": ["param:#1 SharedFilePtr &", "return:BMD_File *"],
    "src/game/actors/d_a_obj_bk_dossunbar.cpp": ["return:int"],
-   "src/game/actors/daTrs_c/_ZN7daTrs_c13InitResourcesEv.cpp": ["return:int"],
    "src/minigames/d_s_mg_trampoline2.cpp": ["param:#1 SharedFilePtr &", "return:BMD_File *"]
   },
   "_ZN5ModelC1Ev": {
@@ -4113,9 +4112,7 @@
    "src/actors/daBombking_c.cpp": ["param:#3 int", "param:#5 int", "param:#6 int"],
    "src/func_ov034_02112284.c": ["param:#4 const Vector3 *"],
    "src/func_ov062_02119be0.c": ["param:#4 Vec3 *"],
-   "src/func_ov062_0211a740.cpp": ["param:#4 const Vector3 *"],
-   "src/func_ov073_0211fc78.c": ["param:#4 const Vector3 *"],
-   "src/func_ov073_02121388.c": ["param:#4 const Vector3 *"],
+   "src/func_ov072_021214dc.c": ["param:#4 const void *"],
    "src/func_ov079_021246dc.c": ["param:#4 const Vec3 *"],
    "src/func_ov084_0212c9f0.c": ["param:#4 const Vector3 *"],
    "src/func_ov085_0212e19c.c": ["param:#4 const Vector3 *"],
@@ -4871,7 +4868,6 @@
    "src/func_ov100_02146468.c": ["return:char *"],
    "src/game/actors/d_a_pg_mthr.cpp": ["return:dActor_c *"],
    "src/game/actors/d_a_propeller_heyho.cpp": ["return:dActor_c *"],
-   "src/game/actors/daTrs_c/_ZN7daTrs_c16CleanupResourcesEv.cpp": ["return:dActor_c *"],
    "src/unnamed/ov063/func_ov063_021163d0.c": ["return:int"]
   },
   "_ZN8dActor_c10PoofDustAtERK7Vector3": {
@@ -5253,7 +5249,6 @@
    "src/func_ov102_02149428.c": ["return:int"],
    "src/func_ov102_02149478.c": ["return:int"],
    "src/game/actors/d_a_pg_mthr.cpp": ["return:void"],
-   "src/game/actors/daTrs_c/_ZN7daTrs_c13InitResourcesEv.cpp": ["return:char *"],
    "src/unnamed/ov063/func_ov063_02116244.c": ["return:char *"],
    "src/unnamed/ov063/func_ov063_02116bf4.c": ["return:char *"],
    "src/unnamed/ov063/func_ov063_02116e14.cpp": ["return:int"],
@@ -5614,10 +5609,10 @@
    "src/func_ov006_020ce988.cpp": ["mangled:3 parameter(s)"],
    "src/func_ov060_0211577c.c": ["mangled:3 parameter(s)"],
    "src/func_ov060_02118690.c": ["mangled:3 parameter(s)"],
-   "src/func_ov063_021166ac.cpp": ["mangled:3 parameter(s)"],
    "src/func_ov064_02119f1c.cpp": ["mangled:3 parameter(s)"],
    "src/func_ov094_021361d8.c": ["mangled:3 parameter(s)"],
    "src/game/actors/d_a_tree.cpp": ["mangled:3 parameter(s)"],
+   "src/game/actors/daTrs_c/func_ov063_021166ac.cpp": ["mangled:3 parameter(s)"],
    "src/unnamed/ov063/func_ov063_0211640c.c": ["mangled:3 parameter(s)"]
   },
   "_ZN9ModelBase7SetFileEP8BMD_Fileii": {
@@ -6025,9 +6020,6 @@
    "include/decl_common.h": ["return:int []"]
   },
   "_ZTV7dBase_c": {
-   "include/decl_common.h": ["return:int []"]
-  },
-  "_ZTV7daTrs_c": {
    "include/decl_common.h": ["return:int []"]
   },
   "_ZTV8dScene_c": {
@@ -8238,6 +8230,9 @@
    "src/__sinit_ov002_02100560.c": ["return:void *"],
    "src/func_ov002_020e5948.c": ["return:int []"]
   },
+  "data_ov002_0210d9b8": {
+   "src/game/actors/daTrs_c/_ZN7daTrs_c13InitResourcesEv.cpp": ["return:SharedFilePtr"]
+  },
   "data_ov002_0210d9c0": {
    "src/_ZN13QuestionBlock13InitResourcesEv.cpp": ["return:char"],
    "src/_ZN13QuestionBlock16CleanupResourcesEv.cpp": ["return:char []"],
@@ -8276,6 +8271,9 @@
    "src/_ZN11PyramidLift16CleanupResourcesEv.cpp": ["return:int []"],
    "src/__sinit_ov002_02100560.c": ["return:void *"],
    "src/func_ov002_020efaf0.cpp": ["return:PathStuff"]
+  },
+  "data_ov002_0210d9f8": {
+   "src/game/actors/daTrs_c/_ZN7daTrs_c13InitResourcesEv.cpp": ["return:SharedFilePtr"]
   },
   "data_ov002_0210da00": {
    "src/__sinit_ov002_02100560.c": ["return:void *"]
@@ -10837,30 +10835,30 @@
    "src/func_ov062_0211bd10.c": ["return:void *"]
   },
   "data_ov063_0211edc4": {
-   "src/game/actors/daTrs_c/_ZN7daTrs_c16CleanupResourcesEv.cpp": ["return:SharedFilePtr"]
+   "src/unnamed/ov063/__sinit_ov063_0211e29c.c": ["return:char []"]
   },
   "data_ov063_0211edcc": {
-   "src/game/actors/daTrs_c/_ZN7daTrs_c16CleanupResourcesEv.cpp": ["return:SharedFilePtr"],
    "src/unnamed/ov063/__sinit_ov063_0211e29c.c": ["return:char []"],
+   "src/unnamed/ov063/func_ov063_02118458.c": ["return:int"],
    "src/unnamed/ov063/func_ov063_0211873c.c": ["return:int []"]
   },
   "data_ov063_0211edd4": {
-   "src/game/actors/daTrs_c/_ZN7daTrs_c16CleanupResourcesEv.cpp": ["return:SharedFilePtr"],
-   "src/unnamed/ov063/__sinit_ov063_0211e29c.c": ["return:char []"]
+   "src/unnamed/ov063/__sinit_ov063_0211e29c.c": ["return:char []"],
+   "src/unnamed/ov063/func_ov063_02118458.c": ["return:int"]
   },
   "data_ov063_0211eddc": {
-   "src/game/actors/daTrs_c/_ZN7daTrs_c16CleanupResourcesEv.cpp": ["return:SharedFilePtr"]
+   "src/unnamed/ov063/__sinit_ov063_0211e29c.c": ["return:char []"]
   },
   "data_ov063_0211ede4": {
-   "src/game/actors/daTrs_c/_ZN7daTrs_c16CleanupResourcesEv.cpp": ["return:SharedFilePtr"],
-   "src/unnamed/ov063/__sinit_ov063_0211e29c.c": ["return:char []"]
+   "src/unnamed/ov063/__sinit_ov063_0211e29c.c": ["return:char []"],
+   "src/unnamed/ov063/func_ov063_02118458.c": ["return:int"]
   },
   "data_ov063_0211edec": {
    "src/game/actors/daTBasket_c/_ZN11daTBasket_c13InitResourcesEv.cpp": ["return:void *"],
    "src/unnamed/ov063/__sinit_ov063_0211e29c.c": ["return:char []"]
   },
   "data_ov063_0211edf4": {
-   "src/game/actors/daTrs_c/_ZN7daTrs_c16CleanupResourcesEv.cpp": ["return:SharedFilePtr"]
+   "src/unnamed/ov063/__sinit_ov063_0211e29c.c": ["return:char []"]
   },
   "data_ov064_0211adbc": {
    "src/_ZN15RotatingFirebar16CleanupResourcesEv.cpp": ["return:int []"]
