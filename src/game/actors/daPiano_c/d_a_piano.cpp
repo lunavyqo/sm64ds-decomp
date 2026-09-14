@@ -21,8 +21,11 @@
  * deslop leftovers:
  * - Factory stays hand-rolled (see the comment above it): `return new
  *   daPiano_c()` matches but emits unlicensed dBgActor_cD2/Vector3D1
- *   copies the multi-symbol path refuses; ov063 has no manifest to
- *   carry a deadstrip-duplicate license. daWanwan-consistent.
+ *   copies the multi-symbol path refuses. daPiano_c is not a promoted
+ *   TU, so it owns no config/tu_manifest.d/ov063/daPiano_c.json -- the
+ *   only place a deadstrip-duplicate license can live. (The overlay
+ *   itself does have manifests; ov063 carries daObjTh_Fall_Block_c.)
+ *   Packaging, not a byte wall. daWanwan-consistent.
  * - D0/D1 stay split (one line each): the vtable is a symbols.txt blob
  *   (_ZTV9daPiano_c), and defining ~daPiano_c here would emit a
  *   competing _ZTV (key function) the fail-closed path refuses. Same
@@ -227,14 +230,13 @@ int daPiano_c::CleanupResources()
 
 /* The piano's two-state dispatch table (data_ov063_0211efbc, filled by
  * __sinit_ov063_0211e5fc from the four ROM {ptr, adj} records): per state,
- * an entry routine and a body routine. Bound to a non-polymorphic shadow
- * on purpose: a PMF of daPiano_c itself does not have the ROM's plain
- * {ptr, adj} representation. */
-struct PianoStateC;
-typedef void (PianoStateC::*PianoPMF)();
+ * an entry routine and a body routine. Bound to daPiano_c itself. An earlier
+ * draft routed this through a non-polymorphic shadow layout on the theory
+ * that a PMF of the real class does not carry the ROM's plain {ptr, adj}
+ * representation; that is false for this TU -- under 2004/b56 the real class
+ * gives byte-identical bodies and relocation records for all 17 functions. */
+typedef void (daPiano_c::*PianoPMF)();
 struct PianoStateEntry { PianoPMF pmf[2]; };
-/* idx overlays daPiano_c::mStateIdx at 0x6c8. */
-struct PianoStateC { char pad[0x6c8]; int idx; };
 /* State 0 searches (body func_ov063_0211dbb8, entry func_ov063_0211dd78);
  * state 1 attacks (body func_ov063_0211d8cc, entry func_ov063_0211dba4).
  * Proven by who calls ddac with what and which routine runs per-frame. */
@@ -252,9 +254,8 @@ extern "C" {
 void func_ov063_0211ddf4(daPiano_c *self)
 {
     extern PianoStateEntry data_ov063_0211efbc[];
-    PianoStateC *st = (PianoStateC *)self;
-    int cur = st->idx;
-    (st->*data_ov063_0211efbc[cur].pmf[1])();
+    int cur = self->mStateIdx;
+    (self->*data_ov063_0211efbc[cur].pmf[1])();
 }
 }
 
@@ -265,10 +266,9 @@ extern "C" {
 void func_ov063_0211ddac(daPiano_c *self, int state)
 {
     extern PianoStateEntry data_ov063_0211efbc[];
-    PianoStateC *st = (PianoStateC *)self;
-    st->idx = state;
-    int cur = st->idx;
-    (st->*data_ov063_0211efbc[cur].pmf[0])();
+    self->mStateIdx = state;
+    int cur = self->mStateIdx;
+    (self->*data_ov063_0211efbc[cur].pmf[0])();
 }
 }
 
