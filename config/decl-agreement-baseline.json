@@ -1082,6 +1082,7 @@
   },
   "NormalizeVec3IfNonZero": {
    "src/Quaternion_FromVector3.c": ["param:#1 Vec3 *"],
+   "src/actors/dMgJump3DMario_c.cpp": ["param:#1 Jump3DVec *"],
    "src/func_ov006_020c42bc.c": ["param:#1 Vec3 *"],
    "src/func_ov006_020c47d4.c": ["param:#1 Vec3 *"],
    "src/func_ov006_020c49d8.c": ["param:#1 Vec3 *"],
@@ -2014,6 +2015,7 @@
    "src/_ZN8MugenBgm8BehaviorEv.cpp": ["param:#1 int *", "param:#2 int *", "param:#3 int *"],
    "src/_ZN9Butterfly6State2Ev.cpp": ["param:#1 Vector3 *"],
    "src/actors/Goomboss.cpp": ["param:#1 Vector3 *", "param:#2 const Vector3 *", "param:#3 const Vector3 *"],
+   "src/actors/dMgJump3DMario_c.cpp": ["param:#1 Jump3DVec *", "param:#2 Jump3DVec *", "param:#3 Jump3DVec *"],
    "src/actors/daMip_c.cpp": ["param:#2 const void *", "param:#3 const void *"],
    "src/actors/daOts_c.cpp": ["param:#1 int *", "param:#2 int *", "param:#3 int *"],
    "src/func_020089f8.c": ["param:#1 int *", "param:#2 const int *", "param:#3 const int *"],
