@@ -180,11 +180,14 @@ int daTree_c::Render()
         Matrix4x3_FromRotationY(mat, cam->yaw);
         node = *slot;
         while (node != 0) {
-            Vector3 out;
+            /* Leftover: out is int[3], not Vector3: a stack Vector3's inline
+             * dtor emits Vector3D1, which production _isolate refuses as
+             * unlicensed content (this TU has no compiler_only_output row). */
+            int out[3];
             int dist =
                 _ZN7Clipper13Func_02015560ER9Matrix4x3R7Vector35Fix12IiES3_(
                     data_0209f43c, &data_0209b3ec, &node->pos, kCanopyLift,
-                    &out);
+                    (Vector3 *)out);
             if (dist > kClipNear && dist < kClipFar) {
                 int opacity = kOpacityFull;
                 if (dist < kFadeDist)
