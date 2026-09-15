@@ -39,9 +39,6 @@
  *   daDkk_c.cpp's, and the mangled name spells that reference out.
  * - CleanupResources reloads the file table after each Release (a Release
  *   clobbers); the three loads are the ROM's.
- * - func_ov091_02132f04's isDosun flag doubles as the mVertSpeed zero the
- *   ROM reuses out of the same register; func_ov091_02132dc0's volatile
- *   aimPos pins the OnAimedAtWithEgg call the distance check ignores.
  * - kYoshiEggActorID / kDosunActorID are TU-local: no header names actor
  *   IDs. Both values are the ROM debug table's
  *   (symbols/profile_reconstruction_registry.tsv).
@@ -240,12 +237,10 @@ extern "C" void func_ov091_02132f04(char *c)
     if (self->mPosY > *(s32 *)(c + 0x394))
         return;
     self->mPosY = *(s32 *)(c + 0x394);
-    int isDosun = 0;
-    self->mVertSpeed = isDosun;
+    self->mVertSpeed = 0;
     *(s32 *)(c + 0x398) = 3;
     *(u8 *)(c + 0x39e) = 0xa;
-    if (self->actorID == kDosunActorID)
-        isDosun = 1;
+    int isDosun = (self->actorID == kDosunActorID);
     if (isDosun != 0) {
         self->HugeLandingDust(true);
     } else {
@@ -291,7 +286,7 @@ extern "C" void func_ov091_02132e64(char *c)
  * nearest Yoshi egg closes to (mClipRadius << 3) and the mesh collider is
  * still asleep, wakes it and reports 1 so the caller refreshes the collider
  * position. The aimPos block is dead by value -- the distance check reads
- * the actor origin, not it -- but volatile: it pins the OnAimedAtWithEgg
+ * the actor origin, not it -- but it keeps the OnAimedAtWithEgg
  * call and the three stores the ROM emits. */
 // @symbol func_ov091_02132dc0
 extern "C" int func_ov091_02132dc0(char *c)
@@ -299,7 +294,7 @@ extern "C" int func_ov091_02132dc0(char *c)
     daDsnBase_c *self = (daDsnBase_c *)c;
     dActor_c *egg = self->ClosestWithActorID(kYoshiEggActorID);
     if (egg != 0) {
-        volatile Vector3 aimPos;
+        Vector3 aimPos;
         aimPos.x = self->mPosX;
         aimPos.y = self->mPosY;
         aimPos.z = self->mPosZ;
