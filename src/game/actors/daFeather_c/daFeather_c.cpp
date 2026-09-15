@@ -22,8 +22,9 @@
  *   DecIfAbove0_Byte: no header declares them; TU-local extern "C".
  * - (Vector3 *)&mPosX in func_ov002_020b2c44: dActor_c has no Pos() on this
  *   branch (#2513); the pun stays at the call, not as a leaf accessor.
- * - The *(short*)&mSwayAngle increment and the volatile u16 re-read: the
- *   cartridge sign-extends one (ldrsh) and zero-extends the other (ldrh).
+ * - The *(short*)&mSwayAngle increment: the cartridge sign-extends it
+ *   (ldrsh) while the index below zero-extends (ldrh). The plain u16
+ *   re-read holds the reload (volatile disproved, FEATHER-2713-01).
  * - Camera+0x17c (data_0209f318): the halfword InitResources and Behavior
  *   add 0x4000 to; Camera.h names nothing there.
  * - data_0209f2d8 game-mode flag, data_02082214 sin/cos table,
@@ -174,10 +175,10 @@ int daFeather_c::Behavior()
     } else {
         /* The short* increment is load-bearing: the cartridge sign-extends
            it (ldrsh) while the index below zero-extends (ldrh), so a plain
-           `mSwayAngle += 0x400` on the u16 field misses. The volatile
-           re-read likewise holds the cartridge's reload. */
+           `mSwayAngle += 0x400` on the u16 field misses. The plain re-read
+           still holds the cartridge's reload (FEATHER-2713-01). */
         *(short*)&mSwayAngle += 0x400;
-        u16 newv = *(volatile u16*)&mSwayAngle;
+        u16 newv = mSwayAngle;
         int idx = ((newv >> 4) << 1) + 1;
         mHorzSpeed = (int)(((s64)mDriftSpeed * data_02082214[idx] + 0x800) >> 12);
     }
