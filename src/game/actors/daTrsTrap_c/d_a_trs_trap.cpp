@@ -40,9 +40,8 @@
  *   that a polymorphic receiver changes the {ptr, adj} record shape; that is
  *   false here -- under 2004/b56 the real class gives byte-identical bodies
  *   and relocation records for all 8 functions.
- * - Behavior spells mStateTimer twice on purpose (this+0x14c, then
- *   this+0x100 plus 0x4c): unifying them shares one address computation and
- *   comes out one instruction short (0x88, not 0x8c).
+ * - Behavior names mStateTimer directly at both sites (TRAP-2709
+ *   experiment: unified spelling matches).
  * - +0x418 on the spawned BOOK_SWITCH is daBookGen_c's, which has no header;
  *   +0x154 here has no recovered reader. S14: no g_profile_* rows live here.
  */
@@ -227,15 +226,11 @@ int daTrsTrap_c::Behavior()
     unsigned char before = mState;
     int idx = mIndex;
     (this->*data_ov063_0211ef38[idx])();
-    /* The increment and the reset below spell the same word two ways on
-       purpose: the increment materializes this+0x14c, the reset this+0x100
-       plus 0x4c, and unifying them lets the compiler share one address
-       computation and come out one instruction short (0x88, not 0x8c). */
+    /* Count frames in state; restart on transition. */
     u16 *ctr = &mStateTimer;
     *ctr = *ctr + 1;
     if (before != mState) {
-        u16 *base = (u16 *)((char *)this + 0x100);
-        base[0x4c / 2] = 0;
+        mStateTimer = 0;
     }
     func_ov063_0211c684((char *)this);
     func_ov063_0211c6f8((char *)this);
