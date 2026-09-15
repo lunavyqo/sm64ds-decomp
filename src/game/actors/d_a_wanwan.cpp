@@ -18,9 +18,8 @@
  *   filled; decl_common.h spells the four handles as char, so
  *   LoadFile/Release go through that view.
  * Leftover: ClosestPlayer()+0x6fb is a Player byte this TU reads;
- *   the name belongs on Player. Spawned stump +0x320 is Stump::mBusy;
- *   including Stump.h pulls dBgActor_c/common.h and would change
- *   this TU's matrix copies.
+ *   the name belongs on Player. Spawned stump uses Stump::mBusy;
+ *   Stump.h does not disturb this TU's matrix copies.
  * Leftover: `(Vector3 *)&mPosX` / `&mScaleX` stay; Pos() is not on
  *   this branch's dActor_c.
  * Leftover: BMD/BCA handles still data_ov014_*; sinit file IDs
@@ -35,6 +34,7 @@
 
 #include "common.h"
 #include "daWanwan_c.h"
+#include "Stump.h"
 #include "decl_common.h"
 #include "SharedFilePtr.h"
 #include "Player.h"
@@ -161,7 +161,7 @@ int daWanwan_c::InitResources()
         kStumpActorId, 0x11, *(Vector3 *)&mPosX, 0, mAreaId, -1);
     mStumpUniqueID = spawned->uniqueID;
     int one = 1;
-    *(unsigned char *)((unsigned char *)spawned + 0x320) = (unsigned char)one;
+    ((Stump *)spawned)->mBusy = (unsigned char)one;
     mFenceUniqueID = 0;
 
     mPosX = mPosX + 0xc8000;

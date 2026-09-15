@@ -10,9 +10,9 @@
  *   state/helper bodies; the ROM symbols are still the func_ov
  *   labels. Naming them as C++ methods would emit _ZN12daBakubaku_c*
  *   and miss those labels.
- * Leftover: Klass stays incomplete (completing it as daBakubaku_c
- *   ICEs mwccarm's PMF). Tables are { PMF enter; PMF main }, 0x10
- *   apart (a7c/a8c/a9c/aac/abc). mState is a pointer to one entry.
+ * Leftover: Klass is daBakubaku_c (no PMF ICE on 2004/b56).
+ *   Tables are { PMF enter; PMF main }, 0x10 apart
+ *   (a7c/a8c/a9c/aac/abc). mState is a pointer to one entry.
  * Leftover: ModelAnim::SetAnim, dCcAcPos_c::Init, DropShadowRadHeight
  *   and Player::Hurt stay mangled (Fix12-by-value, wall 6az).
  *   dBgCh_Actr::Init stays mangled: header Fix12i mangles as int;
@@ -38,7 +38,7 @@
 #include "Player.h"
 #include "SharedFilePtr.h"
 
-struct Klass;
+typedef daBakubaku_c Klass;
 typedef void (Klass::*PMF)();
 /* Tables are 0x10 apart. SetState calls enter at +0; Behavior calls main at +8. */
 struct StateEntry { PMF enter; PMF main; };
@@ -186,7 +186,7 @@ s32 daBakubaku_c::Behavior()
 
     StateEntry *state = (StateEntry *)mState;
     if (state->main != 0)
-        (((Klass *)this)->*(state->main))();
+        (this->*(state->main))();
 
     mAngleX = mPrevAngleX;
     mAngleY = mPrevAngleY;

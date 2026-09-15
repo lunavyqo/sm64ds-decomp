@@ -75,10 +75,11 @@
  * Leftover: SetAnim / dCcAc_c::Init / dBgCh_Actr::Init / DropShadowRadHeight
  *   stay mangled (Fix12-by-value, 6az; dBgCh Init header Fix12i mangles as
  *   int). Player+8 param1 / +0x6d9 / +0x6ce belong on Player. data_ov085_*
- *   handles. S14 no g_profile_MIP. common.h first (shadow matrix copy).
+ *   handles. S14 no g_profile_MIP. Shadow copy uses local Mtx43,
+ *   so include order is free.
  */
-#include "common.h"
 #include "daMip_c.h"
+#include "common.h"
 #include "SharedFilePtr.h"
 #include "Player.h"
 #include "PathPtr.h"
