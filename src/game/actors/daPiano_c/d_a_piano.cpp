@@ -22,10 +22,10 @@
  * - Factory stays hand-rolled (see the comment above it): `return new
  *   daPiano_c()` matches but emits unlicensed dBgActor_cD2/Vector3D1
  *   copies the multi-symbol path refuses. daPiano_c is not a promoted
- *   TU, so it owns no config/tu_manifest.d/ov063/daPiano_c.json -- the
- *   only place a deadstrip-duplicate license can live. (The overlay
- *   itself does have manifests; ov063 carries daObjTh_Fall_Block_c.)
- *   Packaging, not a byte wall. daWanwan-consistent.
+ *   TU, so it owns no manifest under config/tu_manifest.d/ov063 -- and a
+ *   TU manifest is the only place a deadstrip-duplicate license can live.
+ *   (The overlay itself does have manifests; ov063 carries
+ *   daObjTh_Fall_Block_c.) Packaging, not a byte wall. daWanwan-consistent.
  * - D0/D1 stay split (one line each): the vtable is a symbols.txt blob
  *   (_ZTV9daPiano_c), and defining ~daPiano_c here would emit a
  *   competing _ZTV (key function) the fail-closed path refuses. Same
