@@ -15,9 +15,10 @@
  * Leftover: SetAnim / dCcAc_c::Init / dBgCh_Actr::Init /
  *   DropShadowRadHeight / IsTooFarAwayFromPlayer stay mangled
  *   (Fix12-by-value, 6az; dBgCh Init header Fix12i mangles as int).
- * Leftover: common.h first (02112094 matrix copy). Player+8 param1
- *   and cap +0xc8 belong on those classes. data_ov030_* handles.
- *   Factories live in d_a_mky_monkey_*.c (after this TU's .text).
+ * Leftover: 02112094 copies via local M4x3, not Matrix4x3, so
+ *   include order is free. Player+8 param1 and cap +0xc8 belong
+ *   on those classes. data_ov030_* handles. Factories live in
+ *   d_a_mky_monkey_*.c (after this TU's .text).
  *
  * THE SOURCE IS WRITTEN ROM-ASCENDING and the file opens with
  * `#pragma defer_codegen off`.  The two go together: with codegen deferred
@@ -76,9 +77,9 @@
  */
 #pragma defer_codegen off
 
-#include "common.h"
 #include "types.h"
 #include "daMky_c.h"
+#include "common.h"
 #include "SharedFilePtr.h"
 #include "decl_PathPtr.h"
 #include "decl_SaveData.h"
