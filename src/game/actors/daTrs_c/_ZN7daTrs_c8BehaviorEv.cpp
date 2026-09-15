@@ -22,12 +22,8 @@
  * deslop leftovers:
  * - dCapEnemy_c::GetCapState has no header declaration (shared-header
  *   addition is out of scope for this TU); the mangled call stays.
- * - Animation::Advance stays mangled: the member form goes through the thunk
- *   (same measurement as daBmb_c's State1/3).
  * - mdCcAcPos_c.flags |= 1 stays a raw 0x19c RMW (same class as daBmb_c's
  *   load-bearing *(this+0x128)).
- * - The mFlags_5d4 bit tests stay shift-extracts; only b1/b3 reads are
- *   member-spelled (Render proves those).
  * - func_0200f760 / func_0201267c / IsAreaShowing / Vec3_HorzAngle /
  *   Vec3_HorzDist / DecIfAbove0_Short have no header declarations; the
  *   TU-local externs stay. func_ov063_* are unowned state helpers.
@@ -56,7 +52,6 @@ void func_ov063_021172a8(char *c);
 void func_ov063_02119274(char *c);
 void func_ov063_02116fac(char *c);
 u16 DecIfAbove0_Short(void *p);
-void _ZN9Animation7AdvanceEv(void *anim);
 }
 
 int daTrs_c::Behavior()
@@ -138,7 +133,7 @@ int daTrs_c::Behavior()
     if (mSoundCount == 0) {
         /* b7 clear: not hidden yet. */
         if ((IsAreaShowing(mAreaIdx) == 0) || (func_ov063_02116190(c) != 0)) {
-            if ((((u32)((*(u16 *)(c + 0x5d4)) << 0x18)) >> 0x1f) == 0) {
+            if (mFlags_5d4.b7 == 0) {
                 r2 = (char *)&mPrevAngleX;
                 mPosX = mHomePosX;
                 fp = (u16 *)(c + 0x5d4);
@@ -270,7 +265,7 @@ block_39:
     }
 
     /* b2 set: copy the yaw through. */
-    if ((((u32)((*(u16 *)(c + 0x5d4)) << 0x1d)) >> 0x1f) != 0)
+    if (mFlags_5d4.b2 != 0)
         mAngleY = mPrevAngleY;
     *(u16 *)&mStateTimer += 1;
     DecIfAbove0_Short(&mTimer5c0);
@@ -280,7 +275,7 @@ block_39:
         UpdatePos(&mdCcAcPos_c);
         func_ov063_02119ab0(c);
         /* b0 set: clamp z. */
-        if (((((u32)((*(u16 *)(c + 0x5d4)) << 0x1f)) >> 0x1f) != 0) && (mPosZ < -0x12c000))
+        if ((mFlags_5d4.b0 != 0) && (mPosZ < -0x12c000))
             mPosZ = -0x12c000;
         dBgCh_Gnd rc1;
         y = mPosY;
@@ -310,7 +305,7 @@ block_39:
             if (d1 != 0) {
                 if (unk_5cf < 8) {
                     /* b5 set: ground already found. */
-                    if ((((u32)((*(u16 *)(c + 0x5d4))) << 0x1a) >> 0x1f) != 0) {
+                    if (mFlags_5d4.b5 != 0) {
                         if ((rc2.DetectClsn() == 0) ||
                             ((mPosY - rc2.clsnY) > 0x12c000)) {
                             mPosX = mLastGroundPosX;
@@ -342,7 +337,7 @@ block_39:
         }
     }
     if ((((unk_5cc != 3) && (unk_5cc != 3)) && (unk_5cc != 3)) && (unk_5cc != 3))
-        _ZN9Animation7AdvanceEv(c + 0x3d0);
+        mModelAnim.Advance();
     func_ov063_021166ac(c);
     mdCcAcPos_c.Clear();
     if (mOpacity == 0xff) {

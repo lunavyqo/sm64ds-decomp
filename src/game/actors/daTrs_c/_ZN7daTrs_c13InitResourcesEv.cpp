@@ -11,13 +11,10 @@
  * - ModelAnim::SetAnim / dCcAcPos_c::Init / dBgCh_Actr::Init stay mangled:
  *   all three carry Fix12<int> BY VALUE, and the header member form
  *   size-DIFFs (same 6az wall as daBmb_c's InitResources).
- * - mdCcAcPos_c.flags / .vulnFlags stay raw 0x19c/0x1a0 RMWs: the
- *   member-anchored address does not fold (two adds where the ROM has one),
- *   the same class as daBmb_c's load-bearing *(this+0x128).
  * - The mFlags_5d4 bit sets stay FLAGS16 shift-ORs: the member form
  *   if-converts the containing branch and addresses via the 0x500 base where
- *   the ROM has branch-outs and a literal-pool address. Only b1/b3 reads are
- *   member-spelled (Render proves those).
+ *   the ROM has branch-outs and a literal-pool address. Bit reads are
+ *   member-spelled (Render proves b1/b3; Behavior b7/b2/b0/b5 match).
  * - `*(int *)(this+8) = param1 & 0xfff` stays asymmetric on purpose: spelling
  *   both sides identically lets mwccarm CSE the field address (addlt + [r2]),
  *   one instruction the ROM does not have -- it wants [r4,#8] direct. Same
@@ -71,9 +68,8 @@ extern int data_ov063_0211e1ec[];
 extern Matrix4x3 data_020a0e68;
 }
 
-/* The flags halfword and the dCc words keep their raw spellings: the member
-   forms if-convert the containing branch (0x5d4) or leave the address
-   unfolded (0x19c/0x1a0), both off the ROM's shape. */
+/* The flags halfword keeps its raw spelling: the member form if-converts
+   the containing branch (0x5d4), off the ROM's shape. */
 #define FLAGS16 (*(unsigned short *)((long long)(c + 0x5d4)))
 #define FLAGS16T (*(unsigned short *)((long long)((char *)((long long)c) + 0x5d4)))
 
@@ -155,7 +151,7 @@ int daTrs_c::InitResources()
         mCarriedID = 0xd4;
         Model::LoadFile(data_ov063_0211edec);
     } else if (unk_5cf == 0 || unk_5cf == 1 || unk_5cf == 2 || unk_5cf == 6 || (unsigned)(unsigned char)(unk_5cf + 0xf8) <= 3) {
-        *(int *)((long long)(c + 0x1a0)) |= 0x8000;
+        mdCcAcPos_c.vulnFlags |= 0x8000;
         FLAGS16 |= 2;
         if (unk_5cf == 6) {
             mCarriedID = 0x120;
@@ -278,7 +274,7 @@ int daTrs_c::InitResources()
         }
     } else {
         if ((unsigned)unk_5cf < 0xc) {
-            *(int *)((long long)(c + 0x19c)) |= 1;
+            mdCcAcPos_c.flags |= 1;
         }
         if (unk_5cf == 4) {
             mAreaId = -1;
