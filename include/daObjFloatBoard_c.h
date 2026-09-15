@@ -61,9 +61,9 @@
 
 struct daObjFloatBoard_c : dBgActor_c {
     /* Field NAMES are placeholders. Offsets, widths and types are observed. */
-    s32  unk_320;           /* 0x320 */
+    s32  mRestPosX;         /* 0x320 */
     s32  mWaterY;           /* 0x324 */
-    s32  unk_328;           /* 0x328 */
+    s32  mRestPosZ;         /* 0x328 */
     void **mFileTable;      /* 0x32c */
     s32  mSinkOffset;       /* 0x330 */
     s32  mBobOffset;        /* 0x334 */

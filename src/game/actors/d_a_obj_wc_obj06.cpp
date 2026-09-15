@@ -5,7 +5,7 @@
  * InitResources loads the shared float-board model and collision, then
  * if the board spawned above the water it raycasts down onto the surface
  * (or the first hit under it) and writes that Y into mPosY. It then
- * copies mPosX/Y/Z onto unk_320, mWaterY, unk_328.
+ * copies mPosX/Y/Z onto mRestPosX, mWaterY, mRestPosZ.
  *
  * daObjWcObj06_c_classInit is reconstructed (RTTI daObjWcObj06_c,
  * WC_OBJ06 registry). Retail does not store that spelling.
@@ -82,9 +82,9 @@ int daObjWcObj06_c::InitResources()
                 mPosY = hit[1];
             }
         }
-        unk_320 = mPosX;
+        mRestPosX = mPosX;
         mWaterY = mPosY;
-        unk_328 = mPosZ;
+        mRestPosZ = mPosZ;
         return 1;
     }
     return 0;
