@@ -55,8 +55,9 @@ MATCHING VERSIONS: 2004/b56
 - command (emission): compile the TU once with the production flags
   (`-O4,p -enum int -lang c++ -char signed -interworking -proc arm946e
   -gccext,on -msgstyle gcc -Cpp_exceptions off`, i.e. `rombuild.CFLAGS` with
-  `-lang c++`) via `tools/match.compile_c`, list defined `STT_FUNC` symbols,
-  and run `tools/objisolate.plan_many` with the 15 ROM-order symbols
+  `-lang c++`) via `tools/match.py` (`compile_c`), list defined `STT_FUNC`
+  symbols, and run `tools/objisolate.py` (`plan_many`) with the 15 ROM-order
+  symbols
   (`func_ov063_0211d5f4` .. `daPiano_c_classInit`). Control: the unmodified TU
   emits exactly those 15 `.text` functions, no data, and `plan_many` returns
   `error: None`.
