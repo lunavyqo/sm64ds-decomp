@@ -43,10 +43,9 @@
  *   migration dependency on those shards and their TU configuration, not an
  *   inability to name the member; converting them is deferred work this PR
  *   does not reserve. The labels are inferred, not original spellings.
- * - Five measured load-bearing spellings, each commented at its site: the
+ * - Four measured load-bearing spellings, each commented at its site: the
  *   int* Mtx zeroing (7734), flag reuse (StateHold), the volatile v[2]
- *   store (StateMove), the same-on-both-arms select with Pair record
- *   0213b078 (EnterHit), the int t temp (87d0).
+ *   store (StateMove), the int t temp (87d0).
  */
 
 #pragma defer_codegen off
@@ -60,10 +59,6 @@
 static const int kWallX = 0x6c000;   /* mPos.x clamp: the arena walls */
 static const int kScreenYMax = 0xbc; /* past this mScreenY the Mario damps out */
 static const int kAnimSpeed = 0x800; /* SetAnim speed every install uses */
-
-/* EnterHit reads this one record word-wise for its load-bearing select, so it
- * keeps the two-int view while every other record is a Jump3DState. */
-struct Pair { int a, b; };
 
 /* OAM.h forward-declares Matrix2x2 and says the files that pass one keep
  * their own 4 x s32 definition; this is that definition. */
@@ -116,7 +111,7 @@ extern Jump3DState data_ov006_0213b058;
 extern Jump3DState data_ov006_0213b060;
 extern Jump3DState data_ov006_0213b068;
 extern Jump3DState data_ov006_0213b070;
-extern Pair        data_ov006_0213b078;
+extern Jump3DState data_ov006_0213b078;
 extern Jump3DState data_ov006_0213b080;
 extern Jump3DState data_ov006_0213b088;
 extern Jump3DState data_ov006_0213b090;
@@ -594,8 +589,6 @@ void func_ov006_020c81e0(char *c)
 // @symbol _ZN16dMgJump3DMario_c8EnterHitEv
 void dMgJump3DMario_c::EnterHit()
 {
-    int t0, t1;
-
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModelAnim, data_ov006_0214041c, 0x40000000, kAnimSpeed, 0);
     mModelAnim.Animation::currFrame = 0;
     if (mState == data_ov006_0213b068) {
@@ -604,14 +597,7 @@ void dMgJump3DMario_c::EnterHit()
         Sound_PlayBank1Panned(0, 4, mPos.x);
     }
     func_02012718(0x1b5, mScreenX << 12);
-    t0 = data_ov006_0213b078.a;
-    /* Both arms of this select are the same word on purpose.  MEASURED:
-       collapsing it to a plain `t1 = data_ov006_0213b078.b;` costs 4 words.
-       That it is what makes mwccarm read .a before .b and keep both live is a
-       reading of the diff, not a second measurement. */
-    t1 = t0 ? data_ov006_0213b078.b : data_ov006_0213b078.b;
-    ((int *)&mState)[0] = t0;
-    ((int *)&mState)[1] = t1;
+    mState = data_ov006_0213b078;
 }
 
 

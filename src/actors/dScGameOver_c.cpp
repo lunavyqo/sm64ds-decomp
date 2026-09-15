@@ -26,9 +26,11 @@
  *   members verify with it set, so it costs nothing. No narrower form.
  * - OAM::Render's Fix12 overload stays mangled: OAM.h excludes the by-value
  *   Fix12<int> overloads (codegen wall). The G2/GX/Sound decls below have no
- *   header; _ZN3G2S12GetBG1ScrPtrEv's u16* spelling wins over Init's void*.
- * - data_0209f5bc (the active scene) is reached through a TU-local shadow
- *   vtable to slot 5; the tree's spellings disagree with each other
+ *   header; _ZN3G2S12GetBG1ScrPtrEv keeps the u16* spelling for 0730's
+ *   pointer arithmetic (typing ergonomics, not a codegen wall -- void*
+ *   compiles identically, see notes/experiments/gameover-2711-bg1scrptr-u16.md).
+ * - data_0209f5bc (the active scene) gates Behavior through a plain virtual
+ *   call on slot 5; the tree's spellings disagree with each other
  *   (SceneVCall6, UnkObj, ...) and none has a ROM RTTI identity.
  * - unk_080[8]: zeroed by InitResources, never read back.
  */
@@ -51,11 +53,10 @@
 
 /* The active scene at data_0209f5bc, which gates Behavior. Only its call
  * shape is proven -- a virtual call through slot 5 taking itself as the
- * receiver and returning a truth value -- so the vtable is spelt out to that
- * slot and no further, and neither type has a ROM RTTI identity to name it
- * with. Same trick as d_s_mg_base.cpp's SceneVCall6, same slot. */
-struct SceneGateVt { void *slots[5]; int (*slot5)(void *); };
-struct SceneGate { SceneGateVt *vt; };
+ * receiver and returning a truth value -- so the class spells six virtuals
+ * and Behavior calls f05. It has no ROM RTTI identity to name it with. Same
+ * slot as d_s_mg_base.cpp's SceneVCall6. */
+struct SceneGate { virtual int f00(); virtual int f01(); virtual int f02(); virtual int f03(); virtual int f04(); virtual int f05(); };
 
 /* ROM symbols this TU references that no header in the tree declares yet.
  * Spelt by their exact final names under C linkage, the way decl_common.h
@@ -77,8 +78,10 @@ extern int data_0208ee44;
 extern u8 data_0209d45c;
 extern u8 data_0209d454;
 extern u8 data_0209f204;
-/* unsigned short * wins over Init's void*: the only spelling that types
- * 0730's `p += ...` and 16-bit stores; DecompressLZ16 takes void * anyway. */
+/* u16* spelling for 0730's `p += ...` and 16-bit stores, no cast needed.
+ * Ergonomics, not a constraint: the void* form compiles to identical bytes
+ * at both consumers (see notes/experiments/gameover-2711-bg1scrptr-u16.md).
+ * Init passes the result to DecompressLZ16's void* param either way. */
 extern unsigned short *_ZN3G2S12GetBG1ScrPtrEv(void);
 void *_ZN2G213GetBG2CharPtrEv(void);
 void *_ZN2G212GetBG2ScrPtrEv(void);
@@ -270,9 +273,7 @@ s32 dScGameOver_c::CleanupResources()
  // @symbol _ZN13dScGameOver_c8BehaviorEv
 s32 dScGameOver_c::Behavior()
 {
-    SceneGate *gate = data_0209f5bc;
-
-    if (gate->vt->slot5(gate) == 0)
+    if (data_0209f5bc->f05() == 0)
         goto end;
 
     func_ov003_020b060c(this);
