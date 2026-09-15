@@ -11,7 +11,7 @@
  *
  * deslop
  * Leftover: Sound::PlaySub stays mangled (Fix12<int> by value, wall 6az;
- *   this TU's Behavior measured 0xa4 -> 0xb8 in method form).
+ *   this TU's Behavior measured 0xa4 -> 0xb4 in method form).
  * Leftover: data_ov019_021135d8 keeps its ROM-address name (sinit-owned
  *   Vector3 spawn position; nothing in the ROM names it).
  * Leftover: g_profile_SLIDER_MANAGER (ov019 0x021133a8) stays outside this
