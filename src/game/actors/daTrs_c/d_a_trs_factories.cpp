@@ -39,8 +39,11 @@ extern void _ZN11ShadowModelC1Ev(void *self);
 }
 
 /* Importing-TU spelling: &_ZTV[0]. [2] is the emitting-TU form and lands +8
- * past the slot array (measured WRONG at linkcheck; production isolate
- * refuses the nonzero RTTI addend outright). */
+ * past the slot array: both factories' ROM pool words are 0x0211e828, the
+ * _ZTV symbol itself (slot 0 is InitResources). The link harnesses pass
+ * either spelling -- no relocs.txt edge records this import -- so the +0
+ * spelling is proven by reloc dump + ROM bytes, not by a gate. Proof:
+ * notes/experiments/boo-2710-factory-vtable.md. */
 extern int _ZTV7daTrs_c[];
 
 extern "C" {
