@@ -1189,7 +1189,7 @@
    "src/actors/daMip_c.cpp": ["return:unsigned int"],
    "src/actors/daYurei_Mucho_c.cpp": ["return:unsigned int"],
    "src/func_ov002_020f6c60.c": ["return:unsigned int"],
-   "src/func_ov009_021116ec.cpp": ["return:unsigned int"],
+   "src/game/actors/d_a_s_bird.cpp": ["return:unsigned int"],
    "src/func_ov062_021162b8.cpp": ["return:unsigned int"],
    "src/func_ov062_02116b80.cpp": ["return:unsigned int"],
    "src/func_ov065_021176fc.cpp": ["return:unsigned int"],
@@ -6105,6 +6105,7 @@
    "src/func_ov002_020feb50.cpp": ["arity:1", "return:char *"],
    "src/func_ov009_02111234.cpp": ["arity:1", "return:void *"],
    "src/func_ov009_021115d8.c": ["arity:1", "return:char *"],
+   "src/game/actors/d_a_s_bird.cpp": ["arity:1"],
    "src/func_ov016_02111284.c": ["arity:1", "return:void *"],
    "src/func_ov016_02111c40.c": ["arity:1", "return:void *"],
    "src/func_ov020_02111340.c": ["arity:1", "return:char *"],
@@ -6289,6 +6290,7 @@
    "src/func_ov002_020e88a8.c": ["return:char *"],
    "src/func_ov009_0211145c.c": ["return:char *"],
    "src/func_ov009_021115d8.c": ["return:char *"],
+   "src/game/actors/d_a_s_bird.cpp": ["return:Player *"],
    "src/func_ov020_021112b0.c": ["return:char *"],
    "src/func_ov020_02111fc4.cpp": ["return:char *"],
    "src/func_ov026_02111cb4.c": ["return:char *"],
@@ -6450,7 +6452,7 @@
    "src/_ZN11MirrorLuigi8BehaviorEv.cpp": ["param:#1 char *", "param:#2 char *", "param:#3 char *", "param:#6 unsigned int"],
    "src/_ZN12HauntedChair11UpdateModelEv.cpp": ["param:#6 unsigned int"],
    "src/_ZN13PrincessPeach11UpdateModelEv.cpp": ["param:#6 unsigned int"],
-   "src/_ZN4Bird8BehaviorEv.cpp": ["param:#6 unsigned int", "return:int"],
+   "src/game/actors/d_a_s_bird.cpp": ["param:#6 unsigned int", "return:int"],
    "src/_ZN4Toad15UpdateModelPoseEv.cpp": ["param:#6 unsigned int"],
    "src/_ZN9Butterfly8BehaviorEv.cpp": ["param:#6 unsigned int"],
    "src/actors/Eyerok.cpp": ["param:#6 unsigned int"],
@@ -6618,6 +6620,7 @@
    "src/func_ov002_020f897c.c": ["arity:6", "return:void *"],
    "src/func_ov009_0211145c.c": ["arity:6", "return:char *"],
    "src/func_ov009_021116ec.cpp": ["arity:6", "return:int"],
+   "src/game/actors/d_a_s_bird.cpp": ["arity:6"],
    "src/func_ov020_02111340.c": ["arity:6", "return:int"],
    "src/func_ov020_02112110.cpp": ["arity:6", "return:int"],
    "src/func_ov030_0211124c.cpp": ["arity:6", "return:void"],
@@ -6840,7 +6843,7 @@
    "src/_ZN19FirePiranhaPlantBig13InitResourcesEv.cpp": ["param:#5 unsigned int"],
    "src/_ZN3Key13InitResourcesEv.cpp": ["param:#5 unsigned int"],
    "src/_ZN3MrI13InitResourcesEv.cpp": ["param:#5 unsigned int"],
-   "src/_ZN4Bird13InitResourcesEv.cpp": ["param:#5 unsigned int"],
+   "src/game/actors/d_a_s_bird.cpp": ["param:#5 unsigned int"],
    "src/_ZN4Clam13InitResourcesEv.cpp": ["param:#5 unsigned int"],
    "src/_ZN4Clam8BehaviorEv.cpp": ["param:#1 char *", "param:#2 int", "param:#5 unsigned int"],
    "src/_ZN4Door13InitResourcesEv.c": ["param:#5 unsigned int"],
@@ -9149,6 +9152,7 @@
    "src/func_ov100_021437d4.c": ["return:char []"],
    "src/game/actors/d_a_bakubaku.cpp": ["return:int []"],
    "src/game/actors/d_a_propeller_heyho.cpp": ["return:int []"],
+   "src/game/actors/d_a_s_bird.cpp": ["return:BirdMtx"],
    "src/game/actors/d_a_wanwan.cpp": ["return:int []"],
    "src/minigames/d_s_mg_jump2.cpp": ["return:int"]
   },
@@ -11460,11 +11464,13 @@
   },
   "data_ov009_02113c20": {
    "include/decl_common.h": ["return:char []"],
-   "src/__sinit_ov009_02112458.c": ["return:int []"]
+   "src/__sinit_ov009_02112458.c": ["return:int []"],
+   "src/game/actors/d_a_s_bird.cpp": ["return:SharedFilePtr"]
   },
   "data_ov009_02113c28": {
    "include/decl_common.h": ["return:char []"],
-   "src/__sinit_ov009_02112458.c": ["return:int []"]
+   "src/__sinit_ov009_02112458.c": ["return:int []"],
+   "src/game/actors/d_a_s_bird.cpp": ["return:SharedFilePtr"]
   },
   "data_ov009_02113c68": {
    "src/game/actors/d_a_obj_mc_water.cpp": ["return:void * []"]
@@ -14185,6 +14191,7 @@
    "src/func_ov002_020f6c60.c": ["param:#1 int"],
    "src/func_ov009_0211145c.c": ["return:int"],
    "src/func_ov009_021115d8.c": ["return:int"],
+   "src/game/actors/d_a_s_bird.cpp": ["return:int"],
    "src/func_ov019_02111558.c": ["param:#1 int", "return:int"],
    "src/func_ov019_021117a8.c": ["param:#1 int"],
    "src/func_ov019_02111dec.c": ["param:#1 int"],
