@@ -3429,6 +3429,13 @@
     "src/actors/daGmch_c.cpp#_ZN8daGmch_c8SetStateEi": "tangosdev",
     "src/actors/daGmch_c.cpp#_ZN8daGmch_cD0Ev": "tangosdev",
     "src/actors/daGmch_c.cpp#_ZN8daGmch_cD1Ev": "tangosdev",
-    "src/actors/daGmch_c.cpp#daGmch_c_classInit": "tangosdev"
+    "src/actors/daGmch_c.cpp#daGmch_c_classInit": "tangosdev",
+    "src/game/actors/d_a_obj_km2_ami_bou.cpp#_ZN18daObjKm2_Ami_Bou_cD1Ev": "tangosdev",
+    "src/game/actors/d_a_obj_km2_ami_bou.cpp#_ZN18daObjKm2_Ami_Bou_cD0Ev": "tangosdev",
+    "src/game/actors/d_a_obj_km2_ami_bou.cpp#_ZN18daObjKm2_Ami_Bou_c16CleanupResourcesEv": "tangosdev",
+    "src/game/actors/d_a_obj_km2_ami_bou.cpp#_ZN18daObjKm2_Ami_Bou_c6RenderEv": "tangosdev",
+    "src/game/actors/d_a_obj_km2_ami_bou.cpp#_ZN18daObjKm2_Ami_Bou_c8BehaviorEv": "tangosdev",
+    "src/game/actors/d_a_obj_km2_ami_bou.cpp#_ZN18daObjKm2_Ami_Bou_c13InitResourcesEv": "tangosdev",
+    "src/game/actors/d_a_obj_km2_ami_bou.cpp#daObjKm2_Ami_Bou_c_classInit": "tangosdev"
   }
 }
