@@ -16,22 +16,36 @@
  * - The two func_ov003_* helpers are written free here, and that is a
  *   reconstruction choice, not a deduction. The image preserves no original
  *   linker symbol table, so `func_ov003_*` are address-derived analysis
- *   labels; their absence from the reconstructed mangled set is evidence of
- *   nothing about the original spelling. Both take the object and are called
- *   only from inside the class region -- worth narrowing later on call,
- *   layout or codegen grounds. Until then the original ownership and form
- *   stay uncertain; the free form is what this TU reproduces.
+ *   labels, and RTTI supplies class identities, not function spellings
+ *   (notes/tu-promotion-conventions.md section 1 and
+ *   notes/symbol-name-provenance.md). Their absence from the reconstructed
+ *   mangled set is therefore evidence of nothing about the original
+ *   spelling. Both take the object and every call to them is inside this
+ *   class's region: that is evidence to narrow ownership on later -- call,
+ *   layout or codegen -- not proof that the original was free. Until it is
+ *   narrowed, the original ownership and form stay uncertain, and the free
+ *   form is only what this TU reproduces.
  * - `#pragma opt_strength_reduction off` is file-global last-wins;
  *   func_ov003_020b060c needs it (glyph-loop induction) and the other eight
  *   members verify with it set, so it costs nothing. No narrower form.
+ *   Both halves are pinned under notes/experiments/ --
+ *   gameover-2711-strength-reduction-off.md (dropping it breaks 060c) and
+ *   gameover-2711-strength-pragma-bracket.md (bracketing it around the one
+ *   member is byte-identical to dropping it).
  * - OAM::Render's Fix12 overload stays mangled: OAM.h excludes the by-value
- *   Fix12<int> overloads (codegen wall). The G2/GX/Sound decls below have no
- *   header; _ZN3G2S12GetBG1ScrPtrEv keeps the u16* spelling for 0730's
- *   pointer arithmetic (typing ergonomics, not a codegen wall -- void*
- *   compiles identically, see notes/experiments/gameover-2711-bg1scrptr-u16.md).
+ *   Fix12<int> overloads (codegen wall, pinned in
+ *   notes/experiments/gameover-2711-oam-render-fix12.md). The G2/GX/Sound
+ *   decls below have no header; _ZN3G2S12GetBG1ScrPtrEv keeps the u16*
+ *   spelling for 0730's pointer arithmetic (typing ergonomics, not a codegen
+ *   wall -- void* compiles identically, see
+ *   notes/experiments/gameover-2711-bg1scrptr-u16.md).
  * - data_0209f5bc (the active scene) gates Behavior through a plain virtual
  *   call on slot 5; the tree's spellings disagree with each other
- *   (SceneVCall6, UnkObj, ...) and none has a ROM RTTI identity.
+ *   (SceneVCall6, UnkObj, ...) and none has a ROM RTTI identity. The
+ *   TU-local shadow vtable this file used to spell out to slot 5 was
+ *   measured inert and dropped for the plain call, so it is no longer a
+ *   retained substitution
+ *   (notes/experiments/gameover-2711-scenegate-virtual-call.md).
  * - unk_080[8]: zeroed by InitResources, never read back.
  */
 
@@ -391,8 +405,10 @@ void dScGameOver_c::OnPendingDestroy()
  * yes/no boxes: two 0x20-by-4 rectangles whose screen-map origins come from
  * data_ov003_020b174c. `arg` non-zero forces both back to the unselected
  * bank; zero picks the highlighted bank for whichever box mSelection names,
- * and only while the mFlashTimer has run out. Free helper -- it takes the
- * receiver but carries no mangled name. */
+ * and only while the mFlashTimer has run out. Written free here as a
+ * reconstruction choice: it takes the receiver and every call to it is
+ * inside this class's region, which is evidence to narrow ownership on
+ * later, not proof that the original was free. */
  // @symbol func_ov003_020b0730
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov003_020b0730(void *self, int arg)
@@ -447,15 +463,23 @@ void func_ov003_020b0730(void *self, int arg)
  * Behavior's cursor FSM and Render's bouncing arrows, and enables the two
  * BG layers the prompt lives on.
  *
- * The `e` loop skeleton is load-bearing, not leftover. MEASURED: spelling
- * the loop with member indexing (o->mGlyphX[i] / o->mGlyphDelay[i]) costs 3
- * words -- the ROM computes e = base + (i << 1) once per iteration and
- * reaches both rows as small constant offsets off e, while the member-index
- * form makes mwccarm compute two separate base+i*2 addresses. GO_OFF names
- * those offsets after their fields without changing the tree the compiler
- * sees. The goto/case skeleton, the `short *q` re-reads, the (long long)(int)
- * launders on the decrement, and case1's `(char *)o + GO_OFF` spelling (the
- * member-index form perturbs the tail) are the ROM's own shape too. */
+ * The `e` loop skeleton is load-bearing, not leftover. MEASURED and pinned
+ * in notes/experiments/gameover-2711-glyph-loop-skeleton.md: spelling the
+ * loop with member indexing (o->mGlyphX[i] / o->mGlyphDelay[i]) reschedules
+ * the whole member (69 words differ), and a surgical variant that changes
+ * only the addressing still breaks it (size 0x124 vs 0x128). An earlier
+ * in-place "costs 3 words" figure is NOT reproduced by either pinned
+ * spelling: the constraint holds, that number does not. The reading -- and
+ * it is a reading, not a second measurement -- is that the ROM computes
+ * e = base + (i << 1) once per iteration and reaches both rows as small
+ * constant offsets off e, while the member-index form makes mwccarm compute
+ * two separate base+i*2 addresses. GO_OFF names those offsets after their
+ * fields without changing the tree the compiler sees. The goto/case
+ * skeleton, the `short *q` re-reads, the (long long)(int) launders on the
+ * decrement, and case1's `(char *)o + GO_OFF` spelling (the member-index
+ * form perturbs the tail: 999 words differ, size 0x124 vs 0x11c, pinned in
+ * notes/experiments/gameover-2711-case1-gooff-spelling.md) are the ROM's own
+ * shape too. */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov003_020b060c(void *self)
 {

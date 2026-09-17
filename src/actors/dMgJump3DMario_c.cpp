@@ -15,7 +15,8 @@
  * virtual (Unk_020c76d8, slot 0) and this TU emits the vtable.
  *
  * common.h FIRST: the mat4x3 copy in func_ov006_020c76e0 wants the flat
- * s32 m[12] spelling; math/Matrix.h's nested {r, t} scalarizes it.
+ * s32 m[12] spelling; math/Matrix.h's nested {r, t} scalarizes it. Pinned in
+ * notes/experiments/jump3d-2711-common-first-matrix.md.
  *
  * decl_common.h is NOT included: it declares only two of these members but
  * four of the data symbols this TU reads collide with it (02141a44,
@@ -23,7 +24,9 @@
  *
  * deslop leftovers:
  * - ModelAnim::SetAnim 6az: carries Fix12<int> by value; the member form
- *   size-DIFFs. Same wall keeps the mangled spelling in
+ *   size-DIFFs (pinned in
+ *   notes/experiments/jump3d-2711-setanim-member-form.md). Same wall keeps
+ *   the mangled spelling in
  *   src/func_ov006_020c6e4c.cpp. Particle::System::NewSimple has no header
  *   decl at all.
  * - Sound::PlayBank2_2D / Sound_PlayBank1Panned / func_02012718: no header
@@ -41,11 +44,21 @@
  *   plain `bl` from a still-unpromoted `.c` shard below the run (12 sites in
  *   seven shards). A C shard can declare the mangled symbol, so this is a
  *   migration dependency on those shards and their TU configuration, not an
- *   inability to name the member; converting them is deferred work this PR
- *   does not reserve. The labels are inferred, not original spellings.
- * - Four measured load-bearing spellings, each commented at its site: the
- *   int* Mtx zeroing (7734), flag reuse (StateHold), the volatile v[2]
- *   store (StateMove), the int t temp (87d0).
+ *   inability to name the member. Deferred with partial scope: the eight
+ *   members, the seven shards and the twelve call sites are enumerated in
+ *   tangosdev/sm64ds-decomp issue #2722, which owns that migration and its
+ *   next owner. This PR reserves none of it. The labels are inferred, not
+ *   original spellings.
+ * - Four measured load-bearing spellings, each commented at its site and
+ *   each with its pinned experiment named there: the int* Mtx zeroing
+ *   (7734), flag reuse (StateHold), the volatile v[2] store (StateMove),
+ *   the int t temp (87d0). EnterHit's earlier Pair/select spelling was
+ *   measured inert and replaced by the plain pointer-to-member assignment
+ *   every other record already used
+ *   (notes/experiments/jump3d-2711-enterhit-pmf-assign.md).
+ * - One retained substitution: the plain Jump3DVec scratch in EnterHold and
+ *   the Jump3DVec members it matches. Partial scope, pinned at its site and
+ *   in include/dMgJump3DMario_c.h.
  */
 
 #pragma defer_codegen off
@@ -244,10 +257,11 @@ void func_ov006_020c7734(char *c)
         r2res = -func_02053200((data_02082214[(g >> 4) * 2 + 1] >> 2) + 0x1000);
 
         /* Zeroed THROUGH `int *`, not through m.a..m.d.  MEASURED: writing the
-           named members instead costs 11 words.  Why, is a reading and not a
-           measurement -- the extra words look like a spill of a struct mwccarm
-           had kept in registers, for the Matrix2x2 argument below -- so trust
-           the 11 and not the explanation. */
+           named members instead costs 11 words, reproduced exactly by
+           notes/experiments/jump3d-2711-mtx-intptr-zeroing.md.  Why, is a
+           reading and not a measurement -- the extra words look like a spill
+           of a struct mwccarm had kept in registers, for the Matrix2x2
+           argument below -- so trust the 11 and not the explanation. */
         int *mp = (int *)&m;
         mp[0] = 0; mp[1] = 0; mp[2] = 0; mp[3] = 0;
         m.d = r2res;
@@ -327,7 +341,9 @@ void dMgJump3DMario_c::StateHold()
     }
     if (flag != 0) {
         /* Reusing `flag` as the scratch is load-bearing, not leftover: reading
-           the table straight into `b` and leaving `flag` alone costs 5 words. */
+           the table straight into `b` and leaving `flag` alone costs 5 words,
+           reproduced exactly by
+           notes/experiments/jump3d-2711-statehold-flag-reuse.md. */
         flag = data_020a0deb[idx][0];
         int b = flag;
         int x = mScreenY - 0x20;
@@ -380,9 +396,14 @@ void dMgJump3DMario_c::StateHold()
 // @symbol _ZN16dMgJump3DMario_c9EnterHoldEv
 void dMgJump3DMario_c::EnterHold()
 {
-    /* Plain Jump3DVec, not types.h's Vector3: Vector3 declares an empty
-       destructor, so an object of it would odr-use `_ZN7Vector3D1Ev` and add
-       a compiler-only row for nothing. */
+    /* Plain Jump3DVec, not types.h's Vector3. MEASURED and pinned in
+       notes/experiments/jump3d-2711-scratch-vector3.md: the Vector3 spelling
+       leaves this member byte-identical, so a per-function compare cannot
+       see the wall at all -- but the TU then defines `_ZN7Vector3D1Ev`, no
+       compiler_only_output row in
+       config/tu_manifest.d/ov006/dMgJump3DMario_c.json licenses that symbol,
+       and packaging refuses the emission. Retained substitution, accepted as
+       partial scope alongside issue #2722. */
     Jump3DVec v;
 
     Vec3_Sub(&v, &mPos, &mAnchor);
@@ -448,12 +469,16 @@ void dMgJump3DMario_c::StateMove()
                     int t1 = (-az) << 12;
                     v[0] = t0;
                     v[1] = t1;
-                    /* The volatile round-trip is load-bearing.  MEASURED:
+                    /* The volatile round-trip is load-bearing.  MEASURED and
+                       pinned in
+                       notes/experiments/jump3d-2711-statemove-volatile-store.md:
                        writing a plain `v[2] = 0;` rewrites the whole 0x3c4-byte
-                       member, with 4 relocation destinations wrong.  The stack
+                       member, size 0x3c4 against 0x3a8.  That candidate differs
+                       in size, so the run prints no per-word lines: the stack
                        demotion of v[] and the NewSimple() argument load order
-                       below are a reading of that diff, not a separate
-                       measurement. */
+                       below are a reading of the shape, and the relocation
+                       count an earlier version of this comment gave is NOT
+                       measured by the pin. */
                     *(volatile int *)&v[2] = 0;
                     mVel.y = *p;
                     mVel.x = data_ov006_0213b01c * dx;
@@ -760,7 +785,8 @@ int func_ov006_020c87d0(char *c)
     dMgJump3DMario_c *o = (dMgJump3DMario_c *)c;
 
     /* `t` is load-bearing, not a leftover: folding the comparison into the
-       `if` below rewrites the whole 0x16c-byte function. */
+       `if` below rewrites the whole 0x16c-byte function, size 0x16c against
+       0x160.  Pinned in notes/experiments/jump3d-2711-87d0-int-temp.md. */
     int t;
 
     if (func_020179b4(&data_ov006_02140450, &o->mModelAnim, 1) == 0)

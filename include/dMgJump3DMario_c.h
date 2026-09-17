@@ -21,9 +21,16 @@
  * address-derived (RTTI proves ownership and slot order, not spelling).
  */
 
-/* Three 20.12 words. Plain on purpose: types.h's Vector3 declares an (empty)
- * destructor, which would make C1/D1 emit _ZN7Vector3D1Ev calls the ROM
- * structors do not have. */
+/* Three 20.12 words. Plain on purpose, and the reason is measured rather than
+ * assumed -- notes/experiments/jump3d-2711-members-vector3.md. types.h's
+ * Vector3 declares an (empty) destructor, but swapping these members to it
+ * leaves D1, C1 and EnterHold byte-identical: no member-destructor call is
+ * emitted anywhere measured, so a per-function compare sees nothing. What it
+ * does do is make this TU define _ZN7Vector3D1Ev, which no
+ * compiler_only_output row in
+ * config/tu_manifest.d/ov006/dMgJump3DMario_c.json licenses, and packaging
+ * then refuses the emission. Retained substitution, accepted as partial scope
+ * alongside issue #2722. */
 struct Jump3DVec { s32 x, y, z; };
 
 struct dMgJump3DMario_c;
@@ -81,9 +88,12 @@ struct dMg3DHeyhoObjAdapter_c {
  * a plain `bl` from a still-unpromoted `.c` shard below the run, and while a C
  * shard cannot name a C++ member by its source spelling, it can declare the
  * mangled linker symbol, as this tree does elsewhere. Converting them means
- * rewriting those call sites and their TU configuration, which this PR does
- * not reserve. The `func_ov006_*` names are inferred labels and carry no claim
- * about the original spellings. See src/actors/dMgJump3DMario_c.cpp.
+ * rewriting those twelve call sites in seven shards and their TU
+ * configuration. That work is deferred with partial scope and tracked in
+ * tangosdev/sm64ds-decomp issue #2722, which enumerates the eight members,
+ * the seven shards and every call site, and carries its next owner; this PR
+ * reserves none of it. The `func_ov006_*` names are inferred labels and carry
+ * no claim about the original spellings. See src/actors/dMgJump3DMario_c.cpp.
  */
 struct dMgJump3DMario_c : dMg3DHeyhoObjAdapter_c {
     dMgJump3DMario_c();
