@@ -3429,6 +3429,8 @@
     "src/actors/daGmch_c.cpp#_ZN8daGmch_c8SetStateEi": "tangosdev",
     "src/actors/daGmch_c.cpp#_ZN8daGmch_cD0Ev": "tangosdev",
     "src/actors/daGmch_c.cpp#_ZN8daGmch_cD1Ev": "tangosdev",
-    "src/actors/daGmch_c.cpp#daGmch_c_classInit": "tangosdev"
+    "src/actors/daGmch_c.cpp#daGmch_c_classInit": "tangosdev",
+    "src/game/actors/d_a_obj_c1_hikari.cpp#_ZN15daObjC1Hikari_c20UpdateModelTransformEv": "tangosdev",
+    "src/game/actors/d_a_obj_c1_hikari.cpp#daObjC1Hikari_c_classInit": "tangosdev"
   }
 }
