@@ -6,17 +6,27 @@
  * BAKUBAKU registry). Retail does not store that spelling.
  *
  * deslop
- * Leftover: func_ov032_02111254..02112044 are this TU's own
- *   state/helper bodies; the ROM symbols are still the func_ov
- *   labels. Naming them as C++ methods would emit _ZN12daBakubaku_c*
- *   and miss those labels.
+ * Leftover: func_ov032_02111254..02112044 are written free here, and
+ *   that is a reconstruction choice, not a deduction. The image preserves
+ *   no original mangled symbol table, so the func_ov labels are
+ *   address-derived repository names; the exact historical function
+ *   spellings remain unknown, and an existing label is not a barrier to a
+ *   member -- a migration renames source and config together. Ownership
+ *   evidence: all 15 are defined in this file, 14 take daBakubaku_c *self
+ *   as their first parameter, and no other TU or header names one. The
+ *   exception is 02111ff4, whose (void *, void *) state-table shape does
+ *   not by itself say which class owns it. Migration scope: this file plus
+ *   the ov032 symbols.txt rows. Until then the original ownership and form
+ *   stay uncertain.
  * Leftover: Klass is daBakubaku_c (no PMF ICE on 2004/b56).
  *   Tables are { PMF enter; PMF main }, 0x10 apart
  *   (a7c/a8c/a9c/aac/abc). mState is a pointer to one entry.
  * Leftover: ModelAnim::SetAnim, dCcAcPos_c::Init, DropShadowRadHeight
  *   and Player::Hurt stay mangled (Fix12-by-value, wall 6az).
- *   dBgCh_Actr::Init stays mangled: header Fix12i mangles as int;
- *   ROM is Fix12<int> (method form links Undefined).
+ *   dBgCh_Actr::Init stays mangled: types.h makes Fix12i a plain s32, so
+ *   a member-form call mangles that argument as int, while the arm9
+ *   symbols.txt row spells it 5Fix12IiE. That link failure is NOT YET
+ *   MEASURED: no full mwldarm link of the member form has been run.
  * Leftover: common.h must be first. Nested Matrix.h spelling
  *   scalarizes the 12-word mat4x3 / mShadowMat copies.
  * Leftover: decl_common.h is here because 02113a48 / 02113a50 /

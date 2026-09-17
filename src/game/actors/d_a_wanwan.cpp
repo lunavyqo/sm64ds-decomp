@@ -8,9 +8,20 @@
  * registry). Retail does not store that spelling.
  *
  * deslop
- * Leftover: func_ov014_02111484..02112788 are this TU's own helpers;
- *   the ROM symbols are still the func_ov labels. Naming them as C++
- *   methods would emit _ZN10daWanwan_c* and miss those labels.
+ * Leftover: func_ov014_02111484..02112788 are written free here, and
+ *   that is a reconstruction choice, not a deduction. The image preserves
+ *   no original mangled symbol table, so the func_ov labels are
+ *   address-derived repository names; the exact historical function
+ *   spellings remain unknown, and an existing label is not a barrier to a
+ *   member -- a migration renames source and config together. Ownership
+ *   evidence is thinner here than a typed receiver would give: all 22 are
+ *   defined in this file and each takes the object first, but spelled
+ *   char*, void* or u8*, so the receiver type is assumed, not recovered.
+ *   Migration scope: this file, the 02111fb8 declaration in daWanwan_c.h,
+ *   the 02111ebc declaration in decl_common.h, and the ov014 symbols.txt
+ *   rows. (02112ea8 is outside this range, is not defined here, and is
+ *   shared with the wanwan-shutter TU.) Until then the original ownership
+ *   and form stay uncertain.
  * Leftover: dCcAcPos_c::Init and DropShadowRadHeight stay mangled
  *   (Fix12-by-value, wall 6az).
  * Leftover: SharedFilePtr has no recovered layout. Init's

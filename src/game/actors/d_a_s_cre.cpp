@@ -10,8 +10,8 @@
  * registry). Retail does not store that spelling.
  *
  * deslop
- * Leftover: Pos() is a leaf overlay of mPosX/Y/Z. dActor_c::Pos() is
- *   #2513, not this branch.
+ * Leftover: Pos() is a leaf overlay of mPosX/Y/Z. The shared
+ *   dActor_c::Pos() boundary is issue #2566, not this branch.
  */
 
 #include "daSCre_c.h"

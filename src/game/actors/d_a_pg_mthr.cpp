@@ -11,17 +11,24 @@
  *   that is a reconstruction choice, not a deduction. The image preserves
  *   no original mangled symbol table, so the func_ov labels are
  *   address-derived repository names; the exact historical function
- *   spellings remain unknown. All four are defined in this file, take the
- *   object as their first parameter, and are called only from inside it
- *   (one extern decl also lives in decl_common.h) -- worth narrowing to
- *   real daPgMthr_c members later by renaming source and config together.
- *   Until then the original ownership and form stay uncertain.
+ *   spellings remain unknown. Ownership evidence: all 15 helpers in that
+ *   range are defined in this file, each takes the object as its first
+ *   parameter (spelled char*, void*, dActor_c* or daPgMthr_c*), and no
+ *   other TU calls one. Migration scope, if they are later narrowed to
+ *   real daPgMthr_c members: this file, the two in-range declarations in
+ *   decl_common.h (02111bf0 and 021123d0), the 02111bf0 declaration in
+ *   SurfaceInfo.h, and the ov018 symbols.txt rows -- source and config
+ *   rename together. Until then the original ownership and form stay
+ *   uncertain.
  * Leftover: ModelAnim::SetAnim, TextureSequence::SetFile,
  *   dCcAc_c::Init, DropShadowRadHeight stay mangled (Fix12-by-value
  *   method form size-DIFF: SetAnim 0x58->0x64, Init 0x1ac->0x1c4,
- *   DropShadow 0x100->0x110). dBgCh_Actr::Init stays mangled: header
- *   Fix12i mangles as int; ROM is Fix12<int> (method form links
- *   Undefined).
+ *   DropShadow 0x100->0x110). dBgCh_Actr::Init stays mangled: types.h
+ *   makes Fix12i a plain s32, so a member-form call mangles that
+ *   argument as int, while the arm9 symbols.txt row spells it 5Fix12IiE
+ *   -- the member form would reference a name no config row defines.
+ *   That link failure is NOT YET MEASURED: no full mwldarm link of the
+ *   member form has been run, and match.py cannot decide it.
  * Leftover: common.h must be first. 02111d28 copies Matrix4x3 as
  *   twelve uniform words; the nested Matrix.h spelling scalarizes.
  * Leftover: BMD/BCA/BTP handles still data_ov018_*; decl_common

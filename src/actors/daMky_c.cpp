@@ -9,9 +9,13 @@
  * to the cartridge spelling in the commit before this one.
  *
  * deslop
- * Leftover: func_ov030_* helpers stay those ROM labels (tick PMFs and
- *   free functions). EnterState0..10 are already members; do not coin
- *   names for the rest.
+ * Leftover: func_ov030_* helpers stay those address-derived repository
+ *   labels (tick PMFs and free functions). The image preserves no original
+ *   mangled symbol table, so the labels are not evidence that these were
+ *   free functions, and their original spellings are unknown.
+ *   EnterState0..10 are already members; do not coin names for the rest.
+ *   0211124c is not this TU's: it is defined in src/func_ov030_0211124c.cpp
+ *   and is also called from daObjHmBskt_c::Behavior.
  * Leftover: SetAnim / dCcAc_c::Init / dBgCh_Actr::Init /
  *   DropShadowRadHeight / IsTooFarAwayFromPlayer stay mangled
  *   (Fix12-by-value, 6az; dBgCh Init header Fix12i mangles as int).
@@ -1559,7 +1563,7 @@ int func_ov030_021136b0(char *c)
 
 
     extern void _ZN8SaveData13PlayerLoseCapEv(void);
-    /* ROM symbol is Vector3_16 (not Vector3s) — wrong mangling left this BLIND and broke mwldarm. */
+    /* The arm9 symbols.txt row spells this Vector3_16 (not Vector3s) — a wrong mangling here left the reloc BLIND and broke mwldarm. */
     extern void *_ZN8dActor_c5SpawnEjjRK7Vector3PK10Vector3_16as(
         u32 actorID, u32 param1, const Vector3 *pos,
         const void *rot, int areaID, int deathTableID);
