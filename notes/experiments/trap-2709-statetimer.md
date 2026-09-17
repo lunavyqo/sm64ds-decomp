@@ -6,7 +6,10 @@
   spells mStateTimer twice on purpose (this+0x14c, then this+0x100 plus 0x4c)
   because unifying them shares one address computation and comes out one
   instruction short (0x88, not 0x8c).
-- attempted_change (scratch-applied, then reverted):
+- disposition: fixed (the disproved constraint was removed from the source;
+  no compiler constraint is retained here).
+- attempted_change (measured as a scratch, since ADOPTED on the branch by
+  1477adc72 -- the source below is the shipped spelling, not a reverted probe):
 
 ```diff
      u16 *ctr = &mStateTimer;
@@ -29,8 +32,12 @@
 - result: baseline MATCH; variant MATCH (confirmed on two consecutive runs
   with the scratch applied). The compiler keeps the two address computations
   apart even when both sites name mStateTimer, so the dual spelling is not
-  load-bearing. Left in place per the do-not-fix rule; the branch comment
-  over-claims.
+  load-bearing, and the "one instruction short (0x88, not 0x8c)" claim is false.
+- follow-through: 1477adc72 adopted the unified spelling and deleted the
+  claim from the source comment, so this entry now describes the SHIPPED
+  form. Reverified at head 1477adc72 (plus the comment-only correction in
+  this commit): `linkcheck.py --name _ZN11daTrsTrap_c8BehaviorEv --module
+  ov063 --addr 0x0211ce74 --size 0x8c` returns VERIFIED, diffs [], blind 0.
 - log (variant):
 
 ```text
@@ -41,4 +48,4 @@ TARGET _ZN11daTrsTrap_c8BehaviorEv @ 0x0211ce74 size 0x8c  bytes: 30402de904d04d
 MATCHING VERSIONS: 2004/b56
 ```
 
-- verdict: DISPROVED
+- verdict: DISPROVED -- and the disproved spelling is no longer in the source.

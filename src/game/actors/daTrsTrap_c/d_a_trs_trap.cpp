@@ -95,7 +95,7 @@ void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
  *     front of the preheader; unnamed, LICM hoists it in first-use order and
  *     lands it where the ROM has it.
  *   - v16's three fields are written x, y, z in that order; any other order
- *     swaps the two strh at +0x29c/+0x2a0. */
+ *     swaps the two strh at +0x2a0/+0x2a4. */
 int daTrsTrap_c::InitResources()
 {
     char *c = (char *)this;

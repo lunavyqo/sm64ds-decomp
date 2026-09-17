@@ -8,6 +8,9 @@
   forward-declared class; under 2004/b56 the real class gives byte-identical
   bodies and relocation records. ALREADY FIXED on this branch, so there is no
   cleaner spelling to attempt -- this entry records the baseline as green.
+- disposition: fixed. TRAP-2709-01 was corrected on this branch by 395312cb4
+  (fake `struct C` receiver removed) and the false representation claim was
+  deleted with it; no compiler constraint is retained here.
 - attempted_change: none (verification of current branch state only).
 
 ```diff

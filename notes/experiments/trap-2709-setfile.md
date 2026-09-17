@@ -6,6 +6,9 @@
   TU-local spelling of dBgW_KcMbg::SetFile because its signature carries
   Fix12<int> by value (wall 6az; `include/dBgW_KcMbg.h:68-69`), so the method
   form size-DIFFs.
+- disposition: compiler_constraint. The cleaner alternative (the real
+  `dBgW_KcMbg::SetFile` method form) was measured under 2004/b56 and is
+  size-wrong; this entry is the pinned experiment and durable artifact.
 - attempted_change (scratch-applied, then reverted):
 
 ```diff

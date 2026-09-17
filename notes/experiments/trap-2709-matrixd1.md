@@ -7,6 +7,11 @@
   _ZN9Matrix4x3D1Ev over mClsnMat, licensed as deadstrip in this TU's manifest
   entry. No compile experiment applies (packaging disposition, not codegen),
   so this entry records the license row.
+- disposition: compiler_constraint (packaging form). No source-side alternative
+  exists to measure -- the symbol is emitted while lowering a synthesized ctor --
+  so the durable artifact is the committed `compiler_only_output` license row
+  quoted below rather than a compile log. The reviewer decides whether that
+  substitution is acceptable or the entry must be re-labelled `deferred`.
 - attempted_change: none (packaging check only).
 
 ```diff

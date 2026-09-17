@@ -5,6 +5,9 @@
 - claim: `src/game/actors/daTrsTrap_c/d_a_trs_trap.cpp:98-99` writes v16's
   three fields x, y, z in that order because any other order swaps the two
   strh (notes/mwccarm-codegen.md 6v).
+- disposition: compiler_constraint. The cleaner alternative (any other field
+  order) was measured under 2004/b56 and swaps the two strh; this entry is the
+  pinned experiment and durable artifact.
 - attempted_change (scratch-applied, then reverted):
 
 ```diff
@@ -24,8 +27,8 @@
 ```
 
 - result: baseline MATCH; variant 2 word(s) differ, same size. The y/z swap
-  exchanges the two strh (+0x2a0/+0x2a4; the comment says +0x29c/+0x2a0, off
-  by one slot -- the phenomenon is exactly as described). Control probe: a
+  exchanges the two strh (+0x2a0/+0x2a4; the source comment said +0x29c/+0x2a0
+  and has been corrected to the measured offsets). Control probe: a
   grouped same-order spelling (x, y, z consecutive, `even = j` moved after)
   still MATCHES, so the load-bearing part is the field order, not the
   interleaving. (--brief with equal sizes prints the full per-word table;

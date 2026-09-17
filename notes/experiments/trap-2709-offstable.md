@@ -6,6 +6,9 @@
   offset table by SYMBOL at the use site, never through a named local, because
   naming it makes LICM hoist it to the front of the preheader instead of
   first-use order (notes/mwccarm-codegen.md 6v).
+- disposition: compiler_constraint. The cleaner alternative (a named local for
+  the table base) was measured under 2004/b56 and moves the table load; this
+  entry is the pinned experiment and durable artifact.
 - attempted_change (scratch-applied, then reverted):
 
 ```diff
