@@ -2461,7 +2461,7 @@
    "src/_ZN13KoopaTheQuick13InitResourcesEv.cpp": ["param:#2 void *", "param:#5 void *"],
    "src/_ZN13MontyMoleRock13InitResourcesEv.cpp": ["param:#2 void *", "return:int"],
    "src/_ZN13PrincessPeach13InitResourcesEv.cpp": ["param:#2 dActor_c *", "param:#5 Vector3_16 *", "param:#6 Vector3_16 *"],
-   "src/_ZN13RacingPenguin13InitResourcesEv.cpp": ["param:#2 void *", "param:#5 void *"],
+   "src/_ZN10daPgRcer_c13InitResourcesEv.cpp": ["param:#2 void *", "param:#5 void *"],
    "src/_ZN13daObjHmBskt_c13InitResourcesEv.cpp": ["param:#2 dActor_c *", "param:#5 Vector3_16 *", "param:#6 Vector3_16 *"],
    "src/_ZN15RollingIronBall13InitResourcesEv.cpp": ["param:#2 void *", "param:#5 void *"],
    "src/_ZN15daObjMarioCap_c13InitResourcesEv.cpp": ["param:#2 void *", "param:#5 void *", "param:#6 void *"],
@@ -11658,10 +11658,10 @@
    "src/__sinit_ov018_02112e00.c": ["return:int []"]
   },
   "data_ov019_0211277c": {
-   "src/_ZN13RacingPenguin16CleanupResourcesEv.cpp": ["return:SharedFilePtr * []"]
+   "src/_ZN10daPgRcer_c16CleanupResourcesEv.cpp": ["return:SharedFilePtr * []"]
   },
   "data_ov019_02112788": {
-   "src/_ZN13RacingPenguin16CleanupResourcesEv.cpp": ["return:SharedFilePtr * []"]
+   "src/_ZN10daPgRcer_c16CleanupResourcesEv.cpp": ["return:SharedFilePtr * []"]
   },
   "data_ov019_02113460": {
    "src/__sinit_ov019_021127a4.c": ["return:void *"]
@@ -11686,7 +11686,7 @@
    "src/__sinit_ov019_021127a4.c": ["return:void *"]
   },
   "data_ov019_02113498": {
-   "src/_ZN13RacingPenguin16CleanupResourcesEv.cpp": ["return:SharedFilePtr"]
+   "src/_ZN10daPgRcer_c16CleanupResourcesEv.cpp": ["return:SharedFilePtr"]
   },
   "data_ov019_021134a0": {
    "src/__sinit_ov019_021127a4.c": ["return:void *"]
