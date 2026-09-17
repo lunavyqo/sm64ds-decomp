@@ -2,9 +2,17 @@
 
 - tested_commit: 9d3c80dd2 (cleanup-leftover-overlay-batch-3 at experiment time)
 - compiler: mwccarm 2004/b56 (tools/mwccarm/2004/b56/mwccarm.exe)
-- claim: `src/game/actors/d_a_tree.cpp:196-199` keeps `out` as `int[3]`
-  because a stack `Vector3`'s inline dtor emits `Vector3D1`, which the
-  production isolate refuses as unlicensed content.
+- claim: `src/game/actors/d_a_tree.cpp` keeps `out` as `int[3]` because a
+  stack `Vector3` odr-uses the type and mwccarm re-emits its vague-linkage
+  `Vector3D1`, which the production isolate refuses as unlicensed content.
+- CLASSIFICATION (corrected after source review BATCH3-2707-01): this is an
+  ownership/manifest dependency, NOT the compiler being unable to emit
+  matching code -- the function reproduces byte-for-byte either way. The
+  wording quoted in the diff below, "this TU has no compiler_only_output
+  row", was wrong: `config/tu_manifest.d/ov002/daTree_c.json` exists and
+  already carries nine `compiler_only_output` rows. What it lacks is a
+  `deadstrip-duplicate` row for `_ZN7Vector3D1Ev`, and
+  `config/tu_manifest.d/ov002/da1up_c.json` already shows that row's shape.
 - attempted_change (scratch-applied, then reverted):
 
 ```diff
@@ -79,4 +87,7 @@ DEFINED FUNC SYMBOLS:
 PRODUCTION _isolate verdict: OK (no error)
 ```
 
-- verdict: CONSTRAINT SUPPORTED
+- verdict: MEASUREMENT SUPPORTED; disposition `deferred`, `completion:
+  partial`, follow-up issue #2748, next owner unassigned/adoptable. NOT a
+  `compiler_constraint`: the natural spelling matches and only the license
+  row is missing.

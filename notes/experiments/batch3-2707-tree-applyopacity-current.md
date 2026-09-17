@@ -26,4 +26,10 @@ TARGET _ZN8daTree_c6RenderEv @ 0x020ec0a4 size 0x134  bytes: f04f2de91cd04de2101
 MATCHING VERSIONS: 2004/b56
 ```
 
+- note: this file only confirms the function is green with the extern in
+  place. The evidence that the third word IS a parameter -- the 25-site
+  call-site census, the ROM-wide base-rate control and the two
+  register-copy sites the review asked about -- is in
+  `batch3-2707-tree-applyopacity-census.md`.
+
 - verdict: VERIFIED-CURRENT

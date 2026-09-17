@@ -16,7 +16,12 @@
  * Leftover: cstd::atan2 / dBgActor_c::IsClsnInRangeOnScreen stay TU-local
  *   mangled scalars (Fix12<int> by value, wall 6az; types.h).
  * Leftover: func_020393a4 is an 8-byte store into dBgW+0x0c (d_a_obj_emm_log
- *   finding); naming belongs with dBgW in arm9.
+ *   finding); naming belongs with dBgW in arm9. Its parameter is spelled
+ *   dBgW_KcMbg * because that is what dBgActor_c::mMeshCollider is declared as
+ *   in include/dBgActor_c.h, so the call needs no upcast; daObjPathLift_c.cpp
+ *   already spells it the same way. The three dBgW * spellings elsewhere name
+ *   a base of that type, and the definition in src/func_020393a4.c still says
+ *   int *.
  * Leftover: sine table data_02082214 (arm9).
  * Leftover: mBobPhase's second spelling ((char *)this + 0x300, + 0x38):
  *   collapsing it to one member access lets mwcc reuse the loaded value

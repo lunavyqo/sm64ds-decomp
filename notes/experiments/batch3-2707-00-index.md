@@ -9,13 +9,18 @@
 
 Mandatory claims:
 
-- tree-render-vector3-out: SUPPORTED (body MATCHes; +_ZN7Vector3D1Ev refused by production _isolate)
+- tree-render-vector3-out: DEFERRED, completion: partial, issue #2748 (body
+  MATCHes; +_ZN7Vector3D1Ev refused by production _isolate -- an
+  ownership/manifest dependency, NOT a codegen constraint)
 - sldmng-playsub-method: SUPPORTED (0xa4 -> 0xb4 re-measured; file text says 0xb8)
 - warpkun-isplayer-fold: SUPPORTED (0xb4 -> 0xa8)
 - floatboard-bobphase-collapse: SUPPORTED (0x20c -> 0x208)
 - soundobj-loopinvariants: SUPPORTED (0x14c -> 0x15c without the pragma)
 - tree-dccpos-init-6az: SUPPORTED (0x100 -> 0x118)
 - tree-applyopacity-current: VERIFIED-CURRENT (Render MATCHes, no attempted_change)
+- tree-applyopacity-census: PARAMETER CONFIRMED (25/25 ROM call sites set r2
+  against a 33.4% base rate; the two register-copy sites carry a constant 0,
+  not a live value -- answers BATCH3-2707-01)
 
 Remaining compiler-testable Leftovers:
 

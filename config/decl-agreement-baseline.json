@@ -8602,7 +8602,7 @@
    "src/game/actors/WingFeather/_ZN11WingFeather13InitResourcesEv.cpp": ["return:char *"],
    "src/game/actors/d_a_set_se.cpp": ["return:Camera *"],
    "src/game/actors/d_a_star_gate.cpp": ["return:Camera *"],
-   "src/game/actors/d_a_tree.cpp": ["return:CamState *"],
+   "src/game/actors/d_a_tree.cpp": ["return:Camera *"],
    "src/unnamed/ov063/func_ov063_02117b0c.c": ["return:char *"]
   },
   "data_0209f31c": {
