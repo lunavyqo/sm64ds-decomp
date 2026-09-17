@@ -36,9 +36,11 @@
  *   dBgW_KcMbg::SetFile stay mangled free declarations (wall 6az: the
  *   ROM signatures carry Fix12<int> by value; the header method forms
  *   home differently).
- * - dActor_c::DropShadowRadHeight/ScaleXYZ stay mangled (6az, daBmb's
- *   leftover); Animation::Advance keeps the free form (the member goes
- *   through the thunk, daBmb's leftover) with an (Animation *) upcast arg.
+ * - dActor_c::DropShadowRadHeight/ScaleXYZ stay mangled (wall 6az):
+ *   Fix12<int> is a bare aggregate, so the member form must materialize
+ *   every argument and func_ov063_0211d5f4 grows 0x234 -> 0x29c; the
+ *   literal spelling does not compile at all. Measured, not assumed --
+ *   notes/experiments/piano-2712-dropshadow-advance.md.
  * - func_ov063_* helpers keep their ROM labels (true names unknown) and
  *   the C-origin ones keep PianoVec3 locals: Vector3's inline dtor
  *   would emit _ZN7Vector3D1Ev (S3). Volatile reloads and sine taps are
@@ -387,7 +389,6 @@ void func_ov063_0211d8cc(daPiano_c* self)
     extern s16 Vec3_HorzAngle(const PianoVec3* v0, const PianoVec3* v1);
     extern int _Z14ApproachLinearRsss(s16& v, s16 target, s16 step);
     extern void func_ov063_0211ddac(daPiano_c* c, int state);
-    extern void _ZN9Animation7AdvanceEv(Animation* a);
 
     extern s16 data_02082214[];   /* sine table: (angle >> 4) * 2 taps sin/cos */
 
@@ -463,7 +464,7 @@ void func_ov063_0211d8cc(daPiano_c* self)
         }
     }
 
-    _ZN9Animation7AdvanceEv((Animation*)&self->mModelAnim);
+    self->mModelAnim.Advance();
 
     x = self->mPosX;
     proj.x = x;
