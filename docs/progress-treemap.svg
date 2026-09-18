@@ -13073,11 +13073,11 @@ matched: yes</title></rect><rect x="460.26" y="84.02" width="50.77" height="1.15
 module: ov002
 addr: 0x020b2b48
 size: 88 bytes
-matched: yes</title></rect><rect x="511.03" y="84.02" width="41.54" height="1.15" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN11WingFeatherD1Ev
+matched: yes</title></rect><rect x="511.03" y="84.02" width="41.54" height="1.15" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN11daFeather_cD1Ev
 module: ov002
 addr: 0x020b2ba0
 size: 72 bytes
-matched: yes</title></rect><rect x="552.57" y="84.02" width="53.08" height="1.15" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN11WingFeatherD0Ev
+matched: yes</title></rect><rect x="552.57" y="84.02" width="53.08" height="1.15" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN11daFeather_cD0Ev
 module: ov002
 addr: 0x020b2be8
 size: 92 bytes
@@ -13085,19 +13085,19 @@ matched: yes</title></rect><rect x="354.10" y="85.18" width="39.12" height="8.37
 module: ov002
 addr: 0x020b2c44
 size: 492 bytes
-matched: yes</title></rect><rect x="393.22" y="85.18" width="2.86" height="8.37" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN11WingFeather16CleanupResourcesEv
+matched: yes</title></rect><rect x="393.22" y="85.18" width="2.86" height="8.37" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN11daFeather_c16CleanupResourcesEv
 module: ov002
 addr: 0x020b2e30
 size: 36 bytes
-matched: yes</title></rect><rect x="396.08" y="85.18" width="5.72" height="8.37" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN11WingFeather6RenderEv
+matched: yes</title></rect><rect x="396.08" y="85.18" width="5.72" height="8.37" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN11daFeather_c6RenderEv
 module: ov002
 addr: 0x020b2e54
 size: 72 bytes
-matched: yes</title></rect><rect x="401.80" y="85.18" width="50.88" height="8.37" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN11WingFeather8BehaviorEv
+matched: yes</title></rect><rect x="401.80" y="85.18" width="50.88" height="8.37" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN11daFeather_c8BehaviorEv
 module: ov002
 addr: 0x020b2e9c
 size: 640 bytes
-matched: yes</title></rect><rect x="452.69" y="85.18" width="23.85" height="8.37" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN11WingFeather13InitResourcesEv
+matched: yes</title></rect><rect x="452.69" y="85.18" width="23.85" height="8.37" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN11daFeather_c13InitResourcesEv
 module: ov002
 addr: 0x020b311c
 size: 300 bytes
@@ -31397,55 +31397,55 @@ matched: yes</title></rect><rect x="1402.10" y="134.22" width="4.13" height="3.4
 module: ov020
 addr: 0x021128dc
 size: 92 bytes
-matched: yes</title></rect><rect x="1402.10" y="137.65" width="4.13" height="2.69" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN12HauntedChairD1Ev
+matched: yes</title></rect><rect x="1402.10" y="137.65" width="4.13" height="2.69" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daChair_cD1Ev
 module: ov020
 addr: 0x02112938
 size: 72 bytes
-matched: yes</title></rect><rect x="1402.10" y="140.34" width="4.13" height="3.44" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN12HauntedChairD0Ev
+matched: yes</title></rect><rect x="1402.10" y="140.34" width="4.13" height="3.44" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daChair_cD0Ev
 module: ov020
 addr: 0x02112980
 size: 92 bytes
-matched: yes</title></rect><rect x="1406.23" y="134.22" width="4.71" height="9.57" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN12HauntedChair6State3Ev
+matched: yes</title></rect><rect x="1406.23" y="134.22" width="4.71" height="9.57" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daChair_c6State3Ev
 module: ov020
 addr: 0x021129dc
 size: 292 bytes
-matched: yes</title></rect><rect x="1410.94" y="134.22" width="14.77" height="9.57" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN12HauntedChair6State2Ev
+matched: yes</title></rect><rect x="1410.94" y="134.22" width="14.77" height="9.57" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daChair_c6State2Ev
 module: ov020
 addr: 0x02112b00
 size: 916 bytes
-matched: yes</title></rect><rect x="1425.70" y="134.22" width="9.09" height="9.57" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN12HauntedChair6State1Ev
+matched: yes</title></rect><rect x="1425.70" y="134.22" width="9.09" height="9.57" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daChair_c6State1Ev
 module: ov020
 addr: 0x02112e94
 size: 564 bytes
-matched: yes</title></rect><rect x="1434.80" y="134.22" width="4.90" height="4.03" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN12HauntedChair6State0Ev
+matched: yes</title></rect><rect x="1434.80" y="134.22" width="4.90" height="4.03" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daChair_c6State0Ev
 module: ov020
 addr: 0x021130c8
 size: 128 bytes
-matched: yes</title></rect><rect x="1434.80" y="138.24" width="4.90" height="5.54" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN12HauntedChair18ApproachStateValueEPsS0_isis
+matched: yes</title></rect><rect x="1434.80" y="138.24" width="4.90" height="5.54" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daChair_c18ApproachStateValueEPsS0_isis
 module: ov020
 addr: 0x02113148
 size: 176 bytes
-matched: yes</title></rect><rect x="1439.70" y="134.22" width="3.61" height="3.07" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN12HauntedChair5BreakEv
+matched: yes</title></rect><rect x="1439.70" y="134.22" width="3.61" height="3.07" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daChair_c5BreakEv
 module: ov020
 addr: 0x021131f8
 size: 72 bytes
-matched: yes</title></rect><rect x="1439.70" y="137.29" width="3.61" height="6.49" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN12HauntedChair11UpdateModelEv
+matched: yes</title></rect><rect x="1439.70" y="137.29" width="3.61" height="6.49" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daChair_c11UpdateModelEv
 module: ov020
 addr: 0x02113240
 size: 152 bytes
-matched: yes</title></rect><rect x="1443.31" y="134.22" width="3.48" height="1.59" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN12HauntedChair16CleanupResourcesEv
+matched: yes</title></rect><rect x="1443.31" y="134.22" width="3.48" height="1.59" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daChair_c16CleanupResourcesEv
 module: ov020
 addr: 0x021132d8
 size: 36 bytes
-matched: yes</title></rect><rect x="1443.31" y="135.81" width="3.48" height="1.77" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN12HauntedChair6RenderEv
+matched: yes</title></rect><rect x="1443.31" y="135.81" width="3.48" height="1.77" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daChair_c6RenderEv
 module: ov020
 addr: 0x021132fc
 size: 40 bytes
-matched: yes</title></rect><rect x="1443.31" y="137.58" width="3.48" height="6.20" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN12HauntedChair8BehaviorEv
+matched: yes</title></rect><rect x="1443.31" y="137.58" width="3.48" height="6.20" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daChair_c8BehaviorEv
 module: ov020
 addr: 0x02113324
 size: 140 bytes
-matched: yes</title></rect><rect x="1446.79" y="134.22" width="8.90" height="3.95" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN12HauntedChair13InitResourcesEv
+matched: yes</title></rect><rect x="1446.79" y="134.22" width="8.90" height="3.95" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daChair_c13InitResourcesEv
 module: ov020
 addr: 0x021133b0
 size: 228 bytes
@@ -36137,11 +36137,11 @@ matched: yes</title></rect><rect x="1551.73" y="353.04" width="6.91" height="4.4
 module: ov063
 addr: 0x0211d47c
 size: 60 bytes
-matched: yes</title></rect><rect x="1558.63" y="353.04" width="17.03" height="4.45" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN8MadPianoD1Ev
+matched: yes</title></rect><rect x="1558.63" y="353.04" width="17.03" height="4.45" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daPiano_cD1Ev
 module: ov063
 addr: 0x0211d4b8
 size: 148 bytes
-matched: yes</title></rect><rect x="1575.67" y="353.04" width="19.33" height="4.45" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN8MadPianoD0Ev
+matched: yes</title></rect><rect x="1575.67" y="353.04" width="19.33" height="4.45" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daPiano_cD0Ev
 module: ov063
 addr: 0x0211d54c
 size: 168 bytes
@@ -36185,19 +36185,19 @@ matched: yes</title></rect><rect x="1577.06" y="366.94" width="8.50" height="4.3
 module: ov063
 addr: 0x0211ddf4
 size: 72 bytes
-matched: yes</title></rect><rect x="1585.56" y="366.94" width="9.44" height="4.34" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN8MadPiano16CleanupResourcesEv
+matched: yes</title></rect><rect x="1585.56" y="366.94" width="9.44" height="4.34" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daPiano_c16CleanupResourcesEv
 module: ov063
 addr: 0x0211de3c
 size: 80 bytes
-matched: yes</title></rect><rect x="1562.42" y="371.28" width="4.84" height="4.66" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN8MadPiano6RenderEv
+matched: yes</title></rect><rect x="1562.42" y="371.28" width="4.84" height="4.66" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daPiano_c6RenderEv
 module: ov063
 addr: 0x0211de8c
 size: 44 bytes
-matched: yes</title></rect><rect x="1562.42" y="375.94" width="4.84" height="25.85" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN8MadPiano8BehaviorEv
+matched: yes</title></rect><rect x="1562.42" y="375.94" width="4.84" height="25.85" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daPiano_c8BehaviorEv
 module: ov063
 addr: 0x0211deb8
 size: 244 bytes
-matched: yes</title></rect><rect x="1567.26" y="371.28" width="19.82" height="9.82" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN8MadPiano13InitResourcesEv
+matched: yes</title></rect><rect x="1567.26" y="371.28" width="19.82" height="9.82" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN9daPiano_c13InitResourcesEv
 module: ov063
 addr: 0x0211dfac
 size: 380 bytes
