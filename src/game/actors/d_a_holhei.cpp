@@ -20,7 +20,7 @@
  * - dActor_c::DropShadowRadHeight stays mangled (same 6az). func_ov062_02116dbc
  *   and func_ov062_02116d28 are the callers.
  * - dActor_c::SpawnCoins stays mangled (same 6az). func_ov062_021163b0 calls it.
- * - dEnemyBase_c::KillByInvincibleChar (func_ov002_020ada40) stays mangled (6az).
+ * - dEnemyBase_c::KillByInvincibleChar (ov002:0x020ada40) stays mangled (6az).
  *   func_ov062_02116010 is the caller.
  * - data_ov062_0211ddf0 / dde8 / dde0 / de00 / de08 / ddf8 are this overlay's
  *   BMD/BCA SharedFilePtr handles. InitResources LoadFile/SetFile and
@@ -57,7 +57,7 @@ extern void _ZNK11SurfaceInfo12CopyNormalToER7Vector3(void* p, Vector3* v);
 extern short func_02010844(void* unused, Vector3* v, short angle);
 extern int _ZNK10dBgCh_Actr8IsOnWallEv(void* p);
 extern void *_ZN8dActor_c10FindWithIDEj(u32 id);
-extern void func_ov002_020ada40(void *c, void *v, void *a, int flag);
+extern void _ZN12dEnemyBase_c20KillByInvincibleCharERK10Vector3_16R6Player5Fix12IiE(void *c, void *v, void *a, int flag);
 extern void func_02012694(int a, void *p);
 extern int _ZN8dActor_c18HorzAngleToCPlayerEv(void *c);
 extern int _ZN6Player7TryGrabER8dActor_c(void *p, void *a);
@@ -92,7 +92,7 @@ extern char data_ov062_0211de90[];
 extern char data_ov062_0211dee0[];
 extern void _Z14ApproachLinearRiii(int* x, int target, int step);
 extern void _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(void *, ShadowModel &sm, Matrix4x3 &mtx, int a, int b, unsigned int c);
-extern Matrix4x3 data_02082128;
+extern Matrix4x3 IDENTITY_MATRIX4X3;
 extern void Matrix4x3_FromRotationY(struct Matrix4x3 *mF, s16 angY);
 extern void MulMat4x3Mat4x3(const struct Matrix4x3 *m1, const struct Matrix4x3 *m0, struct Matrix4x3 *mF);
 extern int data_ov062_0211ddf0[];
@@ -348,7 +348,7 @@ extern "C" void func_ov062_02116dbc(char* thiz)
 {
     char* c = thiz;
     { struct M12w { int w[12]; };  /* array-wrapper copy: keeps C's block copy under -lang c++ */
-      *(M12w*)(c + 0x390) = *(M12w*)&data_02082128; }
+      *(M12w*)(c + 0x390) = *(M12w*)&IDENTITY_MATRIX4X3; }
     *(int*)(c + 0x3b4) = *(int*)(c + 0x5c) >> 3;
     *(int*)(c + 0x3b8) = *(int*)(c + 0x60) >> 3;
     *(int*)(c + 0x3bc) = *(int*)(c + 0x64) >> 3;
@@ -373,7 +373,7 @@ extern "C" void func_ov062_02116dbc(char* thiz)
 extern "C" void func_ov062_02116d28(char *c)
 {
     { struct M12w { int w[12]; };  /* array-wrapper copy: keeps C's block copy under -lang c++ */
-      *(M12w*)(c + 0x390) = *(M12w*)&data_02082128; }
+      *(M12w*)(c + 0x390) = *(M12w*)&IDENTITY_MATRIX4X3; }
     char *o = *(char **)(c + 0x3f8);
     *(int *)(c + 0x3b4) = *(int *)(o + 0x5c) >> 3;
     o = *(char **)(c + 0x3f8);
@@ -883,7 +883,7 @@ void func_ov062_02116010(char *c)
         v.x = 0x1000;
         v.y = 0;
         v.z = 0;
-        func_ov002_020ada40(c, &v, a, 0);
+        _ZN12dEnemyBase_c20KillByInvincibleCharERK10Vector3_16R6Player5Fix12IiE(c, &v, a, 0);
         func_02012694(0x125, c + 0x74);
         return;
     }
