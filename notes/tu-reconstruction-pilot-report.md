@@ -1,4 +1,4 @@
-# TU reconstruction pilot — `ov045/daObjKm2_Ami_Bou_c`
+# TU reconstruction pilot — [ov045](../config/arm9/overlays/ov045/symbols.txt)/`daObjKm2_Ami_Bou_c`
 
 **What this is:** the read-only experiment described in
 [`translation-unit-reconstruction-plan.md`](translation-unit-reconstruction-plan.md)
@@ -44,16 +44,20 @@ near `promoted`. See §7 for what stands between the two.
 
 Before and after, the seven untouched legacy files were re-verified with
 `build_pin.verify` under their pinned compiler, so a green merged result cannot be
-an environment artefact:
+an environment artefact. They are listed here **by symbol**: each was a
+one-function source under `src/`, and the promotion this note describes has since
+folded all seven into
+[src/game/actors/d_a_obj_km2_ami_bou.cpp](../src/game/actors/d_a_obj_km2_ami_bou.cpp),
+so the per-function paths the run printed no longer exist in the tree.
 
 ```python
-OK    legacy/_ZN18daObjKm2_Ami_Bou_cD1Ev.cpp                       2004/b56
-OK    legacy/_ZN18daObjKm2_Ami_Bou_cD0Ev.cpp                       2004/b56
-OK    legacy/_ZN18daObjKm2_Ami_Bou_c16CleanupResourcesEv.cpp       2004/b56
-OK    legacy/_ZN18daObjKm2_Ami_Bou_c6RenderEv.cpp                  2004/b56
-OK    legacy/_ZN18daObjKm2_Ami_Bou_c8BehaviorEv.cpp                2004/b56
-OK    legacy/_ZN18daObjKm2_Ami_Bou_c13InitResourcesEv.cpp          2004/b56
-OK    legacy/daObjKm2_Ami_Bou_c_Spawn.c                           2004/b56
+OK    _ZN18daObjKm2_Ami_Bou_cD1Ev                       2004/b56
+OK    _ZN18daObjKm2_Ami_Bou_cD0Ev                       2004/b56
+OK    _ZN18daObjKm2_Ami_Bou_c16CleanupResourcesEv       2004/b56
+OK    _ZN18daObjKm2_Ami_Bou_c6RenderEv                  2004/b56
+OK    _ZN18daObjKm2_Ami_Bou_c8BehaviorEv                2004/b56
+OK    _ZN18daObjKm2_Ami_Bou_c13InitResourcesEv          2004/b56
+OK    daObjKm2_Ami_Bou_c_Spawn                          2004/b56
 ```
 
 ---
@@ -62,7 +66,7 @@ OK    legacy/daObjKm2_Ami_Bou_c_Spawn.c                           2004/b56
 
 | | |
 | --- | --- |
-| Candidate | `ov045` / `daObjKm2_Ami_Bou_c`, RTTI name `daObjKm2_Ami_Bou_c` |
+| Candidate | [ov045](../config/arm9/overlays/ov045/symbols.txt) / `daObjKm2_Ami_Bou_c`, RTTI name `daObjKm2_Ami_Bou_c` |
 | Span | `.text` `0x0211150c`–`0x02111840`, 7 functions |
 | Shadow source | `src/game/actors/d_a_obj_km2_ami_bou.cpp` (`//cpp`, so C++) |
 | Compiler | `tools/mwccarm/2004/b56/mwccarm.exe` — `rombuild.VERSION`, and `config/rombuild-versions.txt` carries no override for any of the seven stems, so this is the pin for all of them |
@@ -80,7 +84,7 @@ of seven single-function ones; it lives outside the repository.
 
 From `build/tu_map.json`, unchanged and not regenerated:
 
-- `ov045` — 41 functions, 6 candidate TUs, 6 static initialisers, 6 `.ctor`
+- [ov045](../config/arm9/overlays/ov045/symbols.txt) — 41 functions, 6 candidate TUs, 6 static initialisers, 6 `.ctor`
   entries, `sinit_vs_tu: "ok"`, `corroborated: true`, all 5 internal boundaries
   `high`. This is one of the well-segmented modules §14 asks for, not one of the
   four listed as under-segmented.
@@ -88,7 +92,7 @@ From `build/tu_map.json`, unchanged and not regenerated:
   above and one class label, `daObjKm2_Ami_Bou_c`.
 - Neighbours differ: `FireSeaElevator_Spawn` ends at `0x0211150c`,
   `_ZN17ExtendingPlatformD1Ev` begins at `0x02111840`.
-- Added here: of ov045's six static initialisers, `__sinit_ov045_02112214` is the
+- Added here: of [ov045](../config/arm9/overlays/ov045/symbols.txt)'s six static initialisers, [__sinit_ov045_02112214](../src/__sinit_ov045_02112214.c) is the
   only one that references this TU's two `.bss` `SharedFilePtr` statics
   (`0x021131a8`, `0x021131b0`), which pins the sixth corroborating initialiser to
   this specific unit rather than to the module in aggregate.
@@ -138,7 +142,7 @@ is:
 | 6 | 31 | `_ZN18daObjKm2_Ami_Bou_c8BehaviorEv` | `0x120` | GLOBAL | 4 ✓ |
 | 7 | 33 | `_ZN18daObjKm2_Ami_Bou_c13InitResourcesEv` | `0xd0` | GLOBAL | 5 ✓ |
 | 8 | 35 | `daObjKm2_Ami_Bou_c_Spawn` | `0x38` | GLOBAL | 6 ✓ |
-| 9 | 39 | `_ZN8PlatformD1Ev` | `0x38` | LOPROC | — elsewhere (ov002 `0x020ee42c`) |
+| 9 | 39 | `_ZN8PlatformD1Ev` | `0x38` | LOPROC | — elsewhere ([ov002](../config/arm9/overlays/ov002/symbols.txt) `0x020ee42c`) |
 | 10 | 41 | `_ZN8PlatformD0Ev` | `0x4c` | LOPROC | — elsewhere |
 
 **Ordinals 2–6 come out in exact ROM address order.** Writing the file in natural
@@ -186,8 +190,8 @@ Licensed: the seven in the table above. Unlicensed and emitted anyway:
 | symbol | size | binding | why it is here |
 | --- | ---: | --- | --- |
 | `_ZN18daObjKm2_Ami_Bou_cD2Ev` | `0x4c` | GLOBAL | mwcc emits D0/D1/D2 from one `~daObjKm2_Ami_Bou_c()`. Byte-identical to D1. **Fact:** no such symbol appears anywhere in `config/`, and nothing in the ROM calls it. **Inference, not verified here:** the original link deadstripped it, which is what a vague-linkage-free `D2` with no caller normally suffers. |
-| `_ZN8PlatformD1Ev` | `0x38` | LOPROC | `Platform`'s destructor is inline in `include/Platform.h`; instantiating the base emits a vague-linkage out-of-line copy. The real one lives in ov002 at `0x020ee42c`, and `config/arm9/overlays/ov002/symbols.txt` gives it `size=0x38` — the same size this object emitted. |
-| `_ZN8PlatformD0Ev` | `0x4c` | LOPROC | same; ov002 `0x020ee464`, `size=0x4c`, again matching what was emitted here. |
+| `_ZN8PlatformD1Ev` | `0x38` | LOPROC | `Platform`'s destructor is inline in `include/Platform.h`; instantiating the base emits a vague-linkage out-of-line copy. The real one lives in [ov002](../config/arm9/overlays/ov002/symbols.txt) at `0x020ee42c`, and [it's symbols.txt](../config/arm9/overlays/ov002/symbols.txt) gives it `size=0x38` — the same size this object emitted. |
+| `_ZN8PlatformD0Ev` | `0x4c` | LOPROC | same; [ov002](../config/arm9/overlays/ov002/symbols.txt) `0x020ee464`, `size=0x4c`, again matching what was emitted here. |
 
 ### `.data` — 12 sections, 0 licensed
 
@@ -248,9 +252,10 @@ The two conventions collide:
   `0x02112d74` = typeinfo). Its own vptr stores relocate against it with
   addend `8`.
 
-In the legacy tree the two never meet: `legacy/daObjKm2_Ami_Bou_c_Spawn.c` is a **C** TU that
-only ever references an external `_ZTV18daObjKm2_Ami_Bou_c`, so addend 0 is right; and
-`legacy/_ZN18daObjKm2_Ami_Bou_cD1Ev.cpp` defines the vtable, but `objisolate` strips it,
+In the legacy tree the two never meet: the one-function **C** source that owned
+`daObjKm2_Ami_Bou_c_Spawn` only ever references an external
+`_ZTV18daObjKm2_Ami_Bou_c`, so addend 0 is right; and the one that owned
+`_ZN18daObjKm2_Ami_Bou_cD1Ev` defines the vtable, but `objisolate` strips it,
 externalises the symbol and subtracts `VTABLE_PREAMBLE` from the addend — the
 correction its own comment documents at length.
 
@@ -320,7 +325,7 @@ were verified byte-identical rather than assumed:
 - **Language mode.** `daObjKm2_Ami_Bou_c_Spawn` was the only C file of the seven; it is now
   compiled as C++ and needs an explicit `extern "C"` to keep its unmangled ROM
   symbol. Its bytes are unchanged by the mode switch.
-- **`data_02082214`** was declared in the `Behavior` file outside any linkage
+- **[data_02082214](../config/arm9/symbols.txt)** was declared in the `Behavior` file outside any linkage
   specification. Moved inside `extern "C"` — no ABI effect for a namespace-scope
   variable, but the intent is now stated rather than relying on that.
 - **The destructor** was two files each carrying the same empty
@@ -359,7 +364,8 @@ For this candidate specifically, in ascending difficulty:
    contributes through per-function isolation (plan §9/§13, which works today —
    `objisolate` accepts all seven), or the linkcheck needs a rule for
    deadstrippable extras. **Not a new obstacle:** the legacy, already-enrolled
-   `legacy/_ZN18daObjKm2_Ami_Bou_cD1Ev.cpp` compiled alone emits the identical D2 today, and
+   one-function source for `_ZN18daObjKm2_Ami_Bou_cD1Ev` emitted the identical D2
+   when compiled alone, and
    `objisolate` already strips it on every push. TU consolidation does not
    introduce this shape; it only makes it visible in one object instead of
    scattered across per-function ones.
@@ -437,15 +443,15 @@ the tools rather than assuming a new top-level directory is ignored:
 - `build/` is gitignored, so `build/tu/ov045-daObjKm2_Ami_Bou_c/` cannot be committed.
 
 `src/` was not modified: the seven legacy files are byte-identical to their
-committed state and still `complete` in `config/arm9/overlays/ov045/delinks.txt`.
+committed state and still `complete` in [arm9/overlays/ov045/delinks.txt](../config/arm9/overlays/ov045/delinks.txt).
 
 ## 10. Change set
 
 | Path | |
 | --- | --- |
-| `src/game/actors/d_a_obj_km2_ami_bou.cpp` | new — the shadow TU, not enrolled |
-| `config/tu_manifest.d/` | new — one entry, `ov045/daObjKm2_Ami_Bou_c`, status `text-verified` |
-| `notes/tu-reconstruction-pilot-report.md` | new — this file |
+| [src/game/actors/d_a_obj_km2_ami_bou.cpp](../src/game/actors/d_a_obj_km2_ami_bou.cpp) | new — the shadow TU, not enrolled |
+| [config/tu_manifest.d/](../config/tu_manifest.d/) | new — one entry, [ov045](../config/arm9/overlays/ov045/symbols.txt)/`daObjKm2_Ami_Bou_c`, status `text-verified` |
+| [notes/tu-reconstruction-pilot-report.md](../notes/tu-reconstruction-pilot-report.md) | new — this file |
 
 Untracked build output at `build/tu/ov045-daObjKm2_Ami_Bou_c/` (`daObjKm2_Ami_Bou_c.o`,
 `inventory.txt`) is gitignored, per §13 item 10.
