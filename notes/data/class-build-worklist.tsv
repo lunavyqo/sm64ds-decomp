@@ -107,7 +107,7 @@ daBttBk_c	DONE	include\CrazedCrate.h  [alias: header uses pre-rename name]	dActo
 daCamTag_c	DONE	include\daCamTag_c.h	dActor_c	0	ov002	7
 daChRoom_c	DONE	include\daChRoom_c.h	dActor_c	0	ov002	7
 daChScene_c	DONE	include\daChScene_c.h	dActor_c	0	ov002	7
-daChair_c	DONE	include\HauntedChair.h  [alias: header uses pre-rename name]	dActor_c	0	ov020	13
+daChair_c	DONE	include\daChair_c.h  [alias: header uses pre-rename name]	dActor_c	0	ov020	13
 daChoropu_c	DONE	include\MontyMole.h  [alias: header uses pre-rename name]	dActor_c	0	ov080	7
 daCnn_c	DONE	include\Cannon.h  [alias: header uses pre-rename name]	dActor_c	0	ov098	6
 daCoin_c	DONE	include\Coin.h  [alias: header uses pre-rename name]	dActor_c	0	ov002	8
@@ -120,7 +120,7 @@ daESwitch_c	DONE	include\EnemySwitchTag.h  [alias: header uses pre-rename name]	
 daEyBm_c	DONE	include\daEyBm_c.h	dActor_c	0	ov071	12
 daEykn_c	DONE	include\MrI.h  [alias: header uses pre-rename name]	dActor_c	0	ov071	7
 daFRing_c	DONE	include\BowserShockwaves.h  [alias: header uses pre-rename name]	dActor_c	0	ov060	6
-daFeather_c	DONE	include\WingFeather.h  [alias: header uses pre-rename name]	dActor_c	0	ov002	6
+daFeather_c	DONE	include\daFeather_c.h	dActor_c	0	ov002	6
 daFish_c	DONE	include\Fish.h  [alias: header uses pre-rename name]	dActor_c	0	ov100	7
 daGmch_c	DONE	include\daGmch_c.h	dActor_c	0	ov081	10
 daJgm_c	DONE	include\Lakitu.h  [alias: header uses pre-rename name]	dActor_c	0	ov077	10

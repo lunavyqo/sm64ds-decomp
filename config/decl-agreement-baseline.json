@@ -800,6 +800,7 @@
    "src/game/actors/d_a_obj_c1_trap.cpp": ["param:#1 Matrix4x3 *"],
    "src/game/actors/d_a_obj_hatena_switch.cpp": ["param:#1 Matrix4x3 *"],
    "src/game/actors/d_a_obj_rc_hane.cpp": ["param:#1 Matrix4x3 *"],
+   "src/game/actors/daFeather_c/daFeather_c.cpp": ["param:#1 Matrix4x3 *"],
    "src/game/actors/daTrs_c/_ZN7daTrs_c13InitResourcesEv.cpp": ["param:#1 Matrix4x3 *"],
    "src/game/actors/daTrs_c/func_ov063_021166ac.cpp": ["param:#1 Matrix4x3 *"],
    "src/unnamed/ov063/func_ov063_021160d4.c": ["param:#1 Matrix4x3 *"]
@@ -1708,8 +1709,8 @@
    "src/func_ov085_0212e858.c": ["param:#1 Vector3 *", "param:#2 Vector3 *"],
    "src/func_ov090_02132b14.c": ["param:#1 Vector3 *", "param:#2 Vector3 *"],
    "src/func_ov094_021361d8.c": ["param:#1 Vector3 *", "param:#2 Vector3 *"],
-   "src/game/actors/WingFeather/func_ov002_020b2c44.cpp": ["param:#1 Vector3 *", "param:#2 Vector3 *"],
    "src/game/actors/d_a_obj_hatena_switch.cpp": ["param:#2 const void *"],
+   "src/game/actors/daFeather_c/daFeather_c.cpp": ["param:#1 Vector3 *", "param:#2 Vector3 *"],
    "src/game/actors/daTrs_c/func_ov063_021166ac.cpp": ["param:#1 Vector3 *", "param:#2 const Vector3 *"],
    "src/unnamed/ov063/func_ov063_0211640c.c": ["param:#1 Vector3 *", "param:#2 Vector3 *"]
   },
@@ -1721,7 +1722,6 @@
   "Vec3_Dist": {
    "src/_ZN10BrickBlock8BehaviorEv.cpp": ["param:#1 const void *", "param:#2 const void *"],
    "src/_ZN10RockPillar8BehaviorEv.cpp": ["param:#1 const void *", "param:#2 const void *"],
-   "src/_ZN12HauntedChair6State1Ev.cpp": ["param:#1 const void *", "param:#2 const void *"],
    "src/_ZN12dBgCh_SphCrr10DetectClsnEv.cpp": ["param:#1 const void *", "param:#2 const void *"],
    "src/_ZN5Unagi8BehaviorEv.cpp": ["param:#1 const void *", "param:#2 const void *"],
    "src/_ZN7Tornado6State1Ev.cpp": ["param:#1 const void *", "param:#2 const void *"],
@@ -1777,7 +1777,6 @@
   "Vec3_HorzAngle": {
    "src/_ZN10RockPillar8BehaviorEv.cpp": ["param:#1 const void *", "param:#2 const void *"],
    "src/_ZN11SnowmanHead6State1Ev.cpp": ["param:#1 const void *", "param:#2 const void *"],
-   "src/_ZN12HauntedChair6State1Ev.cpp": ["param:#1 const void *", "param:#2 const void *"],
    "src/_ZN13PrincessPeach12UpdateLookAtEv.cpp": ["param:#1 const void *", "param:#2 const void *"],
    "src/_ZN15RecRoomCupboard8BehaviorEv.cpp": ["param:#1 const Vec3Raw *", "param:#2 const Vec3Raw *"],
    "src/_ZN4Toad8BehaviorEv.cpp": ["param:#1 const void *", "param:#2 const void *"],
@@ -1905,7 +1904,6 @@
   },
   "Vec3_HorzLen": {
    "src/Vec3_ApproachHorz.c": ["param:#1 Vec3 *"],
-   "src/_ZN12HauntedChair6State2Ev.cpp": ["param:#1 const PlainVector3 *"],
    "src/_ZN12dEnemyBase_c14UpdateYoshiEatER10dBgCh_Actr.cpp": ["param:#1 int *"],
    "src/_ZN9Butterfly6State2Ev.cpp": ["param:#1 Vector3 *"],
    "src/actors/daOts_c.cpp": ["param:#1 int *"],
@@ -2000,7 +1998,6 @@
   "Vec3_Sub": {
    "src/Vec3_VertAngle.c": ["param:#1 Vector3 *", "param:#2 const Vector3 *", "param:#3 const Vector3 *"],
    "src/_Z14ApproachLinearR7Vector3RKS_5Fix12IiE.cpp": ["param:#1 Vector3 *", "param:#2 const Vector3 *", "param:#3 const Vector3 *"],
-   "src/_ZN12HauntedChair6State2Ev.cpp": ["param:#1 PlainVector3 *", "param:#2 const PlainVector3 *", "param:#3 const PlainVector3 *"],
    "src/_ZN12dEnemyBase_c22SpawnMegaCharParticlesER8dActor_cPc.cpp": ["param:#1 Vector3 *", "param:#2 const Vector3 *", "param:#3 const Vector3 *"],
    "src/_ZN14UnchainedChomp8BehaviorEv.cpp": ["param:#1 Vector3 *", "param:#2 Vector3 *", "param:#3 Vector3 *"],
    "src/_ZN17daObjWlPolelift_c8BehaviorEv.cpp": ["param:#1 Vector3 *", "param:#2 Vector3 *", "param:#3 Vector3 *"],
@@ -2336,7 +2333,6 @@
    "src/func_ov006_020ca310.cpp": ["param:#1 short &"],
    "src/func_ov006_020cb2b4.c": ["return:void"],
    "src/func_ov026_02111b24.c": ["return:void"],
-   "src/game/actors/WingFeather/_ZN11WingFeather8BehaviorEv.cpp": ["return:void"],
    "src/minigames/d_s_mg_trampoline2.cpp": ["return:void"]
   },
   "_Z23LoadMinimapChangeObjecti5Fix12IiEh": {
@@ -2459,7 +2455,6 @@
    "src/_ZN11PowerFlower13InitResourcesEv.cpp": ["param:#2 void *", "param:#5 void *", "param:#6 void *"],
    "src/_ZN11RollingRock13InitResourcesEv.cpp": ["param:#2 void *", "param:#5 void *", "param:#6 void *"],
    "src/_ZN11SnowmanHead13InitResourcesEv.cpp": ["param:#2 void *", "param:#5 void *", "param:#6 void *"],
-   "src/_ZN12HauntedChair13InitResourcesEv.cpp": ["param:#1 char *", "param:#2 dActor_c *", "param:#5 Vector3_16 *"],
    "src/_ZN13KoopaTheQuick13InitResourcesEv.cpp": ["param:#2 void *", "param:#5 void *"],
    "src/_ZN13MontyMoleRock13InitResourcesEv.cpp": ["param:#2 void *", "return:int"],
    "src/_ZN13PrincessPeach13InitResourcesEv.cpp": ["param:#2 dActor_c *", "param:#5 Vector3_16 *", "param:#6 Vector3_16 *"],
@@ -2504,6 +2499,7 @@
    "src/actors/daBgSnmBdy_c.cpp": ["param:#2 void *", "param:#5 void *"],
    "src/actors/daBmb_c.cpp": ["param:#2 dActor_c *", "param:#5 Vector3_16 *", "param:#6 Vector3_16 *"],
    "src/actors/daBombking_c.cpp": ["param:#2 dActor_c *", "param:#5 Vector3_16 *", "param:#6 Vector3_16 *"],
+   "src/actors/daChair_c.cpp": ["param:#2 dActor_c *", "param:#5 Vector3_16 *", "param:#6 Vector3_16 *"],
    "src/actors/daGmch_c.cpp": ["param:#2 void *", "param:#5 void *"],
    "src/actors/daMip_c.cpp": ["param:#2 void *", "param:#5 void *", "param:#6 void *"],
    "src/actors/daMky_c.cpp": ["param:#2 void *", "param:#5 void *", "param:#6 void *"],
@@ -2512,7 +2508,6 @@
    "src/actors/daYurei_Mucho_c.cpp": ["param:#2 dActor_c *", "param:#5 Vector3_16 *", "param:#6 Vector3_16 *"],
    "src/func_ov064_02116ec0.cpp": ["param:#2 dActor_c *", "param:#5 Vector3_16 *"],
    "src/func_ov074_02122634.cpp": ["param:#2 dActor_c *", "param:#5 Vector3_16 *"],
-   "src/game/actors/WingFeather/_ZN11WingFeather13InitResourcesEv.cpp": ["param:#2 dActor_c *", "param:#5 void *"],
    "src/game/actors/d_a_bakubaku.cpp": ["param:#2 dActor_c *", "param:#5 void *", "param:#6 void *"],
    "src/game/actors/d_a_ey_bm.cpp": ["param:#2 dActor_c *", "param:#5 void *", "param:#6 void *", "return:int"],
    "src/game/actors/d_a_kp_fr.cpp": ["param:#2 dActor_c *", "param:#5 void *"],
@@ -2520,6 +2515,7 @@
    "src/game/actors/d_a_pg_mthr.cpp": ["param:#2 void *", "param:#5 void *", "param:#6 void *"],
    "src/game/actors/d_a_propeller_heyho.cpp": ["param:#2 dActor_c *", "param:#5 Vector3_16 *", "param:#6 Vector3_16 *"],
    "src/game/actors/daBrq_c.cpp": ["param:#2 dActor_c *", "param:#5 Vector3_16 *", "param:#6 Vector3_16 *"],
+   "src/game/actors/daFeather_c/daFeather_c.cpp": ["param:#2 dActor_c *", "param:#5 Vector3_16 *", "param:#6 Vector3_16 *"],
    "src/game/actors/daObjPushblock_c.cpp": ["param:#2 void *", "param:#5 void *"],
    "src/game/actors/daPiano_c/_ZN8MadPiano13InitResourcesEv.cpp": ["param:#2 void *", "param:#5 void *"],
    "src/game/actors/daTBasket_c/_ZN11daTBasket_c13InitResourcesEv.cpp": ["param:#2 dActor_c *", "param:#5 Vector3_16 *", "param:#6 Vector3_16 *"],
@@ -2603,7 +2599,6 @@
    "src/_ZN10BulletBill8BehaviorEv.cpp": ["param:#2 const Vector3 *"],
    "src/_ZN11ChiefChilly8BehaviorEv.cpp": ["param:#2 const Vector3 *"],
    "src/_ZN11RollingRock8BehaviorEv.cpp": ["param:#2 const Vector3 *"],
-   "src/_ZN12HauntedChair8BehaviorEv.cpp": ["param:#2 char *"],
    "src/_ZN19FirePiranhaPlantBig8BehaviorEv.cpp": ["param:#2 char *"],
    "src/_ZN3Key8BehaviorEv.cpp": ["param:#2 void *"],
    "src/_ZN6Player17St_LedgeHang_InitEv.cpp": ["param:#2 Vec3 *"],
@@ -2627,7 +2622,6 @@
    "src/_ZN10MrBlizzard13InitResourcesEv.cpp": ["param:#3 const void *"],
    "src/_ZN10StarMarker13InitResourcesEv.cpp": ["param:#3 const void *"],
    "src/_ZN11ChiefChilly13InitResourcesEv.cpp": ["param:#2 struct dActor_c *", "param:#3 Vector3 *"],
-   "src/_ZN12HauntedChair13InitResourcesEv.cpp": ["param:#1 char *", "param:#3 Vector3 *"],
    "src/_ZN12WaterSuction13InitResourcesEv.cpp": ["param:#3 V3 *"],
    "src/_ZN14UnchainedChomp13InitResourcesEv.cpp": ["param:#3 const Vector3 &"],
    "src/_ZN19FirePiranhaPlantBig13InitResourcesEv.cpp": ["param:#3 Vector3 *"],
@@ -2685,7 +2679,6 @@
   "_ZN11ShadowModel12InitCylinderEv": {
    "src/_ZN10MrBlizzard13InitResourcesEv.cpp": ["return:void"],
    "src/_ZN11ChiefChilly13InitResourcesEv.cpp": ["return:void"],
-   "src/_ZN12HauntedChair13InitResourcesEv.cpp": ["return:void"],
    "src/_ZN18daObjCtKaitendai_c13InitResourcesEv.cpp": ["return:void"],
    "src/_ZN4Toad13InitResourcesEv.cpp": ["return:void"],
    "src/_ZN6Eyerok13InitResourcesEv.cpp": ["return:void"],
@@ -4273,7 +4266,6 @@
    "src/_ZN11dScMgJump_c13InitResourcesEv.cpp": ["arity:1"],
    "src/_ZN12EnemySpawner13InitResourcesEv.cpp": ["arity:1", "return:void"],
    "src/_ZN12FortressWall13InitResourcesEv.cpp": ["arity:1"],
-   "src/_ZN12HauntedChair13InitResourcesEv.cpp": ["arity:1", "return:BMD_File *"],
    "src/_ZN12HealingHeart13InitResourcesEv.cpp": ["arity:1", "return:BMD_File *"],
    "src/_ZN12MetalNetLift13InitResourcesEv.cpp": ["arity:1", "return:BMD_File *"],
    "src/_ZN13BowserShutter13InitResourcesEv.cpp": ["arity:1", "return:int"],
@@ -4377,7 +4369,6 @@
    "src/func_ov006_020cef14.c": ["arity:1"],
    "src/func_ov080_021274ac.c": ["arity:1", "return:int"],
    "src/func_ov098_0213a794.cpp": ["arity:1"],
-   "src/game/actors/WingFeather/_ZN11WingFeather13InitResourcesEv.cpp": ["arity:1", "return:BMD_File *"],
    "src/game/actors/d_a_pg_mthr.cpp": ["arity:1"],
    "src/minigames/d_s_mg_jump2.cpp": ["arity:1"],
    "src/minigames/d_s_mg_trampoline2.cpp": ["arity:1", "return:BMD_File *"]
@@ -5043,8 +5034,7 @@
    "src/_ZN10BulletBill8BehaviorEv.cpp": ["arity:0"]
   },
   "_ZN6Player16InitWingFeathersEb": {
-   "src/func_ov002_020b979c.c": ["param:#2 int"],
-   "src/game/actors/WingFeather/_ZN11WingFeather8BehaviorEv.cpp": ["param:#2 int"]
+   "src/func_ov002_020b979c.c": ["param:#2 int"]
   },
   "_ZN6Player17SetNoControlStateEhih": {
    "src/func_ov002_020e8ef0.cpp": ["param:#2 int", "param:#4 int", "return:int"],
@@ -5086,7 +5076,6 @@
   },
   "_ZN6Player4HurtERK7Vector3j5Fix12IiEjjj": {
    "src/_ZN10BulletBill8BehaviorEv.cpp": ["param:#5 unsigned int", "param:#6 unsigned int", "param:#7 unsigned int", "return:void"],
-   "src/_ZN12HauntedChair6State2Ev.cpp": ["param:#5 unsigned int", "param:#6 unsigned int", "param:#7 unsigned int", "return:void"],
    "src/_ZN13MontyMoleRock8BehaviorEv.cpp": ["param:#5 unsigned int", "param:#6 unsigned int", "param:#7 unsigned int", "return:void"],
    "src/_ZN4Clam8BehaviorEv.cpp": ["param:#1 char *", "param:#5 unsigned int", "param:#6 unsigned int", "param:#7 unsigned int", "return:void"],
    "src/_ZN6Player20St_InYoshiMouth_MainEv.cpp": ["param:#5 unsigned int", "param:#6 unsigned int", "param:#7 unsigned int", "return:void"],
@@ -5094,6 +5083,7 @@
    "src/actors/Goomboss.cpp": ["param:#1 char *", "param:#5 unsigned int", "param:#6 unsigned int", "param:#7 unsigned int", "return:void"],
    "src/actors/Scuttlebug.cpp": ["param:#5 unsigned int", "param:#6 unsigned int", "param:#7 unsigned int"],
    "src/actors/daBgSnmBdy_c.cpp": ["param:#1 dActor_c *", "param:#5 unsigned int", "param:#6 unsigned int", "param:#7 unsigned int", "return:void"],
+   "src/actors/daChair_c.cpp": ["param:#5 unsigned int", "param:#6 unsigned int", "param:#7 unsigned int"],
    "src/actors/daGmch_c.cpp": ["param:#5 unsigned int", "param:#6 unsigned int", "param:#7 unsigned int", "return:void"],
    "src/actors/daOts_c.cpp": ["param:#5 unsigned int", "param:#6 unsigned int", "param:#7 unsigned int"],
    "src/actors/daPkn_c.cpp": ["param:#5 unsigned int", "param:#6 unsigned int", "param:#7 unsigned int"],
@@ -5709,11 +5699,11 @@
    "src/func_ov091_02133d30.cpp": ["param:#6 const void *", "return:unsigned int"],
    "src/func_ov098_0213ade8.c": ["return:void"],
    "src/func_ov102_0214c84c.c": ["return:unsigned int"],
-   "src/game/actors/WingFeather/_ZN11WingFeather8BehaviorEv.cpp": ["return:unsigned int"],
    "src/game/actors/d_a_ey_bm.cpp": ["param:#6 const Vector3_16f *", "return:unsigned int"],
    "src/game/actors/d_a_obj_abuku.cpp": ["param:#6 const Vector3_16 *", "return:unsigned int"],
    "src/game/actors/d_a_obj_waterfall.cpp": ["param:#6 const void *"],
    "src/game/actors/d_a_propeller_heyho.cpp": ["return:unsigned int"],
+   "src/game/actors/daFeather_c/daFeather_c.cpp": ["param:#6 const Vector3_16 *", "return:unsigned int"],
    "src/game/actors/daTBasket_c/_ZN11daTBasket_c8BehaviorEv.cpp": ["param:#6 const void *", "return:unsigned int"],
    "src/unnamed/ov063/func_ov063_02117364.c": ["return:unsigned int"]
   },
@@ -5729,7 +5719,6 @@
    "src/_ZN11RollingRock8BehaviorEv.cpp": ["return:void"],
    "src/_ZN11SnowmanHead6State2Ev.cpp": ["return:void"],
    "src/_ZN12FortressWall4KillEv.cpp": ["return:void"],
-   "src/_ZN12HauntedChair5BreakEv.cpp": ["return:int"],
    "src/_ZN12dEnemyBase_c20KillByInvincibleCharERK10Vector3_16R6Player5Fix12IiE.cpp": ["return:void"],
    "src/_ZN13BigBrickBlock4KillEv.cpp": ["return:void"],
    "src/_ZN14ArrowSignRight4KillEv.cpp": ["return:void"],
@@ -5821,7 +5810,6 @@
    "src/func_ov100_0214272c.cpp": ["return:void"],
    "src/func_ov100_02142918.cpp": ["return:void"],
    "src/func_ov102_021498e0.cpp": ["return:void"],
-   "src/game/actors/WingFeather/_ZN11WingFeather8BehaviorEv.cpp": ["return:void"],
    "src/game/actors/d_a_krpa.cpp": ["return:unsigned int"],
    "src/game/actors/d_a_obj_abuku.cpp": ["return:void"],
    "src/game/actors/d_a_obj_bk_dossunbar.cpp": ["return:void"],
@@ -5974,8 +5962,6 @@
    "src/_ZN11BillBlaster8BehaviorEv.cpp": ["arity:1"],
    "src/_ZN11RollingRock8BehaviorEv.cpp": ["arity:1", "return:void *"],
    "src/_ZN12Flamethrower8BehaviorEv.cpp": ["arity:1", "return:char *"],
-   "src/_ZN12HauntedChair6State1Ev.cpp": ["arity:1", "return:void *"],
-   "src/_ZN12HauntedChair6State2Ev.cpp": ["arity:1", "return:void *"],
    "src/_ZN12HealingHeart8BehaviorEv.cpp": ["arity:1", "return:void *"],
    "src/_ZN12dEnemyBase_c27SpawnParticlesIfHitOtherObjER5dCc_c.cpp": ["arity:1", "return:void *"],
    "src/_ZN13MontyMoleRock8BehaviorEv.cpp": ["arity:1", "return:void *"],
@@ -6134,7 +6120,6 @@
    "src/func_ov100_021463b0.cpp": ["arity:1", "return:char *"],
    "src/func_ov100_02146468.c": ["arity:1", "return:char *"],
    "src/func_ov102_0214cbec.cpp": ["arity:1", "return:void *"],
-   "src/game/actors/WingFeather/_ZN11WingFeather8BehaviorEv.cpp": ["arity:1", "return:void *"],
    "src/game/actors/d_a_pg_mthr.cpp": ["arity:1"],
    "src/game/actors/d_a_propeller_heyho.cpp": ["arity:1"],
    "src/game/actors/d_a_wanwan.cpp": ["arity:1", "return:void *"],
@@ -6282,7 +6267,6 @@
    "src/func_ov062_021163b0.c": ["return:int"]
   },
   "_ZN8dActor_c15FindWithActorIDEjPS_": {
-   "src/_ZN12HauntedChair6State0Ev.cpp": ["arity:2", "return:void *"],
    "src/_ZN25RotatingUpDownPlatformUtm8BehaviorEv.cpp": ["arity:2", "return:void *"],
    "src/actors/Goomboss.cpp": ["arity:2", "return:void *"],
    "src/func_ov002_020b1008.c": ["arity:2", "return:void *"],
@@ -6383,7 +6367,6 @@
   "_ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j": {
    "src/_ZN10StarMarker8BehaviorEv.cpp": ["param:#6 unsigned int"],
    "src/_ZN11MirrorLuigi8BehaviorEv.cpp": ["param:#1 char *", "param:#2 char *", "param:#3 char *", "param:#6 unsigned int"],
-   "src/_ZN12HauntedChair11UpdateModelEv.cpp": ["param:#6 unsigned int"],
    "src/_ZN13PrincessPeach11UpdateModelEv.cpp": ["param:#6 unsigned int"],
    "src/_ZN4Bird8BehaviorEv.cpp": ["param:#6 unsigned int", "return:int"],
    "src/_ZN4Toad15UpdateModelPoseEv.cpp": ["param:#6 unsigned int"],
@@ -6392,6 +6375,7 @@
    "src/actors/Scuttlebug.cpp": ["param:#6 unsigned int"],
    "src/actors/daBgSnmBdy_c.cpp": ["param:#6 unsigned int"],
    "src/actors/daBombking_c.cpp": ["param:#6 unsigned int"],
+   "src/actors/daChair_c.cpp": ["param:#6 unsigned int"],
    "src/actors/daGmch_c.cpp": ["param:#6 unsigned int"],
    "src/actors/daMip_c.cpp": ["param:#6 unsigned int"],
    "src/actors/daObjCtKaitendai_c.cpp": ["param:#6 unsigned int"],
@@ -6434,7 +6418,6 @@
    "src/func_ov100_02142264.cpp": ["param:#6 unsigned int"],
    "src/func_ov100_02143b68.cpp": ["param:#6 unsigned int"],
    "src/func_ov102_0214ce60.cpp": ["param:#2 ShadowModel &", "param:#3 Matrix4x3 &", "param:#6 unsigned int"],
-   "src/game/actors/WingFeather/func_ov002_020b2c44.cpp": ["param:#6 unsigned int"],
    "src/game/actors/d_a_bakubaku.cpp": ["param:#6 unsigned int"],
    "src/game/actors/d_a_bg_snwmn.cpp": ["param:#6 unsigned int"],
    "src/game/actors/d_a_ey_bm.cpp": ["param:#6 unsigned int"],
@@ -7213,13 +7196,13 @@
    "src/_ZN10dBgCh_Actr16UpdateContinuousEv.cpp": ["param:#2 Vec3 *"],
    "src/_ZN10dBgCh_Actr20UpdateExtraContinousEv.cpp": ["param:#2 Vector3 *"],
    "src/_ZN10dBgCh_Actr22UpdateContinuousNoLavaEv.cpp": ["param:#2 Vec3 *"],
-   "src/_ZN12HauntedChair6State2Ev.cpp": ["param:#2 PlainVector3 *"],
    "src/_ZN12dEnemyBase_c12UpdateWMClsnER10dBgCh_Actrj.cpp": ["param:#2 Vector3 *"],
    "src/_ZN12dEnemyBase_c14UpdateYoshiEatER10dBgCh_Actr.cpp": ["param:#2 char *"],
    "src/_ZN13PrincessPeach21UpdateGroundCollisionEP10dBgCh_Actr.cpp": ["param:#2 int *"],
    "src/_ZN7HeaveHo8BehaviorEv.cpp": ["param:#2 Vector3 *"],
    "src/_ZN7Tornado6State1Ev.cpp": ["param:#2 int *"],
    "src/actors/Scuttlebug.cpp": ["param:#2 Vector3 *"],
+   "src/actors/daChair_c.cpp": ["param:#2 void *"],
    "src/actors/daGmch_c.cpp": ["param:#2 int *"],
    "src/actors/daObjMarioCap_c.cpp": ["param:#2 void *"],
    "src/actors/daSanbo_c.cpp": ["param:#2 int *"],
@@ -7535,7 +7518,6 @@
   "dBgCh_Actr_UpdateContinuous_Veneer": {
    "src/_ZN10DonutBlock8BehaviorEv.cpp": ["arity:1"],
    "src/_ZN10SlidingBox8BehaviorEv.cpp": ["arity:1"],
-   "src/_ZN12HauntedChair6State2Ev.cpp": ["arity:1"],
    "src/_ZN12dEnemyBase_c12UpdateWMClsnER10dBgCh_Actrj.cpp": ["arity:1"],
    "src/_ZN12dEnemyBase_c14UpdateYoshiEatER10dBgCh_Actr.cpp": ["arity:1"],
    "src/_ZN13PrincessPeach21UpdateGroundCollisionEP10dBgCh_Actr.cpp": ["arity:1", "return:int"],
@@ -7544,6 +7526,7 @@
    "src/_ZN8Fireball8BehaviorEv.cpp": ["arity:1"],
    "src/_ZN9Butterfly6State7Ev.cpp": ["arity:1"],
    "src/actors/daBgSnmBdy_c.cpp": ["arity:1"],
+   "src/actors/daChair_c.cpp": ["arity:1"],
    "src/func_ov002_020b13e0.cpp": ["arity:1"],
    "src/func_ov002_020b94c4.c": ["arity:1"],
    "src/func_ov002_020bba28.cpp": ["arity:1"],
@@ -7570,8 +7553,8 @@
    "src/func_ov098_02138734.cpp": ["arity:1"],
    "src/func_ov098_021388bc.cpp": ["arity:1"],
    "src/func_ov098_021389f8.cpp": ["arity:1"],
-   "src/game/actors/WingFeather/_ZN11WingFeather8BehaviorEv.cpp": ["arity:1"],
    "src/game/actors/d_a_kp_fr.cpp": ["arity:1"],
+   "src/game/actors/daFeather_c/daFeather_c.cpp": ["arity:1"],
    "src/game/actors/daObjPushblock_c.cpp": ["arity:1"],
    "src/game/actors/daPiano_c/_ZN8MadPiano8BehaviorEv.cpp": ["arity:1"]
   },
@@ -8517,7 +8500,6 @@
    "src/func_ov100_02144950.c": ["return:char *"],
    "src/func_ov102_021492d4.c": ["return:char []"],
    "src/func_ov102_0214953c.c": ["return:int"],
-   "src/game/actors/WingFeather/_ZN11WingFeather13InitResourcesEv.cpp": ["return:char *"],
    "src/game/actors/d_a_set_se.cpp": ["return:Camera *"],
    "src/game/actors/d_a_star_gate.cpp": ["return:Camera *"],
    "src/game/actors/d_a_tree.cpp": ["return:Camera *"],
@@ -9758,7 +9740,8 @@
   "data_ov002_0210da58": {
    "src/_ZN13QuestionBlock13InitResourcesEv.cpp": ["return:char"],
    "src/_ZN13QuestionBlock16CleanupResourcesEv.cpp": ["return:char []"],
-   "src/__sinit_ov002_02100560.c": ["return:void *"]
+   "src/__sinit_ov002_02100560.c": ["return:void *"],
+   "src/game/actors/daFeather_c/daFeather_c.cpp": ["return:SharedFilePtr"]
   },
   "data_ov002_0210dc70": {
    "src/__sinit_ov002_02100c50.c": ["return:Pair []"]
@@ -11707,8 +11690,8 @@
    "src/__sinit_ov020_02113674.c": ["return:char []"]
   },
   "data_ov020_02114af0": {
-   "src/_ZN12HauntedChair16CleanupResourcesEv.cpp": ["return:SharedFilePtr"],
-   "src/__sinit_ov020_0211372c.c": ["return:int []"]
+   "src/__sinit_ov020_0211372c.c": ["return:int []"],
+   "src/actors/daChair_c.cpp": ["return:SharedFilePtr"]
   },
   "data_ov021_02113a60": {
    "src/_ZN12WorkElevator13InitResourcesEv.cpp": ["return:CLPS_Block"]
@@ -12320,6 +12303,12 @@
   "data_ov062_0211e18c": {
    "src/__sinit_ov062_0211d6fc.c": ["return:S8 []"],
    "src/func_ov062_0211bd10.c": ["return:void *"]
+  },
+  "data_ov063_0211e27c": {
+   "src/game/actors/daTrsTrap_c/d_a_trs_trap.cpp": ["return:SharedFilePtr * []"]
+  },
+  "data_ov063_0211e28c": {
+   "src/game/actors/daTrsTrap_c/d_a_trs_trap.cpp": ["return:SharedFilePtr * []"]
   },
   "data_ov063_0211eb10": {
    "src/game/actors/d_a_obj_th_fall_block.cpp": ["return:ResourceDescriptor"]
@@ -14168,8 +14157,6 @@
   },
   "func_0201267c": {
    "src/_ZN11SnowmanHead6State2Ev.cpp": ["param:#1 int", "return:int"],
-   "src/_ZN12HauntedChair6State1Ev.cpp": ["param:#1 int"],
-   "src/_ZN12HauntedChair6State2Ev.cpp": ["param:#1 int"],
    "src/_ZN4Clam8BehaviorEv.cpp": ["param:#1 int", "param:#2 int *"],
    "src/_ZN7Wiggler8BehaviorEv.cpp": ["param:#1 int"],
    "src/actors/Scuttlebug.cpp": ["param:#1 int"],
@@ -20608,14 +20595,8 @@
    "src/unnamed/ov063/func_ov063_02116d38.c": ["return:int"],
    "src/unnamed/ov063/func_ov063_02119274.c": ["return:int"]
   },
-  "func_ov063_0211c6f8": {
-   "src/game/actors/daTrsTrap_c/_ZN11daTrsTrap_c8BehaviorEv.cpp": ["return:int"]
-  },
   "func_ov063_0211cae8": {
    "src/func_ov020_0211174c.c": ["param:#2 unsigned int"]
-  },
-  "func_ov063_0211d28c": {
-   "src/game/actors/daTrsTrap_c/_ZN11daTrsTrap_c13InitResourcesEv.cpp": ["arity:0"]
   },
   "func_ov063_0211d5f4": {
    "src/game/actors/daPiano_c/_ZN8MadPiano13InitResourcesEv.cpp": ["param:#1 MadPiano *"],
