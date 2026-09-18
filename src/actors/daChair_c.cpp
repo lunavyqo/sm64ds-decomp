@@ -43,27 +43,27 @@ extern Matrix4x3 IDENTITY_MATRIX4X3;
 
 extern "C" {
 void func_0200f760(char *self, char *cyl);
-void func_0201267c(int id, void *pos);
+void func_0201267c(unsigned int id, void *pos);
 void dBgCh_Actr_UpdateContinuous_Veneer(void *);
-void Vec3_Sub(void *res, const void *v0, const void *v1);
+void Vec3_Sub(void *res, void *v0, void *v1);
 s16 _ZN4cstd5atan2E5Fix12IiES1_(s32 y, s32 x);
-s32 Vec3_HorzLen(const void *v0);
+s32 Vec3_HorzLen(const Vector3 *v0);
 void *_ZNK10dBgCh_Actr13GetWallResultEv(void *);
 void _ZNK11SurfaceInfo12CopyNormalToER7Vector3(void *, void *);
 void AddVec3(void *, void *, void *);
-int Vec3_Dist(const void *a, const void *b);
-short Vec3_HorzAngle(const void *a, const void *b);
+int Vec3_Dist(const Vector3 *a, const Vector3 *b);
+short Vec3_HorzAngle(const Vector3 *a, const Vector3 *b);
 int AngleDiff(int a, int b);
 void Matrix4x3_FromRotationZXYExt(void *m, int x, int y, int z);
 
 void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(
     void *self, dActor_c *a, int r, int h, Vector3_16 *rot, Vector3_16 *f);
 void _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(
-    void *self, dActor_c *a, Vector3 *pos, int r, int h, u32 f1, u32 f2);
+    void *self, dActor_c *a, const Vector3 *pos, int r, int h, u32 f1, u32 f2);
 void _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(
     void *self, void *sm, void *m, int rad, int height, unsigned int flags);
-int _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(unsigned, int, int, int);
-void _ZN6Player4HurtERK7Vector3j5Fix12IiEjjj(
+void *_ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(unsigned, int, int, int);
+int _ZN6Player4HurtERK7Vector3j5Fix12IiEjjj(
     void *, const void *, u32, int, u32, u32, u32);
 
 extern s16 data_02082214[];
@@ -264,9 +264,10 @@ void daChair_c::State1()
         sp[0] = *av;
         sp[1] = av[1];
         sp[2] = av[2];
-        if (Vec3_Dist(r4 + 0x5c, sp) >= 0xfa000)
+        if (Vec3_Dist((const Vector3 *)(r4 + 0x5c), (const Vector3 *)sp) >= 0xfa000)
             return;
-        d = (short)(Vec3_HorzAngle(r4 + 0x5c, sp) - *(short *)(r4 + 0x8e) + 0x2000);
+        d = (short)(Vec3_HorzAngle((const Vector3 *)(r4 + 0x5c), (const Vector3 *)sp)
+                    - *(short *)(r4 + 0x8e) + 0x2000);
         if (d & 0x4000) {
             *(char **)(r4 + 0x3a4) = r4 + 0x90;
             if (d > 0)
@@ -291,7 +292,8 @@ void daChair_c::State1()
     if (*(unsigned short *)(r4 + 0x3a0) != 0) {
         p = ClosestPlayer();
         if (p != 0) {
-            if (Vec3_Dist(r4 + 0x5c, (char *)p + 0x5c) < 0x1f4000)
+            if (Vec3_Dist((const Vector3 *)(r4 + 0x5c),
+                          (const Vector3 *)((char *)p + 0x5c)) < 0x1f4000)
                 *(unsigned short *)(r4 + 0x3a0) = 0;
         }
         *(unsigned short *)(r4 + 0x39e) = 0;
@@ -373,7 +375,7 @@ void daChair_c::State2()
                     playerPos.z = pp->z;
                     Vec3_Sub(&diff, &playerPos, (PlainVector3 *)(c + 0x5c));
                     *(s16 *)(c + 0x94) = _ZN4cstd5atan2E5Fix12IiES1_(diff.x, diff.z);
-                    *(s16 *)(c + 0x92) = _ZN4cstd5atan2E5Fix12IiES1_(diff.y, Vec3_HorzLen(&diff)) * -1;
+                    *(s16 *)(c + 0x92) = _ZN4cstd5atan2E5Fix12IiES1_(diff.y, Vec3_HorzLen((const Vector3 *)&diff)) * -1;
                     r = (s32)(((long long)data_02082214[(A92 >> 4) * 2 + 1] * 0x32000 + 0x800) >> 12);
                     *(s32 *)(c + 0xa4) = (s32)(((long long)r * data_02082214[(A94 >> 4) * 2] + 0x800) >> 12);
                     *(s32 *)(c + 0xa8) = (s32)(((long long)data_02082214[(A92 >> 4) * 2] * -0x32000 + 0x800) >> 12);
