@@ -30,9 +30,10 @@
  *   and Thwomp::Behavior call all seven by name across the TU boundary.
  * - 0x360..0x39f stay offset soup. The shadow Matrix4x3, the rise/ground
  *   heights, mState and the timer live on the LEAVES (daDkk_c.h, Thwomp.h),
- *   and both leaves plus this TU read the same words -- the move up that
- *   daDsnBase_c.h invites. Deferred: it edits both leaf headers and
- *   re-verifies ov025/daDkk_c.
+ *   and both leaves plus this TU read the same words -- Init writes
+ *   0x390/0x394/0x39e/0x39f directly. The move up that daDsnBase_c.h
+ *   invites is deferred: it edits both leaf headers and re-verifies
+ *   ov025/daDkk_c.
  * - DropShadowScaleXYZ / Earthquake / NewSimple stay mangled and TU-local:
  *   all three carry Fix12<int> BY VALUE (6az), and Earthquake/NewSimple are
  *   on no header. Earthquake's (void *, const Vector3 &, int) spelling is
@@ -42,6 +43,11 @@
  * - kYoshiEggActorID / kDosunActorID are TU-local: no header names actor
  *   IDs. Both values are the ROM debug table's
  *   (symbols/profile_reconstruction_registry.tsv).
+ * - dBgW_KcMbg::SetFile / TextureSequence::SetFile stay mangled: both take
+ *   Fix12<int> BY VALUE (6az); the header method homes the argument.
+ * - func_020393d4 is an 8-byte store into dBgW+0x18 (beforeClsnCallback).
+ *   This TU calls it; naming belongs with dBgW in arm9.
+ * - SharedFilePtr +4 BMD/BTP load (layout unrecovered; Prepare/SetFile).
  */
 
 #include "daDsnBase_c.h"
@@ -49,6 +55,7 @@
 #include "decl_common.h"
 #include "SharedFilePtr.h"
 #include "dBgW.h"
+#include "dBgCh_Gnd.h"
 
 /* Actor IDs this TU compares. No header vocabulary exists (cleaned callers
  * pass raw hex), so they live here, cited to the ROM's own debug table. */
@@ -60,7 +67,7 @@ enum {
 
 /* The per-leaf resource table both InitResources store into mFileTable (the
  * Thwomp's at data_ov091_02135138, Grindel's at data_ov025_02113814). Shaped
- * from its consumers: func_ov091_02133254 loads the model/collision files,
+ * from its consumers: Init loads the model/collision files,
  * binds the CLPS block and, when [3] is non-null, the texture animation;
  * CleanupResources releases [0], [1] and [3]; Render animates only when [3]
  * is set; func_ov091_02133098 reads [4]/[5] as shadow extents. Owned by the
@@ -68,11 +75,16 @@ enum {
 struct DsnBaseFileTable {
     SharedFilePtr *model;       /* +0x00, BMD */
     SharedFilePtr *collision;   /* +0x04, KCL */
-    void *clps;                 /* +0x08, CLPS block: not a file, not released */
+    CLPS_Block *clps;           /* +0x08, CLPS block: not a file, not released */
     SharedFilePtr *texAnim;     /* +0x0c, BTP, or null when the leaf has none */
     int shadowExtentX;          /* +0x10, DropShadow X base */
     int shadowExtentZ;          /* +0x14, DropShadow Z base */
 };
+
+#ifndef SM64DS_PLATFORM_PC
+typedef char DsnBaseFileTable_size_must_be_0x18[
+    sizeof(DsnBaseFileTable) == 0x18 ? 1 : -1];
+#endif
 
 /* --------------------------------------------------------------------------
  * The one file-scope extern "C" region. Everything here is reached from a
@@ -111,6 +123,85 @@ extern void _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(unsigned id, int x, i
 extern void _ZN8dActor_c18DropShadowScaleXYZER11ShadowModelR9Matrix4x35Fix12IiES5_S5_j(
     dActor_c *self, ShadowModel *shadow, Matrix4x3 *matrix, int scaleX, int scaleY, int scaleZ, unsigned opacity);
 
+/* Same 6az tail: both take Fix12<int> BY VALUE, so the header member form
+ * would home the argument. */
+extern void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
+    dBgW_KcMbg *self, KCL_File *file, const Matrix4x3 *mat, int scale, s16 angY,
+    CLPS_Block *clps);
+extern void _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(
+    TextureSequence *self, BTP_File *file, int flags, int speed,
+    unsigned startFrame);
+/* 8-byte store into dBgW+0x18 (beforeClsnCallback). No SetCallback member.
+ * Spelling matches src/func_020393d4.c -- (int *, int). */
+extern void func_020393d4(int *collider, int callback);
+
+}
+
+/* Init is the run's highest-address definition, so it is written first.
+ * Both leaves' InitResources call it with their own file table already
+ * stored. `Init` is a coined name: class ownership, the two inbound calls,
+ * the body and the layout are proven; the original English is not. */
+// @symbol _ZN11daDsnBase_c4InitEv
+s32 daDsnBase_c::Init()
+{
+    Vector3 v;
+    BMD_File *bmd;
+    KCL_File *kcl;
+    DsnBaseFileTable *files;
+    CLPS_Block *clps;
+    SharedFilePtr *texAnim;
+
+    files = (DsnBaseFileTable *)mFileTable;
+    bmd = (BMD_File *)Model::LoadFile(*files->model);
+    mModel.SetFile(bmd, 1, -1);
+    UpdateModelPosAndRotY();
+    UpdateClsnPosAndRot();
+
+    files = (DsnBaseFileTable *)mFileTable;
+    kcl = (KCL_File *)dBgW_Kc::LoadFile(*files->collision);
+    clps = files->clps;
+    _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
+        &mMeshCollider, kcl, &mClsnMat, 0x199, mAngleY, clps);
+    func_020393d4((int *)&mMeshCollider, (int)&dBgW::UpdatePosAndAngs);
+    mMeshCollider.Enable(this);
+
+    texAnim = ((DsnBaseFileTable *)mFileTable)->texAnim;
+    if (texAnim != 0) {
+        TextureSequence::LoadFile(*texAnim);
+        files = (DsnBaseFileTable *)mFileTable;
+        TextureSequence::Prepare(
+            *(BMD_File *)((int *)files->model)[1],
+            *(BTP_File *)((int *)files->texAnim)[1]);
+        files = (DsnBaseFileTable *)mFileTable;
+        texAnim = files->texAnim;
+        _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(
+            &mTextureSequence, (BTP_File *)((int *)texAnim)[1],
+            0x40000000, 0x1000, 0);
+    }
+
+    if (!mShadowModel.InitCuboid())
+        return 0;
+
+    v.x = mPosX;
+    v.y = mPosY;
+    v.z = mPosZ;
+    v.y = v.y + 0x32000;
+    {
+        dBgCh_Gnd rg;
+        rg.SetObjAndPos(v, 0);
+        *(s32 *)((char *)this + 0x394) = v.y;
+        if (rg.DetectClsn())
+            *(s32 *)((char *)this + 0x394) = rg.clsnY;
+
+        *(s32 *)((char *)this + 0x390) = mPosY + 0x190000;
+        mPosY = *(s32 *)((char *)this + 0x394);
+        *(u8 *)((char *)this + 0x39e) = 0x28;
+        mVertAccel = -0x4000;
+        mTerminalVelocity = -0x3c000;
+        mHorzSpeed = 0xc000;
+        *(u8 *)((char *)this + 0x39f) = 0;
+    }
+    return 1;
 }
 
 /* Vtable slot 9, inherited by both leaves. The texture animation runs only
