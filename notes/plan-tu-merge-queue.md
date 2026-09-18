@@ -512,7 +512,7 @@ reloc-destinations: clean            <- relocation destination identity
 
 A byte MATCH alone is **not** proof: `match.compare` wildcards every relocated word, so a
 member can reproduce the bytes while calling the wrong function. [ov077](../config/arm9/overlays/ov077/symbols.txt)'s
-[func_ov077_02124118](../src/func_ov077_02124118.cpp) called `ApproachLinear` where the ROM calls `ApproachLinear2` —
+[`daJgm_c::UpdateSpitState` (0x02124118)](../src/game/actors/d_a_jgm.cpp) called `ApproachLinear` where the ROM calls `ApproachLinear2` —
 same signature shape, reported MATCH, cost a day. If any of the three could not run, the
 status is "not verified", never "probably fine".
 
