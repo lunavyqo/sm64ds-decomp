@@ -659,19 +659,19 @@ ov010	0x02112c44	PeachPainting_SpawnInfo	g_profile_C1_PEACH	reconstructed profil
 ov010	0x02112c68	data_ov010_02112c68	_ZTV13PeachPainting	vtable alloc=0x128
 ov012	0x02111420	func_ov012_02111420	daObjC0_Switch_c_Spawn	spawnfunc
 ov012	0x02111420	daObjC0_Switch_c_Spawn	daObjC0_Switch_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
-ov012	0x02111450	func_ov012_02111450	_ZN13BasementWaterD1Ev	vtable slot 16 (was _ZN16daObjC0_Switch_cD1Ev)
-ov012	0x0211149c	func_ov012_0211149c	_ZN13BasementWaterD0Ev	vtable slot 17 (was _ZN16daObjC0_Switch_cD0Ev)
-ov012	0x021114fc	func_ov012_021114fc	_ZN13BasementWater16CleanupResourcesEv	vtable slot 3 (was _ZN16daObjC0_Switch_c16CleanupResourcesEv)
-ov012	0x02111540	func_ov012_02111540	_ZN13BasementWater6RenderEv	vtable slot 9 (was _ZN16daObjC0_Switch_c6RenderEv)
-ov012	0x02111574	func_ov012_02111574	_ZN13BasementWater8BehaviorEv	vtable slot 6 (was _ZN16daObjC0_Switch_c8BehaviorEv)
-ov012	0x0211164c	func_ov012_0211164c	_ZN13BasementWater13InitResourcesEv	vtable slot 0 (was _ZN16daObjC0_Switch_c13InitResourcesEv)
-ov012	0x02111730	func_ov012_02111730	BasementWater_Spawn	spawnfunc
-ov012	0x02111730	BasementWater_Spawn	daObjC0Water_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
+ov012	0x02111450	func_ov012_02111450	_ZN14daObjC0Water_cD1Ev	vtable slot 16 (was _ZN16daObjC0_Switch_cD1Ev)
+ov012	0x0211149c	func_ov012_0211149c	_ZN14daObjC0Water_cD0Ev	vtable slot 17 (was _ZN16daObjC0_Switch_cD0Ev)
+ov012	0x021114fc	func_ov012_021114fc	_ZN14daObjC0Water_c16CleanupResourcesEv	vtable slot 3 (was _ZN16daObjC0_Switch_c16CleanupResourcesEv)
+ov012	0x02111540	func_ov012_02111540	_ZN14daObjC0Water_c6RenderEv	vtable slot 9 (was _ZN16daObjC0_Switch_c6RenderEv)
+ov012	0x02111574	func_ov012_02111574	_ZN14daObjC0Water_c8BehaviorEv	vtable slot 6 (was _ZN16daObjC0_Switch_c8BehaviorEv)
+ov012	0x0211164c	func_ov012_0211164c	_ZN14daObjC0Water_c13InitResourcesEv	vtable slot 0 (was _ZN16daObjC0_Switch_c13InitResourcesEv)
+ov012	0x02111730	func_ov012_02111730	daObjC0Water_c_Spawn	spawnfunc
+ov012	0x02111730	daObjC0Water_c_Spawn	daObjC0Water_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved. Historical alias BasementWater_Spawn. Members take no parameters; PlayLong's RK7Vector3 reference spelling is unprovable from this caller (pointer would match).
 ov012	0x02112320	data_ov012_02112320	daObjC0_Switch_c_SpawnInfo	spawninfo
 ov012	0x02112320	daObjC0_Switch_c_SpawnInfo	g_profile_C0_SWITCH	reconstructed profile global; literal ROM ID C0_SWITCH+registry role+later EAD lineage; exact SM64DS spelling not preserved
-ov012	0x021123e4	data_ov012_021123e4	BasementWater_SpawnInfo	spawninfo
-ov012	0x021123e4	BasementWater_SpawnInfo	g_profile_C0_WATER	reconstructed profile global; literal ROM ID C0_WATER+registry role+later EAD lineage; exact SM64DS spelling not preserved
-ov012	0x02112408	data_ov012_02112408	_ZTV13BasementWater	vtable alloc=? (was _ZTV16daObjC0_Switch_c)
+ov012	0x021123e4	data_ov012_021123e4	daObjC0Water_c_SpawnInfo	spawninfo
+ov012	0x021123e4	daObjC0Water_c_SpawnInfo	g_profile_C0_WATER	reconstructed profile global; literal ROM ID C0_WATER+registry role+later EAD lineage; exact SM64DS spelling not preserved
+ov012	0x02112408	data_ov012_02112408	_ZTV14daObjC0Water_c	vtable address point (was coined _ZTV13BasementWater alias, deleted not renamed; ROM name already occupied this word). Do not move the address.
 ov013	0x02111384	func_ov013_02111384	daObjClockHuriko_c_Spawn	spawnfunc
 ov013	0x02111384	daObjClockHuriko_c_Spawn	daObjClockHuriko_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
 ov013	0x021113bc	func_ov013_021113bc	_ZN12daObjClock_cD1Ev	vtable slot 16
@@ -917,14 +917,21 @@ ov020	0x02112880	func_ov020_02112880	Bookend_Spawn	spawnfunc
 ov020	0x02112880	Bookend_Spawn	daBook_c_classInit_KILLER_BOOK	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
 ov020	0x021128dc	func_ov020_021128dc	BookShot_Spawn	spawnfunc
 ov020	0x021128dc	BookShot_Spawn	daBook_c_classInit_SHOOT_BOOK	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
-ov020	0x02112938	func_ov020_02112938	_ZN12HauntedChairD1Ev	vtable slot 16
-ov020	0x02112980	func_ov020_02112980	_ZN12HauntedChairD0Ev	vtable slot 17
-ov020	0x021132d8	func_ov020_021132d8	_ZN12HauntedChair16CleanupResourcesEv	vtable slot 3
-ov020	0x021132fc	func_ov020_021132fc	_ZN12HauntedChair6RenderEv	vtable slot 9
-ov020	0x02113324	func_ov020_02113324	_ZN12HauntedChair8BehaviorEv	vtable slot 6
-ov020	0x021133b0	func_ov020_021133b0	_ZN12HauntedChair13InitResourcesEv	vtable slot 0
-ov020	0x02113494	func_ov020_02113494	HauntedChair_Spawn	spawnfunc
-ov020	0x02113494	HauntedChair_Spawn	daChair_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
+ov020	0x02112938	func_ov020_02112938	_ZN9daChair_cD1Ev	vtable slot 16 (was _ZN12HauntedChairD1Ev)
+ov020	0x02112980	func_ov020_02112980	_ZN9daChair_cD0Ev	vtable slot 17 (was _ZN12HauntedChairD0Ev)
+ov020	0x021129dc	func_ov020_021129dc	_ZN9daChair_c6State3Ev	coined state index; ROM has no identifier (was _ZN12HauntedChair6State3Ev)
+ov020	0x02112b00	func_ov020_02112b00	_ZN9daChair_c6State2Ev	coined state index; ROM has no identifier (was _ZN12HauntedChair6State2Ev)
+ov020	0x02112e94	func_ov020_02112e94	_ZN9daChair_c6State1Ev	coined state index; ROM has no identifier (was _ZN12HauntedChair6State1Ev)
+ov020	0x021130c8	func_ov020_021130c8	_ZN9daChair_c6State0Ev	coined state index; ROM has no identifier (was _ZN12HauntedChair6State0Ev)
+ov020	0x02113148	func_ov020_02113148	_ZN9daChair_c18ApproachStateValueEPsS0_isis	coined; Ps vs Rs and short vs int are unprovable (identical ARM for this body); class ownership and arity proven (was _ZN12HauntedChair18ApproachStateValueEPsS0_isis)
+ov020	0x021131f8	func_ov020_021131f8	_ZN9daChair_c5BreakEv	coined; ROM has no identifier (was _ZN12HauntedChair5BreakEv)
+ov020	0x02113240	func_ov020_02113240	_ZN9daChair_c11UpdateModelEv	coined; ROM has no identifier (was _ZN12HauntedChair11UpdateModelEv)
+ov020	0x021132d8	func_ov020_021132d8	_ZN9daChair_c16CleanupResourcesEv	vtable slot 3 (was _ZN12HauntedChair16CleanupResourcesEv)
+ov020	0x021132fc	func_ov020_021132fc	_ZN9daChair_c6RenderEv	vtable slot 9 (was _ZN12HauntedChair6RenderEv)
+ov020	0x02113324	func_ov020_02113324	_ZN9daChair_c8BehaviorEv	vtable slot 6 (was _ZN12HauntedChair8BehaviorEv)
+ov020	0x021133b0	func_ov020_021133b0	_ZN9daChair_c13InitResourcesEv	vtable slot 0 (was _ZN12HauntedChair13InitResourcesEv)
+ov020	0x02113494	func_ov020_02113494	daChair_c_Spawn	spawnfunc (was HauntedChair_Spawn)
+ov020	0x02113494	daChair_c_Spawn	daChair_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved (was HauntedChair_Spawn)
 ov020	0x02114860	data_ov020_02114860	Bookend_SpawnInfo	spawninfo
 ov020	0x02114860	Bookend_SpawnInfo	g_profile_KILLER_BOOK	reconstructed profile global; literal ROM ID KILLER_BOOK+registry role+later EAD lineage; exact SM64DS spelling not preserved
 ov020	0x0211487c	data_ov020_0211487c	BookShotSpawner_SpawnInfo	spawninfo
@@ -934,9 +941,9 @@ ov020	0x021148b4	data_ov020_021148b4	BookShot_SpawnInfo	spawninfo
 ov020	0x021148b4	BookShot_SpawnInfo	g_profile_SHOOT_BOOK	reconstructed profile global; literal ROM ID SHOOT_BOOK+registry role+later EAD lineage; exact SM64DS spelling not preserved
 ov020	0x021148d8	data_ov020_021148d8	_ZTV15BookShotSpawner	vtable alloc=0xd8
 ov020	0x0211495c	data_ov020_0211495c	_ZTV8BookShot	vtable alloc=?
-ov020	0x021149f0	data_ov020_021149f0	HauntedChair_SpawnInfo	spawninfo
-ov020	0x021149f0	HauntedChair_SpawnInfo	g_profile_CHAIR	reconstructed profile global; literal ROM ID CHAIR+registry role+later EAD lineage; exact SM64DS spelling not preserved
-ov020	0x02114a14	data_ov020_02114a14	_ZTV12HauntedChair	vtable alloc=0x3a8
+ov020	0x021149f0	data_ov020_021149f0	daChair_c_SpawnInfo	spawninfo (was HauntedChair_SpawnInfo)
+ov020	0x021149f0	daChair_c_SpawnInfo	g_profile_CHAIR	reconstructed profile global; literal ROM ID CHAIR+registry role+later EAD lineage; exact SM64DS spelling not preserved (was HauntedChair_SpawnInfo)
+ov020	0x02114a14	data_ov020_02114a14	_ZTV9daChair_c	vtable alloc=0x3a8 (was _ZTV12HauntedChair)
 ov021	0x021111a0	func_ov021_021111a0	_ZN12WorkElevatorD1Ev	vtable slot 16
 ov021	0x02111214	func_ov021_02111214	_ZN12WorkElevatorD0Ev	vtable slot 17
 ov021	0x021115dc	func_ov021_021115dc	_ZN12WorkElevator16CleanupResourcesEv	vtable slot 3

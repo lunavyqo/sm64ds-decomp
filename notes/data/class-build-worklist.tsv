@@ -107,7 +107,7 @@ daBttBk_c	DONE	include\CrazedCrate.h  [alias: header uses pre-rename name]	dActo
 daCamTag_c	DONE	include\daCamTag_c.h	dActor_c	0	ov002	7
 daChRoom_c	DONE	include\daChRoom_c.h	dActor_c	0	ov002	7
 daChScene_c	DONE	include\daChScene_c.h	dActor_c	0	ov002	7
-daChair_c	DONE	include\HauntedChair.h  [alias: header uses pre-rename name]	dActor_c	0	ov020	13
+daChair_c	DONE	include\daChair_c.h  [alias: header uses pre-rename name]	dActor_c	0	ov020	13
 daChoropu_c	DONE	include\MontyMole.h  [alias: header uses pre-rename name]	dActor_c	0	ov080	7
 daCnn_c	DONE	include\Cannon.h  [alias: header uses pre-rename name]	dActor_c	0	ov098	6
 daCoin_c	DONE	include\Coin.h  [alias: header uses pre-rename name]	dActor_c	0	ov002	8
@@ -231,7 +231,7 @@ daObjBk_Lift_c	DONE	include\TowerStep.h  [alias: header uses pre-rename name]	dB
 daObjBk_Rotebar_c	DONE	include\daObjBk_Rotebar_c.h	dBgActor_c	0	ov015	6
 daObjBlockL_c	DONE	include\BigBrickBlock.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov002	14
 daObjBlockS_c	DONE	include\Crate.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov098	10
-daObjC0Water_c	DONE	include\BasementWater.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov012	6
+daObjC0Water_c	DONE	include\daObjC0Water_c.h	dBgActor_c	0	ov012	6
 daObjC0_Switch_c	DONE	include\daObjC0_Switch_c.h	dBgActor_c	0	ov012	7
 daObjC1_Trap_c	DONE	include\daObjC1_Trap_c.h	dBgActor_c	0	ov010	15
 daObjCannonShutter_c	DONE	include\daObjCannonShutter_c.h	dBgActor_c	0	ov002	6

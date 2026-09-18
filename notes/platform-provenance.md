@@ -59,7 +59,7 @@ non-`dBgActor_c` vtable store each, so no intermediate — and each places a
 | header name | RTTI name | member at 0x320 |
 |---|---|---|
 | `PyramidTop`    | `daObjDlPyramid_c` | `Model` |
-| `BasementWater` | `daObjC0Water_c`   | `TextureTransformer` |
+| `daObjC0Water_c` | `daObjC0Water_c`   | `TextureTransformer` |
 | `TowerStep`     | `daObjBk_Lift_c`   | `ShadowModel` |
 | `WallSign`      | `daObjKanban_c`    | `dCcAcPos_c` |
 
@@ -398,7 +398,7 @@ It overrides slots 0 and 3, which the base leaves null.
 as its `const Matrix4x3 &`. Was a `u8` marker plus its pad.
 
 `mShadowMat` at 0x350: `ShadowModel` + `Matrix4x3` is the same pair
-`HauntedChair` evidences by byte (a 48-byte identity block-copied over +0x14c,
+`daChair_c` evidences by byte (a 48-byte identity block-copied over +0x14c,
 which lands exactly on the next member), and 0x350 + 0x30 closes on the 0x380
 `SpinningPlatform_Spawn` allocates.
 
