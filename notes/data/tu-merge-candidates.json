@@ -3775,18 +3775,18 @@
    "start": "0x21119d0",
    "end": "0x2111e10",
    "classes": [
-    "LightBeam"
+    "daObjC1Hikari_c"
    ],
    "n_functions_map": 8,
    "n_files": 8,
    "files": [
-    "src/_ZN9LightBeamD1Ev.cpp",
-    "src/_ZN9LightBeamD0Ev.c",
+    "src/_ZN15daObjC1Hikari_cD1Ev.cpp",
+    "src/_ZN15daObjC1Hikari_cD0Ev.c",
     "src/func_ov010_02111a54.c",
-    "src/_ZN9LightBeam16CleanupResourcesEv.c",
-    "src/_ZN9LightBeam6RenderEv.cpp",
-    "src/_ZN9LightBeam8BehaviorEv.cpp",
-    "src/_ZN9LightBeam13InitResourcesEv.cpp",
+    "src/_ZN15daObjC1Hikari_c16CleanupResourcesEv.c",
+    "src/_ZN15daObjC1Hikari_c6RenderEv.cpp",
+    "src/_ZN15daObjC1Hikari_c8BehaviorEv.cpp",
+    "src/_ZN15daObjC1Hikari_c13InitResourcesEv.cpp",
     "src/d_a_obj_c1_hikari.c"
    ],
    "ext_mix": {
@@ -26763,13 +26763,13 @@
    "start": "0x211d4b8",
    "end": "0x211e1c0",
    "classes": [
-    "MadPiano"
+    "daPiano_c"
    ],
    "n_functions_map": 17,
    "n_files": 17,
    "files": [
-    "src/game/actors/daPiano_c/_ZN8MadPianoD1Ev.cpp",
-    "src/game/actors/daPiano_c/_ZN8MadPianoD0Ev.cpp",
+    "src/game/actors/daPiano_c/_ZN9daPiano_cD1Ev.cpp",
+    "src/game/actors/daPiano_c/_ZN9daPiano_cD0Ev.cpp",
     "src/unnamed/ov063/func_ov063_0211d5f4.c",
     "src/unnamed/ov063/func_ov063_0211d828.cpp",
     "src/unnamed/ov063/func_ov063_0211d88c.c",
@@ -26780,11 +26780,11 @@
     "src/unnamed/ov063/func_ov063_0211dd84.c",
     "src/unnamed/ov063/func_ov063_0211ddac.cpp",
     "src/unnamed/ov063/func_ov063_0211ddf4.cpp",
-    "src/game/actors/daPiano_c/_ZN8MadPiano16CleanupResourcesEv.cpp",
-    "src/game/actors/daPiano_c/_ZN8MadPiano6RenderEv.cpp",
-    "src/game/actors/daPiano_c/_ZN8MadPiano8BehaviorEv.cpp",
-    "src/game/actors/daPiano_c/_ZN8MadPiano13InitResourcesEv.cpp",
-    "src/actors/MadPiano/daPiano_c_classInit.cpp"
+    "src/game/actors/daPiano_c/_ZN9daPiano_c16CleanupResourcesEv.cpp",
+    "src/game/actors/daPiano_c/_ZN9daPiano_c6RenderEv.cpp",
+    "src/game/actors/daPiano_c/_ZN9daPiano_c8BehaviorEv.cpp",
+    "src/game/actors/daPiano_c/_ZN9daPiano_c13InitResourcesEv.cpp",
+    "src/actors/daPiano_c/daPiano_c_classInit.cpp"
    ],
    "ext_mix": {
     ".c": 7,
