@@ -3449,6 +3449,15 @@
     "src/actors/daChair_c.cpp#_ZN9daChair_c6RenderEv": "tangosdev",
     "src/actors/daChair_c.cpp#_ZN9daChair_c8BehaviorEv": "tangosdev",
     "src/actors/daChair_c.cpp#_ZN9daChair_c13InitResourcesEv": "tangosdev",
-    "src/actors/daChair_c.cpp#daChair_c_classInit": "tangosdev"
+    "src/actors/daChair_c.cpp#daChair_c_classInit": "tangosdev",
+    "src/actors/daObjCtKaitendai_c.cpp#_ZN18daObjCtKaitendai_cD1Ev": "andrewboudreau",
+    "src/actors/daObjCtKaitendai_c.cpp#_ZN18daObjCtKaitendai_cD0Ev": "andrewboudreau",
+    "src/actors/daObjCtKaitendai_c.cpp#func_ov065_0211b40c": "tangosdev",
+    "src/actors/daObjCtKaitendai_c.cpp#_ZN18daObjCtKaitendai_c16CleanupResourcesEv": "andrewboudreau",
+    "src/actors/daObjCtKaitendai_c.cpp#_ZN18daObjCtKaitendai_c6RenderEv": "tangosdev",
+    "src/actors/daObjCtKaitendai_c.cpp#_ZN18daObjCtKaitendai_c8BehaviorEv": "andrewboudreau",
+    "src/actors/daObjCtKaitendai_c.cpp#_ZN18daObjCtKaitendai_c13InitResourcesEv": "andrewboudreau",
+    "src/actors/daObjCtKaitendai_c.cpp#daObjCtKaitendai_c_classInit_CT_MECHA07": "tangosdev",
+    "src/actors/daObjCtKaitendai_c.cpp#daObjCtKaitendai_c_classInit_CT_MECHA06": "tangosdev"
   }
 }
