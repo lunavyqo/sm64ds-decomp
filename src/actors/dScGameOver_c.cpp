@@ -2,10 +2,12 @@
 /* dScGameOver_c -- the game-over screen, ov003.
  *
  * Mario is out of lives: eight "GAME OVER" glyphs drop in from off screen,
- * then a yes/no continue prompt (stylus or button; left is yes). 9
- * functions, .text 0x020b0580..0x020b1118: the seven dScene_c slots every
+ * then a yes/no continue prompt (stylus or button; left is yes). 10
+ * functions, .text 0x020b0580..0x020b117c: the seven dScene_c slots every
  * direct child overrides (0, 3, 6, 9, 12, 16, 17 -- the class adds no new
- * virtual) plus the two free helpers that share the TU. D1/D0 are not
+ * virtual), the two free helpers that share the TU, and the factory
+ * dScGameOver_c_classInit, which abuts InitResources at 0x020b1118 and ends
+ * at ov003's .text end. D1/D0 are not
  * written here: the header's inline destructor plus the key function
  * (InitResources) emits them, D1 first, the ROM's order.
  *
@@ -26,7 +28,7 @@
  *   narrowed, the original ownership and form stay uncertain, and the free
  *   form is only what this TU reproduces.
  * - `#pragma opt_strength_reduction off` is file-global last-wins;
- *   func_ov003_020b060c needs it (glyph-loop induction) and the other eight
+ *   func_ov003_020b060c needs it (glyph-loop induction) and the other nine
  *   members verify with it set, so it costs nothing. No narrower form.
  *   Both halves are pinned under notes/experiments/ --
  *   gameover-2711-strength-reduction-off.md (dropping it breaks 060c) and
@@ -62,7 +64,7 @@
  * 2004/b56 -- bracketing it around the one member does nothing, because the
  * trailing `on` wins for the whole file -- so there is no narrower place to
  * put it. The blast radius was measured rather than assumed: with it set
- * here, all 9 members verify, so it costs the other eight nothing. */
+ * here, all 10 members verify, so it costs the other nine nothing. */
 #pragma opt_strength_reduction off
 
 /* The active scene at data_0209f5bc, which gates Behavior. Only its call
@@ -117,6 +119,22 @@ void _ZN5Sound22StopLoadedMusic_Layer1Ej(unsigned int);
 int LoadFile(int handle);
 void DecompressLZ16(int src, void *dst);
 void func_02012790(int se);
+}
+
+/* Reconstructed source-style name: SM64DS proves dScGameOver_c through RTTI,
+ * allocation size, vtable identity, and the GAME_OVER registry profile;
+ * later EAD lineage supplies classInit. Exact original spelling is not
+ * preserved. Historical alias: func_ov003_020b1118.
+ *
+ * Every instruction the cartridge has here falls out of the one `new`.
+ * 0x020b1118 loads 0x98 -- the class's own size -- into fBase_c::operator
+ * new; the inlined ctor runs fBase_c's C2, stores dBase_c then dScene_c's
+ * vptrs, ORs pauseFlags 1 and 4 (dScene_c::dScene_c), then stores this
+ * class's vptr. The null check is the one `new` itself emits. */
+// @symbol dScGameOver_c_classInit
+extern "C" dScGameOver_c *dScGameOver_c_classInit(void)
+{
+    return new dScGameOver_c();
 }
 
 /* [8] 0x020b0b3c -- vtable slot 0, KEY FUNCTION */

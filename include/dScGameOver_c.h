@@ -11,7 +11,11 @@
  * 17). No new virtual is added.
  *
  * SIZE 0x98, read off the factory's `_ZN7fBase_cnwEj(0x98)`. The factory
- * (dScGameOver_c_classInit, src/d_s_game_over.cpp) sits outside this TU.
+ * (dScGameOver_c_classInit) lives in this TU as `return new dScGameOver_c()`:
+ * that one `new` is fBase_c::operator new(0x98) -- the allocator literal is
+ * the size -- then the inlined ctor chain (fBase_c C2, dBase_c/dScene_c
+ * vptrs, pauseFlags |= 1 and 4, this class's vptr). No nested-object
+ * construction is visible here; every own field below is a plain scalar.
  * Members below 0x50 are all inherited. Field names are proven by this TU's
  * own uses: the glyph arrays InitResources lays out and Render/060c read
  * back, and the five cursor bytes Behavior/0730/Render share.
