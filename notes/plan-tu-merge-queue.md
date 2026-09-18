@@ -197,7 +197,7 @@ first module where a `config_tu/` conversion becomes conceivable.
 |[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20b09b0|  n=9|   `daChScene_c`|                   CONF1|
 |[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20b46a0|  n=8|   `MegaMushroomCreateTag`|  CONF1 pcov=5|
 |[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20bc5e0|  n=8|   `HealingHeart`|          CONF1 pcov=4|
-|[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20f0894|  n=8|   `Number`|                 CONF1|
+|[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20f0894|  n=8|   `daObjNumber_c`|                 CONF1|
 |[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20f11b0|  n=9|   `daObjBC_Switch_c`|         CONF2|
 |[ov006](../config/arm9/overlays/ov006/symbols.txt)| 0x212471c|  n=2|   `MgTrampolineTerror`|     CONF1|
 
@@ -209,7 +209,7 @@ first module where a `config_tu/` conversion becomes conceivable.
 |[ov009](../config/arm9/overlays/ov009/symbols.txt)| 0x2111dc4|  n=8|   `daObjMc_Metalnet_c`|         CONF2 pcov=2|
 |[ov010](../config/arm9/overlays/ov010/symbols.txt)| 0x21119d0|  n=8|   `LightBeam`|        CONF1 pcov=3|
 |[ov010](../config/arm9/overlays/ov010/symbols.txt)| 0x2111e10|  n=8|   `PeachPainting`|    CONF1 pcov=3|
-|[ov012](../config/arm9/overlays/ov012/symbols.txt)| 0x2111450|  n=7|   `BasementWater`|    CONF2|
+|[ov012](../config/arm9/overlays/ov012/symbols.txt)| 0x2111450|  n=7|   `daObjC0Water_c`|    CONF2|
 |[ov015](../config/arm9/overlays/ov015/symbols.txt)| 0x2112944|  n=7|   `daObjBk_Rotebar_c`|   CONF2|
 |[ov016](../config/arm9/overlays/ov016/symbols.txt)| 0x211260c|  n=8|   `ShipUp`|           CONF1|
 
