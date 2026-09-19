@@ -347,10 +347,12 @@
     "functions_declared": 41,
     "compilerOnlyOutput": {
       "requested": [
+        "_ZN10dBgActor_cD2Ev",
         "_ZN12HbSpawnFrameD1Ev",
         "_ZN7Vector3D1Ev"
       ],
       "deadstripped": [
+        "_ZN10dBgActor_cD2Ev",
         "_ZN12HbSpawnFrameD1Ev",
         "_ZN7Vector3D1Ev"
       ],
@@ -373,7 +375,9 @@
         20,
         21,
         32,
-        49
+        49,
+        93,
+        94
       ],
       "data": [
         "_ZTI7fBase_c",
@@ -484,6 +488,11 @@
     }
   },
   "compiler_only_output": [
+    {
+      "symbol": "_ZN10dBgActor_cD2Ev",
+      "disposition": "deadstrip",
+      "reason": "return new daObjHatenaBlock_c() instantiates the class, so mwccarm emits the base-object destructor helper. No configured ROM symbol and no inbound relocation after the licensed leaf D1/D0 pair is retained."
+    },
     {
       "symbol": "_ZN12HbSpawnFrameD1Ev",
       "disposition": "deadstrip",
