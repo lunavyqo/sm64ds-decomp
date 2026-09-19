@@ -204,17 +204,7 @@ extern void _ZN7PathPtrC1Ev(void *);
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int *daRNk_c_classInit(void)
 {
-    int *p = (int *)_ZN7fBase_cnwEj(992);
-    if (p) {
-        _ZN12dEnemyBase_cC2Ev(p);
-        p[0] = (int)&_ZTV7daRNk_c[2];  /* +8: past the RTTI/offset header; this TU defines the vtable */
-        _ZN7dCcAc_cC1Ev((char *)p + 0x110);
-        _ZN10dBgCh_ActrC1Ev((char *)p + 0x144);
-        _ZN9ModelAnimC1Ev((char *)p + 0x300);
-        _ZN11ShadowModelC1Ev((char *)p + 0x364);
-        _ZN7PathPtrC1Ev((char *)p + 0x3d8);
-    }
-    return p;
+    return (int *)new daRNk_c;
 }
 }
 
@@ -1018,31 +1008,16 @@ reset:
 /* ROM ordinal 1 -- _ZN7daRNk_cD0Ev, 0x021197a4, size 0x5c */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daRNk_cD0Ev
-/* recovered: real C++ deleting destructor -- the compiler emits the whole body
- *
- * D0 is the DELETING destructor: destroy through this class and its bases, then
- * return the object to its heap. Nobody writes that; declaring `~daRNk_c()` is
- * enough, because mwcc emits D2, D0 and D1 together and objisolate keeps the
- * one this file is bound to.
- *
- * The deallocation is an inline operator delete -- dEnemyBase_c's, reachable because
- * dEnemyBase_c is this class's IMMEDIATE base.
- */
-/* (the single real destructor below emits D0 and D1 together) */
+/* D0 is the DELETING destructor: destroy through this class (dEnemyBase_c
+ * chain) then return the object to its heap via an inline operator delete.
+ * Both variants are emitted from the single inline destructor in
+ * daRNk_c.h (class-form skill): D1 then D0 in ROM order, no leaf D2. */
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 0 -- _ZN7daRNk_cD1Ev, 0x0211975c, size 0x48 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN7daRNk_cD1Ev
-/* recovered: real C++ destructor -- the compiler emits the whole body
- *
- * One vtable store and five destructor calls, every one a consequence of
- * `struct daRNk_c : dEnemyBase_c` and the members that declaration types, destroyed in
- * reverse declaration order, then dEnemyBase_c::~dEnemyBase_c.
- *
- * This body is the evidence for the header: each member's size closes exactly
- * on the next one's offset.
- */
-daRNk_c::~daRNk_c()
-{
-}
+/* D1 is emitted from the inline destructor in daRNk_c.h alongside D0
+ * (class-form skill); this marker at D1's ROM ordinal keeps the
+ * accounting naming it. Members are destroyed in reverse declaration
+ * order, then dEnemyBase_c::~dEnemyBase_c. */

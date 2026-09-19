@@ -73,7 +73,11 @@ struct daRNk_c : dEnemyBase_c {
     PathPtr                      mPathPtr;              /* 0x3d8 */
 
     /* --- vtable --- */
-    virtual ~daRNk_c();
+    /* Inline and first: measured (class-form skill) that mwccarm 2004/b56
+       emits the retail D1-then-D0 pair in ROM order plus _ZTV/_ZTI/_ZTS
+       homed in the instantiating TU, and no leaf D2. Out-of-line emits
+       D0 before D1, which the production isolate refuses. */
+    virtual ~daRNk_c() {}
 
     int Behavior();
     int CleanupResources();
