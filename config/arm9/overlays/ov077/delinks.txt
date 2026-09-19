@@ -144,11 +144,11 @@ src/d_a_tgz.c:
     complete
     .text start:0x021261f4 end:0x0212624c
 
-src/_ZN7HeaveHoD1Ev.cpp:
+src/_ZN9daPopoi_cD1Ev.cpp:
     complete
     .text start:0x0212624c end:0x0212629c
 
-src/_ZN7HeaveHoD0Ev.cpp:
+src/_ZN9daPopoi_cD0Ev.cpp:
     complete
     .text start:0x0212629c end:0x02126300
 
@@ -208,23 +208,23 @@ src/func_ov077_02126dac.c:
     complete
     .text start:0x02126dac end:0x02126dec
 
-src/_ZN7HeaveHo16CleanupResourcesEv.cpp:
+src/_ZN9daPopoi_c16CleanupResourcesEv.cpp:
     complete
     .text start:0x02126dec end:0x02126e34
 
-src/_ZN7HeaveHo16OnPendingDestroyEv.cpp:
+src/_ZN9daPopoi_c16OnPendingDestroyEv.cpp:
     complete
     .text start:0x02126e34 end:0x02126e38
 
-src/_ZN7HeaveHo6RenderEv.cpp:
+src/_ZN9daPopoi_c6RenderEv.cpp:
     complete
     .text start:0x02126e38 end:0x02126e88
 
-src/_ZN7HeaveHo8BehaviorEv.cpp:
+src/_ZN9daPopoi_c8BehaviorEv.cpp:
     complete
     .text start:0x02126e88 end:0x0212706c
 
-src/_ZN7HeaveHo13InitResourcesEv.cpp:
+src/_ZN9daPopoi_c13InitResourcesEv.cpp:
     complete
     .text start:0x0212706c end:0x021271d4
 

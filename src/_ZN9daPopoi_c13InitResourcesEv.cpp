@@ -1,9 +1,9 @@
 //cpp
-// @symbol _ZN7HeaveHo13InitResourcesEv
+// @symbol _ZN9daPopoi_c13InitResourcesEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 #include "decl_common.h"
 /* recovered: named members + shared header, real C++ method */
-#include "HeaveHo.h"
+#include "daPopoi_c.h"
 extern "C" {
 extern void* _ZN5Model8LoadFileER13SharedFilePtr(void*);
 extern void _ZN9ModelBase7SetFileEP8BMD_Fileii(void*, void*, int, int);
@@ -16,7 +16,7 @@ struct V3 { int x, y, z; };
 extern struct V3 data_ov077_02127a5c;
 }
 
-int HeaveHo::InitResources()
+int daPopoi_c::InitResources()
 {
   struct V3 v;
   void* f;

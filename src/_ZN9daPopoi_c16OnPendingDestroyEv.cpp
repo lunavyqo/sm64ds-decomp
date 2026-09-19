@@ -1,11 +1,11 @@
 //cpp
-// @symbol _ZN7HeaveHo16OnPendingDestroyEv
+// @symbol _ZN9daPopoi_c16OnPendingDestroyEv
 /* recovered: shared header, real C++ method
  *
  * fBase_c slot 12. Empty in the ROM: four bytes, `bx lr`.
  */
-#include "HeaveHo.h"
+#include "daPopoi_c.h"
 
-void HeaveHo::OnPendingDestroy()
+void daPopoi_c::OnPendingDestroy()
 {
 }

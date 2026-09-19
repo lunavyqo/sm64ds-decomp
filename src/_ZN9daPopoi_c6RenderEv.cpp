@@ -1,7 +1,7 @@
 //cpp
-// @symbol _ZN7HeaveHo6RenderEv
+// @symbol _ZN9daPopoi_c6RenderEv
 /* recovered: named members + shared header, real C++ method */
-#include "HeaveHo.h"
+#include "daPopoi_c.h"
 extern int data_0209f32c;
 
 struct Cls {
@@ -13,7 +13,7 @@ struct Cls {
     virtual void method5(int);  /* at vtable offset 0x14 */
 };
 
-int HeaveHo::Render()
+int daPopoi_c::Render()
 {
     if (mPosY < data_0209f32c) return 1;
     Cls *obj = (Cls*)((char*)&mModelAnim);
