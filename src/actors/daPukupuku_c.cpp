@@ -29,9 +29,10 @@
  * Leftover: data_ov090_* kept as this TU observes them -- 0x213455c
  *   AnimFilePtr (InitResources reads .file), 0x2134564 SharedFilePtr,
  *   0x21342d8 Vector3, 0x2134594 scalar int via decl_common.h.
- * Leftover: factory stays hand-rolled with &_ZTV12daPukupuku_c[2]
- *   (+8: this TU defines the vtable). The return-new form is
- *   unmeasured for this base+member ctor order.
+ * Leftover: factory is `return (int *)new daPukupuku_c` -- real
+ *   instantiation, which is what makes mwccarm emit the D1-then-D0 pair
+ *   in ROM order plus the vtable homed here. The synthesized constructor
+ *   reproduces the ROM init sequence byte-exact.
  * Leftover: S14 g_profile_PUKUPUKU stays outside the TU.
  */
 
@@ -182,8 +183,6 @@ void *thisp, struct BCA_File *, int, int, unsigned int);
 /* TUBUILD CONFLICT -- alternate declaration of data_ov090_021342d8, from the legacy file for _ZN12daPukupuku_c13InitResourcesEv, NOT applied: extern struct Vector3 data_ov090_021342d8; */
 }
 
-extern int _ZTV12daPukupuku_c[];
-
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 14 -- daPukupuku_c_classInit, 0x02133634, size 0x48 */
 /* -------------------------------------------------------------------------- */
@@ -197,15 +196,7 @@ extern int _ZTV12daPukupuku_c[];
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int *daPukupuku_c_classInit(void)
 {
-    int *p = (int *)_ZN7fBase_cnwEj(904);
-    if (p) {
-        _ZN12dEnemyBase_cC2Ev(p);
-        p[0] = (int)&_ZTV12daPukupuku_c[2]; /* +8: this TU defines the vtable */
-        _ZN10dCcAcPos_cC1Ev((char *)p + 0x110);
-        _ZN10dBgCh_ActrC1Ev((char *)p + 0x150);
-        _ZN9ModelAnimC1Ev((char *)p + 0x30c);
-    }
-    return p;
+    return (int *)new daPukupuku_c;
 }
 }
 
@@ -453,35 +444,16 @@ extern "C" void func_ov090_021330c8(char* thiz)
 /* ROM ordinal 1 -- _ZN12daPukupuku_cD0Ev, 0x02133074, size 0x54 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daPukupuku_cD0Ev
-/* recovered: real C++ deleting destructor -- the compiler emits the whole body
- *
- * D0 is the DELETING destructor: destroy through this class and its bases --
- * which is why more than one vptr store appears -- then return the object to
- * its heap. Nobody writes that; declaring `~daPukupuku_c()` is enough, because mwcc
- * emits D2, D0 and D1 together and objisolate keeps the one this file is bound
- * to.
- *
- * The deallocation is an inline operator delete, which is why nothing below
- * mentions a heap.
- *
- * (no separate definition: the single ~daPukupuku_c() below emits the D0 and
- * D1 variants together from one declaration, so writing a body here would
- * redefine it. D0 has no source of its own; this marker is parked at D0's ROM
- * ordinal so the accounting still names it.)
- */
+/* D0 is the DELETING destructor: destroy through this class (dEnemyBase_c
+ * chain) then return the object to its heap via an inline operator delete.
+ * Both variants are emitted from the single inline destructor in
+ * daPukupuku_c.h (class-form skill): D1 then D0 in ROM order, no leaf D2. */
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 0 -- _ZN12daPukupuku_cD1Ev, 0x02133034, size 0x40 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN12daPukupuku_cD1Ev
-/* recovered: real C++ destructor -- the compiler emits the whole body
- *
- * Two vtable stores and three destructor calls, every one a consequence of
- * `struct daPukupuku_c : dBgActor_c`: its own vptr, then dBgActor_c's -- inlined,
- * because dBgActor_c's destructor is defined in its class body -- then
- * dBgActor_c's Model and dBgW_KcMbg, then dActor_c. This class adds no
- * member with a destructor of its own.
- */
-daPukupuku_c::~daPukupuku_c()
-{
-}
+/* D1 is emitted from the inline destructor in daPukupuku_c.h alongside D0
+ * (class-form skill); this marker at D1's ROM ordinal keeps the
+ * accounting naming it. This class adds no member with a destructor
+ * of its own. */
