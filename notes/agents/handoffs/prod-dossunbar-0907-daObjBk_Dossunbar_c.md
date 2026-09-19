@@ -47,7 +47,7 @@ This document describes this commit. The queue records its immutable output SHA.
 - **The fold is 25, not the queue's 23.** Re-derived by address rather than taken
   from the queue row: the 25 delinks entries over that span are contiguous, they
   are bounded below by the botaosi shard that ends at `0x02111ba0` and above by
-  the TowerStep destructor shard that starts at `0x02112290`, and they include
+  the daObjBk_Lift_c destructor shard that starts at `0x02112290`, and they include
   the two zero-gap registry factories
   `daObjBk_Dossunbar_c_classInit_BK_DOSSUNBAR_L` and `..._S`, whose shards were
   named `d_a_obj_bk_dossunbar_bk_dossunbar_l.c` and `..._s.c`. The queue's
@@ -142,11 +142,14 @@ This document describes this commit. The queue records its immutable output SHA.
   evidenced names plus the matching symbols.txt edit; (2) **a naming defect that
   is reported here, not fixed**: the ov015 `.bss` symbols
   `MovingBarSmall_ClsnFile` (`0x02114a5c`) and `MovingBarSmall_ModelFile`
-  (`0x02114a64`) carry this class's old coined prefix but belong to TowerStep --
-  the only file that references either is
-  `src/_ZN9TowerStep16CleanupResourcesEv.cpp`. They are outside this fold, the
-  rename tool left them alone because there is no word boundary after the coined
-  prefix, and the promoted TU does not reference them. They need an owner.
+  (`0x02114a64`) carry this class's old coined prefix but belong to daObjBk_Lift_c --
+  the one file that used to reference either has since been absorbed into
+  `src/actors/daObjBk_Lift_c.cpp`, which reaches both addresses by their
+  address-true `data_ov015_02114a5c` / `data_ov015_02114a64` spellings instead.
+  Nothing in the tree references the coined names now. They are outside this
+  fold, the rename tool left them alone because there is no word boundary after
+  the coined prefix, and the promoted TU does not reference them. They need an
+  owner.
 
 ## Proof
 

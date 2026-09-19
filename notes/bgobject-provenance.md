@@ -408,16 +408,14 @@ sub; }` shadow is gone in favour of `mModel.Render(0)`, and `InitResources` reac
 `mModel`, `mMeshCollider` and `mClsnMat` by name.
 
 ---
-## QuestionBlock (`include/QuestionBlock.h`, [ov102](../config/arm9/overlays/ov102/symbols.txt), size 0x3f8)
+## daObjHatenaBlock_c (`include/daObjHatenaBlock_c.h`, [ov102](../config/arm9/overlays/ov102/symbols.txt), size 0x3f8)
 
-Bodies read: `src/_ZN13QuestionBlock13InitResourcesEv.cpp`,
-`src/_ZN13QuestionBlock8BehaviorEv.cpp`, `src/_ZN13QuestionBlock6RenderEv.cpp`,
-`src/_ZN13QuestionBlock16CleanupResourcesEv.cpp`,
-`src/_ZN13QuestionBlock15OnGroundPoundedER8dActor_c.cpp`,
-`src/_ZN13QuestionBlock11OnAttacked1ER8dActor_c.cpp`,
-`src/_ZN13QuestionBlock8OnKickedER8dActor_c.cpp`,
-`src/_ZN13QuestionBlock15OnHitByMegaCharER6Player.cpp`,
-`src/_ZN13QuestionBlock19OnHitFromUnderneathER8dActor_c.cpp`.
+Bodies read: `src/actors/daObjHatenaBlock_c.cpp`, which now holds the whole
+translation unit. `InitResources`, `Behavior`, `Render`, `CleanupResources`,
+`OnGroundPounded`, `OnAttacked1`, `OnKicked`, `OnHitByMegaChar` and
+`OnHitFromUnderneath` were read there as one-function sources before the fold;
+they are real members of the class in that file now, and the offsets below were
+not re-derived from the folded source.
 
 | Offset | Name | Evidence |
 | --- | --- | --- |
@@ -489,7 +487,7 @@ mismatching, 106/106 exact) and `tools/check_src_tu_compiles.py` (72/72).
 
 | Offset | Name | Evidence |
 | --- | --- | --- |
-| 0x4dc | `mStarActor` | `src/_ZN13daObjHmBskt_c13InitResourcesEv.cpp` stores what `dActor_c::Spawn(0xb2, (param1 & 0xf) or 0x50, ...)` returned; actor `0xb2` is the star (`src/_ZN8dActor_c19UntrackAndSpawnStarERajRK7Vector3h.cpp`). `src/_ZN13daObjHmBskt_c8BehaviorEv.cpp` writes that actor's `+0x5c/+0x60/+0x64` — `dActor_c::mPosX/Y/Z` — from the cage's own position plus `0x3c000` in Y on every falling frame. Declared type left `s32`; the store is still a cast. |
+| 0x4dc | `mStarActor` | `daObjHmBskt_c::InitResources` in `src/game/actors/d_a_obj_hm_bskt.cpp` stores what `dActor_c::Spawn(0xb2, (param1 & 0xf) or 0x50, ...)` returned; actor `0xb2` is the star (`src/_ZN8dActor_c19UntrackAndSpawnStarERajRK7Vector3h.cpp`). `daObjHmBskt_c::Behavior`, in the same TU, writes that actor's `+0x5c/+0x60/+0x64` — `dActor_c::mPosX/Y/Z` — from the cage's own position plus `0x3c000` in Y on every falling frame. Declared type left `s32`; the store is still a cast. |
 
 In the `#else` C twin, ten offsets already named at exactly those offsets in
 `include/dActor_c.h` were repointed to those names: `mPosX/Y/Z` (0x05c),
@@ -539,7 +537,7 @@ Raw-offset collapses, each re-verified byte-exact: the six
 
 | Offset | Name | Evidence |
 | --- | --- | --- |
-| 0x31e | `mAngleXSpeed` | `src/_ZN10daKpa2Bg_c8BehaviorEv.cpp` adds it to `dActor_c::mAngleX` every frame and does nothing else with it. |
+| 0x31e | `mAngleXSpeed` | `daKpa2Bg_c::Behavior` (now in `src/actors/daKpa2Bg_c.cpp`) adds it to `dActor_c::mAngleX` every frame and does nothing else with it. |
 | 0x320 | `mAngleYSpeed` | the same, into `mAngleY`. |
 | 0x322 | `mAngleZSpeed` | the same, into `mAngleZ`. |
 
@@ -706,7 +704,7 @@ In the C twin, `0x074` becomes `mCamSpacePosX`.
 
 | Offset | Name | Evidence |
 | --- | --- | --- |
-| 0x348 | `mShadowMat` | `Behavior` passes `&mShadowMat` as the `Matrix4x3 &` argument of `dActor_c::DropShadowScaleXYZ(ShadowModel &, Matrix4x3 &, ...)`, with `mShadowModel` as the argument before it. `0x348 + 0x30 = 0x378`. The same shape `SignPost` and `QuestionBlock` already carry. |
+| 0x348 | `mShadowMat` | `Behavior` passes `&mShadowMat` as the `Matrix4x3 &` argument of `dActor_c::DropShadowScaleXYZ(ShadowModel &, Matrix4x3 &, ...)`, with `mShadowModel` as the argument before it. `0x348 + 0x30 = 0x378`. The same shape `SignPost` and `daObjHatenaBlock_c` already carry. |
 | 0x37c | `mVariant` | `InitResources` sets `0`/`1` from actorID and uses it as the row index into all three ov098 resource columns `data_ov098_0213c380/384/388`. |
 
 The rename carried into `src_tu/actors/ArrowSignRight.cpp` as well as `src/`.
@@ -729,7 +727,7 @@ In the C twin, `0x00c` becomes `actorID` and `0x08e` `mAngleY`.
 | | 0x42b | `mTriggerDelay` | `AfterClsn` fires `func_ov002_020efa54(this, 1)` only when `DecIfAbove0_Byte(&mTriggerDelay)` returns 0 and `mState == 0`. |
 | `daObjWc_Mizu_c` ([ov029](../config/arm9/overlays/ov029/symbols.txt)) | 0x338 | `mUseSpawnPosY` | `InitResources` sets `param1 & 1`, and when it is clear — and only then — overrides `mPosY` from `data_ov029_02112b2c[clock setting]` before snapshotting `mTargetPosY`. |
 | `daObjWanwanShutter_c` ([ov060](../config/arm9/overlays/ov060/symbols.txt)) | 0x31e | `mDisabled` | both `Behavior` and `Render` return immediately while it is nonzero, and nothing else in a matched body touches it. |
-| `LavaPlank` ([ov022](../config/arm9/overlays/ov022/symbols.txt)) | 0x324 | `mPhaseAngle` | `InitResources` seeds it from `mAngleX`; `Behavior` adds `0x400` per frame and uses `(u16)mPhaseAngle >> 4` as the sine-table index. |
+| `daObjFl_UkiKi_c` ([ov022](../config/arm9/overlays/ov022/symbols.txt)) | 0x324 | `mPhaseAngle` | `InitResources` seeds it from `mAngleX`; `Behavior` adds `0x400` per frame and uses `(u16)mPhaseAngle >> 4` as the sine-table index. |
 
 `PathLift::mAfterClsnRan` also carried into the `daObjRcCarpet_c::Behavior` member
 in `src/game/actors/d_a_obj_rc_carpet.cpp`, a subclass that reads the inherited field — the
@@ -750,7 +748,7 @@ same offsets:
   `mDeathTableID` (0x0ce).
 * `include/daObjC1_Trap_c.h` — its production class TU uses inherited `mPosX/Y/Z`
   (0x05c), `mAngleY` (0x08e), and `mAreaId` (0x0cc) directly through `dActor_c`.
-* `include/TowerStep.h` — `mHorzSpeed`, `mTerminalVelocity`, `mVertSpeed`.
+* `include/daObjBk_Lift_c.h` — `mHorzSpeed`, `mTerminalVelocity`, `mVertSpeed`.
 * `include/daObjMc_Metalnet_c.h` — `param1` (0x008), `mAngleY`, `mClsnMat` (0x2ec).
 * `include/daObjKm2_Ami_Bou_c.h` — `param1`, `mAngleY`.
 * `include/daObjIceBoard_c.h` and `include/RotatingFirebar.h` — `mAngleY`, and `mFlags`

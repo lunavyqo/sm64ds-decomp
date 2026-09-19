@@ -186,7 +186,7 @@ batch is where shape-family amortization first pays.
 |[ov045](../config/arm9/overlays/ov045/symbols.txt)| 0x2111c30|  n=5|  L=74|   `TiltingPlatformBfs`|    pcov=3|
 |[ov047](../config/arm9/overlays/ov047/symbols.txt)| 0x21111a0|  n=4|  L=68|   `daObjKm3_Kurumajiku_c`| pcov=2|
 |[ov047](../config/arm9/overlays/ov047/symbols.txt)| 0x21114d4|  n=5|  L=96|   `daObjKm3_Dorifu_c`| |
-|[ov085](../config/arm9/overlays/ov085/symbols.txt)| 0x212edac|  n=7|  L=226|  `WallSign`| |
+|[ov085](../config/arm9/overlays/ov085/symbols.txt)| 0x212edac|  n=7|  L=226|  `daObjKanban_c`| |
 
 B4 completes [ov045](../config/arm9/overlays/ov045/symbols.txt): with B0's two, all four [ov045](../config/arm9/overlays/ov045/symbols.txt) safe TUs are done, making ov045 the
 first module where a `config_tu/` conversion becomes conceivable.
@@ -211,7 +211,7 @@ first module where a `config_tu/` conversion becomes conceivable.
 |[ov010](../config/arm9/overlays/ov010/symbols.txt)| 0x2111e10|  n=8|   `PeachPainting`|    CONF1 pcov=3|
 |[ov012](../config/arm9/overlays/ov012/symbols.txt)| 0x2111450|  n=7|   `daObjC0Water_c`|    CONF2|
 |[ov015](../config/arm9/overlays/ov015/symbols.txt)| 0x2112944|  n=7|   `daObjBk_Rotebar_c`|   CONF2|
-|[ov016](../config/arm9/overlays/ov016/symbols.txt)| 0x211260c|  n=8|   `ShipUp`|           CONF1|
+|[ov016](../config/arm9/overlays/ov016/symbols.txt)| 0x211260c|  n=8|   `daObjKi_Fune_c`|           CONF1|
 
 
 **B7 — R1 · 8 TUs / 63 files / net −55 / 1,440 lines**
@@ -221,7 +221,7 @@ first module where a `config_tu/` conversion becomes conceivable.
 |[ov017](../config/arm9/overlays/ov017/symbols.txt)| 0x21111a0|  n=7|   `daObjKsWater_c`|            CONF2 WHOLEMOD pcov=2|
 |[ov022](../config/arm9/overlays/ov022/symbols.txt)| 0x21111a0|  n=9|   `VolcanoRing`|          CONF1|
 |[ov022](../config/arm9/overlays/ov022/symbols.txt)| 0x21116c4|  n=9|   `FloatOnLavaPlatform`|  CONF2|
-|[ov022](../config/arm9/overlays/ov022/symbols.txt)| 0x2112130|  n=7|   `LavaPlank`|            CONF2|
+|[ov022](../config/arm9/overlays/ov022/symbols.txt)| 0x2112130|  n=7|   `daObjFl_UkiKi_c`|            CONF2|
 |[ov025](../config/arm9/overlays/ov025/symbols.txt)| 0x2111d40|  n=9|   `PyramidStep`|          CONF1|
 |[ov032](../config/arm9/overlays/ov032/symbols.txt)| 0x2112698|  n=7|   `daObjTdWater_c`|            CONF2|
 |[ov033](../config/arm9/overlays/ov033/symbols.txt)| 0x21113d4|  n=7|   `TinyWater`|            CONF3 pcov=2|
@@ -236,7 +236,7 @@ first module where a `config_tu/` conversion becomes conceivable.
 |[ov052](../config/arm9/overlays/ov052/symbols.txt)| 0x2111440|  n=7|   `SquarePathLift`|     CONF2|
 |[ov056](../config/arm9/overlays/ov056/symbols.txt)| 0x21111a0|  n=7|   `BigMovingIceBlock`|  CONF2 WHOLEMOD pcov=2|
 |[ov062](../config/arm9/overlays/ov062/symbols.txt)| 0x211af38|  n=8|   `KoopaFlag`|          CONF2 pcov=3|
-|[ov064](../config/arm9/overlays/ov064/symbols.txt)| 0x211a930|  n=8|   `Clam`|               CONF1|
+|[ov064](../config/arm9/overlays/ov064/symbols.txt)| 0x211a930|  n=8|   `daObjShell_c`|               CONF1|
 
 
 **B9 — R1 tail, largest bodies · 5 TUs / 41 files / net −36 / 1,341 lines**
@@ -269,7 +269,7 @@ first module where a `config_tu/` conversion becomes conceivable.
 |[ov033](../config/arm9/overlays/ov033/symbols.txt)| 0x21111a0|  n=8|   `TinyCover`|        NORM1|
 |[ov043](../config/arm9/overlays/ov043/symbols.txt)| 0x21111a0|  n=7|   `daObjKm1_Ukishima_c`|      NORM1|
 |[ov045](../config/arm9/overlays/ov045/symbols.txt)| 0x21111a0|  n=9|   `FireSeaElevator`|  NORM1 CONF2|
-|[ov064](../config/arm9/overlays/ov064/symbols.txt)| 0x21174a0|  n=8|   `BigBully`|         NORM1 pcov=2|
+|[ov064](../config/arm9/overlays/ov064/symbols.txt)| 0x21174a0|  n=8|   `daBDonketu_c`|         NORM1 pcov=2|
 
 
 **B12 — R3, `#pragma long_calls on` · 10 TUs / 59 files / net −49 / 1,265 lines**
@@ -537,7 +537,7 @@ python tu_preflight.py --batch B3
 |---|---|---|---|
 | **P1** | **any-pragma scan** — `split_legacy_source(text)["pragmas"]`, not just `opt_*` | `long_calls` going file-global (§0.4); `create` dropping a pragma a member needed. Precedent: [ov062](../config/arm9/overlays/ov062/symbols.txt)/001 went 14 match/24 differ from one stray `optimize_for_size on`; removing it gave 36/2 | **FAIL** if non-empty and the TU is not in B12/B13 with an explicit two-run plan |
 | **P2** | **local-struct + extern collision scan** — replay `tubuild._merge_field`, print both texts side by side; flag same-key/same-text `struct` decls in ≥3 members as advisory | silent layout divergence (§2.5) | **WARN**; count must equal the batch's `CONFn`, all resolved before `verify` |
-| **P3** | **`decl_common.h` usage** — count members including it, print what each actually consumes | it sometimes declares a TU's own functions as **data** → silent mismatch | **WARN**. Policy: drop it and restate the 3–17 lines. Median distinct includes is 6–7; usage 0–6 members/TU (highest [ov016](../config/arm9/overlays/ov016/symbols.txt)/`ShipUp` 6/8) |
+| **P3** | **`decl_common.h` usage** — count members including it, print what each actually consumes | it sometimes declares a TU's own functions as **data** → silent mismatch | **WARN**. Policy: drop it and restate the 3–17 lines. Median distinct includes is 6–7; usage 0–6 members/TU (highest [ov016](../config/arm9/overlays/ov016/symbols.txt)/`daObjKi_Fune_c` 6/8) |
 | **P4** | **sinit accounting** — module `sinits` / `ctor_entries` / `sinit_vs_tu` / `corroborated`, plus this TU's share | two merged TUs that each carried a sinit must produce **one** | **FAIL** if `sinit_vs_tu != "ok"`. **WARN** on `corroborated:false` (67 of 100 Tier-1 — *unavailable*, not *failed*). Corroboration is module-wide, **not narrowed to this TU** |
 | **P5** | **manifest dedupe** — join on `entries[*].functions[*].legacy_source`, **not** the census flag | redoing daObjKm2_Ami_Bou_c/daObjKm2_Fall_Block_c, or fighting an entry that already claims a member (§0.2) | **FAIL** on partial overlap; route whole-TU overlap to B0 as a re-verify |
 | **P6** | **completeness re-derived** — `SP.path_for(sym)` not `None`, `is_complete(module, path)`, assert `len(unit_functions) == len(census files)` | the census drops sourceless functions (§0.5). Without `complete`, dsd supplies the range from ROM bytes and **your source is never compiled** | **FAIL** on any missing or incomplete. All 100 Tier-1 pass today; 3 Tier-2 fail |
