@@ -220,10 +220,10 @@ extern "C" void func_ov009_021115d8(char *c)
 }
 
 // @symbol func_ov009_0211145c
-/* NONMATCHING: hand-written asm, not a C decompilation. Byte-exact via an
- * asm hatch on a proven mwccarm register-allocation/scheduling wall; does
- * NOT count as matched. Reverts to a draft until someone reproduces the
- * bytes from real C.
+/* HAND-WRITTEN ASM, not a C decompilation. Byte-exact via an asm hatch on a
+ * proven mwccarm register-allocation/scheduling wall. The bytes reproduce, but
+ * this member is not decompiled -- it should not be read as matched C, and it
+ * is a draft until someone reproduces the bytes from real C.
  *
  * Store/call tail: pure C emits rsb r0 + wrong str/mov interleave for
  * -0x14000 / 0xff06a000 / func_0201267c. The outgoing 0x6a pins r0 before
