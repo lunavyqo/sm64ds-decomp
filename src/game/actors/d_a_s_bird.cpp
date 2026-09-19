@@ -1,4 +1,35 @@
 //cpp
+/* NONMATCHING: this translation unit is a draft and does not count as
+ * reconstructed source.
+ *
+ * func_ov009_0211145c (ov009:0x0211145c, 0x17c = 380 bytes) reproduces its
+ * ROM bytes only with the hand-written inline-asm tail in its body. It is
+ * not a C decompilation, so the bytes are not evidence of a source match.
+ *
+ * MEASURED 2026-09-19 on the pinned 2004/b56 toolchain with the TU-verify
+ * round (compile + relocation-aware byte compare). Replacing that asm block
+ * with the plain C it spells --
+ *     *(int *)(c + 0x160) = -0x14000;
+ *     *(int *)(c + 0x168) = 0xff06a000;
+ *     func_0201267c(0x6a, c + 0x74);
+ * -- is size-exact at 0x17c and differs in FIVE words at +0xe0..+0xf4:
+ *   ROM:  rsb r1,r0,#0 / str r1,[sl,#0x160] / ldr r0,[pc,#0x78] /
+ *         add r1,sl,#0x74 / str r0,[sl,#0x168] / mov r0,#0x6a
+ *   C:    rsb r0,r0,#0 / ldr r2,[pc,#0x7c] / str r0,[sl,#0x160] /
+ *         add r1,sl,#0x74 / mov r0,#0x6a / str r2,[sl,#0x168]
+ * mwccarm hoists the pool load above the first store and negates in place;
+ * the ROM negates into a second register and keeps the pool load between the
+ * two stores. A positive control (perturbing an unrelated constant in the
+ * same body) confirms the compared bytes come from this file.
+ *
+ * The other twelve members byte-match as ordinary C++ (1876 bytes). This
+ * banner is FILE-scoped because the counting tools read one banner per file
+ * and have no per-member demotion: while this helper still lived in its own
+ * one-function source file, the same banner excluded exactly its 380 bytes,
+ * and folding it into this TU is what moved those bytes into the counted
+ * set. Lifting this banner needs either real C for the helper or taking it
+ * out of the enrolled text span -- not a reworded comment.
+ */
 /* Castle grounds birds -- ov009/daSBird_c, profile SBIRD (BIRD 343).
  *
  * ov009 is mixed (DOCK_POLE / CASTLE_WATER / METAL_NET / FLAG / BIRD).
@@ -220,10 +251,10 @@ extern "C" void func_ov009_021115d8(char *c)
 }
 
 // @symbol func_ov009_0211145c
-/* HAND-WRITTEN ASM, not a C decompilation. Byte-exact via an asm hatch on a
- * proven mwccarm register-allocation/scheduling wall. The bytes reproduce, but
- * this member is not decompiled -- it should not be read as matched C, and it
- * is a draft until someone reproduces the bytes from real C.
+/* NONMATCHING: hand-written asm, not a C decompilation. Byte-exact via an
+ * asm hatch on a proven mwccarm register-allocation/scheduling wall; does
+ * NOT count as matched. Reverts to a draft until someone reproduces the
+ * bytes from real C.
  *
  * Store/call tail: pure C emits rsb r0 + wrong str/mov interleave for
  * -0x14000 / 0xff06a000 / func_0201267c. The outgoing 0x6a pins r0 before
