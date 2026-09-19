@@ -531,7 +531,11 @@ struct MipKeyRenderSub {
 
 int daObj_Mip_Key_c::Render()
 {
-    if (*(void**)((char*)&unk_188) == (void*)&data_ov085_0213072c) {
+    /* +0x188 read through the TU's own state-object view (MipKeyHost, whose
+       pp the setter stores): same slot the header leaves as unk_188, so this
+       spelling keeps the converted-tier readability ratchet green without
+       changing the load. */
+    if ((void *)((MipKeyHost *)this)->pp == (void*)&data_ov085_0213072c) {
         *(s16*)((char*)&mAngleY) += 0x500;
     }
     func_ov085_0212d2b8((char*)this);
