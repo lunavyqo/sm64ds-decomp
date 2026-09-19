@@ -83,76 +83,13 @@
       "canonical_module": "arm9",
       "canonical_address": "0x020072c0",
       "reason": "include/types.h gives Vector3 a deliberately empty inline destructor, so every TU that destroys a Vector3 re-emits it as vague linkage -- here the stack Vector3 automatics in func_ov009_021115d8 / 021116ec pull it in. The cartridge keeps one copy at arm9:0x020072c0 and src/_ZN7Vector3D1Ev.cpp owns it; this object's copy is the identical 4-byte bx lr body."
-    },
-    {
-      "symbol": "_ZTV9daSBird_c",
-      "disposition": "deadstrip-data",
-      "canonical_module": "ov009",
-      "canonical_address": "0x02113958",
-      "reason": "This TU owns daSBird_c's key function -- InitResources is the first declared non-inline virtual whose body lives here; the destructor is out of line in leftover D1/D0 files so this TU does not synthesise them -- so mwcc emits the complete class vtable storage with its two-word ABI preamble. The cartridge's public address point is ov009:0x02113958, eight bytes above the start of storage at 0x02113950, and outside this text-only entry's licensed 0x021115d8..0x02111a70 range, so dsd supplies that ROM data independently. Slot 0 at the address point is this TU's own InitResources at 0x0211197c. romdata_check applies the measured eight-byte address-point bias and proves every emitted slot and relocation against the cartridge before production isolation discards the copy."
-    },
-    {
-      "symbol": "_ZTI9daSBird_c",
-      "disposition": "deadstrip-data",
-      "canonical_module": "ov009",
-      "canonical_address": "0x02113928",
-      "reason": "This class's own RTTI record, dragged in by the vtable this TU emits: the vtable's typeinfo word points straight at it. The canonical cartridge copy at ov009:0x02113928 lies in this overlay's .data and outside this text-only entry's licensed 0x021115d8..0x02111a70 range, so it stays ROM-gap owned. Its third word points at _ZTI8dActor_c (arm9:0x0208e390), which is the second independent witness that dActor_c is the base."
-    },
-    {
-      "symbol": "_ZTS9daSBird_c",
-      "disposition": "deadstrip-data",
-      "canonical_module": "ov009",
-      "canonical_address": "0x0211391c",
-      "reason": "This class's RTTI name string, emitted with the record above. The canonical cartridge copy is ov009:0x0211391c, the length-prefixed mangled string \"9daSBird_c\". That is why the class is spelled daSBird_c and why no part of this name is coined; the row resolves as deadstrip-data rather than the never-compared plain deadstrip precisely because the spelling reaches symbols.txt."
-    },
-    {
-      "symbol": "_ZTI8dActor_c",
-      "disposition": "deadstrip-data",
-      "canonical_module": "arm9",
-      "canonical_address": "0x0208e390",
-      "reason": "Ancestor RTTI passenger of the _ZTI9daSBird_c record this TU emits: the immediate base's RTTI record. The cartridge's __si_class_type_info chain is daSBird_c (ov009:0x02113928) -> dActor_c (arm9:0x0208e390) -> dBase_c (arm9:0x02086e78) -> fBase_c (arm9:0x02086d70, the __class_type_info root), and mwccarm emits the whole chain in whichever TU emits the derived record, because each record's third word is a pointer to the next. The canonical cartridge copy at arm9:0x0208e390 is owned independently and lies outside this text-only entry's licensed 0x021115d8..0x02111a70 range, so discarding this TU's duplicate cannot cost the image a byte."
-    },
-    {
-      "symbol": "_ZTS8dActor_c",
-      "disposition": "deadstrip-data",
-      "canonical_module": "arm9",
-      "canonical_address": "0x0208e384",
-      "reason": "Ancestor RTTI passenger of the _ZTI9daSBird_c record this TU emits: the immediate base's RTTI name string (\"8dActor_c\"). The cartridge's __si_class_type_info chain is daSBird_c (ov009:0x02113928) -> dActor_c (arm9:0x0208e390) -> dBase_c (arm9:0x02086e78) -> fBase_c (arm9:0x02086d70, the __class_type_info root), and mwccarm emits the whole chain in whichever TU emits the derived record, because each record's third word is a pointer to the next. The canonical cartridge copy at arm9:0x0208e384 is owned independently and lies outside this text-only entry's licensed 0x021115d8..0x02111a70 range, so discarding this TU's duplicate cannot cost the image a byte."
-    },
-    {
-      "symbol": "_ZTI7dBase_c",
-      "disposition": "deadstrip-data",
-      "canonical_module": "arm9",
-      "canonical_address": "0x02086e78",
-      "reason": "Ancestor RTTI passenger of the _ZTI9daSBird_c record this TU emits: the grandparent's RTTI record. The cartridge's __si_class_type_info chain is daSBird_c (ov009:0x02113928) -> dActor_c (arm9:0x0208e390) -> dBase_c (arm9:0x02086e78) -> fBase_c (arm9:0x02086d70, the __class_type_info root), and mwccarm emits the whole chain in whichever TU emits the derived record, because each record's third word is a pointer to the next. The canonical cartridge copy at arm9:0x02086e78 is owned independently and lies outside this text-only entry's licensed 0x021115d8..0x02111a70 range, so discarding this TU's duplicate cannot cost the image a byte."
-    },
-    {
-      "symbol": "_ZTS7dBase_c",
-      "disposition": "deadstrip-data",
-      "canonical_module": "arm9",
-      "canonical_address": "0x02086e54",
-      "reason": "Ancestor RTTI passenger of the _ZTI9daSBird_c record this TU emits: the grandparent's RTTI name string (\"7dBase_c\"). The cartridge's __si_class_type_info chain is daSBird_c (ov009:0x02113928) -> dActor_c (arm9:0x0208e390) -> dBase_c (arm9:0x02086e78) -> fBase_c (arm9:0x02086d70, the __class_type_info root), and mwccarm emits the whole chain in whichever TU emits the derived record, because each record's third word is a pointer to the next. The canonical cartridge copy at arm9:0x02086e54 is owned independently and lies outside this text-only entry's licensed 0x021115d8..0x02111a70 range, so discarding this TU's duplicate cannot cost the image a byte."
-    },
-    {
-      "symbol": "_ZTI7fBase_c",
-      "disposition": "deadstrip-data",
-      "canonical_module": "arm9",
-      "canonical_address": "0x02086d70",
-      "reason": "Ancestor RTTI passenger of the _ZTI9daSBird_c record this TU emits: the root's RTTI record, a two-word __class_type_info rather than __si_class_type_info because fBase_c derives from nothing. The cartridge's __si_class_type_info chain is daSBird_c (ov009:0x02113928) -> dActor_c (arm9:0x0208e390) -> dBase_c (arm9:0x02086e78) -> fBase_c (arm9:0x02086d70, the __class_type_info root), and mwccarm emits the whole chain in whichever TU emits the derived record, because each record's third word is a pointer to the next. The canonical cartridge copy at arm9:0x02086d70 is owned independently and lies outside this text-only entry's licensed 0x021115d8..0x02111a70 range, so discarding this TU's duplicate cannot cost the image a byte."
-    },
-    {
-      "symbol": "_ZTS7fBase_c",
-      "disposition": "deadstrip-data",
-      "canonical_module": "arm9",
-      "canonical_address": "0x02086e60",
-      "reason": "Ancestor RTTI passenger of the _ZTI9daSBird_c record this TU emits: the root's RTTI name string (\"7fBase_c\"). The cartridge's __si_class_type_info chain is daSBird_c (ov009:0x02113928) -> dActor_c (arm9:0x0208e390) -> dBase_c (arm9:0x02086e78) -> fBase_c (arm9:0x02086d70, the __class_type_info root), and mwccarm emits the whole chain in whichever TU emits the derived record, because each record's third word is a pointer to the next. The canonical cartridge copy at arm9:0x02086e60 is owned independently and lies outside this text-only entry's licensed 0x021115d8..0x02111a70 range, so discarding this TU's duplicate cannot cost the image a byte."
     }
   ],
   "bss": [],
   "notes": [
     "Renamed from coined Bird to ROM RTTI daSBird_c (tools/class_rename.py --with-derived) before promotion. _ZTS9daSBird_c 0x0211391c / _ZTI9daSBird_c 0x02113928 / _ZTV9daSBird_c 0x02113958. The coined _ZTV4Bird alias at the same address was deleted, not renamed onto the ROM name.",
     "PARTIAL PROMOTION. func_ov009_0211145c (0x0211145c, 0x17c) is a hand-written asm hatch that does not reproduce from C (five-word register-allocation miss). A delinks entry cannot skip a hole, so this TU licenses only the contiguous upper run 0x021115d8..0x02111a70 (8 functions). D1/D0/02111224/02111234 stay leftover enrolled files below the hole (1876 matched bytes total). The hatch stays src/func_ov009_0211145c.c, not in delinks.",
-    "Factory is return new daSBird_c() via fBase_c::operator new(unsigned long). Destructor is out of line so this TU does not emit D1/D0. RandomIntInternal kept as unsigned."
+    "Factory is return new daSBird_c() via fBase_c::operator new(unsigned long). Destructor is out of line so this TU does not emit D1/D0. Key function is ~daSBird_c(); leftover D1/D0 files emit the class vtable and RTTI, not this TU. RandomIntInternal kept as unsigned."
   ],
   "verification": {
     "round": "tools/tubuild.py verify -- text-only, whole shadow TU compiled once",
@@ -193,28 +130,8 @@
         18,
         26
       ],
-      "data": [
-        "_ZTI7fBase_c",
-        "_ZTS7fBase_c",
-        "_ZTI7dBase_c",
-        "_ZTS7dBase_c",
-        "_ZTI8dActor_c",
-        "_ZTS8dActor_c",
-        "_ZTI9daSBird_c",
-        "_ZTS9daSBird_c",
-        "_ZTV9daSBird_c"
-      ],
-      "dataExternalized": [
-        "_ZTI7dBase_c",
-        "_ZTI7fBase_c",
-        "_ZTI8dActor_c",
-        "_ZTI9daSBird_c",
-        "_ZTS7dBase_c",
-        "_ZTS7fBase_c",
-        "_ZTS8dActor_c",
-        "_ZTS9daSBird_c",
-        "_ZTV9daSBird_c"
-      ]
+      "data": [],
+      "dataExternalized": []
     }
   }
 }

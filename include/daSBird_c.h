@@ -45,8 +45,9 @@ struct daSBird_c : dActor_c {
        their own leftover files (src/_ZN9daSBird_cD1Ev.cpp / D0Ev.cpp) and
        must not be synthesised into the class TU. Empty body: mShadowModel
        then mModelAnim teardown, the vptr store and dActor_c's teardown are
-       synthesised. Key function is InitResources, the first declared
-       non-inline virtual. */
+       synthesised. Key function is ~daSBird_c(), the first declared
+       non-inline virtual; the leftover D1/D0 files emit the class
+       vtable and RTTI. This class TU does not. */
     virtual ~daSBird_c();                      /* slots 16 (D1), 17 (D0) */
 
     virtual s32 InitResources();               /* slot  0 */

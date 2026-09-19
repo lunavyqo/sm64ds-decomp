@@ -11,6 +11,8 @@
  * Factory is `return new daSBird_c()`. fBase_c::operator new(unsigned long)
  * forwards `_ZN7fBase_cnwEj`. D1/D0 are leftover enrolled files -- the
  * destructor is out of line so this TU does not synthesise them.
+ * Key function is ~daSBird_c(); those leftover files emit the class
+ * vtable and RTTI. This TU does not.
  *
  * deslop leftovers:
  * - ModelAnim::SetAnim / DropShadowRadHeight 6az: this TU passes Fix12<int>
