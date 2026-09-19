@@ -7,7 +7,7 @@
     "no_codegen_trick",
     "no_mangled_refs"
   ],
-  "count": 2815,
+  "count": 2813,
   "converted": [
     "src/ARMMathLoadState.c",
     "src/ARMMathSaveState.c",
@@ -989,8 +989,6 @@
     "src/game/actors/d_a_s_bird.cpp#_ZN9daSBird_c16CleanupResourcesEv",
     "src/game/actors/d_a_s_bird.cpp#_ZN9daSBird_c16OnPendingDestroyEv",
     "src/game/actors/d_a_s_bird.cpp#_ZN9daSBird_c6RenderEv",
-    "src/game/actors/d_a_s_bird.cpp#_ZN9daSBird_cD0Ev",
-    "src/game/actors/d_a_s_bird.cpp#_ZN9daSBird_cD1Ev",
     "src/_ZN4CP1510DisableMPUEv.cpp",
     "src/_ZN4CP1510EnableDTCMEv.cpp",
     "src/_ZN4CP1511SystemSetupEv.cpp",

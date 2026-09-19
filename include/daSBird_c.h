@@ -40,12 +40,14 @@ struct daSBird_c : dActor_c {
     u8          mIsLeader;       /* 0x180 */
     u8          pad_181[0x3];
 
-    /* INLINE IS LOAD-BEARING. Out of line, mwccarm emits D0 before D1
-       (cartridge is 0x021111a0 D1 then 0x021111d8 D0) plus a D2 with no
-       ROM home. Empty body: mShadowModel then mModelAnim teardown, the
-       vptr store and dActor_c's teardown are synthesised. Key function is
-       InitResources, the first declared non-inline virtual. */
-    virtual ~daSBird_c() {}                    /* slots 16 (D1), 17 (D0) */
+    /* Out-of-line on purpose. The 380-byte func_ov009_0211145c hatch sits
+       between D0 and the rest of the class run, so D1/D0 stay enrolled as
+       their own leftover files (src/_ZN9daSBird_cD1Ev.cpp / D0Ev.cpp) and
+       must not be synthesised into the class TU. Empty body: mShadowModel
+       then mModelAnim teardown, the vptr store and dActor_c's teardown are
+       synthesised. Key function is InitResources, the first declared
+       non-inline virtual. */
+    virtual ~daSBird_c();                      /* slots 16 (D1), 17 (D0) */
 
     virtual s32 InitResources();               /* slot  0 */
     virtual s32 CleanupResources();            /* slot  3 */
