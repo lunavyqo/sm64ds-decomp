@@ -192,7 +192,7 @@
       "every_declared_function_defined": "PASS",
       "every_declared_function_bytes_match": "PASS",
       "declared_function_set_equals_defined_function_set": "PASS",
-      "functions_occur_in_expected_order": "PARTIAL -- ordinal pair(s) not in ROM order: [(0, 1)]",
+      "functions_occur_in_expected_order": "PASS",
       "relocation_destinations_verified": "PASS"
     },
     "linkcheck": {
@@ -288,12 +288,10 @@
     },
     "compilerOnlyOutput": {
       "requested": [
-        "_ZN9daPopoi_cD2Ev",
         "_ZN7Vector3D1Ev"
       ],
       "deadstripped": [
-        "_ZN7Vector3D1Ev",
-        "_ZN9daPopoi_cD2Ev"
+        "_ZN7Vector3D1Ev"
       ],
       "droppedSections": [
         5,
@@ -313,9 +311,7 @@
         19,
         20,
         21,
-        22,
-        23,
-        30
+        28
       ],
       "data": [
         "_ZTS9daPopoi_c",
@@ -346,11 +342,6 @@
     }
   },
   "compiler_only_output": [
-    {
-      "symbol": "_ZN9daPopoi_cD2Ev",
-      "disposition": "deadstrip",
-      "reason": "Homeless. src_tu/actors/daPopoi_c.cpp carries a single out-of-line `daPopoi_c::~daPopoi_c()` and mwccarm emits the whole variant set from that one definition, but the cartridge carries only D1 (ov077:0x0212624c, size 0x50) and D0 (ov077:0x0212629c, size 0x64) -- both licensed by this manifest as ordinals 0 and 1. Nothing in config/ names a D2 for this class: config/arm9/overlays/ov077/symbols.txt holds _ZN9daPopoi_cD1Ev and _ZN9daPopoi_cD0Ev rows and no third, and rombuild's symbol-home index resolves _ZN9daPopoi_cD2Ev to no home at all. With no ROM home there are no cartridge bytes to compare it against, so this is a plain `deadstrip` and NOT a `deadstrip-duplicate`; production isolation discards the body. It is emitted beside the two licensed variants and does not disturb the licensed run."
-    },
     {
       "symbol": "_ZN7Vector3D1Ev",
       "disposition": "deadstrip-duplicate",

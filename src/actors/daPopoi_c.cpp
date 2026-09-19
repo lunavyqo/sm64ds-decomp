@@ -45,21 +45,12 @@ extern "C" {  /* .c-derived member: C linkage for the whole block */
 #include "decl_ShadowModel.h"
 #include "decl_dBgCh_Actr.h"
 #include "decl_common.h"
+#include "daPopoi_c.h"
 /* recovered: vtable identified, globals resolved */
 /* resolved: VT0 = _ZTV9daPopoi_c */
 int *daPopoi_c_classInit(void)
 {
-    int *p = (int *)_ZN7fBase_cnwEj(1068);
-    if (p) {
-        _ZN12dEnemyBase_cC2Ev(p);
-        p[0] = (int)&_ZTV9daPopoi_c[2]; /* +8: this TU defines the vtable */
-        _ZN7dCcAc_cC1Ev((char *)p + 0x110);
-        _ZN10dCcAcPos_cC1Ev((char *)p + 0x144);
-        _ZN10dBgCh_ActrC1Ev((char *)p + 0x184);
-        _ZN9ModelAnimC1Ev((char *)p + 0x340);
-        _ZN11ShadowModelC1Ev((char *)p + 0x3a4);
-    }
-    return p;
+    return (int *)new daPopoi_c;
 }
 }
 
@@ -272,6 +263,7 @@ int daPopoi_c::CleanupResources()
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 15 -- func_ov077_02126dac, 0x02126dac, size 0x40 */
 /* -------------------------------------------------------------------------- */
+// @symbol func_ov077_02126dac
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 extern void Matrix4x3_FromRotationY(void *, int);
 void func_ov077_02126dac(char *t)
@@ -286,6 +278,7 @@ void func_ov077_02126dac(char *t)
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 14 -- func_ov077_02126d5c, 0x02126d5c, size 0x50 */
 /* -------------------------------------------------------------------------- */
+// @symbol func_ov077_02126d5c
 struct Cst; typedef int (Cst::*PMFst)();  /* renamed: another member's shadow PMF has a different signature */
 struct Cst { char pad[0x3fc]; PMFst *pp; };
 extern "C" int func_ov077_02126d5c(void *vc, void *vp) { Cst *c = (Cst *)vc; PMFst *p = (PMFst *)vp; c->pp = p; PMFst *q = c->pp; if (*q == 0) return 1; return (c->**q)(); }
@@ -293,6 +286,7 @@ extern "C" int func_ov077_02126d5c(void *vc, void *vp) { Cst *c = (Cst *)vc; PMF
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 13 -- func_ov077_02126cd4, 0x02126cd4, size 0x88 */
 /* -------------------------------------------------------------------------- */
+// @symbol func_ov077_02126cd4
 extern "C" {
 extern unsigned int RandomIntInternal(void* s);
 extern void _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(void* self, void* bca, int a, int fix, unsigned int j);
@@ -767,15 +761,10 @@ int func_ov077_02126300(void *vc)
 /* ROM ordinal 1 -- _ZN9daPopoi_cD0Ev, 0x0212629c, size 0x64 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN9daPopoi_cD0Ev
-/* recovered: real C++ deleting destructor -- the compiler emits the whole body
- *
- * D0 is the DELETING destructor: destroy through this class and its bases, then
- * return the object to its heap. Declaring `~daPopoi_c()` is enough -- mwcc emits
- * D2, D0 and D1 together and objisolate keeps the one this file is bound to.
- *
- * The deallocation is an inline operator delete -- dEnemyBase_c's, reachable because
- * dEnemyBase_c is this class's IMMEDIATE base.
- */
+/* D0 is the DELETING destructor: destroy through this class (dEnemyBase_c
+ * chain) then return the object to its heap via an inline operator delete.
+ * Both variants are emitted from the single inline destructor in
+ * daPopoi_c.h (class-form skill): D1 then D0 in ROM order, no leaf D2. */
 #include "daPopoi_c.h"
 
 /* (no separate definition: the single ~daPopoi_c() below emits the D0 and
@@ -785,18 +774,9 @@ int func_ov077_02126300(void *vc)
 /* ROM ordinal 0 -- _ZN9daPopoi_cD1Ev, 0x0212624c, size 0x50 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN9daPopoi_cD1Ev
-/* recovered: real C++ destructor -- the compiler emits the whole body
- *
- * One vtable store and a destructor call per member, every one a consequence of
- * `struct daPopoi_c : dEnemyBase_c` and the members that declaration types, destroyed in
- * reverse declaration order, then dEnemyBase_c::~dEnemyBase_c.
- *
- * This body is the evidence for the header: each member's size closes exactly
- * on the next one's offset.
- */
+/* D1 is emitted from the inline destructor in daPopoi_c.h alongside D0
+ * (class-form skill); this marker at D1's ROM ordinal keeps the
+ * accounting naming it. Members are destroyed in reverse declaration
+ * order, then dEnemyBase_c::~dEnemyBase_c. */
 #include "daPopoi_c.h"
-
-daPopoi_c::~daPopoi_c()
-{
-}
 

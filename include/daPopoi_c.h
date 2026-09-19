@@ -63,7 +63,11 @@ struct daPopoi_c : dEnemyBase_c {
     u8  pad_427[0x5];
 
     /* --- vtable --- */
-    virtual ~daPopoi_c();
+    /* Inline and first: measured (class-form skill) that mwccarm 2004/b56
+       emits the retail D1-then-D0 pair in ROM order plus _ZTV/_ZTI/_ZTS
+       homed in the instantiating TU, and no leaf D2. Out-of-line emits
+       D0 before D1, which the production isolate refuses. */
+    virtual ~daPopoi_c() {}
 
     int Behavior();
     int InitResources();
