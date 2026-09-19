@@ -111,7 +111,11 @@ struct daObjYajirusi_c : dBgActor_c {
     u8  mVariant;                     /* 0x37c -- 0/1 from actorID; indexes all three ov098 resource columns */
 
     /* --- vtable --- */
-    virtual ~daObjYajirusi_c();
+    /* Inline and first: measured (class-form skill) that mwccarm 2004/b56
+       emits the retail D1-then-D0 pair in ROM order plus _ZTV/_ZTI/_ZTS
+       homed in the instantiating TU, and no leaf D2. Out-of-line emits
+       D0 before D1, which the production isolate refuses. */
+    virtual ~daObjYajirusi_c() {}
 
     int Behavior();
     int CleanupResources();
@@ -139,9 +143,9 @@ typedef char daObjYajirusi_c_size_must_be_0x380[sizeof(daObjYajirusi_c) == 0x380
 
 #else
 
-/* The C spelling of the same object, flat. Kept because the D0 file is a C
-   translation unit that reads these fields, and D0 is compiler-generated so it
-   can never be migrated. Same arrangement as include/ShadowModel.h. */
+/* The C spelling of the same object, flat. Kept because the port builds
+   this header for the host, and the flat view cannot derive from dBgActor_c
+   without moving every field. Same arrangement as include/ShadowModel.h. */
 struct daObjYajirusi_c {
     u8  pad_000[0xc];
     u16 actorID;            /* 0x00c */

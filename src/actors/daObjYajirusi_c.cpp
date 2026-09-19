@@ -14,8 +14,9 @@
  * deslop
  * Leftover: function order is reverse ROM (highest address first) --
  *   mwccarm 2004/b56 emits one .text section per function in reverse
- *   source order. Do not reorder; D0/D1 order is compiler-chosen
- *   (verify reports PARTIAL [(0, 1)], pilot report sec 3).
+ *   source order. Do not reorder; the D1/D0 pair is in ROM order
+ *   because the destructor is inline-first in daObjYajirusi_c.h and the
+ *   factories below are real new-expressions (class-form skill).
  * Leftover: twin _L factory folded by hand (0x02138008..0x02138040):
  *   identical body to _R (alloc 896, dBgActor_c C2, same vtable,
  *   ShadowModel C1 at +0x320), contiguous with no gap -- one genuine TU,
@@ -23,9 +24,13 @@
  * Leftover: func_ov098_02137c8c keeps its ROM-unnamed spelling; it builds
  *   the collision/model matrix at +0x348/0x36c from yaw and pos>>3 in
  *   InitResources. No replacement is coined.
- * Leftover: factories stay hand-rolled with (_ZTV15daObjYajirusi_c + 2)
- *   (+8: this TU defines the vtable). The return-new form is unmeasured
- *   for this base+member ctor order.
+ * Leftover: factories are `return (int *)new daObjYajirusi_c` -- real
+ *   instantiation, which is what makes mwccarm emit the D1-then-D0 pair
+ *   in ROM order plus the vtable homed here. The synthesized constructor
+ *   reproduces the ROM init sequence (alloc 896, dBgActor_c C2, vptr,
+ *   ShadowModel C1 at +0x320) byte-exact; the hand-rolled spelling is
+ *   gone. The inline chain also emits a homeless _ZN10dBgActor_cD2Ev,
+ *   licensed deadstrip in the manifest (ov012/daObjC0Water_c precedent).
  * Leftover: OnAttacked1/OnHitByMegaChar reference spellings are coined
  *   guesses (ref vs pointer is indistinguishable in ARM); the method names
  *   are vtable-slot recovered and ownership/bodies/relocations are proven.
@@ -81,7 +86,6 @@ void *self, void *kcl, void *mtx, int scale, short angle, void *clps);
 extern ArrowSignFileColumn data_ov098_0213c380[];
 extern ArrowSignFileColumn data_ov098_0213c384[];
 extern ArrowSignFileColumn data_ov098_0213c388[];
-extern int _ZTV15daObjYajirusi_c[];
 }
 
 /* -------------------------------------------------------------------------- */
@@ -94,13 +98,7 @@ extern int _ZTV15daObjYajirusi_c[];
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int *daObjYajirusi_c_classInit_YAJIRUSI_L(void)
 {
-    int *p = (int *)_ZN7fBase_cnwEj(896);
-    if (p) {
-        _ZN10dBgActor_cC2Ev(p);
-        p[0] = (int)(_ZTV15daObjYajirusi_c + 2);
-        _ZN11ShadowModelC1Ev((char *)p + 0x320);
-    }
-    return p;
+    return (int *)new daObjYajirusi_c;
 }
 }
 
@@ -114,13 +112,7 @@ int *daObjYajirusi_c_classInit_YAJIRUSI_L(void)
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int *daObjYajirusi_c_classInit_YAJIRUSI_R(void)
 {
-    int *p = (int *)_ZN7fBase_cnwEj(896);
-    if (p) {
-        _ZN10dBgActor_cC2Ev(p);
-        p[0] = (int)(_ZTV15daObjYajirusi_c + 2);
-        _ZN11ShadowModelC1Ev((char *)p + 0x320);
-    }
-    return p;
+    return (int *)new daObjYajirusi_c;
 }
 }
 
@@ -296,19 +288,10 @@ void func_ov098_02137c8c(char *t)
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN15daObjYajirusi_cD0Ev
 // @symbol _ZN15daObjYajirusi_cD1Ev
-/* recovered: real C++ destructor -- the compiler emits D2, D0, and D1 together
- * from this ONE source definition (the TU-reconstruction D0/D1/D2 collapse
- * rule); the two legacy per-variant files were merging the same body twice,
- * which mwcc rejects as a redefinition. objisolate keeps each emitted .text
- * section bound to its own symbol.
- *
- * Two vtable stores and three destructor calls, every one a consequence of
- * `struct daObjYajirusi_c : dBgActor_c`: its own vptr, then dBgActor_c's --
- * inlined, because dBgActor_c's destructor is defined in its class body --
- * then dBgActor_c's Model and dBgW_KcMbg, then dActor_c. This class adds no
- * member with a destructor of its own. D0 additionally destroys through the
- * base and returns the object to its heap via an inline operator delete.
- */
-daObjYajirusi_c::~daObjYajirusi_c()
-{
-}
+/* The destructor is defined inline-first in daObjYajirusi_c.h, which is what
+ * makes mwccarm emit the retail D1-then-D0 pair in ROM order with the vtable
+ * homed in this TU and no leaf D2 (class-form skill). Its body is the empty
+ * braces plus the implicit member/base destruction the ROM's own D1/D0 show:
+ * this class adds no member with a destructor of its own; D0 additionally
+ * destroys through the base and returns the object to its heap via an inline
+ * operator delete. */
