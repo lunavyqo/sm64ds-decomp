@@ -1,9 +1,9 @@
 //cpp
-// @symbol _ZN13KoopaTheQuick13InitResourcesEv
+// @symbol _ZN7daRNk_c13InitResourcesEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 #include "decl_PathPtr.h"
 /* recovered: named members + shared header, real C++ method */
-#include "KoopaTheQuick.h"
+#include "daRNk_c.h"
 typedef short s16;
 
 extern "C" {
@@ -28,7 +28,7 @@ extern char data_ov062_0211e03c[];
 extern char data_ov062_0211e02c[];
 extern char data_ov062_0211e004[];
 
-int KoopaTheQuick::InitResources()
+int daRNk_c::InitResources()
 {
     unsigned char b;
     int zero;

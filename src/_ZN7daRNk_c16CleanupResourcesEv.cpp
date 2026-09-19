@@ -1,10 +1,10 @@
 //cpp
 #include "Sound.h"
-// @symbol _ZN13KoopaTheQuick16CleanupResourcesEv
+// @symbol _ZN7daRNk_c16CleanupResourcesEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 #include "decl_common.h"
 /* recovered: named members + shared header, real C++ method */
-#include "KoopaTheQuick.h"
+#include "daRNk_c.h"
 struct SharedFilePtr { unsigned int data[4]; };
 extern "C" {
 extern void _ZN13SharedFilePtr7ReleaseEv(struct SharedFilePtr *);
@@ -18,7 +18,7 @@ extern struct SharedFilePtr data_ov062_0211e03c;
 extern struct SharedFilePtr data_ov062_0211e02c;
 extern struct SharedFilePtr data_ov062_0211e004;
 
-int KoopaTheQuick::CleanupResources()
+int daRNk_c::CleanupResources()
 {
     _ZN13SharedFilePtr7ReleaseEv(&data_ov062_0211e00c);
     _ZN13SharedFilePtr7ReleaseEv(&data_ov062_0211e014);

@@ -1,9 +1,9 @@
 //cpp
-// @symbol _ZN13KoopaTheQuick8BehaviorEv
+// @symbol _ZN7daRNk_c8BehaviorEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 #include "decl_common.h"
 /* recovered: named members + shared header, real C++ method */
-#include "KoopaTheQuick.h"
+#include "daRNk_c.h"
 extern "C" {
 extern void _ZN9Animation7AdvanceEv(void* p);
 extern void _ZN8dActor_c9UpdatePosEP5dCc_c(void* a, void* b);
@@ -12,7 +12,7 @@ extern void _ZN5dCc_c5ClearEv(void* p);
 extern void _ZN5dCc_c6UpdateEv(void* p);
 }
 
-int KoopaTheQuick::Behavior()
+int daRNk_c::Behavior()
 {
   int idx = mState;
   char* ent = (char*)&data_ov062_0211e0a4[idx*2];
