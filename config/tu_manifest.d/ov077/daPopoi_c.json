@@ -1,9 +1,9 @@
 {
   "id": "ov077/daPopoi_c",
   "module": "ov077",
-  "source": "src_tu/actors/daPopoi_c.cpp",
+  "source": "src/actors/daPopoi_c.cpp",
   "promoted_source": "src/actors/daPopoi_c.cpp",
-  "status": "text-verified",
+  "status": "promoted",
   "boundary_confidence": "high",
   "boundary_evidence": [
     "contiguous linker run: 0x212624c..0x2127230, 22 function(s), from build/tu_map.json (tools/tu_map.py)",

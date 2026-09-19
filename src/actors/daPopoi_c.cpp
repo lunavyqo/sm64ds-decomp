@@ -28,7 +28,7 @@
  *   [18] 0x02126e38  src/_ZN9daPopoi_c6RenderEv.cpp
  *   [19] 0x02126e88  src/_ZN9daPopoi_c8BehaviorEv.cpp
  *   [20] 0x0212706c  src/_ZN9daPopoi_c13InitResourcesEv.cpp
- *   [21] 0x021271d4  src/daPopoi_c_classInit.c
+ *   [21] 0x021271d4  src/d_a_popoi.c
  */
 
 /* -------------------------------------------------------------------------- */
