@@ -58,9 +58,10 @@ producer input and verified the final source pair retained that whole object.
 Those results are prior-candidate evidence. The composed candidate requires its
 own current-main build and an independent exact-commit/base source verdict.
 
-Partial acceptance also requires a posted reconstruction follow-up with a named
-owner. Its draft is prepared, with `codex-integrator-0920` as proposed owner; this
-handoff does not claim that the issue has been posted or that Source review passes.
+Remaining reconstruction is recorded in [issue #2865](https://github.com/tangosdev/sm64ds-decomp/issues/2865),
+posted with explicit user approval and naming `codex-integrator-0920` as next owner.
+Independent exact-head/base Source review remains required; this producer handoff
+does not assert a verifier pass.
 
 ## Independent composition corrections and current-base evidence
 
@@ -87,3 +88,17 @@ selects three files and passes; none of those ten entries is added to the ledger
 The narrower CI promotion-flag audit is checked separately from the known-stale
 full queue audit. Independent Source acceptance and its follow-up issue remain
 required before merging.
+
+## Reconciliation with the author update
+
+The author rebased the original PR to `b4847306287a03bf9f4bc96bd5801a08f62037e4`
+while independent review was in progress. This merge preserves that history and
+the previously reviewed `f16e7bfc13dd0b6c14df57badff39b8d9549aebb`. The author
+removed the old lineage list, already absent from the repaired source, and linked
+the filename pilot to the live TU. The pilot now includes both the live TU and
+the immutable historical factory citation, with the producer owner
+`codex-repair-mip2853-0920` explicitly acknowledging this narrow integration edit.
+All source, header, manifest, enrollment, credit and baseline bytes remain equal
+to f16; only this handoff and the pilot citation change. The measured source row
+therefore remains one file / 360 lines and the seven live declaration identities
+remain valid. No author source contribution is overwritten by a force push.
