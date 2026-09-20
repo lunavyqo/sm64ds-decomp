@@ -1,9 +1,9 @@
 //cpp
-// @symbol _ZN10StarSwitch8BehaviorEv
+// @symbol _ZN13daObjSwitch_c8BehaviorEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 #include "decl_common.h"
 /* recovered: named members + shared header, real C++ method */
-#include "StarSwitch.h"
+#include "daObjSwitch_c.h"
 extern "C" {
 extern unsigned char IsAreaShowing(int idx);
 extern void func_ov002_020ba01c(char *c, int mask, int b, int base, int target);
@@ -16,7 +16,7 @@ extern int _ZN5Sound17ChangeMusicVolumeEj5Fix12IiE(unsigned int id, int vol);
 
 extern int data_0209b454;
 
-int StarSwitch::Behavior()
+int daObjSwitch_c::Behavior()
 {
     void *a;
     int id344;

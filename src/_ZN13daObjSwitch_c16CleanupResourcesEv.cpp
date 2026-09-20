@@ -1,10 +1,10 @@
 //cpp
-// @symbol _ZN10StarSwitch16CleanupResourcesEv
+// @symbol _ZN13daObjSwitch_c16CleanupResourcesEv
 /* recovered: named members + shared header, real C++ method */
-#include "StarSwitch.h"
+#include "daObjSwitch_c.h"
 #include "SharedFilePtr.h"
 #include "dBgW.h"
-// _ZN10StarSwitch16CleanupResourcesEv at 0x020ba568
+// _ZN13daObjSwitch_c16CleanupResourcesEv at 0x020ba568
 // Matched byte-for-byte with mwccarm 1.2/sp2p3 (ov002).
 extern "C" {
 void UnloadSilverStarAndNumber(void);
@@ -14,7 +14,7 @@ extern char data_ov002_021098e8;
 extern char data_ov002_021098ec;
 extern char data_ov002_0211092c;
 
-int StarSwitch::CleanupResources()
+int daObjSwitch_c::CleanupResources()
 {
     int t;
     if (((dBgW *)&mMeshCollider)->IsEnabled()) {

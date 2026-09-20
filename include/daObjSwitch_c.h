@@ -1,5 +1,5 @@
-#ifndef STARSWITCH_H
-#define STARSWITCH_H
+#ifndef DAOBJSWITCH_C_H
+#define DAOBJSWITCH_C_H
 
 #include "types.h"
 #include "dBgW_KcMbg.h"
@@ -18,7 +18,7 @@
 
 #include "dBgActor_c.h"
 
-struct StarSwitch : dBgActor_c {
+struct daObjSwitch_c : dBgActor_c {
     u8  pad_31e[0x2];
     s32 mDrawScaleX;             /* 0x320 */
     s32 mDrawScaleY;             /* 0x324 */
@@ -41,7 +41,7 @@ struct StarSwitch : dBgActor_c {
     s8 mHomeAreaId;              /* 0x353 */
 
     /* --- vtable --- */
-    virtual ~StarSwitch();
+    virtual ~daObjSwitch_c();
 
     int Behavior();
     int CleanupResources();
@@ -52,7 +52,7 @@ struct StarSwitch : dBgActor_c {
 
 #ifndef SM64DS_PLATFORM_PC
 /* ROM layout under mwccarm; host ABI divergence is tracked separately. */
-typedef char StarSwitch_size_must_be_0x354[sizeof(StarSwitch) == 0x354 ? 1 : -1];
+typedef char StarSwitch_size_must_be_0x354[sizeof(daObjSwitch_c) == 0x354 ? 1 : -1];
 #endif
 
 #else
@@ -60,7 +60,7 @@ typedef char StarSwitch_size_must_be_0x354[sizeof(StarSwitch) == 0x354 ? 1 : -1]
 /* The C spelling of the same object, flat. Kept because the D0 file is a C
    translation unit that reads these fields, and D0 is compiler-generated so it
    can never be migrated. Same arrangement as include/ShadowModel.h. */
-struct StarSwitch {
+struct daObjSwitch_c {
     u8  pad_000[0x8];
     u32 mParam;                  /* 0x008 */
     u16 mActorID;                /* 0x00c */
@@ -95,7 +95,7 @@ struct StarSwitch {
     /* Model member, named by _ZN5ModelD1Ev at +0xd4 -- a relocation the ROM build checks.
        D1 and not D2, so it is this type and not an inlined base. Was a u8 marker. */
     Model mModel;                /* 0x0d4 */
-    /* dBgW_KcMbg member. The cartridge's own ~StarSwitch calls _ZN10dBgW_KcMbgD1Ev at
+    /* dBgW_KcMbg member. The cartridge's own ~daObjSwitch_c calls _ZN10dBgW_KcMbgD1Ev at
        +0x124 (D0/D1), a relocation the ROM build checks; recovered by
        tools/dtor_members.py. D1 and not D2, so it is this type and not an inlined base. */
     dBgW_KcMbg mMeshCollider;    /* 0x124 */
@@ -123,4 +123,4 @@ struct StarSwitch {
 
 #endif /* __cplusplus */
 
-#endif /* STARSWITCH_H */
+#endif /* DAOBJSWITCH_C_H */

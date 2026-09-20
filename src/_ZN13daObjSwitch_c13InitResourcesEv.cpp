@@ -1,5 +1,5 @@
 //cpp
-#include "StarSwitch.h"
+#include "daObjSwitch_c.h"
 
 extern "C" {
 void LoadSilverStarAndNumber(void);
@@ -20,7 +20,7 @@ extern char data_ov002_021098f0[];
 extern int func_ov002_020baa98;
 }
 
-int StarSwitch::InitResources()
+int daObjSwitch_c::InitResources()
 {
     u8 idx;
     int f;
