@@ -14,26 +14,6 @@
  * the highest-address ROM function is written FIRST here. Do not reorder;
  * see notes/tu-reconstruction-pilot-report.md sec 3 for the one documented
  * exception (a destructor's D0/D1/D2 group has compiler-chosen order).
- *
- * Assembled from these legacy one-function sources (ROM address order):
- *   [0] 0x0211975c  src/_ZN7daRNk_cD1Ev.cpp
- *   [1] 0x021197a4  src/_ZN7daRNk_cD0Ev.cpp
- *   [2] 0x02119800  src/func_ov062_02119800.cpp
- *   [3] 0x02119954  src/func_ov062_02119954.c
- *   [4] 0x021199ac  src/func_ov062_021199ac.c
- *   [5] 0x02119af0  src/func_ov062_02119af0.cpp
- *   [6] 0x02119be0  src/func_ov062_02119be0.c
- *   [7] 0x0211a0f0  src/func_ov062_0211a0f0.c
- *   [8] 0x0211a168  src/func_ov062_0211a168.c
- *   [9] 0x0211a1f4  src/func_ov062_0211a1f4.c
- *   [10] 0x0211a740  src/func_ov062_0211a740.cpp
- *   [11] 0x0211a9c4  src/func_ov062_0211a9c4.c
- *   [12] 0x0211aac0  src/func_ov062_0211aac0.c
- *   [13] 0x0211ab50  src/_ZN7daRNk_c6RenderEv.cpp
- *   [14] 0x0211ab88  src/_ZN7daRNk_c8BehaviorEv.cpp
- *   [15] 0x0211ac10  src/_ZN7daRNk_c16CleanupResourcesEv.cpp
- *   [16] 0x0211ac94  src/_ZN7daRNk_c13InitResourcesEv.cpp
- *   [17] 0x0211aee0  src/d_a_r_nk.c
  */
 
 /* TUBUILD NOTE -- #pragma directive(s) were present in the legacy sources
@@ -354,6 +334,7 @@ void func_ov062_0211aac0(char* r6){
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 11 -- func_ov062_0211a9c4, 0x0211a9c4, size 0xfc */
 /* -------------------------------------------------------------------------- */
+// @symbol func_ov062_0211a9c4
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 /* (its local struct Vec3 body folded into the file-scope typedef above) */
 extern void *_ZN8dActor_c13ClosestPlayerEv(void *self);
@@ -629,6 +610,7 @@ void func_ov062_0211a1f4(char *a)
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 8 -- func_ov062_0211a168, 0x0211a168, size 0x8c */
 /* -------------------------------------------------------------------------- */
+// @symbol func_ov062_0211a168
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov062_0211a168(char* r4){
   _Z14ApproachLinearRiii((int*)(r4 + 0x98), 0x3000, 0x1000);
@@ -644,6 +626,7 @@ void func_ov062_0211a168(char* r4){
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 7 -- func_ov062_0211a0f0, 0x0211a0f0, size 0x78 */
 /* -------------------------------------------------------------------------- */
+// @symbol func_ov062_0211a0f0
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov062_0211a0f0(char* c)
 {
@@ -659,6 +642,7 @@ void func_ov062_0211a0f0(char* c)
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 6 -- func_ov062_02119be0, 0x02119be0, size 0x510 */
 /* -------------------------------------------------------------------------- */
+// @symbol func_ov062_02119be0
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov062_02119be0(char* self)
 {
@@ -922,6 +906,7 @@ ret0:
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 3 -- func_ov062_02119954, 0x02119954, size 0x58 */
 /* -------------------------------------------------------------------------- */
+// @symbol func_ov062_02119954
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov062_02119954(void *c)
 {
@@ -935,6 +920,7 @@ void func_ov062_02119954(void *c)
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 2 -- func_ov062_02119800, 0x02119800, size 0x154 */
 /* -------------------------------------------------------------------------- */
+// @symbol func_ov062_02119800
 namespace tu {  /* namespaced: decl_common holds a (void*) view of this symbol */
 extern "C" void func_ov062_02119800(char *c)
 {
