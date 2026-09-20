@@ -19,26 +19,39 @@
 #include "dBgActor_c.h"
 
 struct daObjSwitch_c : dBgActor_c {
+    struct Resources {
+        SharedFilePtr *model;
+        SharedFilePtr *collision;
+        CLPS_Block *clps;
+    };
+
+    typedef void (daObjSwitch_c::*State)();
+    struct StateEntry { State init; State exec; };
+
     u8  pad_31e[0x2];
     s32 mDrawScaleX;             /* 0x320 */
     s32 mDrawScaleY;             /* 0x324 */
     s32 mDrawScaleZ;             /* 0x328 */
-    u8  pad_32c[0x8];
+    s32 mDisplacementY;          /* 0x32c */
+    s32 mTickSoundHandle;        /* 0x330 */
     s32 mMusicVolume;            /* 0x334 */
     u16 mTimer;                  /* 0x338 */
     u16 mTimeLimit;              /* 0x33a */
     s32 mSwitchType;             /* 0x33c */
-    s32 unk_340;                 /* 0x340 */
+    s32 mState;                /* 0x340 */
     u32 mTargetActorID;          /* 0x344 */
-    s32 mTargetActor;            /* 0x348 */
+    struct dActor_c *mTargetActor; /* 0x348 */
     u8 mResourceIdx;             /* 0x34c */
     u8 mMusicFadeDone;           /* 0x34d */
     u8 mEventBit;                /* 0x34e */
-    u8 unk_34f;                  /* 0x34f */
-    u8 unk_350;                  /* 0x350 */
-    u8 unk_351;                  /* 0x351 */
+    u8 mPressTimer;             /* 0x34f */
+    u8 mPlayerNearby;           /* 0x350 */
+    u8 mStarID;                  /* 0x351 */
     u8  pad_352[0x1];
     s8 mHomeAreaId;              /* 0x353 */
+
+    /* Field names above describe observed use; the retail RTTI supplies only
+       daObjSwitch_c. The target star field at +0x438 is not named here. */
 
     /* --- vtable --- */
     virtual ~daObjSwitch_c() {}
@@ -57,9 +70,8 @@ typedef char StarSwitch_size_must_be_0x354[sizeof(daObjSwitch_c) == 0x354 ? 1 : 
 
 #else
 
-/* The C spelling of the same object, flat. Kept because the D0 file is a C
-   translation unit that reads these fields, and D0 is compiler-generated so it
-   can never be migrated. Same arrangement as include/ShadowModel.h. */
+/* Flat C compatibility view. The promoted C++ TU emits both destructor
+   variants from the inline destructor above. */
 struct daObjSwitch_c {
     u8  pad_000[0x8];
     u32 mParam;                  /* 0x008 */
@@ -103,20 +115,21 @@ struct daObjSwitch_c {
     s32 mDrawScaleX;             /* 0x320 */
     s32 mDrawScaleY;             /* 0x324 */
     s32 mDrawScaleZ;             /* 0x328 */
-    u8  pad_32c[0x8];
+    s32 mDisplacementY;          /* 0x32c */
+    s32 mTickSoundHandle;        /* 0x330 */
     s32 mMusicVolume;            /* 0x334 */
     u16 mTimer;                  /* 0x338 */
     u16 mTimeLimit;              /* 0x33a */
     s32 mSwitchType;             /* 0x33c */
-    s32 unk_340;                 /* 0x340 */
+    s32 mState;                /* 0x340 */
     u32 mTargetActorID;          /* 0x344 */
-    s32 mTargetActor;            /* 0x348 */
+    struct dActor_c *mTargetActor; /* 0x348 */
     u8  mResourceIdx;            /* 0x34c */
     u8  mMusicFadeDone;          /* 0x34d */
     u8  mEventBit;               /* 0x34e */
-    u8  unk_34f;                 /* 0x34f */
-    u8  unk_350;                 /* 0x350 */
-    u8  unk_351;                 /* 0x351 */
+    u8  mPressTimer;                 /* 0x34f */
+    u8  mPlayerNearby;                 /* 0x350 */
+    u8  mStarID;                 /* 0x351 */
     u8  pad_352[0x1];
     s8  mHomeAreaId;             /* 0x353 */
 };
