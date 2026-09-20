@@ -19,24 +19,7 @@
  * src_tu/actors/daC_Jugem_c.cpp -- have the identical destructor shape and are
  * built the same way.
  *
- * Assembled from these legacy one-function sources (ROM address order):
- *   [0]  0x0212cc88  _ZN15daObj_Mip_Key_cD1Ev.cpp
- *   [1]  0x0212ccc0  _ZN15daObj_Mip_Key_cD0Ev.cpp
- *   [2]  0x0212cd0c  func_ov085_0212cd0c.cpp
- *   [3]  0x0212cd80  func_ov085_0212cd80.c
- *   [4]  0x0212d038  func_ov085_0212d038.c
- *   [5]  0x0212d108  func_ov085_0212d108.c
- *   [6]  0x0212d24c  func_ov085_0212d24c.c
- *   [7]  0x0212d268  func_ov085_0212d268.cpp
- *   [8]  0x0212d2b8  func_ov085_0212d2b8.cpp
- *   [9]  0x0212d374  _ZN15daObj_Mip_Key_c16CleanupResourcesEv.cpp
- *   [10] 0x0212d398  _ZN15daObj_Mip_Key_c16OnPendingDestroyEv.cpp
- *   [11] 0x0212d39c  _ZN15daObj_Mip_Key_c6RenderEv.cpp
- *   [12] 0x0212d3ec  _ZN15daObj_Mip_Key_c8BehaviorEv.cpp
- *   [13] 0x0212d46c  _ZN15daObj_Mip_Key_c13InitResourcesEv.cpp
- *   [14] 0x0212d4e8  d_a_obj_mip_key.c
- *
- * THE SEVEN func_ov085_* ABOVE ARE THIS CLASS'S OWN FILE-STATIC HELPERS, and
+ * THE SEVEN func_ov085_* (ordinals 2-8) ARE THIS CLASS'S OWN FILE-STATIC HELPERS, and
  * the whole overlay was searched to say so rather than assumed. Every ARM `bl`
  * in ov085's .text was decoded and every 32-bit word in the overlay image was
  * scanned for each helper's address:
