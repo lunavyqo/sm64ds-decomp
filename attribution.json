@@ -4176,6 +4176,10 @@
     "src/actors/daRNk_c.cpp#_ZN7daRNk_c8BehaviorEv": "tangosdev",
     "src/actors/daRNk_c.cpp#_ZN7daRNk_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daRNk_c.cpp#_ZN7daRNk_c13InitResourcesEv": "tangosdev",
-    "src/actors/daRNk_c.cpp#daRNk_c_classInit": "tangosdev"
+    "src/actors/daRNk_c.cpp#daRNk_c_classInit": "tangosdev",
+    "src/actors/daObjKurumajiku_c.cpp#func_ov002_020b6a80": "tangosdev",
+    "src/actors/daObjKurumajiku_c.cpp#func_ov002_020b6ac8": "tangosdev",
+    "src/actors/daObjKurumajiku_c.cpp#_ZN17daObjKurumajiku_c6RenderEv": "tangosdev",
+    "src/actors/daObjKurumajiku_c.cpp#_ZN17daObjKurumajiku_c8BehaviorEv": "andrewboudreau"
   }
 }

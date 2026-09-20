@@ -20,7 +20,7 @@
  * and Model at 0xd4, the same as _ZN10dBgActor_cD1Ev.
  *
  * This class's key function is Behavior (already out of line, in
- * src/_ZN17daObjKurumajiku_c8BehaviorEv.cpp -- see
+ * src/actors/daObjKurumajiku_c.cpp -- see
  * include/daObjKurumajiku_c.h), so this file does not carry
  * _ZTV17daObjKurumajiku_c / _ZTI17daObjKurumajiku_c.
  */

@@ -26,9 +26,15 @@
  * Leftover: this TU is text-only. The vtable/RTTI group it emits is
  *   verified at its cartridge home and then discarded by isolation; the
  *   cartridge's own copy is supplied by the overlay's data gap.
- * Leftover: NOT PROMOTED. The destructor pair cannot be emitted in the
- *   cartridge's order from this slice -- see the manifest's
- *   `destructor_order_blocker` note for the measurements.
+ * Leftover: the destructor pair is NOT in this TU -- deliberately. The
+ *   cartridge has D0 (0x020b69e4) BELOW D1 (0x020b6a3c) and every
+ *   visible-body source form emits D1,D0 (measured, see the manifest's
+ *   destructor grid note), so the pair keeps its legacy one-function
+ *   shards (src/_ZN17daObjKurumajiku_cD0Ev.cpp,
+ *   src/_ZN17daObjKurumajiku_cD1Ev.cpp), where one function per object
+ *   makes emission order vacuous. The vtable homes here via Behavior;
+ *   its D1/D0 slots resolve to the legacy objects at link. Exactly the
+ *   landed daObjKuruma_c shape immediately below.
  */
 
 #include "daObjKurumajiku_c.h"
@@ -44,7 +50,7 @@ void Matrix4x3_FromRotationXYZExt(void *m, int x, int y, int z);
 void MulVec3Mat4x3(const Vector3 *v, const void *m, Vector3 *dst);
 void Vec3_Add(Vector3 *out, const Vector3 *a, const Vector3 *b);
 
-int func_ov002_020b6a80(daObjKurumajiku_c *self);
+int func_ov002_020b6a80(char *self);
 int func_ov002_020b6ac8(daObjKurumajiku_c *self, void *descriptor);
 
 /* Carries Fix12<int> by value, so its definition stays a mangled free
@@ -92,7 +98,7 @@ s32 daObjKurumajiku_c::Behavior()
             }
         }
     }
-    func_ov002_020b6a80(this);
+    func_ov002_020b6a80((char *)this);
     if (_ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_(this, 0, 0))
         UpdateClsnPosAndRot();
     return 1;
@@ -127,9 +133,9 @@ extern "C" int func_ov002_020b6ac8(daObjKurumajiku_c *self, void *descriptor)
    Y/Z angles and copy its position in at 1/8 scale. Reached by offset
    because this one is still under its linker name; the offsets are
    dBgActor_c's mClsnMtx (0xf0) and its position row (0x114). */
-extern "C" int func_ov002_020b6a80(daObjKurumajiku_c *self)
+extern "C" int func_ov002_020b6a80(char *self)
 {
-    char *c = (char *)self;
+    char *c = self;
     Matrix4x3_FromRotationZXYExt(c + 0xf0, 0, *(short *)(c + 0x8e), *(short *)(c + 0x90));
     *(int *)(c + 0x114) = *(int *)(c + 0x5c) >> 3;
     *(int *)(c + 0x118) = *(int *)(c + 0x60) >> 3;
