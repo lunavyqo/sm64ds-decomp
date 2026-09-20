@@ -91,3 +91,22 @@ void return, dActor_c/ShadowModel/Matrix4x3 pointers, scalar radius/depth, and u
 opacity. The public mangled method/header carries unsigned opacity; this caller
 passes constant 0x0f in either form. Aligning the bridge to the definition and using
 a typed RotationX matrix pointer preserves the entire compiled object identity.
+
+
+## Final bounded reviewer pair
+
+Independent reviewer `/root/review_mip_final` found two simpler forms at input
+`1dfbfc4397e7118e2648e8750ce8ccdf091f7605`. The producer adopted both together:
+`c->mAngleX += 0x1000` replaces the temporary s16 pointer, and the state setter
+checks `c->mState->enter == 0` then calls `(c->*c->mState->enter)()` directly.
+A fresh producer compile before and after preserves the complete object SHA256
+`0fab978517bf4cdb1fdd83035d0a5fae7fdcdd0f0ef4b7196b8b2e0b54485f8d`.
+All 15 functions also freshly verify with exact relocations, empty diffs and blind0.
+No compiler metadata changed, so the full-ROM/object/data proof at 564695bfe carries
+through this identity; a new full build was unnecessary. The scratch runner and
+objects are retained under ignored `build/mip-triage/final-pair/` with proof.json.
+
+Under MIPKEY-2853-04, the manifest now accurately describes the destructor as the
+first declared non-inline virtual/key function. Other inherited overrides remain
+virtual even where the class does not repeat the keyword. This corrects wording
+only; the existing compiler-only vtable policy and addresses are unchanged.

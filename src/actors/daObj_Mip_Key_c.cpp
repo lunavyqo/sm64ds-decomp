@@ -209,12 +209,10 @@ extern "C" int func_ov085_0212d108(daObj_Mip_Key_c *c)
     Vector3 out;
     Vector3 pp;
     Player* player;
-    s16* ap;
     int zero;
     Vector3* ppos;
 
-    ap = &c->mAngleX;
-    *ap = (s16)(*ap + 0x1000);
+    c->mAngleX += 0x1000;
     if ((u16)c->mStateTimer != 0) {
         return 1;
     }
@@ -266,10 +264,9 @@ extern "C" int func_ov085_0212d24c(daObj_Mip_Key_c *p)
 extern "C" int func_ov085_0212d268(daObj_Mip_Key_c *c, MipKeyState *p)
 {
     c->mState = p;
-    MipKeyPMF *q = &c->mState->enter;
-    if (*q == 0)
+    if (c->mState->enter == 0)
         return 1;
-    return (c->**q)();
+    return (c->*c->mState->enter)();
 }
 
 // Build the render matrix and place the cylinder shadow.

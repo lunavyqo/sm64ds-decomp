@@ -226,7 +226,7 @@
       "disposition": "deadstrip-data",
       "canonical_module": "ov085",
       "canonical_address": "0x021301d8",
-      "reason": "This TU owns daObj_Mip_Key_c's key function -- ~daObj_Mip_Key_c is the only virtual the class declares and its body is out of line here -- so mwcc emits the complete 0x84-byte class vtable storage with its ABI preamble. The cartridge's storage begins at ov085:0x021301d0, where offset-to-top is 0 and the next word points at _ZTI15daObj_Mip_Key_c (0x02130194); the public address point recorded in symbols.txt is 0x021301d8, eight bytes above the start of storage and outside this text-only entry's licensed range, so dsd supplies that ROM data independently. Storage runs 0x021301d0..0x02130254, which is exactly 0x84 and closes on the next configured datum."
+      "reason": "This TU owns daObj_Mip_Key_c's key function -- ~daObj_Mip_Key_c is the first declared non-inline virtual and its body is out of line here; inherited virtual overrides remain virtual without repeating the keyword -- so mwcc emits the complete 0x84-byte class vtable storage with its ABI preamble. The cartridge's storage begins at ov085:0x021301d0, where offset-to-top is 0 and the next word points at _ZTI15daObj_Mip_Key_c (0x02130194); the public address point recorded in symbols.txt is 0x021301d8, eight bytes above the start of storage and outside this text-only entry's licensed range, so dsd supplies that ROM data independently. Storage runs 0x021301d0..0x02130254, which is exactly 0x84 and closes on the next configured datum."
     },
     {
       "symbol": "_ZTI15daObj_Mip_Key_c",
