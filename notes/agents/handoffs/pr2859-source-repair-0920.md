@@ -41,6 +41,14 @@ actor pointer view. Its header also uses scalar Fix12i, so a real-method call do
 not yet carry the required mangling. These are shared interface defects, not
 accepted compiler constraints. Exact paths and signatures are in the experiments.
 
+The subsequent narrow reviewer repair changes Vec3_HorzAngle and Vec3_Dist to
+their actual const Vector3* parameter contracts, with typed position views at the
+one previously untyped call. Against 9a5fd9eb, all 30 allocated sections, 30
+global/weak definitions and 235 relocation records remain identical, including
+section order. Fresh complete-TU and all 18 strict function checks pass; the
+declaration ratchet passes and removes four disagreements. The full-ROM result
+below was run at 9a5fd9eb; this later repair preserves its complete TU object.
+
 ## Proof and limits
 
 [Committed experiments](../../experiments/pr2859-source-repair-0920.json) contain
@@ -71,8 +79,8 @@ global/weak definition and relocation agrees when keyed by owning symbol.
 
 An independent reviewer must judge this exact candidate and the coordinator's
 eventual current-main composition. The coordinator owns the reserved attribution
-and declaration-baseline reconciliation, the concrete reconstruction follow-up
-issue, publication and integration. No external ledger or declaration header was
-edited. Root must establish a follow-up owner before partial source acceptance;
-the local draft lists measured remaining work and the two shared dependencies.
+and declaration-baseline reconciliation, publication and integration. Remaining
+reconstruction is tracked in [follow-up #2866](https://github.com/tangosdev/sm64ds-decomp/issues/2866). No external ledger or declaration header was
+edited. The independent reviewer must confirm the follow-up scope and owner before
+partial source acceptance; shared interface debt is not a compiler limitation.
 Local logs, probe objects and private receipts remain under ignored build paths.

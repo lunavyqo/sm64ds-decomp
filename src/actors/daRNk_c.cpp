@@ -47,8 +47,8 @@ extern short data_02082214[];
 /* This scalar entry follows its C definition, including u16 startFrame.
    ModelAnim.h instead declares u32; that shared contract is still unresolved. */
 extern void _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(void *, void *, int, int, u16);
-extern s16 Vec3_HorzAngle(const void *v0, const void *v1);
-extern s32 Vec3_Dist(const void *a, const void *b);
+extern s16 Vec3_HorzAngle(const Vector3 *v0, const Vector3 *v1);
+extern s32 Vec3_Dist(const Vector3 *a, const Vector3 *b);
 extern void _ZN5Sound22StopLoadedMusic_Layer2Ev(void);
 extern unsigned int func_0201277c(unsigned int id);
 extern signed char data_0209f2f8;
@@ -406,7 +406,8 @@ void func_ov062_0211a1f4(char *a)
             char *o = (char *)dActor_c::FindWithID(*(int *)(a + 0x394));
             if (o != 0) {
                 if (*(u8 *)(o + 0x16e) != 0 &&
-                    Vec3_Dist(a + 0x5c, *(char **)(a + 0x398) + 0x5c) > 0x7d0000)
+                    Vec3_Dist((const Vector3 *)(a + 0x5c),
+                              (const Vector3 *)(*(char **)(a + 0x398) + 0x5c)) > 0x7d0000)
                     r5 = 8;
                 else if (data_0209f2f8 == 0x18)
                     r5 = 6;

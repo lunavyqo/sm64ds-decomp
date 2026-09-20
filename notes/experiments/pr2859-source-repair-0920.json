@@ -510,6 +510,20 @@
       "changed_functions": [],
       "normalized_object_matches_baseline": true,
       "object_signature_sha256": "111f9f24a9170fc667bc4a0739f248900e79ce57e1012dad20ce63a9dc00f54f"
+    },
+    {
+      "id": "typed-vector-contracts-exact",
+      "description": "Actual const Vector3 pointer parameters plus typed position views at the one previously untyped call; existing scalar mPosX/Y/Z layout is not changed.",
+      "parent": "final",
+      "source_patch": "--- parent/daRNk_c.cpp\n+++ probe/daRNk_c.cpp\n@@ -48,6 +48,6 @@\n    ModelAnim.h instead declares u32; that shared contract is still unresolved. */\n extern void _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(void *, void *, int, int, u16);\n-extern s16 Vec3_HorzAngle(const void *v0, const void *v1);\n-extern s32 Vec3_Dist(const void *a, const void *b);\n+extern s16 Vec3_HorzAngle(const Vector3 *v0, const Vector3 *v1);\n+extern s32 Vec3_Dist(const Vector3 *a, const Vector3 *b);\n extern void _ZN5Sound22StopLoadedMusic_Layer2Ev(void);\n extern unsigned int func_0201277c(unsigned int id);\n@@ -407,5 +407,6 @@\n             if (o != 0) {\n                 if (*(u8 *)(o + 0x16e) != 0 &&\n-                    Vec3_Dist(a + 0x5c, *(char **)(a + 0x398) + 0x5c) > 0x7d0000)\n+                    Vec3_Dist((const Vector3 *)(a + 0x5c),\n+                              (const Vector3 *)(*(char **)(a + 0x398) + 0x5c)) > 0x7d0000)\n                     r5 = 8;\n                 else if (data_0209f2f8 == 0x18)\n",
+      "header_patch": "",
+      "compiled": true,
+      "source_sha256": "0542a3528a3634525f0c8bee25f2018dc479e30c0493c0ad6ffc742d0f444ca2",
+      "header_sha256": "10d02b114030579e3b08686f1990050bc253a80b4dc1afbe7deaa4e371f29d07",
+      "all_18_masked_matches": true,
+      "changed_functions": [],
+      "normalized_object_matches_baseline": true,
+      "object_signature_sha256": "111f9f24a9170fc667bc4a0739f248900e79ce57e1012dad20ce63a9dc00f54f"
     }
   ],
   "timer_consumers": [
@@ -637,7 +651,8 @@
       "mismatching_functions": 0,
       "source_data": "754 verified,261 partial,3 differ,306 unnamed; unchanged from pristine input",
       "source_data_claims": "26/26 reproduce",
-      "log": "build/pr2859-final-rom.log"
+      "log": "build/pr2859-final-rom.log",
+      "tested_revision": "9a5fd9eb95b59e3576ee972bf9ff12c66daa3912; the later two-vector-declaration repair preserves the complete allocated object signature, verified separately below"
     },
     "formal_acceptance": false,
     "strict_relocations": {
@@ -729,7 +744,7 @@
       }
     }
   },
-  "final_source_sha256": "a3f7a5c0cc1eaa920bc85d3026fb52719e8304329d9c608aea6e85ea6d155883",
+  "final_source_sha256": "0542a3528a3634525f0c8bee25f2018dc479e30c0493c0ad6ffc742d0f444ca2",
   "final_header_sha256": "10d02b114030579e3b08686f1990050bc253a80b4dc1afbe7deaa4e371f29d07",
   "final_strict_function_results": [
     {
@@ -1159,7 +1174,7 @@
       {
         "symbol": "Vec3_HorzAngle",
         "owned_line": 50,
-        "owned_contract": "short (const void *, const void *)",
+        "owned_contract": "short (const Vector3 *, const Vector3 *)",
         "definitions": [
           {
             "path": "src/Vec3_HorzAngle.c",
@@ -1171,7 +1186,7 @@
       {
         "symbol": "Vec3_Dist",
         "owned_line": 51,
-        "owned_contract": "int (const void *, const void *)",
+        "owned_contract": "int (const Vector3 *, const Vector3 *)",
         "definitions": [
           {
             "path": "src/Vec3_Dist.c",
@@ -1434,6 +1449,68 @@
       "symbol": "func_0201964c",
       "definition": "src/func_0201964c.c",
       "contract": "struct Timer*(struct Timer*)"
+    },
+    {
+      "symbol": "Vec3_HorzAngle",
+      "definition": "src/Vec3_HorzAngle.c",
+      "contract": "s16(const Vector3*,const Vector3*)"
+    },
+    {
+      "symbol": "Vec3_Dist",
+      "definition": "src/Vec3_Dist.c",
+      "contract": "s32(const Vector3*,const Vector3*)"
     }
-  ]
+  ],
+  "final_candidate_experiment": "typed-vector-contracts-exact",
+  "post_review_vector_contracts": {
+    "input_commit": "9a5fd9eb95b59e3576ee972bf9ff12c66daa3912",
+    "scope": "Only Vec3_HorzAngle/Vec3_Dist declarations and two typed position arguments at the sole previously untyped call. No shared header or other interface changes.",
+    "before_source_sha256": "a3f7a5c0cc1eaa920bc85d3026fb52719e8304329d9c608aea6e85ea6d155883",
+    "after_source_sha256": "0542a3528a3634525f0c8bee25f2018dc479e30c0493c0ad6ffc742d0f444ca2",
+    "before_whole_object_signature_sha256": "111f9f24a9170fc667bc4a0739f248900e79ce57e1012dad20ce63a9dc00f54f",
+    "after_whole_object_signature_sha256": "111f9f24a9170fc667bc4a0739f248900e79ce57e1012dad20ce63a9dc00f54f",
+    "complete_object_signature_identical": true,
+    "allocated_sections": 30,
+    "global_weak_definitions": 30,
+    "relocations": 235,
+    "note": "Unlike the initial Vector3 reconstruction, this repair changes no section order. Every allocated section byte, global/weak definition, and relocation record is identical, including section indices.",
+    "discarded_invalid_attempt": "A scratch attempt used mPos aggregate members, which do not exist in the shared dActor_c layout (it declares mPosX/Y/Z). It did not compile and was not applied; it is not a compiler constraint. The accepted minimal casts express the actual Vector3 pointer contracts without modifying that layout.",
+    "complete_tu": {
+      "command": "python tools/tubuild.py verify ov062/daRNk_c",
+      "exit": 0,
+      "result": "18/18 MATCH,6108 bytes,objisolate clean,relocation destinations clean,all18 retained functions in expected order",
+      "log": "build/pr2859-vector-tu.log"
+    },
+    "strict_relocations": {
+      "command": "python tools/prepush_linkcheck.py --files src/actors/daRNk_c.cpp --json build/pr2859-vector-links.json",
+      "exit": 0,
+      "result": "18 VERIFIED; every blind=0,diffs=[];0 warnings,0 blockers",
+      "symbols": [
+        "_ZN7daRNk_cD1Ev",
+        "_ZN7daRNk_cD0Ev",
+        "func_ov062_02119800",
+        "func_ov062_02119954",
+        "func_ov062_021199ac",
+        "func_ov062_02119af0",
+        "func_ov062_02119be0",
+        "func_ov062_0211a0f0",
+        "func_ov062_0211a168",
+        "func_ov062_0211a1f4",
+        "func_ov062_0211a740",
+        "func_ov062_0211a9c4",
+        "func_ov062_0211aac0",
+        "_ZN7daRNk_c6RenderEv",
+        "_ZN7daRNk_c8BehaviorEv",
+        "_ZN7daRNk_c16CleanupResourcesEv",
+        "_ZN7daRNk_c13InitResourcesEv",
+        "daRNk_c_classInit"
+      ]
+    },
+    "declarations": {
+      "command": "python tools/check_decl_agreement.py --changed 9a5fd9eb95b59e3576ee972bf9ff12c66daa3912",
+      "exit": 0,
+      "result": "No new disagreements; whole-tree disagreement count reduces17142 to17138"
+    },
+    "formal_acceptance": false
+  }
 }
