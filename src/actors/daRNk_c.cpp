@@ -681,7 +681,7 @@ extern "C" int func_ov062_02119af0(char *p) {
     int nd4;
     int n64;
     int nc8;
-    
+
     ncc = *(int *)(p + 0x3cc);
     n5c = *(int *)(p + 0x5c);
     nc0 = *(int *)(p + 0x3c0);
