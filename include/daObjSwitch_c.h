@@ -41,7 +41,7 @@ struct daObjSwitch_c : dBgActor_c {
     s8 mHomeAreaId;              /* 0x353 */
 
     /* --- vtable --- */
-    virtual ~daObjSwitch_c();
+    virtual ~daObjSwitch_c() {}
 
     int Behavior();
     int CleanupResources();

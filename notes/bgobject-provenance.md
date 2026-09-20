@@ -15,10 +15,9 @@ and again after each raw-offset collapse.
 
 ## daObjSwitch_c (`include/daObjSwitch_c.h`, [ov002](../config/arm9/overlays/ov002/symbols.txt), size 0x354)
 
-Bodies read: `src/_ZN13daObjSwitch_c13InitResourcesEv.cpp`,
-`src/_ZN13daObjSwitch_c8BehaviorEv.cpp`, `src/_ZN13daObjSwitch_c6RenderEv.cpp`,
-`src/_ZN13daObjSwitch_c16CleanupResourcesEv.cpp`,
-`src/_ZN13daObjSwitch_c15OnGroundPoundedER8dActor_c.cpp`, `src/d_a_obj_switch_star_switch.c`.
+Bodies read: `src/actors/daObjSwitch_c.cpp` (InitResources, Behavior,
+Render, CleanupResources, OnGroundPounded members),
+`src/d_a_obj_switch_star_switch.c`.
 
 | Offset | Name | Evidence |
 | --- | --- | --- |
