@@ -1,63 +1,78 @@
 # Handoff: pr2859-source-repair-0920
 
-This document describes this commit. It is a WIP checkpoint for a queue resource
-amendment, not independent acceptance or a merge candidate.
+This commit is the completed bounded producer repair for PR #2859. Independent
+source review and current-main composition acceptance remain pending.
 
 - Producer: codex-rnk-producer-0920 (Codex), stage `produce`.
-- Input: `166dffa1d0767416bd386294a324f00ec267fcc9`; original source base:
+- Input: `166dffa1d0767416bd386294a324f00ec267fcc9`; source base:
   `4407c8471ed3299ea16d9cc899020e3232ac6ee9`.
 - Branch: `review/pr2859-0920`; worktree: `C:/tmp/sm64ds-review2859-0920`.
 - Protocol pin: `18af52b49b9fb5663d417bdfa86109b7b157aaa3`.
 - PR: https://github.com/tangosdev/sm64ds-decomp/pull/2859.
+- Seven owned paths only: class TU/header/manifest, this handoff, the experiment
+  record, HUD RenderTimeTimer, and the Timer static initializer.
 
 ## Changes and findings
 
-RNK-01/02: production provenance is now truthful. Removed the deleted-file
-comment references and the unsupported daNknk_c::Kill/vtable attribution.
-RNK-03: all 16 non-destructor definitions have unique symbol markers; lifecycle
-ownership remains the inline destructor instantiated by the factory.
-RNK-04: the two word-sized coordinate fields now have 32-bit types with unchanged
-offsets. The stored Player address has a pointer type; the total size remains 0x3e0.
-RNK-05: the owned TU uses the existing Timer class and real member calls. Two
-external Timer consumers still need reservation and repair before acceptance.
-RNK-06: real Vector3 and SharedFilePtr replace fabricated local layouts. Native
-C++ member-function-pointer dispatch replaces manual decoding. Initialization,
-animation/collision updates, file loading/release, messages and star spawning now
-use real members/interfaces wherever the tested form preserves bytes.
+RNK-01/02 fix false production/provenance statements and remove 18 deleted-file
+references. RNK-03 gives all 16 non-destructor definitions unique symbol markers.
+RNK-04 corrects two word-sized coordinate fields and the Player pointer without
+moving fields or changing the 0x3e0 class size. RNK-05 gives the TU and both Timer
+consumers the actual Timer class and call contracts; both consumer objects remain
+identical. RNK-07 fixes the s16 atan2 result together with the real short/short
+GetSubtraction method. The earlier one-sided cast nonmatch is superseded and
+does not establish a compiler limitation. Remaining owned direct call contracts
+were inventoried against actual definitions; return and scalar-width defects were
+corrected and rebuilt.
 
-The 11 address-named helpers still have raw actor field views and several scalar
-ABI calls. Reconstruction is partial. No claim is made that this is recovered
-original source or that all possible cleaner forms have been exhausted. The
-experiments record exact rejected alternatives for volatile particle coordinates,
-the redundant conditional, the Render scale copy, fixed-point SetAnim and the
-signed-short angle boundary. Compile failures are explicitly distinguished from
-compiled nonmatches. Remaining broader work requires a concrete follow-up issue
-and next owner before partial source acceptance; the coordinator owns publication.
+RNK-06 remains partial. Real Vector3, SharedFilePtr, native member-function-pointer
+dispatch, references, and real Player/actor/animation/collision methods replace
+substantial scaffolding. Eleven address-named helpers still have raw field views;
+scalar fixed-point bridges and mixed external handle-data views remain. The
+experiment record distinguishes measured particle/scale nonmatches from invalid
+source probes and external interface defects. It makes no claim that all cleaner
+forms were exhausted or that the source is recovered original text.
+
+Two external dependencies remain explicit: the SetAnim C definition uses u16
+startFrame while ModelAnim.h declares u32; this TU's scalar bridge now follows the
+actual definition. The dBgCh_Actr initializer erases actor/vector pointers to int,
+while its header and mangled identity evidence pointers; this TU retains the
+actor pointer view. Its header also uses scalar Fix12i, so a real-method call does
+not yet carry the required mangling. These are shared interface defects, not
+accepted compiler constraints. Exact paths and signatures are in the experiments.
 
 ## Proof and limits
 
 [Committed experiments](../../experiments/pr2859-source-repair-0920.json) contain
-replayable source/header patches, flags, sizes, function results and complete
-emitted-object signatures. All 18 functions / 6108 bytes remain exact with clean
-object isolation and relocation destinations. The weak Vector3 destructor moves
-earlier; its body and sole-home duplicate policy remain unchanged. Every allocated
-section body, definition and relocation agrees after identifying sections by owner.
-Emitted data: 6 verified / 180 bytes, 5 partial / 44 bytes, zero differences or
-unnamed symbols. The header has one consumer, this TU; all 26 commented offsets
-check, with no unparsed fields.
+ordered replayable patches, compiler flags, corrected-contract provenance, one
+baseline/final whole-object signature, and per-function strict results.
 
-Pristine full-ROM baseline: 106/106 exact modules, 11208 reproducing functions,
-zero mismatches. Candidate full-ROM and final current-base proof remain pending.
-The declaration ratchet still reports the external HUD int/Timer disagreement;
-the whole inventory also exposes the initializer's int view. Do not bank these.
-Attribution and declaration-baseline reservations remain with their existing
-owners. No external ledger or shared declaration header was edited here.
+- Complete TU: 18/18 MATCH, 6108 bytes, object isolation and relocations clean.
+- TU plus Timer consumers: 20 VERIFIED; every blind=0 and diffs=[].
+- Full ROM, pristine input and final repair: 106/106 exact modules, 11208
+  reproducing functions, zero mismatches; all 26 source data claims reproduce.
+  Whole-tree source data remains 754 verified / 261 partial / 3 differ / 306
+  unnamed, identical to the pristine input. No packaged ROM was generated.
+- TU data: 6 verified / 180 bytes, 5 partial / 44 bytes, zero differences or
+  unnamed symbols. All 26 header offsets check; only this TU consumes the header.
+- Declaration ratchet passes with no new disagreements; converted ratchet passes
+  at 2982 vs 2973 baseline (+9 unbanked). Neither baseline was rewritten.
+- Port references: 423 resolve. No new dead references or broken Markdown links.
+- Full queue audit is red: 39 shard-count, 48 line-count, 17 compiler-only, and
+  one no-header stale cells. Exact original-input comparison shows no derived
+  row changes from this repair. No daRNk_c/Koopa row exists; HUD remains 19 shards
+  and 1364 lines. No repair-specific TSV edit is proposed.
+
+The licensed four-byte Vector3 weak destructor moves earlier in the object;
+its body and sole-home policy are unchanged. Every allocated section body,
+global/weak definition and relocation agrees when keyed by owning symbol.
 
 ## Next action
 
-Root amends the idle producer task to reserve HUD RenderTimeTimer and the Timer
-initializer, then this producer resumes the exact checkpoint. Run full affected
-relocation, metadata, static and ROM checks after those repairs. A different
-session must independently judge the final candidate and composed base before
-root publication/integration. Local probe objects, logs and private receipt stay
-under ignored build directories; none is included as a public binary artifact.
+An independent reviewer must judge this exact candidate and the coordinator's
+eventual current-main composition. The coordinator owns the reserved attribution
+and declaration-baseline reconciliation, the concrete reconstruction follow-up
+issue, publication and integration. No external ledger or declaration header was
+edited. Root must establish a follow-up owner before partial source acceptance;
+the local draft lists measured remaining work and the two shared dependencies.
+Local logs, probe objects and private receipts remain under ignored build paths.

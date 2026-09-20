@@ -14,60 +14,59 @@
 #include "Player.h"
 #include "types.h"
 #include "common.h"
-#include "decl_Player.h"
 #include "Timer.h"
-#include "decl_common.h"
-#include "decl_PathPtr.h"
-#include "decl_ActorBase.h"
-#include "decl_Enemy.h"
-#include "decl_ModelAnim.h"
-#include "decl_dCcAc_c.h"
-#include "decl_ShadowModel.h"
 #include "SharedFilePtr.h"
-#include "decl_dBgCh_Actr.h"
+
+int ApproachLinear(short &value, short target, short step);
+int ApproachLinear(int &value, int target, int step);
+
+extern "C" {
+void func_ov062_02119800(char *self);
+void func_ov062_02119954(void *self);
+int func_ov062_021199ac(char *self);
+int func_ov062_02119af0(char *self);
+void func_ov062_02119be0(char *self);
+void func_ov062_0211a0f0(char *self);
+void func_ov062_0211a168(char *self);
+void func_ov062_0211a1f4(char *self);
+void func_ov062_0211a740(char *self);
+void func_ov062_0211a9c4(char *self);
+void func_ov062_0211aac0(char *self);
+extern int data_ov062_0211e0a4[];
+void _ZN5Sound22LoadAndSetMusic_Layer2Ej(u32 id);
+}
 
 /* Scalar fixed-point ABI entry; the class-valued form still needs
    caller reconstruction under the pinned compiler. */
-extern "C" int _ZN4cstd5atan2E5Fix12IiES1_(int y, int x);
+extern "C" s16 _ZN4cstd5atan2E5Fix12IiES1_(int y, int x);
 
 extern "C" {
 extern void func_0201267c(unsigned int id, void *p);
-extern void _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(unsigned int id, int x, int y, int z);
+extern void *_ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(unsigned int id, int x, int y, int z);
 extern short data_02082214[];
-extern void _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(void *, void *, int, int, unsigned int);
-extern void *_ZN8dActor_c18ClosestWithActorIDEj(void *thiz, u32 id);
+/* This scalar entry follows its C definition, including u16 startFrame.
+   ModelAnim.h instead declares u32; that shared contract is still unresolved. */
+extern void _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(void *, void *, int, int, u16);
 extern s16 Vec3_HorzAngle(const void *v0, const void *v1);
 extern s32 Vec3_Dist(const void *a, const void *b);
-extern s32 _ZN8dActor_c14GetSubtractionEss(void *thiz, s16 a, s16 b);
-extern void _ZNK7PathPtr7GetNodeER7Vector3j(void *self, void *v, unsigned int i);
-extern int _ZN6Player9StartTalkER7fBase_cb(void* player, void* actor, int flag);
-extern int _ZN6Player12GetTalkStateEv(void* player);
 extern void _ZN5Sound22StopLoadedMusic_Layer2Ev(void);
-extern unsigned int func_0201277c(int id); /* decl_common's view */
-extern int _Z14ApproachLinearRsss(short* val, short target, short step);
+extern unsigned int func_0201277c(unsigned int id);
 extern signed char data_0209f2f8;
-extern int _Z14ApproachLinearRiii(int* val, int target, int step);
-extern int _ZN9Animation8FinishedEv(void* anim);
-extern int _ZNK9Animation13GetFrameCountEv(char* anim);
-extern int _ZNK9Animation12WillHitFrameEi(char* anim, int frame);
 extern s8 data_ov002_02111184;
-extern void _ZN5Sound7PlaySubEjjj5Fix12IiEb(u32 a, u32 b, u32 c, int d, int e);
+extern bool _ZN5Sound7PlaySubEjjj5Fix12IiEb(u32 a, u32 b, u32 c, int d, int e);
 extern void func_02012694(u32 a, void *b);
-extern char *_ZN8dActor_c10FindWithIDEj(u32 id);
-extern int _ZN6Player22IsBeingShotOutOfCannonEv(void *p);
-extern int _ZNK10dBgCh_Actr10IsOnGroundEv(void *c);
-void func_02012790(int a);
-int _ZN6Player18HasFinishedTalkingEv(void* self);
+unsigned int func_02012790(unsigned int id);
 extern u8 data_0209d684;
 extern Timer data_0209d4c8;
-extern void Vec3_Asr(struct Vector3* d, struct Vector3* s, int sh);
+extern void Vec3_Asr(void *destination, void *source, int shift);
 extern void Matrix4x3_FromTranslation(void* m, int x, int y, int z);
 extern void Matrix4x3_ApplyInPlaceToRotationY(void* m, short angY);
-extern void _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(void* self, void* sm, void* mtx, int a, int b, unsigned int g);
+extern void _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(void* self, void* sm, void* mtx, int a, int b, unsigned char g);
 extern struct Matrix4x3 data_020a0e68;
 extern void _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(void *self, void *actor, int r, int h, unsigned int d, unsigned int e);
+/* The existing C initializer erases pointer slots to integers. Keep the
+   evidenced actor view here; repairing the shared initializer is separate. */
 extern void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void *self, void *actor, int r, int h, void *p, int q);
-extern unsigned char _ZN8dActor_c9TrackStarEjj(void *self, unsigned int a, unsigned int b);
 extern char data_ov062_0211e00c[];
 extern int data_ov062_0211e014[];  /* int[]: [1] must fold into the load offset (char[] costs an extra add) */
 extern int data_ov062_0211e024[];  /* int[]: [1] must fold into the load offset (char[] costs an extra add) */
@@ -143,7 +142,7 @@ int daRNk_c::InitResources()
         mPathPtToJumpAt2 = 0xff;
     mStarID = (unsigned char)(mAngleX & 0xf);
     b = mStarID;
-    mTrackedStar = _ZN8dActor_c9TrackStarEjj(this, b, 2);
+    mTrackedStar = TrackStar(b, 2);
     mFlagID = zero;
     mPlayer = 0;
     mIsRacing = (unsigned char)zero;
@@ -205,7 +204,6 @@ int daRNk_c::Render()
 /* ROM ordinal 12 -- func_ov062_0211aac0, 0x0211aac0, size 0x90 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov062_0211aac0
-namespace tu {  /* namespaced: decl_common holds a (void*) view of this symbol */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov062_0211aac0(char* r6){
   struct Vector3 v;
@@ -217,16 +215,12 @@ void func_ov062_0211aac0(char* r6){
   _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(r6, r6 + 0x364, r6 + 0x31c, 0xa0000, 0xa0000, 0xf);
 }
 }
-}  /* namespace tu */
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 11 -- func_ov062_0211a9c4, 0x0211a9c4, size 0xfc */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov062_0211a9c4
 extern "C" {  /* .c-derived member: C linkage for the whole block */
-extern void *_ZN8dActor_c13ClosestPlayerEv(void *self);
-extern int _ZN6Player9StartTalkER7fBase_cb(void *thiz, void *ref, int b);
-extern void *_ZN8dActor_c15FindWithActorIDEjPS_(unsigned id, void *p);
 
 void func_ov062_0211a9c4(char *c)
 {
@@ -241,7 +235,7 @@ void func_ov062_0211a9c4(char *c)
         return;
     }
 
-    *(void **)(c + 0x398) = _ZN8dActor_c13ClosestPlayerEv(c);
+    *(void **)(c + 0x398) = ((dActor_c *)c)->ClosestPlayer();
     if (*(void **)(c + 0x398) == 0)
         return;
 
@@ -253,10 +247,10 @@ void func_ov062_0211a9c4(char *c)
     if (Vec3_Dist((struct Vector3 *)(c + 0x5c), &v) >= 0xc8000)
         return;
 
-    if (_ZN6Player9StartTalkER7fBase_cb(*(void **)(c + 0x398), c, 1) == 0)
+    if (((Player *)*(void **)(c + 0x398))->StartTalk(*(fBase_c *)c, true) == 0)
         return;
 
-    a = (char *)_ZN8dActor_c15FindWithActorIDEjPS_(0xcd, 0);
+    a = (char *)dActor_c::FindWithActorID(0xcd, 0);
     if (a == 0)
         return;
 
@@ -280,7 +274,7 @@ extern "C" void func_ov062_0211a740(char* c)
 {
     switch (*(u8*)(c + 0x390)) {
     case 0:
-        if (_Z14ApproachLinearRsss((s16*)(c + 0x94), *(s16*)(c + 0x3a8), 0x800) != 0) {
+        if (ApproachLinear(*(s16*)(c + 0x94), *(s16*)(c + 0x3a8), 0x800) != 0) {
             _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((void*)(c + 0x300), *(void**)(data_ov062_0211e03c + 4), 0, 0x1000, 0);
             *(u8*)(c + 0x390) += 1;
             func_0201267c(0xec, c + 0x74);
@@ -292,7 +286,7 @@ extern "C" void func_ov062_0211a740(char* c)
         *(s16*)(c + 0x8e) = *(s16*)(c + 0x94);
         return;
     case 1:
-        if (_ZN6Player12GetTalkStateEv(*(void**)(c + 0x398)) != 0)
+        if (((Player *)*(void **)(c + 0x398))->GetTalkState() != 0)
             return;
         {
             unsigned int msg;
@@ -318,7 +312,7 @@ extern "C" void func_ov062_0211a740(char* c)
         }
         return;
     case 2:
-        if (_ZN6Player12GetTalkStateEv(*(void**)(c + 0x398)) != 2)
+        if (((Player *)*(void **)(c + 0x398))->GetTalkState() != 2)
             return;
         if (*(u8*)(c + 0x3b6) != 0) {
             if (data_0209d684 == 1) {
@@ -330,14 +324,14 @@ extern "C" void func_ov062_0211a740(char* c)
             } else if (data_0209d684 == 2) {
                 *(int*)(c + 0x38c) = 0;
                 *(u16*)(c + 0x100) = 0x3c;
-                _ZN6Player18HasFinishedTalkingEv(*(void**)(c + 0x398));
+                ((Player *)*(void **)(c + 0x398))->HasFinishedTalking();
                 _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((void*)(c + 0x300), *(void**)(data_ov062_0211e034 + 4), 0, 0x1000, 0);
                 *(u8*)(c + 0x3b6) = 0;
             }
         } else {
             *(int*)(c + 0x38c) = 0;
             *(u16*)(c + 0x100) = 0x3c;
-            _ZN6Player18HasFinishedTalkingEv(*(void**)(c + 0x398));
+            ((Player *)*(void **)(c + 0x398))->HasFinishedTalking();
             _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((void*)(c + 0x300), *(void**)(data_ov062_0211e034 + 4), 0, 0x1000, 0);
         }
         *(u8*)(c + 0x390) = 0;
@@ -356,11 +350,7 @@ extern "C" void func_ov062_0211a740(char* c)
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov062_0211a1f4(char *a)
 {
-    /* Passing the atan2 result unextended matches this call. The explicit
-       signed-short alternative adds four bytes; see the pinned experiment. */
-    extern int _ZN6Player22IsBeingShotOutOfCannonEv(void *p);
-    extern int _ZN8dActor_c14GetSubtractionEss(void *c, s16 a, int b);  /* 3rd arg int here: the ROM passes it unextended */
-    int r6;
+        int r6;
     int r5;
     int r4;
     int r7;
@@ -368,12 +358,12 @@ void func_ov062_0211a1f4(char *a)
 
     switch (*(u8 *)(a + 0x390)) {
     case 0:
-        if (_ZN6Player12Unk_020c4f40Et(*(int *)(a + 0x398), 0x5a) != 0)
+        if (((Player *)*(void **)(a + 0x398))->Unk_020c4f40(0x5a) != 0)
             (*(u8 *)(((int)a + 0x390)))++;
         return;
     case 1:
         _ZN5Sound7PlaySubEjjj5Fix12IiEb(0x1f, 0x14, 0x7f, 0x6b000, 0);
-        if (_ZN6Player12GetTalkStateEv(*(void **)(a + 0x398)) != -1)
+        if (((Player *)*(void **)(a + 0x398))->GetTalkState() != -1)
             return;
         _ZN5Sound7PlaySubEjjj5Fix12IiEb(0x1f, 0x7f, 0, 0x7f000, 0);
         func_02012694(0x4d, a + 0x74);
@@ -393,7 +383,7 @@ void func_ov062_0211a1f4(char *a)
             char *o;
             if (*(int *)(a + 0x394) == 0)
                 return;
-            o = _ZN8dActor_c10FindWithIDEj(*(int *)(a + 0x394));
+            o = (char *)dActor_c::FindWithID(*(int *)(a + 0x394));
             if (o == 0)
                 return;
             *(int *)(a + 0x38c) = 3;
@@ -404,16 +394,16 @@ void func_ov062_0211a1f4(char *a)
             return;
         }
         r4 = func_ov062_021199ac(a);
-        if (_ZN8dActor_c14GetSubtractionEss(a, *(s16 *)(a + 0x94),
+        if (((dActor_c *)a)->GetSubtraction(*(s16 *)(a + 0x94),
                 _ZN4cstd5atan2E5Fix12IiES1_(*(int *)(a + 0xd4), *(int *)(a + 0xdc))) >= 0x6000)
             r7 = *(int *)(a + 0xd8) * 7 - 0x6000;
         else
             r7 = 0x1000;
         if (*(u8 *)(a + 0x3ac) == 0)
-            *(u8 *)(a + 0x3ac) = _ZN6Player22IsBeingShotOutOfCannonEv(*(void **)(a + 0x398));
+            *(u8 *)(a + 0x3ac) = ((Player *)*(void **)(a + 0x398))->IsBeingShotOutOfCannon();
         r5 = 4;
         if (*(int *)(a + 0x394) != 0) {
-            char *o = _ZN8dActor_c10FindWithIDEj(*(int *)(a + 0x394));
+            char *o = (char *)dActor_c::FindWithID(*(int *)(a + 0x394));
             if (o != 0) {
                 if (*(u8 *)(o + 0x16e) != 0 &&
                     Vec3_Dist(a + 0x5c, *(char **)(a + 0x398) + 0x5c) > 0x7d0000)
@@ -424,15 +414,15 @@ void func_ov062_0211a1f4(char *a)
         }
         {
             int acc = r5 * 0x6000;
-            _Z14ApproachLinearRiii((int *)(a + 0x98),
+            ApproachLinear(*(int *)(a + 0x98),
                 (int)(((long long)acc * r7 + 0x800) >> 12), r5 * 0x19a);
         }
-        _Z14ApproachLinearRsss((s16 *)(a + 0x94), *(s16 *)(a + 0x3a8), 0x800);
+        ApproachLinear(*(s16 *)(a + 0x94), *(s16 *)(a + 0x3a8), 0x800);
         if (*(int *)(a + 0x360) == data_ov062_0211e024[1]) {
             *(int *)(a + 0x35c) = *(int *)(a + 0x98) >> 3;
         } else {
             *(int *)(a + 0x35c) = 0x1000;
-            if (_ZN9Animation8FinishedEv(a + 0x350) != 0 &&
+            if (((Animation *)(a + 0x350))->Finished() != 0 &&
                 (*(int *)(a + 0x360) == data_ov062_0211e014[1] || *(int *)(a + 0x360) == data_ov062_0211e004[1]))
                 _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(a + 0x300, (void *)data_ov062_0211e024[1], 0, 0x1000, 0);
         }
@@ -448,7 +438,7 @@ void func_ov062_0211a1f4(char *a)
             func_ov062_02119954(a);
             return;
         }
-        if (_ZNK10dBgCh_Actr10IsOnGroundEv(a + 0x144) != 0)
+        if (((dBgCh_Actr *)(a + 0x144))->IsOnGround() != 0)
             return;
         _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(a + 0x300, (void *)data_ov062_0211e02c[1], 0x40000000, 0x1000, 0);
         *(int *)(a + 0xa8) = 0xa000;
@@ -461,14 +451,14 @@ void func_ov062_0211a1f4(char *a)
             *(int *)(a + 0x38c) = 3;
             *(u8 *)(a + 0x390) = 0;
             data_0209d4c8.StopTimer();
-            o = _ZN8dActor_c10FindWithIDEj(*(int *)(a + 0x394));
+            o = (char *)dActor_c::FindWithID(*(int *)(a + 0x394));
             *(u8 *)(a + 0x3af) = (*(u8 *)(o + 0x16e) != 0) ? 1 : 0;
             *(u8 *)(o + 0x16e) = 1;
             _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(a + 0x300, (void *)data_ov062_0211e004[1], 0x40000000, 0x1000, 0);
             return;
         }
-        _Z14ApproachLinearRsss((s16 *)(a + 0x94), *(s16 *)(a + 0x3a8), 0x800);
-        if (_ZNK10dBgCh_Actr10IsOnGroundEv(a + 0x144) == 0)
+        ApproachLinear(*(s16 *)(a + 0x94), *(s16 *)(a + 0x3a8), 0x800);
+        if (((dBgCh_Actr *)(a + 0x144))->IsOnGround() == 0)
             return;
         *(u8 *)(a + 0x390) = 2;
         *(int *)(a + 0x9c) = -0x2000;
@@ -493,9 +483,9 @@ void func_ov062_0211a1f4(char *a)
 // @symbol func_ov062_0211a168
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov062_0211a168(char* r4){
-  _Z14ApproachLinearRiii((int*)(r4 + 0x98), 0x3000, 0x1000);
-  if (_ZNK9Animation12WillHitFrameEi((char*)(r4 + 0x350),
-        (unsigned short)(_ZNK9Animation13GetFrameCountEv((char*)(r4 + 0x350)) - 1)) == 0) return;
+  ApproachLinear(*(int*)(r4 + 0x98), 0x3000, 0x1000);
+  if (((Animation *)(r4 + 0x350))->WillHitFrame(
+        (unsigned short)(((Animation *)(r4 + 0x350))->GetFrameCount() - 1)) == 0) return;
   *(int*)(r4 + 0x38c) = 4;
   *(int*)(r4 + 0x98) = 0x3000;
   *(unsigned char*)(r4 + 0x390) = 0;
@@ -510,8 +500,8 @@ void func_ov062_0211a168(char* r4){
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 void func_ov062_0211a0f0(char* c)
 {
-    _Z14ApproachLinearRiii((int*)(c + 0x98), 0, 0x4000);
-    if (!_ZN9Animation8FinishedEv(c + 0x350)) return;
+    ApproachLinear(*(int*)(c + 0x98), 0, 0x4000);
+    if (!((Animation *)(c + 0x350))->Finished()) return;
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(c + 0x300, *(void**)(data_ov062_0211e034 + 4), 0, 0x1000, 0);
     *(int*)(c + 0x38c) = 5;
     *(unsigned char*)(c + 0x390) = 0;
@@ -555,7 +545,7 @@ void func_ov062_02119be0(char* self)
         }
         if (Vec3_Dist((Vector3*)(self + 0x5c), &playerPos) >= 0x190000)
             return;
-        if (_ZN6Player9StartTalkER7fBase_cb(*(void**)(self + 0x398), self, 1) == 0)
+        if (((Player *)*(void **)(self + 0x398))->StartTalk(*(fBase_c *)self, 1) == 0)
             return;
         *(short*)(self + 0x3a8) = Vec3_HorzAngle((Vector3*)(self + 0x5c), &playerPos);
         (*(unsigned char*)(((int)self + 0x390)))++;
@@ -569,7 +559,7 @@ void func_ov062_02119be0(char* self)
         *(unsigned char*)(self + 0x3b3) = 0;
         return;
     case 1:
-        if (_Z14ApproachLinearRsss((short*)(self + 0x94), *(short*)(self + 0x3a8), 0x800) != 0)
+        if (ApproachLinear(*(short*)(self + 0x94), *(short*)(self + 0x3a8), 0x800) != 0)
             (*(unsigned char*)(((int)self + 0x390)))++;
         *(short*)(self + 0x8e) = *(short*)(self + 0x94);
         return;
@@ -590,7 +580,7 @@ void func_ov062_02119be0(char* self)
             *(unsigned char*)(self + 0x3b3) = 1;
             msg = 0x9f;
         }
-        x = _ZN6Player12GetTalkStateEv(*(void**)(self + 0x398));
+        x = ((Player *)*(void **)(self + 0x398))->GetTalkState();
         if (x != 0)
             return;
         x = *(int*)(self + 0x5c);
@@ -603,7 +593,7 @@ void func_ov062_02119be0(char* self)
             (*(unsigned char*)(((int)self + 0x390)))++;
         return;
     case 3:
-        if (_ZN6Player12GetTalkStateEv(*(void**)(self + 0x398)) != 0xFFFFFFFF)
+        if (((Player *)*(void **)(self + 0x398))->GetTalkState() != 0xFFFFFFFF)
             return;
         (*(unsigned char*)(((int)self + 0x390)))++;
         _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(self + 0x300, *(void**)(data_ov062_0211e034 + 4), 0, 0x1000, 0);
@@ -630,18 +620,18 @@ void func_ov062_02119be0(char* self)
         }
         if (Vec3_Dist((Vector3*)(self + 0x5c), &playerPos) >= 0x190000)
             return;
-        if (_ZN6Player9StartTalkER7fBase_cb(*(void**)(self + 0x398), self, 0) != 0)
+        if (((Player *)*(void **)(self + 0x398))->StartTalk(*(fBase_c *)self, 0) != 0)
             (*(unsigned char*)(((int)self + 0x390)))++;
         return;
     case 5:
-        if (_ZN6Player12GetTalkStateEv(*(void**)(self + 0x398)) != 0)
+        if (((Player *)*(void **)(self + 0x398))->GetTalkState() != 0)
             return;
         *(short*)(self + 0x3a8) = Vec3_HorzAngle((Vector3*)(self + 0x5c), (Vector3*)(*(char**)(self + 0x398) + 0x5c));
         _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(self + 0x300, *(void**)(data_ov062_0211e03c + 4), 0, 0x1000, 0);
         (*(unsigned char*)(((int)self + 0x390)))++;
         return;
     case 6:
-        if (_Z14ApproachLinearRsss((short*)(self + 0x94), *(short*)(self + 0x3a8), 0x800) != 0)
+        if (ApproachLinear(*(short*)(self + 0x94), *(short*)(self + 0x3a8), 0x800) != 0)
             (*(unsigned char*)(((int)self + 0x390)))++;
         *(short*)(self + 0x8e) = *(short*)(self + 0x94);
         return;
@@ -652,7 +642,7 @@ void func_ov062_02119be0(char* self)
                 msg = 0xa0;
             else
                 msg = 0xa1;
-            x = _ZN6Player12GetTalkStateEv(p);
+            x = ((Player *)p)->GetTalkState();
             if (x != 0)
                 return;
         }
@@ -666,7 +656,7 @@ void func_ov062_02119be0(char* self)
             (*(unsigned char*)(((int)self + 0x390)))++;
         return;
     case 8:
-        if (_ZN6Player12GetTalkStateEv(*(void**)(self + 0x398)) != 0xFFFFFFFF)
+        if (((Player *)*(void **)(self + 0x398))->GetTalkState() != 0xFFFFFFFF)
             return;
         *(unsigned char*)(self + 0x390) = 4;
         _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(self + 0x300, *(void**)(data_ov062_0211e034 + 4), 0, 0x1000, 0);
@@ -715,7 +705,7 @@ extern "C" int func_ov062_02119af0(char *p) {
         }
         int idx = *(int *)(p + 0x3bc);
         if (idx == 0) return -1;
-        _ZNK7PathPtr7GetNodeER7Vector3j(p + 0x3d8, (Vector3 *)(p + 0x3cc), (unsigned)idx);
+        ((PathPtr *)(p + 0x3d8))->GetNode(*(Vector3 *)(p + 0x3cc), (unsigned)idx);
         return 1;
     }
     return 0;
@@ -725,7 +715,6 @@ extern "C" int func_ov062_02119af0(char *p) {
 /* ROM ordinal 4 -- func_ov062_021199ac, 0x021199ac, size 0x144 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov062_021199ac
-namespace tu {  /* namespaced: decl_common holds a (void*) view of this symbol */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov062_021199ac(char *self)
 {
@@ -740,7 +729,7 @@ int func_ov062_021199ac(char *self)
     s32 fixed1;
     s32 r;
 
-    other = (char *)_ZN8dActor_c18ClosestWithActorIDEj(self, 0xdc);
+    other = (char *)((dActor_c *)self)->ClosestWithActorID(0xdc);
     if (other == 0)
         goto ret0;
     if (*(u8 *)(other + 0x3d0) != 2)
@@ -755,7 +744,7 @@ int func_ov062_021199ac(char *self)
     otherK = *(s32 *)(other + 0x98);
     fixed1 = (s32)(((long long)otherK * tableVal + 0x800) >> 12);
 
-    r = _ZN8dActor_c14GetSubtractionEss(self, selfAngle, angle);
+    r = ((dActor_c *)self)->GetSubtraction(selfAngle, angle);
     if (r < 0x4000) {
         s32 selfK;
         s32 fixed2;
@@ -779,7 +768,6 @@ ret0:
     return 0;
 }
 }
-}  /* namespace tu */
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 3 -- func_ov062_02119954, 0x02119954, size 0x58 */
@@ -799,7 +787,6 @@ void func_ov062_02119954(void *c)
 /* ROM ordinal 2 -- func_ov062_02119800, 0x02119800, size 0x154 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov062_02119800
-namespace tu {  /* namespaced: decl_common holds a (void*) view of this symbol */
 extern "C" void func_ov062_02119800(char *c)
 {
     volatile int stack[3];
@@ -867,7 +854,6 @@ do_new:
 reset:
     *(unsigned char *)(self + 0x3b2) = 0;
 }
-}  /* namespace tu */
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 1 -- _ZN7daRNk_cD0Ev, 0x021197a4, size 0x5c */
@@ -881,6 +867,5 @@ reset:
 /* ROM ordinal 0 -- _ZN7daRNk_cD1Ev, 0x0211975c, size 0x48 */
 /* -------------------------------------------------------------------------- */
 /* D1 is emitted from the inline destructor in daRNk_c.h alongside D0
- * (class-form skill); this marker at D1's ROM ordinal keeps the
- * accounting naming it. Members are destroyed in reverse declaration
+ * alongside D0. Members are destroyed in reverse declaration
  * order, then dEnemyBase_c::~dEnemyBase_c. */
