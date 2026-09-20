@@ -29,9 +29,7 @@ struct daObjSwitch_c : dBgActor_c {
     struct StateEntry { State init; State exec; };
 
     u8  pad_31e[0x2];
-    s32 mDrawScaleX;             /* 0x320 */
-    s32 mDrawScaleY;             /* 0x324 */
-    s32 mDrawScaleZ;             /* 0x328 */
+    Vector3 mDrawScale;          /* 0x320 */
     s32 mDisplacementY;          /* 0x32c */
     s32 mTickSoundHandle;        /* 0x330 */
     s32 mMusicVolume;            /* 0x334 */

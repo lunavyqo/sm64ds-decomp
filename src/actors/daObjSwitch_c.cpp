@@ -2,6 +2,8 @@
 // Timed floor switches and the switch which reveals a star.
 // This TU contains 18 written bodies and two destructor variants emitted from
 // daObjSwitch_c.h. Reverse source order preserves the retail text order with 2004/b56.
+// Select the shared flat Matrix4x3 before the actor headers, as dBgActor_c.h requires.
+#include "common.h"
 #include "daObjSwitch_c.h"
 #include "SharedFilePtr.h"
 #include "Sound.h"
@@ -47,9 +49,9 @@ int daObjSwitch_c::InitResources()
     u8 idx;
     void *f;
 
-    mDrawScaleX = 0x1000;
-    mDrawScaleY = 0x1000;
-    mDrawScaleZ = 0x1000;
+    mDrawScale.x = 0x1000;
+    mDrawScale.y = 0x1000;
+    mDrawScale.z = 0x1000;
     mTargetActorID = 0;
     mTargetActor = 0;
     mHomeAreaId = mAreaId;
@@ -183,7 +185,7 @@ int daObjSwitch_c::Behavior()
 // @symbol _ZN13daObjSwitch_c6RenderEv
 int daObjSwitch_c::Render()
 {
-    mModel.Render(reinterpret_cast<const Vector3 *>(&mDrawScaleX));
+    mModel.Render(&mDrawScale);
     return 1;
 }
 
@@ -374,9 +376,9 @@ extern "C" void func_ov002_020ba01c(char *c, int mask, Fix12i b, Fix12i base, Fi
     Fix12i v = base + cstd::fdiv(e, 0x1000);
     Fix12i h = (Fix12i)(((long long)v * 0x3c000 + 0x800) >> 12);
     actor->mDisplacementY = 0x3c000 - h;
-    if (mask & 1) actor->mDrawScaleX = v;
-    if (mask & 2) actor->mDrawScaleY = v;
-    if (mask & 4) actor->mDrawScaleZ = v;
+    if (mask & 1) actor->mDrawScale.x = v;
+    if (mask & 2) actor->mDrawScale.y = v;
+    if (mask & 4) actor->mDrawScale.z = v;
 }
 
 // @symbol _ZN13daObjSwitch_c15OnGroundPoundedER8dActor_c
@@ -391,14 +393,10 @@ extern "C" void func_ov002_020b9f80(char *self)
 {
     daObjSwitch_c *actor = reinterpret_cast<daObjSwitch_c *>(self);
 
-    // The flat copy emits the retail ldm/stm sequence. Assignment of the
-    // shared nested Matrix4x3 changes this body's instructions under 2004/b56.
-    struct M43flat { s32 m[12]; };
-    *reinterpret_cast<M43flat *>(&actor->mClsnMat) =
-    *reinterpret_cast<const M43flat *>(&actor->mModel.mat4x3);
-    actor->mClsnMat.t.x = actor->mPosX;
-    actor->mClsnMat.t.y = actor->mPosY - actor->mDisplacementY;
-    actor->mClsnMat.t.z = actor->mPosZ;
+    actor->mClsnMat = actor->mModel.mat4x3;
+    actor->mClsnMat.m[9] = actor->mPosX;
+    actor->mClsnMat.m[10] = actor->mPosY - actor->mDisplacementY;
+    actor->mClsnMat.m[11] = actor->mPosZ;
     actor->mMeshCollider.Transform(actor->mClsnMat, actor->mAngleY);
 }
 
