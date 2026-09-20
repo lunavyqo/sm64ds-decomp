@@ -11,13 +11,8 @@
 #include "SharedFilePtr.h"
 #include "dBgW.h"
 
-/* Local view of the three-word descriptors supplied by ov043 and ov047. */
-struct AxleResources {
-    SharedFilePtr *model;
-    SharedFilePtr *collision;
-    CLPS_Block *clps;
-};
-typedef char AxleResources_size_must_be_0x0c[sizeof(AxleResources) == 0x0c ? 1 : -1];
+typedef char AxleResources_size_must_be_0x0c[
+    sizeof(daObjKurumajiku_c::Resources) == 0x0c ? 1 : -1];
 
 extern "C" {
 extern Vector3 data_ov002_0210ddd0[4];
@@ -86,7 +81,8 @@ s32 daObjKurumajiku_c::Render()
 extern "C" int func_ov002_020b6ac8(void *actor, void *descriptor)
 {
     daObjKurumajiku_c *self = static_cast<daObjKurumajiku_c *>(actor);
-    AxleResources *resources = static_cast<AxleResources *>(descriptor);
+    daObjKurumajiku_c::Resources *resources =
+        static_cast<daObjKurumajiku_c::Resources *>(descriptor);
     if (self->mMeshCollider.IsEnabled())
         self->mMeshCollider.Disable();
     resources->model->Release();
