@@ -43,3 +43,30 @@ and bounded source-form experiments are recorded in the producer handoff and
 remaining work and names `codex-integrator-0920` as next owner. It was posted with
 explicit user approval. This producer handoff does not claim an independent
 Source review pass or a private CI result.
+
+## RNK-08: remove unsupported codegen claims
+
+Independent review of `b377a37ed120d40ef118e0a961c0ea6f49717a93`
+tested the four inherited comments claiming a byte-array view adds an instruction.
+The four byte-array declarations with equivalent word loads at +4 preserved every
+allocated section, global definition and relocation under the pinned compiler.
+Those comments were therefore unsupported. With the producer's explicit
+acknowledgment, this successor removes only the four comments; declarations and
+expressions are unchanged. The raw resource views remain partial under issue
+#2866, with no claimed word-array compiler barrier. Historical experiment source
+is retained as historical evidence, not silently rewritten.
+
+The frozen b377 integration passed full ROM, all 20 focused strict checks and all
+other required local checks. The complete shared-header range examined 1,968
+functions: 1,966 VERIFIED, two inherited warnings, zero blocking errors, and two
+existing NONMATCHING drafts skipped. Both warning functions are unchanged and not
+production-enrolled: dScDSMT_c::Behavior retains two unresolved overlay identifiers,
+and func_ov089_0213162c retains unresolved data_02111b68. Their entire compiled
+objects are identical to main. Independent comparison also freshly compiled all
+708 unchanged non-draft header consumers on both trees and found identical raw
+objects, allocated sections, definitions and relocations. These controls establish
+no regression; they do not turn unresolved words into verified relocations.
+
+The successor must independently reproduce the complete TU object and focused
+strict checks, binding those unchanged-input predecessor gates to the final SHA.
+No source-review pass or private CI result is asserted by this producer handoff.

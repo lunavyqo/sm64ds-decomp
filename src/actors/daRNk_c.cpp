@@ -68,13 +68,13 @@ extern void _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(void *self, void *actor, i
    evidenced actor view here; repairing the shared initializer is separate. */
 extern void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void *self, void *actor, int r, int h, void *p, int q);
 extern char data_ov062_0211e00c[];
-extern int data_ov062_0211e014[];  /* int[]: [1] must fold into the load offset (char[] costs an extra add) */
-extern int data_ov062_0211e024[];  /* int[]: [1] must fold into the load offset (char[] costs an extra add) */
+extern int data_ov062_0211e014[];
+extern int data_ov062_0211e024[];
 extern char data_ov062_0211e01c[];
 extern char data_ov062_0211e034[];
 extern char data_ov062_0211e03c[];
-extern int data_ov062_0211e02c[];  /* int[]: [1] must fold into the load offset (char[] costs an extra add) */
-extern int data_ov062_0211e004[];  /* int[]: [1] must fold into the load offset (char[] costs an extra add) */
+extern int data_ov062_0211e02c[];
+extern int data_ov062_0211e004[];
 }
 
 /* -------------------------------------------------------------------------- */
