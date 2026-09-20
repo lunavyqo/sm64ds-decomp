@@ -12,6 +12,13 @@ preserves the bytes. The angle uses a normal compound update. A widened flag
 comparison is retained with exact rejected alternatives in the source experiment.
 Both destructors remain separately enrolled; no whole-class completion is claimed.
 
+The common axle class now owns the Resources layout passed by its descendants.
+Its model, collision and surface-table pointers agree with both observed caller
+records and the shared setup helper. This replaces a duplicate local structure;
+all five complete header-consumer objects remain byte-identical. Actor fields,
+vtable layout and the inherited opaque helper entry contract are unchanged.
+KJ2873-07 records this source-ownership correction. No ratchet baseline is raised.
+
 The Cleanup entry restores its inherited opaque boundary and obtains the real
 base actor and inferred three-word resource view locally. Both unchanged derived
 callers are verified. This repairs the newly narrowed receiver assertion without
@@ -22,11 +29,11 @@ Integration preserves four original symbol credits, one existing converted
 Render identity and every unrelated main record. Four declaration path keys carry
 seven existing fingerprints to the TU; the healed matrix receiver bank stays
 removed. Exactly two newly introduced Cleanup caller banks are pruned, retaining
-the empty map. The axle promotion row now records three source owners and 171
-lines (29 + 33 + 109). Attribution conflict resolution is audited against both
+the empty map. The axle promotion row now records three source owners and 167
+lines (29 + 33 + 105). Attribution conflict resolution is audited against both
 original histories and exact current-main mappings, rather than choosing a side.
 
-KJ2873-01 through KJ2873-06 remain recorded. The source-stage handoff's instruction
+KJ2873-01 through KJ2873-07 remain recorded. The source-stage handoff's instruction
 to post a broad continuation issue is refined here: these six findings are fixed
 or supported by a bounded compiler experiment within the explicit four-function
 scope. The broader class remains partial. General future destructor consolidation
