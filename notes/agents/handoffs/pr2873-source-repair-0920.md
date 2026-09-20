@@ -31,7 +31,7 @@ Durable detail/reproduction: `notes/experiments/pr2873-source-repair-0920.json`.
 - Eleven complete emitted metadata objects: **253 bytes exact**, every relocation resolved, including all 136 bytes of vtable storage and both preamble words. Four inherited names emit 9/9/10/13 bytes including NUL; their configured extents are 12/12/12/16. The 3/3/2/3 additional zero bytes are un-emitted retail gap padding. Ordinary word-based report stays **7 VERIFIED / 4 PARTIAL / 0 DIFFERS**.
 - `tubuild verify` against an ignored manifest copy: exit 0; 4/4 text, output policy, order and relocation gates pass.
 - `rombuild.py -j16 --no-rom`: exit 0; **106/106 modules exact, 11208 functions reproducing, zero mismatches, 26/26 data claims and 3 BSS claims**. All nine linked-symbol diagnostics equal the fresh ROM-gap control; zero new errors. The production object list uses this TU and both retained destructor source objects. Global metadata still has three differing identities and 300 unnamed symbols outside this focused proof; no global clean-metadata claim.
-- Scoped declaration overlay check against exact base: no new disagreement. Port reference check: 418/418; conflict accounting: 0 notes/0 markers. No eligibility-report-based reference PASS claimed; strict relocation checks and full link evidence are present. Final committed/current-main static checks remain integrator work.
+- Scoped declaration overlay check against exact base: no new disagreement. Port reference check: 418/418; conflict accounting: zero notes and zero markers. No eligibility-report-based reference PASS claimed; strict relocation checks and full link evidence are present. Final committed/current-main static checks remain integrator work.
 
 ## Integrator continuation
 
