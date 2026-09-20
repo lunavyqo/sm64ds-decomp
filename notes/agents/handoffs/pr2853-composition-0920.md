@@ -61,3 +61,29 @@ own current-main build and an independent exact-commit/base source verdict.
 Partial acceptance also requires a posted reconstruction follow-up with a named
 owner. Its draft is prepared, with `codex-integrator-0920` as proposed owner; this
 handoff does not claim that the issue has been posted or that Source review passes.
+
+## Independent composition corrections and current-base evidence
+
+Independent reviewer `codex-mip-independent-source-0920` requested removal of
+fourteen obsolete declaration fingerprints inherited from the original folded
+source. Those bridges have since been corrected or removed. The final baseline
+retains exactly seven live Mip TU fingerprints: three existing nominal math-type
+seams and the four reviewed globals. No obsolete contract is newly banked under
+the promoted path. Unrelated main records retain their original insertion order
+and empty maps; each unchanged symbol record is compared verbatim to the main
+parent before writing the ledger.
+
+Composition `072db16d67abe7178303f72fff834f6af0873692` passes the complete current-main
+ROM build: 106/106 exact modules, 11,208 reproducing functions, zero mismatches,
+26 reproducing source-data claims and three BSS claims. TU validation, all fifteen
+strict relocated functions, emitted-data policy, header layout, attribution
+(15 consolidated, zero changed/lost), references, port references, converted
+ratchet and the committed scoped declaration check pass. The ledger-only
+successor changes no compiler, header, source, manifest, symbol or enrollment input.
+
+The earlier uncommitted-merge declaration check selected the old ancestry scope
+and reported ten Player caller discrepancies. The actual committed composition
+selects three files and passes; none of those ten entries is added to the ledger.
+The narrower CI promotion-flag audit is checked separately from the known-stale
+full queue audit. Independent Source acceptance and its follow-up issue remain
+required before merging.
