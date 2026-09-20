@@ -1,9 +1,9 @@
-#ifndef KOOPATHEQUICK_H
-#define KOOPATHEQUICK_H
+#ifndef DARNK_C_H
+#define DARNK_C_H
 
 #include "types.h"
 
-/* Derives from dEnemyBase_c, on the evidence of its own destructor: `_ZN13KoopaTheQuickD1Ev`
+/* Derives from dEnemyBase_c, on the evidence of its own destructor: `_ZN7daRNk_cD1Ev`
  * stores this vtable, destroys its members in reverse declaration order, then
  * calls `dEnemyBase_c::~dEnemyBase_c`. Everything this header used to restate below 0x110
  * belongs to that chain and is inherited now.
@@ -19,8 +19,9 @@
  *     0x3cc Vector3                  0xc    -> 0x3d8
  *     0x3d8 PathPtr                  0x8    -> 0x3e0
  *
- * SIZE IS THE OBSERVED FIELD SPAN, rounded up. It guards this declaration; it
- * is not independent evidence about the ROM.
+ * SIZE IS THE ROM'S OWN: `daRNk_c_classInit` calls
+ * `fBase_c::operator new(992)` -- 0x3e0 -- and the observed fields span
+ * exactly to 0x3e0, so the literal and the layout agree.
  *
  * SM64DS RTTI names the implementation daRNk_c. The reconstructed factory
  * daRNk_c_classInit (historical alias KoopaTheQuick_Spawn)
@@ -37,7 +38,7 @@
 #include "ShadowModel.h"
 #include "dBgCh_Actr.h"
 
-struct KoopaTheQuick : dEnemyBase_c {
+struct daRNk_c : dEnemyBase_c {
     dCcAc_c           mdCcAc_c;   /* 0x110 */
     dBgCh_Actr                 mWithMeshClsn;         /* 0x144 */
     ModelAnim                    mModelAnim;            /* 0x300 */
@@ -72,7 +73,11 @@ struct KoopaTheQuick : dEnemyBase_c {
     PathPtr                      mPathPtr;              /* 0x3d8 */
 
     /* --- vtable --- */
-    virtual ~KoopaTheQuick();
+    /* Inline and first: measured (class-form skill) that mwccarm 2004/b56
+       emits the retail D1-then-D0 pair in ROM order plus _ZTV/_ZTI/_ZTS
+       homed in the instantiating TU, and no leaf D2. Out-of-line emits
+       D0 before D1, which the production isolate refuses. */
+    virtual ~daRNk_c() {}
 
     int Behavior();
     int CleanupResources();
@@ -82,7 +87,7 @@ struct KoopaTheQuick : dEnemyBase_c {
 
 #ifndef SM64DS_PLATFORM_PC
 /* ROM layout under mwccarm; host ABI divergence is tracked separately. */
-typedef char KoopaTheQuick_size_must_be_0x3e0[sizeof(KoopaTheQuick) == 0x3e0 ? 1 : -1];
+typedef char daRNk_c_size_must_be_0x3e0[sizeof(daRNk_c) == 0x3e0 ? 1 : -1];
 #endif
 
-#endif /* KOOPATHEQUICK_H */
+#endif /* DARNK_C_H */
