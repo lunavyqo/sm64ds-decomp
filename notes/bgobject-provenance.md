@@ -13,12 +13,11 @@ and again after each raw-offset collapse.
 
 ---
 
-## StarSwitch (`include/StarSwitch.h`, [ov002](../config/arm9/overlays/ov002/symbols.txt), size 0x354)
+## daObjSwitch_c (`include/daObjSwitch_c.h`, [ov002](../config/arm9/overlays/ov002/symbols.txt), size 0x354)
 
-Bodies read: `src/_ZN10StarSwitch13InitResourcesEv.cpp`,
-`src/_ZN10StarSwitch8BehaviorEv.cpp`, `src/_ZN10StarSwitch6RenderEv.cpp`,
-`src/_ZN10StarSwitch16CleanupResourcesEv.cpp`,
-`src/_ZN10StarSwitch15OnGroundPoundedER8dActor_c.cpp`, `src/d_a_obj_switch_star_switch.c`.
+Bodies read: `src/actors/daObjSwitch_c.cpp` (InitResources, Behavior,
+Render, CleanupResources, OnGroundPounded members),
+`src/d_a_obj_switch_star_switch.c`.
 
 | Offset | Name | Evidence |
 | --- | --- | --- |
@@ -45,7 +44,7 @@ Left `unk_`:
 * `0x351` — `InitResources` sets `param1 & 0xff`, mapping `0xff` to `0`, only on the
   silver-star variant. Its consumer is in un-decompiled code.
 * `0x060`…`0x0c4` in the `#else` C twin — those are `dActor_c`'s fields restated flat,
-  not `StarSwitch`'s. `include/dActor_c.h` is out of scope for this pass.
+  not `daObjSwitch_c`'s. `include/dActor_c.h` is out of scope for this pass.
 
 Raw-offset collapses, each re-verified byte-exact:
 
