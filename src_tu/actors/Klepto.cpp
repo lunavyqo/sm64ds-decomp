@@ -904,25 +904,11 @@ extern "C" int func_ov062_0211bc54(char *thiz)
 /* ROM ordinal 9 -- func_ov062_0211ba84, 0x0211ba84, size 0x1d0 */
 /* -------------------------------------------------------------------------- */
 // @symbol func_ov062_0211ba84
-// recovered name: KoopaFlag_Kill
-/* recovered: renamed to Class_Method, declarations from a shared header */
-/* recovered: renamed to Class_Method */
-/* daRFlag_c::Kill - recovered from vtable slot identity */
-extern "C" {  /* .c-derived member: C linkage for the whole block */
-/* MEASUREMENT: legacy-exact block-scope decls (from src/func_ov062_0211ba84.c);
-   testing whether TU-wide spellings perturb allocation. Revert after. */
-extern char *_ZN8dActor_c13ClosestPlayerEv(char *self);
-extern int func_ov062_0211c658(char *c, void *p);
-extern s16 Vec3_HorzAngle(const Vector3 *v0, const Vector3 *v1);
-extern s16 Vec3_VertAngle(const Vector3 *v0, const Vector3 *v1);
-extern void _Z14ApproachLinearRsss(s16 *cur, s16 tgt, s16 step);
-extern void Matrix4x3_FromRotationY(void *m, int angle);
-extern void Matrix4x3_ApplyInPlaceToRotationX(void *m, s16 angX);
-extern void MulVec3Mat4x3(const Vector3 *v, void *m, Vector3 *out);
-extern int _ZNK10dBgCh_Actr8IsOnWallEv(char *self);
-extern void *data_ov062_0211e17c;
-extern signed char data_0209f2f8;
-extern int data_020a0e68[];
+/* C function in this class TU. The ROM copy is the C front end's block
+   move (movs ip, r0; ldm/stm of 12 bytes). C++ scalarizes that assignment
+   on every installed mwccarm. func_ov062_0211b930 ends at this address, so
+   it was emitted in this object, not linked in from outside. */
+#pragma cplusplus off
 int func_ov062_0211ba84(char *c)
 {
     Vector3 v;
@@ -978,7 +964,7 @@ int func_ov062_0211ba84(char *c)
     }
     return 1;
 }
-}
+#pragma cplusplus on
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 8 -- func_ov062_0211b930, 0x0211b930, size 0x154 */

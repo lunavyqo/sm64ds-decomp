@@ -3,7 +3,7 @@
   "module": "ov062",
   "source": "src_tu/actors/Klepto.cpp",
   "promoted_source": "src/actors/Klepto.cpp",
-  "status": "shadow",
+  "status": "text-verified",
   "boundary_confidence": "medium",
   "boundary_evidence": [
     "contiguous linker run: 0x211b248..0x211ce80, 23 function(s), from build/tu_map.json (tools/tu_map.py)",
@@ -247,7 +247,7 @@
     "flags": "-O4,p -enum int -lang c++ -char signed -interworking -proc arm946e -gccext,on -msgstyle gcc -Cpp_exceptions off",
     "object": "build/tu/ov062-Klepto/Klepto.o (gitignored)",
     "comparison": "tools/match.py extract_func+compare (bytes/relocs) AND tools/objisolate.py plan() (relocation type/addend) AND tools/reloc_audit.py check_destinations() (relocation target identity)",
-    "functions_matched": 22,
+    "functions_matched": 23,
     "functions_declared": 23,
     "compilerOnlyOutput": {
       "requested": [],
@@ -258,7 +258,7 @@
     },
     "criteria": {
       "every_declared_function_defined": "PASS",
-      "every_declared_function_bytes_match": "FAIL",
+      "every_declared_function_bytes_match": "PASS",
       "declared_function_set_equals_defined_function_set": "FAIL-BY-DESIGN -- 12 unlicensed section/symbol(s), 1 compiler-only policy error(s)",
       "functions_occur_in_expected_order": "PASS",
       "relocation_destinations_verified": "PASS"
