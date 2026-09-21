@@ -4271,6 +4271,21 @@
     "src/actors/dEnemyBase_c.cpp#func_ov002_020ae9f8": "ruspecial",
     "src/actors/dEnemyBase_c.cpp#_ZN12dEnemyBase_c12UpdateWMClsnER10dBgCh_Actrj": "tangosdev",
     "src/actors/dEnemyBase_c.cpp#_ZN12dEnemyBase_cD0Ev": "tangosdev",
-    "src/actors/dEnemyBase_c.cpp#_ZN12dEnemyBase_c20KillByInvincibleCharERK10Vector3_16R6Player5Fix12IiE": "andrewboudreau"
+    "src/actors/dEnemyBase_c.cpp#_ZN12dEnemyBase_c20KillByInvincibleCharERK10Vector3_16R6Player5Fix12IiE": "andrewboudreau",
+    "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_cD1Ev": "andrewboudreau",
+    "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_cD0Ev": "andrewboudreau",
+    "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_c12GetMessageIDEv": "andrewboudreau",
+    "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_c12St_Talk_MainEv": "andrewboudreau",
+    "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_c12St_Talk_InitEv": "andrewboudreau",
+    "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_c12St_Idle_MainEv": "andrewboudreau",
+    "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_c12St_Idle_InitEv": "andrewboudreau",
+    "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_c8SetStateEi": "andrewboudreau",
+    "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_c8RunStateEv": "andrewboudreau",
+    "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_c15UpdateModelPoseEv": "andrewboudreau",
+    "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_c16CleanupResourcesEv": "tangosdev",
+    "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_c6RenderEv": "tangosdev",
+    "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_c8BehaviorEv": "mitch030504",
+    "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_c13InitResourcesEv": "lunavyqo",
+    "src/game/actors/d_a_kinopio.cpp#daKinopio_c_classInit": "tangosdev"
   }
 }
