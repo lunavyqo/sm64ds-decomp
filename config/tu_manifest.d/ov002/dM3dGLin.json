@@ -1,9 +1,9 @@
 {
   "id": "ov002/dM3dGLin",
   "module": "ov002",
-  "source": "src_tu/actors/dM3dGLin.cpp",
+  "source": "src/actors/dM3dGLin.cpp",
   "promoted_source": "src/actors/dM3dGLin.cpp",
-  "status": "text-verified",
+  "status": "promoted",
   "boundary_confidence": "medium",
   "boundary_evidence": [
     "contiguous linker run: 0x20fea84..0x20feabc, 2 function(s), from build/tu_map.json (tools/tu_map.py)",
