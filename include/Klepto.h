@@ -89,7 +89,7 @@ struct Klepto : dEnemyBase_c {
     s32                          mSpawnPosZ;            /* 0x48c */
 
     /* --- vtable --- */
-    virtual ~Klepto();
+    virtual ~Klepto() {}
 
     virtual s32   OnAimedAtWithEgg();      /* slot 29 */
 
