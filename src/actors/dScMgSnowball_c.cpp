@@ -10,7 +10,6 @@
  * order is load-bearing (nested Matrix4x3 wins, so the one block
  * move goes through M4x3Flat). Details above each site.
  *
- * deslop
  * Leftover: the func_ov006 helpers keep linker names; naming belongs
  *   at their definitions.
  */
