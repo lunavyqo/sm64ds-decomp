@@ -1,8 +1,8 @@
 //cpp
 /* Champignon foe (ov077/daPopoi_c), 22 functions: free helpers plus
  * class members. Hand-assembled in REVERSE ROM order (highest address
- * first); the per-function include/decl blocks are the assembly
- * scaffolding. Do not reorder.
+ * first); the per-function include and declaration blocks are the
+ * assembly scaffolding. Do not reorder.
  *
  * Leftover: the func_ov077 helpers keep linker names; naming belongs
  *   at their definitions.
