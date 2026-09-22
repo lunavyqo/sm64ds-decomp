@@ -4303,6 +4303,8 @@
     "src/actors/daJango_c.cpp#_ZN9daJango_c8BehaviorEv": "tangosdev",
     "src/actors/daJango_c.cpp#_ZN9daJango_c6RenderEv": "tangosdev",
     "src/actors/daJango_c.cpp#_ZN9daJango_cD1Ev": "tangosdev",
+    "src/actors/dM3dGLin.cpp#_ZN8dM3dGLin3SetERK7Vector3S2_": "tangosdev",
+    "src/actors/dM3dGLin.cpp#_ZN8dM3dGLinD2Ev": "tangosdev",
     "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_cD1Ev": "andrewboudreau",
     "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_cD0Ev": "andrewboudreau",
     "src/game/actors/d_a_kinopio.cpp#_ZN11daKinopio_c12GetMessageIDEv": "andrewboudreau",
