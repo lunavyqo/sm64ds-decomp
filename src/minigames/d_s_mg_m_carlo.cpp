@@ -6,7 +6,6 @@
  *
  * Source runs REVERSE of ROM (highest address first). Do not reorder.
  *
- * deslop
  * Leftover: 30 func_ov004_* + 31 data_* keep linker names (unnamed in
  *   symbols.txt); each needs a coined, behaviour-justified name.
  * Leftover: hand-rolled C1/C2/D0/D1/D2 call shapes and vptr stores
