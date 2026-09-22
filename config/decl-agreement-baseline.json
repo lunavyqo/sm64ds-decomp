@@ -6774,7 +6774,7 @@
         "return:bool"
       ],
       "src/game/actors/daObjPathLift_c.cpp": [
-        "param:#1 dBgW_KcMbg *"
+        "return:void"
       ]
     },
     "_ZN10dBgActor_c14KillByMegaCharER6Player": {
@@ -28990,6 +28990,16 @@
         "return:SharedFilePtr"
       ]
     },
+    "data_ov033_021124e8": {
+      "src/actors/daObjTtWater_c.cpp": [
+        "return:SharedFilePtr"
+      ]
+    },
+    "data_ov033_021124f0": {
+      "src/actors/daObjTtWater_c.cpp": [
+        "return:SharedFilePtr"
+      ]
+    },
     "data_ov034_02113820": {
       "src/func_ov034_02112284.c": [
         "return:char []"
@@ -31793,6 +31803,9 @@
     "data_ov085_02130858": {
       "src/__sinit_ov085_0212fdb0.c": [
         "return:int []"
+      ],
+      "src/actors/daObjKanban_c.cpp": [
+        "return:SharedFilePtr"
       ]
     },
     "data_ov089_02132894": {
