@@ -11,7 +11,6 @@
  * decl_common.h is deliberately NOT included (three signatures
  * contradict this TU's uses; see below).
  *
- * deslop
  * Leftover: the func_0203/data_ helpers and homes keep linker names.
  */
 #include "fBase_c.h"
