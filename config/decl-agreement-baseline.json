@@ -24866,9 +24866,6 @@
     "data_ov002_0210da18": {
       "src/__sinit_ov002_02100560.c": [
         "return:void *"
-      ],
-      "src/actors/daObjBlockItemTag_c.cpp": [
-        "return:SharedFilePtr"
       ]
     },
     "data_ov002_0210da28": {
