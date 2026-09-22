@@ -7,7 +7,6 @@
  * ROM-ascending under defer_codegen off; the destructor is declared in
  * the header and defined out of line below (D1 then D0, no D2).
  *
- * deslop
  * Leftover: math/vector helpers and game-state free functions keep
  *   linker names (no header homes).
  * Leftover: dBgW_KcMbg::SetFile, dCcAc_c::Init, ModelAnim::SetAnim,
