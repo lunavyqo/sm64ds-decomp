@@ -13,7 +13,6 @@
  * in ROM); the emitted D2 is manifest-deadstripped. The factory lives in
  * src/d_s_mg_flower.cpp, outside this TU.
  *
- * deslop
  * Leftover: the func_ov006 helpers and data_ov006 tables keep linker
  *   names; naming belongs at their definitions.
  * Leftover: the 0x16-entry petal table at +0x4f38 is raw offsets (its element
