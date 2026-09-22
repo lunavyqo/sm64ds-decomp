@@ -7,7 +7,6 @@
  * emitted here and the class header is untouched by this promotion.
  * Source order is ROM-ascending under `#pragma defer_codegen off`.
  *
- * deslop
  * Leftover: 10 func_ov006_* + 21 data_* keep linker names (unnamed in
  *   symbols.txt); each needs a coined, behaviour-justified name.
  * Leftover: slot 36 dispatches through a local shim struct, not
