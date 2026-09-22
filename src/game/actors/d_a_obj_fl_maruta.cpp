@@ -15,7 +15,6 @@
  * only); the inline vague copies would land past
  * func_ov022_02112654.
  *
- * deslop
  * Leftover: func_ov080_* are cross-overlay helpers; data_ov022_*
  *   tables, data_0209e650 and the State table at data_ov022_02114690
  *   keep linker names.
