@@ -7,7 +7,6 @@
  * original file-static linkage. See notes/experiments/mip-key-2853-source-forms.md
  * for the boundary evidence and retained ABI bridges.
  *
- * deslop
  * Leftover: unk_0a4/0ac/190/19c are unrecovered header fields (0a4/0ac
  *   ride the loose-update approach; 19c selects the entry).
  * Leftover: data_020a0e68 is shared arm9 matrix scratch.
