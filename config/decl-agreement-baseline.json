@@ -1286,7 +1286,7 @@
       "src/_ZN10StarMarker8BehaviorEv.cpp": [
         "return:Mtx"
       ],
-      "src/_ZN5Spiny13InitResourcesEv.cpp": [
+      "src/actors/daTgz_c.cpp": [
         "return:char"
       ],
       "src/func_ov002_020b14d8.c": [
@@ -6517,6 +6517,9 @@
       "src/actors/daPgDfdr_c.cpp": [
         "return:int"
       ],
+      "src/actors/daTgz_c.cpp": [
+        "return:int"
+      ],
       "src/func_ov002_020bb614.c": [
         "return:int"
       ],
@@ -7159,6 +7162,11 @@
       "src/actors/daSanbo_c.cpp": [
         "param:#2 void *",
         "param:#5 void *"
+      ],
+      "src/actors/daTgz_c.cpp": [
+        "param:#2 dActor_c *",
+        "param:#5 Vector3_16 *",
+        "param:#6 Vector3_16 *"
       ],
       "src/actors/daYurei_Mucho_c.cpp": [
         "param:#2 dActor_c *",
@@ -15180,6 +15188,10 @@
         "param:#6 const void *",
         "return:unsigned int"
       ],
+      "src/actors/daTgz_c.cpp": [
+        "param:#6 const void *",
+        "return:unsigned int"
+      ],
       "src/func_020226fc.c": [
         "return:unsigned int"
       ],
@@ -15997,6 +16009,9 @@
       "src/actors/daSanbo_c.cpp": [
         "return:void *"
       ],
+      "src/actors/daTgz_c.cpp": [
+        "return:void *"
+      ],
       "src/func_02010304.cpp": [
         "return:void *"
       ],
@@ -16380,6 +16395,9 @@
       ],
       "src/actors/daObjBlockL_c.cpp": [
         "param:#2 const Vector3 &",
+        "param:#3 unsigned int"
+      ],
+      "src/actors/daTgz_c.cpp": [
         "param:#3 unsigned int"
       ],
       "src/actors/daYurei_Mucho_c.cpp": [
@@ -17822,6 +17840,9 @@
     "_ZN8dActor_c7FindEggER5dCc_c": {
       "include/decl_Actor.h": [
         "return:int"
+      ],
+      "src/actors/daTgz_c.cpp": [
+        "return:int"
       ]
     },
     "_ZN8dActor_c9SetRangesE5Fix12IiES1_S1_S1_": {
@@ -19109,6 +19130,14 @@
         "param:#2 void *"
       ]
     },
+    "_ZN9dBgCh_GndC1Ev": {
+      "src/actors/daObjMarioCap_c.cpp": [
+        "param:#1 char *"
+      ],
+      "src/func_ov002_020b94c4.c": [
+        "param:#1 RG *"
+      ]
+    },
     "_ZN9dBgCh_GndD1Ev": {
       "src/_ZN14KnockDownPlank13InitResourcesEv.cpp": [
         "arity:1",
@@ -19132,6 +19161,9 @@
       ],
       "src/actors/daObjMarioCap_c.cpp": [
         "arity:1",
+        "return:void"
+      ],
+      "src/actors/daTgz_c.cpp": [
         "return:void"
       ],
       "src/func_0200b590.c": [
@@ -19442,6 +19474,9 @@
       ],
       "src/actors/daSanbo_c.cpp": [
         "param:#2 int *"
+      ],
+      "src/actors/daTgz_c.cpp": [
+        "param:#2 Vector3 *"
       ],
       "src/func_02008cb4.c": [
         "param:#2 Vec3 *"
@@ -20378,6 +20413,9 @@
         "arity:1",
         "return:int"
       ],
+      "src/actors/daTgz_c.cpp": [
+        "arity:1"
+      ],
       "src/func_ov002_020b13e0.cpp": [
         "arity:1"
       ],
@@ -20478,6 +20516,9 @@
         "arity:1"
       ],
       "src/actors/dEnemyBase_c.cpp": [
+        "arity:1"
+      ],
+      "src/actors/daTgz_c.cpp": [
         "arity:1"
       ],
       "src/func_ov002_020b13e0.cpp": [
