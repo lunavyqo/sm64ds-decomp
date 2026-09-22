@@ -142,7 +142,7 @@ daObjC1Hikari_c	DONE	include\daObjC1Hikari_c.h  [alias: header uses pre-rename n
 daObjC1Peach_c	DONE	include\daObjC1Peach_c.h  [alias: header uses pre-rename name]	dActor_c	0	ov010	7
 daObjClockHuriko_c	DONE	include\daObjClockHuriko_c.h	dActor_c	0	ov013	6
 daObjClock_c	DONE	include\daObjClock_c.h	dActor_c	0	ov013	6
-daObjCloset_c	DONE	include\RecRoomCupboard.h  [alias: header uses pre-rename name]	dActor_c	0	ov058	5
+daObjCloset_c	DONE	include\daObjCloset_c.h  [alias: header uses pre-rename name]	dActor_c	0	ov058	5
 daObjDlPyramidDummy_c	DONE	include\PyramidTag.h  [alias: header uses pre-rename name]	dActor_c	0	ov024	4
 daObjFire_c	DONE	include\daObjFire_c.h	dActor_c	0	ov002	6
 daObjFl_Coin_c	PARTIAL	include\daObjFl_Coin_c.h	dActor_c	0	ov064	4
@@ -284,21 +284,21 @@ daObjRotateUpdownLift_c	DONE	include\RotatingUpDownPlatformUtm.h  [alias: header
 daObjSeesaw_c	DONE	include\SeesawBob.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov095	7
 daObjSimpleBg_c	DONE	include\FortressTower.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov102	6
 daObjSimpleLift_c	DONE	include\SlidingPlatformWf.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov091	6
-daObjSlIceBlock_c	DONE	include\SlidingIce.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov027	7
+daObjSlIceBlock_c	DONE	include\daObjSlIceBlock_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov027	7
 daObjSm_Lift_c	PARTIAL	include\daObjSm_Lift_c.h	dBgActor_c	0	ov018	7
 daObjSwitch_c	DONE	include\daObjSwitch_c.h	dBgActor_c	0	ov002	7
 daObjTatefuda_c	DONE	include\SignPost.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov002	10
 daObjTdFuta_c	DONE	include\daObjTdFuta_c.h	dBgActor_c	0	ov032	6
 daObjTdWater_c	DONE	include\daObjTdWater_c.h	dBgActor_c	0	ov032	6
 daObjTtFuta_c	MISSING	include/daObjTtFuta_c.h (MISSING)	dBgActor_c	0	ov033	0
-daObjTtWater_c	DONE	include\TinyWater.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov033	6
+daObjTtWater_c	DONE	include\daObjTtWater_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov033	6
 daObjWanwanShutter_c	DONE	include\daObjWanwanShutter_c.h	dBgActor_c	0	ov014	6
 daObjWc_Mizu_c	DONE	include\daObjWc_Mizu_c.h	dBgActor_c	0	ov029	6
 daObjWc_Obj02_c	DONE	include\daObjWc_Obj02_c.h	dBgActor_c	0	ov029	6
 daObjWc_Obj04_c	DONE	include\daObjWc_Obj04_c.h	dBgActor_c	0	ov029	6
 daObjWc_Obj05_c	DONE	include\daObjWc_Obj05_c.h	dBgActor_c	0	ov029	6
-daObjWlKoopaShutter_c	DONE	include\BowserShutter.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov026	6
-daObjWlSubmarine_c	DONE	include\Submarine.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov026	5
+daObjWlKoopaShutter_c	DONE	include\daObjWlKoopaShutter_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov026	6
+daObjWlSubmarine_c	DONE	include\daObjWlSubmarine_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov026	5
 daObjYajirusi_c	DONE	include\daObjYajirusi_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov098	9
 daOnms_c	DONE	include\ToxBox.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov092	6
 daPgDfdr_c	DONE	include\daPgDfdr_c.h	dBgActor_c	0	ov027	7
