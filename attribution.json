@@ -4295,13 +4295,13 @@
     "src/actors/daJango_c.cpp#func_ov062_0211c594": "andrewboudreau",
     "src/actors/daJango_c.cpp#func_ov062_0211c658": "tangosdev",
     "src/actors/daJango_c.cpp#func_ov062_0211c6a8": "tangosdev",
-    "src/actors/daJango_c.cpp#_ZN6Klepto13InitResourcesEv": "lunavyqo",
-    "src/actors/daJango_c.cpp#_ZN6KleptoD0Ev": "tangosdev",
-    "src/actors/daJango_c.cpp#_ZN6Klepto16CleanupResourcesEv": "tangosdev",
-    "src/actors/daJango_c.cpp#_ZN6Klepto16OnAimedAtWithEggEv": "tangosdev",
-    "src/actors/daJango_c.cpp#_ZN6Klepto16OnPendingDestroyEv": "tangosdev",
-    "src/actors/daJango_c.cpp#_ZN6Klepto8BehaviorEv": "tangosdev",
-    "src/actors/daJango_c.cpp#_ZN6Klepto6RenderEv": "tangosdev",
-    "src/actors/daJango_c.cpp#_ZN6KleptoD1Ev": "tangosdev"
+    "src/actors/daJango_c.cpp#_ZN9daJango_c13InitResourcesEv": "lunavyqo",
+    "src/actors/daJango_c.cpp#_ZN9daJango_cD0Ev": "tangosdev",
+    "src/actors/daJango_c.cpp#_ZN9daJango_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daJango_c.cpp#_ZN9daJango_c16OnAimedAtWithEggEv": "tangosdev",
+    "src/actors/daJango_c.cpp#_ZN9daJango_c16OnPendingDestroyEv": "tangosdev",
+    "src/actors/daJango_c.cpp#_ZN9daJango_c8BehaviorEv": "tangosdev",
+    "src/actors/daJango_c.cpp#_ZN9daJango_c6RenderEv": "tangosdev",
+    "src/actors/daJango_c.cpp#_ZN9daJango_cD1Ev": "tangosdev"
   }
 }
