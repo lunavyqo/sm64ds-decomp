@@ -7,7 +7,6 @@
  * mushroom, Mega mushroom, Koopa shell, or Silver Star. Factories
  * live outside this TU.
  *
- * deslop
  * Leftover: LinkSilverStarAndStarMarker, LoadSilverStarAndNumber and
  *   UnloadSilverStarAndNumber keep linker names (ov002 helpers);
  *   naming belongs there.
