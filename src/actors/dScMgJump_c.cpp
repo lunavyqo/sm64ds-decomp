@@ -8,7 +8,6 @@
  * it. The destructor is inline in the header, so InitResources (defined
  * here) is the key function emitting the vtable.
  *
- * deslop
  * Leftover: the C/PMF-stand-in/Pair/Mtx43/V3 shadows and the vtable
  *   shim stay local; naming a signature for every state function or
  *   hoisting the types is out of scope (see the member notes).
