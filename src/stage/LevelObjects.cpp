@@ -8,7 +8,6 @@
  * through the handler table, then Stage::LoadClsnAndObjects -- define-
  * before-use top to bottom.
  *
- * deslop
  * Leftover: the handler table and the small loader tables stay data;
  *   this TU claims .text only (see the manifest).
  * Leftover: DoorEntry and LVL_Overlay_Layout stay TU-local; record
