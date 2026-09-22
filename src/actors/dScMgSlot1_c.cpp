@@ -4,7 +4,6 @@
  * the boundary). Source runs REVERSE of ROM (highest address first).
  * Do not reorder.
  *
- * deslop
  * Leftover: the C/Obj/T4fe4/T shadows and the vtable shim stay local;
  *   naming signatures for every helper is out of scope.
  * Leftover: the func_ov006 helpers and data homes keep linker names;
