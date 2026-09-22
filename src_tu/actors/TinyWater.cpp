@@ -46,7 +46,7 @@ struct Base { char pad[0xd4]; Sub sub; };
 extern "C" {
 extern int data_ov033_021124f0[];
 int  _ZN5Event6GetBitEj(u32 bit);
-void _ZN7Minimap19UpdateLevelSpecificEv(void);
+void _ZN6dMap_c19UpdateLevelSpecificEv(void);
 extern void* _ZN5Model8LoadFileER13SharedFilePtr(void* fp);
 extern void _ZN9ModelBase7SetFileEP8BMD_Fileii(void* thiz, void* f, int a, int b);
 extern void _ZN18TextureTransformer7PrepareER8BMD_FileR8BTA_File(void* bmd, void* bta);
@@ -88,8 +88,11 @@ int TinyWater::InitResources()
  * unit a frame while looping the drain sound, and when the surface reaches
  * mMinPosY play the secret jingle and destroy the actor once it finishes.
  *
- * Sound, Event and Minimap have no headers in this tree, so those three stay
- * extern-C mangled free functions. Animation::Advance and
+ * Sound and Event have no headers in this tree, so those two stay extern-C
+ * mangled free functions. dMap_c::UpdateLevelSpecific is declared in
+ * include/dMap_c.h since #2899, but no manifest entry names this staging TU, so
+ * no gate compiles it -- converting that call to a member is left to the fold,
+ * where the include can be proven. Animation::Advance and
  * fBase_c::MarkForDestruction are declared, and are reached as members.
  */
 int TinyWater::Behavior()
@@ -103,7 +106,7 @@ int TinyWater::Behavior()
             mSoundID = Sound::PlayLong(mSoundID, 3, 0x96, *(const Vector3 *)&mCamSpacePosX, 0);
             if (mPosY <= mMinPosY) {
                 mPosY = mMinPosY;
-                _ZN7Minimap19UpdateLevelSpecificEv();
+                _ZN6dMap_c19UpdateLevelSpecificEv();
             }
         }
     }
