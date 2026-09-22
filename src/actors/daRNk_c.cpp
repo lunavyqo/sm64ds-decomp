@@ -10,7 +10,6 @@
  * the text-only manifest verifies and externalizes the emitted RTTI/vtable.
  * Measured source-form constraints: notes/experiments/pr2859-source-repair-0920.json.
  *
- * deslop
  * Leftover: the func_ov062_* helpers keep linker names; naming belongs
  *   at their definitions.
  */
