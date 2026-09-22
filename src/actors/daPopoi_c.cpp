@@ -4,7 +4,6 @@
  * first); the per-function include/decl blocks are the assembly
  * scaffolding. Do not reorder.
  *
- * deslop
  * Leftover: the func_ov077 helpers keep linker names; naming belongs
  *   at their definitions.
  * Leftover: the file homes keep decl_common.h's char spelling (shared
