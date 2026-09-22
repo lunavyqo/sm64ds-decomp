@@ -5,7 +5,6 @@
  * then destroy, except the 0x13 block which the event bit re-enables.
  * Factories live outside this TU.
  *
- * deslop
  * Leftover: Particle::System::NewSimple, dActor_c::SpawnCoins and
  *   dBgActor_c::IsClsnInRangeOnScreen stay mangled (Fix12<int> by
  *   value, wall 6az).
