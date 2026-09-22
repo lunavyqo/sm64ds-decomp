@@ -7,7 +7,6 @@
  * TU's C-linkage helper); the three needed names are local. One
  * helper is parsed as C (ldm/stm Vector3 copy); see its site.
  *
- * deslop
  * Leftover: the func_ov062 helpers keep linker names; naming belongs
  *   at their definitions.
  * Leftover: the Obj/Data/Found shadows stay file-local (unowned rows).
