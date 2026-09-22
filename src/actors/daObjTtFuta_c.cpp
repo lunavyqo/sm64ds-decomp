@@ -6,7 +6,6 @@
  * drain event bit and destroys it. InitResources loads the model and
  * collision files; the lid stays shut until event bit 0xe opens it.
  *
- * deslop
  * Leftover: Particle::System::NewSimple keeps its mangled spelling
  *   (Fix12<int> by value in the mangled name, wall 6az).
  * Leftover: Event::GetBit / Event::SetBit stay mangled (no Event
