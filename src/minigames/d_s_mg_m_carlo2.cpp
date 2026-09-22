@@ -7,7 +7,6 @@
  * `#pragma long_calls` stays bracketed at its member; opt_propagation
  * stays ON file-wide (measured: off costs four members).
  *
- * deslop
  * Leftover: 21 func_ov004_* + 30 data_* keep linker names (unnamed in
  *   symbols.txt); each needs a coined, behaviour-justified name.
  * Leftover: hand-rolled C1/C2/D0/D1/D2 call shapes and vptr stores
