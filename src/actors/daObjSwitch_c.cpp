@@ -4,7 +4,6 @@
 // daObjSwitch_c.h. Reverse source order preserves the retail text order with 2004/b56.
 // Select the shared flat Matrix4x3 before the actor headers, as dBgActor_c.h requires.
 //
-// deslop
 // Leftover: the func_ov002_020b9xxx helpers and data_ov002_021098e8 table
 //   keep linker names; naming belongs at their definitions.
 // Leftover: ChangeMusicVolume / IsClsnInRange / KcMbg::SetFile keep
