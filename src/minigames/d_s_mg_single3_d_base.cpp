@@ -6,7 +6,6 @@
  * reverse source order under 2004/b56. The manifest records the inferred
  * original file boundary and remaining metadata ownership.
  *
- * deslop
  * Leftover: Ov004_Deallocate (ov004-local, 0x020adc5c) and Deallocate
  *   (arm9-global, 0x02018144) are different functions, not two
  *   spellings of one free; each call site keeps its own.
