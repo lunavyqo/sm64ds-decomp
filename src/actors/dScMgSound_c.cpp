@@ -12,6 +12,10 @@
  * header leaves the note slots at 0x50e8 (stride 0x14), the rows at 0x51b0
  * (stride 0x24) and the playback queue at 0x5610 as raw bytes, so they are
  * reached by offset.
+ * deslop
+ * Leftover, measured on this TU: indexed struct access (`slot[slot].f00`,
+ *   `ent[slot].x`) DIFFs against explicit multiply address formation;
+ *   the SndCtx/Slot/Mgr views document the layout, uses stay raw.
  */
 
 #include "dScMgSound_c.h"
