@@ -21,7 +21,7 @@ src/d_a_obj_block_l_dp_block_l.c	WEAK-refs-only	ov002				1		None		-
 src/daBDonketu_c_classInit.c	S1-stores-rom-vptr	ov064			stores _ZTV12daBDonketu_c	1		None	_ZTV12daBDonketu_c	-
 src/d_a_obj_ewm_ice_block.c	WEAK-refs-only	ov056				1		None		-
 src/daEykn_c_classInit_EYEKUN_BOSS.c	WEAK-refs-only	ov071				1		None		-
-src/d_a_obj_bk_killerdai.c	S1-stores-rom-vptr	ov079			stores _ZTV11BillBlaster	1		None	_ZTV11BillBlaster	-
+src/d_a_obj_bk_killerdai.c	S1-stores-rom-vptr	ov079			stores _ZTV18daObjBkKillerdai_c	1		None	_ZTV18daObjBkKillerdai_c	-
 src/d_a_s_bird.c	WEAK-refs-only	ov009				1		None		-
 src/BitUnPack.c	PURE-C					0		None		not-in-delinks
 src/d_a_obj_block_l_block_ll.c	WEAK-refs-only	ov002				1		None		-
@@ -603,7 +603,7 @@ src/_ZN10daPgDfdr_c16OnPendingDestroyEv.c	P1-vtable+mangled	ov027	daPgDfdr_c	daP
 src/_ZN11BabyPenguin16CleanupResourcesEv.c	P1-vtable+mangled	ov072	daPgBby_c	BabyPenguin/daPgBby_c	vtable daPgBby_c slot 3 @0x2121d6c | _ZN11BabyPenguin16CleanupResourcesEv	1		True		-
 src/_ZN11BabyPenguin16OnPendingDestroyEv.c	P1-vtable+mangled	ov072	daPgBby_c	BabyPenguin/daPgBby_c	vtable daPgBby_c slot 12 @0x2121db0 | _ZN11BabyPenguin16OnPendingDestroyEv	1		True		-
 src/_ZN11BabyPenguinD0Ev.c	DTOR-ONLY	ov072	daPgBby_c	BabyPenguin/daPgBby_c	_ZN11BabyPenguinD0Ev	1		True		-
-src/_ZN11BillBlasterD0Ev.c	DTOR-ONLY	ov079	daObjBkKillerdai_c	BillBlaster/daObjBkKillerdai_c	_ZN11BillBlasterD0Ev	1		True	_ZTV10dBgActor_c/_ZTV11BillBlaster	-
+src/_ZN18daObjBkKillerdai_cD0Ev.c	DTOR-ONLY	ov079	daObjBkKillerdai_c	daObjBkKillerdai_c/daObjBkKillerdai_c	_ZN18daObjBkKillerdai_cD0Ev	1		True	_ZTV10dBgActor_c/_ZTV18daObjBkKillerdai_c	-
 src/_ZN11BobOmbBuddy16CleanupResourcesEv.c	P1-vtable+mangled	ov084	daRedBombhei_c	BobOmbBuddy/daRedBombhei_c	vtable daRedBombhei_c slot 3 @0x212cf10 | _ZN11BobOmbBuddy16CleanupResourcesEv	1		True		-
 src/_ZN11BobOmbBuddyD0Ev.c	DTOR-ONLY	ov084	daRedBombhei_c	BobOmbBuddy/daRedBombhei_c	_ZN11BobOmbBuddyD0Ev	1		True		-
 src/_ZN14daObjMcWater_cD0Ev.c	DTOR-ONLY	ov009	daObjMcWater_c	daObjMcWater_c/daObjMcWater_c	_ZN14daObjMcWater_cD0Ev	1		True	_ZTV10dBgActor_c/_ZTV14daObjMcWater_c	-

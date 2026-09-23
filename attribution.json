@@ -4667,6 +4667,14 @@
     "src/actors/daObjFl_Block_c.cpp#_ZN15daObjFl_Block_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daObjFl_Block_c.cpp#_ZN15daObjFl_Block_c6RenderEv": "tangosdev",
     "src/actors/daObjFl_Block_c.cpp#_ZN15daObjFl_Block_c8BehaviorEv": "tangosdev",
-    "src/actors/daObjFl_Block_c.cpp#_ZN15daObjFl_Block_c13InitResourcesEv": "tangosdev"
+    "src/actors/daObjFl_Block_c.cpp#_ZN15daObjFl_Block_c13InitResourcesEv": "tangosdev",
+    "src/actors/daObjBkKillerdai_c.cpp#_ZN18daObjBkKillerdai_cD1Ev": "github-actions[bot]",
+    "src/actors/daObjBkKillerdai_c.cpp#_ZN18daObjBkKillerdai_cD0Ev": "github-actions[bot]",
+    "src/actors/daObjBkKillerdai_c.cpp#_ZN18daObjBkKillerdai_c4KillEv": "github-actions[bot]",
+    "src/actors/daObjBkKillerdai_c.cpp#_ZN18daObjBkKillerdai_c15OnHitByMegaCharER6Player": "tangosdev",
+    "src/actors/daObjBkKillerdai_c.cpp#_ZN18daObjBkKillerdai_c16CleanupResourcesEv": "github-actions[bot]",
+    "src/actors/daObjBkKillerdai_c.cpp#_ZN18daObjBkKillerdai_c6RenderEv": "github-actions[bot]",
+    "src/actors/daObjBkKillerdai_c.cpp#_ZN18daObjBkKillerdai_c8BehaviorEv": "github-actions[bot]",
+    "src/actors/daObjBkKillerdai_c.cpp#_ZN18daObjBkKillerdai_c13InitResourcesEv": "github-actions[bot]"
   }
 }

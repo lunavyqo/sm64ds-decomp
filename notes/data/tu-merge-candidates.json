@@ -4019,19 +4019,19 @@
    "start": "0x2126dbc",
    "end": "0x21271e4",
    "classes": [
-    "BillBlaster"
+    "daObjBkKillerdai_c"
    ],
    "n_functions_map": 9,
    "n_files": 9,
    "files": [
-    "src/_ZN11BillBlasterD1Ev.cpp",
-    "src/_ZN11BillBlasterD0Ev.c",
-    "src/_ZN11BillBlaster4KillEv.cpp",
-    "src/_ZN11BillBlaster15OnHitByMegaCharER6Player.cpp",
-    "src/_ZN11BillBlaster16CleanupResourcesEv.cpp",
-    "src/_ZN11BillBlaster6RenderEv.cpp",
-    "src/_ZN11BillBlaster8BehaviorEv.cpp",
-    "src/_ZN11BillBlaster13InitResourcesEv.cpp",
+    "src/_ZN18daObjBkKillerdai_cD1Ev.cpp",
+    "src/_ZN18daObjBkKillerdai_cD0Ev.c",
+    "src/_ZN18daObjBkKillerdai_c4KillEv.cpp",
+    "src/_ZN18daObjBkKillerdai_c15OnHitByMegaCharER6Player.cpp",
+    "src/_ZN18daObjBkKillerdai_c16CleanupResourcesEv.cpp",
+    "src/_ZN18daObjBkKillerdai_c6RenderEv.cpp",
+    "src/_ZN18daObjBkKillerdai_c8BehaviorEv.cpp",
+    "src/_ZN18daObjBkKillerdai_c13InitResourcesEv.cpp",
     "src/d_a_obj_bk_killerdai.c"
    ],
    "ext_mix": {

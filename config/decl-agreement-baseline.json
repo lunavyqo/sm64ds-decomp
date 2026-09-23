@@ -6784,7 +6784,7 @@
       "include/decl_Platform.h": [
         "param:#5 int"
       ],
-      "src/_ZN11BillBlaster8BehaviorEv.cpp": [
+      "src/actors/daObjBkKillerdai_c.cpp": [
         "param:#5 int"
       ],
       "src/_ZN7SkiLift8BehaviorEv.cpp": [
@@ -7230,7 +7230,7 @@
       "src/_ZN10daKpa2Bg_c13InitResourcesEv.cpp": [
         "return:int"
       ],
-      "src/_ZN11BillBlaster13InitResourcesEv.cpp": [
+      "src/actors/daObjBkKillerdai_c.cpp": [
         "param:#3 const void *"
       ],
       "src/_ZN11PyramidLift13InitResourcesEv.cpp": [
@@ -14652,9 +14652,6 @@
         "param:#1 void *",
         "return:void *"
       ],
-      "src/_ZN11BillBlaster13InitResourcesEv.cpp": [
-        "return:void *"
-      ],
       "src/_ZN11PyramidLift13InitResourcesEv.cpp": [
         "param:#1 SharedFilePtr *",
         "return:struct KCL_File *"
@@ -15331,7 +15328,7 @@
       "src/_ZN10StarMarker7CollectEv.cpp": [
         "return:void"
       ],
-      "src/_ZN11BillBlaster4KillEv.cpp": [
+      "src/actors/daObjBkKillerdai_c.cpp": [
         "return:void"
       ],
       "src/_ZN11CrazedCrate13OnTurnIntoEggER6Player.cpp": [
@@ -16438,9 +16435,6 @@
       ]
     },
     "_ZN8dActor_c13ClosestPlayerEv": {
-      "src/_ZN11BillBlaster8BehaviorEv.cpp": [
-        "return:dActor_c *"
-      ],
       "src/_ZN11dCapEnemy_c11GetCapStateEv.cpp": [
         "return:int *"
       ],
@@ -17170,10 +17164,6 @@
         "param:#5 int",
         "param:#6 int",
         "return:void *"
-      ],
-      "src/_ZN11BillBlaster8BehaviorEv.cpp": [
-        "param:#5 int",
-        "param:#6 int"
       ],
       "src/_ZN11RollingRock8BehaviorEv.cpp": [
         "param:#3 const Vector3 *",
@@ -18669,9 +18659,6 @@
         "return:void"
       ],
       "src/_ZN10PyramidTop13InitResourcesEv.cpp": [
-        "return:void"
-      ],
-      "src/_ZN11BillBlaster13InitResourcesEv.cpp": [
         "return:void"
       ],
       "src/_ZN11CrazedCrate13InitResourcesEv.cpp": [
@@ -31019,11 +31006,6 @@
         "return:void * * []"
       ]
     },
-    "data_ov079_02127f64": {
-      "src/_ZN11BillBlaster16CleanupResourcesEv.cpp": [
-        "return:void * []"
-      ]
-    },
     "data_ov079_02128168": {
       "src/_ZN5Whomp13InitResourcesEv.cpp": [
         "return:SFP"
@@ -31059,9 +31041,6 @@
       ],
       "src/_ZN10BulletBill16CleanupResourcesEv.cpp": [
         "return:SharedFilePtr"
-      ],
-      "src/_ZN11BillBlaster16CleanupResourcesEv.cpp": [
-        "return:void *"
       ]
     },
     "data_ov079_02128300": {
@@ -31070,9 +31049,6 @@
       ],
       "src/_ZN10BulletBill16CleanupResourcesEv.cpp": [
         "return:SharedFilePtr"
-      ],
-      "src/_ZN11BillBlaster16CleanupResourcesEv.cpp": [
-        "return:void *"
       ]
     },
     "data_ov080_021283c0": {

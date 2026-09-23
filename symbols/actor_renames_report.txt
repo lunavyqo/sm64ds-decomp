@@ -83,7 +83,7 @@ SKIP daObjC1Hikari_c: ov010:0x21119d0 already claimed by daObjC1_Trap_c (vtable 
 SKIP daObjC1Hikari_c: ov010:0x2111a08 already claimed by daObjC1_Trap_c (vtable slot 17)
 AMBIG actor 40 SHUTTER_BOB: ['ov014', 'ov015'] -> ov014
 AMBIG actor 41 CHAIN_CHOMP_FENCE: ['ov014', 'ov021'] -> ov014
-NOVTABLE actor 43 BillBlaster (alloc=0x324)
+NOVTABLE actor 43 daObjBkKillerdai_c (alloc=0x324)
 AMBIG actor 44 KNOCK_DOWN_PLANK: ['ov015', 'ov022'] -> ov015
 SKIP FortressTowerWall: ov002:0x2108adc already claimed by daObjBlockL_c (vtable alloc=0x330)
 SKIP FortressTowerWall: ov002:0x20b3d78 already claimed by daObjBlockL_c (vtable slot 0)
