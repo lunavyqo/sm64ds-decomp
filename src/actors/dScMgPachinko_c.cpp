@@ -1,6 +1,7 @@
 //cpp
-/* dScMgPachinko_c -- the Bob-omb Squad pachinko minigame, ov006, 45 functions
- * (.text 0x020fa75c..0x020fc8c0).
+/* Bob-omb Squad. The player aims a Bob-omb with the stylus and fires it
+ * up the board; a shot that reaches a target knocks the balls loose.
+ * 45 functions (.text 0x020fa75c..0x020fc8c0).
  *
  * This is the lowest and largest stretch of the class's run: three unmatched
  * functions (0x020fc8c0, 0x020fcb4c and 0x020fdaf0) split the rest into
@@ -11,16 +12,11 @@
  * Functions run in ROM order here, lowest address first, under `#pragma
  * defer_codegen off`. Do not reorder.
  *
- * Still raw: the func_ and data_ helpers are unnamed in symbols.txt, and
- * dScMgPachinko_c.h names only mBall, mShot and a few words past 0x5c10.
- * The rows the helpers walk (the targets at 0x5bcc, the effects at 0x5958,
- * the score popups at 0x4cf0, the scrolling background at 0x5bfc and the
- * pipes at 0x4ea0) are all padding there, so they are reached by offset.
- *
- * deslop
- * Leftover: mShot[idx]/mBall[j] INDEXED access DIFFs by one word against
- *   explicit `idx * 0x38` multiply address formation; the multiply forms
- *   stay (same lesson as Bomroom's shift rule).
+ * Still raw: the func_ and data_ helpers are unnamed in symbols.txt. The
+ * targets at 0x5bcc, the effects at 0x5958, the score popups at 0x4cf0,
+ * the scrolling background at 0x5bfc and the pipes at 0x4ea0 are padding
+ * in the header, so they are reached by offset. Shot and ball fields go
+ * through `p + i * 0x38`: mShot[i] / mBall[i] is a different address.
  */
 
 #pragma defer_codegen off
@@ -79,6 +75,13 @@ struct E { char pad[0x1c]; };
 
 /* The scene seen through a char pointer, for the free helpers below. */
 #define PACHINKO(p) ((dScMgPachinko_c *)(p))
+/* One record, already stepped by i * 0x38. A saved pointer to the array
+ * element is not the address the ROM uses. */
+#define SHOT(p) ((dScMgPachinko_shot *)((p) + 0x4ed8))
+#define BALL(p) ((dScMgPachinko_ball *)((p) + 0x4660))
+/* func_ov006_020fbd38 adds the field first, then the index. `&SHOT(p)->f`
+ * shares one base and does not match. */
+#define SHOT_OFF(member) (0x4ed8 + (int)&((dScMgPachinko_shot *)0)->member)
 
 namespace G2S {
     unsigned GetBG2CharPtr();
@@ -483,33 +486,33 @@ void func_ov006_020faf6c(char *raw, int idx)
 
     shot = raw;
     for (i = 0; i < 0x30; i++, shot += 0x38) {
-        if (*(u8 *)(shot + 0x4f0c) == 0)
+        if (SHOT(shot)->active == 0)
             continue;
-        if (*(u8 *)(shot + 0x4f0d) < 2)
+        if (SHOT(shot)->state < 2)
             continue;
-        dx = (*(int *)(raw + idx * 0x1c + 0x5bb0) - *(int *)(shot + 0x4ed8)) >> 12;
-        dy = (*(int *)(raw + idx * 0x1c + 0x5bb4) - *(int *)(shot + 0x4edc)) >> 12;
+        dx = (*(int *)(raw + idx * 0x1c + 0x5bb0) - SHOT(shot)->x) >> 12;
+        dy = (*(int *)(raw + idx * 0x1c + 0x5bb4) - SHOT(shot)->y) >> 12;
         if (cstd::sqrt(dx * dx + dy * dy) > 0x18)
             continue;
 
         n = idx * 0x1c;
         PACHINKO(raw)->unk_5c2a = 0x20;
-        *(u8 *)(raw + i * 0x38 + 0x4f0c) = 0;
-        *(u8 *)(raw + i * 0x38 + 0x4f0e) = 0;
+        SHOT(raw + i * 0x38)->active = 0;
+        SHOT(raw + i * 0x38)->unk36 = 0;
         func_ov006_020fb8fc(raw,
                             *(int *)(raw + n + 0x5bb0),
                             *(int *)(raw + n + 0x5bb4),
                             2, 0, 0);
         ball = raw;
         for (j = 0; j < 0x1e; j++, ball += 0x38) {
-            if (*(u8 *)(ball + 0x468c) == 0)
+            if (BALL(ball)->active == 0)
                 continue;
-            state = *(u8 *)(ball + 0x468f);
+            state = BALL(ball)->state;
             if (state == 0)
                 continue;
             if (state < 5) {
-                *(u8 *)(ball + 0x468f) = 6;
-                *(short *)(ball + 0x4688) = 0x10;
+                BALL(ball)->state = 6;
+                BALL(ball)->timer = 0x10;
             }
         }
         *(u8 *)(raw + n + 0x5bc7) = 0;
@@ -887,14 +890,14 @@ void func_ov006_020fbbe8(char* raw)
     if (shotNo == 0) return;
 
     shot = raw + (shotNo - 1) * 0x38;
-    dx = 0x80 - (((dScMgPachinko_shot *)(shot + 0x4ed8))->x >> 12);
-    dy = 0x20 - (((dScMgPachinko_shot *)(shot + 0x4ed8))->y >> 12);
+    dx = 0x80 - (SHOT(shot)->x >> 12);
+    dy = 0x20 - (SHOT(shot)->y >> 12);
 
     if (dx < -6) return;
     if (dx > 6) return;
     if (dy < -6) return;
     if (dy > 6) return;
-    if (*(unsigned char*)(shot + 0x4f0d) != 2) return;
+    if (SHOT(shot)->state != 2) return;
 
     *(unsigned char*)(raw + 0x5c2f) = 0;
     {
@@ -967,14 +970,14 @@ void func_ov006_020fbd38(void *arg0)
         return;
     idx = n - 1;
     off = idx * 0x38;
-    pf18 = (int *)(a + 0x4ef0 + off);
-    pf00 = (int *)(a + 0x4ed8 + off);
-    if (*pf00 != *pf18 || *(int *)(a + 0x4edc + off) != *(int *)(a + 0x4ef4 + off)) {
+    pf18 = (int *)(a + SHOT_OFF(prevX) + off);
+    pf00 = (int *)(a + SHOT_OFF(x) + off);
+    if (*pf00 != *pf18 || *(int *)(a + SHOT_OFF(y) + off) != *(int *)(a + SHOT_OFF(prevY) + off)) {
         buf = (char *)G2S::GetBG2CharPtr();
         fill = 0;
         MultiStore16(fill, buf, 0x6000);
-        sx = (int *)(a + off + 0x4ed8);
-        sy = (int *)(a + off + 0x4edc);
+        sx = (int *)(a + off + SHOT_OFF(x));
+        sy = (int *)(a + off + SHOT_OFF(y));
         sX0 = 0x6c;
         sX1 = 0x94;
         sY = 0x22;
@@ -1060,7 +1063,7 @@ void func_ov006_020fbd38(void *arg0)
         }
     }
     *pf18 = *pf00;
-        *(int *)(a + 0x4ef4 + idx * 0x38) = *(int *)(a + 0x4edc + idx * 0x38);
+    *(int *)(a + SHOT_OFF(prevY) + idx * 0x38) = *(int *)(a + SHOT_OFF(y) + idx * 0x38);
 }
 #pragma pop
 
