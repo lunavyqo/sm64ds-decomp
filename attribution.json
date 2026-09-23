@@ -4661,6 +4661,12 @@
     "src/actors/daObjCtMecha08_c.cpp#_ZN16daObjCtMecha08_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daObjCtMecha08_c.cpp#_ZN16daObjCtMecha08_c6RenderEv": "tangosdev",
     "src/actors/daObjCtMecha08_c.cpp#_ZN16daObjCtMecha08_c8BehaviorEv": "lunavyqo",
-    "src/actors/daObjCtMecha08_c.cpp#_ZN16daObjCtMecha08_c13InitResourcesEv": "tangosdev"
+    "src/actors/daObjCtMecha08_c.cpp#_ZN16daObjCtMecha08_c13InitResourcesEv": "tangosdev",
+    "src/actors/daObjEwmIceBlock_c.cpp#_ZN18daObjEwmIceBlock_cD1Ev": "tangosdev",
+    "src/actors/daObjEwmIceBlock_c.cpp#_ZN18daObjEwmIceBlock_cD0Ev": "tangosdev",
+    "src/actors/daObjEwmIceBlock_c.cpp#_ZN18daObjEwmIceBlock_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daObjEwmIceBlock_c.cpp#_ZN18daObjEwmIceBlock_c6RenderEv": "tangosdev",
+    "src/actors/daObjEwmIceBlock_c.cpp#_ZN18daObjEwmIceBlock_c8BehaviorEv": "tangosdev",
+    "src/actors/daObjEwmIceBlock_c.cpp#_ZN18daObjEwmIceBlock_c13InitResourcesEv": "tangosdev"
   }
 }

@@ -1480,6 +1480,9 @@
       ]
     },
     "LenVec3": {
+      "src/actors/daObjEwmIceBlock_c.cpp": [
+        "param:#1 Vector3 *"
+      ],
       "src/_Z14ApproachLinearR7Vector3RKS_5Fix12IiE.cpp": [
         "param:#1 const Vector3 *"
       ],
@@ -4181,6 +4184,11 @@
       ]
     },
     "SubVec3": {
+      "src/actors/daObjEwmIceBlock_c.cpp": [
+        "param:#1 Vector3 *",
+        "param:#2 Vector3 *",
+        "param:#3 Vector3 *"
+      ],
       "src/Camera_UpdateMatrices.c": [
         "param:#1 Vector3 *",
         "param:#2 Vector3 *",
@@ -5445,6 +5453,10 @@
       ]
     },
     "Vec3_MulScalar": {
+      "src/actors/daObjEwmIceBlock_c.cpp": [
+        "param:#1 Vector3 *",
+        "param:#2 Vector3 *"
+      ],
       "src/Vec3_ApproachHorz.c": [
         "param:#1 Vec3 *",
         "param:#2 Vec3 *"
@@ -5647,6 +5659,11 @@
       ]
     },
     "Vec3_Sub": {
+      "src/actors/daObjEwmIceBlock_c.cpp": [
+        "param:#1 Vector3 *",
+        "param:#2 Vector3 *",
+        "param:#3 Vector3 *"
+      ],
       "src/Vec3_VertAngle.c": [
         "param:#1 Vector3 *",
         "param:#2 const Vector3 *",
@@ -6770,7 +6787,7 @@
       "src/_ZN15FireSeaElevator8BehaviorEv.cpp": [
         "return:int"
       ],
-      "src/_ZN17BigMovingIceBlock13InitResourcesEv.cpp": [
+      "src/_ZN18daObjEwmIceBlock_c13InitResourcesEv.cpp": [
         "return:int"
       ],
       "src/_ZN19FloatOnLavaPlatform13InitResourcesEv.cpp": [
@@ -6824,7 +6841,7 @@
       "src/_ZN15FireSeaElevator8BehaviorEv.cpp": [
         "return:int"
       ],
-      "src/_ZN17BigMovingIceBlock13InitResourcesEv.cpp": [
+      "src/_ZN18daObjEwmIceBlock_c13InitResourcesEv.cpp": [
         "return:int"
       ],
       "src/_ZN19FloatOnLavaPlatform13InitResourcesEv.cpp": [
@@ -11019,7 +11036,7 @@
         "arity:0",
         "mangled:0 parameter(s)"
       ],
-      "src/_ZN17BigMovingIceBlock13InitResourcesEv.cpp": [
+      "src/_ZN18daObjEwmIceBlock_c13InitResourcesEv.cpp": [
         "kind:data"
       ],
       "src/_ZN17BowserSkyPlatform13InitResourcesEv.cpp": [
@@ -11354,7 +11371,7 @@
         "param:#1 SharedFilePtr *",
         "return:struct BMD_File *"
       ],
-      "src/_ZN17BigMovingIceBlock13InitResourcesEv.cpp": [
+      "src/_ZN18daObjEwmIceBlock_c13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
       "src/_ZN17BowserPuzzlePiece13InitResourcesEv.cpp": [
@@ -14714,7 +14731,7 @@
         "param:#1 void *",
         "return:void *"
       ],
-      "src/_ZN17BigMovingIceBlock13InitResourcesEv.cpp": [
+      "src/_ZN18daObjEwmIceBlock_c13InitResourcesEv.cpp": [
         "param:#1 void *",
         "return:void *"
       ],
@@ -18749,7 +18766,7 @@
         "param:#2 struct BMD_File *",
         "return:void"
       ],
-      "src/_ZN17BigMovingIceBlock13InitResourcesEv.cpp": [
+      "src/_ZN18daObjEwmIceBlock_c13InitResourcesEv.cpp": [
         "return:void"
       ],
       "src/_ZN17BowserPuzzlePiece13InitResourcesEv.cpp": [
@@ -19478,7 +19495,7 @@
       "src/_ZN15RollingIronBall13InitResourcesEv.cpp": [
         "param:#2 void *"
       ],
-      "src/_ZN17BigMovingIceBlock8BehaviorEv.cpp": [
+      "src/_ZN18daObjEwmIceBlock_c8BehaviorEv.cpp": [
         "param:#2 void *"
       ],
       "src/_ZN22RotatingUpDownPlatform13InitResourcesEv.cpp": [
@@ -19537,6 +19554,9 @@
       ]
     },
     "_ZNK7PathPtr8NumNodesEv": {
+      "src/actors/daObjEwmIceBlock_c.cpp": [
+        "return:int"
+      ],
       "include/decl_PathPtr.h": [
         "return:int"
       ],
@@ -37011,6 +37031,9 @@
       ]
     },
     "func_020393d4": {
+      "src/actors/daObjEwmIceBlock_c.cpp": [
+        "param:#2 void *"
+      ],
       "src/_ZN10DonutBlock13InitResourcesEv.cpp": [
         "param:#2 void *"
       ],
@@ -37052,7 +37075,7 @@
       "src/_ZN16SpinningPlatform13InitResourcesEv.cpp": [
         "param:#2 void *"
       ],
-      "src/_ZN17BigMovingIceBlock13InitResourcesEv.cpp": [
+      "src/_ZN18daObjEwmIceBlock_c13InitResourcesEv.cpp": [
         "param:#2 void *"
       ],
       "src/_ZN17BowserSkyPlatform13InitResourcesEv.cpp": [

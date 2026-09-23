@@ -6435,17 +6435,17 @@
    "start": "0x21111a0",
    "end": "0x21115cc",
    "classes": [
-    "BigMovingIceBlock"
+    "daObjEwmIceBlock_c"
    ],
    "n_functions_map": 7,
    "n_files": 7,
    "files": [
-    "src/_ZN17BigMovingIceBlockD1Ev.c",
-    "src/_ZN17BigMovingIceBlockD0Ev.c",
-    "src/_ZN17BigMovingIceBlock16CleanupResourcesEv.c",
-    "src/_ZN17BigMovingIceBlock6RenderEv.cpp",
-    "src/_ZN17BigMovingIceBlock8BehaviorEv.cpp",
-    "src/_ZN17BigMovingIceBlock13InitResourcesEv.cpp",
+    "src/_ZN18daObjEwmIceBlock_cD1Ev.c",
+    "src/_ZN18daObjEwmIceBlock_cD0Ev.c",
+    "src/_ZN18daObjEwmIceBlock_c16CleanupResourcesEv.c",
+    "src/_ZN18daObjEwmIceBlock_c6RenderEv.cpp",
+    "src/_ZN18daObjEwmIceBlock_c8BehaviorEv.cpp",
+    "src/_ZN18daObjEwmIceBlock_c13InitResourcesEv.cpp",
     "src/d_a_obj_ewm_ice_block.c"
    ],
    "ext_mix": {
