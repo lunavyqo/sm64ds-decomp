@@ -1,83 +1,18 @@
 //cpp
-/* Reconstructed translation unit.
- * ov085/daC_Jugem_c  (33 functions)
+/* Lakitu (ov085/daC_Jugem_c, C_JUGEM registry), 33 functions.
+ * Source ROM-ascending under defer_codegen off (D1 below D0, no D2).
+ * Do not reorder.
  *
- * Lakitu ("C_JUGEM" in the cartridge's own registry). The class identity is
- * the ROM's: ov085 0x02130310 holds the length-prefixed string
- * "11daC_Jugem_c", 0x02130304 is the __si_class_type_info record that names
- * it, and 0x02130344 is its vtable. No part of this name is coined.
- *
- * FUNCTION ORDER IS ROM-ASCENDING. This TU disables deferred code generation
- * so CodeWarrior emits each definition where it stands. That is also what
- * puts the destructor pair out in the cartridge's own order: ov085 has D1 at
- * 0x0212d528 BELOW D0 at 0x0212d578 and no D2 at all, and an out-of-line
- * destructor under DEFERRED codegen comes out D2, D0, D1. The sibling TU
- * src/actors/daMip_c.cpp, one class earlier in this same overlay, has the
- * identical destructor shape and is built the same way.
- *
- * Assembled from these legacy one-function sources (ROM address order):
- *   [0]  0x0212d528  _ZN11daC_Jugem_cD1Ev.cpp
- *   [1]  0x0212d578  _ZN11daC_Jugem_cD0Ev.cpp
- *   [2]  0x0212d5dc  func_ov085_0212d5dc.cpp
- *   [3]  0x0212d724  func_ov085_0212d724.c
- *   [4]  0x0212d73c  func_ov085_0212d73c.c
- *   [5]  0x0212d8ec  func_ov085_0212d8ec.c
- *   [6]  0x0212d9b8  func_ov085_0212d9b8.c
- *   [7]  0x0212db04  func_ov085_0212db04.cpp
- *   [8]  0x0212dbdc  func_ov085_0212dbdc.c
- *   [9]  0x0212dcfc  func_ov085_0212dcfc.c
- *   [10] 0x0212dd10  func_ov085_0212dd10.cpp
- *   [11] 0x0212ddc4  func_ov085_0212ddc4.cpp
- *   [12] 0x0212de5c  func_ov085_0212de5c.cpp
- *   [13] 0x0212df84  func_ov085_0212df84.cpp
- *   [14] 0x0212e078  func_ov085_0212e078.cpp
- *   [15] 0x0212e180  func_ov085_0212e180.c
- *   [16] 0x0212e19c  func_ov085_0212e19c.c
- *   [17] 0x0212e2ec  func_ov085_0212e2ec.c
- *   [18] 0x0212e310  func_ov085_0212e310.cpp
- *   [19] 0x0212e480  func_ov085_0212e480.c
- *   [20] 0x0212e4a4  func_ov085_0212e4a4.c
- *   [21] 0x0212e59c  func_ov085_0212e59c.c
- *   [22] 0x0212e5ac  func_ov085_0212e5ac.c
- *   [23] 0x0212e720  func_ov085_0212e720.c
- *   [24] 0x0212e728  func_ov085_0212e728.cpp
- *   [25] 0x0212e778  func_ov085_0212e778.cpp
- *   [26] 0x0212e858  func_ov085_0212e858.c
- *   [27] 0x0212ea90  _ZN11daC_Jugem_c16CleanupResourcesEv.cpp
- *   [28] 0x0212eacc  _ZN11daC_Jugem_c16OnPendingDestroyEv.cpp
- *   [29] 0x0212ead0  _ZN11daC_Jugem_c6RenderEv.cpp
- *   [30] 0x0212eb18  _ZN11daC_Jugem_c8BehaviorEv.cpp
- *   [31] 0x0212ebec  _ZN11daC_Jugem_c13InitResourcesEv.cpp
- *   [32] 0x0212ed54  d_a_c_jugem.c
- *
- * The last of those, d_a_c_jugem.c, is absent from build/tu_map.json's span:
- * tu_map segments on symbol NAME, and `daC_Jugem_c_classInit` is neither
- * `func_ov085_*` nor `_ZN11daC_Jugem_c*`, so nothing labels it. It is
- * contiguous -- 0x0212ed54 + 0x58 = 0x0212edac, the next class's destructor --
- * and it is this class's own factory: it allocates this class's size and
- * installs this class's vtable. The same thing was true of daMip_c's factory
- * one class earlier, and it belongs here for the same reason.
- *
- * SHADOW TYPES STAY INSIDE THE MEMBER THAT RECOVERED THEM. Each legacy file
- * recovered its own view of the state objects at 0x021307a0..0x02130840, and
- * the two views are complementary rather than contradictory: the state setter
- * at 0x0212e728 reads a pointer-to-member at offset 0 of the state object,
- * while Behavior calls a second one at offset 8. Both are reproduced under
- * their own names below rather than merged into a single invented struct.
- *
- * FUNCTIONS cannot carry per-member declarations the way types can -- a class
- * member function may not sit inside a linkage-specification region -- so
- * every external call this TU makes is declared once, below, with C linkage,
- * on one reconciled signature. Pointer parameters are spelled `void *` on
- * purpose: the ROM names already encode the real parameter types, and the
- * legacy files disagreed only about how to spell them locally. By-value
- * class parameters (Fix12<int>) and return types are NOT spelled loosely --
- * mwccarm passes the first differently at the call site, and the second is
- * load-bearing wherever a result is tested.
+ * deslop
+ * Leftover: the func_ov085 helpers keep linker names; naming belongs
+ *   at their definitions.
+ * Leftover: +0x2a0 (player slot) and the 0x744 words are unrecovered
+ *   header fields.
  */
 #include "daC_Jugem_c.h"
 #include "common.h"
 #include "dActor_c.h"
+#include "Player.h"
 #include "SharedFilePtr.h"
 
 extern "C" {
@@ -197,10 +132,8 @@ extern JugemInitPMF data_ov085_02130830;
 
 #pragma defer_codegen off
 
-/* -------------------------------------------------------------------------- */
 /* ROM ordinals 0 and 1 -- _ZN11daC_Jugem_cD1Ev 0x0212d528 size 0x50,
                           _ZN11daC_Jugem_cD0Ev 0x0212d578 size 0x64 */
-/* -------------------------------------------------------------------------- */
 // @symbol _ZN11daC_Jugem_cD1Ev
 // @symbol _ZN11daC_Jugem_cD0Ev
 /* recovered: real C++ destructor -- the compiler emits the whole body.
@@ -224,9 +157,6 @@ daC_Jugem_c::~daC_Jugem_c()
 {
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 2 -- func_ov085_0212d5dc, 0x0212d5dc, size 0x148 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212d5dc
 /* recovered: shared common types */
 struct Range { int a, b, c, d, e, f; };
@@ -265,9 +195,6 @@ extern "C" int func_ov085_0212d5dc(char* c) {
   return 1;
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 3 -- func_ov085_0212d724, 0x0212d724, size 0x18 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212d724
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov085_0212d724(char* c){
@@ -277,9 +204,6 @@ int func_ov085_0212d724(char* c){
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 4 -- func_ov085_0212d73c, 0x0212d73c, size 0x1b0 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212d73c
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov085_0212d73c(char *c)
@@ -319,9 +243,6 @@ int func_ov085_0212d73c(char *c)
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 5 -- func_ov085_0212d8ec, 0x0212d8ec, size 0xcc */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212d8ec
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov085_0212d8ec(char* c) {
@@ -349,9 +270,6 @@ int func_ov085_0212d8ec(char* c) {
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 6 -- func_ov085_0212d9b8, 0x0212d9b8, size 0x14c */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212d9b8
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov085_0212d9b8(char* c)
@@ -394,9 +312,6 @@ int func_ov085_0212d9b8(char* c)
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 7 -- func_ov085_0212db04, 0x0212db04, size 0xd8 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212db04
 // @symbol func_ov085_0212db04
 /* recovered: shared common types */
@@ -428,9 +343,6 @@ int func_ov085_0212db04(char* c) {
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 8 -- func_ov085_0212dbdc, 0x0212dbdc, size 0x120 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212dbdc
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov085_0212dbdc(char* c)
@@ -476,9 +388,6 @@ int func_ov085_0212dbdc(char* c)
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 9 -- func_ov085_0212dcfc, 0x0212dcfc, size 0x14 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212dcfc
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov085_0212dcfc(char *p)
@@ -489,9 +398,6 @@ int func_ov085_0212dcfc(char *p)
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 10 -- func_ov085_0212dd10, 0x0212dd10, size 0xb4 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212dd10
 extern "C" {
 
@@ -522,9 +428,6 @@ int func_ov085_0212dd10(char* c)
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 11 -- func_ov085_0212ddc4, 0x0212ddc4, size 0x98 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212ddc4
 // @symbol func_ov085_0212ddc4
 /* recovered: shared common types */
@@ -550,9 +453,6 @@ int func_ov085_0212ddc4(char* c) {
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 12 -- func_ov085_0212de5c, 0x0212de5c, size 0x128 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212de5c
 struct PlayerObj {
     char pad8c[0x8c];
@@ -609,9 +509,6 @@ extern "C" int func_ov085_0212de5c(PlayerObj *c)
     return 1;
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 13 -- func_ov085_0212df84, 0x0212df84, size 0xf4 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212df84
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
@@ -646,9 +543,6 @@ extern "C" int func_ov085_0212df84(char* c)
     return 1;
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 14 -- func_ov085_0212e078, 0x0212e078, size 0x108 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212e078
 extern "C" {
 
@@ -664,7 +558,7 @@ int func_ov085_0212e078(char* c)
     }
     if (*(unsigned short*)(c + 0x100) == 0) {
         if (_ZN5Sound7PlaySubEjjj5Fix12IiEb(0x4a, 0x7f, 0, 0x7222, 0) != 0) {
-            if (_ZN6Player18HasFinishedTalkingEv(*(void**)(c + 0x2a0)) == 1) {
+            if (((Player *)*(void **)(c + 0x2a0))->HasFinishedTalking() == 1) {
                 _ZN7fBase_c18MarkForDestructionEv(c);
                 data_0209f284 = 0;
             }
@@ -674,9 +568,6 @@ int func_ov085_0212e078(char* c)
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 15 -- func_ov085_0212e180, 0x0212e180, size 0x1c */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212e180
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov085_0212e180(char *c) {
@@ -687,24 +578,19 @@ int func_ov085_0212e180(char *c) {
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 16 -- func_ov085_0212e19c, 0x0212e19c, size 0x150 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212e19c
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov085_0212e19c(char* c)
 {
-    _Z14ApproachLinearRsss((s16*)(c + 0x8e), _ZN8dActor_c18HorzAngleToCPlayerEv(c), 0x800);
+    _Z14ApproachLinearRsss((s16*)(c + 0x8e), ((dActor_c *)c)->HorzAngleToCPlayer(), 0x800);
     switch (*(int*)(c + 0x2d8)) {
     case 0:
         {
-            u16* m = (u16*)AT(*(char**)(c + 0x2a0), 0x6ce);
-            *m = *m | 0x400;
+            ((Player *)*(void **)(c + 0x2a0))->mStateFlags |= 0x400;
         }
-        if (_ZN6Player11ShowMessageER7fBase_cjPK7Vector3hh(
-                *(void**)(c + 0x2a0), c, 0x182, (struct Vector3*)(c + 0x5c), 1, 0) == 1) {
+        if (((Player *)*(void **)(c + 0x2a0))->ShowMessage(*(fBase_c *)c, 0x182, (Vector3 *)(c + 0x5c), 1, 0) == 1) {
             *(int*)AT(c, 0x2d8) += 1;
         }
         break;
@@ -722,7 +608,7 @@ int func_ov085_0212e19c(char* c)
         if (data_0209d6bc == 9) { *(int*)AT(c, 0x2d8) += 1; }
         break;
     case 4:
-        if (_ZN6Player12GetTalkStateEv(*(void**)(c + 0x2a0)) == 2)
+        if (((Player *)*(void **)(c + 0x2a0))->GetTalkState() == 2)
             func_ov085_0212e728((JugemHost *)c, &data_ov085_02130830);
         break;
     }
@@ -730,9 +616,6 @@ int func_ov085_0212e19c(char* c)
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 17 -- func_ov085_0212e2ec, 0x0212e2ec, size 0x24 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212e2ec
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov085_0212e2ec(void *r0) {
@@ -743,9 +626,6 @@ int func_ov085_0212e2ec(void *r0) {
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 18 -- func_ov085_0212e310, 0x0212e310, size 0x170 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212e310
 // @symbol func_ov085_0212e310
 /* recovered: shared common types, declarations from a shared header */
@@ -802,9 +682,6 @@ int func_ov085_0212e310(char *c)
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 19 -- func_ov085_0212e480, 0x0212e480, size 0x24 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212e480
 // recovered name: daObj_Mip_Key_c_Kill
 /* recovered: renamed to Class_Method */
@@ -819,9 +696,6 @@ int func_ov085_0212e480(char *p)
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 20 -- func_ov085_0212e4a4, 0x0212e4a4, size 0xf8 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212e4a4
 typedef struct V3 { int x, y, z; } V3;
 /* This member's legacy file carried `#pragma opt_common_subs off`. That
@@ -839,7 +713,7 @@ int func_ov085_0212e4a4(unsigned int self)
         V3 v = *(V3 *)(p + 0x5c);
         if ((data_0209caa0[2] & 0x10000) != 0 &&
             v.z > -0x28000 &&
-            _ZN6Player17SetNoControlStateEhih((int)p, 0x12, -1, 0) != 0) {
+            ((Player *)p)->SetNoControlState(0x12, -1, 0) != 0) {
             *(int *)(p + 0x744) = *(int *)(self + 0x5c);
             *(int *)(p + 0x748) = *(int *)(self + 0x60);
             *(int *)(p + 0x74c) = *(int *)(self + 0x64);
@@ -847,7 +721,7 @@ int func_ov085_0212e4a4(unsigned int self)
             *(int *)(self + 0x60) = v.y;
             *(int *)(self + 0x64) = v.z;
             *(int *)(((long long)((int)(self + 0x5c)))) -= 0x3e8000;
-            *(int *)(self + 0x60) = *(int *)(p + 0x644) + 0x3e8000;
+            *(int *)(self + 0x60) = ((Player *)p)->mGroundY + 0x3e8000;
             *(int *)(self + 0x2a4) = *(int *)(self + 0x5c);
             *(int *)(self + 0x2a8) = *(int *)(self + 0x60);
             *(int *)(self + 0x2ac) = *(int *)(self + 0x64);
@@ -860,9 +734,6 @@ int func_ov085_0212e4a4(unsigned int self)
 }
 #pragma opt_common_subs on
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 21 -- func_ov085_0212e59c, 0x0212e59c, size 0x10 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212e59c
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov085_0212e59c(char *p)
@@ -871,9 +742,6 @@ int func_ov085_0212e59c(char *p)
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 22 -- func_ov085_0212e5ac, 0x0212e5ac, size 0x174 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212e5ac
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov085_0212e5ac(char* self)
@@ -920,9 +788,6 @@ int func_ov085_0212e5ac(char* self)
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 23 -- func_ov085_0212e720, 0x0212e720, size 0x8 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212e720
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov085_0212e720(void)
@@ -931,16 +796,10 @@ int func_ov085_0212e720(void)
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 24 -- func_ov085_0212e728, 0x0212e728, size 0x50 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212e728
 extern "C" int func_ov085_0212e728(JugemHost *c, JugemInitPMF *p)
 { c->pp = p; JugemInitPMF *q = c->pp; if (*q == 0) return 1; return (c->**q)(); }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 25 -- func_ov085_0212e778, 0x0212e778, size 0xe0 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212e778
 extern "C" {
 struct Vec3 { int x, y, z; };
@@ -961,9 +820,6 @@ void func_ov085_0212e778(char* c)
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 26 -- func_ov085_0212e858, 0x0212e858, size 0x238 */
-/* -------------------------------------------------------------------------- */
 // @symbol func_ov085_0212e858
 /* recovered: shared common types */
 /* The matrix type below has to be local, and it is why this member was the
@@ -1056,9 +912,6 @@ void func_ov085_0212e858(char *c)
 }
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 27 -- _ZN11daC_Jugem_c16CleanupResourcesEv, 0x0212ea90, size 0x3c */
-/* -------------------------------------------------------------------------- */
 // @symbol _ZN11daC_Jugem_c16CleanupResourcesEv
 /* recovered: shared header, real C++ method
  *
@@ -1073,9 +926,6 @@ int daC_Jugem_c::CleanupResources()
     return 1;
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 28 -- _ZN11daC_Jugem_c16OnPendingDestroyEv, 0x0212eacc, size 0x4 */
-/* -------------------------------------------------------------------------- */
 // @symbol _ZN11daC_Jugem_c16OnPendingDestroyEv
 /* recovered: shared header, real C++ method
  *
@@ -1086,9 +936,6 @@ void daC_Jugem_c::OnPendingDestroy()
 {
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 29 -- _ZN11daC_Jugem_c6RenderEv, 0x0212ead0, size 0x48 */
-/* -------------------------------------------------------------------------- */
 // @symbol _ZN11daC_Jugem_c6RenderEv
 /* recovered: named members + shared header, real C++ method */
 /* The model-component slot Render drives is reached through its own vtable;
@@ -1103,9 +950,6 @@ int daC_Jugem_c::Render()
   return 1;
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 30 -- _ZN11daC_Jugem_c8BehaviorEv, 0x0212eb18, size 0xd4 */
-/* -------------------------------------------------------------------------- */
 // @symbol _ZN11daC_Jugem_c8BehaviorEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
@@ -1134,9 +978,6 @@ int daC_Jugem_c::Behavior()
   return 1;
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 31 -- _ZN11daC_Jugem_c13InitResourcesEv, 0x0212ebec, size 0x168 */
-/* -------------------------------------------------------------------------- */
 // @symbol _ZN11daC_Jugem_c13InitResourcesEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
@@ -1187,9 +1028,6 @@ int daC_Jugem_c::InitResources()
   return 1;
 }
 
-/* -------------------------------------------------------------------------- */
-/* ROM ordinal 32 -- daC_Jugem_c_classInit, 0x0212ed54, size 0x58 */
-/* -------------------------------------------------------------------------- */
 // @symbol daC_Jugem_c_classInit
 /* The registry factory behind the C_JUGEM profile. It allocates 0x2e8 -- this
  * class's own sizeof -- and installs this class's vtable, which is the second
