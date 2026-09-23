@@ -9520,9 +9520,6 @@
       ]
     },
     "_ZN3G2S12GetBG1ScrPtrEv": {
-      "src/_ZN10dMgPsOpt_c11TouchIcon_c6RenderEv.cpp": [
-        "return:unsigned short *"
-      ],
       "src/_ZN11dScMgBase_c9Virtual7CEv.cpp": [
         "return:void *"
       ],
@@ -9567,6 +9564,9 @@
       ],
       "src/func_ov004_020af2f8.cpp": [
         "return:int"
+      ],
+      "src/actors/dMgPsOpt_c.cpp": [
+        "return:unsigned short *"
       ]
     },
     "_ZN3G2S12GetBG2ScrPtrEv": {
@@ -28963,6 +28963,16 @@
         "return:SharedFilePtr"
       ]
     },
+    "data_ov033_021124c0": {
+      "src/actors/daObjTtFuta_c.cpp": [
+        "return:SharedFilePtr"
+      ]
+    },
+    "data_ov033_021124c8": {
+      "src/actors/daObjTtFuta_c.cpp": [
+        "return:SharedFilePtr"
+      ]
+    },
     "data_ov034_02113820": {
       "src/func_ov034_02112284.c": [
         "return:char []"
@@ -33731,10 +33741,6 @@
         "param:#1 int",
         "return:void"
       ],
-      "src/func_ov004_020b8f78.cpp": [
-        "param:#1 int",
-        "return:void"
-      ],
       "src/func_ov006_020d1ba0.cpp": [
         "param:#1 int",
         "return:void"
@@ -33850,6 +33856,10 @@
         "return:void"
       ],
       "src/minigames/d_s_mg_memory.cpp": [
+        "param:#1 int",
+        "return:void"
+      ],
+      "src/actors/dMgPsOpt_c.cpp": [
         "param:#1 int",
         "return:void"
       ]
@@ -37016,6 +37026,9 @@
       ]
     },
     "func_02039394": {
+      "src/actors/daObjBlockL_c.cpp": [
+        "param:#1 dBgW_KcMbg *"
+      ],
       "src/game/actors/daObjCtMecha05_c.cpp": [
         "param:#1 dBgW *"
       ],
@@ -37032,6 +37045,9 @@
       ]
     },
     "func_020393a4": {
+      "src/actors/daObjBlockL_c.cpp": [
+        "param:#1 dBgW_KcMbg *"
+      ],
       "src/actors/daObjFloatBoard_c.cpp": [
         "param:#1 dBgW_KcMbg *"
       ],
