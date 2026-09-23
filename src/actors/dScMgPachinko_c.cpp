@@ -16,6 +16,11 @@
  * The rows the helpers walk (the targets at 0x5bcc, the effects at 0x5958,
  * the score popups at 0x4cf0, the scrolling background at 0x5bfc and the
  * pipes at 0x4ea0) are all padding there, so they are reached by offset.
+ *
+ * deslop
+ * Leftover: mShot[idx]/mBall[j] INDEXED access DIFFs by one word against
+ *   explicit `idx * 0x38` multiply address formation; the multiply forms
+ *   stay (same lesson as Bomroom's shift rule).
  */
 
 #pragma defer_codegen off
@@ -882,8 +887,8 @@ void func_ov006_020fbbe8(char* raw)
     if (shotNo == 0) return;
 
     shot = raw + (shotNo - 1) * 0x38;
-    dx = 0x80 - (*(int*)(shot + 0x4ed8) >> 12);
-    dy = 0x20 - (*(int*)(shot + 0x4edc) >> 12);
+    dx = 0x80 - (((dScMgPachinko_shot *)(shot + 0x4ed8))->x >> 12);
+    dy = 0x20 - (((dScMgPachinko_shot *)(shot + 0x4ed8))->y >> 12);
 
     if (dx < -6) return;
     if (dx > 6) return;
@@ -1055,7 +1060,7 @@ void func_ov006_020fbd38(void *arg0)
         }
     }
     *pf18 = *pf00;
-    *(int *)(a + 0x4ef4 + idx * 0x38) = *(int *)(a + 0x4edc + idx * 0x38);
+        *(int *)(a + 0x4ef4 + idx * 0x38) = *(int *)(a + 0x4edc + idx * 0x38);
 }
 #pragma pop
 
