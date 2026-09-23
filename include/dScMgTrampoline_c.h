@@ -97,7 +97,8 @@ struct dScMgTrampoline_c : dScMgD3DBase_c {
     u8  mArray1[0x340];   /* 0x500c -- 4 * 0xd0,  elem dtor func_ov006_020ccfc8 */
     u8  mArray2[0x984];   /* 0x534c -- 3 * 0x32c, elem dtor func_ov006_020d1008 */
     u8  mArray3[0xb4];    /* 0x5cd0 -- 5 * 0x24,  elem dtor func_ov006_02120938 */
-    u8  pad_5d84[0x10];   /* 0x5d84 */
+    u8  pad_5d84[0xc];   /* 0x5d84 */
+    int mTimer;         /* 0x5d90 -- countdown gating state transitions */
     s32 mScrollY;         /* 0x5d94 -- approached toward mScrollTargetY by 2 a
                              tick; the BG2 offset is mScrollY + mScrollOffsetY */
     s32 mScrollTargetY;   /* 0x5d98 */
