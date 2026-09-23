@@ -6764,7 +6764,7 @@
       "src/_ZN10RockPillar8BehaviorEv.cpp": [
         "return:int"
       ],
-      "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
+      "src/_ZN14daObjEmmYuka_c13InitResourcesEv.cpp": [
         "return:int"
       ],
       "src/_ZN15FireSeaElevator8BehaviorEv.cpp": [
@@ -6818,7 +6818,7 @@
       "src/_ZN10DonutBlock13InitResourcesEv.cpp": [
         "return:int"
       ],
-      "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
+      "src/_ZN14daObjEmmYuka_c13InitResourcesEv.cpp": [
         "return:int"
       ],
       "src/_ZN15FireSeaElevator8BehaviorEv.cpp": [
@@ -11005,7 +11005,7 @@
         "arity:0",
         "mangled:0 parameter(s)"
       ],
-      "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
+      "src/_ZN14daObjEmmYuka_c13InitResourcesEv.cpp": [
         "kind:data"
       ],
       "src/_ZN15FireSeaElevator13InitResourcesEv.cpp": [
@@ -11323,7 +11323,7 @@
       "src/_ZN14KnockDownPlank13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
-      "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
+      "src/_ZN14daObjEmmYuka_c13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
       "src/_ZN14daWater_Ring_c13InitResourcesEv.cpp": [
@@ -14698,7 +14698,7 @@
         "param:#1 void *",
         "return:void *"
       ],
-      "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
+      "src/_ZN14daObjEmmYuka_c13InitResourcesEv.cpp": [
         "param:#1 void *",
         "return:void *"
       ],
@@ -18729,7 +18729,7 @@
       "src/_ZN14KnockDownPlank13InitResourcesEv.cpp": [
         "return:void"
       ],
-      "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
+      "src/_ZN14daObjEmmYuka_c13InitResourcesEv.cpp": [
         "return:void"
       ],
       "src/_ZN15FireSeaElevator13InitResourcesEv.cpp": [
@@ -19472,7 +19472,7 @@
       "src/_ZN12MetalNetLift13InitResourcesEv.cpp": [
         "param:#2 Vector3 *"
       ],
-      "src/_ZN14SquarePathLift8BehaviorEv.cpp": [
+      "src/_ZN14daObjEmmYuka_c8BehaviorEv.cpp": [
         "param:#2 void *"
       ],
       "src/_ZN15RollingIronBall13InitResourcesEv.cpp": [
@@ -37043,7 +37043,7 @@
       "src/_ZN13UpDownLiftBbh13InitResourcesEv.cpp": [
         "param:#2 void *"
       ],
-      "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
+      "src/_ZN14daObjEmmYuka_c13InitResourcesEv.cpp": [
         "param:#2 void *"
       ],
       "src/_ZN15TtcRotatingCube13InitResourcesEv.cpp": [
