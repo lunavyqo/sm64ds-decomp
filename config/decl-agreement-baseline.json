@@ -205,6 +205,11 @@
         "param:#1 Vector3 *",
         "param:#2 Vector3 *",
         "param:#3 Vector3 *"
+      ],
+      "src/actors/daObjFl_KomaU_c.cpp": [
+        "param:#1 const Vector3 *",
+        "param:#2 const Vector3 *",
+        "param:#3 Vector3 *"
       ]
     },
     "AngleDiff": {
@@ -2404,6 +2409,10 @@
       "src/actors/daMenbo_c.cpp": [
         "param:#1 const Vector3 *",
         "param:#2 const void *"
+      ],
+      "src/actors/daObjFl_KomaU_c.cpp": [
+        "param:#1 const Vector3 *",
+        "param:#2 const Matrix4x3 *"
       ]
     },
     "MultiCopyHalf": {
@@ -10923,7 +10932,7 @@
       "src/actors/daObjFl_Ring_c.cpp": [
         "kind:data"
       ],
-      "src/_ZN15RotatingFirebar13InitResourcesEv.cpp": [
+      "src/_ZN15daObjFl_KomaU_c13InitResourcesEv.cpp": [
         "arity:0",
         "mangled:0 parameter(s)"
       ],
@@ -11337,7 +11346,7 @@
       "src/_ZN15RollingIronBall13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
-      "src/_ZN15RotatingFirebar13InitResourcesEv.cpp": [
+      "src/_ZN15daObjFl_KomaU_c13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
       "src/_ZN15TtcRotatingCube13InitResourcesEv.cpp": [
@@ -14706,7 +14715,7 @@
         "param:#1 void *",
         "return:int"
       ],
-      "src/_ZN15RotatingFirebar13InitResourcesEv.cpp": [
+      "src/_ZN15daObjFl_KomaU_c13InitResourcesEv.cpp": [
         "param:#1 void *",
         "return:void *"
       ],
@@ -14983,7 +14992,7 @@
       ]
     },
     "_ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE": {
-      "src/_ZN15RotatingFirebar8BehaviorEv.cpp": [
+      "src/_ZN15daObjFl_KomaU_c8BehaviorEv.cpp": [
         "param:#6 int",
         "param:#7 int",
         "return:unsigned int"
@@ -15335,6 +15344,10 @@
       "src/actors/daMenbo_c.cpp": [
         "param:#6 int",
         "param:#7 int"
+      ],
+      "src/actors/daObjFl_KomaU_c.cpp": [
+        "param:#6 const void *",
+        "return:unsigned int"
       ]
     },
     "_ZN8Particle6System9NewRippleE5Fix12IiES2_S2_": {
@@ -15836,7 +15849,7 @@
       "src/_ZN13MontyMoleRock8BehaviorEv.cpp": [
         "return:void *"
       ],
-      "src/_ZN15RotatingFirebar8BehaviorEv.cpp": [
+      "src/_ZN15daObjFl_KomaU_c8BehaviorEv.cpp": [
         "return:void *"
       ],
       "src/_ZN17BowserPuzzlePiece8BehaviorEv.cpp": [
@@ -18736,7 +18749,7 @@
         "param:#2 int",
         "return:void"
       ],
-      "src/_ZN15RotatingFirebar13InitResourcesEv.cpp": [
+      "src/_ZN15daObjFl_KomaU_c13InitResourcesEv.cpp": [
         "return:void"
       ],
       "src/_ZN15TtcRotatingCube13InitResourcesEv.cpp": [
@@ -19705,7 +19718,7 @@
         "return:char []"
       ]
     },
-    "_ZTV15RotatingFirebar": {
+    "_ZTV15daObjFl_KomaU_c": {
       "src/d_a_obj_fl_koma_u.cpp": [
         "return:void * []"
       ]
@@ -23399,7 +23412,7 @@
       "src/_ZN14UnknownVsEntry13InitResourcesEv.cpp": [
         "return:char"
       ],
-      "src/_ZN15RotatingFirebar8BehaviorEv.cpp": [
+      "src/_ZN15daObjFl_KomaU_c8BehaviorEv.cpp": [
         "return:int []"
       ],
       "src/_ZN15TtcRotatingCube13InitResourcesEv.cpp": [
@@ -29557,7 +29570,7 @@
       ]
     },
     "data_ov064_0211adbc": {
-      "src/_ZN15RotatingFirebar16CleanupResourcesEv.cpp": [
+      "src/_ZN15daObjFl_KomaU_c16CleanupResourcesEv.cpp": [
         "return:int []"
       ]
     },
@@ -37174,6 +37187,10 @@
         "param:#2 void *"
       ],
       "src/actors/daObjCtMecha10_c.cpp": [
+        "param:#1 dBgW *",
+        "param:#2 void *"
+      ],
+      "src/actors/daObjFl_KomaU_c.cpp": [
         "param:#1 dBgW *",
         "param:#2 void *"
       ]
