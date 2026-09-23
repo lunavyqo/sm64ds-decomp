@@ -1,13 +1,20 @@
 //cpp
-/* The race flag on Koopa the Quick's course (ov062/daRFlag_c).
- * Eight functions, 0x0211af38..0x0211b248. Source ROM-ascending under
- * defer_codegen off (D1 then D0, no D2). Do not reorder.
+/**
+ * The flag at the end of Koopa the Quick's race.
  *
- * deslop
- * Leftover: SetAnim / dCcAc Init stay mangled (Fix12 by value, 6az).
- * Leftover: the `int b` bool materialization is load-bearing (S8).
- * Leftover: func_ov062_0211afbc keeps its ROM name (making it a
- *   member would rename the licensed symbol).
+ * Mario touching the cylinder stops the course timer and plays the
+ * finish chirp. A second and a half later the fanfare plays. The
+ * model sits 60 units above the actor.
+ *
+ * daRFlag_c_classInit is reconstructed from the daRFlag_c RTTI.
+ * Retail does not store that spelling.
+ *
+ * Leftover: SetAnim and dCcAc_c::Init stay the mangled calls. Spelling
+ *   them as methods changed this function's size (Fix12 by value).
+ * Leftover: `b = (actorID == 0xBF)` has to be an int. A bool does not
+ *   match.
+ * Leftover: func_ov062_0211afbc keeps the linker name. The enrolled
+ *   symbol is that spelling.
  */
 
 #include "daRFlag_c.h"
@@ -42,13 +49,16 @@ daRFlag_c::~daRFlag_c()
 }
 
 // @symbol func_ov062_0211afbc
-/* Places the model matrix from the body angle and the position. */
-extern "C" void func_ov062_0211afbc(char *t)
+/* Builds the model matrix from the actor's facing and position.
+ * The flag graphic sits 60.0 (0x3c000) above mPosY. Translation in the
+ * matrix is in 4.12, so the Fix12 position is shifted down by 3. */
+extern "C" void func_ov062_0211afbc(char *raw)
 {
-    Matrix4x3_FromRotationY(t + 0x124, *(short *)(t + 0x8e));
-    *(int *)(t + 0x148) = *(int *)(t + 0x5c) >> 3;
-    *(int *)(t + 0x14c) = (*(int *)(t + 0x60) + 0x3c000) >> 3;
-    *(int *)(t + 0x150) = *(int *)(t + 0x64) >> 3;
+    daRFlag_c *flag = (daRFlag_c *)raw;
+    Matrix4x3_FromRotationY(&flag->mModelAnim.mat4x3, flag->mAngleY);
+    flag->mModelAnim.mat4x3.t.x = flag->mPosX >> 3;
+    flag->mModelAnim.mat4x3.t.y = (flag->mPosY + 0x3c000) >> 3;
+    flag->mModelAnim.mat4x3.t.z = flag->mPosZ >> 3;
 }
 
 // @symbol _ZN9daRFlag_c16CleanupResourcesEv
