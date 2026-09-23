@@ -764,8 +764,8 @@ src/_ZN16MeshColliderBaseC2Ev.c	P3-mangled-method-only	arm9		MeshColliderBase	_Z
 src/_ZN16MeshColliderBaseD0Ev.c	DTOR-ONLY	arm9	dBgW	MeshColliderBase/dBgW	_ZN16MeshColliderBaseD0Ev	1		True	_ZTV16MeshColliderBase	-
 src/_ZN16MeshColliderBaseD1Ev.c	DTOR-ONLY	arm9	dBgW	MeshColliderBase/dBgW	_ZN16MeshColliderBaseD1Ev	1		True	_ZTV16MeshColliderBase	-
 src/_ZN16MeshColliderBaseD2Ev.c	DTOR-ONLY	arm9		MeshColliderBase	_ZN16MeshColliderBaseD2Ev	1		True	_ZTV16MeshColliderBase	-
-src/_ZN16SpinningPlatformD0Ev.c	DTOR-ONLY	ov035	daObjCtMecha11_c	SpinningPlatform/daObjCtMecha11_c	_ZN16SpinningPlatformD0Ev	1		True	_ZTV10dBgActor_c	-
-src/_ZN16SpinningPlatformD1Ev.c	DTOR-ONLY	ov035	daObjCtMecha11_c	SpinningPlatform/daObjCtMecha11_c	_ZN16SpinningPlatformD1Ev	1		True	_ZTV10dBgActor_c	-
+src/_ZN16daObjCtMecha11_cD0Ev.c	DTOR-ONLY	ov035	daObjCtMecha11_c	daObjCtMecha11_c/daObjCtMecha11_c	_ZN16daObjCtMecha11_cD0Ev	1		True	_ZTV10dBgActor_c	-
+src/_ZN16daObjCtMecha11_cD1Ev.c	DTOR-ONLY	ov035	daObjCtMecha11_c	daObjCtMecha11_c/daObjCtMecha11_c	_ZN16daObjCtMecha11_cD1Ev	1		True	_ZTV10dBgActor_c	-
 src/_ZN16daObjRcBuranko_cD0Ev.c	DTOR-ONLY	ov036	daObjRcBuranko_c	daObjRcBuranko_c/daObjRcBuranko_c	_ZN16daObjRcBuranko_cD0Ev	1		True	_ZTV10dBgActor_c/_ZTV16daObjRcBuranko_c	-
 src/_ZN16daObjFallBlock_cD0Ev.c	DTOR-ONLY	ov098	daObjBlockS_c	daObjBlockS_c/daObjFallBlock_c	_ZN16daObjFallBlock_cD0Ev	1		True	_ZTV10dBgActor_c/_ZTV16daObjFallBlock_c	-
 src/_ZN16daObjFallBlock_cD1Ev.c	DTOR-ONLY	ov098	daObjBlockS_c	daObjBlockS_c/daObjFallBlock_c	_ZN16daObjFallBlock_cD1Ev	1		True	_ZTV10dBgActor_c/_ZTV16daObjFallBlock_c	-
