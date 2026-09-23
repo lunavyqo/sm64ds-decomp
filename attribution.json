@@ -4662,14 +4662,14 @@
     "src/actors/daObjCtMecha08_c.cpp#_ZN16daObjCtMecha08_c6RenderEv": "tangosdev",
     "src/actors/daObjCtMecha08_c.cpp#_ZN16daObjCtMecha08_c8BehaviorEv": "lunavyqo",
     "src/actors/daObjCtMecha08_c.cpp#_ZN16daObjCtMecha08_c13InitResourcesEv": "tangosdev",
-    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_cD1Ev": "Alberto12345678999",
-    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_cD0Ev": "Alberto12345678999",
-    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c23UpdateColliderTransformEv": "Alberto12345678999",
-    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c20UpdateModelTransformEv": "Alberto12345678999",
-    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c16CleanupResourcesEv": "Alberto12345678999",
-    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c16OnPendingDestroyEv": "Alberto12345678999",
-    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c6RenderEv": "Alberto12345678999",
-    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c8BehaviorEv": "Alberto12345678999",
-    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c13InitResourcesEv": "Alberto12345678999"
+    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_cD1Ev": "andrewboudreau",
+    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_cD0Ev": "tangosdev",
+    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c23UpdateColliderTransformEv": "andrewboudreau",
+    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c20UpdateModelTransformEv": "andrewboudreau",
+    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c16CleanupResourcesEv": "andrewboudreau",
+    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c16OnPendingDestroyEv": "andrewboudreau",
+    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c6RenderEv": "andrewboudreau",
+    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c8BehaviorEv": "andrewboudreau",
+    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c13InitResourcesEv": "andrewboudreau"
   }
 }
