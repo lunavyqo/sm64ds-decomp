@@ -6,6 +6,7 @@
  * Functions are in ROM order, and the local pragmas keep their emission.
  *
  * Still blocked:
+ * deslop
  * - The loops that walk every card (and ResetGame's player loop) step a char
  *   pointer by 0x18 and read byte offsets. A dMgMemory2Card_c pointer walk
  *   changes the emitted loop, so they keep the offset form. Earlier probes
