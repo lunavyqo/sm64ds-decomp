@@ -7,7 +7,8 @@
  * it, keeps the per-function optimiser brackets scoped, and puts D1 ahead of
  * D0 the way the cartridge has them. Removing it changes the code.
  *
- * Still raw: the func_ and data_ helpers are unnamed in symbols.txt; the
+ * Still raw:
+ * deslop the func_ and data_ helpers are unnamed in symbols.txt; the
  * words at 0x5400..0x5408, 0x541c, 0x542c..0x5430 and the bytes at
  * 0x5469..0x546d are padding in dScMgCup_c.h; the eight State names,
  * Virtual50 and OnYoshiTryEat are inferred, not from the cartridge; and the
