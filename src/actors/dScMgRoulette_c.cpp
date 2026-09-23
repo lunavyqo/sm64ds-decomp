@@ -14,10 +14,12 @@
  * common.h comes first so its flat Matrix4x3 wins the MATRIX4X3_DEFINED
  * guard; func_ov006_02107db8 copies a whole matrix and needs that spelling.
  *
- * Still raw: the func_ and data_ helpers are unnamed in symbols.txt, and the
- * header leaves the camera (0x4660), the table (0x4f38), the racers (0x51a8),
- * the meter strips (0x52ac) and the slider (0x530c) as padding or raw bytes,
- * so they are reached by offset.
+ * Still raw:
+ * deslop
+ * Leftover: the camera (0x4660, base header), the meter strips (0x52ac)
+ *   and the slider (0x530c) stay offset-reached; the slider's PMF state
+ *   must stay TU-local (representation).
+ * Leftover: the func_ and data_ helpers are unnamed in symbols.txt.
  */
 
 #include "common.h"
@@ -120,7 +122,7 @@ typedef struct Racer {
 } Racer;
 typedef struct Obj9 {
     char _p0[0x51a8];
-    Racer racers[3]; /* 0x51a8 */
+    Racer racers[5]; /* 0x51a8 -- 5 x 0x34, see the header */
 } Obj9;
 
 /* Address launders and raw field macros. They stop the compiler reusing a
@@ -316,7 +318,7 @@ s32 dScMgRoulette_c::InitResources()
     *(volatile u16 *)0x04000008 = (*(volatile u16 *)0x04000008 & ~3) | 1;
 
     func_ov006_020c0aa8(raw + 0x4660);
-    if (func_ov006_020c1a88(raw + 0x4f38) == 0)
+    if (func_ov006_020c1a88((char *)mTable) == 0)
         return 0;
     if (func_ov006_021085c0(raw + 0x530c) == 0)
         return 0;
@@ -341,7 +343,7 @@ s32 dScMgRoulette_c::Behavior()
     case 0:
         break;
     case 1:
-        if (func_ov006_020c0efc(c + 0x4f38) != 0) {
+        if (func_ov006_020c0efc((char *)mTable) != 0) {
             if (H(0x53d8) == 0) {
                 H(0x53d8) = 1;
             }
@@ -351,7 +353,7 @@ s32 dScMgRoulette_c::Behavior()
             mPromptBlinkCount = 1;
             mPromptBlinkTimer = 0;
         }
-        if (func_ov006_020c0efc(c + 0x4f38) != 0) {
+        if (func_ov006_020c0efc((char *)mTable) != 0) {
             mPhaseTimer -= 1;
             if (H(0x53e8) == 0) {
                 mCameraPreset = 1;
@@ -361,7 +363,7 @@ s32 dScMgRoulette_c::Behavior()
                     dealY = LNDR(0 - (I(0x53f8) << 16)) + 0x80000;
                     dealPos[0] = 0x20000;
                     dealPos[1] = dealY;
-                    func_ov006_021095ac((int *)(c + 0x51a8 + I(0x53f8) * 0x34), dealPos);
+                    func_ov006_021095ac((int *)(mArray + I(0x53f8) * 0x34), dealPos);
                     mDealIndex += 1;
                     H(0x53e8) = 8;
                     func_ov004_020b1b08(1);
@@ -377,7 +379,7 @@ s32 dScMgRoulette_c::Behavior()
                         } while (i < mRacerCount);
                     }
                     H(0x53e8) = 0x258;
-                    func_ov006_020c1764(c + 0x4f38);
+                    func_ov006_020c1764((char *)mTable);
                     HA(0x53e6) += 1;
                     I(0x53f8) = 0;
                     Sound::PlayBank2_2D(0x15b);
@@ -398,7 +400,7 @@ s32 dScMgRoulette_c::Behavior()
                 int i = 0;
                 if (mRacerCount > 0) {
                     char *racerRaw = c;
-                    char *racer = c + 0x51a8;
+                    char *racer = (char *)mArray;
                     do {
                         *(short *)(racerRaw + 0x51d4) = func_ov006_02108650(*(int *)(racerRaw + 0x51c0) >> 12, *(int *)(racerRaw + 0x51c4) >> 12);
                         onTile = 0;
@@ -414,7 +416,7 @@ s32 dScMgRoulette_c::Behavior()
                         if (onTile == 0)
                             goto landedElsewhere;
                     landedInRange:
-                        func_ov006_02109530((int *)racer, (int *)&data_ov006_02142ab4[tileType * 8], 0x100);
+                        func_ov006_02109530((int *)racer, (int *)&((TileXY *)data_ov006_02142ab4)[tileType].x, 0x100);
                         goto nextRacer;
                     landedElsewhere:
                         func_ov006_0210935c((RacerPos *)racer, tileType);
@@ -436,7 +438,7 @@ s32 dScMgRoulette_c::Behavior()
                 int j = 0;
                 if (mRacerCount > 0) {
                     char *rowRaw = c;
-                    char *row = c + 0x51a8;
+                    char *row = (char *)mArray;
                     do {
                         if (*(short *)(rowRaw + 0x51d4) == 0x25) {
                             func_ov006_021092e8(row);
@@ -475,7 +477,7 @@ s32 dScMgRoulette_c::Behavior()
                 tile = mSelectedTile;
                 mScore = 0;
                 if (mRacerCount > 0) {
-                    p = c + 0x51a8;
+                    p = (char *)mArray;
                     do {
                         payout = func_ov006_02108b90((short *)p, tile);
                         if (payout == 2) {
@@ -507,10 +509,10 @@ s32 dScMgRoulette_c::Behavior()
             short target = mTargetScore;
             short score = mScore;
             if (score > target) {
-                func_ov006_020c0c80(c + 0x4f38);
+                func_ov006_020c0c80(mTable);
                 func_ov004_020b0a54(4);
             } else if (score < target) {
-                func_ov006_020c0d68(c + 0x4f38);
+                func_ov006_020c0d68(mTable);
                 func_ov004_020b0a54(5);
             } else {
                 func_ov004_020b0a54(8);
@@ -525,7 +527,7 @@ s32 dScMgRoulette_c::Behavior()
     {
         int n = 0;
         if (mRacerCount > 0) {
-            char *p = c + 0x51a8;
+            char *p = (char *)mArray;
             do {
                 func_ov006_02108f2c((Thing *)p);
                 n++;
@@ -536,7 +538,7 @@ s32 dScMgRoulette_c::Behavior()
     {
         int n = 0;
         if (mRacerCount > 0) {
-            char *p = c + 0x51a8;
+            char *p = (char *)mArray;
             do {
                 func_ov006_02108d28((int *)p);
                 n++;
@@ -545,7 +547,7 @@ s32 dScMgRoulette_c::Behavior()
         }
     }
     func_ov006_02107db8((C *)(c + 0x530c));
-    func_ov006_020c19d0(c + 0x4f38);
+    func_ov006_020c19d0((char *)mTable);
     func_ov004_020b65e4();
     return 1;
 }
@@ -583,8 +585,8 @@ s32 dScMgRoulette_c::Render()
                 if (data_020a0db0 & 8) {
                     s16 idx = mSelectedTile;
                     Hud_RenderSprite((void *)data_ov006_02138c18,
-                                        *(int *)(data_ov006_02142ab4 + idx * 8) >> 12,
-                                        *(int *)(data_ov006_02142ab8 + idx * 8) >> 12,
+                                        ((TileXY *)data_ov006_02142ab4)[idx].x >> 12,
+                                        ((TileXY *)data_ov006_02142ab8)[idx].x >> 12,
                                         -1, 1);
                 }
             }
@@ -633,7 +635,7 @@ s32 dScMgRoulette_c::Render()
         if (preset != 0)
             func_ov006_02107d80(raw + 0x530c);
         else
-            func_ov006_020c1804(raw + 0x4f38);
+            func_ov006_020c1804((char *)mTable);
     }
 
     return 1;
@@ -660,7 +662,7 @@ int dScMgRoulette_c::OnTurnIntoEgg(int /* mode */)
             (mPhase)++;
         break;
     case 6:
-        if (func_ov006_020c1718(raw + 0x4f38) != 0) {
+        if (func_ov006_020c1718((char *)mTable) != 0) {
             mPhaseTimer = 0x3c;
             mDealIndex = 0;
             (mPhase)++;
@@ -699,12 +701,12 @@ void dScMgRoulette_c::OnYoshiTryEat(int /* arg */)
     int count;
 
     func_ov006_02107b14();
-    func_ov006_020c0e8c((int *)(raw + 0x4f38));
+    func_ov006_020c0e8c((int *)mTable);
 
     mScore = 0;
     mPhaseTimer = 0xa;
 
-    racer = (int *)(raw + 0x51a8);
+    racer = (int *)mArray;
     for (i = 0; i < 5; i++) {
         func_ov006_021092a0(racer);
         racer = (int *)((char *)racer + 0x34);
