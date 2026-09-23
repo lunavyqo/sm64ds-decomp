@@ -529,9 +529,9 @@ def converted(src_root=None):
 
 # ------------------------------------------------------------------- LINKED
 #
-# LINKED cannot be computed here and must not pretend otherwise. port/tools/
-# linkage.py reads build/port/walk_window.map, which only exists after an MSVC
-# build of the port, and the port branches are not merged to main. So the number
+# LINKED cannot be computed here and must not pretend otherwise. With the port
+# repo nested at port/, port/tools/linkage.py reads build/port/walk_window.map,
+# which only exists after an MSVC build of the playable line. So the number
 # is STAMPED: measured by hand, recorded with the branch and commit it came from,
 # and refreshed when someone runs a port build.
 #

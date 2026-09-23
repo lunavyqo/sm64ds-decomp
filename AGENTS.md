@@ -113,17 +113,16 @@ mentions.
 
 ## `port/` references (renames, `.c`→`.cpp`, file moves)
 
-`port/` builds its own MSVC host executable that points into `src/` by literal path
-and symbol name. None of that is compiled by the normal decomp toolchain, so a
-rename, a `.c`→`.cpp` migration, or a file move can silently strand a reference.
-Before pushing anything that renames or moves a `src/`/`include/` file:
+The PC port is [lunavyqo/sm64ds-port](https://github.com/lunavyqo/sm64ds-port),
+not a directory in this repo. A matching checkout has no `port/`.
+`python tools/port_refcheck.py` then skips and exits 0, including from
+`tools/hooks/pre-push`. A playable nest does not belong in a matching worktree:
+the playable tree builds only against the decomp pin in that repo's `PINS.tsv`.
 
-```sh
-python tools/port_refcheck.py
-```
-
-Checks references only (no compiler, no ROM — about a second) and is also wired
-into `tools/hooks/pre-push`.
+When a port checkout is nested at `port/`, the same command checks its literal
+`src/` paths and symbol names. A rename, a `.c`→`.cpp` migration, or a file move
+can strand one. Slice fixes land in the port repo. The check is references only
+(no compiler, no ROM — about a second).
 
 ## Declaration agreement (an `extern` vs the definition it names)
 

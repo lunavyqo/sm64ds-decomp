@@ -201,8 +201,9 @@ PY
 - The pre-push hook (installed via `core.hooksPath` -> `tools/hooks/`, not copied
   into `.git/hooks/`) runs `port_refcheck.py` and the reference ratchet on every
   push, plus link-verification and attribution when the target is `main`.
-  A rename in `src/` can strand a
-  hand-written bridge in `port/`, which nothing else catches.
+  The port check skips when `port/` is absent. A playable nest does not belong
+  in a matching worktree. A rename in `src/` can strand a hand-written bridge in
+  a nested [port repo](https://github.com/lunavyqo/sm64ds-port), which nothing else catches.
 
 ## 8. Definition of done
 

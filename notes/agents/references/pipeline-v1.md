@@ -34,8 +34,8 @@ fresh base and proves that the composition changed nothing.
 
 Stage 2 is wider than its one row suggests. Besides the source and manifest, a
 promotion edits `delinks.txt`, `converted-baseline.json` (via `tiers_ratchet
---update`, never by hand), `converted-backslide-exceptions.jsonl`, any `port/`
-slice manifest naming a deleted shard, and any prose naming one. Six non-source
+--update`, never by hand), `converted-backslide-exceptions.jsonl`, any slice
+manifest in [lunavyqo/sm64ds-port](https://github.com/lunavyqo/sm64ds-port) naming a deleted shard, and any prose naming one. Six non-source
 files is typical.
 
 The writer is **gathering, not authoring**: 387 of 429 classes already have a

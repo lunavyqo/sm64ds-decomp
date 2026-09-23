@@ -11,7 +11,7 @@ one misleading percentage:
 | Module fidelity | Linked executable-module bytes equal retail | Stock head must pass, unless base and head have the same recorded pre-existing build failure |
 | Contributor lineage | The first matcher still owns a surviving match after moves/renames | Reported when it changes or disappears; never blocks the merge |
 | Relocations | Affected source reproduces bytes and names the correct destinations | No WRONG or NO-REPRO |
-| Port references | `port/`'s manifests and symbol bridges still name files and symbols that exist | No stale reference (optional phase) |
+| Port references | A nested [port repo](https://github.com/lunavyqo/sm64ds-port) still names files and symbols that exist. Absent `port/` is a skip | No stale reference (optional phase) |
 
 `tools/rombuild.py` emits the build/fidelity artifact. `tools/validate_merge.py` compares
 two committed revisions, combines the build artifacts with `pr_linkcheck` JSON, and emits
@@ -29,10 +29,10 @@ The compiler and ROM remain on the private worker. For each relay job:
    uncommitted move has no lineage.
 3. Run `python tools/rombuild.py --profile stock --report-json build/head-rom.json`.
 4. Run `python tools/pr_linkcheck.py --base <baseSha> --json build/link.json --md build/link.md`.
-5. If the PR touched `src/` or `include/`, run
+5. If the PR touched `src/` or `include/` and a port checkout is nested at `port/`, run
    `python tools/port_refcheck.py --json build/port.json`. No compiler and no ROM, so
-   it costs about a second. It is optional on both sides: a worker that does not run it,
-   or a base that predates the tool, simply reports no port row.
+   it costs about a second. Absent `port/` is a skip. It is optional on both sides: a
+   worker that does not run it, or a base that predates the tool, simply reports no port row.
 6. Run:
 
    ```sh

@@ -32,7 +32,7 @@ Every migrated source must satisfy all of these:
 4. Every affected source still matches after a shared-header change.
 5. The full linked build has zero mismatching functions and all 106 modules are
    exact.
-6. `.c` to `.cpp` renames preserve `port/` references and contributor credit.
+6. `.c` to `.cpp` renames preserve nested [port](https://github.com/lunavyqo/sm64ds-port) references and contributor credit. The check skips when `port/` is absent.
 7. The language-mode audit improves or stays within its ratchet.
 
 If any gate fails, restore the old source. A plausible near-match does not
@@ -264,6 +264,7 @@ For every rename or move:
 ```powershell
 python tools/port_refcheck.py
 python tools/check_dead_references.py
+# port_refcheck skips when port/ is absent. Slice fixes land in lunavyqo/sm64ds-port.
 ```
 
 After committing the source rename, verify contributor lineage:
@@ -327,7 +328,7 @@ or rely on a ROM-byte fallback to make the batch green.
 Source migrations and documentation/tooling changes are separate PRs.
 
 A source-migration PR should contain only the coherent migration and required
-companions such as delink paths, header consumers, `port/` references,
+companions such as delink paths, header consumers, nested port references,
 attribution metadata, and the completed class claim. Its body should list:
 
 - the real classes/methods/destructors migrated;

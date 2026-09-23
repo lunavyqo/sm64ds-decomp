@@ -102,6 +102,10 @@ _glmwork/
 /playlog/
 *.bmp
 
+# The PC port is https://github.com/lunavyqo/sm64ds-port . Nest a checkout at
+# /port/ only in a worktree that is not matching main. Do not commit it.
+/port/
+
 # --- Build artifacts ---
 *.o
 

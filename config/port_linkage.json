@@ -13,7 +13,7 @@
     "the night before sat unread one directory away, and published 26.5% when the real",
     "figure was 34.5%. A stale stamp is still a real measurement, just of the wrong run.",
     "",
-    "To refresh: run `python port/tools/linkage.py [root]` and update the numbers below",
+    "To refresh from the decomp root, nest https://github.com/lunavyqo/sm64ds-port at port/ and run `python port/tools/linkage.py`. The playable map is build/port/walk_window.map. A playable nest does not belong in a matching worktree. This split does not refresh the numbers below",
     "together with branch, commit and measuredAt. Never move the count without also",
     "moving the provenance fields - tools/tiers.py drops a stamp missing any of them,",
     "which is the intended behaviour for a number nobody can trace.",

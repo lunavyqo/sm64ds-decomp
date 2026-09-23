@@ -55,11 +55,10 @@ LINKED     ███████████████████████
   them. Matching
   does not require readable code, so this tier does not move on its own and is by far
   the furthest behind.
-- **LINKED** is matched code that actually reaches the [PC port](port/)'s binary,
-  replacing the host stand-in that stood there before. On `main` that `port/` tree holds
-  the port's smoke-gate suite: the platform seam, the slice manifests and the native test
-  executables. The playable build is developed on the `port/*` branches, and that is what
-  the download link at the top of this file serves.
+- **LINKED** is matched code that actually reaches the [PC port](https://github.com/lunavyqo/sm64ds-port)'s binary,
+  replacing the host stand-in that stood there before. The playable line is `main` in that
+  repo. The smoke-gate suite is `decomp-main`. Downloads stay at
+  [tangos.dev/downloads](https://tangos.dev/downloads).
 
 They are not stages of one pipeline. A function can be matched and linked while still
 being unreadable, and converting a file never changes its matched bytes.
@@ -84,7 +83,8 @@ LINKED is a stamped measurement, not a live counter. It needs an MSVC build of t
 port, which CI on this branch cannot produce, so it is measured by hand and recorded
 in [config/port_linkage.json](config/port_linkage.json) with the branch and commit it
 came from. Because the port branches are not merged, it is the best single branch and
-so a floor. Reproduce it with `python port/tools/linkage.py` against a port build.
+so a floor. Reproduce it from a decomp checkout with the port repo nested at `port/`:
+`python port/tools/linkage.py`. The map is `build/port/walk_window.map`.
 
 ## What "matching" means
 

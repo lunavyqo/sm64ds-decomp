@@ -10,9 +10,10 @@
 # once a PR is open -- and the mistake is invisible in review, because every file still
 # byte-matches. See tools/prepush_attribution.py.
 #
-# It also checks port/'s references into src/ (manifests, hostgen symbol lists, HAL linkage
-# bridges). port/ has its own MSVC build that nothing in the decomp toolchain compiles or
-# links, so a src/ rename can strand a port/ reference with no other gate to catch it. See
+# It also checks a nested port/'s references into src/ (manifests, hostgen symbol lists,
+# HAL linkage bridges). The PC port is lunavyqo/sm64ds-port. The check skips when port/
+# is absent, and a playable nest does not belong in a matching worktree. A src/ rename
+# can strand a nested port reference with no other gate to catch it. See
 # tools/port_refcheck.py. That check, and the unresolved-reference ratchet, run on EVERY
 # push rather than only main-targeted ones: neither needs the ROM, and both catch mistakes
 # that are invisible in review because every byte still matches.
@@ -66,7 +67,7 @@ remote_ref_check() {
 # were missed: a src/ rename stranded a port/ bridge, every byte still matched,
 # and only the PR validator noticed.
 
-echo "pre-push: checking port/ references into src/"
+echo "pre-push: checking port/ references into src/ (skips when port/ is absent)"
 if ! python tools/port_refcheck.py; then
   echo "pre-push: REFUSING to push (see above). Override with --no-verify if you are certain." >&2
   exit 1

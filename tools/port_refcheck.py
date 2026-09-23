@@ -1426,6 +1426,28 @@ def main():
                          "omitted or '-')")
     args = ap.parse_args()
 
+    # Matching checkouts no longer carry port/. The checks themselves still
+    # fail closed when a nested port/ is incomplete; this skip is only the
+    # absent directory. check_hal_links is unchanged.
+    if not PORT.is_dir():
+        report = {
+            "schemaVersion": 1,
+            "ok": True,
+            "checked": 0,
+            "failed": 0,
+            "failures": [],
+            "checks": {},
+        }
+        if args.json == "-":
+            print(json.dumps(report, indent=2))
+            return 0
+        if args.json:
+            pathlib.Path(args.json).write_text(
+                json.dumps(report, indent=2) + "\n",
+                encoding="utf-8", newline="\n")
+        print("port-refcheck: port/ is absent; nothing to check")
+        return 0
+
     report = build_report()
     all_failures = report["failures"]
     total_checked = report["checked"]

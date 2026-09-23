@@ -143,15 +143,16 @@ should follow existing repository definitions and documented address evidence,
 with descriptive names distinguished from recovered identifiers. A plausible name
 is not evidence of its original spelling or of improper provenance.
 
-The [port's own rules](../port/README.md) retain byte-verified `src/` as the source
-of truth and currently target a 32-bit host first. Host convenience does not justify
+The [port's own rules](https://github.com/lunavyqo/sm64ds-port/blob/main/README.md) retain byte-verified `src/` as the source
+of truth and currently target a 32-bit host first. The smoke suite's copy of that
+note is on [`decomp-main`](https://github.com/lunavyqo/sm64ds-port/blob/decomp-main/README.md). Host convenience does not justify
 breaking the cartridge build. Conversely, a justified source correction with fresh
 proof is not forbidden simply because the port also benefits. The actual port
 policy describes the platform guards and seams used for host-specific behavior.
 Little-endian agreement or four-byte pointers do not settle aliasing, alignment,
 object lifetime or signed-overflow questions.
 
-[hostgen.py](../port/tools/hostgen.py) transforms selected literal MMIO dereferences
+[hostgen.py](https://github.com/lunavyqo/sm64ds-port/blob/main/tools/hostgen.py) transforms selected literal MMIO dereferences
 into `NTR_MMIO` accesses in generated host source. For example:
 
 ```cpp
@@ -170,7 +171,7 @@ CMake host-generation lists and HAL linkage bridges. A file move or symbol renam
 can strand these even when the cartridge build passes.
 [port_refcheck.py](../tools/port_refcheck.py) checks reference integrity; it is not
 proof that every host executable compiles or links. The optional
-[host_frontier.py](../port/tools/host_frontier.py) diagnostic uses the MSVC x86
+[host_frontier.py](https://github.com/lunavyqo/sm64ds-port/blob/main/tools/host_frontier.py) diagnostic uses the MSVC x86
 syntax-check environment. Missing tools and intentionally substituted assembly
 sources need to be distinguished from new host regressions; no PR-size threshold
 makes that diagnostic an additional acceptance gate.
