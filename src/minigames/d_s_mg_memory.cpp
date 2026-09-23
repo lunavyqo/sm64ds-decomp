@@ -13,16 +13,14 @@
  * are unnamed in symbols.txt, unk_0a8 and unk_0b8 are unnamed in
  * dScMgBase_c.h, and the factory builds the object by hand because the
  * class has no constructor declared yet.
+ * deslop
  */
 
 #include "dScMgMemory_c.h"
 #include "common.h"
 #include "types.h"
 #include "decl_common.h"
-
-
-
-namespace Sound { void PlayBank2_2D(unsigned int); }
+#include "Sound.h"
 
 typedef void (dScMgMemory_c::*dScMgMemory_cState)();
 typedef void (dScMgMemory_c::*dScMgMemory_cCardState)(int);
