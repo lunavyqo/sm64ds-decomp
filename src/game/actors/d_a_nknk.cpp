@@ -1,22 +1,24 @@
 //cpp
-/* daNknk_c -- Koopa the Troopa.
+/* Koopa Troopa, separable from its shell (ov062/daNknk_c). Both the
+ * normal and the small registry profiles construct this same class.
+ * Reactions pick a state into +0x10c; the state machine does the rest.
  *
- * A walker that can be separated from its shell.  The actor resolves the actor
- * its collider last touched (dCc otherOwner, +0x134) each frame, and reacts to
- * whatever collision flags (+0x130) the base class left behind: stomped,
- * punched, spun, hit by a shell, burned.  Each reaction picks a state number
- * into +0x10c and the state machine below does the rest.  Both the normal and
- * the small registry profiles construct this same class.
+ * Source REVERSE of ROM order (highest address first). Do not reorder.
  *
- * Some helpers below still read fields through raw offsets; tracked in #2871.
- *
- * Function order in this file is REVERSE ROM order: mwccarm 2004/b56 emits one
- * .text section per function, last-defined first.  Do not sort.
+ * deslop
+ * Leftover: GetSubtractionEss has no header member; Particle New /
+ *   FromUniqueID / SetSelfDestructFlag keep computed spellings
+ *   (Fix12<int> by value, wall 6az).
+ * Leftover: +0x144/+0x350/+0x3c2/+0x3cc helpers read raw offsets;
+ *   naming belongs in the header.
  */
 // Inline definitions in Koopa.h, emitted here by the two factories:
 #include "Koopa.h"
 #include "common.h"
 #include "types.h"
+#include "dActor_c.h"
+#include "dBgCh_Actr.h"
+#include "Animation.h"
 #include "decl_dBgCh_Actr.h"
 #include "decl_common.h"
 #include "decl_Model.h"
@@ -29,15 +31,6 @@
 #include "decl_ShadowModel.h"
 
 /* Remaining legacy helper views are local to this translation unit. */
-/* shadow typedef 'u32' */
-typedef unsigned int u32;
-
-/* shadow typedef 's32' */
-typedef signed int s32;
-
-/* shadow typedef 's64' */
-typedef long long s64;
-
 /* shadow struct 'Entry' */
 struct Entry { char pad[4]; void *file; };
 
@@ -52,22 +45,10 @@ struct Particle {
     static void RunningSlidingDustAt(int a, int b, int c);
 };
 
-/* TUBUILD CONFLICT -- alternate body of typedef 'Vector3', from the legacy file for func_ov062_02117b9c, NOT applied:
-typedef struct Vector3 { int x, y, z; } Vector3;
-*/
 
-/* TUBUILD CONFLICT -- alternate body of typedef 'Vector3', from the legacy file for func_ov062_02118258, NOT applied:
-typedef struct Vector3 { int x, y, z; } Vector3;
-*/
 
-/* TUBUILD CONFLICT -- alternate body of struct 'dBgCh_Actr', from the legacy file for func_ov062_02118a00, NOT applied:
-struct dBgCh_Actr {
-    int IsOnGround() const;
-};
-*/
 
 #define AT(p, off) ((void*)(int)(((long long)(int)((char*)(p) + (off)))))
-/* TUBUILD CONFLICT -- alternate #define of AT, from the legacy file for func_ov062_02118258, NOT applied: #define AT(p, off) ((void*)(int)((char*)(p) + (off))) */
 
 extern "C" {
 extern int _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(u32 uniqueID, u32 effectID, s32 x, s32 y, s32 z, const void *dir, void *callback);
@@ -101,28 +82,21 @@ extern int _ZN8dActor_c16JumpedOnByPlayerER5dCc_cR6Player(void* self, void* clsn
 extern void _ZN6Player6BounceE5Fix12IiE(void* p, int f);
 extern int _ZN6Player4HurtERK7Vector3j5Fix12IiEjjj(Player* p, void* v, u32 a, int f, u8 b, u8 c, u8 d);
 extern void func_ov062_02117b48(void* p);
-extern void _ZN8dActor_c8PoofDustEv(void* self);
 extern void func_ov062_021179e4(void* c);
-extern void _ZN8dActor_c24KillAndTrackInDeathTableEv(void* self);
 extern "C" int _Z14ApproachLinearRiii(int *r, int target, int speed);
 extern "C" void _ZN8Particle20RunningSlidingDustAtE5Fix12IiES1_S1_(int a, int b, int c);
 extern int _ZN8dActor_c14GetSubtractionEss(void*, short, short);
-extern int _ZN9Animation8FinishedEv(void *);
-extern u32 _ZNK9Animation13GetFrameCountEv(void *self);
-extern bool _ZNK9Animation12WillHitFrameEi(void *self, int frame);
 extern int RandomIntInternal(int *seed);
 extern int data_0209e650;
 extern void* _ZN8dActor_c13ClosestPlayerEv(void*);
 extern short Vec3_HorzAngle(const Vector3* a, const Vector3* b);
 extern int _Z14ApproachLinearRsss(short *a, short b, short c);
 extern void *func_ov062_02117b9c(void *c);
-extern int _ZN12dEnemyBase_c24AngleAwayFromWallOrCliffER10dBgCh_ActrRs(void *self, dBgCh_Actr &clsn, short &angle);
 extern void func_ov062_02118058(char *c);
 extern void _ZN7fBase_c18MarkForDestructionEv(void *a);
 extern void func_ov062_02118004(void *c, int a1);
 extern void func_ov062_021175c0(void *c);
 extern void func_ov062_02117724(void *c, unsigned int a, unsigned int b, unsigned int d, unsigned short e);
-extern int _ZNK10dBgCh_Actr8IsOnWallEv(void *w);
 
 extern s16 _ZN8dActor_c12ReflectAngleE5Fix12IiES1_s(void *self, int a, int b, s16 ang);
 extern int func_ov062_02117b60(void *c);
@@ -133,9 +107,6 @@ struct V3 { int x, y, z; };
 
 extern void _ZN8dActor_c19MakeVanishLuigiWorkER5dCc_c(void *self, void *c);
 
-extern void _ZN5dCc_c5ClearEv(void *c);
-extern void _ZN5dCc_c6UpdateEv(void *c);
-extern int _ZNK10dBgCh_Actr10IsOnGroundEv(void *c);
 extern int _ZN8dActor_c22IsTooFarAwayFromPlayerE5Fix12IiE(void *self, int d);
 
 extern SharedFilePtr* data_ov062_0211ced8[2];
@@ -145,37 +116,8 @@ extern void _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(void* self, dActor_c* a, i
 extern void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void* self, dActor_c* a, int r, int h, Vector3_16* p, int q);
 extern void _ZN10dBgCh_Actr19StartDetectingWaterEv(void* self);
 extern void LoadBlueCoinModel(void* c);
-/* TUBUILD CONFLICT -- alternate declaration of _ZN8Particle19SetSelfDestructFlagEj, from the legacy file for func_ov062_02117724, NOT applied: extern void _ZN8Particle19SetSelfDestructFlagEj(int id); */
-/* TUBUILD CONFLICT -- alternate declaration of _ZN8Particle6System12FromUniqueIDEj, from the legacy file for func_ov062_02117724, NOT applied: extern char *_ZN8Particle6System12FromUniqueIDEj(int id); */
-/* TUBUILD CONFLICT -- alternate declaration of func_ov062_02118a00, from the legacy file for func_ov062_02117acc, NOT applied: extern void func_ov062_02118a00(void *c); */
-/* TUBUILD CONFLICT -- alternate declaration of func_ov062_02118de8, from the legacy file for func_ov062_02117acc, NOT applied: extern void func_ov062_02118de8(void *c); */
-/* TUBUILD CONFLICT -- alternate declaration of Vec3_Dist, from the legacy file for func_ov062_02117b9c, NOT applied: extern Fix12i Vec3_Dist(const Vector3 *a, const Vector3 *b); */
-/* TUBUILD CONFLICT -- alternate declaration of Vec3_Dist, from the legacy file for func_ov062_02118058, NOT applied: extern Fix12i Vec3_Dist(const void*, const void*); */
-/* TUBUILD CONFLICT -- alternate declaration of _Z14ApproachLinearRiii, from the legacy file for func_ov062_021180d4, NOT applied: extern int _Z14ApproachLinearRiii(int *, int, int); */
-/* TUBUILD CONFLICT -- alternate declaration of _Z14ApproachLinearRiii, from the legacy file for func_ov062_021181a0, NOT applied: extern int _Z14ApproachLinearRiii(int *, int, int); */
-/* TUBUILD CONFLICT -- alternate declaration of Vec3_Dist, from the legacy file for func_ov062_02118258, NOT applied: extern int Vec3_Dist(const Vector3* a, const Vector3* b); */
-/* TUBUILD CONFLICT -- alternate declaration of _ZN9Animation8FinishedEv, from the legacy file for func_ov062_021183e0, NOT applied: extern int _ZN9Animation8FinishedEv(void *anim); */
-/* TUBUILD CONFLICT -- alternate declaration of Vec3_Dist, from the legacy file for func_ov062_021183e0, NOT applied: extern int Vec3_Dist(void *a, void *b); */
-/* TUBUILD CONFLICT -- alternate declaration of Vec3_HorzAngle, from the legacy file for func_ov062_021183e0, NOT applied: extern short Vec3_HorzAngle(void *a, void *b); */
-/* TUBUILD CONFLICT -- alternate declaration of _ZN8dActor_c14GetSubtractionEss, from the legacy file for func_ov062_021183e0, NOT applied: extern int _ZN8dActor_c14GetSubtractionEss(void *self, short a, short b); */
-/* TUBUILD CONFLICT -- alternate declaration of _Z14ApproachLinearRiii, from the legacy file for func_ov062_021183e0, NOT applied: extern void _Z14ApproachLinearRiii(int *a, int b, int c); */
-/* TUBUILD CONFLICT -- alternate declaration of _ZN9Animation8FinishedEv, from the legacy file for func_ov062_02118588, NOT applied: extern int _ZN9Animation8FinishedEv(void *anim); */
-/* TUBUILD CONFLICT -- alternate declaration of Vec3_Dist, from the legacy file for func_ov062_02118718, NOT applied: extern int Vec3_Dist(void *a, void *b); */
-/* TUBUILD CONFLICT -- alternate declaration of Vec3_HorzAngle, from the legacy file for func_ov062_02118718, NOT applied: extern short Vec3_HorzAngle(void *a, void *b); */
-/* TUBUILD CONFLICT -- alternate declaration of _ZN8dActor_c14GetSubtractionEss, from the legacy file for func_ov062_02118718, NOT applied: extern int _ZN8dActor_c14GetSubtractionEss(void *self, short a, short b); */
-/* TUBUILD CONFLICT -- alternate declaration of _Z14ApproachLinearRiii, from the legacy file for func_ov062_02118718, NOT applied: extern int _Z14ApproachLinearRiii(int *a, int b, int c); */
-/* TUBUILD CONFLICT -- alternate declaration of func_ov062_021175c0, from the legacy file for func_ov062_02118a00, NOT applied: extern void func_ov062_021175c0(void *); */
-/* TUBUILD CONFLICT -- alternate declaration of _ZN9Animation8FinishedEv, from the legacy file for func_ov062_02118a50, NOT applied: extern int _ZN9Animation8FinishedEv(void *anim); */
-/* TUBUILD CONFLICT -- alternate declaration of _Z14ApproachLinearRiii, from the legacy file for func_ov062_02118b4c, NOT applied: extern int _Z14ApproachLinearRiii(int *val, int target, int step); */
-/* TUBUILD CONFLICT -- alternate declaration of _Z14ApproachLinearRsss, from the legacy file for func_ov062_02118b4c, NOT applied: extern int _Z14ApproachLinearRsss(s16 *val, int target, int step); */
-/* TUBUILD CONFLICT -- alternate declaration of _ZN9Animation8FinishedEv, from the legacy file for func_ov062_02118de8, NOT applied: extern "C" int _ZN9Animation8FinishedEv(void *a); */
-/* TUBUILD CONFLICT -- alternate declaration of RandomIntInternal, from the legacy file for func_ov062_02118de8, NOT applied: extern "C" int RandomIntInternal(int *seed); */
-/* TUBUILD CONFLICT -- alternate declaration of data_0209e650, from the legacy file for func_ov062_02118de8, NOT applied: extern "C" int data_0209e650; */
-/* TUBUILD CONFLICT -- alternate declaration of _ZN8dActor_c8PoofDustEv, from the legacy file for _ZN5Koopa8BehaviorEv, NOT applied: extern void _ZN8dActor_c8PoofDustEv(void *self); */
-/* TUBUILD CONFLICT -- alternate declaration of _ZN8dActor_c24KillAndTrackInDeathTableEv, from the legacy file for _ZN5Koopa8BehaviorEv, NOT applied: extern void _ZN8dActor_c24KillAndTrackInDeathTableEv(void *self); */
 }
 
-/* ROM ordinal 38 -- daNknk_c_classInit_NOKONOKO, 0x0211970c, size 0x50 */
 // @symbol daNknk_c_classInit_NOKONOKO
 extern "C" {
 daNknk_c *daNknk_c_classInit_NOKONOKO()
@@ -184,7 +126,6 @@ daNknk_c *daNknk_c_classInit_NOKONOKO()
 }
 }
 
-/* ROM ordinal 37 -- daNknk_c_classInit_NOKONOKO_S, 0x021196bc, size 0x50 */
 // @symbol daNknk_c_classInit_NOKONOKO_S
 extern "C" {
 daNknk_c *daNknk_c_classInit_NOKONOKO_S()
@@ -193,14 +134,12 @@ daNknk_c *daNknk_c_classInit_NOKONOKO_S()
 }
 }
 
-/* ROM ordinal 36 -- _ZN8daNknk_c13OnYoshiTryEatEv, 0x021196a8, size 0x14 */
 // @symbol _ZN8daNknk_c13OnYoshiTryEatEv
 s32 daNknk_c::OnYoshiTryEat() {
   if(mModelIndex==0) return 6;
   return 5;
 }
 
-/* ROM ordinal 35 -- _ZN8daNknk_c13OnTurnIntoEggER6Player, 0x02119628, size 0x80 */
 // @symbol _ZN8daNknk_c13OnTurnIntoEggER6Player
 // Community name: Koopa_OnTurnIntoEgg
 /* daNknk_c::OnTurnIntoEgg -- vtable slot 19, verified against ov062 relocs.txt:
@@ -220,7 +159,6 @@ void daNknk_c::OnTurnIntoEgg(Player &player)
     KillAndTrackInDeathTable();
 }
 
-/* ROM ordinal 34 -- _ZN8daNknk_c16OnAimedAtWithEggEv, 0x02119608, size 0x20 */
 // @symbol _ZN8daNknk_c16OnAimedAtWithEggEv
 // Community name: Koopa_OnAimedAtWithEgg
 /* daNknk_c::OnAimedAtWithEgg - recovered from vtable slot identity */
@@ -233,7 +171,6 @@ s32 daNknk_c::OnAimedAtWithEgg() {
     return r;
 }
 
-/* ROM ordinal 33 -- _ZN8daNknk_c13InitResourcesEv, 0x02119420, size 0x1e8 */
 // @symbol _ZN8daNknk_c13InitResourcesEv
 int daNknk_c::InitResources()
 {
@@ -303,7 +240,6 @@ int daNknk_c::InitResources()
     return 1;
 }
 
-/* ROM ordinal 32 -- _ZN8daNknk_c8BehaviorEv, 0x021190ec, size 0x334 */
 // @symbol _ZN8daNknk_c8BehaviorEv
 int daNknk_c::Behavior()
 {
@@ -319,21 +255,21 @@ int daNknk_c::Behavior()
         int *pb0 = (int *)((char *)&mFlags);
         *pb0 = *pb0 & ~0x10000000;
         if (_ZN12dEnemyBase_c27SpawnParticlesIfHitOtherObjER5dCc_c(this, &mdCc_c) != 0) {
-            _ZN8dActor_c8PoofDustEv(this);
+            PoofDust();
             func_ov062_021179e4(((char *)this));
-            _ZN8dActor_c24KillAndTrackInDeathTableEv(this);
+            KillAndTrackInDeathTable();
         }
         if (mEatenByYoshi != 0)
             func_ov062_02117570(((char *)this));
         func_ov062_02118334(((char *)this));
-        _ZN5dCc_c5ClearEv((char *)&mdCc_c);
+        mdCc_c.Clear();
         if (mEatenByYoshi != 0 && unk_104 == 0)
-            _ZN5dCc_c6UpdateEv((char *)&mdCc_c);
+            mdCc_c.Update();
         if (mKoopaVariant == 1)
             mState = 4;
         else
             mState = 1;
-        if (_ZNK10dBgCh_Actr10IsOnGroundEv((char *)&mWithMeshClsn) != 0) {
+        if (mWithMeshClsn.IsOnGround() != 0) {
             unk_3a8 = mPosX;
             unk_3ac = mPosY;
             unk_3b0 = mPosZ;
@@ -397,10 +333,10 @@ int daNknk_c::Behavior()
 
         UpdateWMClsn(mWithMeshClsn, 0);
         func_ov062_02117570(((char *)this));
-        _ZN5dCc_c5ClearEv((char *)&mdCc_c);
+        mdCc_c.Clear();
         if (mDeathState == 0) {
             if (mInvincibleTimer == 0) {
-                _ZN5dCc_c6UpdateEv((char *)&mdCc_c);
+                mdCc_c.Update();
             } else {
                 *(u16 *)((char *)&mInvincibleTimer) -= 1;
             }
@@ -413,7 +349,6 @@ int daNknk_c::Behavior()
     return 1;
 }
 
-/* ROM ordinal 31 -- _ZN8daNknk_c6RenderEv, 0x02118f84, size 0x168 */
 // @symbol _ZN8daNknk_c6RenderEv
 int daNknk_c::Render()
 {
@@ -442,7 +377,6 @@ int daNknk_c::Render()
   return 1;
 }
 
-/* ROM ordinal 30 -- _ZN8daNknk_c16OnPendingDestroyEv, 0x02118f80, size 0x4 */
 // @symbol _ZN8daNknk_c16OnPendingDestroyEv
 /* recovered: shared header, real C++ method
  *
@@ -452,7 +386,6 @@ void daNknk_c::OnPendingDestroy()
 {
 }
 
-/* ROM ordinal 29 -- _ZN8daNknk_c16CleanupResourcesEv, 0x02118f04, size 0x7c */
 // @symbol _ZN8daNknk_c16CleanupResourcesEv
 extern "C" {
 extern void UnloadBlueCoinModel(void *c);
@@ -476,18 +409,17 @@ int daNknk_c::CleanupResources()
   return 1;
 }
 
-/* ROM ordinal 28 -- func_ov062_02118de8, 0x02118de8, size 0x11c */
 // @symbol func_ov062_02118de8
 extern "C" void func_ov062_02118de8(char *c)
 {
     daNknk_c *self = (daNknk_c *)c;
     *(int*)(c + 0x98) = 0;
     if (*(unsigned char*)(c + 0x398) == 2) {
-        if (_ZN9Animation8FinishedEv(c + 0x350) == 0) return;
+        if (((Animation *)(c + 0x350))->Finished() == 0) return;
         func_ov062_02117994(c, 4);
         return;
     }
-    if (_ZNK9Animation12WillHitFrameEi(c + 0x350, (unsigned short)(_ZNK9Animation13GetFrameCountEv(c + 0x350) - 1)) != 0) {
+    if (((Animation *)(c + 0x350))->WillHitFrame((unsigned short)(((Animation *)(c + 0x350))->GetFrameCount() - 1)) != 0) {
         unsigned short *hp = (unsigned short*)(((int)c + 0x3c4));
         *hp += 1;
     } else {
@@ -509,7 +441,6 @@ extern "C" void func_ov062_02118de8(char *c)
     func_ov062_02118058(c);
 }
 
-/* ROM ordinal 27 -- func_ov062_02118cdc, 0x02118cdc, size 0x10c */
 // @symbol func_ov062_02118cdc
 extern "C" {
 namespace tu {  /* namespaced: the file-scope view is (void*) */
@@ -522,7 +453,7 @@ void func_ov062_02118cdc(char *c)
         if (*(int*)(c+0x3b8) >= 0x61a8000) {
             *(short*)(c+0x3c2) = *(short*)(c+0x3c0);
         }
-        *(unsigned char*)(c+0x3cc) = _ZN12dEnemyBase_c24AngleAwayFromWallOrCliffER10dBgCh_ActrRs(c, *(dBgCh_Actr*)(c+0x144), *(short*)(c+0x3c2));
+        *(unsigned char*)(c+0x3cc) = ((dEnemyBase_c *)c)->AngleAwayFromWallOrCliff(*(dBgCh_Actr *)(c + 0x144), *(short *)(c + 0x3c2));
         _Z14ApproachLinearRsss((short*)(c+0x94), *(short*)(c+0x3c2), 0x200);
     }
     if (*(unsigned char*)(c+0x398) == 1) {
@@ -538,7 +469,6 @@ void func_ov062_02118cdc(char *c)
 }
 }  /* namespace tu */
 
-/* ROM ordinal 26 -- func_ov062_02118b4c, 0x02118b4c, size 0x190 */
 // @symbol func_ov062_02118b4c
 extern "C" {
 namespace tu {  /* namespaced: the file-scope view is (void*) */
@@ -577,7 +507,6 @@ void func_ov062_02118b4c(char *self) {
 }
 }  /* namespace tu */
 
-/* ROM ordinal 25 -- func_ov062_02118a50, 0x02118a50, size 0xfc */
 // @symbol func_ov062_02118a50
 extern "C" {
 namespace tu {  /* namespaced: a conflicting file-scope view exists */
@@ -585,7 +514,7 @@ void func_ov062_02118a50(char *c)
 {
     daNknk_c *self = (daNknk_c *)c;
     if (*(int *)(c + 0x98) != 0) {
-        if (_ZNK10dBgCh_Actr8IsOnWallEv(c + 0x144) != 0) {
+        if (((dBgCh_Actr *)(c + 0x144))->IsOnWall() != 0) {
             void *sr = _ZNK10dBgCh_Actr13GetWallResultEv(c + 0x144);
             ((SurfaceInfo*)((char*)sr + 4))->CopyNormalTo(*(Vector3*)(c + 0xe0));
             *(s16 *)(c + 0x94) = _ZN8dActor_c12ReflectAngleE5Fix12IiES1_s(
@@ -604,9 +533,9 @@ void func_ov062_02118a50(char *c)
         }
     }
 
-    if (_ZNK9Animation12WillHitFrameEi(c + 0x350, 0x1e) != 0)
+    if (((Animation *)(c + 0x350))->WillHitFrame(0x1e) != 0)
         func_ov062_021175c0(c);
-    if (_ZN9Animation8FinishedEv(c + 0x350) == 0)
+    if (((Animation *)(c + 0x350))->Finished() == 0)
         return;
     self->mState = 1;
     func_ov062_02117994(c, 2);
@@ -614,7 +543,6 @@ void func_ov062_02118a50(char *c)
 }
 }  /* namespace tu */
 
-/* ROM ordinal 24 -- func_ov062_02118a00, 0x02118a00, size 0x50 */
 // @symbol func_ov062_02118a00
 namespace tu {  /* namespaced: a conflicting file-scope view exists */
 extern "C" void func_ov062_02118a00(void *c) {
@@ -631,7 +559,6 @@ extern "C" void func_ov062_02118a00(void *c) {
 }
 }  /* namespace tu */
 
-/* ROM ordinal 23 -- func_ov062_02118718, 0x02118718, size 0x2e8 */
 // @symbol func_ov062_02118718
 extern "C" {
 void func_ov062_02118718(char *c)
@@ -656,7 +583,7 @@ void func_ov062_02118718(char *c)
             *(short*)(c + 0x3c2) = Vec3_HorzAngle((const Vector3 *)(c + 0x5c), (const Vector3 *)(other + 0x5c));
         } else {
             *(unsigned char*)(c + 0x3cc) =
-                _ZN12dEnemyBase_c24AngleAwayFromWallOrCliffER10dBgCh_ActrRs(c, *(dBgCh_Actr*)(c + 0x144), *(short*)(c + 0x3c2));
+                ((dEnemyBase_c *)c)->AngleAwayFromWallOrCliff(*(dBgCh_Actr *)(c + 0x144), *(short *)(c + 0x3c2));
             if (!*(unsigned char*)(c + 0x3cc)) {
                 if (*(unsigned short*)(c + 0x3c8) != 0) {
                     *(unsigned short*)(((int)c + 0x3c8)) -= 1;
@@ -699,7 +626,6 @@ void func_ov062_02118718(char *c)
 }
 }
 
-/* ROM ordinal 22 -- func_ov062_02118588, 0x02118588, size 0x190 */
 // @symbol func_ov062_02118588
 extern "C" {
 void func_ov062_02118588(char *c)
@@ -743,9 +669,9 @@ void func_ov062_02118588(char *c)
         }
     }
 
-    if (_ZNK9Animation12WillHitFrameEi(c + 0x350, 0x1e) != 0)
+    if (((Animation *)(c + 0x350))->WillHitFrame(0x1e) != 0)
         func_ov062_021175c0(c);
-    if (_ZN9Animation8FinishedEv(c + 0x350) == 0)
+    if (((Animation *)(c + 0x350))->Finished() == 0)
         return;
     if (self->mModelIndex != 0) {
         self->mState = 5;
@@ -757,7 +683,6 @@ void func_ov062_02118588(char *c)
 }
 }
 
-/* ROM ordinal 21 -- func_ov062_021183e0, 0x021183e0, size 0x1a8 */
 // @symbol func_ov062_021183e0
 extern "C" {
 void func_ov062_021183e0(char *c)
@@ -766,7 +691,7 @@ void func_ov062_021183e0(char *c)
     int dist = 0x7fffffff;
     char *other;
 
-    if (_ZN9Animation8FinishedEv(c + 0x350))
+    if (((Animation *)(c + 0x350))->Finished())
         func_ov062_02117994(c, 1);
 
     if (*(unsigned char*)(c + 0x3cc)) {
@@ -780,7 +705,7 @@ void func_ov062_021183e0(char *c)
             if (dist < 0xc8000)
                 *(short*)(c + 0x3c2) = Vec3_HorzAngle((const Vector3 *)(c + 0x5c), (const Vector3 *)(other + 0x5c));
         }
-        *(unsigned char*)(c + 0x3cc) = _ZN12dEnemyBase_c24AngleAwayFromWallOrCliffER10dBgCh_ActrRs(c, *(dBgCh_Actr*)(c + 0x144), *(short*)(c + 0x3c2));
+        *(unsigned char*)(c + 0x3cc) = ((dEnemyBase_c *)c)->AngleAwayFromWallOrCliff(*(dBgCh_Actr *)(c + 0x144), *(short *)(c + 0x3c2));
         _Z14ApproachLinearRsss((short*)(c + 0x94), *(short*)(c + 0x3c2), 0x200);
     }
 
@@ -803,7 +728,6 @@ void func_ov062_021183e0(char *c)
 }
 }
 
-/* ROM ordinal 20 -- func_ov062_02118334, 0x02118334, size 0xac */
 // @symbol func_ov062_02118334
 extern "C" {
 
@@ -841,7 +765,6 @@ void func_ov062_02118334(char *c)
 }
 }
 
-/* ROM ordinal 19 -- func_ov062_02118258, 0x02118258, size 0xdc */
 // @symbol func_ov062_02118258
 extern "C" {
 namespace tu {  /* namespaced: a (void*) view of this symbol is in scope */
@@ -869,7 +792,6 @@ void func_ov062_02118258(char* c, int lim)
 }
 }  /* namespace tu */
 
-/* ROM ordinal 18 -- func_ov062_021181a0, 0x021181a0, size 0xb8 */
 // @symbol func_ov062_021181a0
 extern "C" {
 namespace tu {  /* namespaced: a (void*) view of this symbol is in scope */
@@ -880,7 +802,7 @@ void func_ov062_021181a0(char *c) {
     } else {
         _Z14ApproachLinearRiii((int*)(c + 0x98), 0x3000, 0x4cc);
     }
-    if (_ZN9Animation8FinishedEv(c + 0x350) == 0) return;
+    if (((Animation *)(c + 0x350))->Finished() == 0) return;
     {
         unsigned short *p = (unsigned short*)(((int)c + 0x3c4));
         *p = (unsigned short)(*p + 1);
@@ -895,7 +817,6 @@ void func_ov062_021181a0(char *c) {
 }
 }  /* namespace tu */
 
-/* ROM ordinal 17 -- func_ov062_0211811c, 0x0211811c, size 0x84 */
 // @symbol func_ov062_0211811c
 extern "C" {
 namespace tu {  /* namespaced: a (void*) view of this symbol is in scope */
@@ -906,7 +827,7 @@ void func_ov062_0211811c(char *c) {
         *p = (unsigned short)(*p - 1);
         return;
     }
-    if (_ZNK9Animation12WillHitFrameEi(c + 0x350, (unsigned short)(_ZNK9Animation13GetFrameCountEv(c + 0x350) - 1)) == 0)
+    if (((Animation *)(c + 0x350))->WillHitFrame((unsigned short)(((Animation *)(c + 0x350))->GetFrameCount() - 1)) == 0)
         return;
     {
         unsigned short *q = (unsigned short*)(((int)c + 0x3c4));
@@ -917,19 +838,17 @@ void func_ov062_0211811c(char *c) {
 }
 }  /* namespace tu */
 
-/* ROM ordinal 16 -- func_ov062_021180d4, 0x021180d4, size 0x48 */
 // @symbol func_ov062_021180d4
 extern "C" {
 void func_ov062_021180d4(void *c) {
     _Z14ApproachLinearRiii((int*)((char*)c + 0x98), 0, 0x1000);
-    int done = _ZN9Animation8FinishedEv((char*)c + 0x350);
+    int done = ((Animation *)((char *)c + 0x350))->Finished();
     if (!done) return;
     *(int*)((char*)c + 0x38c) = 1;
     func_ov062_02117994((char*)c, 4);
 }
 }
 
-/* ROM ordinal 15 -- func_ov062_02118058, 0x02118058, size 0x7c */
 // @symbol func_ov062_02118058
 extern "C" {
 void func_ov062_02118058(char *c){
@@ -946,7 +865,6 @@ void func_ov062_02118058(char *c){
 }
 }
 
-/* ROM ordinal 14 -- func_ov062_02118004, 0x02118004, size 0x54 */
 // @symbol func_ov062_02118004
 /* Signature deliberately copied from the local declaration above: the
    ROM name carries by-value class parameters (e.g. Fix12<int>), which
@@ -962,7 +880,6 @@ extern "C" void func_ov062_02118004(void *c, int a1) {
     _ZN8Particle20RunningSlidingDustAtE5Fix12IiES1_S1_(x, y, z);
 }
 
-/* ROM ordinal 13 -- func_ov062_02117c98, 0x02117c98, size 0x36c */
 // @symbol func_ov062_02117c98
 extern "C" {
 namespace tu {  /* namespaced: a conflicting file-scope view exists */
@@ -1089,9 +1006,9 @@ void func_ov062_02117c98(void* self)
             _ZN6Player4HurtERK7Vector3j5Fix12IiEjjj((Player*)found, &L.hv, 0, pw, 1, 0, 1);
             func_ov062_02117b48(self);
             if (*(s32*)(c + 0x390) == 2) {
-                _ZN8dActor_c8PoofDustEv(self);
+                ((dActor_c *)self)->PoofDust();
                 func_ov062_021179e4(self);
-                _ZN8dActor_c24KillAndTrackInDeathTableEv(self);
+                ((dActor_c *)self)->KillAndTrackInDeathTable();
             }
         }
     }
@@ -1104,7 +1021,6 @@ tail:
 }
 }  /* namespace tu */
 
-/* ROM ordinal 12 -- func_ov062_02117bf4, 0x02117bf4, size 0xa4 */
 // @symbol func_ov062_02117bf4
 namespace tu {  /* namespaced: a conflicting file-scope view exists */
 extern "C" void func_ov062_02117bf4(char* c){
@@ -1128,7 +1044,6 @@ extern "C" void func_ov062_02117bf4(char* c){
 }
 }  /* namespace tu */
 
-/* ROM ordinal 11 -- func_ov062_02117b9c, 0x02117b9c, size 0x58 */
 // @symbol func_ov062_02117b9c
 extern "C" {
 void *func_ov062_02117b9c(void *c) {
@@ -1148,7 +1063,6 @@ void *func_ov062_02117b9c(void *c) {
 }
 }
 
-/* ROM ordinal 10 -- func_ov062_02117b60, 0x02117b60, size 0x3c */
 // @symbol func_ov062_02117b60
 extern "C" {
 int func_ov062_02117b60(void* c)
@@ -1159,7 +1073,6 @@ int func_ov062_02117b60(void* c)
 }
 }
 
-/* ROM ordinal 9 -- func_ov062_02117b48, 0x02117b48, size 0x18 */
 // @symbol func_ov062_02117b48
 extern "C" {
 namespace tu {  /* namespaced: a conflicting file-scope view exists */
@@ -1173,7 +1086,6 @@ void func_ov062_02117b48(char *p)
 }
 }  /* namespace tu */
 
-/* ROM ordinal 8 -- func_ov062_02117acc, 0x02117acc, size 0x7c */
 // @symbol func_ov062_02117acc
 extern "C" {
 void func_ov062_02117acc(char *c){
@@ -1188,7 +1100,6 @@ void func_ov062_02117acc(char *c){
 }
 }
 
-/* ROM ordinal 7 -- func_ov062_02117a3c, 0x02117a3c, size 0x90 */
 // @symbol func_ov062_02117a3c
 extern "C" void func_ov062_02117a3c(char *c)
 {
@@ -1203,7 +1114,6 @@ extern "C" void func_ov062_02117a3c(char *c)
     }
 }
 
-/* ROM ordinal 6 -- func_ov062_021179e4, 0x021179e4, size 0x58 */
 // @symbol func_ov062_021179e4
 namespace tu {
 extern "C" void func_ov062_021179e4(daNknk_c* c) {
@@ -1218,7 +1128,6 @@ extern "C" void func_ov062_021179e4(daNknk_c* c) {
 }
 }
 
-/* ROM ordinal 5 -- func_ov062_02117994, 0x02117994, size 0x50 */
 // @symbol func_ov062_02117994
 extern "C" {
 void func_ov062_02117994(char *c, int idx) {
@@ -1233,7 +1142,6 @@ void func_ov062_02117994(char *c, int idx) {
 }
 }
 
-/* ROM ordinal 4 -- func_ov062_02117724, 0x02117724, size 0x270 */
 // @symbol func_ov062_02117724
 // 6f: keep constant live / flip coloring
 extern "C" {
@@ -1297,7 +1205,6 @@ void func_ov062_02117724(char *t, unsigned int a1, unsigned int a2, unsigned int
 }
 }  /* namespace tu */
 
-/* ROM ordinal 3 -- func_ov062_021175c0, 0x021175c0, size 0x164 */
 // @symbol func_ov062_021175c0
 extern "C" {
 namespace tu {  /* namespaced: conflicting file-scope views exist */
@@ -1354,23 +1261,20 @@ void func_ov062_021175c0(char *c)
 }
 }  /* namespace tu */
 
-/* ROM ordinal 2 -- func_ov062_02117570, 0x02117570, size 0x50 */
 // @symbol func_ov062_02117570
 namespace tu {  /* namespaced: conflicting file-scope views exist */
 extern "C" {
 struct dActor_c;
 struct dBgCh_Actr;
-int _ZNK10dBgCh_Actr10IsOnGroundEv(struct dBgCh_Actr *self);
 struct dBgCh_Actr *_ZNK10dBgCh_Actr14GetFloorResultEv(struct dBgCh_Actr *self);
 int SurfaceInfo_TestFlag0x20(int *p);
 void _ZN12dEnemyBase_c9SpawnCoinEv(struct dActor_c *self);
-void _ZN8dActor_c24KillAndTrackInDeathTableEv(struct dActor_c *self);
 void func_ov062_02117570(struct dActor_c *self) {
-    if (!_ZNK10dBgCh_Actr10IsOnGroundEv((struct dBgCh_Actr *)((char*)self + 0x144))) return;
+    if (!((::dBgCh_Actr *)((char *)self + 0x144))->IsOnGround()) return;
     struct dBgCh_Actr *floor = _ZNK10dBgCh_Actr14GetFloorResultEv((struct dBgCh_Actr *)((char*)self + 0x144));
     if (!SurfaceInfo_TestFlag0x20((int*)((char*)floor + 4))) return;
     _ZN12dEnemyBase_c9SpawnCoinEv(self);
-    _ZN8dActor_c24KillAndTrackInDeathTableEv(self);
+    ((::dActor_c *)self)->KillAndTrackInDeathTable();
 }
 }
 }  /* namespace tu */
