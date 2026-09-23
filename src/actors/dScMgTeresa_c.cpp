@@ -28,6 +28,10 @@
  *   local views below. Naming those structs in the header is what unblocks
  *   typed access.
  * - OAM::Render takes Fix12<int> by value, so it stays mangled.
+ *
+ * deslop
+ * Leftover: BooArray's base (0x4bd4) sits eight bytes into the Boo
+ *   record, so its view stays BooElem-based.
  */
 
 #pragma defer_codegen off
@@ -42,7 +46,28 @@
  * merged files each had their own `struct C` and they disagree offset for
  * offset, so they are kept apart. */
 
-/* func_ov006_0211ce94's view of the per-Boo element array at +0x4bd4. */
+/* One Boo: a 0x1c-byte record at 0x4bcc. Records what the ACC/VEL
+ * macros, BooElem's a/b/c/d and TeresaPmfA's flag/idx agree on
+ * (pos/ACC at +0, vel/a at +8, f0c/b at +0xc, flag at +0x14,
+ * idx/c at +0x15, d at +0x16). Used for scalar reads/writes only:
+ * struct-view read-modify-write (ACC += VEL) reorders against the
+ * raw int views elsewhere in the same function, so the macros stay
+ * raw. The PMF receiver structs stay separate: their
+ * incomplete-class representation is load-bearing. */
+struct Boo {
+    int pos;          /* 0x00 ACC */
+    char pad4[4];
+    int vel;          /* 0x08 VEL */
+    int f0c;          /* 0x0c */
+    u16 f10;          /* 0x10 per-record counter */
+    char pad12[2];
+    u8 flag;          /* 0x14 */
+    u8 idx;           /* 0x15, ce94's c */
+    u8 d;             /* 0x16, ce94's d */
+    char pad17[5];
+};
+/* ce94's shifted view: base 0x4bd4, eight bytes into the Boo record,
+ * so member[i].a IS vel. Kept apart from Boo above for that reason. */
 struct BooElem {
     int a;
     int b;
@@ -224,7 +249,7 @@ extern "C" void func_ov006_0211cc2c(unsigned char *raw) {
     } else {
         raw[0x4be3] = 4;
     }
-    *(int *)(raw + 0x4bcc) = 0x80000;
+    ((Boo *)(raw + 0x4bcc))->pos = 0x80000;
     *(int *)(raw + 0x4bd0) = 0x100000;
     *(int *)(raw + 0x4bd8) = -0x1800;
     *(short *)(raw + 0x4bdc) = 0;
@@ -251,7 +276,7 @@ extern "C" void func_ov006_0211cca8(void *arg){
   int idx,v,p,q;
   if(*(unsigned char*)(raw+0x4be2)==0) return;
   idx=*(unsigned char*)(raw+0x4be3);
-  p=*(int*)(raw+0x4bcc)>>12;
+  p=((Boo *)(raw + 0x4bcc))->pos>>12;
   q=*(int*)(raw+0x4bd0)>>12;
   if(*(unsigned char*)(raw+0x4be4)!=0) idx+=4;
   if(*(unsigned char*)(raw+0x4be1)==8) v=data_ov006_02135fc8[idx];
@@ -553,7 +578,7 @@ extern "C" void func_ov006_0211d5a8(TeresaPmfA *c){
 extern "C" void func_ov006_0211d608(char *raw)
 {
     *(unsigned char *)(raw + 0x4be0) = 1;
-    *(int *)(raw + 0x4bcc) = 0x80000;
+    ((Boo *)(raw + 0x4bcc))->pos = 0x80000;
     *(int *)(raw + 0x4bd0) = 0x100000;
     *(int *)(raw + 0x4bd4) = 0;
     *(int *)(raw + 0x4bd8) = -0x1800;
