@@ -8,11 +8,18 @@
  * decl_common.h is deliberately NOT included (it contradicts this
  * TU's own helper spellings).
  *
- * deslop
- * Leftover: SetAnim / dCcAc Init / dBgCh Init / NewSimple keep
+ * Leftover: SetAnim / dCcAc Init / dBgCh Init / NewSimple /
+ *   SpawnCoins / DropShadowRadHeight / Player::Bounce / Hurt keep
  *   computed spellings (Fix12<int> by value, wall 6az).
  * Leftover: GetFloorResult / GetWallResult / TouchesWater have no
  *   header member; the bridges stay TU-local.
+ * Leftover: dActor_c has no Pos(). PlayBank0 takes the camera-space
+ *   triple at mCamSpacePosX through a Vector3 pun
+ *   (CheckPlayerContact, EnterState8).
+ * Leftover: unk_0a4 and unk_0ac stay those names. They are
+ *   dActor_c's world-velocity X/Z beside mVertSpeed (this TU
+ *   multiplies them by the floor normal). The base header still
+ *   spells them unk_ on purpose.
  * Leftover: ModelCache wants a shared home with da1up_c's copy.
  */
 
@@ -93,10 +100,10 @@ struct Bca2 { int w[2]; };
  *   address (Vec3_HorzAngle, ModelAnim::SetAnim).
  *
  *   TWO needed a call site adapted rather than a declaration chosen.
- *   Sound::PlayBank0 keeps ordinal 6's `const void *`, so EnterState8 passes
- *   `(const void *)(c + 0x74)` instead of an lvalue; ApproachLinear keeps
- *   ordinal 23's `short *`, so UpdateState5 passes `&self->f8e`.  Same address,
- *   same register, and both members still match.
+ *   Sound::PlayBank0's position is the camera-space triple, passed as
+ *   *(Vector3 *)&mCamSpacePosX because dActor_c has no Pos().
+ *   ApproachLinear keeps a short *, so the turn helpers pass &mAngleY.
+ *   Same address, same register, and both members still match.
  *
  * The NINTH is genuinely load-bearing: RandomIntInternal must return
  * `unsigned int`.  Measured -- declaring it `int` leaves 36/37 matching and
@@ -303,8 +310,11 @@ int daGmch_c::ApplySlopeToVertSpeed(void *clsn)
     if (((dBgCh_Actr *)clsn)->IsOnGround()) {
         ((SurfaceInfo *)((char *)_ZNK10dBgCh_Actr14GetFloorResultEv(clsn) + 4))->CopyNormalTo(*(Vector3 *)n0);
         if (n0[1] != 0) {
-            long long a = (long long)n0[0] * (long long)unk_0a4;
-            long long b = (long long)n0[2] * (long long)unk_0ac;
+            /* unk_0a4 / unk_0ac: world velocity X/Z next to mVertSpeed. */
+            s32 velX = unk_0a4;
+            s32 velZ = unk_0ac;
+            long long a = (long long)n0[0] * (long long)velX;
+            long long b = (long long)n0[2] * (long long)velZ;
             int x = (int)((a + 0x800) >> 12);
             int y = (int)((b + 0x800) >> 12);
             mVertSpeed = -(_ZN4cstd4fdivEii(x + y, n0[1]) + 0x8000);
