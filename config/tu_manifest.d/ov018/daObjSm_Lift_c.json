@@ -1,9 +1,9 @@
 {
   "id": "ov018/daObjSm_Lift_c",
   "module": "ov018",
-  "source": "src_tu/actors/daObjSm_Lift_c.cpp",
+  "source": "src/actors/daObjSm_Lift_c.cpp",
   "promoted_source": "src/actors/daObjSm_Lift_c.cpp",
-  "status": "text-verified",
+  "status": "promoted",
   "boundary_confidence": "medium",
   "boundary_evidence": [
     "contiguous linker run: 0x21111a0..0x21117e8, 8 function(s), from build/tu_map.json (tools/tu_map.py)",
