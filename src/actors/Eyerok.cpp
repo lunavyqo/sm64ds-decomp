@@ -1,65 +1,14 @@
 //cpp
-/* Eyerok -- the two-handed boss inside Shifting Sand Land's pyramid (ov066).
+/* Eyerok, the two-handed pyramid boss (ov066). Partial TU: ordinals
+ * 25..58 (.text 0x021184c0..0x02119ce8), the largest contiguous linkable
+ * side (unmatched drafts hole the run). The ROM class name is
+ * daIwante_c; Eyerok is the tree's coined spelling, kept here.
  *
- * This file holds ROM ordinals 25..58 of the 61-function linker run at
- * 0x02115ee0..0x0211a2e4.  PARTIAL by necessity: six shards in the run
- * (ordinals 8, 16, 20, 22, 24, 59) reference 0x02112c08/c88/ca8/cc8/d48 under
- * the spellings func_02112c08 etc, which no modules symbols.txt defines, so
- * they carry no `complete` marker and are excluded from the link.  Those
- * addresses sit below this overlays own base (ov066 spans
- * 0x02115ee0..0x0211b0ec), in the lower overlay slot ov066 is co-resident
- * with; fourteen other overlays each name an ambiguous overlay-local symbol
- * at the same addresses and disagree on its kind, so naming them is an
- * overlay-residency question rather than a spelling one.  A licensed
- * .text claim cannot contain a hole, so this file takes the largest
- * contiguous linkable side: ordinals 25..58, 0x021184c0..0x02119ce8.
+ * Source ROM-ascending under defer_codegen off. Do not reorder.
  *
- * The RTTI name of this class in the ROM is daIwante_c (_ZTS10daIwante_c at
- * ov066:0x0211ad30).  `Eyerok` is a coined name that the tree already spells
- * into every one of this runs function symbols, so it is kept here; renaming
- * would be a symbols.txt change, which a text-only promotion does not make.
- *
- * FUNCTION ORDER IS ROM-ASCENDING.  mwccarm 2004/b56 emits .text in the
- * REVERSE of source order only while codegen is deferred; this file turns
- * deferral off (see the pragma below), which both makes the bracketed
- * opt_* pragmas around _ZN6Eyerok8BehaviorEv bind and flips emission to
- * source order -- so the file is written low address first.
- *
- * Assembled from these legacy one-function sources (ROM address order):
- *   [25] 0x021184c0  func_ov066_021184c0
- *   [26] 0x021184e0  func_ov066_021184e0
- *   [27] 0x021185e4  func_ov066_021185e4
- *   [28] 0x02118604  func_ov066_02118604
- *   [29] 0x02118658  func_ov066_02118658
- *   [30] 0x02118678  func_ov066_02118678
- *   [31] 0x021187c8  func_ov066_021187c8
- *   [32] 0x021188b0  func_ov066_021188b0
- *   [33] 0x02118934  func_ov066_02118934
- *   [34] 0x02118954  func_ov066_02118954
- *   [35] 0x021189a0  func_ov066_021189a0
- *   [36] 0x021189c0  func_ov066_021189c0
- *   [37] 0x02118a30  func_ov066_02118a30
- *   [38] 0x02118a50  func_ov066_02118a50
- *   [39] 0x02118b08  func_ov066_02118b08
- *   [40] 0x02118b28  func_ov066_02118b28
- *   [41] 0x02118be0  func_ov066_02118be0
- *   [42] 0x02118c00  func_ov066_02118c00
- *   [43] 0x02118cb8  func_ov066_02118cb8
- *   [44] 0x02118cdc  func_ov066_02118cdc
- *   [45] 0x02118de0  func_ov066_02118de0
- *   [46] 0x02118e04  func_ov066_02118e04
- *   [47] 0x0211901c  func_ov066_0211901c
- *   [48] 0x0211903c  func_ov066_0211903c
- *   [49] 0x02119348  func_ov066_02119348
- *   [50] 0x02119398  func_ov066_02119398
- *   [51] 0x0211944c  func_ov066_0211944c
- *   [52] 0x02119454  func_ov066_02119454
- *   [53] 0x021194a4  func_ov066_021194a4
- *   [54] 0x021194fc  func_ov066_021194fc
- *   [55] 0x02119654  _ZN6Eyerok16CleanupResourcesEv
- *   [56] 0x021197a0  _ZN6Eyerok16OnPendingDestroyEv
- *   [57] 0x021197a4  _ZN6Eyerok6RenderEv
- *   [58] 0x02119838  _ZN6Eyerok8BehaviorEv
+ * deslop
+ * Leftover: the func_ov066 helpers keep linker names; naming belongs
+ *   at their definitions.
  */
 
 /* Turns off deferred codegen, which does two things at once here: it makes
@@ -206,7 +155,6 @@ extern int func_ov066_02119454(void *c, void *p);
 
 typedef struct { int w[12]; } M48;
 
-/* ROM ordinal 25 -- func_ov066_021184c0, 0x021184c0, size 0x20 */
 // @symbol func_ov066_021184c0
 extern "C" {
 int func_ov066_021184c0(char *p)
@@ -220,7 +168,6 @@ int func_ov066_021184c0(char *p)
 }
 }
 
-/* ROM ordinal 26 -- func_ov066_021184e0, 0x021184e0, size 0x104 */
 // @symbol func_ov066_021184e0
 extern "C" {
 int func_ov066_021184e0(char *c)
@@ -259,7 +206,6 @@ int func_ov066_021184e0(char *c)
 }
 }
 
-/* ROM ordinal 27 -- func_ov066_021185e4, 0x021185e4, size 0x20 */
 // @symbol func_ov066_021185e4
 extern "C" {
 int func_ov066_021185e4(char *p)
@@ -273,7 +219,6 @@ int func_ov066_021185e4(char *p)
 }
 }
 
-/* ROM ordinal 28 -- func_ov066_02118604, 0x02118604, size 0x54 */
 // @symbol func_ov066_02118604
 extern "C" {
 int func_ov066_02118604(void *c) {
@@ -288,7 +233,6 @@ int func_ov066_02118604(void *c) {
 }
 }
 
-/* ROM ordinal 29 -- func_ov066_02118658, 0x02118658, size 0x20 */
 // @symbol func_ov066_02118658
 extern "C" {
 int func_ov066_02118658(char *p)
@@ -302,7 +246,6 @@ int func_ov066_02118658(char *p)
 }
 }
 
-/* ROM ordinal 30 -- func_ov066_02118678, 0x02118678, size 0x150 */
 // @symbol func_ov066_02118678
 extern "C" {
 int func_ov066_02118678(char* c)
@@ -346,7 +289,6 @@ int func_ov066_02118678(char* c)
 }
 }
 
-/* ROM ordinal 31 -- func_ov066_021187c8, 0x021187c8, size 0xe8 */
 // @symbol func_ov066_021187c8
 extern "C" {
 int func_ov066_021187c8(char* c){
@@ -365,7 +307,6 @@ int func_ov066_021187c8(char* c){
 }
 }
 
-/* ROM ordinal 32 -- func_ov066_021188b0, 0x021188b0, size 0x84 */
 // @symbol func_ov066_021188b0
 extern "C" {
 int func_ov066_021188b0(char* c){
@@ -383,7 +324,6 @@ int func_ov066_021188b0(char* c){
 }
 }
 
-/* ROM ordinal 33 -- func_ov066_02118934, 0x02118934, size 0x20 */
 // @symbol func_ov066_02118934
 extern "C" {
 int func_ov066_02118934(char *p)
@@ -397,7 +337,6 @@ int func_ov066_02118934(char *p)
 }
 }
 
-/* ROM ordinal 34 -- func_ov066_02118954, 0x02118954, size 0x4c */
 // @symbol func_ov066_02118954
 extern "C" {
 s32 func_ov066_02118954(char* c) {
@@ -412,7 +351,6 @@ s32 func_ov066_02118954(char* c) {
 }
 }
 
-/* ROM ordinal 35 -- func_ov066_021189a0, 0x021189a0, size 0x20 */
 // @symbol func_ov066_021189a0
 extern "C" {
 int func_ov066_021189a0(char *p)
@@ -426,7 +364,6 @@ int func_ov066_021189a0(char *p)
 }
 }
 
-/* ROM ordinal 36 -- func_ov066_021189c0, 0x021189c0, size 0x70 */
 // @symbol func_ov066_021189c0
 extern "C" {
 int RandomIntInternal(int* seed);
@@ -442,7 +379,6 @@ int func_ov066_021189c0(char* c){
 }
 }
 
-/* ROM ordinal 37 -- func_ov066_02118a30, 0x02118a30, size 0x20 */
 // @symbol func_ov066_02118a30
 extern "C" {
 int func_ov066_02118a30(char *p)
@@ -456,7 +392,6 @@ int func_ov066_02118a30(char *p)
 }
 }
 
-/* ROM ordinal 38 -- func_ov066_02118a50, 0x02118a50, size 0xb8 */
 // @symbol func_ov066_02118a50
 extern "C" {
 s32 func_ov066_02118a50(char* c) {
@@ -479,7 +414,6 @@ s32 func_ov066_02118a50(char* c) {
 }
 }
 
-/* ROM ordinal 39 -- func_ov066_02118b08, 0x02118b08, size 0x20 */
 // @symbol func_ov066_02118b08
 extern "C" {
 int func_ov066_02118b08(char *p)
@@ -493,7 +427,6 @@ int func_ov066_02118b08(char *p)
 }
 }
 
-/* ROM ordinal 40 -- func_ov066_02118b28, 0x02118b28, size 0xb8 */
 // @symbol func_ov066_02118b28
 extern "C" {
 s32 func_ov066_02118b28(char* c) {
@@ -516,7 +449,6 @@ s32 func_ov066_02118b28(char* c) {
 }
 }
 
-/* ROM ordinal 41 -- func_ov066_02118be0, 0x02118be0, size 0x20 */
 // @symbol func_ov066_02118be0
 extern "C" {
 int func_ov066_02118be0(char *p)
@@ -530,7 +462,6 @@ int func_ov066_02118be0(char *p)
 }
 }
 
-/* ROM ordinal 42 -- func_ov066_02118c00, 0x02118c00, size 0xb8 */
 // @symbol func_ov066_02118c00
 extern "C" {
 s32 func_ov066_02118c00(char* c) {
@@ -553,7 +484,6 @@ s32 func_ov066_02118c00(char* c) {
 }
 }
 
-/* ROM ordinal 43 -- func_ov066_02118cb8, 0x02118cb8, size 0x24 */
 // @symbol func_ov066_02118cb8
 extern "C" {
 int func_ov066_02118cb8(char *p)
@@ -567,7 +497,6 @@ int func_ov066_02118cb8(char *p)
 }
 }
 
-/* ROM ordinal 44 -- func_ov066_02118cdc, 0x02118cdc, size 0x104 */
 // @symbol func_ov066_02118cdc
 struct dActor_c;
 typedef struct { int x; } Obj44;
@@ -605,7 +534,6 @@ int func_ov066_02118cdc(char* c) {
 }
 }
 
-/* ROM ordinal 45 -- func_ov066_02118de0, 0x02118de0, size 0x24 */
 // @symbol func_ov066_02118de0
 extern "C" {
 int func_ov066_02118de0(char *p)
@@ -619,7 +547,6 @@ int func_ov066_02118de0(char *p)
 }
 }
 
-/* ROM ordinal 46 -- func_ov066_02118e04, 0x02118e04, size 0x218 */
 // @symbol func_ov066_02118e04
 extern "C" {
 int func_ov066_02118e04(void* self)
@@ -681,7 +608,6 @@ int func_ov066_02118e04(void* self)
 }
 }
 
-/* ROM ordinal 47 -- func_ov066_0211901c, 0x0211901c, size 0x20 */
 // @symbol func_ov066_0211901c
 extern "C" {
 int func_ov066_0211901c(char *p)
@@ -695,7 +621,6 @@ int func_ov066_0211901c(char *p)
 }
 }
 
-/* ROM ordinal 48 -- func_ov066_0211903c, 0x0211903c, size 0x30c */
 // @symbol func_ov066_0211903c
 extern "C" {
 int func_ov066_0211903c(char* self) {
@@ -785,7 +710,6 @@ int func_ov066_0211903c(char* self) {
 }
 }
 
-/* ROM ordinal 49 -- func_ov066_02119348, 0x02119348, size 0x50 */
 // @symbol func_ov066_02119348
 extern "C" {
 int func_ov066_02119348(void *c)
@@ -801,7 +725,6 @@ int func_ov066_02119348(void *c)
 }
 }
 
-/* ROM ordinal 50 -- func_ov066_02119398, 0x02119398, size 0xb4 */
 // @symbol func_ov066_02119398
 struct Vec4 { int a, b, c, d; ~Vec4(){} };
 extern "C" {
@@ -832,7 +755,6 @@ int func_ov066_02119398(char* c)
 }
 }
 
-/* ROM ordinal 51 -- func_ov066_0211944c, 0x0211944c, size 0x8 */
 // @symbol func_ov066_0211944c
 extern "C" {
 int func_ov066_0211944c(void)
@@ -841,12 +763,10 @@ int func_ov066_0211944c(void)
 }
 }
 
-/* ROM ordinal 52 -- func_ov066_02119454, 0x02119454, size 0x50 */
 // @symbol func_ov066_02119454
 struct C { char pad[0x48c]; PMF *pp; };
 extern "C" int func_ov066_02119454(void *cv, void *pv) { C *c = (C *)cv; PMF *p = (PMF *)pv; c->pp = p; PMF *q = c->pp; if (*q == 0) return 1; return (c->**q)(); }
 
-/* ROM ordinal 53 -- func_ov066_021194a4, 0x021194a4, size 0x58 */
 // @symbol func_ov066_021194a4
 extern "C" void func_ov066_021194a4(char *c) {
   Matrix4x3_FromRotationY(c+0x83c, *(short*)(c+0x8e));
@@ -856,7 +776,6 @@ extern "C" void func_ov066_021194a4(char *c) {
   _ZN10dBgW_KcMbg9TransformERK9Matrix4x3s(c+0x674, c+0x83c, *(short*)(c+0x8e));
 }
 
-/* ROM ordinal 54 -- func_ov066_021194fc, 0x021194fc, size 0x158 */
 // @symbol func_ov066_021194fc
 extern "C" {
 
@@ -893,7 +812,6 @@ void func_ov066_021194fc(char* c)
 }
 }
 
-/* ROM ordinal 55 -- _ZN6Eyerok16CleanupResourcesEv, 0x02119654, size 0x14c */
 // @symbol _ZN6Eyerok16CleanupResourcesEv
 int Eyerok::CleanupResources()
 {
@@ -926,7 +844,6 @@ int Eyerok::CleanupResources()
   return 1;
 }
 
-/* ROM ordinal 56 -- _ZN6Eyerok16OnPendingDestroyEv, 0x021197a0, size 0x4 */
 // @symbol _ZN6Eyerok16OnPendingDestroyEv
 /* Eyerok::OnPendingDestroy -- vtable slot 12. The ROM body is empty: the
  * override exists only to occupy the slot. */
@@ -934,7 +851,6 @@ void Eyerok::OnPendingDestroy()
 {
 }
 
-/* ROM ordinal 57 -- _ZN6Eyerok6RenderEv, 0x021197a4, size 0x94 */
 // @symbol _ZN6Eyerok6RenderEv
 int Eyerok::Render()
 {
@@ -963,7 +879,6 @@ int Eyerok::Render()
  * the shipped source.) */
 #pragma opt_common_subs off
 #pragma opt_strength_reduction off
-/* ROM ordinal 58 -- _ZN6Eyerok8BehaviorEv, 0x02119838, size 0x4b0 */
 // @symbol _ZN6Eyerok8BehaviorEv
 /* Eyerok::Behavior -- vtable slot 6. Real C++ method over the shared header.
  * EVec3 is a local plain-int triple (stack temps); callees whose ROM symbols
