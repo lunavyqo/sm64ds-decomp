@@ -1,13 +1,9 @@
-/* Memory Match uses the ROM class dScMgMemory_c. RTTI at
- * ov006:0x0213d090 names the class and its vtable begins at 0x0213d1b8.
- * The English minigame name is descriptive evidence, not a substitute for
- * that ROM-proven identity.
+/* Memory Match (MG_MEMORY). Twelve cards and three markers on the
+ * touch screen.
  *
- * SIZE 0x5340, measured by the unique MG_MEMORY factory at 0x020f5504.
- * The complete scene TU proves twelve 0x18-byte cards, three 0x14-byte
- * player markers, a cursor/dMeter_c object, and the state-machine scalars below.
- * Address-only handler spellings are descriptive and disclosed as coined in
- * symbols/actor_renames.tsv. */
+ * dScMgMemory_c_classInit is reconstructed (RTTI dScMgMemory_c, MG_MEMORY
+ * registry). Retail does not store that spelling.
+ */
 #ifndef DSCMGMEMORY_C_H
 #define DSCMGMEMORY_C_H
 
