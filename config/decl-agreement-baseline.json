@@ -4940,6 +4940,10 @@
         "param:#1 const void *",
         "param:#2 const void *"
       ],
+      "src/actors/daBgSnmHed_c.cpp": [
+        "param:#1 const void *",
+        "param:#2 const void *"
+      ],
       "src/actors/daBombking_c.cpp": [
         "param:#1 const void *",
         "param:#2 const void *"
@@ -5209,6 +5213,10 @@
         "param:#2 const void *"
       ],
       "src/actors/daBgSnmBdy_c.cpp": [
+        "param:#1 const void *",
+        "param:#2 const void *"
+      ],
+      "src/actors/daBgSnmHed_c.cpp": [
         "param:#1 const void *",
         "param:#2 const void *"
       ],
@@ -7041,6 +7049,11 @@
         "param:#2 void *",
         "param:#5 void *"
       ],
+      "src/actors/daBgSnmHed_c.cpp": [
+        "param:#2 void *",
+        "param:#5 void *",
+        "param:#6 void *"
+      ],
       "src/actors/daBmb_c.cpp": [
         "param:#2 dActor_c *",
         "param:#5 Vector3_16 *",
@@ -8658,6 +8671,9 @@
         "param:#5 unsigned int"
       ],
       "src/actors/Goomboss.cpp": [
+        "param:#5 unsigned int"
+      ],
+      "src/actors/daBgSnmHed_c.cpp": [
         "param:#5 unsigned int"
       ],
       "src/actors/daDsnBase_c.cpp": [
@@ -12149,6 +12165,9 @@
       "src/_ZN9daRFlag_c8BehaviorEv.cpp": [
         "return:int"
       ],
+      "src/actors/daBgSnmHed_c.cpp": [
+        "return:int"
+      ],
       "src/actors/daPkn_c.cpp": [
         "return:int"
       ],
@@ -15421,6 +15440,9 @@
       "src/actors/da1up_c.cpp": [
         "return:void"
       ],
+      "src/actors/daBgSnmHed_c.cpp": [
+        "return:void"
+      ],
       "src/actors/daBombking_c.cpp": [
         "return:void"
       ],
@@ -15733,6 +15755,9 @@
         "arity:3"
       ],
       "src/actors/daBgSnmBdy_c.cpp": [
+        "arity:3"
+      ],
+      "src/actors/daBgSnmHed_c.cpp": [
         "arity:3"
       ],
       "src/actors/daDgr_c.cpp": [
@@ -32815,6 +32840,10 @@
       ],
       "src/actors/daBgSnmBdy_c.cpp": [
         "param:#1 int"
+      ],
+      "src/actors/daBgSnmHed_c.cpp": [
+        "param:#1 int",
+        "return:int"
       ],
       "src/actors/daDkk_c.cpp": [
         "param:#1 int"

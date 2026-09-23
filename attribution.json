@@ -4667,6 +4667,25 @@
     "src/actors/daObjFl_Block_c.cpp#_ZN15daObjFl_Block_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daObjFl_Block_c.cpp#_ZN15daObjFl_Block_c6RenderEv": "tangosdev",
     "src/actors/daObjFl_Block_c.cpp#_ZN15daObjFl_Block_c8BehaviorEv": "tangosdev",
-    "src/actors/daObjFl_Block_c.cpp#_ZN15daObjFl_Block_c13InitResourcesEv": "tangosdev"
+    "src/actors/daObjFl_Block_c.cpp#_ZN15daObjFl_Block_c13InitResourcesEv": "tangosdev",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_cD1Ev": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_cD0Ev": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c11UpdateModelEv": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c6State3Ev": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c10InitState3Ev": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c6State2Ev": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c10InitState2Ev": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c6State1Ev": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c10InitState1Ev": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c6State0Ev": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c10InitState0Ev": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c17CallStateBehaviorEv": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c13CallStateInitEv": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c8SetStateEi": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c16CleanupResourcesEv": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c16OnPendingDestroyEv": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c6RenderEv": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c8BehaviorEv": "github-actions[bot]",
+    "src/actors/daBgSnmHed_c.cpp#_ZN12daBgSnmHed_c13InitResourcesEv": "github-actions[bot]"
   }
 }
