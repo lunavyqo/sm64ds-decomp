@@ -27,6 +27,10 @@
  * Blocked: the helpers and data are unnamed in symbols.txt, and much of the
  * scene layout is padding in dScMgPanel_c.h, so the helpers reach it by
  * offset.
+ * deslop
+ * Leftover: class-cast member access in the free helpers DIFFs broadly
+ *   (aliasing across 12 functions, measured); u16/s16 mixed reads on
+ *   unk_4ec4 are load-bearing (extension). Both stay raw.
  */
 
 #pragma defer_codegen off
