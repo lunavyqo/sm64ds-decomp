@@ -1,16 +1,16 @@
 //cpp
-/* The shared enemy base class (ov002/dEnemyBase_c), 31 functions,
- * .text 0x020ad838..0x020aedbc, enrolled and canonical.
+/**
+ * Shared base for the walking enemies.
  *
- * Source runs REVERSE of ROM (highest address first). Do not reorder.
- * One out-of-line destructor emits D2, D0, D1 in cartridge order and
- * makes this TU the key function (vague vtable/typeinfo deadstrip;
- * see the manifest). decl_common.h is deliberately NOT included
- * (it contradicts this TU's own helper spelling).
+ * IsGoingOffCliff probes the floor ahead and stores the result in
+ * mCliffState. AngleAwayFromWallOrCliff turns the actor when that
+ * probe says the floor is gone or too steep.
  *
- * deslop
- * Leftover: the func_ov002 helpers keep linker names; naming belongs
- *   at their definitions.
+ * The constructor and destructor are empty in the source. The compiler
+ * fills in the base call and the vtable store, which is why they stay
+ * declared and not inlined. Source order is the reverse of the ROM
+ * because codegen is deferred. decl_common.h is left out: its helper
+ * spellings disagree with this file.
  */
 #include "dEnemyBase_c.h"
 #include "decl_dBgPi.h"
@@ -470,7 +470,7 @@ int dEnemyBase_c::IsGoingOffCliff(dBgCh_Actr &clsn_, Fix12i fix2, s16 a3,
   void *clsn = &clsn_;
   Vector3 v1;
   Vector3 v2;
-  unk_106 = 0;
+  mCliffState = 0;
   if (_ZNK10dBgCh_Actr10IsOnGroundEv(clsn) != 0) {
     dBgCh_Lin line;
     v1.x = this->mPosX;
@@ -486,12 +486,12 @@ int dEnemyBase_c::IsGoingOffCliff(dBgCh_Actr &clsn_, Fix12i fix2, s16 a3,
       line.StartDetectingWater();
     if (line.DetectClsn()) {
       if (line.clsnDist - fix6 >= fix2)
-        unk_106 = 1;
+        mCliffState = 1;
       if (a5 == 0) {
         dBgPi result;
         line.CopyTo(result);
         if (result.GetClsnID() != -1) {
-          unk_106 = 1;
+          mCliffState = 1;
           return 1;
         }
       }
@@ -500,16 +500,16 @@ int dEnemyBase_c::IsGoingOffCliff(dBgCh_Actr &clsn_, Fix12i fix2, s16 a3,
       int idx = ((unsigned short)a3 >> 4) * 2;
       short s = data_02082214[idx + 1];
       if (normal.y < s)
-        unk_106 = 2;
+        mCliffState = 2;
     } else {
-      unk_106 = 1;
+      mCliffState = 1;
     }
   }
-  return this->unk_106 != 0;
+  return this->mCliffState != 0;
 }
 
 /* 0x020ae244, size 0x74                                                      */
-/* On a wall, reflect the heading off it; on a cliff edge (unk_106), turn
+/* On a wall, reflect the heading off it; on a cliff edge (mCliffState), turn
    around; otherwise report that nothing was done. */
 extern "C" {
 /* ReflectAngle takes Fix12<int> by value -- the mwccarm 6az wall, runbook
@@ -525,7 +525,7 @@ int dEnemyBase_c::AngleAwayFromWallOrCliff(dBgCh_Actr & clsn_, short & outAngle_
     if (_ZNK10dBgCh_Actr8IsOnWallEv(clsn)) {
         *outAngle = _ZN8dActor_c12ReflectAngleE5Fix12IiES1_s(this,
             mWallNormalX, mWallNormalZ, *outAngle);
-    } else if (unk_106) {
+    } else if (mCliffState) {
         *outAngle = (short)(mPrevAngleY + 0x8000);
     } else {
         return 0;

@@ -65,7 +65,11 @@ struct dEnemyBase_c : dActor_c {
     s16 mStateTimer;              /* 0x100 */
     u16 mDeathTimer;              /* 0x102 */
     u16 unk_104;                  /* 0x104 -- 5 subclasses */
-    u8 unk_106;                   /* 0x106 */
+    /* Written by IsGoingOffCliff. 0 means the probe still found floor.
+       1 means there is no floor, or the hit is past the probe. 2 means the
+       floor normal is steeper than the slope table. AngleAwayFromWallOrCliff
+       treats any non-zero value as a cliff edge. */
+    u8 mCliffState;               /* 0x106 */
     /* 0x107 -- set while Yoshi has this enemy in his mouth. Both matched
        OnYoshiTryEat overrides refuse the bite while it is non-zero (BobOmb
        returns mEatenByYoshi == 0; Rabbit returns 0 when it is set), Rabbit's
