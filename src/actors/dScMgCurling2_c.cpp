@@ -38,6 +38,7 @@
  *     whenever they collide (SpawnValue).
  *
  * Still raw:
+ * deslop
  * - Both arrays and the 0x4870 records are untyped in dScMgCurling2_c.h, so
  *   they are reached by offset. Giving them structs is what unblocks
  *   typed access here.
