@@ -710,7 +710,6 @@ extern int _ZTV8IceBlock[];
 extern int _ZTV9daManta_c[];
 extern int _ZTV8daGmch_c[];
 extern int _ZTV14CutsceneObject[];
-extern int _ZTV17ExtendingPlatform[];
 extern int _ZTV10DonutBlock[];
 extern int _ZTV8SignPost[];
 extern int _ZTV8Snowball[];
