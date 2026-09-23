@@ -1,148 +1,134 @@
 # Split the PC port out of tangosdev/sm64ds-decomp
 
-You are doing the repository split. Tangosdev (Tango) will paste this prompt to you. He is not a GitHub expert. Follow it literally. When a step says STOP, stop and report the exact command output. Do not improvise a different history rewrite.
+Publish the PC port as https://github.com/tangosdev/sm64ds-port with history kept, then open one normal pull request on https://github.com/tangosdev/sm64ds-decomp that removes the in-tree `port/` tree from decomp `main` only.
 
-Upstream matching repo: https://github.com/tangosdev/sm64ds-decomp
-New port repo: https://github.com/tangosdev/sm64ds-port
-Do this only as GitHub user `tangosdev`. Do not push to `lunavyqo/sm64ds-decomp` or any other fork.
+The operator is GitHub user `tangosdev`. Every `gh` call and every push uses that account. Do not push to `lunavyqo/sm64ds-decomp` or any other fork.
 
-Numbers below were measured on 2026-09-23. Re-read every SHA and branch list from GitHub before you use it. If a live value disagrees with an example SHA in this prompt, the live value wins. The example SHAs are sanity checks, not pins you invent.
+Do not invent a different history rewrite. Measurements below are from 2026-09-23. Re-read every SHA, ref, and `config/port_linkage.json` before use. A live value overrides an example SHA.
 
-## Goal
+## Outcome
 
-Publish the PC port as its own repository, with its commit history kept, and then open one normal pull request on `tangosdev/sm64ds-decomp` that removes the in-tree `port/` directory from **decomp `main` only**.
+Two different trees are both called `port/` today. Publish both. Do not merge them.
 
-Two different trees are both called `port/` today. Both must be published. They are not interchangeable.
+1. **Smoke suite, on decomp `main`.** `CMakeLists.txt`, `README.md`, `build-port.cmd`, `host_abi.h`, `docs/`, `hal/` (about 20 files), `ntr/`, `tests/`, `tools/` (`hostgen.py`, `host_frontier.py`, `linkage.py`, `ntr_manifest.py`, `romdata.py`), `unmatched/` (two `.cpp` files), and only `slice_gate1.txt`, `slice_gate2.txt`, `slice_gate3a.txt`, `slice_gate3b.txt`, `slice_gate4b.txt`, `slice_gate6.txt`, `slice_gate7.txt`, `slice_gate8.txt`, `slice_gate9.txt`. This is what `.github/workflows/port-build.yml` builds. It stays path-compatible with current matching `src/`. It is not the downloadable game.
+2. **Playable port, on `port/*` and `port-*`.** The integration branch is the `branch` field of decomp `config/port_linkage.json` (`port/link100` on that date). Tip then: `c0a3e1da770bad822c040ceacf4850f3b7aeac1e` (3515 ahead of decomp `main`, 682 behind). `port/release-0.4.0` was `6230b2996636e3fd0e03cb178161c94cb4b73cc9`. That tree has hundreds of `hal/` files (335), a `CMakeLists.txt` of about 1.3 MB / 22,367 lines, `res/`, `third_party/stb/`, `tools/battery.py`, `tools/romblob.py`, `ov*_syms.txt`, and hundreds of `slice_*.txt`. Annotated tag `v0.3.3` (message starts `0.3.3: generic controllers`) points at a combined commit on this line. https://tangos.dev/downloads is this line.
 
-1. **Smoke suite, on decomp `main`.** Top of `port/` is `CMakeLists.txt`, `README.md`, `build-port.cmd`, `host_abi.h`, `docs/`, `hal/` (about 20 files), `ntr/`, `tests/`, `tools/` (five scripts: `hostgen.py`, `host_frontier.py`, `linkage.py`, `ntr_manifest.py`, `romdata.py`), `unmatched/` (two `.cpp` files), and these manifests only: `slice_gate1.txt`, `slice_gate2.txt`, `slice_gate3a.txt`, `slice_gate3b.txt`, `slice_gate4b.txt`, `slice_gate6.txt`, `slice_gate7.txt`, `slice_gate8.txt`, `slice_gate9.txt`. This is what `.github/workflows/port-build.yml` builds. It is kept path-compatible with current matching `src/`. It is not the downloadable game.
-2. **Playable port, on `port/*` and `port-*` branches.** `port/link100` is the integration branch named by `config/port_linkage.json`. On 2026-09-23 its tip was `c0a3e1da770bad822c040ceacf4850f3b7aeac1e`, 3515 commits ahead of decomp `main` and 682 behind (`gh api repos/tangosdev/sm64ds-decomp/compare/main...port/link100`). `port/release-0.4.0` was `6230b2996636e3fd0e03cb178161c94cb4b73cc9`. `hal/` there has hundreds of files (335 on that date), `CMakeLists.txt` is about 1.3 MB / 22,367 lines, and the tree also has `res/`, `third_party/stb/`, `tools/battery.py`, `tools/romblob.py`, `ov*_syms.txt`, and hundreds of `slice_*.txt` files. Tag `v0.3.3` (annotated, message starts `0.3.3: generic controllers`) points at a combined commit whose game half is this line. The download at https://tangos.dev/downloads is this line, not decomp `main`.
+New-repo `main` is the filtered playable integration branch. New-repo `decomp-main` is the filtered smoke suite.
 
-The new repo's default branch `main` is the filtered playable integration branch (`port/link100`, or whatever branch `config/port_linkage.json` field `branch` names when you read it). The filtered smoke suite is published as branch `decomp-main`. It is not thrown away and it is not merged into the playable tree.
+### Success
 
-## Success criteria
-
-All of these are true before you report done:
-
-- `https://github.com/tangosdev/sm64ds-port` exists, public, owned by `tangosdev`, and its default branch is `main`.
-- `main` contains the playable tree at repo root (`hal/sub_screen.cpp`, `res/walk_window.rc`, `tools/battery.py`, `third_party/stb/stb_image.h`) and `git rev-list --count main` is well above the smoke suite (if the count is under 200, STOP; the playable history was not imported).
-- `decomp-main` contains the smoke suite at repo root (`slice_gate1.txt`, `tools/hostgen.py`, `hal/shims.cpp`) and does not have to contain `hal/sub_screen.cpp`.
-- Every `port/*` branch, every `port-*` branch, `ci/port-build-proto`, and tag `v0.3.3` that existed on the decomp at the start of the run also exist on the new repo. Missing any of them is a failed split.
-- History is rewritten only inside the fresh mirror clone. Commit subjects survive. The gate-1 subject `port: gate 1 - decompiled code runs natively on PC` is reachable from `decomp-main`. A current `port/link100` subject is reachable from `main`.
-- No commit was pushed to `tangosdev/sm64ds-decomp` except the cleanup branch you open as a pull request. Decomp `main` was not force-pushed. No `port/*` branch on the decomp was deleted.
-- A normal (not force) push created the port repo. The first push was to an empty repository.
-- The port repo contains no ROM, no `extracted/` dump, no `mwccarm`, no `license.dat`, no claims key, no `ghp_` / `github_pat_` token.
+- `tangosdev/sm64ds-port` is public, owned by `tangosdev`, default branch `main`.
+- `main` has the playable tree at repo root (`hal/sub_screen.cpp`, `res/walk_window.rc`, `tools/battery.py`, `third_party/stb/stb_image.h`). `git rev-list --count main` under 200 means the playable history was not imported. Do not push that result.
+- `decomp-main` has the smoke suite at repo root (`slice_gate1.txt`, `tools/hostgen.py`, `hal/shims.cpp`). It does not need `hal/sub_screen.cpp`.
+- Every decomp `port/*` branch, every `port-*` branch, `ci/port-build-proto`, and tag `v0.3.3` that existed at the start also exist on the new repo.
+- Commit subjects survive. `port: gate 1 - decompiled code runs natively on PC` is reachable from `decomp-main`. A current integration-branch subject is reachable from `main`.
+- The only push to `tangosdev/sm64ds-decomp` is the cleanup branch. Decomp `main` is not force-pushed. No decomp `port/*` branch is deleted.
+- The first push to `sm64ds-port` is a normal push to an empty repository.
+- The port repo has no ROM, `extracted/` dump, `mwccarm`, `license.dat`, claims key, or `ghp_` / `github_pat_` / `AKIA` token.
 - `SPLIT.md`, `DECOMP-PINS.tsv`, `LICENSE`, `.gitignore`, and `tools/check_nest.py` are on both `main` and `decomp-main`.
-- Smoke CI on the port repo's `decomp-main` configures and links the five ROM-free targets against a sparse checkout of decomp `main`.
-- Playable CI on the port repo's `main` checks out the recorded decomp pin with `port/` excluded, nests this repo at `port/`, and `python tools/check_nest.py` exits 0.
-- A pull request is open against `tangosdev/sm64ds-decomp` `main` that deletes `port/`, deletes `.github/workflows/port-build.yml`, gitignores `/port/`, makes `tools/port_refcheck.py` skip when `port/` is absent, and retargets living docs. That PR does not rewrite history. You do not merge it.
+- Smoke CI on `decomp-main` configures and links `smoke`, `smoke_gx`, `smoke_heap`, `smoke_roots`, and `smoke_fs` against a sparse checkout of decomp `main`.
+- Playable CI on `main` checks out the recorded decomp pin with `port/` excluded, nests this repo at `port/`, and `python tools/check_nest.py` exits 0.
+- A pull request is open against decomp `main` that deletes `port/`, deletes `.github/workflows/port-build.yml`, gitignores `/port/`, makes `tools/port_refcheck.py` skip when `port/` is absent, and retargets living docs. It does not rewrite history. Do not merge it.
 
-## How the build finds the decomp (do not redesign this)
+## Invariants
 
-Every current build script treats "the directory that contains `port/`" as the decomp root. That is the wiring. Keep it.
+### Nest, do not retarget the build
 
-Measured on decomp `main` and confirmed on `port/link100`:
+The directory that contains `port/` is the decomp root. Keep that.
 
-- `port/CMakeLists.txt` (smoke file, and the 22,367-line playable file) appends slice lines as `${CMAKE_CURRENT_SOURCE_DIR}/../${line}` and adds `${CMAKE_CURRENT_SOURCE_DIR}/../include`. The playable file sets `PORT_HOSTGEN_TU_ROOT` to `${CMAKE_CURRENT_SOURCE_DIR}/..` (line 1075 on `port/link100` as of 2026-09-23) and passes `--root ${CMAKE_CURRENT_SOURCE_DIR}/..` into `tools/facegen.py`.
-- Slice lines are **decomp-root-relative**. Smoke examples: `src/DotVec3.c`, `port/unmatched/ModelComponents_Render.cpp`, `port/unmatched/MeshCollider_DetectClsn_RaycastLine.cpp`. Playable `slice_gate10.txt` is the same shape (a thousand `src/` lines plus a handful of `port/` lines). `ov*_syms.txt` files are symbol tables, not source paths.
-- `port/tools/hostgen.py` defaults `--decomp` to `Path(__file__).resolve().parents[2]`, which is the decomp root when the script lives at `<decomp>/port/tools/hostgen.py`. CMake on `main` invokes it without `--decomp`. It then imports `<decomp>/tools/srcpath.py`.
-- `port/tools/romdata.py` and `port/tools/ntr_manifest.py` use `parents[2]` and read `<decomp>/extracted/arm9_dec.bin` and `<decomp>/build/assets/files.tsv`. Those paths are gitignored outputs of the decomp's `tools/unpack.py` and `tools/asset_catalog.py`. They are not in git and they must not move into the port repo.
-- `port/tools/host_frontier.py` sets `REPO = parents[2]`, `SRC = REPO/src`, `INCLUDE = REPO/include`, `PORT = REPO/port`.
-- `port/build-port.cmd` refuses to run unless `%~dp0..\extracted\arm9_dec.bin`, `%~dp0..\build\assets\files.tsv`, and `handles.tsv` exist, then configures `-S %~dp0.` and `-B %~dp0..\build\port`.
-- `PORT_REPO_ROOT` in the smoke `CMakeLists.txt` is the absolute parent of `port/`. `port/hal/fs.cpp` and several smokes use it as the asset root (overridable with env `SM64DS_ASSET_ROOT`). Assets stay in the decomp checkout.
-- `port/host_abi.h` rejects a 64-bit host. The MSVC build is 32-bit (`vcvars32`), same as `port-build.yml`.
+- Slice lines are decomp-root-relative (`src/DotVec3.c`, `port/unmatched/ModelComponents_Render.cpp`). `ov*_syms.txt` is a symbol table. CMake appends `${CMAKE_CURRENT_SOURCE_DIR}/../${line}` and adds `${CMAKE_CURRENT_SOURCE_DIR}/../include`. On the playable file, `PORT_HOSTGEN_TU_ROOT` is `${CMAKE_CURRENT_SOURCE_DIR}/..` (line 1075 of `port/link100` on 2026-09-23) and `facegen.py` is passed `--root` of that same parent. Re-read the live file; do not edit it.
+- `port/tools/hostgen.py` defaults `--decomp` to `Path(__file__).resolve().parents[2]`. CMake on `main` invokes it without `--decomp`. It imports `<decomp>/tools/srcpath.py`.
+- `romdata.py` and `ntr_manifest.py` use `parents[2]` and read `<decomp>/extracted/arm9_dec.bin` and `<decomp>/build/assets/files.tsv`. Those are gitignored outputs of `tools/unpack.py` and `tools/asset_catalog.py`. They stay out of the port repo.
+- `host_frontier.py`: `REPO = parents[2]`, `SRC = REPO/src`, `INCLUDE = REPO/include`, `PORT = REPO/port`.
+- `build-port.cmd` requires `%~dp0..\extracted\arm9_dec.bin`, `%~dp0..\build\assets\files.tsv`, and `handles.tsv`, then configures `-S %~dp0.` and `-B %~dp0..\build\port`.
+- `PORT_REPO_ROOT` is the parent of `port/`. `hal/fs.cpp` uses it as the asset root (`SM64DS_ASSET_ROOT` overrides). `host_abi.h` rejects a 64-bit host. The MSVC build is 32-bit (`vcvars32`).
 
-**Chosen wiring: strip the `port/` prefix, then clone the port repo into a decomp checkout at the directory named `port/`.** After the strip, the port repo root is today's `port/` contents. Nesting it at `<sm64ds-decomp>/port/` recreates the paths the scripts already use. `../src`, `../include`, `../tools/srcpath.py`, `../extracted`, and `../build/assets` resolve again. Slice text `port/unmatched/...` still resolves, because that string is decomp-root-relative and the nest recreates `<decomp>/port/unmatched/...`.
+**Strip the `port/` prefix, then nest the port repo at `<sm64ds-decomp>/port/`.** `git filter-repo --subdirectory-filter port` does the strip. Do not also pass `--path-rename`. After the strip, nesting recreates `../src`, `../include`, `../tools/srcpath.py`, `../extracted`, `../build/assets`, and the decomp-root-relative slice text `port/unmatched/...`.
 
-Do not rewrite `CMakeLists.txt`, `hostgen.py`, `romdata.py`, `build-port.cmd`, or the slice manifests to a sibling path or a `--decomp` flag. The playable `CMakeLists.txt` is over twenty thousand lines. A path rewrite there will break the game. `git-filter-repo --subdirectory-filter port` does the prefix strip. No source edit is required for the nest to work.
+Do not rewrite `CMakeLists.txt`, `hostgen.py`, `romdata.py`, `build-port.cmd`, or the slice manifests. A sibling clone does not match `CMAKE_CURRENT_SOURCE_DIR/..` or `parents[2]`. A submodule either puts `src/` at `decomp/src` or puts a gitlink back in the matching repo, and one pin cannot serve both decomp `main` and the playable line. Reject both.
 
-Why this and not the other two shapes:
-
-- A **sibling clone** (`../sm64ds-decomp`) does not match `CMAKE_CURRENT_SOURCE_DIR/..` or `parents[2]`. Making it match means editing the 22k-line CMake and every script. Do not do that in this split.
-- A **git submodule** either puts the decomp inside the port repo (`decomp/src` instead of `../src`) or puts a gitlink to the port back inside the matching repo. One pin also cannot serve both decomp `main` (smoke suite) and `port/link100` (playable line, hundreds of commits off main). Do not add a submodule.
-
-The decomp checkout must **exclude its own tracked `port/`** before you nest the new repo, or the two trees collide. This was tested with:
+Exclude the decomp's tracked `port/` before nesting, or the trees collide. This works on decomp `main` and on playable pins (those commits still track `port/`):
 
 ```sh
 git sparse-checkout init --no-cone
 git sparse-checkout set '/*' '!/port/'
 ```
 
-On a full decomp `main` checkout that still contains `port/`, that leaves `src/`, `include/`, and `tools/srcpath.py` present and removes `port/`. Use it for every decomp SHA, including `main` before the cleanup PR merges and including playable pins (those commits still track `port/`).
+That leaves `src/`, `include/`, and `tools/srcpath.py`, and removes `port/`.
 
-Playable `main` is built only against its recorded decomp pin. Smoke `decomp-main` is built against decomp `main`. Nesting the playable tree into a decomp `main` worktree will fail `port_refcheck` and the slice paths. That failure is expected. Do not "fix" it by editing slices during this split. Use two decomp worktrees.
+Playable `main` builds only against its recorded decomp pin. Smoke `decomp-main` builds against decomp `main`. Nesting the playable tree into a decomp `main` worktree fails `port_refcheck` and the slice paths. That failure is expected. Use two decomp worktrees. Do not edit slices to make the playable tree build against decomp `main`.
 
-## What moves, what stays
+### What moves, what stays
 
-### Moves into tangosdev/sm64ds-port (via history filter of `port/` only)
+**Moves, via a `port/`-only history filter.** The whole `port/` tree on every selected ref, prefix stripped (`port/hal/fs.cpp` becomes `hal/fs.cpp`): `CMakeLists.txt`, `README.md`, `build-port.cmd`, `build-port-trace.cmd`, `host_abi.h`, `hal/`, `ntr/`, `tests/`, `tools/`, `unmatched/`, `docs/`, `res/`, `third_party/`, every `slice*.txt`, every `ov*_syms.txt`, and the rest of the playable top-level text files.
 
-The entire `port/` tree on every selected ref, prefix stripped so `port/hal/fs.cpp` becomes `hal/fs.cpp`. That includes, when present on that ref: `CMakeLists.txt`, `README.md`, `build-port.cmd`, `build-port-trace.cmd`, `host_abi.h`, `hal/`, `ntr/`, `tests/`, `tools/`, `unmatched/`, `docs/`, `res/`, `third_party/`, every `slice*.txt`, every `ov*_syms.txt`, and the rest of the playable top-level text files.
+**Copied by hand** (they are not under `port/`, so `--subdirectory-filter port` drops them):
 
-### Copied by hand, because they are port material that does not live under `port/`
+- `.github/workflows/port-build.yml` from decomp `main`. Delete it on the decomp. Recreate it on port `decomp-main` only, using the workflow in this prompt.
+- `notes/port-selftest-bmp-gate.md` from decomp `main`. Copy to `docs/port-selftest-bmp-gate.md` on port `main` (the playable tree has `tools/battery.py`, `hal/host_settings.cpp`, and `ov009_syms.txt`). In the copy, rewrite `port/tools/` → `tools/`, `port/hal/` → `hal/`, `port/ov` → `ov`. Then delete the note from the decomp.
 
-- `.github/workflows/port-build.yml` from decomp `main`. It is deleted from the decomp in the cleanup PR and recreated on the port repo's `decomp-main` branch only, using the workflow later in this prompt. `git-filter-repo --subdirectory-filter port` will not carry it.
-- `notes/port-selftest-bmp-gate.md` from decomp `main`. Copy it to `docs/port-selftest-bmp-gate.md` on the port repo's `main` (the playable tree, which actually has `tools/battery.py`, `hal/host_settings.cpp`, and `ov009_syms.txt`). In the copy, rewrite the path prefixes `port/tools/` → `tools/`, `port/hal/` → `hal/`, `port/ov` → `ov` so they match the stripped tree. Then delete the note from the decomp in the cleanup PR.
+**Stays in the decomp:**
 
-### Stays in the decomp
+- All of `src/` and `include/`, including every `#ifndef SM64DS_PLATFORM_PC` guard. Those guards keep mwccarm `sizeof` asserts while the host build defines `SM64DS_PLATFORM_PC`. Do not delete, move, or edit them in the cleanup PR.
+- `tools/srcpath.py`, `tools/unpack.py`, `tools/asset_catalog.py`, `config/**`, the matching workflows, `tools/hooks/pre-push` (comment and echo only), `tools/port_refcheck.py` and `tools/test_port_refcheck.py` (the checker stays and skips when `port/` is absent), `tools/cpp_tu_compat.py` (it imports `port_refcheck`), `tools/validate_merge.py`'s optional `--port-refcheck-report` (an absent report is already neutral), and `config/port_linkage.json` (update `_comment` only; do not change `linkedTus`, `matchedTus`, `branch`, `commit`, or `measuredAt`).
+- Decomp `port/*`, `port-*`, and `ci/port-build-proto` branches, and tag `v0.3.3`. They remain the combined snapshot (decomp `src/` at that commit plus the old in-tree `port/`). The playable pin builds against that snapshot.
 
-- All of `src/` and `include/`, including every `#ifndef SM64DS_PLATFORM_PC` guard. Those guards are how the matching build keeps mwccarm `sizeof` asserts while the host build defines `SM64DS_PLATFORM_PC`. They are matching source. Do not delete them, do not move them, and do not edit them in the cleanup PR.
-- `tools/srcpath.py`, `tools/unpack.py`, `tools/asset_catalog.py`, `config/**`, the matching workflows, `tools/hooks/pre-push` (edited only to describe the skip), `tools/port_refcheck.py` and `tools/test_port_refcheck.py` (the checker stays; it learns to skip when `port/` is absent), `tools/cpp_tu_compat.py` (it imports `port_refcheck` and must keep compiling), `tools/validate_merge.py`'s optional `--port-refcheck-report` (absent report is already neutral), `config/port_linkage.json` (the LINKED stamp; update the comment that tells a human how to refresh it, do not change the numbers).
-- Decomp `port/*`, `port-*`, and `ci/port-build-proto` branches, and tag `v0.3.3`. They remain the combined snapshot (decomp `src/` at that commit plus the old in-tree `port/`). Deleting them destroys the only tree the playable pin can build against. Do not delete them.
+**Does not move:**
 
-### Does not move
+- `src/` edits that exist only on a `port/*` branch. The filter drops them from the port repo. They stay on that decomp branch. Building that port branch means checking out that same decomp SHA. Do not filter `src/` or `include/` into the port repo.
+- `mods/Player_ScaleByCharFactor.c` (on the `v0.3.3` tag, not under `port/`).
+- Matching branches (`cpp/*`, `agents/*`, `fix/*`, and the rest). A name that merely contains `port` is not a port branch (`docs/profile-lifecycle-crosswalk`).
 
-- `src/` edits that exist only on a `port/*` branch. `--subdirectory-filter port` drops them from the port repo on purpose. They stay on that decomp branch. Building that port branch means checking out that same decomp SHA. Do not also filter `src/` or `include/` into the port repo.
-- `mods/Player_ScaleByCharFactor.c` (present on the `v0.3.3` tag, not part of `port/`).
-- Matching branches (`cpp/*`, `agents/*`, `fix/*`, and the rest). Re-list refs; do not include a branch just because its name contains the substring `port` (`docs/profile-lifecycle-crosswalk` is not a port branch).
+### Constraints
 
-## Hard rules
-
-- Do not run `git filter-repo` inside a decomp checkout you use for matching. Use a new directory.
-- Do not pass `--force` to `git filter-repo` to override its fresh-clone refusal. If it demands `--force`, you are in the wrong repository. STOP.
-- Do not force-push. Do not `--force`, `--force-with-lease`, or `--mirror` push. A brand-new empty repo accepts a normal push.
-- Do not push the filtered history to `tangosdev/sm64ds-decomp`. Before every push, the destination URL must contain `tangosdev/sm64ds-port` and must not contain `sm64ds-decomp`.
-- Do not create the port repo under any account but `tangosdev`. If the name is taken, or the repo exists and is not empty, STOP and ask Tango. Do not delete a repository.
-- Do not commit a ROM, an `extracted/` tree, `mwccarm`, `license.dat`, a claims key, or a token. `res/walk_window.ico` on `port/link100` is a plain window glyph (a dark rounded square and a lighter pane). Keep that file. Anything that is a character sprite, a level texture, a `.nds`, a `.bmd`, or a `romdata.bin` does not get pushed. If such a blob is in history, strip it with a second `git filter-repo` **before the first push**. After the first push, do not rewrite history; delete the file in a new commit only if it is on the tip and was not in older commits you already pushed. If you already pushed a bad blob, STOP and tell Tango. Do not force-push the fix.
-- Do not merge the playable tree and the smoke suite together.
+- Rewrite history only in a fresh mirror clone, never in a matching worktree. If `git filter-repo` demands `--force`, halt. That refusal means this is the wrong repository.
+- No `--force`, `--force-with-lease`, or `--mirror` push. An empty repo accepts a normal push.
+- Before every push, the destination URL contains `tangosdev/sm64ds-port` and does not contain `sm64ds-decomp`.
+- Create `sm64ds-port` only as `tangosdev`. If the name is taken by someone else, or the repo exists and is not empty, halt and report. Do not delete a repository.
+- No ROM, `extracted/` tree, `mwccarm`, `license.dat`, claims key, or token in any commit. `res/walk_window.ico` on the playable tree is a plain window glyph (dark rounded square, lighter pane). Keep it. A character sprite, level texture, `.nds`, `.bmd`, or `romdata.bin` does not get pushed. Strip a bad blob with a second `git filter-repo` before the first push. After the first push, do not rewrite. If a bad blob is already pushed, halt and report. Do not force-push a fix.
+- Do not merge the playable tree and the smoke suite.
 - Do not edit the playable `CMakeLists.txt` to change path resolution.
 - Do not delete decomp `port/*` branches.
-- Do not touch decomp `src/` or `include/` in the cleanup PR.
-- The word the matching repo uses for sloppy history is irrelevant here. Do not go hunting for a style rewrite. This task is the split.
+- The cleanup PR does not touch decomp `src/` or `include/`.
+
+### Halt and report
+
+Halt and report to the operator only for an irreversible case:
+
+- `gh auth status` is not `tangosdev`.
+- `tangosdev/sm64ds-port` exists and is not empty, or the name is taken by another owner.
+- A secret or forbidden blob is already in a commit that has been pushed. Do not print the secret.
+- A push would go to `sm64ds-decomp`, or `git filter-repo` is about to run outside the fresh mirror.
+- The remote rejects the first push because it is not empty.
+
+A local filter that fails a sentinel check is redone from a new mirror before any push. That is a failed step, not a question for the operator.
 
 ## Procedure
 
-### 0. Identity, tools, and the name
+### 0. Account, empty target, rewriter
 
 ```sh
 gh auth status
-```
-
-The active account must be `tangosdev`. If it is not, STOP. Do not `gh auth login` as someone else.
-
-```sh
 gh repo view tangosdev/sm64ds-port --json name,isEmpty,url
 ```
 
-A 404 means the name is free for this token. Confirm the token can see private repos (`repo` scope) so a private existing repo is not invisible. If the repo exists and `isEmpty` is false, STOP and ask Tango. If it exists and is empty, you may push to it. If it does not exist, create it only after the local filter is scanned and ready, with:
+The active account is `tangosdev`. A 404 means the name is free for this token. The token needs `repo` scope so a private existing repo is not invisible. If the repo exists and `isEmpty` is false, halt and report. If it exists and is empty, push to it later. If it does not exist, create it only after the local filter is scanned:
 
 ```sh
 gh repo create tangosdev/sm64ds-port --public --disable-wiki \
   --description "Native PC port of Super Mario 64 DS. Byte-matching source stays in tangosdev/sm64ds-decomp."
 ```
 
-Do not pass `--clone` and do not let `gh` add a README or a license. The first commit must be the filtered history, not an empty GitHub commit you then have to merge.
-
-Install the rewriter if needed and read its help before you use it:
+Do not pass `--clone`. Do not let `gh` add a README or a license. The first commit is the filtered history.
 
 ```sh
 python3 -m pip install --user git-filter-repo
 git filter-repo -h | head -n 80
 ```
 
-You need `--subdirectory-filter` and `--refs` in that help. If they are absent, STOP. Do not fall back to `git filter-branch`.
+`--subdirectory-filter` and `--refs` must be in that help. Do not fall back to `git filter-branch`.
 
-### 1. Fresh mirror, never the matching worktree
-
-Pick a new directory. This example uses `$HOME/sm64ds-port-split`. Do not reuse a decomp clone.
+### 1. Fresh mirror
 
 ```sh
 mkdir -p "$HOME/sm64ds-port-split"
@@ -153,15 +139,9 @@ git remote get-url origin
 git rev-parse --is-bare-repository
 ```
 
-Origin must be `https://github.com/tangosdev/sm64ds-decomp.git` (or the SSH form of that same repo). `--is-bare-repository` must print `true`. If origin is a fork, STOP.
+Origin is `https://github.com/tangosdev/sm64ds-decomp.git` (or the SSH form of that repo). `--is-bare-repository` prints `true`.
 
-Re-list the refs you will keep. Include a branch only when its name is exactly one of these:
-
-- `main`
-- `port/<anything>`
-- `port-<anything>` (examples that existed on 2026-09-23: `port-0.2.7-hotfix`, `port-fix-ledgehang`, `port-fix-momentum`, `port-fix-walljump`, `port-gate-10`, `port-infra-consolidated`, `port-mount-noseat-cluster`, `port-particles`, `port-portable-kit`, `port-stream-b`)
-- `ci/port-build-proto`
-- tag `v0.3.3`
+Keep a ref only when it is `main`, `port/<anything>`, `port-<anything>`, `ci/port-build-proto`, or tag `v0.3.3`. On 2026-09-23 that was 56 `port/*` branches, 10 `port-*` branches (`port-0.2.7-hotfix`, `port-fix-ledgehang`, `port-fix-momentum`, `port-fix-walljump`, `port-gate-10`, `port-infra-consolidated`, `port-mount-noseat-cluster`, `port-particles`, `port-portable-kit`, `port-stream-b`), plus `main`, `ci/port-build-proto`, and `v0.3.3`. Re-read the live list.
 
 ```sh
 git for-each-ref --format='%(objectname) %(refname)' \
@@ -172,19 +152,17 @@ git for-each-ref --format='%(objectname) %(refname)' \
   refs/tags/v0.3.3 | tee "$HOME/sm64ds-port-split/pins-before.txt"
 ```
 
-Confirm `refs/heads/port/link100` (or the branch named by a fresh read of decomp `config/port_linkage.json` key `branch`) is in that file. Confirm `refs/heads/port/release-0.4.0` and `refs/tags/v0.3.3` are in it. If `port/link100` is gone, read `config/port_linkage.json` from decomp `main` (`git show main:config/port_linkage.json`) and use the `branch` value. If that branch does not exist either, STOP and ask Tango which playable branch is the default.
+The integration ref must be in that file. Read it from `git show main:config/port_linkage.json` (`branch`, expected `port/link100`). If that branch does not exist, halt and report the missing ref. Also require `refs/heads/port/release-0.4.0` and `refs/tags/v0.3.3` when they still exist upstream. A live set far below the 2026-09-23 inventory means the mirror is incomplete; re-clone before filtering.
 
-Count them. On 2026-09-23 there were 56 `port/*` branches, 10 `port-*` branches, plus `main`, `ci/port-build-proto`, and `v0.3.3`. A live count that is far smaller means the mirror is incomplete. STOP.
-
-Also print the integration tip and decomp `main` tip, to a different file so they do not get mixed into the `SHA ref` list:
+Record the tips separately so they do not get appended to the `SHA ref` list:
 
 ```sh
 git rev-parse refs/heads/main refs/heads/port/link100 | tee "$HOME/sm64ds-port-split/tip-shas.txt"
 ```
 
-### 2. Filter
+Use the live integration ref in that command if it is not `port/link100`.
 
-From inside the mirror:
+### 2. Filter
 
 ```sh
 mapfile -t REFS < <(git for-each-ref --format='%(refname)' \
@@ -202,17 +180,7 @@ done
 git filter-repo --subdirectory-filter port "${args[@]}"
 ```
 
-`--subdirectory-filter port` keeps only history that touches `port/` and makes that directory the repository root. Do not also pass `--path-rename`. Do not pass `--invert-paths`.
-
-`git filter-repo` removes `origin`. Confirm that:
-
-```sh
-git remote -v
-```
-
-The command must print nothing. If `origin` still points at `sm64ds-decomp`, do not push. Remove it with `git remote remove origin` only if you are still inside this mirror and you have not pushed.
-
-Write the branch map the docs commit will ship:
+Do not pass `--path-rename` or `--invert-paths`. `git filter-repo` removes `origin`. `git remote -v` must print nothing. If `origin` still points at `sm64ds-decomp`, `git remote remove origin` only while you are still inside this mirror and have not pushed.
 
 ```sh
 {
@@ -224,11 +192,9 @@ Write the branch map the docs commit will ship:
 } | tee "$HOME/sm64ds-port-split/DECOMP-PINS.tsv"
 ```
 
-`pins-before.txt` is only the `for-each-ref` output: each line is `SHA ref`. Do not append anything else to that file. Every `decomp_sha` is the pre-filter SHA. Every `port_sha` is the post-filter SHA. They must differ.
+`pins-before.txt` is only `for-each-ref` output: each line is `SHA ref`. Do not append anything else. Every `decomp_sha` is the pre-filter SHA. Every `port_sha` is the post-filter SHA. They differ.
 
 ### 3. Branch names
-
-Still in the mirror:
 
 ```sh
 git branch -m main decomp-main
@@ -236,45 +202,41 @@ git branch main refs/heads/port/link100
 git symbolic-ref HEAD refs/heads/main
 ```
 
-If the integration branch is not `port/link100`, use the live name in that second command. `main` and `port/link100` should point at the same filtered commit before the docs commit. `decomp-main` is the filtered decomp `main`. Do not delete `port/link100`.
-
-Sanity, still in the mirror:
+If the integration branch is not `port/link100`, use the live name. After this, `main` and `port/link100` point at the same filtered commit, before the docs commits. `decomp-main` is filtered decomp `main`. Do not delete `port/link100`.
 
 ```sh
-git ls-tree -r --name-only main | grep -c .
 git cat-file -e main:hal/sub_screen.cpp
 git cat-file -e main:res/walk_window.rc
 git cat-file -e main:tools/battery.py
 git cat-file -e decomp-main:slice_gate1.txt
 git cat-file -e decomp-main:tools/hostgen.py
 git cat-file -e decomp-main:hal/shims.cpp
-git log -1 --format='%s' decomp-main
-git merge-base --is-ancestor $(git rev-list --max-count=1 --grep='port: gate 1' decomp-main) decomp-main
+git merge-base --is-ancestor \
+  "$(git rev-list --max-count=1 --grep='port: gate 1' decomp-main)" decomp-main
+git rev-list --count main
 ```
 
-`git cat-file -e` exits non-zero when the path is missing. Any miss here means the filter or the branch rename is wrong. STOP.
+Any missing path, or a `main` count under 200, means the filter or the rename is wrong. Delete the mirror and redo from step 1. Do not push.
 
-`git rev-list --count main` under 200 means you filtered only the smoke history. STOP.
+### 4. Docs commits
 
-### 4. Docs commits on a worktree
+A bare repo treats `HEAD` as a checkout. Point it at a ref you will not edit, or `git worktree add` of `main` / `decomp-main` fails with "already checked out".
 
 ```sh
-# A bare repo treats HEAD as a checkout. Point it at a ref you will not
-# edit, or `git worktree add` of main/decomp-main fails with "already checked out".
 git symbolic-ref HEAD refs/heads/ci/port-build-proto
 git worktree add "$HOME/sm64ds-port-split/wt-main" main
 cd "$HOME/sm64ds-port-split/wt-main"
 ```
 
-Copy `LICENSE` byte-for-byte from decomp `main` (`git --git-dir=$HOME/sm64ds-port-split/decomp-mirror.git show decomp-main:LICENSE` will fail, because `LICENSE` lived at the decomp root and the filter dropped it). Take it from the mirror **before** you need it: if you already filtered, fetch the blob from GitHub:
+`LICENSE` lived at the decomp root, so the filter dropped it. Take it from GitHub:
 
 ```sh
 gh api repos/tangosdev/sm64ds-decomp/contents/LICENSE?ref=main --jq .content | base64 -d > LICENSE
 ```
 
-Confirm the file starts with `MIT License` and contains `Copyright (c) 2026 Tango`. Do not edit it.
+The file starts with `MIT License` and contains `Copyright (c) 2026 Tango`. Do not edit it.
 
-Write `.gitignore` with exactly this content:
+`.gitignore`, exactly:
 
 ```
 # Nintendo-derived and local build output. Never commit these.
@@ -306,7 +268,7 @@ __pycache__/
 .vs/
 ```
 
-Write `tools/check_nest.py` with exactly this content:
+`tools/check_nest.py`, exactly:
 
 ```python
 #!/usr/bin/env python3
@@ -358,12 +320,12 @@ if __name__ == "__main__":
     sys.exit(main())
 ```
 
-Copy `DECOMP-PINS.tsv` from `$HOME/sm64ds-port-split/DECOMP-PINS.tsv` into the worktree root.
+Copy `$HOME/sm64ds-port-split/DECOMP-PINS.tsv` to the worktree root.
 
-Write `SPLIT.md` with the following facts, in this order. Use these words so a later reader does not invent a sibling layout:
+Write `SPLIT.md` with these facts, in order:
 
 1. This repository is the old `port/` directory of https://github.com/tangosdev/sm64ds-decomp with the `port/` prefix removed. Byte-matching source stays in the decomp repo.
-2. Clone the decomp, exclude its tracked `port/`, then clone this repo into that checkout at a directory that must be named `port`:
+2. Clone the decomp, exclude its tracked `port/`, then clone this repo into that checkout at a directory named `port`:
 
 ```sh
 git clone https://github.com/tangosdev/sm64ds-decomp.git sm64ds-decomp
@@ -379,36 +341,29 @@ git checkout <port-branch>
 python tools/check_nest.py
 ```
 
-3. Which pin. Branch `main` of this repo (and `port/link100`) builds against the `decomp_sha` for `refs/heads/port/link100` in `DECOMP-PINS.tsv`. Branch `decomp-main` of this repo builds against decomp branch `main`. Do not point the playable branch at decomp `main`. Do not point the smoke branch at the playable pin.
-4. Use a second decomp worktree for matching work. Do not nest the playable `port/` inside the decomp `main` worktree you push matching commits from. `tools/port_refcheck.py` in the decomp still runs when `port/` exists, and the playable slices do not match decomp `main`'s `src/`.
-5. Assets stay in the decomp checkout. From the decomp root, with your own cartridge dump: `python tools/unpack.py path/to/your-own-sm64ds.nds` then `python tools/asset_catalog.py generate path/to/your-own-sm64ds.nds`. Then, on Windows with the 32-bit MSVC toolset, run `port\build-port.cmd`. The ROM, `extracted/`, and `build/assets/` are gitignored. Do not commit them.
-6. `hostgen.py`, `romdata.py`, and `build-port.cmd` find the decomp as the parent of this repo. That is correct only while this repo is checked out at `<decomp>/port`. Passing `--decomp` is for a one-off `hostgen.py` invocation from another directory. Do not change the default to a sibling path.
-7. Legal. This repo is MIT, same license file as the decomp, and that license covers the original code only. It contains no ROM and no Nintendo assets. Do not add any. `third_party/stb/` is the public-domain stb headers and stays. `res/walk_window.ico` is a plain window icon and stays.
-8. After the split, a rename in decomp `src/` can strand a slice path. Fix that in this repo, on `decomp-main` for the smoke suite or on the playable branch when the pin moves. The decomp cleanup no longer carries `port/` on `main`.
+3. Branch `main` of this repo (and the integration branch) builds against the `decomp_sha` for that integration ref in `DECOMP-PINS.tsv`. Branch `decomp-main` builds against decomp `main`. Do not point the playable branch at decomp `main`, or the smoke branch at the playable pin.
+4. Use a second decomp worktree for matching work. Do not nest the playable tree in the decomp `main` worktree you push matching commits from. Decomp `tools/port_refcheck.py` still runs when `port/` exists, and the playable slices do not match decomp `main`'s `src/`.
+5. Assets stay in the decomp checkout. From the decomp root, with a cartridge dump you own: `python tools/unpack.py path/to/your-own-sm64ds.nds` then `python tools/asset_catalog.py generate path/to/your-own-sm64ds.nds`. Then, on Windows with the 32-bit MSVC toolset, run `port\build-port.cmd`. The ROM, `extracted/`, and `build/assets/` are gitignored.
+6. `hostgen.py`, `romdata.py`, and `build-port.cmd` find the decomp as the parent of this repo. That holds only while this repo is checked out at `<decomp>/port`. `--decomp` is for a one-off `hostgen.py` invocation from another directory.
+7. MIT, same `LICENSE` as the decomp, covering original code only. No ROM and no Nintendo assets. `third_party/stb/` is the public-domain stb headers. `res/walk_window.ico` is a plain window icon.
+8. After the split, a `src/` rename can strand a slice path. Fix that in this repo: `decomp-main` for the smoke suite, the playable branch when the pin moves. Decomp `main` no longer carries `port/`.
 9. SHAs in this repo are not decomp SHAs. `DECOMP-PINS.tsv` maps them. `git filter-repo` rewrote every published commit.
-
-Commit on `main`:
 
 ```sh
 git add LICENSE .gitignore SPLIT.md DECOMP-PINS.tsv tools/check_nest.py
 git commit -m "Record how this repo nests back into sm64ds-decomp"
 ```
 
-Copy the playable selftest note onto this same branch:
+On this same branch, copy the playable selftest note and rewrite its path prefixes (`port/tools/` → `tools/`, `port/hal/` → `hal/`, `port/ov` → `ov`):
 
 ```sh
 gh api repos/tangosdev/sm64ds-decomp/contents/notes/port-selftest-bmp-gate.md?ref=main --jq .content \
   | base64 -d > docs/port-selftest-bmp-gate.md
-```
-
-Then replace the path prefixes in that copy only (`port/tools/` → `tools/`, `port/hal/` → `hal/`, `port/ov` → `ov`). Commit:
-
-```sh
 git add docs/port-selftest-bmp-gate.md
 git commit -m "Move the walk_window selftest note into the port repo"
 ```
 
-Add the playable nest workflow `.github/workflows/nest-check.yml` on `main` only, with exactly this content. `DECOMP_REF` is read from the pin file so you do not hard-code a SHA that this prompt's examples may have stale:
+Add `.github/workflows/nest-check.yml` on `main` only. `DECOMP_REF` is the pin file, not a SHA copied from this prompt:
 
 ```yaml
 name: nest-check
@@ -460,14 +415,14 @@ jobs:
           python decomp/port/tools/check_nest.py
 ```
 
-If the integration branch is not `refs/heads/port/link100`, change that awk string to the live ref. Commit this workflow on `main`:
+If the integration branch is not `refs/heads/port/link100`, change that awk string to the live ref.
 
 ```sh
 git add .github/workflows/nest-check.yml
 git commit -m "Check playable slice paths against the recorded decomp pin"
 ```
 
-Cherry-pick only the license / gitignore / SPLIT / pins / check_nest commit onto `decomp-main`. Do not cherry-pick the selftest note (those paths exist on the playable tree) and do not cherry-pick `nest-check.yml` (it pins the playable SHA).
+Cherry-pick only the license / gitignore / SPLIT / pins / `check_nest` commit onto `decomp-main`. Do not cherry-pick the selftest note or `nest-check.yml`.
 
 ```sh
 DOCS=$(git log --format='%H' --grep='^Record how this repo nests back into sm64ds-decomp$' -n 1 main)
@@ -477,9 +432,9 @@ git worktree add "$HOME/sm64ds-port-split/wt-smoke" decomp-main
 git -C "$HOME/sm64ds-port-split/wt-smoke" cherry-pick "$DOCS"
 ```
 
-If the cherry-pick conflicts, STOP. Do not resolve it by taking the playable `CMakeLists.txt`.
+If the cherry-pick conflicts, halt and report. Do not resolve it by taking the playable `CMakeLists.txt`.
 
-On `wt-smoke`, add `.github/workflows/port-build.yml` with exactly this content, then commit it with subject `Run the smoke port build against decomp main`:
+On `wt-smoke`, add `.github/workflows/port-build.yml` exactly as follows and commit it with subject `Run the smoke port build against decomp main`:
 
 ```yaml
 name: port-build
@@ -580,15 +535,15 @@ jobs:
           cmake --build decomp\build\portci --target smoke smoke_gx smoke_heap smoke_roots smoke_fs -- -k 0
 ```
 
-Until the decomp cleanup PR merges, decomp `main` still contains `tools/port_refcheck.py` and a tracked `port/`. The sparse-checkout removes the tracked tree and the nest puts the filtered smoke suite back. `port_refcheck.py` on current decomp `main` understands the nine `slice_gate` manifests. That is the right checker for `decomp-main`. Do not point this workflow at the playable pin.
+Until the cleanup PR merges, decomp `main` still has `tools/port_refcheck.py` and a tracked `port/`. Sparse-checkout removes that tree; the nest puts the filtered smoke suite back. `port_refcheck.py` on current decomp `main` understands the nine `slice_gate` manifests. Do not point this workflow at the playable pin.
 
-The five targets are the ones the old workflow could link without a ROM: `smoke`, `smoke_gx`, `smoke_heap`, `smoke_roots`, `smoke_fs`. Do not add `smoke_model`, `smoke_fs`'s asset-backed cousins, or any target that runs `romdata.py`. `BUILD_TESTING` stays off. No cartridge is fetched.
+Those five targets are the ones the old workflow links without a ROM. Do not add `smoke_model` or any target that runs `romdata.py`. `BUILD_TESTING` stays off. No cartridge is fetched.
 
-`git -C` and `xcopy` on `windows-latest` are available. If `git sparse-checkout` from `cmd` mis-parses the quotes, run that step with `shell: bash` and leave only the `vcvars32` / `cmake` lines in `cmd`.
+If `git sparse-checkout` from `cmd` mis-parses the quotes, run that step with `shell: bash` and leave only the `vcvars32` / `cmake` lines in `cmd`.
 
-### 5. Scan before any push
+### 5. Scan, then push
 
-From `wt-main`, and again with `--all` so every branch is covered:
+From `wt-main`, fetch the mirror refs (the worktrees share the mirror object store) and scan every branch:
 
 ```sh
 git fetch "$HOME/sm64ds-port-split/decomp-mirror.git" \
@@ -601,21 +556,15 @@ git ls-tree -r --name-only --all \
 git rev-list --all --objects \
   | git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' \
   | awk '$1=="blob" && $3+0 > 1000000 {print}'
+
+git log --all -S 'ghp_' --oneline
+git log --all -S 'github_pat_' --oneline
+git log --all -S 'AKIA' --oneline
 ```
 
-Inspect every hit. A source file over 1 MB may be the playable `CMakeLists.txt` (about 1.3 MB). That file is allowed. A `.bin`, `.nds`, texture dump, or archive is not. `git log --all -S 'ghp_' --oneline` and the same for `github_pat_` and `AKIA` must be empty. If a secret is in history, STOP before the push and tell Tango. Do not print the secret in the report.
+The playable `CMakeLists.txt` (about 1.3 MB) is an allowed blob over 1 MB. A `.bin`, `.nds`, texture dump, or archive is not. The three `-S` logs are empty. If a secret is in history, halt before the push and report that a secret was found. Do not print it.
 
-Also:
-
-```sh
-git grep -n -I -E 'ghp_|github_pat_|AKIA' $(git rev-parse --all) || true
-```
-
-If `git grep` refuses that many revs, use `git log --all -S` as above. An empty result is what you want.
-
-### 6. Create the GitHub repo and push
-
-Create the empty repo now if you did not in step 0. Then push with an explicit URL. Do not add a remote that points at the decomp.
+Create the empty repo now if step 0 did not. Confirm `git rev-parse main` in the mirror is the nest-check commit, and `git rev-parse decomp-main` is the port-build commit, not the raw filtered tips. Push with an explicit URL. Do not add a remote that points at the decomp.
 
 ```sh
 URL=https://github.com/tangosdev/sm64ds-port.git
@@ -636,27 +585,16 @@ git push "$URL" ci/port-build-proto
 git push "$URL" v0.3.3
 ```
 
-The docs commits were made on the worktrees, which use the mirror as their object store, so those tips are in the mirror. Confirm `git rev-parse main` in the mirror is the workflow commit, not the raw filtered tip, before you push.
-
-If a push is rejected because the remote is not empty, STOP. Do not force-push.
-
-Set the default branch:
+If a push is rejected because the remote is not empty, halt and report. Do not force-push.
 
 ```sh
 gh repo edit tangosdev/sm64ds-port --default-branch main
 ```
 
-### 7. Verify the GitHub repo
+### 6. Verify
 
 ```sh
 gh repo view tangosdev/sm64ds-port --json defaultBranchRef,url --jq '{branch:.defaultBranchRef.name,url:.url}'
-```
-
-`branch` must be `main`.
-
-Clone a fresh copy to a third directory and check:
-
-```sh
 git clone https://github.com/tangosdev/sm64ds-port.git "$HOME/sm64ds-port-split/verify"
 cd "$HOME/sm64ds-port-split/verify"
 git rev-list --count main
@@ -670,9 +608,9 @@ git ls-remote --heads origin | grep -c 'refs/heads/port/'
 git ls-remote --tags origin | grep v0.3.3
 ```
 
-The `port/` head count must match the pre-filter `port/*` count. `v0.3.3` must exist. `git rev-list --count main` must be the large number from step 3, plus the docs commits.
+The `port/` head count matches the pre-filter `port/*` count. `v0.3.3` exists. The `main` count is the step 3 count plus the docs commits. Default branch is `main`.
 
-Local nest check, smoke suite against decomp `main` (Linux, no MSVC required for this part):
+Smoke nest against decomp `main` (no MSVC required):
 
 ```sh
 git clone --filter=blob:none https://github.com/tangosdev/sm64ds-decomp.git "$HOME/sm64ds-port-split/nest-smoke"
@@ -685,15 +623,15 @@ python port/tools/check_nest.py
 python tools/port_refcheck.py
 ```
 
-`check_nest.py` must print `nest ok`. `port_refcheck.py` must print `all references resolve`. If the cleanup PR has already changed `port_refcheck.py` to skip when `port/` is missing, this still runs the real checks because `port/` exists.
+`check_nest.py` prints `nest ok`. `port_refcheck.py` prints `all references resolve`.
 
-Repeat the nest for the playable pin. Check out the `decomp_sha` from `DECOMP-PINS.tsv` for `refs/heads/port/link100`, sparse-exclude `port/`, clone the port repo, check out `main`, run `python port/tools/check_nest.py`. That must pass. Do not run the playable `port_refcheck.py` from a decomp `main` checkout.
+Repeat the nest for the playable pin: check out the `decomp_sha` of the integration ref from `DECOMP-PINS.tsv`, sparse-exclude `port/`, clone the port repo, check out `main`, run `python port/tools/check_nest.py`. That passes. Do not run playable `port_refcheck` from a decomp `main` checkout.
 
-The MSVC link of `smoke`, `smoke_gx`, `smoke_heap`, `smoke_roots`, and `smoke_fs` is the `port-build` workflow on `decomp-main`. If you have a Windows VM with the x86 toolset, run that configure and build locally too. If you do not, say so in the report and let GitHub's `windows-latest` job be the proof. Do not fetch a ROM to make the other smokes run.
+The MSVC link of the five ROM-free targets is the `port-build` workflow on `decomp-main`. Run it locally when a Windows VM with the x86 toolset is available. Otherwise the `windows-latest` job is the proof. Do not fetch a ROM.
 
-### 8. Decomp cleanup PR
+### 7. Decomp cleanup PR
 
-Do this only after the port repo push and the nest checks above have succeeded. If the port repo is missing history, do not delete `port/` from the decomp.
+Open this only after the port push and both nest checks have succeeded.
 
 ```sh
 git clone https://github.com/tangosdev/sm64ds-decomp.git "$HOME/sm64ds-port-split/decomp-cleanup"
@@ -702,9 +640,7 @@ git checkout -b split/remove-port-from-decomp origin/main
 git remote get-url origin
 ```
 
-Origin must be `tangosdev/sm64ds-decomp`. If it is a fork, STOP and re-clone the upstream.
-
-Delete the tracked tree and the workflow:
+Origin is `tangosdev/sm64ds-decomp`.
 
 ```sh
 git rm -r port
@@ -712,7 +648,7 @@ git rm .github/workflows/port-build.yml
 git rm notes/port-selftest-bmp-gate.md
 ```
 
-Append this block to `.gitignore`:
+Append to `.gitignore`:
 
 ```
 # PC port. Separate repository: https://github.com/tangosdev/sm64ds-port
@@ -720,7 +656,7 @@ Append this block to `.gitignore`:
 /port/
 ```
 
-Edit `tools/port_refcheck.py` function `main`, before `report = build_report()`:
+In `tools/port_refcheck.py` `main`, before `report = build_report()`:
 
 ```python
     if not PORT.is_dir():
@@ -729,23 +665,23 @@ Edit `tools/port_refcheck.py` function `main`, before `report = build_report()`:
         return 0
 ```
 
-Do not change `check_hal_links` or the unit tests' fixtures. Those tests call the check functions directly and create their own `port/` directory. `python -m unittest tools.test_port_refcheck tools.test_cpp_tu_compat` must still pass. With `port/` deleted in this worktree, `python tools/port_refcheck.py` must exit 0 and print `skipped`.
+Do not change `check_hal_links` or the unit-test fixtures. Those tests call the check functions directly and create their own `port/` directory. `python -m unittest tools.test_port_refcheck tools.test_cpp_tu_compat` still passes. With `port/` deleted, `python tools/port_refcheck.py` exits 0 and prints `skipped`.
 
-Update the comment block at the top of `tools/hooks/pre-push` and the echo on the port check so they say the check skips when `port/` is not checked out, and that a playable nest does not belong in a decomp `main` worktree.
+Update the comment block at the top of `tools/hooks/pre-push` and the echo on the port check: the check skips when `port/` is not checked out, and a playable nest does not belong in a decomp `main` worktree.
 
-Update `config/port_linkage.json` `_comment` only. The refresh command becomes: check out the port repo at `port/` inside the decomp worktree that matches the stamp's branch, build that tree, then from the decomp root run `python port/tools/linkage.py .`. Do not change `linkedTus`, `matchedTus`, `branch`, `commit`, or `measuredAt`.
+Update `config/port_linkage.json` `_comment` only. The refresh command is: check out the port repo at `port/` inside the decomp worktree that matches the stamp's branch, build that tree, then from the decomp root run `python port/tools/linkage.py .`.
 
-Retarget these living docs so they no longer link to a relative `port/` path. Point them at `https://github.com/tangosdev/sm64ds-port` and, where a file path is needed, at the stripped path on that repo (`https://github.com/tangosdev/sm64ds-port/blob/main/README.md` for the playable readme, `https://github.com/tangosdev/sm64ds-port/blob/decomp-main/README.md` for the smoke readme). Tell matching contributors:
+Retarget living docs off relative `port/` paths. Point them at `https://github.com/tangosdev/sm64ds-port`. Where a file path is needed: `https://github.com/tangosdev/sm64ds-port/blob/main/README.md` (playable) and `https://github.com/tangosdev/sm64ds-port/blob/decomp-main/README.md` (smoke). State that:
 
-- `src/` platform guards stay here.
-- Slice manifests and `hal/` bridges now live in `sm64ds-port`.
+- `src/` platform guards stay in the decomp.
+- Slice manifests and `hal/` bridges live in `sm64ds-port`.
 - A rename that strands a smoke slice is fixed on `sm64ds-port` branch `decomp-main`.
-- `python tools/port_refcheck.py` still runs when a port checkout is nested at `port/`; it skips when it is not.
-- Do not nest the playable branch into the worktree you use for matching pushes.
+- `python tools/port_refcheck.py` runs when a port checkout is nested at `port/`, and skips when it is not.
+- Do not nest the playable branch into the worktree used for matching pushes.
 
-Files to edit for that (they exist on decomp `main`):
+Edit these files (they exist on decomp `main`):
 
-- `README.md` (the LINKED paragraph and the `port/` link; keep the download link `https://tangos.dev/downloads`)
+- `README.md` (the LINKED paragraph and the `port/` link; keep `https://tangos.dev/downloads`)
 - `AGENTS.md` (the `port/` references section)
 - `MERGE.md` (the `port/` reference-break paragraph)
 - `notes/pr-validation.md`
@@ -753,40 +689,35 @@ Files to edit for that (they exist on decomp `main`):
 - `notes/real-cpp-migration-runbook.md`
 - `notes/agents/references/writer-v1.md`
 - `notes/agents/references/pipeline-v1.md`
-- `notes/source-review-observations.md` (the relative links to `../port/README.md`, `hostgen.py`, and `host_frontier.py`)
-- `tools/tiers.py` (the comment that says LINKED reads `port/tools/linkage.py`)
+- `notes/source-review-observations.md` (relative links to `../port/README.md`, `hostgen.py`, and `host_frontier.py`)
+- `tools/tiers.py` (the comment that LINKED reads `port/tools/linkage.py`)
 - `tools/tubuild.py` (the print that tells the user to edit `port/CMakeLists.txt`)
 
-Leave historical handoffs, `notes/collision-system.md`, `notes/ctor-migration.md`, `CLAIMS.md`, and `notes/system-provenance.md` alone unless `python tools/check_dead_references.py` reports a new failure in them. When it does, prefer a one-line URL retarget for a living instruction. For a sentence that is explicitly a historical `git show` of an old decomp branch (`origin/port-mount-noseat-cluster:port/unmatched/...`), keep the command, because those branches still exist on the decomp, and bank the dead path only if the checker requires it. Do not run `--update` or `--update-code` as a blanket refresh. A healed baseline row (a banked `port/` path whose citing file was deleted) is not a failure. Mention it in the PR. Do not bank a new dead link to hide a doc you should have retargeted.
+Leave historical handoffs, `notes/collision-system.md`, `notes/ctor-migration.md`, `CLAIMS.md`, and `notes/system-provenance.md` alone unless `python tools/check_dead_references.py` reports a new failure in them. For a living instruction, retarget the URL. For a historical `git show` of an old decomp branch (`origin/port-mount-noseat-cluster:port/unmatched/...`), keep the command: those branches still exist. Bank a dead path only if the checker requires it. Do not run `--update` or `--update-code` as a blanket refresh. A healed baseline row (a banked `port/` path whose citing file was deleted) is not a failure. Mention it in the PR. Do not bank a new dead link in place of a doc that should have been retargeted.
 
-`tools/cpp_tu_compat.py` keeps importing `port_refcheck`. Do not delete that surface.
+`tools/cpp_tu_compat.py` keeps importing `port_refcheck`.
 
-Search the cleanup diff for `src/` and `include/` file changes. There should be none. If a comment in `src/` is the only way to clear a new dead-reference failure, reword the comment and do not change any other line, then say so in the PR. Do not run a matching rewrite.
-
-Run:
+The cleanup diff contains no `src/` or `include/` file changes. If a comment in `src/` is the only way to clear a new dead-reference failure, reword that comment and no other line, and say so in the PR.
 
 ```sh
 python -m unittest tools.test_port_refcheck tools.test_cpp_tu_compat -v
 python tools/port_refcheck.py
 python tools/check_dead_references.py
-```
-
-`port_refcheck.py` must skip. `check_dead_references.py` must exit 0. If `port-build` was a required status check, list branch protection and rulesets:
-
-```sh
 gh api repos/tangosdev/sm64ds-decomp/branches/main/protection
 gh api repos/tangosdev/sm64ds-decomp/rulesets
 ```
 
-If a required check is the `port-build` workflow's jobs (`refs` and `build` under workflow name `port-build`), removing the workflow file makes that check never report, which blocks every future decomp PR. Remove only those required contexts. Do not disable `validate`, source review, or any other required check. If the API refuses the protection edit, STOP and put the exact check names in the report so Tango can remove them. Do not merge past a stuck required check.
+`port_refcheck.py` skips. `check_dead_references.py` exits 0.
 
-Commit, push the branch with a normal `git push -u origin split/remove-port-from-decomp`, and open a PR into `main`. Title:
+Deleting `.github/workflows/port-build.yml` makes required checks named for that workflow (`refs` and `build` under workflow `port-build`) never report, which blocks every later decomp PR. Remove only those required contexts. Do not disable `validate`, source review, or any other required check. If the API refuses the edit, report the check names. Do not merge past a stuck required check.
+
+Commit, `git push -u origin split/remove-port-from-decomp`, and open a PR into `main`. Title:
 
 ```
 Move the PC port tree to tangosdev/sm64ds-port
 ```
 
-PR body, filled in with the live SHAs and the nest-check output:
+Body, with the live SHAs and nest-check results filled in:
 
 ```
 ## What this changes
@@ -819,44 +750,42 @@ the combined snapshot the playable pin builds against.
 
 - Smoke-suite slice fixes after future src renames land on sm64ds-port branch decomp-main.
 - Moving a playable pin forward onto newer decomp commits is separate work.
-- Do not delete the decomp's port/* branches until each one has a pin in the port repo and Tango says the combined branch can go.
+- Do not delete the decomp's port/* branches until each one has a pin in the port repo and the operator confirms the combined branch can go.
 ```
 
-Do not merge the PR. Leave it for Tango once the checks he cares about are green.
+Do not merge the PR.
 
-## Mixed history, so you do not "clean it up"
+## Mixed commits
 
-On the decomp `main` that was current for this research (`9c6104f` on the lunavyqo fork, behind tangosdev `e04ccbc`), 73 commits touch `port/`. 20 of them touch only `port/`. Those are the 2026-08-02 gate commits starting at `9651d82a5172393584227a2190e34d3fde25a09b` (`port: gate 1`, PR #1001) through gate 9, plus a few later port-only follow-ups. The other 53 also change `src/`, `include/`, `config/`, and sometimes thousands of files. The port hunk in those commits is often a one-line slice path update inside a class rename or a TU promotion (`dActor_c` rename PR #1577 changed 6 files under `port/` and 2194 files elsewhere).
+On the decomp `main` used for this research (`9c6104f` on the lunavyqo fork, behind tangosdev `e04ccbc`), 73 commits touch `port/`. 20 touch only `port/` (the 2026-08-02 gates from `9651d82a5172393584227a2190e34d3fde25a09b`, subject `port: gate 1`, PR #1001, through gate 9, plus a few later port-only follow-ups). The other 53 also change `src/`, `include/`, `config/`, sometimes thousands of files. The port hunk is often one slice line inside a rename or a TU promotion (`dActor_c` rename PR #1577: 6 files under `port/`, 2194 elsewhere).
 
-`git filter-repo --subdirectory-filter port` keeps those commits and drops the non-`port/` files. You will see famous rename subjects whose only remaining diff is a slice line. That is the correct result. Those slice updates are why the smoke suite still resolves against current `src/`. Do not drop mixed commits. Do not rebase them into one squashed "initial import".
+`--subdirectory-filter port` keeps those commits and drops the non-`port/` files. A rename subject whose only remaining diff is a slice line is the correct result. Those slice updates are why the smoke suite still resolves. Do not drop mixed commits and do not squash them into one initial import.
 
-Recompute the counts on the mirror before you filter if you want them in the cleanup PR body:
+Recompute on the mirror if the cleanup PR body should carry live counts. Do not block the split on matching 53 and 73.
 
 ```sh
 git rev-list main -- port | wc -l
 ```
 
-and a `git diff-tree --name-only -r` per commit, counting paths that do not start with `port/`. Put the live counts in the report. Do not block the split on matching 53 and 73 exactly.
+Count, per commit, `git diff-tree --name-only -r` paths that do not start with `port/`.
 
-The playable branches are a second history. Filtering them keeps their `port/` files and drops `src/` edits that exist only on those branches. The decomp pin is what still has those `src/` edits. A filtered playable commit will not build against decomp `main`. Do not try to make it build by copying `src/` into the port repo.
+Filtering a playable branch keeps its `port/` files and drops `src/` edits that exist only on that branch. The decomp pin still has those `src/` edits. A filtered playable commit does not build against decomp `main`. Do not copy `src/` into the port repo to make it do so.
 
 ## Rollback
 
-- Before the first push to `sm64ds-port`: delete `$HOME/sm64ds-port-split` and stop. The decomp is untouched.
+- Before the first push: delete `$HOME/sm64ds-port-split`. The decomp is untouched.
 - After the port repo is pushed, before the cleanup PR merges: leave the port repo. Close the cleanup PR without merging. Decomp `main` still has `port/`.
-- After the cleanup PR merges and something is wrong: open a normal revert PR of that merge. Do not force-push decomp `main`. The port repo stays; it is a copy.
-- Do not delete `tangosdev/sm64ds-port` as a rollback. Ask Tango.
+- After the cleanup PR merges and the result is wrong: open a normal revert PR of that merge. Do not force-push decomp `main`.
+- Do not delete `tangosdev/sm64ds-port` as a rollback. Halt and report.
 
-## Report back
-
-When you stop, report:
+## Report
 
 - Port repo URL, default branch, `git rev-list --count` for `main` and `decomp-main`.
-- The `decomp_sha` recorded for `refs/heads/port/link100` and for `refs/heads/main` (decomp main).
+- `decomp_sha` for the integration ref and for decomp `main`.
 - How many `port/*`, `port-*`, and other refs were pushed, and whether `v0.3.3` was pushed.
-- Nest-check output for both branches.
+- Nest-check result for both branches.
 - Whether the five ROM-free targets linked, and if not, the CI URL.
-- Whether the blob scan found anything you kept or stripped. Name the paths. Do not paste secret values.
-- Cleanup PR URL, and the `git diff --stat` confirmation that `src/` and `include/` are absent.
-- Branch-protection change, or the exact required-check names Tango still has to remove.
-- Anything you skipped because a live SHA disagreed with this prompt.
+- Blob-scan hits that were kept or stripped, by path. No secret values.
+- Cleanup PR URL, and `git diff --stat` showing `src/` and `include/` absent.
+- Branch-protection change, or the required-check names still to remove.
+- Any live SHA that disagreed with an example in this prompt.
