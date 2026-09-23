@@ -1,54 +1,14 @@
 //cpp
-/* ov074/Goomboss -- 36 of the class's 55 shards, folded into the translation
- * unit Nintendo shipped.  The ROM RTTI name of this class is daKuriKing_c
- * (_ZTI12daKuriKing_c at ov074:0x02122e30); `Goomboss` is the tree's coined
- * spelling and every symbol in config/ uses it, so the file keeps it.
+/* Goomboss, the goomba-king boss (ROM RTTI daKuriKing_c, ov074). Partial
+ * TU: 36 functions, the lower side of a run split by an unmatched draft.
+ * The destructor is inline and the key function lives across the hole,
+ * so this TU emits no vtable.
  *
- * THIS IS A PARTIAL, AND THE CUT IS NOT NEGOTIABLE.  The class's linker run is
- * 0x0211f000..0x0212290c, but func_ov074_02121380 (0x02121380, size 0x374) is a
- * banked near-miss: it has no delinks.txt entry anywhere, so the cartridge's own
- * bytes cover 0x02121380..0x021216f4 and a licensed claim cannot have a hole.
- * The run therefore splits into a 38-function lower side and a 16-function upper
- * side, and this file takes the larger one -- less its first two members:
+ * Source ROM-ascending under defer_codegen off. Do not reorder.
  *
- *   ordinals 0-1  _ZN8GoombossD1Ev / _ZN8GoombossD0Ev.  The cartridge orders
- *     them D1 (0x0211f000) then D0 (0x0211f0a0), which mwccarm 2004/b56 emits
- *     only from an inline in-class destructor -- an out-of-line definition emits
- *     D2, D0, D1 (measured).  But with the destructor inline the class's key
- *     function moves to the first out-of-line virtual it declares, Behavior at
- *     0x02121bf0, which is on the FAR side of the hole.  This TU then owns no
- *     key function, emits no vtable, and nothing odr-uses the destructor, so
- *     neither variant is emitted at all (measured: an empty TU over the inline
- *     header emits zero symbols).  A forcing scaffold does emit the pair in ROM
- *     order -- `delete p;` before `p->~Goomboss();`, because the variants come
- *     out in reverse order of first use -- but the scaffold is itself emitted
- *     into .text immediately BELOW D1, and D1 sits at 0x0211f000, the first byte
- *     of ov074's .text.  There is no address below it.  So the pair cannot live
- *     in this TU's licensed run; src/_ZN8GoombossD1Ev.cpp and
- *     src/_ZN8GoombossD0Ev.cpp keep their own delinks entries.
- *
- *   ordinal 38 and above stay in their own shards for the reason above.
- *
- * Licensed run: .text 0x0211f154..0x02121380, 36 functions, 36/36 MATCH.
- *
- * FUNCTION ORDER IS DELIBERATELY THE REVERSE OF THE ROM'S -- mwccarm 2004/b56
- * emits one .text section per function in the REVERSE of source order, so the
- * highest-address ROM function is written first.  Do not reorder.
- *
- * Two reconciliations the merge forced, both documented mwccarm behaviours:
- *   - common.h is included BEFORE Goomboss.h.  Goomboss.h reaches
- *     math/Matrix.h's structured Matrix4x3 (Matrix3x3 r; Vector3 t) while every
- *     legacy shard saw common.h's flat `s32 m[12]`.  With the structured
- *     spelling first, func_ov074_02121270 and func_ov074_02121300 both went long
- *     on their whole-matrix assignments; the reorder restored 2/2.
- *   - func_ov074_021201f0's angle temp is spelt `struct Ang16 { short v[3]; }`.
- *     Its shard is a .c file compiled as C, where the whole-struct assignment is
- *     a block move; as C++ the same assignment is scalarised, the local loses
- *     its frame home and the body came out 0x20 short.  The array member
- *     restores the block move.
- *
- * Assembled from src/func_ov074_0211f154.c .. src/func_ov074_02121300.cpp,
- * ROM ordinals 2..37 of the class's linker run.
+ * deslop
+ * Leftover: the func_ov074 helpers keep linker names; naming belongs
+ *   at their definitions.
  */
 
 /* Includes: union of the legacy files', first-seen in ROM-ascending
@@ -230,7 +190,6 @@ extern int func_ov074_02121a20(void* c, int idx);
 extern int func_ov074_021216f4(void* c);
 }
 
-/* ROM ordinal 37 -- func_ov074_02121300, 0x02121300, size 0x80 */
 // @symbol func_ov074_02121300
 #include "common.h"
 extern "C" {
@@ -249,7 +208,6 @@ void func_ov074_02121300(char* c){
 }
 }
 
-/* ROM ordinal 36 -- func_ov074_02121270, 0x02121270, size 0x90 */
 // @symbol func_ov074_02121270
 extern "C" {
 void func_ov074_02121270(char* r4, char* r8, int r7){
@@ -267,7 +225,6 @@ void func_ov074_02121270(char* r4, char* r8, int r7){
 }
 }
 
-/* ROM ordinal 35 -- func_ov074_02120d74, 0x02120d74, size 0x4fc */
 // @symbol func_ov074_02120d74
 extern "C" {
 void func_ov074_02120d74(char *a)
@@ -415,7 +372,6 @@ void func_ov074_02120d74(char *a)
 }
 }
 
-/* ROM ordinal 34 -- func_ov074_02120bb8, 0x02120bb8, size 0x1bc */
 // @symbol func_ov074_02120bb8
 extern "C" {
 void func_ov074_02120bb8(char *self, char *p1, char *p2, int mode)
@@ -468,7 +424,6 @@ void func_ov074_02120bb8(char *self, char *p1, char *p2, int mode)
 }
 }
 
-/* ROM ordinal 33 -- func_ov074_02120b90, 0x02120b90, size 0x28 */
 // @symbol func_ov074_02120b90
 extern "C" {
 void func_ov074_02120b90(void *c) {
@@ -479,7 +434,6 @@ void func_ov074_02120b90(void *c) {
 }
 }
 
-/* ROM ordinal 32 -- func_ov074_02120b24, 0x02120b24, size 0x6c */
 // @symbol func_ov074_02120b24
 extern "C" {
 int func_ov074_02120b24(char* c)
@@ -496,7 +450,6 @@ int func_ov074_02120b24(char* c)
 }
 }
 
-/* ROM ordinal 31 -- func_ov074_0212087c, 0x0212087c, size 0x2a8 */
 // @symbol func_ov074_0212087c
 extern "C" {
 void func_ov074_0212087c(int* out, char* self, int n_)
@@ -583,7 +536,6 @@ void func_ov074_0212087c(int* out, char* self, int n_)
 }
 }
 
-/* ROM ordinal 30 -- func_ov074_02120808, 0x02120808, size 0x74 */
 // @symbol func_ov074_02120808
 extern "C" void func_ov074_02120808(char* c)
 {
@@ -594,7 +546,6 @@ extern "C" void func_ov074_02120808(char* c)
     *(int *)(((int)(c + 0x5f0))) *= -1;
 }
 
-/* ROM ordinal 29 -- func_ov074_021207b8, 0x021207b8, size 0x50 */
 // @symbol func_ov074_021207b8
 /* func_ov074_021207b8 — if func_ov074_02121a20(this, 6) and the animation at
  * this+0x260 has finished, flip the angle at this+0x8e by 0x8000 and return 1;
@@ -614,7 +565,6 @@ int func_ov074_021207b8(struct Obj* self)
 }
 }
 
-/* ROM ordinal 28 -- func_ov074_021206c8, 0x021206c8, size 0xf0 */
 // @symbol func_ov074_021206c8
 extern "C" {
 int func_ov074_021206c8(char *c) {
@@ -644,7 +594,6 @@ ret0:
 }
 }
 
-/* ROM ordinal 27 -- func_ov074_021204c0, 0x021204c0, size 0x208 */
 // @symbol func_ov074_021204c0
 /* recovered: Goomboss (daKuriKing_c) shrink/grow interpolation tick.
  *
@@ -712,7 +661,6 @@ int func_ov074_021204c0(char* c) {
 }
 }
 
-/* ROM ordinal 26 -- func_ov074_02120474, 0x02120474, size 0x4c */
 // @symbol func_ov074_02120474
 extern "C" {
 int func_ov074_02120474(char* c) {
@@ -729,7 +677,6 @@ int func_ov074_02120474(char* c) {
 }
 }
 
-/* ROM ordinal 25 -- func_ov074_0212042c, 0x0212042c, size 0x48 */
 // @symbol func_ov074_0212042c
 struct C; typedef void (C::*PMF)();
 struct PmfEntry { PMF pmf[2]; };
@@ -737,11 +684,9 @@ extern PmfEntry data_ov074_021230f8[];
 struct C { char pad[0x5cc]; int idx; };
 extern "C" void func_ov074_0212042c(char *cc) { C *c = (C *)cc; int j = c->idx; (c->*data_ov074_021230f8[j].pmf[1])(); }
 
-/* ROM ordinal 24 -- func_ov074_021203e4, 0x021203e4, size 0x48 */
 // @symbol func_ov074_021203e4
 extern "C" void func_ov074_021203e4(char *cc, int i) { C *c = (C *)cc; c->idx = i; int j = c->idx; (c->*data_ov074_021230f8[j].pmf[0])(); }
 
-/* ROM ordinal 23 -- func_ov074_021203e0, 0x021203e0, size 0x4 */
 // @symbol func_ov074_021203e0
 extern "C" {
 void func_ov074_021203e0(void)
@@ -749,7 +694,6 @@ void func_ov074_021203e0(void)
 }
 }
 
-/* ROM ordinal 22 -- func_ov074_021201f0, 0x021201f0, size 0x1f0 */
 // @symbol func_ov074_021201f0
 /* recovered: Goomboss (daKuriKing_c) state-0 tick -- the intro cutscene.
  *
@@ -831,7 +775,6 @@ void func_ov074_021201f0(char* c) {
 }
 }
 
-/* ROM ordinal 21 -- func_ov074_021201ec, 0x021201ec, size 0x4 */
 // @symbol func_ov074_021201ec
 extern "C" {
 void func_ov074_021201ec(void)
@@ -839,7 +782,6 @@ void func_ov074_021201ec(void)
 }
 }
 
-/* ROM ordinal 20 -- func_ov074_0212018c, 0x0212018c, size 0x60 */
 // @symbol func_ov074_0212018c
 extern "C" {
 extern void func_02011d20(void);
@@ -856,7 +798,6 @@ void func_ov074_0212018c(char *c)
 }
 }
 
-/* ROM ordinal 19 -- func_ov074_0212016c, 0x0212016c, size 0x20 */
 // @symbol func_ov074_0212016c
 extern "C" {
 void func_ov074_0212016c(void *c) {
@@ -865,7 +806,6 @@ void func_ov074_0212016c(void *c) {
 }
 }
 
-/* ROM ordinal 18 -- func_ov074_02120080, 0x02120080, size 0xec */
 // @symbol func_ov074_02120080
 extern "C" {
 void func_ov074_02120080(char* c){
@@ -886,7 +826,6 @@ void func_ov074_02120080(char* c){
 }
 }
 
-/* ROM ordinal 17 -- func_ov074_0212007c, 0x0212007c, size 0x4 */
 // @symbol func_ov074_0212007c
 extern "C" {
 void func_ov074_0212007c(void)
@@ -894,7 +833,6 @@ void func_ov074_0212007c(void)
 }
 }
 
-/* ROM ordinal 16 -- func_ov074_0211ffcc, 0x0211ffcc, size 0xb0 */
 // @symbol func_ov074_0211ffcc
 extern "C" {
 void func_ov074_0211ffcc(char* c) {
@@ -916,7 +854,6 @@ void func_ov074_0211ffcc(char* c) {
 }
 }
 
-/* ROM ordinal 15 -- func_ov074_0211ffac, 0x0211ffac, size 0x20 */
 // @symbol func_ov074_0211ffac
 extern "C" {
 void func_ov074_0211ffac(char* c) {
@@ -925,7 +862,6 @@ void func_ov074_0211ffac(char* c) {
 }
 }
 
-/* ROM ordinal 14 -- func_ov074_0211fd74, 0x0211fd74, size 0x238 */
 // @symbol func_ov074_0211fd74
 extern "C" void func_ov074_0211fd74(void* self)
 {
@@ -988,7 +924,6 @@ L90:;
     func_ov074_021203e4((char*)self, 3);
 }
 
-/* ROM ordinal 13 -- func_ov074_0211fd48, 0x0211fd48, size 0x2c */
 // @symbol func_ov074_0211fd48
 extern "C" {
 void func_ov074_0211fd48(char *c)
@@ -1003,7 +938,6 @@ void func_ov074_0211fd48(char *c)
 }
 }
 
-/* ROM ordinal 12 -- func_ov074_0211fc38, 0x0211fc38, size 0x110 */
 // @symbol func_ov074_0211fc38
 extern "C" {
 void func_ov074_0211fc38(char* c)
@@ -1031,7 +965,6 @@ reset:
 }
 }
 
-/* ROM ordinal 11 -- func_ov074_0211fc34, 0x0211fc34, size 0x4 */
 // @symbol func_ov074_0211fc34
 extern "C" {
 void func_ov074_0211fc34(void)
@@ -1039,7 +972,6 @@ void func_ov074_0211fc34(void)
 }
 }
 
-/* ROM ordinal 10 -- func_ov074_0211fbd0, 0x0211fbd0, size 0x64 */
 // @symbol func_ov074_0211fbd0
 extern "C" {
 int func_ov074_0211fbd0(char* c){
@@ -1049,7 +981,6 @@ int func_ov074_0211fbd0(char* c){
 }
 }
 
-/* ROM ordinal 9 -- func_ov074_0211fb84, 0x0211fb84, size 0x4c */
 // @symbol func_ov074_0211fb84
 extern "C" {
 void func_ov074_0211fb84(char* c){
@@ -1064,7 +995,6 @@ void func_ov074_0211fb84(char* c){
 }
 }
 
-/* ROM ordinal 8 -- func_ov074_0211fa74, 0x0211fa74, size 0x110 */
 // @symbol func_ov074_0211fa74
 extern "C" {
 void func_ov074_0211fa74(char* c)
@@ -1102,7 +1032,6 @@ void func_ov074_0211fa74(char* c)
 }
 }
 
-/* ROM ordinal 7 -- func_ov074_0211fa08, 0x0211fa08, size 0x6c */
 // @symbol func_ov074_0211fa08
 extern "C" {
 void func_ov074_0211fa08(char* c){
@@ -1119,7 +1048,6 @@ void func_ov074_0211fa08(char* c){
 }
 }
 
-/* ROM ordinal 6 -- func_ov074_0211f5b8, 0x0211f5b8, size 0x450 */
 // @symbol func_ov074_0211f5b8
 extern "C" void func_ov074_0211f5b8(char* c)
 {
@@ -1264,7 +1192,6 @@ extern "C" void func_ov074_0211f5b8(char* c)
    all.  The spawn count needed is a table lookup on the phase
    byte at 0x604, with one extra on phase 1 unless the closest player's mode
    word reads 3. */
-/* ROM ordinal 5 -- func_ov074_0211f38c, 0x0211f38c, size 0x22c */
 // @symbol func_ov074_0211f38c
 extern "C" {
 int func_ov074_0211f38c(u8* c){
@@ -1320,7 +1247,6 @@ int func_ov074_0211f38c(u8* c){
 }
 }
 
-/* ROM ordinal 4 -- func_ov074_0211f344, 0x0211f344, size 0x48 */
 // @symbol func_ov074_0211f344
 extern "C" {
 void func_ov074_0211f344(void* self, unsigned char value) {
@@ -1332,7 +1258,6 @@ void func_ov074_0211f344(void* self, unsigned char value) {
 }
 }
 
-/* ROM ordinal 3 -- func_ov074_0211f244, 0x0211f244, size 0x100 */
 // @symbol func_ov074_0211f244
 extern "C" void func_ov074_0211f244(dActor_c *self)
 {
@@ -1366,7 +1291,6 @@ extern "C" void func_ov074_0211f244(dActor_c *self)
     } while (a != 0);
 }
 
-/* ROM ordinal 2 -- func_ov074_0211f154, 0x0211f154, size 0xf0 */
 // @symbol func_ov074_0211f154
 /* func_ov074_0211f154 at 0x0211f154
  *
