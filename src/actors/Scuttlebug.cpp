@@ -1,30 +1,13 @@
 //cpp
-/* Scuttlebug (ROM RTTI daSpd_c), ov071.
+/* Scuttlebug, the spider enemy (ROM RTTI daSpd_c, ov071). Text-only TU:
+ * the destructor is declared-not-defined, so the key function (and the
+ * vtable emission) lives in the enrolled D1/D0 shards, not here.
  *
- * SM64DS RTTI names the implementation daSpd_c; the project spells the class
- * Scuttlebug and symbols.txt carries both names on the vtable at 0x02122c2c.
- * daSpd_c_classInit is a reconstructed source-style name (historical alias
- * Scuttlebug_Spawn); the SPIDER registry profile, the 0x3ac allocation size and
- * the vtable identity are proven, the exact original spelling is not.
+ * Source ROM-descending (highest address first). Do not reorder.
  *
- * mwccarm emits ordinary function sections in REVERSE source order, so this
- * file is written ROM-descending: the factory at 0x02120618 first and
- * OnYoshiTryEat at 0x0211f0a4 last.  ~Scuttlebug is DECLARED AND NOT DEFINED in
- * include/Scuttlebug.h, ahead of every other virtual, so the destructor -- not
- * OnYoshiTryEat -- is this class's key function, and it is defined elsewhere:
- * the shards src/_ZN10ScuttlebugD1Ev.cpp (0x0211f000) and
- * src/_ZN10ScuttlebugD0Ev.cpp (0x0211f048) stay enrolled and own the emission
- * of _ZTV10Scuttlebug, _ZTI10Scuttlebug and _ZTS10Scuttlebug.  THIS TU EMITS NO
- * VTABLE, NO RTTI AND NO D2; its licensed run is 0x0211f0a4..0x02120668 and its
- * object defines nothing outside .text.  An inline body here would give the
- * vtable and RTTI vague linkage and pull D1/D0 into this object as well; see the
- * closing note at the foot of this file for the measurement.
- *
- * common.h is included FIRST on purpose.  Scuttlebug.h reaches math/Matrix.h
- * through ModelAnim.h, and that header spells Matrix4x3 as `Matrix3x3 r;
- * Vector3 t;` where common.h spells it flat.  The legacy InitResources shard
- * saw the flat one (decl_common.h -> common.h ahead of the actor header) and
- * the whole-matrix assignment into +0x350 only reproduces with that spelling.
+ * deslop
+ * Leftover: the func_ov071 helpers keep linker names; naming belongs
+ *   at their definitions.
  */
 
 #include "common.h"
@@ -240,7 +223,6 @@ void Scuttlebug::OnTurnIntoEgg(Player &player)
     }
 }
 
-/* ROM ordinal 34 -- InitResources, 0x021203f8, size 0x188. */
 
 // @symbol _ZN10Scuttlebug13InitResourcesEv
 int Scuttlebug::InitResources()
@@ -280,7 +262,6 @@ int Scuttlebug::InitResources()
     return 1;
 }
 
-/* ROM ordinal 33 -- Behavior, 0x02120398, size 0x60. */
 
 // @symbol _ZN10Scuttlebug8BehaviorEv
 int Scuttlebug::Behavior()
@@ -296,7 +277,6 @@ int Scuttlebug::Behavior()
     return 1;
 }
 
-/* ROM ordinal 32 -- Render, 0x0212033c, size 0x5c. */
 
 struct RenderSub {
     virtual int method0();
@@ -358,7 +338,6 @@ extern "C" void Scuttlebug_SetState(char *self, int idx)
     func_ov071_021202b4((ScuttlebugState *)self);
 }
 
-/* ROM ordinal 28 -- 0x021202b4, size 0x38: call the state's entry handler. */
 
 // @symbol func_ov071_021202b4
 extern "C" void func_ov071_021202b4(ScuttlebugState *c)
@@ -377,7 +356,6 @@ extern "C" void func_ov071_02120278(ScuttlebugState *c)
     (c->**p)();
 }
 
-/* ROM ordinal 26 -- 0x02120200, size 0x78. */
 
 // @symbol func_ov071_02120200
 extern "C" int func_ov071_02120200(char *c)
@@ -403,7 +381,6 @@ extern "C" int func_ov071_02120200(char *c)
     return 1;
 }
 
-/* ROM ordinal 25 -- 0x021201b4, size 0x4c. */
 
 // @symbol func_ov071_021201b4
 extern "C" int func_ov071_021201b4(void *c)
@@ -413,7 +390,6 @@ extern "C" int func_ov071_021201b4(void *c)
     return 1;
 }
 
-/* ROM ordinal 24 -- 0x02120130, size 0x84. */
 
 // @symbol func_ov071_02120130
 extern "C" int func_ov071_02120130(char *c)
@@ -430,7 +406,6 @@ extern "C" int func_ov071_02120130(char *c)
     return 1;
 }
 
-/* ROM ordinal 23 -- 0x02120028, size 0x108. */
 
 // @symbol func_ov071_02120028
 extern "C" int func_ov071_02120028(char *c)
@@ -466,7 +441,6 @@ extern "C" int func_ov071_02120028(char *c)
     return 1;
 }
 
-/* ROM ordinal 22 -- 0x0211ff84, size 0xa4. */
 
 // @symbol func_ov071_0211ff84
 extern "C" int func_ov071_0211ff84(char *c)
@@ -484,7 +458,6 @@ extern "C" int func_ov071_0211ff84(char *c)
     return 1;
 }
 
-/* ROM ordinal 21 -- 0x0211fee4, size 0xa0. */
 
 // @symbol func_ov071_0211fee4
 extern "C" int func_ov071_0211fee4(char *c)
@@ -505,7 +478,6 @@ extern "C" int func_ov071_0211fee4(char *c)
     return 1;
 }
 
-/* ROM ordinal 20 -- 0x0211fe38, size 0xac. */
 
 // @symbol func_ov071_0211fe38
 extern "C" int func_ov071_0211fe38(char *c)
@@ -526,7 +498,6 @@ extern "C" int func_ov071_0211fe38(char *c)
     return 1;
 }
 
-/* ROM ordinal 19 -- 0x0211fd58, size 0xe0. */
 
 // @symbol func_ov071_0211fd58
 extern "C" int func_ov071_0211fd58(char *c)
@@ -553,7 +524,6 @@ extern "C" int func_ov071_0211fd58(char *c)
     return 1;
 }
 
-/* ROM ordinal 18 -- 0x0211fcd4, size 0x84. */
 
 // @symbol func_ov071_0211fcd4
 extern "C" int func_ov071_0211fcd4(char *c)
@@ -569,7 +539,6 @@ extern "C" int func_ov071_0211fcd4(char *c)
     return 1;
 }
 
-/* ROM ordinal 17 -- 0x0211fc60, size 0x74. */
 
 // @symbol func_ov071_0211fc60
 extern "C" int func_ov071_0211fc60(char *c)
@@ -587,7 +556,6 @@ extern "C" int func_ov071_0211fc60(char *c)
     return 1;
 }
 
-/* ROM ordinal 16 -- 0x0211fbf4, size 0x6c. */
 
 // @symbol func_ov071_0211fbf4
 extern "C" int func_ov071_0211fbf4(char *c)
@@ -601,7 +569,6 @@ extern "C" int func_ov071_0211fbf4(char *c)
     return 1;
 }
 
-/* ROM ordinal 15 -- 0x0211fb24, size 0xd0. */
 
 // @symbol func_ov071_0211fb24
 extern "C" int func_ov071_0211fb24(char *c)
@@ -624,7 +591,6 @@ extern "C" int func_ov071_0211fb24(char *c)
     return 1;
 }
 
-/* ROM ordinal 14 -- 0x0211fb0c, size 0x18. */
 
 // @symbol func_ov071_0211fb0c
 extern "C" int func_ov071_0211fb0c(char *p)
@@ -634,7 +600,6 @@ extern "C" int func_ov071_0211fb0c(char *p)
     return 1;
 }
 
-/* ROM ordinal 13 -- 0x0211fa54, size 0xb8. */
 
 // @symbol func_ov071_0211fa54
 extern "C" int func_ov071_0211fa54(void *thiz)
@@ -670,7 +635,6 @@ done:
     return 1;
 }
 
-/* ROM ordinal 12 -- 0x0211f8d0, size 0x184. */
 
 // @symbol func_ov071_0211f8d0
 extern "C" int func_ov071_0211f8d0(char *self)
@@ -747,7 +711,6 @@ extern "C" int func_ov071_0211f8d0(char *self)
     return 1;
 }
 
-/* ROM ordinal 11 -- 0x0211f7d4, size 0xfc. */
 
 // @symbol func_ov071_0211f7d4
 extern "C" int func_ov071_0211f7d4(dActor_c *self)
@@ -780,7 +743,6 @@ extern "C" int func_ov071_0211f7d4(dActor_c *self)
     return 1;
 }
 
-/* ROM ordinal 10 -- 0x0211f6f8, size 0xdc. */
 
 // @symbol func_ov071_0211f6f8
 extern "C" int func_ov071_0211f6f8(char *c)
@@ -801,7 +763,6 @@ extern "C" int func_ov071_0211f6f8(char *c)
     return 1;
 }
 
-/* ROM ordinal 9 -- 0x0211f694, size 0x64. */
 
 // @symbol func_ov071_0211f694
 extern "C" int func_ov071_0211f694(char *t)
@@ -815,7 +776,6 @@ extern "C" int func_ov071_0211f694(char *t)
     return 1;
 }
 
-/* ROM ordinal 8 -- 0x0211f524, size 0x170. */
 
 // @symbol func_ov071_0211f524
 extern "C" void func_ov071_0211f524(char *c)
@@ -850,7 +810,6 @@ extern "C" void func_ov071_0211f524(char *c)
         c, c + 0x138, c + 0x350, 0xa0000, dh, 0xf);
 }
 
-/* ROM ordinal 7 -- 0x0211f498, size 0x8c. */
 
 // @symbol func_ov071_0211f498
 extern "C" void func_ov071_0211f498(int *t)
@@ -870,7 +829,6 @@ extern "C" void func_ov071_0211f498(int *t)
     _ZN7fBase_c18MarkForDestructionEv(t);
 }
 
-/* ROM ordinal 6 -- 0x0211f29c, size 0x1fc. */
 
 // @symbol func_ov071_0211f29c
 extern "C" void func_ov071_0211f29c(void *thiz)
@@ -939,7 +897,6 @@ extern "C" void func_ov071_0211f29c(void *thiz)
     }
 }
 
-/* ROM ordinal 5 -- 0x0211f148, size 0x154. */
 
 // @symbol func_ov071_0211f148
 extern "C" void func_ov071_0211f148(char *a, char *w)
@@ -982,7 +939,6 @@ extern "C" void func_ov071_0211f148(char *a, char *w)
     }
 }
 
-/* ROM ordinal 4 -- 0x0211f0b4, size 0x94. */
 
 // @symbol func_ov071_0211f0b4
 extern "C" void func_ov071_0211f0b4(char *c)
