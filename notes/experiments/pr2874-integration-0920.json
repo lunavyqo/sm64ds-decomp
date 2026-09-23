@@ -2495,8 +2495,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN12HealingHeart13InitResourcesEv.cpp",
-      "name": "_ZN12HealingHeart13InitResourcesEv",
+      "file": "src/_ZN12daObjHeart_c13InitResourcesEv.cpp",
+      "name": "_ZN12daObjHeart_c13InitResourcesEv",
       "module": "ov002",
       "addr": "0x20bc81c",
       "verdict": "VERIFIED",
@@ -20299,7 +20299,7 @@
           "src/_ZN11dCapEnemy_c15RespawnIfHasCapEv.cpp",
           "src/_ZN11dScMgBase_c9Virtual7CEv.cpp",
           "src/_ZN11daDonketu_c13InitResourcesEv.cpp",
-          "src/_ZN12HealingHeart13InitResourcesEv.cpp",
+          "src/_ZN12daObjHeart_c13InitResourcesEv.cpp",
           "src/_ZN12dBgCh_SphCrr15SetObjAndSphereERK7Vector35Fix12IiEP8dActor_c.cpp",
           "src/_ZN12dScMgSlot3_c13InitResourcesEv.cpp",
           "src/_ZN12dScMgSlot3_c9Virtual80Ev.cpp",
@@ -20423,7 +20423,7 @@
           "src/_ZN11dCapEnemy_c15RespawnIfHasCapEv.cpp",
           "src/_ZN11dScMgBase_c9Virtual7CEv.cpp",
           "src/_ZN11daDonketu_c13InitResourcesEv.cpp",
-          "src/_ZN12HealingHeart13InitResourcesEv.cpp",
+          "src/_ZN12daObjHeart_c13InitResourcesEv.cpp",
           "src/_ZN12dBgCh_SphCrr15SetObjAndSphereERK7Vector35Fix12IiEP8dActor_c.cpp",
           "src/_ZN12dScMgSlot3_c13InitResourcesEv.cpp",
           "src/_ZN12dScMgSlot3_c9Virtual80Ev.cpp",
@@ -21665,7 +21665,7 @@
         "src/_ZN19daObjFlamethrower_c8BehaviorEv.cpp",
         "src/_ZN12FortressWall16CleanupResourcesEv.cpp",
         "src/_ZN12FortressWall24OnHitByCannonBlastedCharER8dActor_c.cpp",
-        "src/_ZN12HealingHeart13InitResourcesEv.cpp",
+        "src/_ZN12daObjHeart_c13InitResourcesEv.cpp",
         "src/_ZN12MetalNetLift13InitResourcesEv.cpp",
         "src/_ZN12MetalNetLift16CleanupResourcesEv.cpp",
         "src/_ZN12WaterSuction13InitResourcesEv.cpp",
@@ -22579,8 +22579,8 @@
           "name": "_ZN12FortressWall24OnHitByCannonBlastedCharER8dActor_c"
         },
         {
-          "file": "src/_ZN12HealingHeart13InitResourcesEv.cpp",
-          "name": "_ZN12HealingHeart13InitResourcesEv"
+          "file": "src/_ZN12daObjHeart_c13InitResourcesEv.cpp",
+          "name": "_ZN12daObjHeart_c13InitResourcesEv"
         },
         {
           "file": "src/_ZN12MetalNetLift13InitResourcesEv.cpp",

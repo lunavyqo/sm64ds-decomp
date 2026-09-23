@@ -1743,7 +1743,7 @@
       ]
     },
     "Math_Function_0203b14c": {
-      "src/_ZN12HealingHeart8BehaviorEv.cpp": [
+      "src/_ZN12daObjHeart_c8BehaviorEv.cpp": [
         "return:void"
       ],
       "src/_ZN7SkiLift8BehaviorEv.cpp": [
@@ -11290,7 +11290,7 @@
       "src/_ZN12FortressWall13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
-      "src/_ZN12HealingHeart13InitResourcesEv.cpp": [
+      "src/_ZN12daObjHeart_c13InitResourcesEv.cpp": [
         "return:BMD_File *"
       ],
       "src/_ZN12MetalNetLift13InitResourcesEv.cpp": [
@@ -12535,7 +12535,7 @@
       "src/actors/daObjFl_Ring_c.cpp": [
         "param:#2 void *"
       ],
-      "src/_ZN12HealingHeart8BehaviorEv.cpp": [
+      "src/_ZN12daObjHeart_c8BehaviorEv.cpp": [
         "param:#2 const Vector3 *"
       ],
       "src/_ZN12WorkElevator8BehaviorEv.cpp": [
@@ -15809,7 +15809,7 @@
       "src/_ZN11daDonketu_c8BehaviorEv.cpp": [
         "return:char *"
       ],
-      "src/_ZN12HealingHeart8BehaviorEv.cpp": [
+      "src/_ZN12daObjHeart_c8BehaviorEv.cpp": [
         "return:void *"
       ],
       "src/_ZN13MontyMoleRock8BehaviorEv.cpp": [
@@ -17836,7 +17836,7 @@
         "param:#1 void *",
         "return:void *"
       ],
-      "src/_ZN12HealingHeart13InitResourcesEv.cpp": [
+      "src/_ZN12daObjHeart_c13InitResourcesEv.cpp": [
         "return:BCA_File *"
       ],
       "src/_ZN15dMg3DEspModel_c13InitResourcesEv.cpp": [
@@ -18033,7 +18033,7 @@
       "src/_ZN11MirrorLuigi13InitResourcesEv.cpp": [
         "param:#5 unsigned int"
       ],
-      "src/_ZN12HealingHeart13InitResourcesEv.cpp": [
+      "src/_ZN12daObjHeart_c13InitResourcesEv.cpp": [
         "param:#5 unsigned int"
       ],
       "src/_ZN14UnknownVsEntry13InitResourcesEv.cpp": [
@@ -18687,7 +18687,7 @@
       "src/_ZN11PyramidStep13InitResourcesEv.cpp": [
         "return:void"
       ],
-      "src/_ZN12HealingHeart13InitResourcesEv.cpp": [
+      "src/_ZN12daObjHeart_c13InitResourcesEv.cpp": [
         "return:void"
       ],
       "src/_ZN12MetalNetLift13InitResourcesEv.cpp": [

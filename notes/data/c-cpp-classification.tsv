@@ -665,9 +665,9 @@ src/_ZN21daObjKm2_Fall_Block_c16CleanupResourcesEv.c	P1-vtable+mangled	ov045	daO
 src/_ZN21daObjKm2_Fall_Block_cD0Ev.c	DTOR-ONLY	ov045	daObjKm2_Fall_Block_c	daObjKm2_Fall_Block_c	_ZN21daObjKm2_Fall_Block_cD0Ev	1		True	_ZTV10dBgActor_c/_ZTV21daObjKm2_Fall_Block_c/_ZTV16daObjFallBlock_c	-
 src/_ZN9daChair_c16CleanupResourcesEv.c	P1-vtable+mangled	ov020	daChair_c	daChair_c/daChair_c	vtable daChair_c slot 3 @0x21132d8 | _ZN9daChair_c16CleanupResourcesEv	1		True		-
 src/_ZN9daChair_cD0Ev.c	DTOR-ONLY	ov020	daChair_c	daChair_c/daChair_c	_ZN9daChair_cD0Ev	1		True		-
-src/_ZN12HealingHeart16CleanupResourcesEv.c	P1-vtable+mangled	ov002	daObjHeart_c	HealingHeart/daObjHeart_c	vtable daObjHeart_c slot 3 @0x20bc6a4 | _ZN12HealingHeart16CleanupResourcesEv	1		True		-
-src/_ZN12HealingHeart8BehaviorEv.c	P1-vtable+mangled	ov002	daObjHeart_c	HealingHeart/daObjHeart_c	vtable daObjHeart_c slot 6 @0x20bc6fc | _ZN12HealingHeart8BehaviorEv	1		True		-
-src/_ZN12HealingHeartD0Ev.c	DTOR-ONLY	ov002	daObjHeart_c	HealingHeart/daObjHeart_c	_ZN12HealingHeartD0Ev	1		True		-
+src/_ZN12daObjHeart_c16CleanupResourcesEv.c	P1-vtable+mangled	ov002	daObjHeart_c	daObjHeart_c/daObjHeart_c	vtable daObjHeart_c slot 3 @0x20bc6a4 | _ZN12daObjHeart_c16CleanupResourcesEv	1		True		-
+src/_ZN12daObjHeart_c8BehaviorEv.c	P1-vtable+mangled	ov002	daObjHeart_c	daObjHeart_c/daObjHeart_c	vtable daObjHeart_c slot 6 @0x20bc6fc | _ZN12daObjHeart_c8BehaviorEv	1		True		-
+src/_ZN12daObjHeart_cD0Ev.c	DTOR-ONLY	ov002	daObjHeart_c	daObjHeart_c/daObjHeart_c	_ZN12daObjHeart_cD0Ev	1		True		-
 src/_ZN12MeshColliderC1Ev.c	P3-mangled-method-only	arm9		MeshCollider	_ZN12MeshColliderC1Ev	1		True	_ZTV12MeshCollider	-
 src/_ZN12MeshColliderD0Ev.c	DTOR-ONLY	arm9	dBgW_Kc	MeshCollider/dBgW_Kc	_ZN12MeshColliderD0Ev	1		True		-
 src/_ZN12MeshColliderD2Ev.c	DTOR-ONLY	arm9		MeshCollider	_ZN12MeshColliderD2Ev	1		True		-
