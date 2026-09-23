@@ -66,7 +66,9 @@ struct dScMgTrampoline2_c : dScMgD3DBase_c {
     u8  mArray3[0x1220];  /* 0x5ddc -- 0xa * 0x1d0, elem dtor func_ov006_021227c8 */
     u8  mArray4[0x168];   /* 0x6ffc -- 0xa * 0x24,  elem dtor func_ov006_020eed64 */
     u8  mArray5[0x960];   /* 0x7164 -- 0x14 * 0x78, elem dtor func_ov006_02122c68 */
-    u8  pad_7ac4[0xc];    /* 0x7ac4 -- Behavior reads 0x7ac4 and 0x7ac8; see banner */
+    void *mParticle;  /* 0x7ac4 -- Particle::System handle (unique ID) */
+    int mRamp;        /* 0x7ac8 -- Fix12 ramp (0x7000 spawner, 0x14000 Behavior) */
+    u8 pad_7acc[0x4]; /* 0x7acc -- unexplained */
     u8  mArray6[0xb4];    /* 0x7ad0 -- 5 * 0x24,    elem dtor func_ov006_02120938 */
     u8  pad_7b84[0x18];   /* 0x7b84 -- six live words; see banner */
     s16 unk_7b9c;         /* 0x7b9c */

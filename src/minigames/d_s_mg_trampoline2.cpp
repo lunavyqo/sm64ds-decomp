@@ -11,6 +11,13 @@
  * manifest and stay as they are.
  *
  * Still blocked:
+ * deslop
+ * Leftover: mParticle/mRamp are named header members now; pad_7acc,
+ *   pad_5004 (state PMF, method names unknown) and pad_7b84..0x7b9c
+ *   stay raw (issue #2497).
+ * Leftover, measured: in free helpers, `((dScMgTrampoline2_c *)raw)->`
+ *   member access DIFFs against `*(T *)(raw + const)` (aliasing); the
+ *   raw forms stay. Member-function anchoring is free.
  * - Most helpers and tables (func_ov006_*, data_ov006_*) have no recovered
  *   names, and the state callbacks are C functions on a char pointer because
  *   their method names are unknown (issue #2497).
@@ -615,7 +622,7 @@ void func_ov006_02123cb4(char *raw)
         int n = data_ov006_02140818 - old;
         int i;
         for (i = 0; i < n; i++)
-            ApproachLinear(*(int *)(raw + 0x7ac8), 0x7000, -0x800);
+            ApproachLinear(((dScMgTrampoline2_c *)raw)->mRamp, 0x7000, -0x800);
         if (data_ov006_02140818 == 3)
             *(u8 *)(raw + 0xc3) = 0;
     }
@@ -986,13 +993,13 @@ s32 dScMgTrampoline2_c::Behavior()
     func_ov006_02120c40();
     func_ov006_020eef90();
     func_ov006_02122ab8();
-    *(void **)(raw + 0x7ac4) =
+    mParticle =
         _ZN8Particle6System17NewUnkCallback818Ejj5Fix12IiES2_S2_PK11Vector3_16f(
-            *(unsigned int *)(raw + 0x7ac4), 0xf0, 0x280000, 0x700000, -0x580000, 0);
-    void *p = _ZN8Particle6System12FromUniqueIDEj(*(unsigned int *)(raw + 0x7ac4));
+            (unsigned int)mParticle, 0xf0, 0x280000, 0x700000, -0x580000, 0);
+    void *p = _ZN8Particle6System12FromUniqueIDEj((unsigned int)mParticle);
     if (p != 0) {
-        *(char *)((char *)p + 0x58) = (char)(*(int *)(raw + 0x7ac8) >> 12);
-        ApproachLinear(*(int *)(raw + 0x7ac8), 0x14000, 0x200);
+        *(char *)((char *)p + 0x58) = (char)(mRamp >> 12);
+        ApproachLinear(mRamp, 0x14000, 0x200);
     }
     {
         dScMgTrampoline2_cState *pp = (dScMgTrampoline2_cState *)pad_5004;
@@ -1123,9 +1130,9 @@ int dScMgTrampoline2_c::OnAttacked2()
         return 0;
 
     if (unk_7bab != 0) {
-        s16 a = *(volatile s16*)(raw + 0x7ba0);
-        if ((a < 0x18 && *(volatile s16*)(raw + 0x7b9c) < 0x18) ||
-            (a > 0xe8 && *(volatile s16*)(raw + 0x7b9c) > 0xe8)) {
+        s16 a = *(volatile s16 *)&unk_7ba0;
+        if ((a < 0x18 && *(volatile s16 *)&unk_7b9c < 0x18) ||
+            (a > 0xe8 && *(volatile s16 *)&unk_7b9c > 0xe8)) {
             func_02012790(0xe);
         } else {
             buf[1] = unk_7ba0;
