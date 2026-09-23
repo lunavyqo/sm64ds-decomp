@@ -7,6 +7,11 @@
  * variants. Keep source order and the local optimization pragmas together.
  *
  * Still blocked:
+ * deslop
+ * Leftover: CheckTouch's dy2 keeps its raw `((int *)(raw + 0x49d8))[i]`
+ *   form: converting it alongside dx2's mPosX[i] lets the compiler
+ *   reorder across the two member views (aliasing); the mixed
+ *   member/raw pair stays conservative and matches.
  * - The iris, curtain and reward storage below 0x47f4 is padding in the
  *   header, so those functions read raw offsets. ResetBoard uses a local
  *   layout view for the same range.
@@ -735,8 +740,8 @@ void dScMgLuigi_c::DrawPictures() {
         if (*(unsigned char *)(raw+i+0x53dd) == 1) {
             Hud_RenderSprite(
                 data_ov006_0213abc8[*(unsigned char *)(raw+i+0x5365)],
-                ((int *)(raw+0x47f8))[i] >> 12,
-                ((int *)(raw+0x49d8))[i] >> 12,
+                mPosX[i] >> 12,
+                mPosY[i] >> 12,
                 -1,
                 0);
         }
@@ -902,8 +907,8 @@ void dScMgLuigi_c::MovePictureBounce(int i)
 
     {
         u8 *speedLevel = (u8 *)(raw + 0x5365);
-        int *posX = (int *)(raw + 0x47f8);
-        int *posY = (int *)(raw + 0x49d8);
+        int *posX = mPosX;
+        int *posY = mPosY;
         u16 phase;
         int a;
         int stepX, stepY;
@@ -1226,8 +1231,8 @@ void dScMgLuigi_c::BeginCatch(int p1)
 {
     char *raw = (char *)this;
     int v;
-    *(short *)(raw + 0x5166) = (short)(((int *)(raw + 0x47f8))[unk_5456 - 1] >> 0xc);
-    *(short *)(raw + 0x5168) = (short)(((int *)(raw + 0x49d8))[unk_5456 - 1] >> 0xc);
+    *(short *)(raw + 0x5166) = (short)(mPosX[unk_5456 - 1] >> 0xc);
+    *(short *)(raw + 0x5168) = (short)(mPosY[unk_5456 - 1] >> 0xc);
     *(short *)(raw + 0x5164) = 0x60;
     mState = 3;
     *(short *)(raw + 0x516a) = 0xc8;
@@ -1264,14 +1269,14 @@ void dScMgLuigi_c::CheckTouch()
 
     cur = *(u8 *)(raw + 0x5456);
     {
-        int dx = data_020a0dea[idx][0] - (((int *)(raw + 0x47f8))[cur - 1] >> 12);
-        int dy = data_020a0deb[idx][0] - (((int *)(raw + 0x49d8))[cur - 1] >> 12);
+        int dx = data_020a0dea[idx][0] - (mPosX[cur - 1] >> 12);
+        int dy = data_020a0deb[idx][0] - (mPosY[cur - 1] >> 12);
         if (dx <= 0x10 && dx >= -0x10 && dy <= 0x10 && dy >= -0x10) {
             int lvl, cat;
 
-            ((dScMgLuigi_c *)raw)->BeginCatch(1);
+            BeginCatch(1);
             cur = *(u8 *)(raw + 0x5456);
-            ((dScMgLuigi_c *)raw)->StartReward(cur - 1);
+            StartReward(cur - 1);
 
             lvl = *(int *)(raw + 0xbc);
             cat = 0;
@@ -1294,7 +1299,7 @@ void dScMgLuigi_c::CheckTouch()
             if (*(u8 *)(raw + i + 0x52ed) == 1) {
                 u8 *p = (u8 *)(raw + i + off);
                 if (*p != 9) {
-                    int dx2 = data_020a0de8[idx][2] - (((int *)(raw + 0x47f8))[i] >> 12);
+                    int dx2 = data_020a0de8[idx][2] - (mPosX[i] >> 12);
                     int dy2 = data_020a0de8[idx][3] - (((int *)(raw + 0x49d8))[i] >> 12);
                     if (dx2 <= 0x10 && dx2 >= -0x10 && dy2 <= 0x10 && dy2 >= -0x10) {
                         u16 *arrC;
@@ -1305,7 +1310,7 @@ void dScMgLuigi_c::CheckTouch()
                         arrC[i] = 0x40;
                         if (*(u16 *)(raw + 0x5172) != 0) {
                             int cur2 = *(u8 *)(raw + 0x5456);
-                            int t = (((int *)(raw + 0x47f8))[cur2 - 1] >> 12) - 0x80;
+                            int t = (mPosX[cur2 - 1] >> 12) - 0x80;
                             int pan = (t * 0x30) >> 7;
                             int unk545a;
                             if (pan >= 0x30) pan = 0x30;
