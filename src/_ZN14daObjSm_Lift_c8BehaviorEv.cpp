@@ -1,8 +1,8 @@
 //cpp
-// @symbol _ZN7SkiLift8BehaviorEv
-#include "SkiLift.h"
+// @symbol _ZN14daObjSm_Lift_c8BehaviorEv
+#include "daObjSm_Lift_c.h"
 
-/* SkiLift::Behavior -- vtable slot 6, ov018 0x02111368.
+/* daObjSm_Lift_c::Behavior -- vtable slot 6, ov018 0x02111368.
  *
  * Minimal-diff member-function migration: the pre-migration recovery's
  * `char *self` parameter becomes a local `char *self = (char *)this;`,
@@ -14,7 +14,7 @@
  * IsClsnInRangeE5Fix12IiES1_ (dBgActor_c.h's own note) -- so it stays raw
  * extern "C" under its mangled name instead; mwcc tolerates the raw
  * redeclaration alongside dBgActor_c.h's real one in the same TU.
- * SkiLift.h declares this class's own 0x320..0x353 span only as opaque
+ * daObjSm_Lift_c.h declares this class's own 0x320..0x353 span only as opaque
  * `pad_320[0x34]`; naming that 13-slot path-follower state is out of this
  * task's scope, so the raw-offset recovery is kept verbatim. */
 typedef unsigned char u8;
@@ -50,7 +50,7 @@ extern s16 data_02082214[];
 
 struct PathPtrObj { int a, b; };
 
-int SkiLift::Behavior()
+int daObjSm_Lift_c::Behavior()
 {
     char* self = (char *)this;
     struct PathPtrObj path;

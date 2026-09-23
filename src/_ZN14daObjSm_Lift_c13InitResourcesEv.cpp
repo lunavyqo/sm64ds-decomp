@@ -1,6 +1,6 @@
 //cpp
-// @symbol _ZN7SkiLift13InitResourcesEv
-#include "SkiLift.h"
+// @symbol _ZN14daObjSm_Lift_c13InitResourcesEv
+#include "daObjSm_Lift_c.h"
 /* recovered: renamed to Class_Method, RTTI class fields named */
 #include "daObjSm_Lift_c.h"
 // recovered name: daObjSm_Lift_c_InitResources
@@ -25,7 +25,7 @@ extern int data_ov018_02112f48[];
 extern int _ZN4dBgW22UpdatePosWithTransformERS_P8dActor_cR5dBgPiR7Vector3P10Vector3_16S8_[];
 extern int func_ov018_02111804[];
 
-s32 SkiLift::InitResources() {
+s32 daObjSm_Lift_c::InitResources() {
     char* c = (char*)this;
     struct daObjSm_Lift_c *self = (struct daObjSm_Lift_c *)(void *)c;
   self->mPathId = *(int*)(c+8) & 0xff;
