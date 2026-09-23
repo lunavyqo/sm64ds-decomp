@@ -16,6 +16,11 @@
  * it the TU drops to 44/49 and the order check fails.
  *
  * Still blocked:
+ * deslop
+ * Leftover: C/ObjB/Obj views of the 0x98 element stay separate (kept
+ *   apart deliberately); the 0x98 walks stay byte-stepped (index-form
+ *   struct access DIFFs, measured on sibling TUs).
+ * Leftover: OAM::Render and cstd::atan2 stay mangled (Fix12 by value).
  * - Most helpers are C functions on a char pointer, and their names and the
  *   data tables are unrecovered (func_ov006_*, data_ov006_*).
  * - The 15-entry object array at 0x4678 (0x98 bytes each) has no header
