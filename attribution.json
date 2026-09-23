@@ -8,6 +8,12 @@
     "mitch.cairns": "mitchellcairns"
   },
   "overrides": {
+    "src/actors/daFRing_c.cpp#_ZN9daFRing_cD1Ev": "tangosdev",
+    "src/actors/daFRing_c.cpp#_ZN9daFRing_cD0Ev": "tangosdev",
+    "src/actors/daFRing_c.cpp#_ZN9daFRing_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daFRing_c.cpp#_ZN9daFRing_c6RenderEv": "tangosdev",
+    "src/actors/daFRing_c.cpp#_ZN9daFRing_c8BehaviorEv": "tangosdev",
+    "src/actors/daFRing_c.cpp#_ZN9daFRing_c13InitResourcesEv": "tangosdev",
     "src/_ZN9ModelBase12ApplyOpacityEjj.cpp": "ruspecial",
     "src/START_INTRO_MINIMAP_ZOOM.c": "tangosdev",
     "src/_ZN10LavaBridge13InitResourcesEv.c": "tangosdev",
