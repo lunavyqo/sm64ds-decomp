@@ -1,25 +1,17 @@
 //cpp
-/* dScMgRoulette_c -- the Mushroom Roulette minigame, ov006, 40 functions
- * (.text 0x0210788c..0x0210a400). Racers are dealt onto a spinning board,
- * the countdown runs, and each racer is paid out by the tile it lands on.
+/* dScMgRoulette_c — Mushroom Roulette. Racers are dealt onto a spinning
+ * board, the countdown runs, and each racer is paid by the tile it stops on.
  *
- * Eight functions are the class's own virtuals: InitResources,
- * CleanupResources, Behavior, Render, the destructor pair, OnYoshiTryEat and
- * OnTurnIntoEgg. The other 32 are file-local helpers: board hit-testing, the
- * racer update and draw loops, the slider physics and the meter strips.
- *
- * The compiler emits .text in reverse source order, so the functions run
- * here from the highest address down. Do not reorder.
+ * Functions are in reverse ROM order; do not reorder.
  *
  * common.h comes first so its flat Matrix4x3 wins the MATRIX4X3_DEFINED
  * guard; func_ov006_02107db8 copies a whole matrix and needs that spelling.
  *
- * Still raw:
- * deslop
- * Leftover: the camera (0x4660, base header), the meter strips (0x52ac)
- *   and the slider (0x530c) stay offset-reached; the slider's PMF state
- *   must stay TU-local (representation).
- * Leftover: the func_ and data_ helpers are unnamed in symbols.txt.
+ * Leftover: the camera at 0x4660 stays an offset; it lives on the base.
+ * Behavior keeps mPhase, mPhaseTimer and mDealIndex behind H/HA/I,
+ * and its meter and slider calls at raw offsets: member form DIFFed
+ * there. The slider's PMF stays a local view.
+ * Most func_ and data_ helpers are unnamed.
  */
 
 #include "common.h"
@@ -79,22 +71,25 @@ struct C {
 /* One racer, 0x34 bytes, five of them at 0x51a8. Thing, RacerXY and
    RacerPos are three views of the same record; each helper keeps the view
    it was matched with. */
+/* One racer. x/y slide toward targetX/targetY by stepX/stepY.
+   state: 1 sliding, 2 under the stylus, 3 stopped, 4 about to hop,
+   5 hopping, 6 settled, 7 sent to the side pile. */
 typedef struct Thing {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
+    s32 x;
+    s32 y;
+    s32 grabX;
+    s32 grabY;
+    s32 stepX;
+    s32 stepY;
+    s32 targetX;
+    s32 targetY;
     s32 unk20;
     s32 unk24;
     s32 unk28;
-    s16 unk2C;
+    s16 tile;
     s16 unk2E;
-    s16 unk30;
-    u8 unk32;
+    s16 hop;
+    u8 state;
     u8 unk33;
 } Thing;
 
@@ -320,13 +315,13 @@ s32 dScMgRoulette_c::InitResources()
     func_ov006_020c0aa8(raw + 0x4660);
     if (func_ov006_020c1a88((char *)mTable) == 0)
         return 0;
-    if (func_ov006_021085c0(raw + 0x530c) == 0)
+    if (func_ov006_021085c0((char *)mSlider) == 0)
         return 0;
 
     unk_0a8 = func_ov004_020ad8b8();
     unk_0ac = unk_0a8;
     func_ov004_020b682c();
-    func_ov006_02107b70(raw + 0x52ac);
+    func_ov006_02107b70((char *)mMeter);
     OnYoshiTryEat(-1);
     return 1;
 }
@@ -467,7 +462,7 @@ s32 dScMgRoulette_c::Behavior()
         int j;
         int payout;
         char *p;
-        onTile = (unk_53c4 == 0) ? 1 : 0;
+        onTile = (mBoardBusy == 0) ? 1 : 0;
         if (LNDR(onTile) != 0) {
             j = 0;
             mPromptEnabled = 0;
@@ -480,6 +475,8 @@ s32 dScMgRoulette_c::Behavior()
                     p = (char *)mArray;
                     do {
                         payout = func_ov006_02108b90((short *)p, tile);
+                        /* mMeter[3..0] (payouts 2, 3, 6, 12) DIFFed in this
+                           function; the offsets are those strips. */
                         if (payout == 2) {
                             func_ov006_02107d20((int *)(c + 0x52f4), (int)p);
                         } else if (payout == 3) {
@@ -579,14 +576,14 @@ s32 dScMgRoulette_c::Render()
     func_ov006_02109aa0(raw);
 
     {
-        int idle = (int)(((long long)(unk_53c4 == 0)));
+        int idle = (int)(((long long)(mBoardBusy == 0)));
         if (idle != 0) {
             if (mPhase < 8) {
                 if (data_020a0db0 & 8) {
                     s16 idx = mSelectedTile;
                     Hud_RenderSprite((void *)data_ov006_02138c18,
                                         ((TileXY *)data_ov006_02142ab4)[idx].x >> 12,
-                                        ((TileXY *)data_ov006_02142ab8)[idx].x >> 12,
+                                        ((TileXY *)data_ov006_02142ab8)[idx].x >> 12, /* = [idx].y */
                                         -1, 1);
                 }
             }
@@ -633,7 +630,7 @@ s32 dScMgRoulette_c::Render()
             func_ov006_020c0aa8(raw + 0x4660);
         }
         if (preset != 0)
-            func_ov006_02107d80(raw + 0x530c);
+            func_ov006_02107d80((char *)mSlider);
         else
             func_ov006_020c1804((char *)mTable);
     }
@@ -645,7 +642,7 @@ s32 dScMgRoulette_c::Render()
 /* Frees the slider's two model files. */
 s32 dScMgRoulette_c::CleanupResources()
 {
-    func_ov006_0210858c((ResPair *)((char *)this + 0x530c));
+    func_ov006_0210858c((ResPair *)mSlider);
     return 1;
 }
 
@@ -719,7 +716,7 @@ void dScMgRoulette_c::OnYoshiTryEat(int /* arg */)
     if (count >= 5) count = 5;
     mRacerCount = count;
 
-    func_ov006_02108524(raw + 0x530c);
+    func_ov006_02108524((char *)mSlider);
 
     data_ov006_021428c8 = 0;
     mCameraPreset = 0;
@@ -898,38 +895,38 @@ void func_ov006_02108f2c(Thing* racer)
     int b;
     s16 type;
 
-    state = racer->unk32;
+    state = racer->state;
     if (state == 0 || state == 3) {
-        ApproachLinear(racer->unk0, racer->unk18, racer->unk10);
-        ApproachLinear(racer->unk4, racer->unk1C, racer->unk14);
+        ApproachLinear(racer->x, racer->targetX, racer->stepX);
+        ApproachLinear(racer->y, racer->targetY, racer->stepY);
     }
 
-    state = racer->unk32;
+    state = racer->state;
     if (state == 1) {
         func_ov006_02108e24((int *)racer);
-        ApproachLinear(racer->unk0, racer->unk18, racer->unk10);
-        ApproachLinear(racer->unk4, racer->unk1C, racer->unk14);
+        ApproachLinear(racer->x, racer->targetX, racer->stepX);
+        ApproachLinear(racer->y, racer->targetY, racer->stepY);
     } else if (state == 7) {
         s32 out[2];
-        ApproachLinear(racer->unk0, racer->unk18, racer->unk10);
-        ApproachLinear(racer->unk4, racer->unk1C, racer->unk14);
-        Vec2_Sub(out, &racer->unk18, (int *)racer);
+        ApproachLinear(racer->x, racer->targetX, racer->stepX);
+        ApproachLinear(racer->y, racer->targetY, racer->stepY);
+        Vec2_Sub(out, &racer->targetX, (int *)racer);
         if (out[0] != 0)
             return;
         if (out[1] != 0)
             return;
-        racer->unk32 = 6;
+        racer->state = 6;
         func_ov004_020b1b40(1);
     } else if (state == 4) {
         s32 out[2];
-        ApproachLinear(racer->unk0, racer->unk18, racer->unk10);
-        ApproachLinear(racer->unk4, racer->unk1C, racer->unk14);
-        Vec2_Sub(out, &racer->unk18, (int *)racer);
+        ApproachLinear(racer->x, racer->targetX, racer->stepX);
+        ApproachLinear(racer->y, racer->targetY, racer->stepY);
+        Vec2_Sub(out, &racer->targetX, (int *)racer);
         if (out[0] != 0)
             return;
         if (out[1] == 0) {
-            racer->unk30 = 0x14;
-            racer->unk32 = 5;
+            racer->hop = 0x14;
+            racer->state = 5;
         }
     } else if (state == 5) {
         s32 d;
@@ -937,11 +934,11 @@ void func_ov006_02108f2c(Thing* racer)
         s32 q;
         d = data_ov004_020b9488;
         p = (s32*)(((s32)racer + 4));
-        q = -((racer->unk30 - (d >> 1)) << 12) / d - 0x600;
+        q = -((racer->hop - (d >> 1)) << 12) / d - 0x600;
         *p += (s32)((((s64)q << 14) + 0x800) >> 12);
         *(s16*)(((s32)racer + 0x30)) -= 1;
-        if (racer->unk30 == 0)
-            racer->unk32 = 6;
+        if (racer->hop == 0)
+            racer->state = 6;
     } else if (state == 2) {
         s32 vec[2];
         u8 idx = data_020a0e40;
@@ -950,11 +947,11 @@ void func_ov006_02108f2c(Thing* racer)
             vec[1] = data_020a0deb[idx * 4] << 12;
             func_ov006_021094ac((RacerXY *)racer, vec);
         } else {
-            type = func_ov006_02108650(racer->unk18 >> 12, racer->unk1C >> 12);
-            racer->unk2C = type;
+            type = func_ov006_02108650(racer->targetX >> 12, racer->targetY >> 12);
+            racer->tile = type;
             if (type != 0x25) {
                 b = 0;
-                type = racer->unk2C;
+                type = racer->tile;
                 if (type >= 0xc && type <= 0x1c)
                     b = 1;
                 if (b != false)
@@ -977,10 +974,10 @@ void func_ov006_02108f2c(Thing* racer)
                 func_ov006_0210927c((char *)racer);
             }
             data_ov006_021428c8 = 0;
-            racer->unk32 = 1;
+            racer->state = 1;
         }
-        ApproachLinear(racer->unk0, racer->unk18, racer->unk10);
-        ApproachLinear(racer->unk4, racer->unk1C, racer->unk14);
+        ApproachLinear(racer->x, racer->targetX, racer->stepX);
+        ApproachLinear(racer->y, racer->targetY, racer->stepY);
     }
 }
 }
