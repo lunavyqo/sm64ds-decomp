@@ -18,6 +18,7 @@
  * Blocked: no layout for dScMgCoin_c is recovered, so every function takes
  * the scene as raw bytes, and the helpers and tables are unnamed in
  * symbols.txt. What the code shows of the layout:
+ * deslop
  *
  *     0x4ac0  24 coins, 0x18 each: position, landing height, speed, state,
  *             value and bounce count
