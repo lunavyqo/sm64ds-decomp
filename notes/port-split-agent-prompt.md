@@ -224,7 +224,7 @@ Write the branch map the docs commit will ship:
 } | tee "$HOME/sm64ds-port-split/DECOMP-PINS.tsv"
 ```
 
-`git for-each-ref` wrote `SHA ref` lines. The two `echo "main $(git rev-parse ...)"` lines you appended are `ref SHA`, the other way around, and they will break this loop. Strip those two lines out of `pins-before.txt` before you run the loop, or write them to a different file. Every `decomp_sha` is the pre-filter SHA. Every `port_sha` is the post-filter SHA. They must differ.
+`pins-before.txt` is only the `for-each-ref` output: each line is `SHA ref`. Do not append anything else to that file. Every `decomp_sha` is the pre-filter SHA. Every `port_sha` is the post-filter SHA. They must differ.
 
 ### 3. Branch names
 
