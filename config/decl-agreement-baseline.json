@@ -1948,7 +1948,7 @@
       "src/_ZN12WorkElevator8BehaviorEv.cpp": [
         "param:#2 short"
       ],
-      "src/_ZN15TtcRotatingCube12UpdateShadowEv.cpp": [
+      "src/actors/daObjCtRotateBlock_c.cpp": [
         "param:#2 short"
       ],
       "src/_ZN16SpinningPlatform12UpdateShadowEv.cpp": [
@@ -6427,7 +6427,7 @@
       "src/_ZN11BobOmbBuddy8BehaviorEv.cpp": [
         "return:int"
       ],
-      "src/_ZN15TtcRotatingCube8BehaviorEv.cpp": [
+      "src/actors/daObjCtRotateBlock_c.cpp": [
         "param:#2 int",
         "param:#3 int",
         "return:int"
@@ -7391,7 +7391,7 @@
       ]
     },
     "_ZN10dBgW_KcMbg9TransformERK9Matrix4x3s": {
-      "src/_ZN15TtcRotatingCube10UpdateClsnEv.cpp": [
+      "src/actors/daObjCtRotateBlock_c.cpp": [
         "param:#2 Matrix4x3 &",
         "return:int"
       ],
@@ -7642,7 +7642,7 @@
       "src/_ZN14KnockDownPlank13InitResourcesEv.cpp": [
         "return:void"
       ],
-      "src/_ZN15TtcRotatingCube13InitResourcesEv.cpp": [
+      "src/actors/daObjCtRotateBlock_c.cpp": [
         "return:void"
       ],
       "src/_ZN5Crate13InitResourcesEv.cpp": [
@@ -11011,7 +11011,7 @@
       "src/_ZN15FireSeaElevator13InitResourcesEv.cpp": [
         "kind:data"
       ],
-      "src/_ZN15TtcRotatingCube13InitResourcesEv.cpp": [
+      "src/actors/daObjCtRotateBlock_c.cpp": [
         "arity:0",
         "mangled:0 parameter(s)"
       ],
@@ -11340,7 +11340,7 @@
       "src/_ZN15RotatingFirebar13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
-      "src/_ZN15TtcRotatingCube13InitResourcesEv.cpp": [
+      "src/actors/daObjCtRotateBlock_c.cpp": [
         "param:#1 void *"
       ],
       "src/_ZN15daObjMarioCap_c13InitResourcesEv.cpp": [
@@ -12558,7 +12558,7 @@
       "src/_ZN12WorkElevator8BehaviorEv.cpp": [
         "param:#2 const void *"
       ],
-      "src/_ZN15TtcRotatingCube8BehaviorEv.cpp": [
+      "src/actors/daObjCtRotateBlock_c.cpp": [
         "param:#2 void *"
       ],
       "src/_ZN3Key13InitResourcesEv.cpp": [
@@ -14710,7 +14710,7 @@
         "param:#1 void *",
         "return:void *"
       ],
-      "src/_ZN15TtcRotatingCube13InitResourcesEv.cpp": [
+      "src/actors/daObjCtRotateBlock_c.cpp": [
         "param:#1 void *",
         "return:void *"
       ],
@@ -16739,7 +16739,7 @@
       ]
     },
     "_ZN8dActor_c18DropShadowScaleXYZER11ShadowModelR9Matrix4x35Fix12IiES5_S5_j": {
-      "src/_ZN15TtcRotatingCube12UpdateShadowEv.cpp": [
+      "src/actors/daObjCtRotateBlock_c.cpp": [
         "param:#7 unsigned int",
         "return:int"
       ],
@@ -18739,7 +18739,7 @@
       "src/_ZN15RotatingFirebar13InitResourcesEv.cpp": [
         "return:void"
       ],
-      "src/_ZN15TtcRotatingCube13InitResourcesEv.cpp": [
+      "src/actors/daObjCtRotateBlock_c.cpp": [
         "return:void"
       ],
       "src/_ZN16BowserShockwaves13InitResourcesEv.cpp": [
@@ -23402,7 +23402,7 @@
       "src/_ZN15RotatingFirebar8BehaviorEv.cpp": [
         "return:int []"
       ],
-      "src/_ZN15TtcRotatingCube13InitResourcesEv.cpp": [
+      "src/actors/daObjCtRotateBlock_c.cpp": [
         "return:int []"
       ],
       "src/_ZN16daKing_Donketu_c8BehaviorEv.cpp": [
@@ -37046,7 +37046,7 @@
       "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
         "param:#2 void *"
       ],
-      "src/_ZN15TtcRotatingCube13InitResourcesEv.cpp": [
+      "src/actors/daObjCtRotateBlock_c.cpp": [
         "param:#2 void *"
       ],
       "src/_ZN16SpinningPlatform13InitResourcesEv.cpp": [
