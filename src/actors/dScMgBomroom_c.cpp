@@ -1,20 +1,13 @@
 //cpp
-/* Bob-omb sorting minigame: 41 helpers (.text 0x020d5eb8..0x020d7c4c).
- * The rest of the class lives in its own files. Source ROM-ascending
- * under defer_codegen off. Do not reorder.
+/* Bob-omb sorting minigame. Each bomb is one of two colors; a stylus
+ * grab carries it by the offset at the touch. Its own pen settles it,
+ * the other pen explodes it and knocks the others aside. Forty of one
+ * color settled wins that side.
  *
- * Bombs are 0x70 records of 0x40 bytes at 0x4660 (struct Bomb above,
- * named from the helpers' reads and writes).
- *
- * deslop
- * Leftover: no layout for the scene itself, so helpers take raw bytes;
- *   tables are unnamed in symbols.txt; cstd::atan2 stays mangled
- *   (Fix12 arguments).
- * Leftover, all measured on this TU: array-indexing a Bomb (`base[i]`)
- *   compiles to an add-chain where explicit `(i<<6)` shifts; taking a
- *   member's address (`&b->state`) differs from plain address
- *   arithmetic; func_ov006_020d69b8 keeps its local Bomb_69b8 view and
- *   indexed macro (the shared struct changes its code).
+ * Leftover, measured: a state field (and &state) differs from
+ * (u8 *)(bomb + 0x4697) in func_ov006_020d68a8, and that function's
+ * idle-bomb timer store must stay raw + i*0x40 + 0x4690. &f3c differs
+ * from (unsigned char *)(int)(bomb + 0x469c) in func_ov006_020d7604.
  */
 
 #include "types.h"
@@ -46,17 +39,15 @@ extern void func_ov006_020d5e3c(void *a);
 
 namespace cstd { int sqrt(u64 value); }
 
-/* One bomb: a 0x40-byte record at 0x4660, indexed by bomb number.
- * Names from the helpers' reads and writes; f-names are offsets whose
- * role is not evidenced. x/y are Fix12; color selects the pen. */
+/* One bomb: 0x40 bytes at scene + 0x4660. x, y, grabX, grabY and speed are Fix12. */
 struct Bomb {
     int x;            /* 0x00 */
     int y;            /* 0x04 */
-    int f08;          /* 0x08 */
-    int f0c;          /* 0x0c */
-    int f10;          /* 0x10 */
+    int grabX;        /* 0x08 */
+    int grabY;        /* 0x0c */
+    int speed;        /* 0x10 */
     char pad14[0x10];
-    int f24;          /* 0x24 */
+    int sound;        /* 0x24 */
     char pad28[4];
     u16 f2c;          /* 0x2c */
     u16 f2e;          /* 0x2e */
@@ -613,7 +604,7 @@ struct Scene_69b8 {
 struct Bomb_69b8 {
     int f660;
     char pad1[0x20];
-    int f684;
+    int sound;
     char pad2[6];
     unsigned short f68e;
     char pad3[4];
@@ -638,7 +629,7 @@ void func_ov006_020d69b8(char *raw, int index)
     frame = BOMB.f695;
 
     if (type != 3 && type != 0 && SCENE->f2d0 != 3) {
-        BOMB.f684 = func_02012468(BOMB.f684, 2, 0x1db, 4, 0, 0,
+        BOMB.sound = func_02012468(BOMB.sound, 2, 0x1db, 4, 0, 0,
                                func_020126e8(BOMB.f660), 0);
     }
 
@@ -691,7 +682,7 @@ void func_ov006_020d6b88(char *raw, int index)
         ((Bomb *)(bomb + 0x4660))->type = 0;
         ((Bomb *)(bomb + 0x4660))->frame = 0;
         ((Bomb *)(bomb + 0x4660))->f2e = 0;
-        ((Bomb *)(bomb + 0x4660))->f10 = 0x999;
+        ((Bomb *)(bomb + 0x4660))->speed = 0x999;
         func_02012718((int)0x1dc, ((Bomb *)(bomb + 0x4660))->x);
     } else {
         if (x >= 0x40) return;
@@ -701,7 +692,7 @@ void func_ov006_020d6b88(char *raw, int index)
         ((Bomb *)(bomb + 0x4660))->type = 0;
         ((Bomb *)(bomb + 0x4660))->frame = 0;
         ((Bomb *)(bomb + 0x4660))->f2e = 0;
-        ((Bomb *)(bomb + 0x4660))->f10 = 0x999;
+        ((Bomb *)(bomb + 0x4660))->speed = 0x999;
         func_02012718((int)0x1dc, ((Bomb *)(bomb + 0x4660))->x);
     }
 }
@@ -752,8 +743,8 @@ void func_ov006_020d6c90(char *raw, int index)
 
 // @symbol func_ov006_020d6d7c
 /* Picks up a bomb under the stylus: a touch within 12 units across and 15
- * down of it, while nothing is held (0x62f6 is 0xff). The grab offset goes
- * to +0x8 and +0xc. */
+ * down of it, while nothing is held (0x62f6 is 0xff). grabX/grabY keep the
+ * stylus-minus-bomb offset. */
 #pragma push
 #pragma opt_propagation off
 extern "C" {
@@ -782,8 +773,8 @@ void func_ov006_020d6d7c(char *raw, int index) {
     *(u8*)(raw + 0x62f6) = ((Bomb *)(bomb + 0x4660))->color;
     ((Bomb *)(bomb + 0x4660))->type = 1;
     ((Bomb *)(bomb + 0x4660))->state = 2;
-    *(int*)(bomb + 0x4668) = dx << 0xc;
-    *(int*)(bomb + 0x466c) = dy << 0xc;
+    ((Bomb *)(bomb + 0x4660))->grabX = dx << 0xc;
+    ((Bomb *)(bomb + 0x4660))->grabY = dy << 0xc;
     ((Bomb *)(bomb + 0x4660))->f3e = 0;
     func_02012718((int)0x1d2, ((Bomb *)(bomb + 0x4660))->x);
 }
@@ -1005,7 +996,7 @@ void func_ov006_020d7604(void *raw)
                     bomb[0x469b] = 3;
                     v = ca;
                     q = 0;
-                    *(unsigned short *)(bomb + 0x4690) = (unsigned short)(cc * 8);
+                    ((Bomb *)(bomb + 0x4660))->f30 = (unsigned short)(cc * 8);
                     while (v >= 5) { v -= 5; q++; }
                     ((unsigned char *)(int)(bytes + i * 64))[0x469c] = (unsigned char)(q * 10 + v);
                     ca++;
@@ -1017,7 +1008,7 @@ void func_ov006_020d7604(void *raw)
                     *d = (unsigned char)cb;
                     bomb[0x469b] = 3;
                     v = cb;
-                    *(unsigned short *)(bomb + 0x4690) = (unsigned short)(cc * 8);
+                    ((Bomb *)(bomb + 0x4660))->f30 = (unsigned short)(cc * 8);
                     q = 0;
                     while (v >= 5) { v -= 5; q++; }
                     *d = (unsigned char)(q * 10 + v + 5);
@@ -1027,13 +1018,13 @@ void func_ov006_020d7604(void *raw)
             } else if (bytes[0x62f8] != 0) {
                 bomb[0x469c] = (unsigned char)cc;
                 bomb[0x469b] = 3;
-                *(unsigned short *)(bomb + 0x4690) = (unsigned short)(cc * 8);
+                ((Bomb *)(bomb + 0x4660))->f30 = (unsigned short)(cc * 8);
                 cc++;
             } else {
                 if (bytes[0x62f5] == bomb[0x4696] && bomb[0x4697] == 6) {
                     bomb[0x469c] = (unsigned char)cc;
                     bomb[0x469b] = 3;
-                    *(unsigned short *)(bomb + 0x4690) = (unsigned short)(cc * 8);
+                    ((Bomb *)(bomb + 0x4660))->f30 = (unsigned short)(cc * 8);
                     cc++;
                 }
             }
@@ -1084,17 +1075,17 @@ void func_ov006_020d777c(char *raw, int index)
             return;
         }
         if (targetY != curY) {
-            *(int*)(raw + 0x4664 + (index << 6)) += *(int*)(raw + (index << 6) + 0x4670);
+            *(int*)(raw + 0x4664 + (index << 6)) += ((Bomb *)(raw + 0x4660 + (index << 6)))->speed;
             if ((((Bomb *)(raw + 0x4660 + (index<<6)))->y >> 12) >= targetY)
                 ((Bomb *)(raw + 0x4660 + (index<<6)))->y = targetY << 12;
             return;
         }
         if (targetX > curX) {
-            *(int*)(raw + 0x4660 + (index << 6)) += *(int*)(raw + (index << 6) + 0x4670);
+            *(int*)(raw + 0x4660 + (index << 6)) += ((Bomb *)(raw + 0x4660 + (index << 6)))->speed;
             if (targetX <= (((Bomb *)(raw + 0x4660 + (index<<6)))->x >> 12))
                 ((Bomb *)(raw + 0x4660 + (index<<6)))->x = targetX << 12;
         } else if (targetX < curX) {
-            *(int*)(raw + 0x4660 + (index << 6)) -= *(int*)(raw + (index << 6) + 0x4670);
+            *(int*)(raw + 0x4660 + (index << 6)) -= ((Bomb *)(raw + 0x4660 + (index << 6)))->speed;
             if (targetX >= curX)
                 ((Bomb *)(raw + 0x4660 + (index<<6)))->x = targetX << 12;
         }
@@ -1121,12 +1112,12 @@ void func_ov006_020d795c(char *raw, int index)
     {
         s16 sine = data_02082214[((*(u16 *)(raw + index * 0x40 + 0x468c)) >> 4) * 2 + 1];
         *(int *)((char *)(raw + 0x4660) + index * 0x40) +=
-            (int)(((s64)sine * *(int *)(raw + index * 0x40 + 0x4670) + 0x800) >> 12);
+            (int)(((s64)sine * ((Bomb *)(raw + 0x4660 + index * 0x40))->speed + 0x800) >> 12);
     }
     {
         s16 sine = data_02082214[((*(u16 *)(raw + index * 0x40 + 0x468c)) >> 4) * 2];
         *(int *)((char *)(raw + 0x4664) + index * 0x40) +=
-            (int)(((s64)sine * *(int *)(raw + index * 0x40 + 0x4670) + 0x800) >> 12);
+            (int)(((s64)sine * ((Bomb *)(raw + 0x4660 + index * 0x40))->speed + 0x800) >> 12);
     }
     color = *(u8 *)(raw + index * 0x40 + 0x4696);
     x = *(int *)(raw + index * 0x40 + 0x4660) >> 12;
@@ -1172,7 +1163,7 @@ void func_ov006_020d7a84(char *raw, int index)
         *(int *)((char *)(raw + 0x4660) +
                   index * 0x40) +=
             (int)(((s64)sine *
-                   *(int *)(raw + index * 0x40 + 0x4670) + 0x800) >> 12);
+                   ((Bomb *)(raw + 0x4660 + index * 0x40))->speed + 0x800) >> 12);
     }
 
     {
@@ -1182,7 +1173,7 @@ void func_ov006_020d7a84(char *raw, int index)
         *(int *)((char *)(raw + 0x4664) +
                   index * 0x40) +=
             (int)(((s64)sine *
-                   *(int *)(raw + index * 0x40 + 0x4670) + 0x800) >> 12);
+                   ((Bomb *)(raw + 0x4660 + index * 0x40))->speed + 0x800) >> 12);
     }
 
     color = *(u8 *)(raw + index * 0x40 + 0x4696);
