@@ -8462,21 +8462,21 @@
    "start": "0x21333fc",
    "end": "0x2133968",
    "classes": [
-    "Stump"
+    "daObjPile_c"
    ],
    "n_functions_map": 11,
    "n_files": 11,
    "files": [
-    "src/_ZN5StumpD1Ev.cpp",
-    "src/_ZN5StumpD0Ev.c",
+    "src/_ZN11daObjPile_cD1Ev.cpp",
+    "src/_ZN11daObjPile_cD0Ev.c",
     "src/func_ov091_02133498.c",
     "src/func_ov091_021334b8.cpp",
-    "src/_ZN5Stump15OnHitByMegaCharER6Player.cpp",
-    "src/_ZN5Stump15OnGroundPoundedER8dActor_c.cpp",
-    "src/_ZN5Stump16CleanupResourcesEv.cpp",
-    "src/_ZN5Stump6RenderEv.cpp",
-    "src/_ZN5Stump8BehaviorEv.cpp",
-    "src/_ZN5Stump13InitResourcesEv.cpp",
+    "src/_ZN11daObjPile_c15OnHitByMegaCharER6Player.cpp",
+    "src/_ZN11daObjPile_c15OnGroundPoundedER8dActor_c.cpp",
+    "src/_ZN11daObjPile_c16CleanupResourcesEv.cpp",
+    "src/_ZN11daObjPile_c6RenderEv.cpp",
+    "src/_ZN11daObjPile_c8BehaviorEv.cpp",
+    "src/_ZN11daObjPile_c13InitResourcesEv.cpp",
     "src/d_a_obj_pile.c"
    ],
    "ext_mix": {
