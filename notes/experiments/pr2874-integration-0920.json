@@ -4520,8 +4520,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN7Tornado13InitResourcesEv.cpp",
-      "name": "_ZN7Tornado13InitResourcesEv",
+      "file": "src/_ZN7daTor_c13InitResourcesEv.cpp",
+      "name": "_ZN7daTor_c13InitResourcesEv",
       "module": "ov096",
       "addr": "0x2137564",
       "verdict": "VERIFIED",
@@ -4529,8 +4529,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN7Tornado8BehaviorEv.cpp",
-      "name": "_ZN7Tornado8BehaviorEv",
+      "file": "src/_ZN7daTor_c8BehaviorEv.cpp",
+      "name": "_ZN7daTor_c8BehaviorEv",
       "module": "ov096",
       "addr": "0x2137448",
       "verdict": "VERIFIED",
@@ -21119,7 +21119,7 @@
           "src/_ZN6Player4HurtERK7Vector3j5Fix12IiEjjj.cpp",
           "src/_ZN6Thwomp13InitResourcesEv.cpp",
           "src/_ZN7Message21DisplayLevelClearTextEta.cpp",
-          "src/_ZN7Tornado13InitResourcesEv.cpp",
+          "src/_ZN7daTor_c13InitResourcesEv.cpp",
           "src/_ZN7dWipe_c14SetForwardTimeEj.cpp",
           "src/_ZN8CccArena13InitResourcesEv.cpp",
           "src/_ZN8IceBlock13InitResourcesEv.cpp",
@@ -21244,7 +21244,7 @@
           "src/_ZN6Player4HurtERK7Vector3j5Fix12IiEjjj.cpp",
           "src/_ZN6Thwomp13InitResourcesEv.cpp",
           "src/_ZN7Message21DisplayLevelClearTextEta.cpp",
-          "src/_ZN7Tornado13InitResourcesEv.cpp",
+          "src/_ZN7daTor_c13InitResourcesEv.cpp",
           "src/_ZN7dWipe_c14SetForwardTimeEj.cpp",
           "src/_ZN8CccArena13InitResourcesEv.cpp",
           "src/_ZN8IceBlock13InitResourcesEv.cpp",
@@ -21378,7 +21378,7 @@
           "src/_ZN6Player5ShockEj.cpp",
           "src/_ZN7Message16DisplayPauseTextEth.cpp",
           "src/_ZN7Message21DisplaySaveStatusTextEt.cpp",
-          "src/_ZN7Tornado8BehaviorEv.cpp",
+          "src/_ZN7daTor_c8BehaviorEv.cpp",
           "src/_ZN7dWipe_c15SetBackwardTimeEj.c",
           "src/_ZN8CccArena16CleanupResourcesEv.cpp",
           "src/_ZN8IceBlock16CleanupResourcesEv.cpp",
@@ -21501,7 +21501,7 @@
           "src/_ZN6Player5ShockEj.cpp",
           "src/_ZN7Message16DisplayPauseTextEth.cpp",
           "src/_ZN7Message21DisplaySaveStatusTextEt.cpp",
-          "src/_ZN7Tornado8BehaviorEv.cpp",
+          "src/_ZN7daTor_c8BehaviorEv.cpp",
           "src/_ZN7dWipe_c15SetBackwardTimeEj.c",
           "src/_ZN8CccArena16CleanupResourcesEv.cpp",
           "src/_ZN8IceBlock16CleanupResourcesEv.cpp",
@@ -21891,8 +21891,8 @@
         "src/_ZN7Message25DisplayControllerModeTextEt.cpp",
         "src/_ZN6dMap_c21FixTHIPaintingRoomPosER7Vector3.cpp",
         "src/_ZN7SkiLift16CleanupResourcesEv.cpp",
-        "src/_ZN7Tornado13InitResourcesEv.cpp",
-        "src/_ZN7Tornado8BehaviorEv.cpp",
+        "src/_ZN7daTor_c13InitResourcesEv.cpp",
+        "src/_ZN7daTor_c8BehaviorEv.cpp",
         "src/_ZN7Wiggler13InitResourcesEv.cpp",
         "src/_ZN7dScMB_c13InitResourcesEv.cpp",
         "src/_ZN7dScMB_c8BehaviorEv.cpp",
@@ -23479,12 +23479,12 @@
           "name": "_ZN7SkiLift16CleanupResourcesEv"
         },
         {
-          "file": "src/_ZN7Tornado13InitResourcesEv.cpp",
-          "name": "_ZN7Tornado13InitResourcesEv"
+          "file": "src/_ZN7daTor_c13InitResourcesEv.cpp",
+          "name": "_ZN7daTor_c13InitResourcesEv"
         },
         {
-          "file": "src/_ZN7Tornado8BehaviorEv.cpp",
-          "name": "_ZN7Tornado8BehaviorEv"
+          "file": "src/_ZN7daTor_c8BehaviorEv.cpp",
+          "name": "_ZN7daTor_c8BehaviorEv"
         },
         {
           "file": "src/_ZN7Wiggler13InitResourcesEv.cpp",

@@ -955,8 +955,8 @@ src/_ZN6dMap_cD0Ev.c	DTOR-ONLY	ov002	dMap_c	dMap_c/dMap_c	_ZN6dMap_cD0Ev	1		True
 src/_ZN7PathPtrC1Ev.c	P3-mangled-method-only	arm9		PathPtr	_ZN7PathPtrC1Ev	1		True		-
 src/_ZN13daObjWakame_cD0Ev.c	DTOR-ONLY	ov002	daObjWakame_c	daObjWakame_c/daObjWakame_c	_ZN13daObjWakame_cD0Ev	1		True	_ZTV13daObjWakame_c	-
 src/_ZN7SkiLiftD0Ev.c	DTOR-ONLY	ov018	daObjSm_Lift_c	SkiLift/daObjSm_Lift_c	_ZN7SkiLiftD0Ev	1		True	_ZTV10dBgActor_c/_ZTV7SkiLift	-
-src/_ZN7Tornado16CleanupResourcesEv.c	P1-vtable+mangled	ov096	daTor_c	Tornado/daTor_c	vtable daTor_c slot 3 @0x21373e4 | _ZN7Tornado16CleanupResourcesEv	1		True		-
-src/_ZN7TornadoD0Ev.c	DTOR-ONLY	ov096	daTor_c	Tornado/daTor_c	_ZN7TornadoD0Ev	1		True		-
+src/_ZN7daTor_c16CleanupResourcesEv.c	P1-vtable+mangled	ov096	daTor_c	daTor_c/daTor_c	vtable daTor_c slot 3 @0x21373e4 | _ZN7daTor_c16CleanupResourcesEv	1		True		-
+src/_ZN7daTor_cD0Ev.c	DTOR-ONLY	ov096	daTor_c	daTor_c/daTor_c	_ZN7daTor_cD0Ev	1		True		-
 src/_ZN7dBase_cD0Ev.cpp	DTOR-ONLY	arm9	dBase_c	dBase_c	_ZN7dBase_cD0Ev	1		True	_ZTV7dBase_c	-
 src/_ZN7dScMB_c13InitResourcesEv.c	P1-vtable+mangled	arm9	dScMB_c	dScMB_c	vtable dScMB_c slot 0 @0x203506c | _ZN7dScMB_c13InitResourcesEv	1		True		-
 src/_ZN7dScMB_c16CleanupResourcesEv.c	P1-vtable+mangled	arm9	dScMB_c	dScMB_c	vtable dScMB_c slot 3 @0x2034d70 | _ZN7dScMB_c16CleanupResourcesEv	1		True		-
