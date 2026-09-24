@@ -1,13 +1,18 @@
 //cpp
-/* ov094 daOwl_c. Licensed .text 0x02135700..0x02136798 (21 functions).
- * The next function, daOwl_c_classInit, is a separate TU and stays out.
+/* Production translation unit for ov094/daOwl_c.
+ * 21 function(s), .text 0x02135700..0x02136798. The OWL actor.
  *
- * Vtable 0x02136a58: offset-to-top 0, typeinfo 0x02136a28, name "7daOwl_c"
- * at 0x02136a10. The tree used to call this HootTheOwl.
+ * NAME: _ZTS7daOwl_c is "7daOwl_c" at ov094 0x02136a10; _ZTI at 0x02136a28
+ * reads [__si_class_type_info, that string, _ZTI12dEnemyBase_c]. The vtable's
+ * address point is 0x02136a58, and slots 16/17 hold D1/D0 below. The tree
+ * previously called the class HootTheOwl (coined; vtable address only).
  *
- * Out-of-line ~daOwl_c is the key function. Under #pragma defer_codegen off
- * the TU emits D1 (0x02135700), D0 (0x02135748), then a D2 the cartridge does
- * not keep. Definitions below are ROM-ascending.
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x02135700), D0
+ * (0x02135748), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is ROM-ascending.
+ * The next function, daOwl_c_classInit at 0x02136798, is a separate TU
+ * (src/d_a_owl.c) and stays out.
  */
 
 #pragma defer_codegen off
@@ -55,6 +60,10 @@ extern Matrix4x3 data_020a0e68;
 int func_ov094_02136188(C *c, PMF *p);
 void func_ov094_021357a4(char *c);
 
+/* Leftover: ModelAnim::SetAnim, dCcAcPos_c::Init, dBgCh_Actr::Init and
+ * dActor_c::DropShadowRadHeight take Fix12<int> by value, so they stay mangled;
+ * the other mangled externs have no member declaration in a shared header yet.
+ * RandomIntInternal stays unsigned so func_ov094_02135e64 keeps its logical shift. */
 void _ZN10dCcAcPos_c21SetPosRelativeToActorERK7Vector3(void *self, void *v);
 int _ZN8dActor_c10FindWithIDEj(unsigned id);
 int func_ov002_020df840(void *a, void *b, void *d);
@@ -97,6 +106,11 @@ void DecIfAbove0_Short(void *);
 
 // @symbol _ZN7daOwl_cD1Ev
 // @symbol _ZN7daOwl_cD0Ev
+/* The whole body is compiler-emitted: one vptr store, then ShadowModel
+ * (0x370), ModelAnim (0x30c), dBgCh_Actr (0x150) and dCcAcPos_c (0x110) in
+ * reverse declaration order, then dEnemyBase_c::~dEnemyBase_c. D1 is the
+ * evidence for the header's four member types; D0 adds dEnemyBase_c's inline
+ * operator delete. */
 daOwl_c::~daOwl_c()
 {
 }

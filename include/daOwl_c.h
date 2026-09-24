@@ -29,7 +29,7 @@
  *   - unk_368 = that Animation's speed (+0x0c); Behavior copies mAnimSpeed
  *     into it, and InitResources sets mAnimSpeed to 0x1000, which is 1.0
  *
- * SIZE IS THE ROM'S OWN, not a rounded-up field span: `HootTheOwl_Spawn` calls
+ * SIZE IS THE ROM'S OWN, not a rounded-up field span: `daOwl_c_classInit` calls
  * `fBase_c::operator new(1016)` -- 0x3f8 -- and stores `_ZTV7daOwl_c`,
  * so that literal IS this class's sizeof. The observed fields only span to
  * 0x3f4; the difference is trailing space no source reads.
