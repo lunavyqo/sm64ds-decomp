@@ -1,7 +1,20 @@
 //cpp
-/* daObjKm2_Nobiru_c is the stretching platform. It loads the pole-lift
- * model and collision mesh, then grows and shrinks the collider's
- * vertical scale. Render draws the model at that scale.
+/* Production translation unit for ov045/daObjKm2_Nobiru_c.
+ * 9 function(s), .text 0x02111840..0x02111ad4. The stretching platform
+ * (registry profile KM2_NOBIRU): it loads the pole-lift model and collision
+ * mesh, then grows and shrinks the collider's vertical scale. Render draws
+ * the model at that scale.
+ *
+ * NAME: _ZTS17daObjKm2_Nobiru_c is "17daObjKm2_Nobiru_c" at ov045 0x02112e48;
+ * _ZTI at 0x02112e3c reads [__si_class_type_info, that string, _ZTI8dActor_c].
+ * The tree previously called the class ExtendingPlatform (coined).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x02111840), D0
+ * (0x02111878), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is
+ * ROM-ascending. The factory daObjKm2_Nobiru_c_classInit (0x02111ad4) stays in
+ * its own source, src/d_a_obj_km2_nobiru.c.
  */
 
 #include "decl_common.h"
@@ -63,7 +76,8 @@ int daObjKm2_Nobiru_c::Render()
 {
     Vector3 scale;
     scale.x = 0x1000;
-    /* func_0203aad0: mCollider.scaleY DIFFs Render. */
+    /* Leftover: the scale is read through func_0203aad0, because the direct
+     * mCollider.scaleY load makes Render differ. */
     scale.y = func_0203aad0(&mCollider);
     scale.z = 0x1000;
     mModel.Render(&scale);
@@ -73,8 +87,9 @@ int daObjKm2_Nobiru_c::Render()
 // @symbol _ZN17daObjKm2_Nobiru_c8BehaviorEv
 int daObjKm2_Nobiru_c::Behavior()
 {
-    /* func_0203aad0: mCollider.scaleY DIFFs Behavior.
-     * SetScaleY: the Fix12<int> method call DIFFs Behavior. */
+    /* Leftover: the scale is read through func_0203aad0, because the direct
+     * mCollider.scaleY load makes Behavior differ. SetScaleY takes Fix12<int>
+     * by value, so it stays mangled; the method call makes Behavior differ. */
     s32 scaleY = func_0203aad0(&mCollider);
     if (mGrowing) {
         _ZN14dBgW_KcMbgSclY9SetScaleYE5Fix12IiE(&mCollider, scaleY + 8);
@@ -95,8 +110,10 @@ int daObjKm2_Nobiru_c::InitResources()
     UpdateModelTransform();
     UpdateColliderTransform();
 
-    /* SetFile: the Fix12<int> method call DIFFs InitResources.
-     * func_020396c0: mCollider.unk_48 = 4 DIFFs InitResources. */
+    /* Leftover: dBgW_KcMbgSclY::SetFile takes Fix12<int> by value, so it stays
+     * mangled; the method call makes InitResources differ. func_020396c0 stays
+     * a call because the direct mCollider.unk_48 = 4 store makes
+     * InitResources differ. */
     _ZN14dBgW_KcMbgSclY7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
         &mCollider, (KCL_File *)dBgW_Kc::LoadFile(PoleLift_ClsnFile),
         mColliderTransform, 0x1000, mAngleY, *(CLPS_Block *)data_ov045_021125b0);
