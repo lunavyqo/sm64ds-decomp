@@ -1,5 +1,19 @@
 //cpp
-/* daTor_c -- the sand tornado. */
+/* Production translation unit for ov096/daTor_c.
+ * 10 function(s), .text 0x02136db0..0x021376bc. The sand tornado (registry
+ * profile TORNADO).
+ *
+ * NAME: _ZTS7daTor_c is "7daTor_c" at ov096 0x02137a54; _ZTI at 0x02137a60
+ * reads [__si_class_type_info, that string, _ZTI8dActor_c]. The tree
+ * previously called the class Tornado (coined).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x02136db0), D0
+ * (0x02136df8), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is
+ * ROM-ascending. The factory daTor_c_classInit (0x021376bc) stays in its own
+ * source, src/d_a_tor.c.
+ */
 
 #pragma defer_codegen off
 
@@ -9,6 +23,10 @@
 #include "Sound.h"
 #include "SurfaceInfo.h"
 
+/* Leftover: cstd::atan2, Particle::System::New, ModelAnim::SetAnim,
+ * TextureTransformer::SetFile, dCcAc_c::Init and dBgCh_Actr::Init take
+ * Fix12<int> by value, so they stay mangled. dBgCh_Actr::GetWallResult stays
+ * mangled because include/dBgCh_Actr.h does not declare it yet. */
 extern "C" {
 s16 data_02082214[];
 s32 Vec3_HorzDist(const void *a, const void *b);
@@ -35,6 +53,7 @@ void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(
 void ApproachLinear(s16 *value, s16 target, s16 step);
 
 // @symbol _ZN7daTor_cD1Ev
+// @symbol _ZN7daTor_cD0Ev
 daTor_c::~daTor_c()
 {
 }
@@ -111,8 +130,9 @@ void daTor_c::State1()
     if (player == 0)
         goto null_player;
 
-    /* Leftover: State1. Named mPosX/Y/Z loads are one instruction short of
-       the pointer copy at player+0x5c. */
+    /* Leftover: the player position is copied through a raw pointer at
+       player+0x5c, because named mPosX/Y/Z loads come out one instruction
+       shorter than the ROM's pointer copy. */
     {
         s32 *pos = (s32 *)((char *)player + 0x5c);
         playerPos.x = pos[0];
@@ -249,7 +269,7 @@ int daTor_c::Behavior()
 // @symbol _ZN7daTor_c13InitResourcesEv
 int daTor_c::InitResources()
 {
-    /* Leftover: InitResources. SetAnim, TextureTransformer::SetFile and
+    /* Leftover: SetAnim, TextureTransformer::SetFile and
        dCcAc_c::Init take Fix12<int> by value; calling them as methods homes
        the arguments and the function grows from 0x158 to 0x18c. */
     mModelAnim.SetFile((BMD_File *)Model::LoadFile(*(SharedFilePtr *)data_ov096_02137ba8),

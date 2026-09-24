@@ -29904,21 +29904,21 @@
    "start": "0x2136db0",
    "end": "0x213770c",
    "classes": [
-    "daTor_c"
+    "Tornado"
    ],
    "n_functions_map": 11,
    "n_files": 11,
    "files": [
-    "src/_ZN7daTor_cD1Ev.cpp",
-    "src/_ZN7daTor_cD0Ev.c",
+    "src/_ZN7TornadoD1Ev.cpp",
+    "src/_ZN7TornadoD0Ev.c",
     "src/func_ov096_02136e54.c",
     "src/func_ov096_02136fd4.c",
     "src/func_ov096_02137088.cpp",
     "src/func_ov096_021372c0.cpp",
-    "src/_ZN7daTor_c16CleanupResourcesEv.c",
-    "src/_ZN7daTor_c6RenderEv.cpp",
-    "src/_ZN7daTor_c8BehaviorEv.cpp",
-    "src/_ZN7daTor_c13InitResourcesEv.cpp",
+    "src/_ZN7Tornado16CleanupResourcesEv.c",
+    "src/_ZN7Tornado6RenderEv.cpp",
+    "src/_ZN7Tornado8BehaviorEv.cpp",
+    "src/_ZN7Tornado13InitResourcesEv.cpp",
     "src/daTor_c_classInit.c"
    ],
    "ext_mix": {
