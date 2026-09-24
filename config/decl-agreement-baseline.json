@@ -16085,6 +16085,10 @@
       "src/actors/daMenbo_c.cpp": [
         "param:#2 const void *",
         "param:#3 unsigned int"
+      ],
+      "src/actors/daBttBk_c.cpp": [
+        "param:#2 const Vector3 &",
+        "param:#3 unsigned int"
       ]
     },
     "_ZN8dActor_c11SpawnNumberERK7Vector3jbtPS_": {
