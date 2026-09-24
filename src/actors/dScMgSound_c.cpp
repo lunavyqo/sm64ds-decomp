@@ -7,8 +7,13 @@
  * here from the highest address down. Do not reorder.
  *
  * Leftover: func_ and data_ helpers are still the linker names.
- * Leftover: func_ov006_02119bdc. mState as a member inside the note
- *   draw loop did not match the raw word at 0x5608.
+ * Leftover: func_ov006_02119bdc reads mState as the raw word at 0x5608.
+ *   The member spelling in the note draw loop grows it by 8 bytes.
+ * Leftover: func_ov006_0211c080's deal loop reaches mPairUses and
+ *   mPairNotes as q + 0x561a and q + 0x561f, with q = scene + pair.
+ *   Indexing the members by pair grows the function by 8 bytes.
+ * Leftover: InitResources passes raw + 0x4660, the camera that
+ *   dScMgSingle3DBase_c.h still leaves as padding.
  */
 
 #include "dScMgSound_c.h"
