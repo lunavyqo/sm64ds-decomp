@@ -4511,8 +4511,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN14daObjSm_Lift_c16CleanupResourcesEv.cpp",
-      "name": "_ZN14daObjSm_Lift_c16CleanupResourcesEv",
+      "file": "src/_ZN7SkiLift16CleanupResourcesEv.cpp",
+      "name": "_ZN7SkiLift16CleanupResourcesEv",
       "module": "ov018",
       "addr": "0x21112fc",
       "verdict": "VERIFIED",
@@ -20858,7 +20858,7 @@
           "src/_ZN6Player4BurnEv.cpp",
           "src/_ZN6Player8BlowAwayEs.cpp",
           "src/_ZN7Message19DisplaySaveMenuTextEt.cpp",
-          "src/_ZN14daObjSm_Lift_c16CleanupResourcesEv.cpp",
+          "src/_ZN7SkiLift16CleanupResourcesEv.cpp",
           "src/_ZN7dWipe_c11AdvanceFadeEv.cpp",
           "src/_ZN8BookShot8BehaviorEv.cpp",
           "src/_ZN8Goomboss8BehaviorEv.cpp",
@@ -20983,7 +20983,7 @@
           "src/_ZN6Player4BurnEv.cpp",
           "src/_ZN6Player8BlowAwayEs.cpp",
           "src/_ZN7Message19DisplaySaveMenuTextEt.cpp",
-          "src/_ZN14daObjSm_Lift_c16CleanupResourcesEv.cpp",
+          "src/_ZN7SkiLift16CleanupResourcesEv.cpp",
           "src/_ZN7dWipe_c11AdvanceFadeEv.cpp",
           "src/_ZN8BookShot8BehaviorEv.cpp",
           "src/_ZN8Goomboss8BehaviorEv.cpp",
@@ -21890,7 +21890,7 @@
         "src/_ZN7Message22DisplayOptionsMenuTextEt.cpp",
         "src/_ZN7Message25DisplayControllerModeTextEt.cpp",
         "src/_ZN6dMap_c21FixTHIPaintingRoomPosER7Vector3.cpp",
-        "src/_ZN14daObjSm_Lift_c16CleanupResourcesEv.cpp",
+        "src/_ZN7SkiLift16CleanupResourcesEv.cpp",
         "src/_ZN7Tornado13InitResourcesEv.cpp",
         "src/_ZN7Tornado8BehaviorEv.cpp",
         "src/_ZN7Wiggler13InitResourcesEv.cpp",
@@ -23475,8 +23475,8 @@
           "name": "_ZN6dMap_c21FixTHIPaintingRoomPosER7Vector3"
         },
         {
-          "file": "src/_ZN14daObjSm_Lift_c16CleanupResourcesEv.cpp",
-          "name": "_ZN14daObjSm_Lift_c16CleanupResourcesEv"
+          "file": "src/_ZN7SkiLift16CleanupResourcesEv.cpp",
+          "name": "_ZN7SkiLift16CleanupResourcesEv"
         },
         {
           "file": "src/_ZN7Tornado13InitResourcesEv.cpp",

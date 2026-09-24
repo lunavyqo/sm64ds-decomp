@@ -1743,7 +1743,7 @@
       "src/_ZN12HealingHeart8BehaviorEv.cpp": [
         "return:void"
       ],
-      "src/_ZN14daObjSm_Lift_c8BehaviorEv.cpp": [
+      "src/actors/daObjSm_Lift_c.cpp": [
         "return:void"
       ],
       "src/func_0200bec4.c": [
@@ -4638,7 +4638,7 @@
         "param:#1 Vector3 *",
         "param:#2 Vector3 *"
       ],
-      "src/func_ov018_02111278.cpp": [
+      "src/actors/daObjSm_Lift_c.cpp": [
         "param:#1 Vector3 *",
         "param:#2 Vector3 *"
       ],
@@ -4896,7 +4896,7 @@
         "param:#1 const void *",
         "param:#2 const void *"
       ],
-      "src/_ZN14daObjSm_Lift_c8BehaviorEv.cpp": [
+      "src/actors/daObjSm_Lift_c.cpp": [
         "param:#1 const void *",
         "param:#2 const void *"
       ],
@@ -5168,7 +5168,7 @@
         "param:#1 const void *",
         "param:#2 const void *"
       ],
-      "src/_ZN14daObjSm_Lift_c8BehaviorEv.cpp": [
+      "src/actors/daObjSm_Lift_c.cpp": [
         "param:#1 const void *",
         "param:#2 const void *"
       ],
@@ -6758,7 +6758,7 @@
       "src/_ZN11BillBlaster8BehaviorEv.cpp": [
         "param:#5 int"
       ],
-      "src/_ZN14daObjSm_Lift_c8BehaviorEv.cpp": [
+      "src/actors/daObjSm_Lift_c.cpp": [
         "param:#5 int"
       ],
       "src/_ZN8SignPost8BehaviorEv.cpp": [
@@ -10977,7 +10977,7 @@
       "src/_ZN6ToxBox13InitResourcesEv.cpp": [
         "kind:data"
       ],
-      "src/_ZN14daObjSm_Lift_c13InitResourcesEv.cpp": [
+      "src/actors/daObjSm_Lift_c.cpp": [
         "kind:data"
       ],
       "src/_ZN8CccArena13InitResourcesEv.cpp": [
@@ -11339,7 +11339,7 @@
       "src/_ZN6Fwoosh13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
-      "src/_ZN14daObjSm_Lift_c13InitResourcesEv.cpp": [
+      "src/actors/daObjSm_Lift_c.cpp": [
         "param:#1 void *"
       ],
       "src/_ZN7Tornado13InitResourcesEv.cpp": [
@@ -12176,7 +12176,7 @@
         "param:#5 unsigned int",
         "return:unsigned int"
       ],
-      "src/_ZN14daObjSm_Lift_c8BehaviorEv.cpp": [
+      "src/actors/daObjSm_Lift_c.cpp": [
         "param:#4 void *",
         "param:#5 unsigned int",
         "return:unsigned int"
@@ -14663,7 +14663,7 @@
         "param:#1 void *",
         "return:void"
       ],
-      "src/_ZN14daObjSm_Lift_c13InitResourcesEv.cpp": [
+      "src/actors/daObjSm_Lift_c.cpp": [
         "param:#1 void *",
         "return:void *"
       ],
@@ -18668,7 +18668,7 @@
       "src/_ZN6Fwoosh13InitResourcesEv.cpp": [
         "return:void"
       ],
-      "src/_ZN14daObjSm_Lift_c13InitResourcesEv.cpp": [
+      "src/actors/daObjSm_Lift_c.cpp": [
         "return:void"
       ],
       "src/_ZN7Tornado13InitResourcesEv.cpp": [
@@ -19339,7 +19339,7 @@
       "include/decl_PathPtr.h": [
         "return:int"
       ],
-      "src/_ZN14daObjSm_Lift_c8BehaviorEv.cpp": [
+      "src/actors/daObjSm_Lift_c.cpp": [
         "return:int"
       ],
       "src/func_ov002_020efcf4.c": [
@@ -19368,7 +19368,7 @@
       "src/_ZN5Unagi13InitResourcesEv.cpp": [
         "param:#2 char *"
       ],
-      "src/_ZN14daObjSm_Lift_c8BehaviorEv.cpp": [
+      "src/actors/daObjSm_Lift_c.cpp": [
         "param:#2 void *"
       ],
       "src/_ZN9daShark_c13InitResourcesEv.cpp": [
@@ -19421,7 +19421,7 @@
       "include/decl_PathPtr.h": [
         "return:int"
       ],
-      "src/_ZN14daObjSm_Lift_c13InitResourcesEv.cpp": [
+      "src/actors/daObjSm_Lift_c.cpp": [
         "return:int"
       ],
       "src/actors/daBgSnmBdy_c.cpp": [
@@ -46204,7 +46204,7 @@
       "include/decl_common.h": [
         "kind:data"
       ],
-      "src/_ZN14daObjSm_Lift_c13InitResourcesEv.cpp": [
+      "src/actors/daObjSm_Lift_c.cpp": [
         "kind:data"
       ]
     },

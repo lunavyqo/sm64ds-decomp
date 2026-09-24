@@ -937,9 +937,9 @@
     "src/_ZN7SeaweedD0Ev.cpp": "tangosdev",
     "src/_ZN7Skeeter13OnTurnIntoEggER6Player.c": "tangosdev",
     "src/_ZN7Skeeter13OnTurnIntoEggER6Player.cpp": "tangosdev",
-    "src/_ZN14daObjSm_Lift_c15OnHitByMegaCharER6Player.c": "tangosdev",
-    "src/_ZN14daObjSm_Lift_c15OnHitByMegaCharER6Player.cpp": "tangosdev",
-    "src/_ZN14daObjSm_Lift_cD0Ev.cpp": "tangosdev",
+    "src/_ZN7SkiLift15OnHitByMegaCharER6Player.c": "tangosdev",
+    "src/_ZN7SkiLift15OnHitByMegaCharER6Player.cpp": "tangosdev",
+    "src/_ZN7SkiLiftD0Ev.cpp": "tangosdev",
     "src/_ZN7dBgW_KcC1Ev.c": "tangosdev",
     "src/_ZN7dBgW_KcC1Ev.cpp": "tangosdev",
     "src/_ZN7dBgW_KcC2Ev.c": "tangosdev",
@@ -4692,13 +4692,13 @@
     "src/actors/daLuigi_c.cpp#_ZN9daLuigi_c6RenderEv": "tangosdev",
     "src/actors/daLuigi_c.cpp#_ZN9daLuigi_c8BehaviorEv": "ruspecial",
     "src/actors/daLuigi_c.cpp#_ZN9daLuigi_c13InitResourcesEv": "tangosdev",
-    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_cD1Ev": "github-actions[bot]",
+    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_cD1Ev": "andrewboudreau",
     "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_cD0Ev": "tangosdev",
     "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c15OnHitByMegaCharER6Player": "tangosdev",
-    "src/actors/daObjSm_Lift_c.cpp#func_ov018_02111278": "github-actions[bot]",
-    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c16CleanupResourcesEv": "github-actions[bot]",
-    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c6RenderEv": "github-actions[bot]",
-    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c8BehaviorEv": "github-actions[bot]",
-    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c13InitResourcesEv": "github-actions[bot]"
+    "src/actors/daObjSm_Lift_c.cpp#func_ov018_02111278": "tangosdev",
+    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c6RenderEv": "tangosdev",
+    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c8BehaviorEv": "lunavyqo",
+    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c13InitResourcesEv": "lunavyqo"
   }
 }

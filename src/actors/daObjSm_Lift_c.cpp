@@ -1,12 +1,29 @@
 //cpp
-/* Cool, Cool Mountain's ski lift. It follows a path and turns when a
- * mega mushroom hits it.
+/* Production translation unit for ov018/daObjSm_Lift_c.
+ * 8 function(s), .text 0x021111a0..0x021117e8. Cool, Cool Mountain's ski lift
+ * (SM_LIFT): it follows a path and turns when a mega mushroom hits it.
  *
- * Leftover: dBgW_KcMbg::SetFile stays mangled (Fix12<int> by value).
- * Leftover: dBgActor_c::UpdateKillByMegaChar stays mangled (Fix12<int> by value).
- * Leftover: dBgActor_c::IsClsnInRange stays mangled (Fix12<int> by value).
+ * NAME: _ZTS14daObjSm_Lift_c is "14daObjSm_Lift_c" at ov018 0x02113894; _ZTI
+ * at 0x02113888 reads [__si_class_type_info, that string, _ZTI10dBgActor_c].
+ * The tree previously called the class SkiLift (coined; vtable address only).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x021111a0), D0
+ * (0x021111e4), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is ROM-ascending.
+ *
+ * Leftover: dBgW_KcMbg::SetFile, dBgActor_c::UpdateKillByMegaChar and
+ *   dBgActor_c::IsClsnInRange take Fix12<int> by value, so they stay mangled;
+ *   a member call homes the argument and changes the ROM ABI.
+ * Leftover: the PathPtr, Model::LoadFile, ModelBase::SetFile and
+ *   Sound::PlayLong externs are the shards' own spellings. Retyping them is
+ *   declaration-changing matching work, so their banked decl-agreement
+ *   entries moved to this file unchanged.
  * Leftover: InitResources keeps the param1 mask, the yaw adjust, and the
  *   node-index add as offset writes. Naming them changed the function size.
+ * Leftover: func_ov018_021117e8, func_ov018_02111804 (the callback
+ *   InitResources installs) and the factory daObjSm_Lift_c_classInit
+ *   (0x02111818) sit past this run's right edge and stay one-function sources.
  */
 
 #include "decl_common.h"

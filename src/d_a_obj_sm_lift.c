@@ -5,8 +5,7 @@ extern int _ZTV14daObjSm_Lift_c[];
 /* Reconstructed source-style name: SM64DS proves daObjSm_Lift_c through RTTI,
  * allocation size, vtable identity, and the SM_LIFT registry profile; later
  * EAD lineage supplies classInit. Exact original spelling is not preserved.
- * The project's daObjSm_Lift_c implementation aliases remain unchanged. Historical
- * alias: SkiLift_Spawn. */
+ * Historical alias: SkiLift_Spawn. */
 int *daObjSm_Lift_c_classInit(void)
 {
     int *p = (int *)_ZN7fBase_cnwEj(852);
