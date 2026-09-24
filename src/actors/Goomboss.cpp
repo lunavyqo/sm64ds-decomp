@@ -1,10 +1,11 @@
 //cpp
 /* Goomboss, the goomba-king boss. ROM RTTI is daKuriKing_c
  * (_ZTI12daKuriKing_c at ov074:0x02122e30); this tree keeps the coined name.
- * Partial TU: an unmatched draft holes the run, so this file is only the
- * lower side. D1 is the first byte of ov074 .text, so there is no room
- * below it for the forcing scaffold; D1 and D0 stay in their own shards
- * and this TU emits no vtable.
+ * Partial TU: the unmatched draft func_ov074_02121380 (size 0x374, no
+ * delinks entry) holes the run, so this file is only the lower side, the
+ * licensed run 0x0211f154..0x02121380 (36 functions). D1 is the first
+ * byte of ov074 .text, so there is no room below it for the forcing
+ * scaffold; D1 and D0 stay in their own shards and this TU emits no vtable.
  *
  * Source is REVERSE of ROM order (highest address first). Do not reorder.
  *
@@ -26,9 +27,6 @@
 #include "dBgCh_Gnd.h"
 #include "Player.h"
 #include "daKrb_c.h"
-
-
-
 
 #define AT(p,off) ((void*)(int)((char*)(p)+(off)))
 #define LI(v) ((int)((long long)(v)))
