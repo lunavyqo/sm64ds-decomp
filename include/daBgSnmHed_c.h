@@ -7,7 +7,20 @@
 #include "dCcAc_c.h"
 #include "dBgCh_Actr.h"
 
-/* The snowman's head. */
+/* The snowman's head. The cartridge RTTI names this class daBgSnmHed_c.
+ * Its __si_class_type_info record (_ZTI12daBgSnmHed_c, ov072 0x0212287c) has
+ * dActor_c as the sole base at offset zero, and its vtable has the same 31
+ * slots as dActor_c. The D1/D0 pair and factory independently pin the four
+ * owned subobjects and the total allocation size.
+ *
+ * The four state pairs are recovered from __sinit_ov072_021221f8, which copies
+ * eight ROM PMF constants into data_ov072_02122c00. SetState indexes that table
+ * at state * 0x10 and invokes the first PMF; Behavior invokes the second.
+ * Descriptive original names are absent, so the ROM-evidenced indices remain.
+ *
+ * The reconstructed factory daBgSnmHed_c_classInit (historical alias
+ * SnowmanHead_Spawn) constructs it for the BIG_SNOWMAN_HEAD registry profile.
+ */
 struct daBgSnmHed_c : dActor_c {
     u8 mPad0d0[0x4];                    /* 0x0d0 */
     Model mModel;                       /* 0x0d4 */

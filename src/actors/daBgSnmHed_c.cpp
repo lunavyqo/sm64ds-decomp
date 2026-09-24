@@ -1,5 +1,23 @@
 //cpp
-/* The snowman's head. */
+/* Production translation unit for ov072/daBgSnmHed_c.
+ * 19 function(s), .text 0x0211ff34..0x021207d4. The snowman's head
+ * (BIG_SNOWMAN_HEAD).
+ *
+ * NAME: _ZTS12daBgSnmHed_c is "12daBgSnmHed_c" at ov072 0x02122888; _ZTI at
+ * 0x0212287c reads [__si_class_type_info, that string, _ZTI8dActor_c]. The
+ * factory's historical alias was SnowmanHead_Spawn (coined).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x0211ff34), D0
+ * (0x0211ff7c), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is ROM-ascending.
+ * The factory daBgSnmHed_c_classInit (0x021207d4) sits just past this run's
+ * right edge and stays a one-function source.
+ *
+ * Leftover: TextureSequence::SetFile, dActor_c::Earthquake,
+ *   Particle::System::NewSimple, Sound::PlaySub, dCcAc_c::Init and
+ *   dBgCh_Actr::Init take Fix12<int> by value, so they stay mangled.
+ */
 
 #pragma defer_codegen off
 
