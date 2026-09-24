@@ -4804,7 +4804,7 @@
     "src/actors/daShark_c.cpp#_ZN9daShark_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daShark_c.cpp#_ZN9daShark_c16OnPendingDestroyEv": "andrewboudreau",
     "src/actors/daShark_c.cpp#_ZN9daShark_c6RenderEv": "tangosdev",
-    "src/actors/daShark_c.cpp#_ZN9daShark_c8BehaviorEv": "tangosdev",
+    "src/actors/daShark_c.cpp#_ZN9daShark_c8BehaviorEv": "andrewboudreau",
     "src/actors/daShark_c.cpp#_ZN9daShark_c13InitResourcesEv": "tangosdev"
   }
 }

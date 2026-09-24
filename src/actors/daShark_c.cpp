@@ -3,7 +3,10 @@
  *
  * The cartridge spells the class 9daShark_c at 0x021343b0. _ZTI9daShark_c at
  * 0x021343bc is the __si_class_type_info record (base _ZTI12dEnemyBase_c),
- * and _ZTV9daShark_c at 0x021343ec is the vtable. Nothing here renames it.
+ * and _ZTV9daShark_c at 0x021343ec is the vtable; the word before it, at
+ * 0x021343e8, relocates to _ZTI9daShark_c. The header used to coin the
+ * class Shark (factory alias Shark_Spawn); that rename landed earlier and
+ * nothing here renames it.
  *
  * The run is gap-free and complete: D1, D0, five file-local helpers, then
  * CleanupResources, OnPendingDestroy, Render, Behavior and InitResources.
@@ -18,7 +21,9 @@
  *
  * #pragma defer_codegen off emits .text in source order, so this file is
  * ROM-ascending. One out-of-line destructor is the key function: it emits
- * D1 then D0 and anchors the vtable. The factory is not instantiated here.
+ * D1 (0x0213367c) then D0 (0x021336bc) and anchors _ZTV9daShark_c and
+ * _ZTI9daShark_c in this object. ov090 has no D2 for this class.
+ * The factory is not instantiated here.
  */
 
 #pragma defer_codegen off
@@ -69,6 +74,11 @@ struct SharkStateHolder {
 typedef char SharkStateHolder_size_must_be_0x374[
     sizeof(SharkStateHolder) == 0x374 ? 1 : -1];
 
+/* Still mangled externs: their receivers are raw offsets this file has not
+ * typed (the ModelAnim at 0x30c, the dCcAcPos_c at 0x110 in the char *
+ * helpers) or the raw PathPtr storage InitResources needs, so a member call
+ * has no typed object to go through. Typing those receivers is remaining
+ * work. */
 extern "C" {
 extern int func_02012694(int, void *);
 extern void _ZN9Animation7AdvanceEv(void *);
