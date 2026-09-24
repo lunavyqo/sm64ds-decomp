@@ -4197,23 +4197,23 @@
    "start": "0x21121e8",
    "end": "0x2112db4",
    "classes": [
-    "RollingRock"
+    "daGrock_c"
    ],
    "n_functions_map": 13,
    "n_files": 13,
    "files": [
-    "src/_ZN11RollingRockD1Ev.cpp",
-    "src/_ZN11RollingRockD0Ev.cpp",
-    "src/_ZN11RollingRock16OnAimedAtWithEggEv.cpp",
+    "src/_ZN9daGrock_cD1Ev.cpp",
+    "src/_ZN9daGrock_cD0Ev.cpp",
+    "src/_ZN9daGrock_c16OnAimedAtWithEggEv.cpp",
     "src/func_ov021_02112294.c",
     "src/func_ov021_021122fc.cpp",
     "src/func_ov021_021123b0.c",
     "src/func_ov021_02112544.cpp",
     "src/func_ov021_021127b4.c",
-    "src/_ZN11RollingRock16CleanupResourcesEv.cpp",
-    "src/_ZN11RollingRock6RenderEv.cpp",
-    "src/_ZN11RollingRock8BehaviorEv.c",
-    "src/_ZN11RollingRock13InitResourcesEv.cpp",
+    "src/_ZN9daGrock_c16CleanupResourcesEv.cpp",
+    "src/_ZN9daGrock_c6RenderEv.cpp",
+    "src/_ZN9daGrock_c8BehaviorEv.c",
+    "src/_ZN9daGrock_c13InitResourcesEv.cpp",
     "src/d_a_grock.c"
    ],
    "ext_mix": {
