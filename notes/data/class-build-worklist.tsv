@@ -130,7 +130,7 @@ daKpFr_c	DONE	include\daKpFr_c.h	dActor_c	0	ov070	8
 daKpaTail_c	DONE	include\BowserTail.h  [alias: header uses pre-rename name]	dActor_c	0	ov060	6
 daKpa_c	DONE	include\Bowser.h  [alias: header uses pre-rename name]	dActor_c	0	ov060	7
 daKrpa_c	DONE	include\daKrpa_c.h	dActor_c	0	ov070	8
-daLuigi_c	DONE	include\MirrorLuigi.h  [alias: header uses pre-rename name]	dActor_c	0	ov055	7
+daLuigi_c	DONE	include\daLuigi_c.h  [alias: header uses pre-rename name]	dActor_c	0	ov055	7
 daMcFlag_c	DONE	include\daMcFlag_c.h	dActor_c	0	ov009	6
 daMky_c	DONE	include\daMky_c.h	dActor_c	0	ov030	9
 daMugenBGM_c	DONE	include\MugenBgm.h  [alias: header uses pre-rename name]	dActor_c	0	ov002	7
@@ -217,7 +217,7 @@ daObjMaruta_c	DONE	include\daObjMaruta_c.h	dBgActor_c	2	ov080	4
 daObjSwdoor_c	DONE	include\daObjSwdoor_c.h	dBgActor_c	2	ov002	3
 daObjUkiyuka_c	DONE	include\daObjUkiyuka_c.h	dBgActor_c	2	ov002	4
 daDgr_c	DONE	include\daDgr_c.h	dBgActor_c	0	ov025	6
-daDpLift_c	DONE	include\PyramidLift.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov025	6
+daDpLift_c	DONE	include\daDpLift_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov025	6
 daIwante_c	DONE	include\Eyerok.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov066	8
 daKpa2Bg_c	DONE	include\daKpa2Bg_c.h	dBgActor_c	0	ov060	6
 daKpa3Bg_c	PARTIAL	include\daKpa3Bg_c.h	dBgActor_c	0	ov060	6
@@ -253,7 +253,7 @@ daObjEmmYuka_c	DONE	include\SquarePathLift.h  [alias: header uses pre-rename nam
 daObjEwbIce_c	DONE	include\CccArena.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov073	7
 daObjEwmIceBlock_c	DONE	include\BigMovingIceBlock.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov056	6
 daObjFl_Amilift_c	DONE	include\MetalNetLift.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov064	6
-daObjFl_Block_c	DONE	include\FloatOnLavaPlatform.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov022	6
+daObjFl_Block_c	DONE	include\daObjFl_Block_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov022	6
 daObjFl_KomaU_c	DONE	include\RotatingFirebar.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov064	6
 daObjFl_London_c	PARTIAL	include\daObjFl_London_c.h	dBgActor_c	0	ov022	6
 daObjFl_Puzzle_c	DONE	include\BowserPuzzlePiece.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov064	6
