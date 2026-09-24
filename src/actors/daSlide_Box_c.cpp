@@ -1,6 +1,17 @@
 //cpp
 /**
- * Jolly Roger Bay's sliding crate (SLIDE_BOX, daSlide_Box_c).
+ * Production translation unit for ov016/daSlide_Box_c.
+ * 7 function(s), .text 0x02112ff8..0x02113510. Jolly Roger Bay's sliding
+ * crate (SLIDE_BOX).
+ *
+ * NAME: _ZTS13daSlide_Box_c is "13daSlide_Box_c" at ov016 0x02114c58; _ZTI at
+ * 0x02114c4c reads [__si_class_type_info, that string, _ZTI10dBgActor_c]. The
+ * tree previously called the class SlidingBox (coined; vtable address only).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x02112ff8), D0
+ * (0x02113044), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is ROM-ascending.
  *
  * InitResources loads the model and the mesh collider, then waits. Behavior
  * looks up actor 0x39 (KI_FUNE_UP, the upward ship). Until the crate is on
@@ -10,12 +21,7 @@
  * sets mVertSpeed so the next UpdatePos stays on the tilt. Near a player,
  * and moving, it keeps a rolling sound alive.
  *
- * .text 0x02112ff8..0x02113510, seven functions. The factory
- * daSlide_Box_c_classInit is the next TU (0x02113510).
- *
- * Emission is ROM-ascending: `#pragma defer_codegen off` below. The
- * destructor is defined once, out of line, and the compiler emits D1 then
- * D0 from it. D2 has no ROM home.
+ * The factory daSlide_Box_c_classInit is the next TU (0x02113510).
  */
 
 #include "decl_common.h"
@@ -31,6 +37,7 @@ extern "C" {
 extern short data_02082214[];
 void dBgCh_Actr_UpdateContinuous_Veneer(void *p);
 dBgPi *_ZNK10dBgCh_Actr14GetFloorResultEv(void *self);
+/* dBgActor_c::IsClsnInRange takes Fix12<int> by value, so it stays mangled. */
 int _ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_(void *self, int a, int b);
 extern void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
     void *thiz, void *kcl, void *mtx, int fix, short s, void *clps);

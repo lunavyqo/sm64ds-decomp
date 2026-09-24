@@ -9,12 +9,15 @@
  * RTTI: _ZTS at ov016 0x02114c58 is "13daSlide_Box_c". _ZTI at 0x02114c4c is
  * [__si_class_type_info+8, that string, _ZTI10dBgActor_c]. The vtable address
  * point is 0x02114c8c; the word at 0x02114c88 is that same _ZTI. One base,
- * dBgActor_c, and the table differs from the base only at slots 0, 3, 6, 9,
- * 16 and 17.
+ * dBgActor_c at offset zero, and the 32-slot table differs from the base only
+ * at slots 0, 3, 6, 9, 16 and 17. The tree previously called the class
+ * SlidingBox (coined).
  *
- * The factory (next TU, daSlide_Box_c_classInit) allocates 0x4f8, constructs
- * dBgActor_c, then the dBgCh_Actr at 0x324. The destructor tears that member
- * down before the base, which is the same layout.
+ * The factory (next TU, daSlide_Box_c_classInit, historical alias
+ * SlidingBox_Spawn) allocates 0x4f8, constructs dBgActor_c, then the
+ * dBgCh_Actr at 0x324. Both destructor variants call _ZN10dBgCh_ActrD1Ev on
+ * that member before the inherited dBgActor_c teardown (dBgW_KcMbg, Model,
+ * dActor_c), independently pinning the layout.
  */
 struct daSlide_Box_c : dBgActor_c {
     dActor_c *mShip;                    /* 0x320 -- actor 0x39, the upward ship */
@@ -33,7 +36,9 @@ struct daSlide_Box_c : dBgActor_c {
     virtual s32 Behavior();             /* slot  6 */
     virtual s32 Render();               /* slot  9 */
 
-    /* Model matrix from all three angles, then position at 1/8 scale. */
+    /* Model matrix from all three angles, then position at 1/8 scale. The
+     * anonymous ROM member at 0x021130a4 is called only by InitResources and
+     * Behavior, both in this TU, and takes this in r0. */
     void UpdateModel();
 };
 

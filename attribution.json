@@ -4780,7 +4780,7 @@
     "src/actors/daObjHeart_c.cpp#daObjHeart_c_classInit": "tangosdev",
     "src/actors/daSlide_Box_c.cpp#_ZN13daSlide_Box_cD1Ev": "tangosdev",
     "src/actors/daSlide_Box_c.cpp#_ZN13daSlide_Box_cD0Ev": "tangosdev",
-    "src/actors/daSlide_Box_c.cpp#_ZN13daSlide_Box_c11UpdateModelEv": "tangosdev",
+    "src/actors/daSlide_Box_c.cpp#_ZN13daSlide_Box_c11UpdateModelEv": "andrewboudreau",
     "src/actors/daSlide_Box_c.cpp#_ZN13daSlide_Box_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daSlide_Box_c.cpp#_ZN13daSlide_Box_c6RenderEv": "tangosdev",
     "src/actors/daSlide_Box_c.cpp#_ZN13daSlide_Box_c8BehaviorEv": "tangosdev",
