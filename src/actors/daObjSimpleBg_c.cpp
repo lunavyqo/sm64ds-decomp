@@ -1,13 +1,27 @@
 //cpp
-/* daObjSimpleBg_c -- one mesh and one moving collider, shared by the six
- * profiles named in the header. BK_TOWER (actor 0x31) in sublevel 7 does
- * not spawn above y 0xdac000 until star 1 is collected, unless the level
- * was entered for that star.
+/* Production translation unit for ov102/daObjSimpleBg_c.
+ * 6 function(s), .text 0x02148a80..0x02148e9c. One mesh and one moving
+ * collider, shared by the six profiles named in the header. BK_TOWER (actor
+ * 0x31) in sublevel 7 does not spawn above y 0xdac000 until star 1 is
+ * collected, unless the level was entered for that star.
  *
- * dBgW_KcMbg::SetFile stays the mangled call: the method spelling was
- * measured to size-DIFF (Fix12<int> by value). dBgActor_c::IsClsnInRangeOnScreen
- * stays mangled; the base does not declare it. The 0xc-stride file rows
- * are local.
+ * NAME: _ZTS15daObjSimpleBg_c is "15daObjSimpleBg_c" at ov102 0x0214e0cc;
+ * _ZTI at 0x0214e0c0 reads [__si_class_type_info, that string,
+ * _ZTI10dBgActor_c]. The tree previously called the class FortressTower
+ * (coined; vtable address only).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x02148a80), D0
+ * (0x02148ac4), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is ROM-ascending.
+ * The six daObjSimpleBg_c_classInit_* factories follow at 0x02148e9c and stay
+ * one-function sources.
+ *
+ * Leftover: dBgW_KcMbg::SetFile takes Fix12<int> by value, so it stays
+ *   mangled; the method spelling was measured to size-DIFF.
+ * Leftover: dBgActor_c::IsClsnInRangeOnScreen stays mangled because
+ *   dBgActor_c.h does not declare it.
+ * The 0xc-stride file rows are local: only this TU indexes those tables.
  */
 
 #include "decl_common.h"

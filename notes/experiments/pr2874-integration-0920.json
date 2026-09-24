@@ -2855,8 +2855,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN15daObjSimpleBg_c13InitResourcesEv.cpp",
-      "name": "_ZN15daObjSimpleBg_c13InitResourcesEv",
+      "file": "src/_ZN13FortressTower13InitResourcesEv.cpp",
+      "name": "_ZN13FortressTower13InitResourcesEv",
       "module": "ov102",
       "addr": "0x2148c94",
       "verdict": "VERIFIED",
@@ -2864,8 +2864,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN15daObjSimpleBg_c16CleanupResourcesEv.cpp",
-      "name": "_ZN15daObjSimpleBg_c16CleanupResourcesEv",
+      "file": "src/_ZN13FortressTower16CleanupResourcesEv.cpp",
+      "name": "_ZN13FortressTower16CleanupResourcesEv",
       "module": "ov102",
       "addr": "0x2148b1c",
       "verdict": "VERIFIED",
@@ -20052,7 +20052,7 @@
           "src/_ZN12daDossyCap_c8BehaviorEv.cpp",
           "src/_ZN13daObjBlockL_c16CleanupResourcesEv.cpp",
           "src/_ZN13daObjBlockL_c8OnKickedER8dActor_c.cpp",
-          "src/_ZN15daObjSimpleBg_c16CleanupResourcesEv.cpp",
+          "src/_ZN13FortressTower16CleanupResourcesEv.cpp",
           "src/_ZN13dScMgTeresa_c6RenderEv.cpp",
           "src/_ZN14UnknownVsEntry13InitResourcesEv.cpp",
           "src/_ZN14dScMgCurling_c6RenderEv.cpp",
@@ -20171,7 +20171,7 @@
           "src/_ZN12daDossyCap_c8BehaviorEv.cpp",
           "src/_ZN13daObjBlockL_c16CleanupResourcesEv.cpp",
           "src/_ZN13daObjBlockL_c8OnKickedER8dActor_c.cpp",
-          "src/_ZN15daObjSimpleBg_c16CleanupResourcesEv.cpp",
+          "src/_ZN13FortressTower16CleanupResourcesEv.cpp",
           "src/_ZN13dScMgTeresa_c6RenderEv.cpp",
           "src/_ZN14UnknownVsEntry13InitResourcesEv.cpp",
           "src/_ZN14dScMgCurling_c6RenderEv.cpp",
@@ -21347,7 +21347,7 @@
           "src/_ZN12daBDonketu_c8BehaviorEv.cpp",
           "src/_ZN13daObjBlockL_c15OnHitByMegaCharER6Player.cpp",
           "src/_ZN13daObjBlockL_c8BehaviorEv.cpp",
-          "src/_ZN15daObjSimpleBg_c13InitResourcesEv.cpp",
+          "src/_ZN13FortressTower13InitResourcesEv.cpp",
           "src/_ZN13dScMgTeresa_c13InitResourcesEv.cpp",
           "src/_ZN14UnchainedChomp8BehaviorEv.cpp",
           "src/_ZN14dScMgCurling_c13InitResourcesEv.cpp",
@@ -21470,7 +21470,7 @@
           "src/_ZN12daBDonketu_c8BehaviorEv.cpp",
           "src/_ZN13daObjBlockL_c15OnHitByMegaCharER6Player.cpp",
           "src/_ZN13daObjBlockL_c8BehaviorEv.cpp",
-          "src/_ZN15daObjSimpleBg_c13InitResourcesEv.cpp",
+          "src/_ZN13FortressTower13InitResourcesEv.cpp",
           "src/_ZN13dScMgTeresa_c13InitResourcesEv.cpp",
           "src/_ZN14UnchainedChomp8BehaviorEv.cpp",
           "src/_ZN14dScMgCurling_c13InitResourcesEv.cpp",
@@ -21706,8 +21706,8 @@
         "src/_ZN13daObjBlockL_cD1Ev.cpp",
         "src/_ZN21daObjWlKoopaShutter_c13InitResourcesEv.cpp",
         "src/_ZN21daObjWlKoopaShutter_c16CleanupResourcesEv.cpp",
-        "src/_ZN15daObjSimpleBg_c13InitResourcesEv.cpp",
-        "src/_ZN15daObjSimpleBg_c16CleanupResourcesEv.cpp",
+        "src/_ZN13FortressTower13InitResourcesEv.cpp",
+        "src/_ZN13FortressTower16CleanupResourcesEv.cpp",
         "src/_ZN13MontyMoleRock8BehaviorEv.cpp",
         "src/_ZN15daObjFlMaruta_c13InitResourcesEv.cpp",
         "src/_ZN15daObjFlMaruta_c16CleanupResourcesEv.cpp",
@@ -22739,12 +22739,12 @@
           "name": "_ZN21daObjWlKoopaShutter_c16CleanupResourcesEv"
         },
         {
-          "file": "src/_ZN15daObjSimpleBg_c13InitResourcesEv.cpp",
-          "name": "_ZN15daObjSimpleBg_c13InitResourcesEv"
+          "file": "src/_ZN13FortressTower13InitResourcesEv.cpp",
+          "name": "_ZN13FortressTower13InitResourcesEv"
         },
         {
-          "file": "src/_ZN15daObjSimpleBg_c16CleanupResourcesEv.cpp",
-          "name": "_ZN15daObjSimpleBg_c16CleanupResourcesEv"
+          "file": "src/_ZN13FortressTower16CleanupResourcesEv.cpp",
+          "name": "_ZN13FortressTower16CleanupResourcesEv"
         },
         {
           "file": "src/_ZN13MontyMoleRock8BehaviorEv.cpp",
