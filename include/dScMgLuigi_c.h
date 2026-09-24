@@ -7,7 +7,12 @@
    drops a falling mark and costs time, a hit pops a reward and adds time,
    and a pair of curtains plus an iris wipe separate the rounds. The timer
    runs out into a failed catch. dScMgLuigi_c is the ROM name of the scene.
-   Storage below 0x4660 belongs to dScMgBase_c. */
+   Storage below 0x4660 belongs to dScMgBase_c.
+
+   tools/rtti_extract.py confirms it is a leaf: no RTTI record names it as a
+   base. The reconstructed factory dScMgLuigi_c_classInit (historical alias
+   MgWanted_Spawn) installs this class's vtable for the MG_LUIGI registry
+   profile. */
 
 /* One miss mark. Sixteen of them sit at 0x4660. y falls under velY while
    phase is 0; the timer then holds the mark up before active and shown clear. */
@@ -86,6 +91,12 @@ struct dScMgLuigi_c : dScMgBase_c {
     virtual s32 Render();                 /* slot 9 */
     virtual void OnYoshiTryEat(int arg);  /* slot 18 */
 
+    /* Non-virtual members, in ROM address order. Each is a member because a
+       zero-adjustment pointer-to-member record in ov006 .data names it (the
+       run at 0x0213cd8c..0x0213ce4c), or because it is only ever reached
+       with this object in r0 from another member of the run. The names are
+       coined: the cartridge carries only the address. See
+       symbols/actor_renames.tsv for the evidence, one row per symbol. */
     void BuildIrisTable(int i);
     void IrisStop(int idx);
     void IrisGrow(int idx);
@@ -172,7 +183,7 @@ struct dScMgLuigi_c : dScMgBase_c {
     u8  mKind[120];          /* 0x51fd -- mover id; 9 means a fresh miss */
     u8  mStarted[120];       /* 0x5275 -- 0 until the slot's first tick */
     u8  mActive[120];        /* 0x52ed -- slot has a picture */
-    u8  mSpeedLevel[120];    /* 0x5365 -- which character, and how fast */
+    u8  mCharacter[120];    /* 0x5365 -- which character, and how fast */
     u8  mShown[120];         /* 0x53dd -- DrawPictures while 1 */
     u8  mFilled;             /* 0x5455 -- the board is full */
     u8  mTarget;             /* 0x5456 -- 1-based index of the picture to find;

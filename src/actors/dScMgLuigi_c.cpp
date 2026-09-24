@@ -14,6 +14,11 @@
  * exits), RestartPicture (the three slot bytes no longer share a base),
  * and the grid cell in PlaceNextPicture. InitResources and ChooseTarget
  * still copy tiles through a volatile u16; a plain local is shorter.
+ *
+ * The measurements behind the source forms of MovePictureSway,
+ * MovePictureDriftRandom, PlaceBoardLayout and PlaceNextPicture (for one,
+ * opt_propagation off takes PlaceNextPicture from 219 to 330 aligned
+ * instructions) are in notes/experiments/pr2876-source-repair-0920.json.
  */
 
 #pragma defer_codegen off
@@ -86,7 +91,8 @@ namespace cstd { int sqrt(unsigned long long x); }
 
 // @symbol _ZN12dScMgLuigi_cD1Ev
 // @symbol _ZN12dScMgLuigi_cD0Ev
-/* One definition, so D1 and D0 come out in that order. D2 is not in the ROM. */
+/* One definition, so D1 and D0 come out in that order under defer_codegen
+   off. The extra D2 is not in the ROM; the manifest lets it be deadstripped. */
 dScMgLuigi_c::~dScMgLuigi_c()
 {
 }
@@ -121,7 +127,9 @@ void func_ov006_020efcf8(void)
     extern int data_0209f648[][192];
     extern void MultiCopy_Int(int *dst, int *src, int len);
     int line;
-    /* The (int) cast is what keeps this handler the same size. */
+    /* The (int) cast is what keeps this handler the same size. It is the
+       only one of 24 launders this TU inherited from its shards that pays;
+       do not re-add the other 23. */
     *(int *)(((int)data_023c0000 + 0x3ff8)) |= 2;
     line = REG_VCOUNT + 1;
     if (line >= 0xc0) {
@@ -688,7 +696,7 @@ void dScMgLuigi_c::DrawPictures() {
     for (i=0;i<0x78;i++) {
         if (mShown[i] == 1) {
             Hud_RenderSprite(
-                data_ov006_0213abc8[mSpeedLevel[i]],
+                data_ov006_0213abc8[mCharacter[i]],
                 mPosX[i] >> 12,
                 mPosY[i] >> 12,
                 -1,
@@ -847,7 +855,7 @@ void dScMgLuigi_c::MovePictureBounce(int i)
     }
 
     {
-        u8 *speedLevel = mSpeedLevel;
+        u8 *speedLevel = mCharacter;
         int *posX = mPosX;
         int *posY = mPosY;
         u16 phase;
@@ -912,38 +920,38 @@ void dScMgLuigi_c::MovePictureSway(int idx)
     if (mStarted[idx] == 0) {
         mMovePhase[idx] = 0;
         mStarted[idx]++;
-        if (mSpeedLevel[idx] == 0) {
-            mVelX[idx] = data_ov006_0212e888[mSpeedLevel[idx]];
+        if (mCharacter[idx] == 0) {
+            mVelX[idx] = data_ov006_0212e888[mCharacter[idx]];
         } else {
-            mVelX[idx] = -data_ov006_0212e888[mSpeedLevel[idx]];
+            mVelX[idx] = -data_ov006_0212e888[mCharacter[idx]];
         }
-        mVelY[idx] = data_ov006_0212e898[mSpeedLevel[idx]];
+        mVelY[idx] = data_ov006_0212e898[mCharacter[idx]];
         return;
     }
     mPosX[idx] += mVelX[idx];
     mPosY[idx] += mVelY[idx];
     if (mMovePhase[idx] == 0) {
         if (mVelX[idx] > 0) {
-            mVelX[idx] -= data_ov006_0212e8a8[mSpeedLevel[idx]];
+            mVelX[idx] -= data_ov006_0212e8a8[mCharacter[idx]];
             if (mVelX[idx] <= 0) {
                 mVelX[idx] = 0;
                 mMovePhase[idx] = 2;
             }
         } else if (mVelX[idx] < 0) {
-            mVelX[idx] += data_ov006_0212e8a8[mSpeedLevel[idx]];
+            mVelX[idx] += data_ov006_0212e8a8[mCharacter[idx]];
             if (mVelX[idx] >= 0) {
                 mVelX[idx] = 0;
                 mMovePhase[idx] = 1;
             }
         }
     } else if (mMovePhase[idx] == 1) {
-        mVelX[idx] += data_ov006_0212e8a8[mSpeedLevel[idx]];
-        if (mVelX[idx] >= data_ov006_0212e888[mSpeedLevel[idx]]) {
+        mVelX[idx] += data_ov006_0212e8a8[mCharacter[idx]];
+        if (mVelX[idx] >= data_ov006_0212e888[mCharacter[idx]]) {
             mMovePhase[idx] = 0;
         }
     } else {
-        mVelX[idx] -= data_ov006_0212e8a8[mSpeedLevel[idx]];
-        if (mVelX[idx] <= -data_ov006_0212e888[mSpeedLevel[idx]]) {
+        mVelX[idx] -= data_ov006_0212e8a8[mCharacter[idx]];
+        if (mVelX[idx] <= -data_ov006_0212e888[mCharacter[idx]]) {
             mMovePhase[idx] = 0;
         }
     }
@@ -966,9 +974,9 @@ void dScMgLuigi_c::MovePictureDriftRandom(int idx)
     }
     {
         int a = mMovePhase[idx] >> 4;
-        mPosX[idx] = mPosX[idx] + (s32)(((s64)data_02082214[a * 2 + 1] * data_ov006_0212e878[mSpeedLevel[idx]] + 0x800) >> 12);
+        mPosX[idx] = mPosX[idx] + (s32)(((s64)data_02082214[a * 2 + 1] * data_ov006_0212e878[mCharacter[idx]] + 0x800) >> 12);
         a = mMovePhase[idx] >> 4;
-        mPosY[idx] = mPosY[idx] + (s32)(((s64)data_02082214[a * 2] * data_ov006_0212e878[mSpeedLevel[idx]] + 0x800) >> 12);
+        mPosY[idx] = mPosY[idx] + (s32)(((s64)data_02082214[a * 2] * data_ov006_0212e878[mCharacter[idx]] + 0x800) >> 12);
     }
     WrapPicture(idx);
 }
@@ -1000,9 +1008,9 @@ void dScMgLuigi_c::MovePictureDriftByRow(int idx)
     }
     {
         int a = mMovePhase[idx] >> 4;
-        mPosX[idx] = mPosX[idx] + (s32)(((s64)data_02082214[a * 2 + 1] * data_ov006_0212e868[mSpeedLevel[idx]] + 0x800) >> 12);
+        mPosX[idx] = mPosX[idx] + (s32)(((s64)data_02082214[a * 2 + 1] * data_ov006_0212e868[mCharacter[idx]] + 0x800) >> 12);
         a = mMovePhase[idx] >> 4;
-        mPosY[idx] = mPosY[idx] + (s32)(((s64)data_02082214[a * 2] * data_ov006_0212e868[mSpeedLevel[idx]] + 0x800) >> 12);
+        mPosY[idx] = mPosY[idx] + (s32)(((s64)data_02082214[a * 2] * data_ov006_0212e868[mCharacter[idx]] + 0x800) >> 12);
     }
     WrapPicture(idx);
 }
@@ -1024,9 +1032,9 @@ void dScMgLuigi_c::MovePictureDriftByColumn(int idx)
     }
     {
         int a = mMovePhase[idx] >> 4;
-        mPosX[idx] = mPosX[idx] + (s32)(((s64)data_02082214[a * 2 + 1] * data_ov006_0212e858[mSpeedLevel[idx]] + 0x800) >> 12);
+        mPosX[idx] = mPosX[idx] + (s32)(((s64)data_02082214[a * 2 + 1] * data_ov006_0212e858[mCharacter[idx]] + 0x800) >> 12);
         a = mMovePhase[idx] >> 4;
-        mPosY[idx] = mPosY[idx] + (s32)(((s64)data_02082214[a * 2] * data_ov006_0212e858[mSpeedLevel[idx]] + 0x800) >> 12);
+        mPosY[idx] = mPosY[idx] + (s32)(((s64)data_02082214[a * 2] * data_ov006_0212e858[mCharacter[idx]] + 0x800) >> 12);
     }
     WrapPicture(idx);
 }
@@ -1038,14 +1046,14 @@ void dScMgLuigi_c::MovePictureDriftByLevel(int idx)
     extern int data_ov006_0212e8d8[];
     extern s16 data_02082214[];
     if (mStarted[idx] == 0) {
-        u8 t = mSpeedLevel[idx];
+        u8 t = mCharacter[idx];
         mMovePhase[idx] = mLevelPhase[t];
         mStarted[idx]++;
     } else {
         int a = mMovePhase[idx] >> 4;
-        mPosX[idx] = mPosX[idx] + (s32)(((s64)data_02082214[a * 2 + 1] * data_ov006_0212e8d8[mSpeedLevel[idx]] + 0x800) >> 12);
+        mPosX[idx] = mPosX[idx] + (s32)(((s64)data_02082214[a * 2 + 1] * data_ov006_0212e8d8[mCharacter[idx]] + 0x800) >> 12);
         a = mMovePhase[idx] >> 4;
-        mPosY[idx] = mPosY[idx] + (s32)(((s64)data_02082214[a * 2] * data_ov006_0212e8d8[mSpeedLevel[idx]] + 0x800) >> 12);
+        mPosY[idx] = mPosY[idx] + (s32)(((s64)data_02082214[a * 2] * data_ov006_0212e8d8[mCharacter[idx]] + 0x800) >> 12);
         WrapPicture(idx);
     }
 }
@@ -1063,9 +1071,9 @@ void dScMgLuigi_c::MovePictureDriftFixed(int idx)
     }
     {
         int a = mMovePhase[idx] >> 4;
-        mPosX[idx] = mPosX[idx] + (s32)(((s64)data_02082214[a * 2 + 1] * data_ov006_0212e8c8[mSpeedLevel[idx]] + 0x800) >> 12);
+        mPosX[idx] = mPosX[idx] + (s32)(((s64)data_02082214[a * 2 + 1] * data_ov006_0212e8c8[mCharacter[idx]] + 0x800) >> 12);
         a = mMovePhase[idx] >> 4;
-        mPosY[idx] = mPosY[idx] + (s32)(((s64)data_02082214[a * 2] * data_ov006_0212e8c8[mSpeedLevel[idx]] + 0x800) >> 12);
+        mPosY[idx] = mPosY[idx] + (s32)(((s64)data_02082214[a * 2] * data_ov006_0212e8c8[mCharacter[idx]] + 0x800) >> 12);
     }
     WrapPicture(idx);
 }
@@ -1229,8 +1237,8 @@ void dScMgLuigi_c::PlaceBoardLayout()
                 mPosY[n] = (0x50 + i * 0x20) << 12;
                 mActive[n] = 1;
                 mKind[n] = 0;
-                mSpeedLevel[n] = (base + n) & 3;
-                if (mWanted == mSpeedLevel[n])
+                mCharacter[n] = (base + n) & 3;
+                if (mWanted == mCharacter[n])
                     mTarget = n + 1;
                 n++;
             }
@@ -1250,15 +1258,15 @@ void dScMgLuigi_c::PlaceBoardLayout()
                 mActive[n] = 1;
                 mKind[n] = 0;
                 rnd = RandomIntInternal(&data_0209d4b8);
-                mSpeedLevel[n] = (((u32)rnd >> 16) & 0x7fff) * 4 >> 15;
-                if (mWanted == mSpeedLevel[n]) {
+                mCharacter[n] = (((u32)rnd >> 16) & 0x7fff) * 4 >> 15;
+                if (mWanted == mCharacter[n]) {
                     rnd = RandomIntInternal(&data_0209d4b8);
                     step = (((u32)rnd >> 16) & 0x7fff) * 3 >> 15;
-                    mSpeedLevel[n] += step + 1;
-                    mSpeedLevel[n] &= 3;
+                    mCharacter[n] += step + 1;
+                    mCharacter[n] &= 3;
                 }
                 if (n == mTarget - 1)
-                    mSpeedLevel[n] = mWanted;
+                    mCharacter[n] = mWanted;
                 n++;
             }
         }
@@ -1277,15 +1285,15 @@ void dScMgLuigi_c::PlaceBoardLayout()
                 mActive[n] = 1;
                 mKind[n] = 0;
                 rnd = RandomIntInternal(&data_0209d4b8);
-                mSpeedLevel[n] = (((u32)rnd >> 16) & 0x7fff) * 4 >> 15;
-                if (mWanted == mSpeedLevel[n]) {
+                mCharacter[n] = (((u32)rnd >> 16) & 0x7fff) * 4 >> 15;
+                if (mWanted == mCharacter[n]) {
                     rnd = RandomIntInternal(&data_0209d4b8);
                     step = (((u32)rnd >> 16) & 0x7fff) * 3 >> 15;
-                    mSpeedLevel[n] += step + 1;
-                    mSpeedLevel[n] &= 3;
+                    mCharacter[n] += step + 1;
+                    mCharacter[n] &= 3;
                 }
                 if (n == mTarget - 1)
-                    mSpeedLevel[n] = mWanted;
+                    mCharacter[n] = mWanted;
                 n++;
             }
         }
@@ -1302,16 +1310,16 @@ void dScMgLuigi_c::PlaceBoardLayout()
             mActive[n] = 1;
             mKind[n] = 0;
             rnd = RandomIntInternal(&data_0209d4b8);
-            mSpeedLevel[n] = (((u32)rnd >> 16) & 0x7fff) * 3 >> 15;
-            if (mWanted == mSpeedLevel[n]) {
+            mCharacter[n] = (((u32)rnd >> 16) & 0x7fff) * 3 >> 15;
+            if (mWanted == mCharacter[n]) {
                 rnd = RandomIntInternal(&data_0209d4b8);
                 step = ((((u32)rnd >> 16) & 0x7fff) * 2 >> 15) + 1;
-                mSpeedLevel[n] += step;
-                if (mSpeedLevel[n] >= 3)
-                    mSpeedLevel[n] = 0;
+                mCharacter[n] += step;
+                if (mCharacter[n] >= 3)
+                    mCharacter[n] = 0;
             }
             if (n == mTarget - 1)
-                mSpeedLevel[n] = mWanted;
+                mCharacter[n] = mWanted;
             n++;
         }
     }
@@ -1356,10 +1364,10 @@ void dScMgLuigi_c::PlaceNextPicture()
     cur = mTarget;
 
     rnd = RandomIntInternal(&data_0209d4b8);
-    mSpeedLevel[cur] = (((u32)rnd >> 16) & 0x7fff) * 4 >> 15;
+    mCharacter[cur] = (((u32)rnd >> 16) & 0x7fff) * 4 >> 15;
     {
-        u8 *p = &mSpeedLevel[cur];
-        if (mWanted == mSpeedLevel[cur]) {
+        u8 *p = &mCharacter[cur];
+        if (mWanted == mCharacter[cur]) {
             rnd = RandomIntInternal(&data_0209d4b8);
             *p += ((((u32)rnd >> 16) & 0x7fff) * 3 >> 15) + 1;
             *p &= 3;
@@ -1384,7 +1392,7 @@ void dScMgLuigi_c::PlaceNextPicture()
             mPosY[0] = (row * 20 + (jy + 16)) << 12;
             mActive[0] = 1;
             mKind[0] = 0;
-            mSpeedLevel[0] = mWanted;
+            mCharacter[0] = mWanted;
             mGrid[col][row] = 1;
             mTarget++;
             return;
@@ -1394,7 +1402,7 @@ void dScMgLuigi_c::PlaceNextPicture()
             mPosY[n] = (row * 20 + 16) << 12;
             mActive[n] = 1;
             mKind[n] = 0;
-            mSpeedLevel[n] = mWanted;
+            mCharacter[n] = mWanted;
             mGrid[col][row] = 1;
         }
     }
@@ -1547,7 +1555,7 @@ void dScMgLuigi_c::ResetBoard()
         mVelY[i] = 0;
         mKind[i] = 0;
         mActive[i] = 0;
-        mSpeedLevel[i] = 0;
+        mCharacter[i] = 0;
         mBlink[i] = 0;
         mMovePhase[i] = 0;
         mShown[i] = 0;
