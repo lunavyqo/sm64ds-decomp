@@ -1740,9 +1740,6 @@
       ]
     },
     "Math_Function_0203b14c": {
-      "src/_ZN12HealingHeart8BehaviorEv.cpp": [
-        "return:void"
-      ],
       "src/func_0200bec4.c": [
         "return:void"
       ],
@@ -6712,9 +6709,6 @@
       "src/_ZN10DonutBlock13InitResourcesEv.cpp": [
         "return:int"
       ],
-      "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
-        "return:int"
-      ],
       "src/_ZN15FireSeaElevator8BehaviorEv.cpp": [
         "return:int"
       ],
@@ -6761,9 +6755,6 @@
     },
     "_ZN10dBgActor_c21UpdateModelPosAndRotYEv": {
       "src/_ZN10DonutBlock13InitResourcesEv.cpp": [
-        "return:int"
-      ],
-      "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
         "return:int"
       ],
       "src/_ZN15FireSeaElevator8BehaviorEv.cpp": [
@@ -10901,9 +10892,6 @@
         "arity:0",
         "mangled:0 parameter(s)"
       ],
-      "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
-        "kind:data"
-      ],
       "src/_ZN15FireSeaElevator13InitResourcesEv.cpp": [
         "kind:data"
       ],
@@ -11184,9 +11172,6 @@
       "src/_ZN12FortressWall13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
-      "src/_ZN12HealingHeart13InitResourcesEv.cpp": [
-        "return:BMD_File *"
-      ],
       "src/_ZN12MetalNetLift13InitResourcesEv.cpp": [
         "return:BMD_File *"
       ],
@@ -11201,9 +11186,6 @@
         "return:int"
       ],
       "src/_ZN14KnockDownPlank13InitResourcesEv.cpp": [
-        "param:#1 void *"
-      ],
-      "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
       "src/_ZN14daWater_Ring_c13InitResourcesEv.cpp": [
@@ -12403,9 +12385,6 @@
       ],
       "src/actors/daObjFl_Ring_c.cpp": [
         "param:#2 void *"
-      ],
-      "src/_ZN12HealingHeart8BehaviorEv.cpp": [
-        "param:#2 const Vector3 *"
       ],
       "src/_ZN15TtcRotatingCube8BehaviorEv.cpp": [
         "param:#2 void *"
@@ -14509,10 +14488,6 @@
         "param:#1 void *",
         "return:void *"
       ],
-      "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
-        "param:#1 void *",
-        "return:void *"
-      ],
       "src/_ZN15FireSeaElevator13InitResourcesEv.cpp": [
         "param:#1 void *",
         "return:int"
@@ -15562,9 +15537,6 @@
         "return:char *"
       ],
       "src/_ZN11RollingRock8BehaviorEv.cpp": [
-        "return:void *"
-      ],
-      "src/_ZN12HealingHeart8BehaviorEv.cpp": [
         "return:void *"
       ],
       "src/_ZN13MontyMoleRock8BehaviorEv.cpp": [
@@ -17539,9 +17511,6 @@
         "param:#1 void *",
         "return:void *"
       ],
-      "src/_ZN12HealingHeart13InitResourcesEv.cpp": [
-        "return:BCA_File *"
-      ],
       "src/_ZN15dMg3DEspModel_c13InitResourcesEv.cpp": [
         "param:#1 void *",
         "return:void"
@@ -17733,9 +17702,6 @@
       ]
     },
     "_ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj": {
-      "src/_ZN12HealingHeart13InitResourcesEv.cpp": [
-        "param:#5 unsigned int"
-      ],
       "src/_ZN14UnknownVsEntry13InitResourcesEv.cpp": [
         "param:#5 unsigned int"
       ],
@@ -18374,9 +18340,6 @@
       "src/_ZN11CrazedCrate13InitResourcesEv.cpp": [
         "return:void"
       ],
-      "src/_ZN12HealingHeart13InitResourcesEv.cpp": [
-        "return:void"
-      ],
       "src/_ZN12MetalNetLift13InitResourcesEv.cpp": [
         "return:void"
       ],
@@ -18393,9 +18356,6 @@
         "param:#2 int"
       ],
       "src/_ZN14KnockDownPlank13InitResourcesEv.cpp": [
-        "return:void"
-      ],
-      "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
         "return:void"
       ],
       "src/_ZN15FireSeaElevator13InitResourcesEv.cpp": [
@@ -19130,9 +19090,6 @@
       ],
       "src/_ZN12MetalNetLift13InitResourcesEv.cpp": [
         "param:#2 Vector3 *"
-      ],
-      "src/_ZN14SquarePathLift8BehaviorEv.cpp": [
-        "param:#2 void *"
       ],
       "src/_ZN15RollingIronBall13InitResourcesEv.cpp": [
         "param:#2 void *"
@@ -36621,9 +36578,6 @@
         "param:#2 void *"
       ],
       "src/_ZN12MetalNetLift13InitResourcesEv.cpp": [
-        "param:#2 void *"
-      ],
-      "src/_ZN14SquarePathLift13InitResourcesEv.cpp": [
         "param:#2 void *"
       ],
       "src/_ZN15TtcRotatingCube13InitResourcesEv.cpp": [
