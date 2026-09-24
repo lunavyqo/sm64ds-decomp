@@ -553,7 +553,7 @@ In the C twin, `unk_08e` was repointed to `mAngleY`.
 
 ---
 
-## TtcRotatingGear (`include/TtcRotatingGear.h`, [ov065](../config/arm9/overlays/ov065/symbols.txt), size 0x330)
+## daObjCtMecha08_c (`include/daObjCtMecha08_c.h`, [ov065](../config/arm9/overlays/ov065/symbols.txt), size 0x330)
 
 | Offset | Name | Evidence |
 | --- | --- | --- |
@@ -757,7 +757,7 @@ same offsets:
 * `include/daObjC0Water_c.h` — `mCamSpacePosX`.
 * `include/TTC_MovingBeam.h` — `mTerminalVelocity`, `mVertSpeed`, `mClsnMat`.
 * `include/daObjSlIceBlock_c.h` — `mHorzSpeed`.
-* `include/PyramidStep.h` — `param1`, `mAngleY`, `mVertSpeed`.
+* `include/daObjDpBrock_c.h` — `param1`, `mAngleY`, `mVertSpeed`.
 * `include/PathLift.h` — `actorID`.
 * `include/daObjEmmLog_c.h` — `mPosY`.
 * `include/daObjCtMecha10_c.h` — `actorID`, `mAngleY`.

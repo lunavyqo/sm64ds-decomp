@@ -63,7 +63,7 @@ it lose it. Both directions are live. Affected Tier 1:
 | Class |
 |---|
 |[ov029](../config/arm9/overlays/ov029/symbols.txt)/`daObjWc_Obj02_c(1/9)`  [ov029](../config/arm9/overlays/ov029/symbols.txt)/`daObjWc_Obj05_c(1/9)`  [ov029](../config/arm9/overlays/ov029/symbols.txt)/`daObjWc_Obj07_c(1/5)` |
-|[ov014](../config/arm9/overlays/ov014/symbols.txt)/`daObjBSwdoor_c(1/6)` [ov030](../config/arm9/overlays/ov030/symbols.txt)/`RollingLogTtm(3/6)` [ov063](../config/arm9/overlays/ov063/symbols.txt)/`daObjTh_Fall_Block_c(2/5)` |
+|[ov014](../config/arm9/overlays/ov014/symbols.txt)/`daObjBSwdoor_c(1/6)` [ov030](../config/arm9/overlays/ov030/symbols.txt)/`daObjHmMaruta_c(3/6)` [ov063](../config/arm9/overlays/ov063/symbols.txt)/`daObjTh_Fall_Block_c(2/5)` |
 |[ov015](../config/arm9/overlays/ov015/symbols.txt)/`daObjBk_Fall_Block_c(2/5)` [ov015](../config/arm9/overlays/ov015/symbols.txt)/`daObjBk_Ukisima_c(1/5)` [ov022](../config/arm9/overlays/ov022/symbols.txt)/`RotatingPlatformLll(1/5)` |
 |[ov036](../config/arm9/overlays/ov036/symbols.txt)/`RotatingPlatformRr(1/5)` [ov064](../config/arm9/overlays/ov064/symbols.txt)/`TiltingPlatformLll(2/5)` [ov016](../config/arm9/overlays/ov016/symbols.txt)/`FloatOnWaterPlatformJrb(1/4)` |
 
@@ -227,7 +227,7 @@ first module where a `config_tu/` conversion becomes conceivable.
 |[ov016](../config/arm9/overlays/ov016/symbols.txt)| 0x2112ff8|  n=8|   `SlidingBox`|           CONF2 pcov=3|
 |[ov017](../config/arm9/overlays/ov017/symbols.txt)| 0x21111a0|  n=7|   `daObjKsWater_c`|            CONF2 WHOLEMOD pcov=2|
 |[ov022](../config/arm9/overlays/ov022/symbols.txt)| 0x21111a0|  n=9|   `daObjFl_Ring_c`|          CONF1|
-|[ov022](../config/arm9/overlays/ov022/symbols.txt)| 0x21116c4|  n=9|   `FloatOnLavaPlatform`|  CONF2|
+|[ov022](../config/arm9/overlays/ov022/symbols.txt)| 0x21116c4|  n=9|   `daObjFl_Block_c`|  CONF2|
 |[ov022](../config/arm9/overlays/ov022/symbols.txt)| 0x2112130|  n=7|   `daObjFl_UkiKi_c`|            CONF2|
 |[ov025](../config/arm9/overlays/ov025/symbols.txt)| 0x2111d40|  n=9|   `PyramidStep`|          CONF1|
 |[ov032](../config/arm9/overlays/ov032/symbols.txt)| 0x2112698|  n=7|   `daObjTdWater_c`|            CONF2|
@@ -240,7 +240,7 @@ first module where a `config_tu/` conversion becomes conceivable.
 |[ov036](../config/arm9/overlays/ov036/symbols.txt)| 0x21111a0|  n=8|   `daObjRcBuranko_c`|   CONF1|
 |[ov043](../config/arm9/overlays/ov043/symbols.txt)| 0x21113fc|  n=5|   `RickshawBdw`|       CONF1|
 |[ov052](../config/arm9/overlays/ov052/symbols.txt)| 0x21111a0|  n=7|   `daObjEmmLog_c`|      CONF3 WHOLEMOD pcov=3 (1 distinct include)|
-|[ov052](../config/arm9/overlays/ov052/symbols.txt)| 0x2111440|  n=7|   `SquarePathLift`|     CONF2|
+|[ov052](../config/arm9/overlays/ov052/symbols.txt)| 0x2111440|  n=7|   `daObjEmmYuka_c`|     CONF2|
 |[ov056](../config/arm9/overlays/ov056/symbols.txt)| 0x21111a0|  n=7|   `BigMovingIceBlock`|  CONF2 WHOLEMOD pcov=2|
 |[ov062](../config/arm9/overlays/ov062/symbols.txt)| 0x211af38|  n=8|   `daRFlag_c`|          CONF2 pcov=3|
 |[ov064](../config/arm9/overlays/ov064/symbols.txt)| 0x211a930|  n=8|   `daObjShell_c`|               CONF1|
@@ -290,7 +290,7 @@ first module where a `config_tu/` conversion becomes conceivable.
 |[ov029](../config/arm9/overlays/ov029/symbols.txt)| 0x211137c|  n=9|    `daObjWc_Obj02_c`|                1/9  CONF2|
 |[ov029](../config/arm9/overlays/ov029/symbols.txt)| 0x2111ac4|  n=9|    `daObjWc_Obj05_c`|                 1/9  NORM1|
 |[ov029](../config/arm9/overlays/ov029/symbols.txt)| 0x2112080|  n=5|    `daObjWc_Obj07_c`|          1/5  pcov=3|
-|[ov030](../config/arm9/overlays/ov030/symbols.txt)| 0x211155c|  n=6|    `RollingLogTtm`|            3/6  pcov=4|
+|[ov030](../config/arm9/overlays/ov030/symbols.txt)| 0x211155c|  n=6|    `daObjHmMaruta_c`|            3/6  pcov=4|
 |[ov036](../config/arm9/overlays/ov036/symbols.txt)| 0x2111444|  n=5|    `RotatingPlatformRr`|       1/5|
 
 
