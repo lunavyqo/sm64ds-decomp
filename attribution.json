@@ -4785,6 +4785,11 @@
     "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c6RenderEv": "tangosdev",
     "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c8BehaviorEv": "lunavyqo",
-    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c13InitResourcesEv": "lunavyqo"
+    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c13InitResourcesEv": "lunavyqo",
+    "src/actors/daWater_Suikomi_c.cpp#_ZN17daWater_Suikomi_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daWater_Suikomi_c.cpp#_ZN17daWater_Suikomi_c16OnPendingDestroyEv": "tangosdev",
+    "src/actors/daWater_Suikomi_c.cpp#_ZN17daWater_Suikomi_c6RenderEv": "tangosdev",
+    "src/actors/daWater_Suikomi_c.cpp#_ZN17daWater_Suikomi_c8BehaviorEv": "tangosdev",
+    "src/actors/daWater_Suikomi_c.cpp#_ZN17daWater_Suikomi_c13InitResourcesEv": "tangosdev"
   }
 }

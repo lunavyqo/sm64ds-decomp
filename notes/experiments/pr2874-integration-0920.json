@@ -2522,8 +2522,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN12WaterSuction13InitResourcesEv.cpp",
-      "name": "_ZN12WaterSuction13InitResourcesEv",
+      "file": "src/_ZN17daWater_Suikomi_c13InitResourcesEv.cpp",
+      "name": "_ZN17daWater_Suikomi_c13InitResourcesEv",
       "module": "ov026",
       "addr": "0x21123c8",
       "verdict": "VERIFIED",
@@ -2531,8 +2531,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN12WaterSuction8BehaviorEv.cpp",
-      "name": "_ZN12WaterSuction8BehaviorEv",
+      "file": "src/_ZN17daWater_Suikomi_c8BehaviorEv.cpp",
+      "name": "_ZN17daWater_Suikomi_c8BehaviorEv",
       "module": "ov026",
       "addr": "0x211233c",
       "verdict": "VERIFIED",
@@ -21082,7 +21082,7 @@
           "src/_ZN11dScMgBase_c16OnAimedAtWithEggEv.cpp",
           "src/_ZN11dScMgCoin_c13OnYoshiTryEatEi.cpp",
           "src/_ZN19daObjFlamethrower_c8BehaviorEv.cpp",
-          "src/_ZN12WaterSuction13InitResourcesEv.cpp",
+          "src/_ZN17daWater_Suikomi_c13InitResourcesEv.cpp",
           "src/_ZN12dScMg3DEsp_c6RenderEv.cpp",
           "src/_ZN12dScMgSlot3_c25OnAimedAtWithEggReturnVecEv.cpp",
           "src/_ZN12daBDonketu_c13InitResourcesEv.cpp",
@@ -21207,7 +21207,7 @@
           "src/_ZN11dScMgBase_c16OnAimedAtWithEggEv.cpp",
           "src/_ZN11dScMgCoin_c13OnYoshiTryEatEi.cpp",
           "src/_ZN19daObjFlamethrower_c8BehaviorEv.cpp",
-          "src/_ZN12WaterSuction13InitResourcesEv.cpp",
+          "src/_ZN17daWater_Suikomi_c13InitResourcesEv.cpp",
           "src/_ZN12dScMg3DEsp_c6RenderEv.cpp",
           "src/_ZN12dScMgSlot3_c25OnAimedAtWithEggReturnVecEv.cpp",
           "src/_ZN12daBDonketu_c13InitResourcesEv.cpp",
@@ -21341,7 +21341,7 @@
           "src/_ZN11dScMgBase_c19OnHitFromUnderneathEv.cpp",
           "src/_ZN11daC_Jugem_c13InitResourcesEv.cpp",
           "src/_ZN12FortressWall16CleanupResourcesEv.cpp",
-          "src/_ZN12WaterSuction8BehaviorEv.cpp",
+          "src/_ZN17daWater_Suikomi_c8BehaviorEv.cpp",
           "src/_ZN12dScMg3DEsp_c8BehaviorEv.cpp",
           "src/_ZN12dScMgSlot3_c6RenderEv.cpp",
           "src/_ZN12daBDonketu_c8BehaviorEv.cpp",
@@ -21464,7 +21464,7 @@
           "src/_ZN11dScMgBase_c19OnHitFromUnderneathEv.cpp",
           "src/_ZN11daC_Jugem_c13InitResourcesEv.cpp",
           "src/_ZN12FortressWall16CleanupResourcesEv.cpp",
-          "src/_ZN12WaterSuction8BehaviorEv.cpp",
+          "src/_ZN17daWater_Suikomi_c8BehaviorEv.cpp",
           "src/_ZN12dScMg3DEsp_c8BehaviorEv.cpp",
           "src/_ZN12dScMgSlot3_c6RenderEv.cpp",
           "src/_ZN12daBDonketu_c8BehaviorEv.cpp",
@@ -21668,8 +21668,8 @@
         "src/_ZN12HealingHeart13InitResourcesEv.cpp",
         "src/_ZN12MetalNetLift13InitResourcesEv.cpp",
         "src/_ZN12MetalNetLift16CleanupResourcesEv.cpp",
-        "src/_ZN12WaterSuction13InitResourcesEv.cpp",
-        "src/_ZN12WaterSuction8BehaviorEv.cpp",
+        "src/_ZN17daWater_Suikomi_c13InitResourcesEv.cpp",
+        "src/_ZN17daWater_Suikomi_c8BehaviorEv.cpp",
         "src/_ZN12WorkElevator16CleanupResourcesEv.cpp",
         "src/_ZN12dBgCh_SphCrr15SetObjAndSphereERK7Vector35Fix12IiEP8dActor_c.cpp",
         "src/_ZN12dScMg3DEsp_c13InitResourcesEv.cpp",
@@ -22591,12 +22591,12 @@
           "name": "_ZN12MetalNetLift16CleanupResourcesEv"
         },
         {
-          "file": "src/_ZN12WaterSuction13InitResourcesEv.cpp",
-          "name": "_ZN12WaterSuction13InitResourcesEv"
+          "file": "src/_ZN17daWater_Suikomi_c13InitResourcesEv.cpp",
+          "name": "_ZN17daWater_Suikomi_c13InitResourcesEv"
         },
         {
-          "file": "src/_ZN12WaterSuction8BehaviorEv.cpp",
-          "name": "_ZN12WaterSuction8BehaviorEv"
+          "file": "src/_ZN17daWater_Suikomi_c8BehaviorEv.cpp",
+          "name": "_ZN17daWater_Suikomi_c8BehaviorEv"
         },
         {
           "file": "src/_ZN12WorkElevator16CleanupResourcesEv.cpp",
