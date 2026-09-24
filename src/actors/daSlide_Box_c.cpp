@@ -42,6 +42,12 @@ int _ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_(void *self, int a, int b);
 extern void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
     void *thiz, void *kcl, void *mtx, int fix, short s, void *clps);
 extern void func_020393d4(void *p, void *v);
+/* dBgCh_Actr::Init takes Fix12<int> by value (the ROM name mangles 5Fix12IiE).
+ * dBgCh_Actr.h declares those parameters as Fix12i, a plain s32, so a member
+ * call would mangle ii and link to a symbol the ROM does not have: it stays
+ * mangled. */
+extern void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(
+    void *thiz, void *act, int radius, int height, void *rotA, int rotB);
 }
 
 /* Radius and height passed to dBgCh_Actr::Init, 20.0 in 20.12. */
@@ -196,7 +202,8 @@ int daSlide_Box_c::InitResources()
     _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
         &mMeshCollider, clsnFile, &mClsnMat, 0x199, mAngleY, data_ov016_02113bac);
     func_020393d4(&mMeshCollider, (void *)&dBgW::UpdatePosWithTransform);
-    mWithMeshClsn.Init(this, kClsnRadius, kClsnRadius, 0, 0);
+    _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(
+        &mWithMeshClsn, this, kClsnRadius, kClsnRadius, 0, 0);
     mVertAccel = -0x2000;
     mTerminalVelocity = -0x14000;
     mShip = 0;

@@ -7141,6 +7141,10 @@
       "src/game/actors/daTrs_c/_ZN7daTrs_c13InitResourcesEv.cpp": [
         "param:#2 void *",
         "param:#5 void *"
+      ],
+      "src/actors/daSlide_Box_c.cpp": [
+        "param:#2 void *",
+        "param:#5 void *"
       ]
     },
     "_ZN10dBgCh_ActrC1Ev": {
