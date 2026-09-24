@@ -1978,12 +1978,12 @@ ov065	0x021195ec	func_ov065_021195ec	DorrieCap_Spawn	spawnfunc
 ov065	0x021195ec	DorrieCap_Spawn	daDossyCap_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
 ov065	0x02119634	func_ov065_02119634	Dorrie_Spawn	spawnfunc
 ov065	0x02119634	Dorrie_Spawn	daDossy_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
-ov065	0x021196d8	func_ov065_021196d8	_ZN15TtcRotatingCubeD1Ev	vtable slot 16
-ov065	0x0211972c	func_ov065_0211972c	_ZN15TtcRotatingCubeD0Ev	vtable slot 17
-ov065	0x02119984	func_ov065_02119984	_ZN15TtcRotatingCube16CleanupResourcesEv	vtable slot 3
-ov065	0x021199fc	func_ov065_021199fc	_ZN15TtcRotatingCube6RenderEv	vtable slot 9
-ov065	0x02119a50	func_ov065_02119a50	_ZN15TtcRotatingCube8BehaviorEv	vtable slot 6
-ov065	0x02119c38	func_ov065_02119c38	_ZN15TtcRotatingCube13InitResourcesEv	vtable slot 0
+ov065	0x021196d8	func_ov065_021196d8	_ZN20daObjCtRotateBlock_cD1Ev	vtable slot 16
+ov065	0x0211972c	func_ov065_0211972c	_ZN20daObjCtRotateBlock_cD0Ev	vtable slot 17
+ov065	0x02119984	func_ov065_02119984	_ZN20daObjCtRotateBlock_c16CleanupResourcesEv	vtable slot 3
+ov065	0x021199fc	func_ov065_021199fc	_ZN20daObjCtRotateBlock_c6RenderEv	vtable slot 9
+ov065	0x02119a50	func_ov065_02119a50	_ZN20daObjCtRotateBlock_c8BehaviorEv	vtable slot 6
+ov065	0x02119c38	func_ov065_02119c38	_ZN20daObjCtRotateBlock_c13InitResourcesEv	vtable slot 0
 ov065	0x02119ebc	func_ov065_02119ebc	TtcRotatingPrism_Spawn	spawnfunc
 ov065	0x02119ebc	TtcRotatingPrism_Spawn	daObjCtRotateBlock_c_classInit_CT_MECHA02	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
 ov065	0x02119efc	func_ov065_02119efc	TtcRotatingCube_Spawn	spawnfunc
@@ -2045,7 +2045,7 @@ ov065	0x0211cfe8	TtcRotatingCube_SpawnInfo	g_profile_CT_MECHA01	reconstructed pr
 ov065	0x0211d004	data_ov065_0211d004	TtcRotatingPrism_SpawnInfo	spawninfo
 ov065	0x0211d004	TtcRotatingPrism_SpawnInfo	g_profile_CT_MECHA02	reconstructed profile global; literal ROM ID CT_MECHA02+registry role+later EAD lineage; exact SM64DS spelling not preserved
 ov065	0x0211d0c8	data_ov065_0211d0c8	g_profile_CT_MECHA03	reconstructed profile global; literal ROM ID CT_MECHA03+registry role+later EAD lineage; exact SM64DS spelling not preserved
-ov065	0x0211d028	data_ov065_0211d028	_ZTV15TtcRotatingCube	vtable alloc=0x3d8
+ov065	0x0211d028	data_ov065_0211d028	_ZTV20daObjCtRotateBlock_c	vtable alloc=0x3d8
 ov065	0x0211d1ac	data_ov065_0211d1ac	TtcConveyorBeltSmall_SpawnInfo	spawninfo
 ov065	0x0211d1ac	TtcConveyorBeltSmall_SpawnInfo	g_profile_CT_MECHA04S	reconstructed profile global; literal ROM ID CT_MECHA04S+registry role+later EAD lineage; exact SM64DS spelling not preserved
 ov065	0x0211d1c8	data_ov065_0211d1c8	TtcConveyorBeltLarge_SpawnInfo	spawninfo
@@ -2457,13 +2457,13 @@ ov081	0x0212588c	func_ov081_0212588c	_ZN10MrBlizzard8BehaviorEv	vtable slot 6
 ov081	0x02125ba0	func_ov081_02125ba0	_ZN10MrBlizzard13InitResourcesEv	vtable slot 0
 ov081	0x02125ec0	func_ov081_02125ec0	MrBlizzard_Spawn	spawnfunc
 ov081	0x02125ec0	MrBlizzard_Spawn	daSnowman_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
-ov081	0x02125f14	func_ov081_02125f14	_ZN8SnowballD1Ev	vtable slot 16
-ov081	0x02125f5c	func_ov081_02125f5c	_ZN8SnowballD0Ev	vtable slot 17
-ov081	0x02126298	func_ov081_02126298	_ZN8Snowball16CleanupResourcesEv	vtable slot 3
-ov081	0x021262bc	func_ov081_021262bc	_ZN8Snowball16OnPendingDestroyEv	vtable slot 12
-ov081	0x021262c0	func_ov081_021262c0	_ZN8Snowball6RenderEv	vtable slot 9
-ov081	0x021262ec	func_ov081_021262ec	_ZN8Snowball8BehaviorEv	vtable slot 6
-ov081	0x021263b8	func_ov081_021263b8	_ZN8Snowball13InitResourcesEv	vtable slot 0
+ov081	0x02125f14	func_ov081_02125f14	_ZN12daSnowball_cD1Ev	vtable slot 16
+ov081	0x02125f5c	func_ov081_02125f5c	_ZN12daSnowball_cD0Ev	vtable slot 17
+ov081	0x02126298	func_ov081_02126298	_ZN12daSnowball_c16CleanupResourcesEv	vtable slot 3
+ov081	0x021262bc	func_ov081_021262bc	_ZN12daSnowball_c16OnPendingDestroyEv	vtable slot 12
+ov081	0x021262c0	func_ov081_021262c0	_ZN12daSnowball_c6RenderEv	vtable slot 9
+ov081	0x021262ec	func_ov081_021262ec	_ZN12daSnowball_c8BehaviorEv	vtable slot 6
+ov081	0x021263b8	func_ov081_021263b8	_ZN12daSnowball_c13InitResourcesEv	vtable slot 0
 ov081	0x021264b4	func_ov081_021264b4	Snowball_Spawn	spawnfunc
 ov081	0x021264b4	Snowball_Spawn	daSnowball_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
 ov081	0x02126504	func_ov081_02126504	_ZN8daGmch_cD1Ev	vtable slot 16 (was _ZN8MoneybagD1Ev)
@@ -2491,7 +2491,7 @@ ov081	0x021289cc	MrBlizzard_SpawnInfo	g_profile_SNOWMAN	reconstructed profile gl
 ov081	0x021289f0	data_ov081_021289f0	_ZTV10MrBlizzard	vtable alloc=?
 ov081	0x02128a98	data_ov081_02128a98	Snowball_SpawnInfo	spawninfo
 ov081	0x02128a98	Snowball_SpawnInfo	g_profile_SNOWBALL	reconstructed profile global; literal ROM ID SNOWBALL+registry role+later EAD lineage; exact SM64DS spelling not preserved
-ov081	0x02128abc	data_ov081_02128abc	_ZTV8Snowball	vtable alloc=0x38c
+ov081	0x02128abc	data_ov081_02128abc	_ZTV12daSnowball_c	vtable alloc=0x38c
 ov081	0x02128be0	data_ov081_02128be0	Moneybag_SpawnInfo	spawninfo
 ov081	0x02128be0	Moneybag_SpawnInfo	g_profile_GAMAGUCHI	reconstructed profile global; literal ROM ID GAMAGUCHI+registry role+later EAD lineage; exact SM64DS spelling not preserved
 ov081	0x02128c04	data_ov081_02128c04	_ZTV8daGmch_c	vtable alloc=0x3f4 (was _ZTV8Moneybag -- the same class under its cartridge RTTI name, not a different owner, so the alloc figure stands: daGmch_c_classInit at 0x02127adc passes the literal 1012 = 0x3f4 to fBase_c::operator new and include/daGmch_c.h asserts sizeof(daGmch_c) == 0x3f4)
