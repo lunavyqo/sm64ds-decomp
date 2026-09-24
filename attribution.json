@@ -4692,13 +4692,13 @@
     "src/actors/daLuigi_c.cpp#_ZN9daLuigi_c6RenderEv": "tangosdev",
     "src/actors/daLuigi_c.cpp#_ZN9daLuigi_c8BehaviorEv": "ruspecial",
     "src/actors/daLuigi_c.cpp#_ZN9daLuigi_c13InitResourcesEv": "tangosdev",
-    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_cD1Ev": "Alberto12345678999",
-    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_cD0Ev": "Alberto12345678999",
-    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_c12UpdateShadowEv": "Alberto12345678999",
-    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_c11UpdateModelEv": "Alberto12345678999",
-    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_c16CleanupResourcesEv": "Alberto12345678999",
-    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_c6RenderEv": "Alberto12345678999",
-    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_c8BehaviorEv": "Alberto12345678999",
-    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_c13InitResourcesEv": "Alberto12345678999"
+    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_cD1Ev": "tangosdev",
+    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_cD0Ev": "tangosdev",
+    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_c12UpdateShadowEv": "andrewboudreau",
+    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_c11UpdateModelEv": "andrewboudreau",
+    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_c6RenderEv": "tangosdev",
+    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_c8BehaviorEv": "lunavyqo",
+    "src/actors/daObjCtMecha11_c.cpp#_ZN16daObjCtMecha11_c13InitResourcesEv": "tangosdev"
   }
 }

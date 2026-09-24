@@ -25696,19 +25696,19 @@
    "start": "0x21116ec",
    "end": "0x2111bd0",
    "classes": [
-    "daObjCtMecha11_c"
+    "SpinningPlatform"
    ],
    "n_functions_map": 9,
    "n_files": 9,
    "files": [
-    "src/_ZN16daObjCtMecha11_cD1Ev.c",
-    "src/_ZN16daObjCtMecha11_cD0Ev.c",
+    "src/_ZN16SpinningPlatformD1Ev.c",
+    "src/_ZN16SpinningPlatformD0Ev.c",
     "src/func_ov035_02111798.c",
     "src/func_ov035_021118a8.c",
-    "src/_ZN16daObjCtMecha11_c16CleanupResourcesEv.cpp",
-    "src/_ZN16daObjCtMecha11_c6RenderEv.cpp",
-    "src/_ZN16daObjCtMecha11_c8BehaviorEv.cpp",
-    "src/_ZN16daObjCtMecha11_c13InitResourcesEv.cpp",
+    "src/_ZN16SpinningPlatform16CleanupResourcesEv.cpp",
+    "src/_ZN16SpinningPlatform6RenderEv.cpp",
+    "src/_ZN16SpinningPlatform8BehaviorEv.cpp",
+    "src/_ZN16SpinningPlatform13InitResourcesEv.cpp",
     "src/d_a_obj_ct_mecha11.c"
    ],
    "ext_mix": {

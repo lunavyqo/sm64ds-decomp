@@ -1,5 +1,7 @@
 //cpp
-/* Tick Tock Clock's spinning platform (profile CT_MECHA11).
+/* Production translation unit for ov035/daObjCtMecha11_c.
+ * 8 function(s), .text 0x021116ec..0x02111b98. Tick Tock Clock's spinning
+ * platform (profile CT_MECHA11).
  *
  * Behavior adds a clock-setting step to mAngleX. Setting 2 rolls a sign
  * and, for the first five frames of the burst, adds nothing. InitResources
@@ -7,12 +9,22 @@
  * floor the cuboid shadow sits on. UpdateShadow widens the clip as the
  * platform rises and scales the shadow's depth with how flat it is.
  *
- * ROM-ascending under #pragma defer_codegen off. One out-of-line destructor,
- * written first, so the compiler emits D1 then D0. D2 has no ROM home.
+ * NAME: _ZTS16daObjCtMecha11_c is "16daObjCtMecha11_c" at ov035 0x02112b94;
+ * _ZTI at 0x02112b88 reads [__si_class_type_info, that string,
+ * _ZTI10dBgActor_c]. The tree previously called the class SpinningPlatform
+ * (coined; vtable address only).
  *
- * dBgW_KcMbg::SetFile, dActor_c::DropShadowScaleXYZ and
- * dBgActor_c::IsClsnInRange stay the mangled calls: each takes Fix12<int>
- * by value, and the method spelling homes that argument.
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x021116ec), D0
+ * (0x02111738), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is ROM-ascending.
+ *
+ * Leftover: dBgW_KcMbg::SetFile, dActor_c::DropShadowScaleXYZ and
+ *   dBgActor_c::IsClsnInRange take Fix12<int> by value, so they stay mangled;
+ *   the method spelling homes that argument and changes the ROM ABI.
+ * Leftover: func_020393a4 / func_02039394 / func_020393d4 / func_020396c0
+ *   are small stores into dBgW's fields and callback slots; naming belongs
+ *   with dBgW in arm9.
  */
 
 #pragma defer_codegen off
