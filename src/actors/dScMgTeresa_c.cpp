@@ -17,10 +17,16 @@
  * the push and pop brackets on func_ov006_0211d924, 0211db7c and 0211e220
  * bind. All three brackets are needed; each was measured. The destructor
  * stays out of line: inline, the key function would be InitResources,
- * which is above the gap, and this file would emit no vtable.
+ * which is above the gap, and this file would emit no vtable. Out of
+ * line, this file emits the vtable and RTTI for the whole base chain.
  *
  * OAM::Render takes Fix12<int> by value, so that call stays mangled. The
  * two pointer-to-member receivers stay incomplete on purpose.
+ *
+ * Leftover: dScMgTeresa_c.h leaves 0x4660..0x4be8 as padding, so the
+ * 0x20-stride pair at 0x4bac, the HUD sprites at 0x4960, and the bytes at
+ * 0x4c1b and 0x4c1f are still reached through local views or raw offsets.
+ * Naming them in the header is what would unblock typed access.
  */
 
 #pragma defer_codegen off
@@ -65,8 +71,9 @@ typedef char Boo_size_must_be_0x1c[sizeof(struct Boo) == 0x1c ? 1 : -1];
 /* Each access is a fresh cast. A saved Boo* makes mwcc address every field
  * from 0x4bcc, and that is not the code in the ROM. */
 #define BOO(p) ((struct Boo *)((p) + 0x4bcc))
-/* d018's wait and d4e8's y/yVel are a raw base plus the field. Taking
- * `&BOO(p)->member` shares one base and does not match. */
+/* func_ov006_0211d018's wait and func_ov006_0211d4e8's y/yVel are a raw
+ * base plus the field. Taking `&BOO(p)->member` shares one base and does
+ * not match. */
 #define BOO_FIELD(p, member) ((p) + (0x4bcc + (int)&((struct Boo *)0)->member))
 
 /* func_ov006_0211d5a8's `struct C`: the flag at +0x4be0 and the state index at
