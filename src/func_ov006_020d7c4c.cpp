@@ -3,7 +3,7 @@
 #include "dScMgBomroom_c.h"
 /* dScMgBomroom_c bomb idx step: advance x/y along the angle at speed per
    frame (sine table, Fix12), then bounce off the wall box selected by
-   unk_36 (inner room 0xc0..0x100 x 0x40..0x80, outer 0..0x40 x 0x40..0x80):
+   color (inner room 0xc0..0x100 x 0x40..0x80, outer 0..0x40 x 0x40..0x80):
    a horizontal wall mirrors the angle (0x8000 - a), a vertical one negates
    it, and the coordinate is pinned just inside the wall. Both products keep
    the sine-table value as the first factor (named s16 sinv/cosv); inline
@@ -25,7 +25,7 @@ extern "C" void func_ov006_020d7c4c(dScMgBomroom_c *self, int idx)
     self->mBombs[idx].y += (s32)(((s64)cosv * self->mBombs[idx].speed + 0x800) >> 12);
     xv = self->mBombs[idx].x >> 12;
     yv = self->mBombs[idx].y >> 12;
-    if (self->mBombs[idx].unk_36 != 0) {
+    if (self->mBombs[idx].color != 0) {
         if (xv + 0xc > 0x100) {
             self->mBombs[idx].angle = 0x8000 - self->mBombs[idx].angle;
             self->mBombs[idx].x = 0xf4000;
