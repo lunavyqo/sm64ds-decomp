@@ -4785,6 +4785,22 @@
     "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c6RenderEv": "tangosdev",
     "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c8BehaviorEv": "lunavyqo",
-    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c13InitResourcesEv": "lunavyqo"
+    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c13InitResourcesEv": "lunavyqo",
+    "src/actors/daSnmBth_c.cpp#_ZN10daSnmBth_cD1Ev": "andrewboudreau",
+    "src/actors/daSnmBth_c.cpp#_ZN10daSnmBth_cD0Ev": "andrewboudreau",
+    "src/actors/daSnmBth_c.cpp#_ZN21SnowmanBreathParticleD1Ev": "tangosdev",
+    "src/actors/daSnmBth_c.cpp#_ZN21SnowmanBreathParticle9HitPlayerEv": "tangosdev",
+    "src/actors/daSnmBth_c.cpp#_ZN21SnowmanBreathParticle12CheckSnowmanEv": "tangosdev",
+    "src/actors/daSnmBth_c.cpp#_ZN21SnowmanBreathParticle14UpdatePositionEv": "tangosdev",
+    "src/actors/daSnmBth_c.cpp#_ZN21SnowmanBreathParticle6RenderEv": "tangosdev",
+    "src/actors/daSnmBth_c.cpp#_ZN21SnowmanBreathParticle8BehaviorEv": "tangosdev",
+    "src/actors/daSnmBth_c.cpp#_ZN21SnowmanBreathParticle8TrySpawnER6Player": "tangosdev",
+    "src/actors/daSnmBth_c.cpp#_ZN21SnowmanBreathParticleC1Ev": "tangosdev",
+    "src/actors/daSnmBth_c.cpp#_ZN10daSnmBth_c15IsPlayerInRangeEv": "tangosdev",
+    "src/actors/daSnmBth_c.cpp#_ZN10daSnmBth_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daSnmBth_c.cpp#_ZN10daSnmBth_c16OnPendingDestroyEv": "andrewboudreau",
+    "src/actors/daSnmBth_c.cpp#_ZN10daSnmBth_c6RenderEv": "tangosdev",
+    "src/actors/daSnmBth_c.cpp#_ZN10daSnmBth_c8BehaviorEv": "tangosdev",
+    "src/actors/daSnmBth_c.cpp#_ZN10daSnmBth_c13InitResourcesEv": "tangosdev"
   }
 }

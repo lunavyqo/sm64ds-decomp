@@ -23,11 +23,6 @@
       ]
     },
     "AddVec3": {
-      "src/_ZN21SnowmanBreathParticle14UpdatePositionEv.cpp": [
-        "param:#1 const Vector3 *",
-        "param:#2 const Vector3 *",
-        "param:#3 Vector3 *"
-      ],
       "src/_ZN6dMap_c8BehaviorEv.cpp": [
         "param:#1 Vector3 *",
         "param:#2 Vector3 *",
@@ -880,9 +875,6 @@
         "param:#1 char *",
         "return:int"
       ],
-      "src/_ZN21SnowmanBreathParticle8BehaviorEv.cpp": [
-        "return:int"
-      ],
       "src/_ZN7Wiggler8BehaviorEv.cpp": [
         "return:int"
       ],
@@ -1354,11 +1346,6 @@
       "src/_ZN10dBgW_KcMbg9TransformERK9Matrix4x3s.cpp": [
         "param:#1 Matrix4x3 *",
         "param:#2 Matrix4x3 *",
-        "return:void"
-      ],
-      "src/_ZN10daSnmBth_c13InitResourcesEv.cpp": [
-        "param:#1 Matrix4x3 *",
-        "param:#2 const Matrix4x3 *",
         "return:void"
       ],
       "src/actors/daObjCvNewsLift_c.cpp": [
@@ -1942,9 +1929,6 @@
       "src/_ZN16SpinningPlatform12UpdateShadowEv.cpp": [
         "param:#2 short"
       ],
-      "src/_ZN21SnowmanBreathParticle14UpdatePositionEv.cpp": [
-        "param:#2 short"
-      ],
       "src/_ZN25RotatingUpDownPlatformUtm13InitResourcesEv.cpp": [
         "param:#2 short"
       ],
@@ -2220,10 +2204,6 @@
     },
     "MulVec3Mat4x3": {
       "src/_ZN10dBgW_KcMbg12TransformPosERK7Vector3RS0_.cpp": [
-        "param:#1 const Vector3 *",
-        "param:#2 const Matrix4x3 *"
-      ],
-      "src/_ZN10daSnmBth_c15IsPlayerInRangeEv.cpp": [
         "param:#1 const Vector3 *",
         "param:#2 const Matrix4x3 *"
       ],
@@ -4556,14 +4536,6 @@
       ]
     },
     "Vec3_Asr": {
-      "src/_ZN10daSnmBth_c13InitResourcesEv.cpp": [
-        "param:#1 Vector3 *",
-        "param:#2 const Vector3 *"
-      ],
-      "src/_ZN10daSnmBth_c15IsPlayerInRangeEv.cpp": [
-        "param:#1 Vector3 *",
-        "param:#2 const Vector3 *"
-      ],
       "src/_ZN11dCapEnemy_c12UpdateCapPosERK7Vector3RK10Vector3_16.cpp": [
         "param:#1 Vector3 *",
         "param:#2 const Vector3 *"
@@ -5361,10 +5333,6 @@
       ]
     },
     "Vec3_LslInPlace": {
-      "src/_ZN10daSnmBth_c15IsPlayerInRangeEv.cpp": [
-        "param:#1 Vector3 *",
-        "return:void"
-      ],
       "src/_ZN3Key8BehaviorEv.cpp": [
         "return:void"
       ],
@@ -12071,11 +12039,6 @@
       ]
     },
     "_ZN5Sound8PlayLongEjjjRK7Vector3s": {
-      "src/_ZN10daSnmBth_c8BehaviorEv.cpp": [
-        "param:#1 int",
-        "param:#4 void *",
-        "param:#5 unsigned int"
-      ],
       "src/_ZN25RotatingUpDownPlatformUtm8BehaviorEv.cpp": [
         "param:#4 const Vector3 *",
         "param:#5 unsigned int"
@@ -13126,9 +13089,6 @@
       ]
     },
     "_ZN6Player11ShowMessageER7fBase_cjPK7Vector3hh": {
-      "src/_ZN10daSnmBth_c8BehaviorEv.cpp": [
-        "param:#4 const Vector3 *"
-      ],
       "src/actors/Goomboss.cpp": [
         "param:#4 const Vector3 *"
       ],
@@ -14717,10 +14677,6 @@
         "param:#6 const void *",
         "return:void *"
       ],
-      "src/_ZN21SnowmanBreathParticle6RenderEv.cpp": [
-        "param:#6 const void *",
-        "return:unsigned int"
-      ],
       "src/_ZN3Key8BehaviorEv.cpp": [
         "param:#6 const void *",
         "return:void *"
@@ -15083,12 +15039,6 @@
         "return:void"
       ],
       "src/_ZN12daBgSnmHed_c6State2Ev.cpp": [
-        "return:void"
-      ],
-      "src/_ZN21SnowmanBreathParticle12CheckSnowmanEv.cpp": [
-        "return:void"
-      ],
-      "src/_ZN21SnowmanBreathParticle9HitPlayerEv.cpp": [
         "return:void"
       ],
       "src/_ZN25RotatingUpDownPlatformUtm4KillEv.cpp": [
@@ -21659,12 +21609,6 @@
       "src/StartFile.c": [
         "return:unsigned char []"
       ],
-      "src/_ZN10daSnmBth_c6RenderEv.cpp": [
-        "return:unsigned char []"
-      ],
-      "src/_ZN10daSnmBth_c8BehaviorEv.cpp": [
-        "return:unsigned char []"
-      ],
       "src/_ZN11dCapEnemy_c11GetCapStateEv.cpp": [
         "return:int"
       ],
@@ -24177,9 +24121,6 @@
       ]
     },
     "data_ov002_0210d9a0": {
-      "src/_ZN10daSnmBth_c13InitResourcesEv.cpp": [
-        "return:int []"
-      ],
       "src/_ZN6Fwoosh13InitResourcesEv.cpp": [
         "return:char []"
       ],
@@ -24228,9 +24169,6 @@
       ]
     },
     "data_ov002_0210d9c0": {
-      "src/_ZN10daSnmBth_c13InitResourcesEv.cpp": [
-        "return:int []"
-      ],
       "src/_ZN6Fwoosh13InitResourcesEv.cpp": [
         "return:char []"
       ],
@@ -24364,9 +24302,6 @@
       ]
     },
     "data_ov002_0210da40": {
-      "src/_ZN10daSnmBth_c13InitResourcesEv.cpp": [
-        "return:int []"
-      ],
       "src/_ZN6Fwoosh13InitResourcesEv.cpp": [
         "return:char []"
       ],
