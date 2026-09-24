@@ -1,15 +1,25 @@
 //cpp
-/**
- * The seven consecutive daObjBlockS_c methods at 0x02139a50..0x02139f04.
- * D1, D0 and Kill sit earlier, with other complete functions between
- * them, so they stay in their own delinks. daObjBlockS_c_classInit is
- * the next function and is not part of this run.
+/* Production translation unit for ov098/daObjBlockS_c.
+ * 7 function(s), .text 0x02139a50..0x02139f04. The small breakable crate
+ * (registry profile BLOCK_S).
  *
- * Emission is ROM-ascending under `#pragma defer_codegen off`. This TU
- * does not define ~daObjBlockS_c: that definition lives in the earlier D1/D0
- * shards, and a second one would emit another destructor pair.
+ * NAME: _ZTS13daObjBlockS_c is "13daObjBlockS_c" at ov098 0x0213c500; _ZTI at
+ * 0x0213c4d4 reads [__si_class_type_info, that string, _ZTI10dBgActor_c], and
+ * the word before the _ZTV13daObjBlockS_c address point (0x0213c534) points at
+ * that _ZTI. The tree previously called the class Crate (coined).
+ *
+ * This is a partial span of the class. D1 (0x02138040), D0 (0x021380bc) and
+ * Kill (0x02139070) sit earlier, with other complete functions between them
+ * and this run, so they keep their own delinks entries. The out-of-line
+ * destructor is the key function and is defined in src/_ZN13daObjBlockS_cD1Ev.cpp
+ * and src/_ZN13daObjBlockS_cD0Ev.cpp, so _ZTV/_ZTI/_ZTS are emitted there and
+ * this TU emits none of them; defining ~daObjBlockS_c here too would emit a
+ * second destructor set. daObjBlockS_c_classInit (0x02139f04,
+ * src/d_a_obj_block_s.cpp) is the next function and is not absorbed.
+ *
+ * Under `#pragma defer_codegen off` .text is laid down in source order, so
+ * this file is ROM-ascending.
  */
-
 #include "decl_Actor.h"
 #include "decl_common.h"
 #include "daObjBlockS_c.h"
@@ -180,19 +190,28 @@ int daObjBlockS_c::InitResources()
     mVertAccel = -0x2000;
     mTerminalVelocity = -0x3c000;
     Crate_SetState(((char *)this), 0);
-    /* dBgActor_c's own generic 0xd0..0xd4 pad, not a daObjBlockS_c field. */
+    /* dBgActor_c's own generic 0xd0..0xd4 pad (include/dBgActor_c.h), not a
+       daObjBlockS_c field -- reused here by raw offset, same idiom as
+       daObjRc_Guruguru_c's tail-padding field. */
     *(s32 *)(((char *)this) + 0xd0) = 0;
     func_ov098_02138ce0(((char *)this));
     return 1;
 }
 
 // @symbol _ZN13daObjBlockS_c15OnGroundPoundedER8dActor_c
+/* Slot 21 (include/dActor_c.h), recovered from vtable slot identity.
+ * Ground-pounding the crate just calls its own Kill (slot 31); the
+ * `dActor_c &other` parameter is unused, matching the ROM body -- it loads
+ * the vtable slot and calls through it without ever touching r1. */
 void daObjBlockS_c::OnGroundPounded(dActor_c &other)
 {
     Kill();
 }
 
 // @symbol _ZN13daObjBlockS_c13OnYoshiTryEatEv
+/* Slot 18. Returns 6 (edible) unless the crate is already breaking: Behavior
+ * counts mBreakTimer down once a frame and poofs the crate when it reaches 0,
+ * and while that is running Yoshi gets nothing. */
 int daObjBlockS_c::OnYoshiTryEat()
 {
     unsigned char v = mBreakTimer;
@@ -202,6 +221,11 @@ int daObjBlockS_c::OnYoshiTryEat()
 }
 
 // @symbol _ZN13daObjBlockS_c13OnTurnIntoEggER6Player
+/* Slot 19. Pays out three coins the first time only, tracked by mCoinsPaid:
+ * handed over directly if the player is mid cap-collect, otherwise banked on
+ * the egg. Either way the crate goes to state 6. The shared actor hook
+ * returns void, so the method ends after the state change with no invented
+ * result. */
 void daObjBlockS_c::OnTurnIntoEgg(Player &player)
 {
     char *r4 = (char *)&player;

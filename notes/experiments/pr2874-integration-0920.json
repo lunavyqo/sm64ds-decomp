@@ -3593,8 +3593,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN13daObjBlockS_c13InitResourcesEv.cpp",
-      "name": "_ZN13daObjBlockS_c13InitResourcesEv",
+      "file": "src/_ZN5Crate13InitResourcesEv.cpp",
+      "name": "_ZN5Crate13InitResourcesEv",
       "module": "ov098",
       "addr": "0x2139d14",
       "verdict": "VERIFIED",
@@ -3602,8 +3602,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN13daObjBlockS_c16CleanupResourcesEv.cpp",
-      "name": "_ZN13daObjBlockS_c16CleanupResourcesEv",
+      "file": "src/_ZN5Crate16CleanupResourcesEv.cpp",
+      "name": "_ZN5Crate16CleanupResourcesEv",
       "module": "ov098",
       "addr": "0x2139a50",
       "verdict": "VERIFIED",
@@ -3611,8 +3611,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN13daObjBlockS_c4KillEv.cpp",
-      "name": "_ZN13daObjBlockS_c4KillEv",
+      "file": "src/_ZN5Crate4KillEv.cpp",
+      "name": "_ZN5Crate4KillEv",
       "module": "ov098",
       "addr": "0x2139070",
       "verdict": "VERIFIED",
@@ -3620,8 +3620,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN13daObjBlockS_c8BehaviorEv.cpp",
-      "name": "_ZN13daObjBlockS_c8BehaviorEv",
+      "file": "src/_ZN5Crate8BehaviorEv.cpp",
+      "name": "_ZN5Crate8BehaviorEv",
       "module": "ov098",
       "addr": "0x2139b0c",
       "verdict": "VERIFIED",
@@ -20066,7 +20066,7 @@
           "src/_ZN3Key13InitResourcesEv.cpp",
           "src/_ZN4Coin13OnTurnIntoEggER6Player.cpp",
           "src/_ZN4Heap6IntactEv.cpp",
-          "src/_ZN13daObjBlockS_c8BehaviorEv.cpp",
+          "src/_ZN5Crate8BehaviorEv.cpp",
           "src/_ZN5Stage22RenderModelTransparentEv.cpp",
           "src/_ZN5Timer9StopTimerEv.cpp",
           "src/_ZN5dCc_c6UpdateEv.cpp",
@@ -20185,7 +20185,7 @@
           "src/_ZN3Key13InitResourcesEv.cpp",
           "src/_ZN4Coin13OnTurnIntoEggER6Player.cpp",
           "src/_ZN4Heap6IntactEv.cpp",
-          "src/_ZN13daObjBlockS_c8BehaviorEv.cpp",
+          "src/_ZN5Crate8BehaviorEv.cpp",
           "src/_ZN5Stage22RenderModelTransparentEv.cpp",
           "src/_ZN5Timer9StopTimerEv.cpp",
           "src/_ZN5dCc_c6UpdateEv.cpp",
@@ -20841,7 +20841,7 @@
           "src/_ZN8dMeter_c17RenderHealthMeterEv.cpp",
           "src/_ZN3OAM11GetObjWidthEii.cpp",
           "src/_ZN4Fish16CleanupResourcesEv.cpp",
-          "src/_ZN13daObjBlockS_c13InitResourcesEv.cpp",
+          "src/_ZN5Crate13InitResourcesEv.cpp",
           "src/_ZN5Stage14GraphCallback2Ev.cpp",
           "src/_ZN5Swoop8BehaviorEv.cpp",
           "src/_ZN5Whomp13InitResourcesEv.cpp",
@@ -20966,7 +20966,7 @@
           "src/_ZN8dMeter_c17RenderHealthMeterEv.cpp",
           "src/_ZN3OAM11GetObjWidthEii.cpp",
           "src/_ZN4Fish16CleanupResourcesEv.cpp",
-          "src/_ZN13daObjBlockS_c13InitResourcesEv.cpp",
+          "src/_ZN5Crate13InitResourcesEv.cpp",
           "src/_ZN5Stage14GraphCallback2Ev.cpp",
           "src/_ZN5Swoop8BehaviorEv.cpp",
           "src/_ZN5Whomp13InitResourcesEv.cpp",
@@ -21102,7 +21102,7 @@
           "src/_ZN8dMeter_c17UpdateHealthMeterEv.cpp",
           "src/_ZN3OAM12GetObjHeightEii.cpp",
           "src/_ZN4Fish8BehaviorEv.cpp",
-          "src/_ZN13daObjBlockS_c16CleanupResourcesEv.cpp",
+          "src/_ZN5Crate16CleanupResourcesEv.cpp",
           "src/_ZN5Stage17PS_UpdateSaveMenuEb.cpp",
           "src/_ZN5Timer10StartTimerEv.cpp",
           "src/_ZN5Whomp16CleanupResourcesEv.cpp",
@@ -21227,7 +21227,7 @@
           "src/_ZN8dMeter_c17UpdateHealthMeterEv.cpp",
           "src/_ZN3OAM12GetObjHeightEii.cpp",
           "src/_ZN4Fish8BehaviorEv.cpp",
-          "src/_ZN13daObjBlockS_c16CleanupResourcesEv.cpp",
+          "src/_ZN5Crate16CleanupResourcesEv.cpp",
           "src/_ZN5Stage17PS_UpdateSaveMenuEb.cpp",
           "src/_ZN5Timer10StartTimerEv.cpp",
           "src/_ZN5Whomp16CleanupResourcesEv.cpp",
@@ -21361,7 +21361,7 @@
           "src/_ZN8dMeter_c6RenderEv.cpp",
           "src/_ZN3OAM6RenderEbP7OamAttriiiiP9Matrix2x2.cpp",
           "src/_ZN4Heap11ResizeToFitEv.cpp",
-          "src/_ZN13daObjBlockS_c4KillEv.cpp",
+          "src/_ZN5Crate4KillEv.cpp",
           "src/_ZN5Stage17UpdateMenuButtonsEb.cpp",
           "src/_ZN5Timer7GetTimeEv.cpp",
           "src/_ZN5dBgCh21ShouldPassThroughImplEPvRK4CLPSRKS_b.cpp",
@@ -21484,7 +21484,7 @@
           "src/_ZN8dMeter_c6RenderEv.cpp",
           "src/_ZN3OAM6RenderEbP7OamAttriiiiP9Matrix2x2.cpp",
           "src/_ZN4Heap11ResizeToFitEv.cpp",
-          "src/_ZN13daObjBlockS_c4KillEv.cpp",
+          "src/_ZN5Crate4KillEv.cpp",
           "src/_ZN5Stage17UpdateMenuButtonsEb.cpp",
           "src/_ZN5Timer7GetTimeEv.cpp",
           "src/_ZN5dBgCh21ShouldPassThroughImplEPvRK4CLPSRKS_b.cpp",
@@ -21788,10 +21788,10 @@
         "src/_ZN4Heap6IntactEv.cpp",
         "src/_ZN4Heap6SizeofEPv.cpp",
         "src/_ZN4Heap8AllocateEji.cpp",
-        "src/_ZN13daObjBlockS_c13InitResourcesEv.cpp",
-        "src/_ZN13daObjBlockS_c16CleanupResourcesEv.cpp",
-        "src/_ZN13daObjBlockS_c4KillEv.cpp",
-        "src/_ZN13daObjBlockS_c8BehaviorEv.cpp",
+        "src/_ZN5Crate13InitResourcesEv.cpp",
+        "src/_ZN5Crate16CleanupResourcesEv.cpp",
+        "src/_ZN5Crate4KillEv.cpp",
+        "src/_ZN5Crate8BehaviorEv.cpp",
         "src/_ZN7daTgz_c13InitResourcesEv.cpp",
         "src/_ZN5Stage11RenderModelEv.cpp",
         "src/_ZN5Stage14GraphCallback2Ev.cpp",
@@ -23067,20 +23067,20 @@
           "name": "_ZN4Heap8AllocateEji"
         },
         {
-          "file": "src/_ZN13daObjBlockS_c13InitResourcesEv.cpp",
-          "name": "_ZN13daObjBlockS_c13InitResourcesEv"
+          "file": "src/_ZN5Crate13InitResourcesEv.cpp",
+          "name": "_ZN5Crate13InitResourcesEv"
         },
         {
-          "file": "src/_ZN13daObjBlockS_c16CleanupResourcesEv.cpp",
-          "name": "_ZN13daObjBlockS_c16CleanupResourcesEv"
+          "file": "src/_ZN5Crate16CleanupResourcesEv.cpp",
+          "name": "_ZN5Crate16CleanupResourcesEv"
         },
         {
-          "file": "src/_ZN13daObjBlockS_c4KillEv.cpp",
-          "name": "_ZN13daObjBlockS_c4KillEv"
+          "file": "src/_ZN5Crate4KillEv.cpp",
+          "name": "_ZN5Crate4KillEv"
         },
         {
-          "file": "src/_ZN13daObjBlockS_c8BehaviorEv.cpp",
-          "name": "_ZN13daObjBlockS_c8BehaviorEv"
+          "file": "src/_ZN5Crate8BehaviorEv.cpp",
+          "name": "_ZN5Crate8BehaviorEv"
         },
         {
           "file": "src/_ZN7daTgz_c13InitResourcesEv.cpp",

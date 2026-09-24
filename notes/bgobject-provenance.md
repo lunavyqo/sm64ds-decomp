@@ -60,11 +60,10 @@ recorded in the [integration evidence](experiments/pr2874-integration-0920.json)
 
 ## daObjBlockS_c (`include/daObjBlockS_c.h`, [ov098](../config/arm9/overlays/ov098/symbols.txt), size 0x608)
 
-Bodies read: `src/_ZN13daObjBlockS_c13InitResourcesEv.cpp`, `src/_ZN13daObjBlockS_c8BehaviorEv.cpp`,
-`src/_ZN13daObjBlockS_c6RenderEv.cpp`, `src/_ZN13daObjBlockS_c16CleanupResourcesEv.cpp`,
-`src/_ZN13daObjBlockS_c4KillEv.cpp`, `src/_ZN13daObjBlockS_c13OnTurnIntoEggER6Player.cpp`,
-`src/_ZN13daObjBlockS_c13OnYoshiTryEatEv.cpp`,
-`src/_ZN13daObjBlockS_c15OnGroundPoundedER8dActor_c.cpp`, `src/Crate_SetState.cpp`.
+Formerly the coined `Crate`. Bodies read: `InitResources`, `Behavior`, `Render`,
+`CleanupResources`, `OnTurnIntoEgg`, `OnYoshiTryEat` and `OnGroundPounded` (then
+per-function files, now together in `src/actors/daObjBlockS_c.cpp`),
+`src/_ZN13daObjBlockS_c4KillEv.cpp`, `src/Crate_SetState.cpp`.
 
 | Offset | Name | Evidence |
 | --- | --- | --- |
