@@ -1,5 +1,27 @@
 //cpp
-/* The rotating cube on Tick Tock Clock. */
+/* Production translation unit for ov065/daObjCtRotateBlock_c.
+ * 9 function(s), .text 0x021196d8..0x02119ebc. The rotating cube on Tick
+ * Tock Clock (profiles CT_MECHA01 and CT_MECHA02).
+ *
+ * NAME: _ZTS20daObjCtRotateBlock_c is "20daObjCtRotateBlock_c" at ov065
+ * 0x0211cfb8; _ZTI at 0x0211cfac reads [__si_class_type_info, that string,
+ * _ZTI10dBgActor_c]. The tree previously called the class TtcRotatingCube
+ * (coined; vtable address only).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x021196d8), D0
+ * (0x0211972c), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is ROM-ascending.
+ *
+ * Leftover: dBgW_KcMbg::SetFile, dActor_c::DropShadowScaleXYZ and
+ *   dBgActor_c::IsClsnInRange take Fix12<int> by value, so they stay mangled;
+ *   a member call homes the argument and changes the ROM ABI.
+ * Leftover: func_020393d4 is a 4-byte store into dBgW's callback slot;
+ *   naming belongs with dBgW in arm9.
+ * Leftover: the two factories, daObjCtRotateBlock_c_classInit_CT_MECHA02
+ *   (0x02119ebc) and _CT_MECHA01 (0x02119efc), sit past this run's right
+ *   edge and stay one-function sources.
+ */
 
 #include "decl_common.h"
 #include "daObjCtRotateBlock_c.h"
