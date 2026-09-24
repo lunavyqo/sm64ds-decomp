@@ -560,7 +560,7 @@ src/_ZN12daIDonketu_cD0Ev.c	DTOR-ONLY	ov027	daIDonketu_c	daIDonketu_c/daIDonketu
 src/_ZN10ClsnResultC1Ev.c	P3-mangled-method-only	arm9		ClsnResult	_ZN10ClsnResultC1Ev	1		True		-
 src/_ZN10ClsnResultD1Ev.c	DTOR-ONLY	arm9	dBgPi	ClsnResult/dBgPi	_ZN10ClsnResultD1Ev	1		True		-
 src/_ZN10ClsnResultD2Ev.c	DTOR-ONLY	arm9		ClsnResult	_ZN10ClsnResultD2Ev	1		True		-
-src/actors/daObjRc_Tikuwa_c.cpp	P1-vtable+mangled	ov036	daObjRc_Tikuwa_c	daObjRc_Tikuwa_c/daObjRc_Tikuwa_c	vtable daObjRc_Tikuwa_c slot 12 @0x2111a2c | _ZN16daObjRc_Tikuwa_c16OnPendingDestroyEv	1		True		-
+src/_ZN10DonutBlock16OnPendingDestroyEv.c	P1-vtable+mangled	ov036	daObjRc_Tikuwa_c	DonutBlock/daObjRc_Tikuwa_c	vtable daObjRc_Tikuwa_c slot 12 @0x2111a2c | _ZN10DonutBlock16OnPendingDestroyEv	1		True		-
 src/_ZN10FaderColorD2Ev.c	DTOR-ONLY	arm9		FaderColor	_ZN10FaderColorD2Ev	1		True		-
 src/_ZN10FlameChomp13OnYoshiTryEatEv.c	P1-vtable+mangled	ov070	daKrpa_c	FlameChomp/daKrpa_c	vtable daKrpa_c slot 18 @0x21211bc | _ZN10FlameChomp13OnYoshiTryEatEv	1		True		-
 src/_ZN10FlameChomp16CleanupResourcesEv.c	P1-vtable+mangled	ov070	daKrpa_c	FlameChomp/daKrpa_c	vtable daKrpa_c slot 3 @0x212189c | _ZN10FlameChomp16CleanupResourcesEv	1		True		-

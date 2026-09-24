@@ -1,6 +1,30 @@
 //cpp
-/* daObjRc_Tikuwa_c -- the donut block that falls.
- * ov036 0x0211193c..0x02111ca4. */
+/* Production translation unit for ov036/daObjRc_Tikuwa_c.
+ * 7 function(s), .text 0x0211193c..0x02111ca4. The RC_TIKUWA donut block:
+ * once something has stood on it for fifteen frames it falls, poofs when it
+ * lands or drops far enough below the player, and respawns at its home
+ * position once the player has moved away.
+ *
+ * NAME: _ZTS16daObjRc_Tikuwa_c is "16daObjRc_Tikuwa_c" at ov036 0x02113cc0;
+ * _ZTI at 0x02113cb4 reads [__si_class_type_info, that string,
+ * _ZTI10dBgActor_c]. The tree previously called the class DonutBlock
+ * (coined; vtable address only).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x0211193c), D0
+ * (0x02111988), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is ROM-ascending.
+ *
+ * Leftover: dBgW_KcMbg::SetFile, dBgCh_Actr::Init and
+ *   dBgActor_c::IsClsnInRange take Fix12<int> by value, so they stay mangled;
+ *   a member call homes the argument and changes the ROM ABI.
+ * Leftover: func_020393d4 / func_020393c4 are 4-byte stores into dBgW's
+ *   callback slots; naming belongs with dBgW in arm9.
+ * Leftover: func_ov036_02111ca4 (sets mHadClsn), func_ov036_02111cc4 (the
+ *   callback InitResources installs) and the factory
+ *   daObjRc_Tikuwa_c_classInit (0x02111cd8) sit past this run's right edge
+ *   and stay one-function sources.
+ */
 
 #pragma defer_codegen off
 
@@ -106,9 +130,9 @@ s32 daObjRc_Tikuwa_c::InitResources()
     UpdateModelPosAndRotY();
     UpdateClsnPosAndRot();
     void *kcl = dBgW_Kc::LoadFile(*(SharedFilePtr *)data_ov036_02114084);
-    /* Leftover: InitResources. SetFile's method takes Fix12<int> and a
-     * CLPS_Block &; that call does not compile here. Init's header takes
-     * Fix12i and mangles a symbol the ROM does not have. */
+    /* Leftover: dBgW_KcMbg::SetFile and dBgCh_Actr::Init take Fix12<int> by
+     * value, so they stay mangled (the header spellings take Fix12i and would
+     * mangle symbols the ROM does not have). */
     _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
         &mMeshCollider, kcl, &mClsnMat, 0x1000, mAngleY, data_ov036_02112b48);
     func_020393d4(&mMeshCollider, (void *)&dBgW::UpdatePosWithVelocity);

@@ -9078,12 +9078,18 @@
    "start": "0x211193c",
    "end": "0x2111d14",
    "classes": [
-    "daObjRc_Tikuwa_c"
+    "DonutBlock"
    ],
    "n_functions_map": 10,
-   "n_files": 4,
+   "n_files": 10,
    "files": [
-    "src/actors/daObjRc_Tikuwa_c.cpp",
+    "src/_ZN10DonutBlockD1Ev.cpp",
+    "src/_ZN10DonutBlockD0Ev.cpp",
+    "src/_ZN10DonutBlock16CleanupResourcesEv.cpp",
+    "src/_ZN10DonutBlock16OnPendingDestroyEv.c",
+    "src/_ZN10DonutBlock6RenderEv.cpp",
+    "src/_ZN10DonutBlock8BehaviorEv.cpp",
+    "src/_ZN10DonutBlock13InitResourcesEv.cpp",
     "src/func_ov036_02111ca4.cpp",
     "src/func_ov036_02111cc4.c",
     "src/d_a_obj_rc_tikuwa.c"
