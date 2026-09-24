@@ -282,13 +282,13 @@
    "start": "0x2130f00",
    "end": "0x2132074",
    "classes": [
-    "ToxBox"
+    "daOnms_c"
    ],
    "n_functions_map": 23,
    "n_files": 23,
    "files": [
-    "src/_ZN6ToxBoxD1Ev.cpp",
-    "src/_ZN6ToxBoxD0Ev.cpp",
+    "src/_ZN8daOnms_cD1Ev.cpp",
+    "src/_ZN8daOnms_cD0Ev.cpp",
     "src/func_ov092_02130fcc.c",
     "src/func_ov092_02131010.cpp",
     "src/func_ov092_021311b0.cpp",
@@ -305,10 +305,10 @@
     "src/func_ov092_021319b0.cpp",
     "src/func_ov092_02131a88.cpp",
     "src/func_ov092_02131aec.cpp",
-    "src/_ZN6ToxBox16CleanupResourcesEv.cpp",
-    "src/_ZN6ToxBox6RenderEv.cpp",
-    "src/_ZN6ToxBox8BehaviorEv.cpp",
-    "src/_ZN6ToxBox13InitResourcesEv.c",
+    "src/_ZN8daOnms_c16CleanupResourcesEv.cpp",
+    "src/_ZN8daOnms_c6RenderEv.cpp",
+    "src/_ZN8daOnms_c8BehaviorEv.cpp",
+    "src/_ZN8daOnms_c13InitResourcesEv.c",
     "src/d_a_onms.cpp"
    ],
    "ext_mix": {
@@ -37287,11 +37287,11 @@
    "start": "0x2130f00",
    "end": "0x2132074",
    "classes": [
-    "ToxBox"
+    "daOnms_c"
    ],
    "files": [
-    "src/_ZN6ToxBoxD1Ev.cpp",
-    "src/_ZN6ToxBoxD0Ev.cpp",
+    "src/_ZN8daOnms_cD1Ev.cpp",
+    "src/_ZN8daOnms_cD0Ev.cpp",
     "src/func_ov092_02130fcc.c",
     "src/func_ov092_02131010.cpp",
     "src/func_ov092_021311b0.cpp",
@@ -37308,10 +37308,10 @@
     "src/func_ov092_021319b0.cpp",
     "src/func_ov092_02131a88.cpp",
     "src/func_ov092_02131aec.cpp",
-    "src/_ZN6ToxBox16CleanupResourcesEv.cpp",
-    "src/_ZN6ToxBox6RenderEv.cpp",
-    "src/_ZN6ToxBox8BehaviorEv.cpp",
-    "src/_ZN6ToxBox13InitResourcesEv.c",
+    "src/_ZN8daOnms_c16CleanupResourcesEv.cpp",
+    "src/_ZN8daOnms_c6RenderEv.cpp",
+    "src/_ZN8daOnms_c8BehaviorEv.cpp",
+    "src/_ZN8daOnms_c13InitResourcesEv.c",
     "src/d_a_onms.cpp"
    ],
    "ext_mix": {

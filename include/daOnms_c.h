@@ -23,8 +23,8 @@
  * this class's cartridge vtable. It backs the ONIMASU registry profile,
  * whose descriptor at 0x021322ac is reconstructed as g_profile_ONIMASU.
  * Provenance table: notes/butterfly-tornado-provenance.md. */
-#ifndef TOXBOX_H
-#define TOXBOX_H
+#ifndef DAONMS_C_H
+#define DAONMS_C_H
 #include "types.h"
 
 #ifdef __cplusplus
@@ -40,7 +40,7 @@
  * dBgActor_c is the base, followed by dBgCh_Actr, dCcAcPos_c, and PathPtr
  * members at the same offsets used by ToxBox_Spawn. The base owns the Model
  * and dBgW_KcMbg formerly repeated in this header. */
-struct ToxBox : dBgActor_c {
+struct daOnms_c : dBgActor_c {
     dActor_c *mPlayerActor;         /* 0x320 - player that started the roll */
     dBgCh_Actr mWithMeshClsn;       /* 0x324 */
     u8 pad_4e0[0x8];
@@ -61,7 +61,7 @@ struct ToxBox : dBgActor_c {
     Vector3 mPathNode;              /* 0x580 */
     PathPtr mPathPtr;               /* 0x58c */
 
-    virtual ~ToxBox();
+    virtual ~daOnms_c();
 
     virtual int InitResources();
     virtual int CleanupResources();
@@ -76,7 +76,7 @@ struct ToxBox : dBgActor_c {
 #include "dBgCh_Actr.h"
 #include "dCcAcPos_c.h"
 
-struct ToxBox {
+struct daOnms_c {
     u8  pad_000[0x8];
     s32 mParam;            /* 0x008 */
     u8  pad_00c[0x50];
@@ -93,7 +93,7 @@ struct ToxBox {
        short of the object, so the member also takes over unk_0f0 (+0x1c = mat4x3), which
        the header declared separately inside it. */
     Model mModel;            /* 0x0d4 */
-    /* dBgW_KcMbg member. The cartridge's own ~ToxBox calls _ZN10dBgW_KcMbgD1Ev at
+    /* dBgW_KcMbg member. The cartridge's own ~daOnms_c calls _ZN10dBgW_KcMbgD1Ev at
        +0x124 (D0/D1), a relocation the ROM build checks; recovered by
        tools/dtor_members.py. D1 and not D2, so it is this type and not an inlined base. */
     dBgW_KcMbg mMeshCollider;            /* 0x124 */
@@ -104,12 +104,12 @@ struct ToxBox {
        of the landing earthquake before clearing this back to 0. A dActor_c*,
        stored through an int. */
     s32 mPlayerActor;            /* 0x320 */
-    /* dBgCh_Actr member. The cartridge's own ~ToxBox calls _ZN10dBgCh_ActrD1Ev at
+    /* dBgCh_Actr member. The cartridge's own ~daOnms_c calls _ZN10dBgCh_ActrD1Ev at
        +0x324 (D0/D1), a relocation the ROM build checks; recovered by
        tools/dtor_members.py. D1 and not D2, so it is this type and not an inlined base. */
     dBgCh_Actr mWithMeshClsn;            /* 0x324 */
     u8  pad_4e0[0x8];
-    /* dCcAcPos_c member. The cartridge's own ~ToxBox calls _ZN10dCcAcPos_cD1Ev at
+    /* dCcAcPos_c member. The cartridge's own ~daOnms_c calls _ZN10dCcAcPos_cD1Ev at
        +0x4e8 (D0/D1), a relocation the ROM build checks; recovered by
        tools/dtor_members.py. D1 and not D2, so it is this type and not an inlined base. */
     dCcAcPos_c mdCcAcPos_c;            /* 0x4e8 */
@@ -170,7 +170,7 @@ struct ToxBox {
     s32 mPathNodeY;              /* 0x584 */
     s32 mPathNodeZ;              /* 0x588 */
     u8  mPathPtr;            /* 0x58c */
-    /* trailing extent the ROM's `new ToxBox` literal proves; see tools/opnew_sizes.py */
+    /* trailing extent the ROM's `new daOnms_c` literal proves; see tools/opnew_sizes.py */
     u8 pad_590[0x4];
 };
 
@@ -178,7 +178,7 @@ struct ToxBox {
 
 #ifndef SM64DS_PLATFORM_PC
 /* ROM layout under mwccarm; host ABI divergence is tracked separately. */
-typedef char ToxBox_size_must_be_0x594[sizeof(struct ToxBox) == 0x594 ? 1 : -1];
+typedef char daOnms_c_size_must_be_0x594[sizeof(struct daOnms_c) == 0x594 ? 1 : -1];
 #endif
 
 #endif
