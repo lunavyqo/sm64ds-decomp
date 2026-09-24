@@ -27,7 +27,7 @@ revisions. Current corrections and proof identities follow in the dated
 - Class/TU/symbol and module-qualified ROM scope: `daYurei_Mucho_c` in [ov065](../../../config/arm9/overlays/ov065/symbols.txt).
   The promoted TU owns `.text 0x02115ee0..0x02116f98`, 23 functions. No other
   section is claimed; this is the text-only route.
-- The reserved neighbour was not touched. `daBasabasa_c` (Swoop) begins at
+- The reserved neighbour was not touched. `daBasabasa_c` (daBasabasa_c) begins at
   0x02116f98 and shares [config/arm9/overlays/ov065/delinks.txt](../../../config/arm9/overlays/ov065/delinks.txt); its entries are
   byte-identical to the base commit's.
 
@@ -53,7 +53,7 @@ Two things had to be done by hand around it, both recorded in the rename commit:
   had their `" (was <coined>)"` suffixes restored and eleven provenance rows were
   appended in the shape the landed `daBmb_c` and `daMky_c` rows use.
 - `--with-derived` was NOT used: its `\bSnufit_` pattern matches `Snufit_Kill` in
-  the reserved Swoop run. Plain `\bSnufit\b` does not, so the historical
+  the reserved daBasabasa_c run. Plain `\bSnufit\b` does not, so the historical
   `Snufit_Spawn` / `Snufit_SpawnInfo` ledger rows survive untouched.
 
 ### The fold is 23, not the queue's 22
@@ -332,13 +332,13 @@ All commands run in `C:/tmp/sm64ds-sm64ds-yurei` at this tree, on the pinned
   `daYurei_Mucho_c_Kill`, because the shard's own attribution turned out to be
   wrong on both halves, refuted by three ROM reads recorded in the shard's
   header comment: 0x021177e4 is in no vtable in [ov065](../../../config/arm9/overlays/ov065/symbols.txt) (neither
-  `_ZTV15daYurei_Mucho_c` at 0x0211cb9c nor `_ZTV5Swoop`/`_ZTV12daBasabasa_c` at
+  `_ZTV15daYurei_Mucho_c` at 0x0211cb9c nor `_ZTV12daBasabasa_c`/`_ZTV12daBasabasa_c` at
   0x0211cc98 contains it); it sits inside the neighbour's run between
-  `_ZN5SwoopD0Ev` (0x02116fe8) and `_ZN5Swoop16CleanupResourcesEv` (0x02117aa4),
+  `_ZN12daBasabasa_cD0Ev` (0x02116fe8) and `_ZN12daBasabasa_c16CleanupResourcesEv` (0x02117aa4),
   past this class's end at 0x02116f98; and its body calls `ModelAnim::SetAnim`
   on `t + 0x364`, where `daYurei_Mucho_c` holds a `ShadowModel`, while reading
   [data_ov065_0211d6a0](../../../config/arm9/overlays/ov065/symbols.txt) from outside this class's bss band
-  0x0211d600..0x0211d690. Naming it belongs to the `daBasabasa_c`/`Swoop` owner.
+  0x0211d600..0x0211d690. Naming it belongs to the `daBasabasa_c`/`daBasabasa_c` owner.
 
 ## Next action
 

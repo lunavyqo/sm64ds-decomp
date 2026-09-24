@@ -4831,6 +4831,27 @@
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c6RenderEv": "tangosdev",
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c8BehaviorEv": "ruspecial",
-    "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c13InitResourcesEv": "andrewboudreau"
+    "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c13InitResourcesEv": "andrewboudreau",
+    "src/actors/daBasabasa_c.cpp#_ZN12daBasabasa_cD1Ev": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#_ZN12daBasabasa_cD0Ev": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#func_ov065_0211704c": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#func_ov065_02117404": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#func_ov065_021175b0": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#func_ov065_02117624": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#func_ov065_021176fc": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#func_ov065_02117780": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#func_ov065_021177e4": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#func_ov065_02117888": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#func_ov065_021178fc": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#func_ov065_02117944": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#func_ov065_02117994": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#_ZN12daBasabasa_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#_ZN12daBasabasa_c16OnPendingDestroyEv": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#_ZN12daBasabasa_c6RenderEv": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#_ZN12daBasabasa_c8BehaviorEv": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#_ZN12daBasabasa_c13InitResourcesEv": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#_ZN12daBasabasa_c16OnAimedAtWithEggEv": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#_ZN12daBasabasa_c13OnTurnIntoEggER6Player": "tangosdev",
+    "src/actors/daBasabasa_c.cpp#_ZN12daBasabasa_c13OnYoshiTryEatEv": "tangosdev"
   }
 }
