@@ -770,9 +770,9 @@ src/_ZN16daObjRcBuranko_cD0Ev.c	DTOR-ONLY	ov036	daObjRcBuranko_c	daObjRcBuranko_
 src/_ZN16daObjFallBlock_cD0Ev.c	DTOR-ONLY	ov098	daObjBlockS_c	daObjBlockS_c/daObjFallBlock_c	_ZN16daObjFallBlock_cD0Ev	1		True	_ZTV10dBgActor_c/_ZTV16daObjFallBlock_c	-
 src/_ZN16daObjFallBlock_cD1Ev.c	DTOR-ONLY	ov098	daObjBlockS_c	daObjBlockS_c/daObjFallBlock_c	_ZN16daObjFallBlock_cD1Ev	1		True	_ZTV10dBgActor_c/_ZTV16daObjFallBlock_c	-
 src/_ZN16daObjRc_Dorifu_cD0Ev.c	DTOR-ONLY	ov036	daObjRc_Dorifu_c	daObjRc_Dorifu_c	_ZN16daObjRc_Dorifu_cD0Ev	1		True	_ZTV10dBgActor_c/_ZTV13daObjDorifu_c/_ZTV16daObjRc_Dorifu_c	-
-src/_ZN18daObjEwmIceBlock_c16CleanupResourcesEv.c	P1-vtable+mangled	ov056	daObjEwmIceBlock_c	daObjEwmIceBlock_c/daObjEwmIceBlock_c	vtable daObjEwmIceBlock_c slot 3 @0x211123c | _ZN18daObjEwmIceBlock_c16CleanupResourcesEv	1		True		-
-src/_ZN18daObjEwmIceBlock_cD0Ev.c	DTOR-ONLY	ov056	daObjEwmIceBlock_c	daObjEwmIceBlock_c/daObjEwmIceBlock_c	_ZN18daObjEwmIceBlock_cD0Ev	1		True	_ZTV10dBgActor_c	-
-src/_ZN18daObjEwmIceBlock_cD1Ev.c	DTOR-ONLY	ov056	daObjEwmIceBlock_c	daObjEwmIceBlock_c/daObjEwmIceBlock_c	_ZN18daObjEwmIceBlock_cD1Ev	1		True	_ZTV10dBgActor_c	-
+src/_ZN17BigMovingIceBlock16CleanupResourcesEv.c	P1-vtable+mangled	ov056	daObjEwmIceBlock_c	BigMovingIceBlock/daObjEwmIceBlock_c	vtable daObjEwmIceBlock_c slot 3 @0x211123c | _ZN17BigMovingIceBlock16CleanupResourcesEv	1		True		-
+src/_ZN17BigMovingIceBlockD0Ev.c	DTOR-ONLY	ov056	daObjEwmIceBlock_c	BigMovingIceBlock/daObjEwmIceBlock_c	_ZN17BigMovingIceBlockD0Ev	1		True	_ZTV10dBgActor_c	-
+src/_ZN17BigMovingIceBlockD1Ev.c	DTOR-ONLY	ov056	daObjEwmIceBlock_c	BigMovingIceBlock/daObjEwmIceBlock_c	_ZN17BigMovingIceBlockD1Ev	1		True	_ZTV10dBgActor_c	-
 src/_ZN17BowserPuzzlePieceD0Ev.c	DTOR-ONLY	ov064	daObjFl_Puzzle_c	BowserPuzzlePiece/daObjFl_Puzzle_c	_ZN17BowserPuzzlePieceD0Ev	1		True	_ZTV10dBgActor_c/_ZTV17BowserPuzzlePiece	-
 src/_ZN17BowserPuzzlePieceD1Ev.c	DTOR-ONLY	ov064	daObjFl_Puzzle_c	BowserPuzzlePiece/daObjFl_Puzzle_c	_ZN17BowserPuzzlePieceD1Ev	1		True	_ZTV10dBgActor_c/_ZTV17BowserPuzzlePiece	-
 src/_ZN17BowserSkyPlatformD0Ev.c	DTOR-ONLY	ov060	daKpa3Bg_c	BowserSkyPlatform/daKpa3Bg_c	_ZN17BowserSkyPlatformD0Ev	1		True	_ZTV10dBgActor_c/_ZTV17BowserSkyPlatform	-
