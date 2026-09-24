@@ -1,15 +1,24 @@
 //cpp
-/* ov095 daObjSeesaw_c. Licensed .text 0x02135700..0x02135cdc (10 functions).
- * func_ov095_02135cdc is the next function and is not part of this run.
- * The classInit factories start later and stay out.
+/* Production translation unit for ov095/daObjSeesaw_c.
+ * 10 function(s), .text 0x02135700..0x02135cdc. The tilting seesaw platforms
+ * (SEESAW, BOMB_SEESAW, KM1/KM3_SEESAW, KM2/KM3_YOKOSEESAW, RC_SEESAW).
  *
- * Vtable 0x021374fc: the word at -4 is _ZTI13daObjSeesaw_c (0x021373c0).
- * The ROM string at 0x021373cc is "13daObjSeesaw_c". The tree used to
- * call this class SeesawBob.
+ * NAME: _ZTS13daObjSeesaw_c is "13daObjSeesaw_c" at ov095 0x021373cc; _ZTI at
+ * 0x021373c0 reads [__si_class_type_info, that string, _ZTI10dBgActor_c]. The
+ * vtable address point is 0x021374fc, and the word at -4 is that _ZTI. The
+ * tree previously called the class SeesawBob (coined; vtable address only).
  *
- * Out-of-line ~daObjSeesaw_c is the key function. Under #pragma
- * defer_codegen off the TU emits D1 then D0, plus a D2 the cartridge
- * does not keep. Definitions below are ROM-ascending.
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x02135700), D0
+ * (0x02135744), then a D2 the cartridge has no home for (manifest:
+ * compiler_only_output); the same pragma lays .text down in source order, so
+ * this file is ROM-ascending.
+ *
+ * func_ov095_02135cdc (a tilt helper that also calls func_ov095_0213579c) and
+ * its tail-call veneer func_ov095_02135e90 (the dBgW callback InitResources
+ * installs) follow this run and are not folded yet. The seven classInit
+ * factories start at 0x02135ea4 and stay in their own files.
+ *
  * decl_common.h is first so common.h's flat Matrix4x3 stands.
  */
 
@@ -47,6 +56,11 @@ extern void func_020393c4(void *, void *);
 extern int _ZN4dBgW22UpdatePosWithTransformERS_P8dActor_cR5dBgPiR7Vector3P10Vector3_16S8_[];
 }
 
+/* D1 is two vtable stores and three destructor calls, every one a consequence
+ * of `struct daObjSeesaw_c : dBgActor_c`: its own vptr, then dBgActor_c's --
+ * inlined, because dBgActor_c's destructor is defined in its class body --
+ * then dBgActor_c's Model and dBgW_KcMbg, then dActor_c. This class adds no
+ * member with a destructor of its own. D0 adds the inline operator delete. */
 // @symbol _ZN13daObjSeesaw_cD1Ev
 // @symbol _ZN13daObjSeesaw_cD0Ev
 daObjSeesaw_c::~daObjSeesaw_c()
