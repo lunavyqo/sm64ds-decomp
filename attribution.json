@@ -4831,6 +4831,18 @@
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c6RenderEv": "tangosdev",
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c8BehaviorEv": "ruspecial",
-    "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c13InitResourcesEv": "andrewboudreau"
+    "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c13InitResourcesEv": "andrewboudreau",
+    "src/actors/daManta_c.cpp#_ZN9daManta_cD1Ev": "tangosdev",
+    "src/actors/daManta_c.cpp#_ZN9daManta_cD0Ev": "tangosdev",
+    "src/actors/daManta_c.cpp#func_ov090_02132730": "tangosdev",
+    "src/actors/daManta_c.cpp#func_ov090_021327e4": "tangosdev",
+    "src/actors/daManta_c.cpp#func_ov090_02132a58": "tangosdev",
+    "src/actors/daManta_c.cpp#func_ov090_02132ac4": "tangosdev",
+    "src/actors/daManta_c.cpp#func_ov090_02132b14": "tangosdev",
+    "src/actors/daManta_c.cpp#_ZN9daManta_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daManta_c.cpp#_ZN9daManta_c16OnPendingDestroyEv": "tangosdev",
+    "src/actors/daManta_c.cpp#_ZN9daManta_c6RenderEv": "tangosdev",
+    "src/actors/daManta_c.cpp#_ZN9daManta_c8BehaviorEv": "tangosdev",
+    "src/actors/daManta_c.cpp#_ZN9daManta_c13InitResourcesEv": "tangosdev"
   }
 }
