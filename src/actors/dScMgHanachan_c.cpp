@@ -1,13 +1,18 @@
 //cpp
 /* Which Wiggler? Up to fifteen wigglers, one of them with the star.
- * Touch it before mTimeLeft runs out. The destructor is the other side of
- * func_ov006_020ea914, which has no source, so this file emits no vtable.
+ * Touch it before mTimeLeft runs out.
+ *
+ * This TU covers 49 functions, 0x020eac38..0x020ede18. The rest of the run
+ * from 0x020ea280, including the destructor pair, stays in separate files:
+ * func_ov006_020ea914 between them has no source, and a TU cannot claim
+ * .text across a hole. So neither the destructors nor the vtable are
+ * emitted here.
  *
  * Leftover: dScMgHanachan_c::Render, `Thing *base; &base[i]` and `slot++`
  *   on the 0x98 array, DIFF, 6 words. `char *arr += 0x98` stays.
  *   Behavior's `&base[i]` matches.
  * Leftover: func_ov006_020ed40c, `C *p = (C *)mWiggler; p->alive = 0; p++`
- *   and mHit / mResultTimer / mPhaseFn, DIFF. The 0x4000 splits stay.
+ *   and mHit / mPhaseTimer / mPhaseFn, DIFF. The 0x4000 splits stay.
  * Leftover: func_ov006_020eb1e0, func_ov006_020eb31c, func_ov006_020eb3e4,
  *   func_ov006_020eb558, member access on C (flower, sub, seg, hold, state,
  *   bob), DIFF. The byte offsets stay.
@@ -21,7 +26,10 @@
  *   named ints, DIFF (ldr/str/ldr/str). int[2] block-moves, so ObjB and Obj stay.
  */
 
-#pragma defer_codegen off /* per-function opt pragmas, and .text in source order */
+/* .text in source order (ROM-ascending; do not reorder) and per-function
+   opt pragmas bind: 4x opt_strength_reduction off, Render opt_common_subs
+   off. Without it 44/49 and the order check fails. */
+#pragma defer_codegen off
 
 #include "types.h"
 #include "private/ov006_ec4dc_obj.h"
@@ -36,6 +44,7 @@ typedef struct S { int a; int b; } S;
 typedef struct { int v[2]; } P;
 struct Pair { int v[2]; };
 struct Words2 { int v[2]; };
+/* E and Thing are never whole-struct-assigned, so they keep named ints. */
 struct E { int a, b; };
 typedef struct Thing
 {
@@ -55,7 +64,8 @@ struct B72 {
 
 /* One wiggler: five body segments. state/saved/sub are the two-word
    Itanium member pointers (function word, this-adjustment). ang[1] is the
-   angle the body steps along. decoy is 0 only on the starred wiggler. */
+   angle the body steps along. decoy is 0 on the starred wiggler until a
+   miss clears it. */
 struct C {
     V2 state;            /* 0x00 tick callback */
     V2 saved;            /* 0x08 */
@@ -88,9 +98,6 @@ struct C {
 };
 typedef char C_size_must_be_0x98[sizeof(struct C) == 0x98 ? 1 : -1];
 
-/* A second view of the same element, for func_ov006_020eb9dc; it names the
-   fields at 0x70, 0x8c, 0x90 and 0x93. include/private/ov006_ec4dc_obj.h has a
-   third view (Obj) for func_ov006_020ec4dc. */
 /* Same wiggler, the fields func_ov006_020eb9dc writes. P2 is an int[2]
    so the state copies block-move; a two-named-int copy does not. */
 struct ObjB {
@@ -1494,10 +1501,10 @@ s32 dScMgHanachan_c::Render()
             if (p->v[1] == g->v[1] || mPhaseFn == 0) {
                 int flag = mHit;
                 if (flag != 0) {
-                    if (mResultTimer < 0x5a) goto do_eac;
+                    if (mPhaseTimer < 0x5a) goto do_eac;
                 }
                 if (flag != 0) goto count_loop;
-                if (mResultTimer < 0x8a) goto do_eac;
+                if (mPhaseTimer < 0x8a) goto do_eac;
                 goto count_loop;
             do_eac:
                 func_ov006_020eac38(mTarget);
@@ -1591,8 +1598,8 @@ void func_ov006_020ed274(char *raw)
     int idx;
     int b;
     int w0, w1;
-    s->mResultTimer -= 1;
-    if (s->mResultTimer != 0)
+    s->mPhaseTimer -= 1;
+    if (s->mPhaseTimer != 0)
     {
         idx = data_020a0e40[0];
         b = 0;
@@ -1615,7 +1622,7 @@ extern "C" {
 void func_ov006_020ed300(char *raw)
 {
     dScMgHanachan_c *s = (dScMgHanachan_c *)raw;
-    s->mResultTimer = 0xb4;
+    s->mPhaseTimer = 0xb4;
     *(Pair *)&s->mPhaseFn = data_ov006_0213ca5c;
 }
 }
@@ -1643,8 +1650,8 @@ void func_ov006_020ed34c(char *raw)
 {
     dScMgHanachan_c *s = (dScMgHanachan_c *)raw;
     int v;
-    s->mResultTimer -= 1;
-    v = s->mResultTimer;
+    s->mPhaseTimer -= 1;
+    v = s->mPhaseTimer;
     if (v == 0)
     {
         if (s->mHit != 0)
@@ -1842,7 +1849,7 @@ extern "C" {
 void func_ov006_020ed81c(char *raw)
 {
     dScMgHanachan_c *s = (dScMgHanachan_c *)raw;
-    s->mResultTimer = 0x4b0;
+    s->mPhaseTimer = 0x4b0;
     *(Pair *)&s->mPhaseFn = data_ov006_0213c9cc;
 }
 }
