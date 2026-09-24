@@ -1,6 +1,25 @@
 //cpp
-/* Tiny-Huge Island square path lift -- ov052/daObjEmmYuka_c.
- * Actor 175 EMM_YUKA. .text 0x02111440..0x02111830.
+/* Production translation unit for ov052/daObjEmmYuka_c.
+ * 6 function(s), .text 0x02111440..0x02111830. Tiny-Huge Island's square
+ * path lift, actor 175 EMM_YUKA.
+ *
+ * NAME: _ZTS14daObjEmmYuka_c is "14daObjEmmYuka_c" at ov052 0x021125b8; _ZTI
+ * at 0x021125ac reads [__si_class_type_info, that string, _ZTI10dBgActor_c].
+ * The tree previously called the class SquarePathLift (coined; vtable address
+ * only).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x02111440), D0
+ * (0x02111484), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is ROM-ascending.
+ *
+ * Leftover: dBgW_KcMbg::SetFile and dBgActor_c::IsClsnInRange take
+ *   Fix12<int> by value, so they stay mangled; a member call homes the
+ *   argument and changes the ROM ABI.
+ * Leftover: func_020393d4 is a 4-byte store into dBgW's callback slot;
+ *   naming belongs with dBgW in arm9.
+ * Leftover: the factory daObjEmmYuka_c_classInit (0x02111830) sits just past
+ *   this run's right edge and stays a one-function source.
  */
 
 #include "decl_common.h"

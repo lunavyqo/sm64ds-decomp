@@ -6963,17 +6963,17 @@
    "start": "0x2111440",
    "end": "0x2111868",
    "classes": [
-    "daObjEmmYuka_c"
+    "SquarePathLift"
    ],
    "n_functions_map": 7,
    "n_files": 7,
    "files": [
-    "src/_ZN14daObjEmmYuka_cD1Ev.cpp",
-    "src/_ZN14daObjEmmYuka_cD0Ev.cpp",
-    "src/_ZN14daObjEmmYuka_c16CleanupResourcesEv.cpp",
-    "src/_ZN14daObjEmmYuka_c6RenderEv.cpp",
-    "src/_ZN14daObjEmmYuka_c8BehaviorEv.cpp",
-    "src/_ZN14daObjEmmYuka_c13InitResourcesEv.cpp",
+    "src/_ZN14SquarePathLiftD1Ev.cpp",
+    "src/_ZN14SquarePathLiftD0Ev.cpp",
+    "src/_ZN14SquarePathLift16CleanupResourcesEv.cpp",
+    "src/_ZN14SquarePathLift6RenderEv.cpp",
+    "src/_ZN14SquarePathLift8BehaviorEv.cpp",
+    "src/_ZN14SquarePathLift13InitResourcesEv.cpp",
     "src/d_a_obj_emm_yuka.c"
    ],
    "ext_mix": {
