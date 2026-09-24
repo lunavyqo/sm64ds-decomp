@@ -1,9 +1,9 @@
-#ifndef FIREPIRANHAPLANTBIG_H
-#define FIREPIRANHAPLANTBIG_H
+#ifndef DAFPKN_C_H
+#define DAFPKN_C_H
 
 #include "types.h"
 
-/* Derives from dEnemyBase_c, on the evidence of its own destructor: `_ZN19FirePiranhaPlantBigD1Ev`
+/* Derives from dEnemyBase_c, on the evidence of its own destructor: `_ZN8daFPkn_cD1Ev`
  * stores this vtable, destroys three members, then calls `dEnemyBase_c::~dEnemyBase_c`.
  * Everything this header used to restate below 0x110 belongs to that chain and
  * is inherited now.
@@ -43,7 +43,7 @@
 #include "dCcAcPos_c.h"
 #include "dBgCh_Actr.h"
 
-struct FirePiranhaPlantBig : dEnemyBase_c {
+struct daFPkn_c : dEnemyBase_c {
     ModelAnim                    mModelAnim;            /* 0x110 */
     dCcAc_c           mdCcAc_c;   /* 0x174 */
     dCcAcPos_c    mdCcAcPos_c; /* 0x1a8 */
@@ -70,7 +70,7 @@ struct FirePiranhaPlantBig : dEnemyBase_c {
     s32                          unk_228;               /* 0x228 */
 
     /* --- vtable --- */
-    virtual ~FirePiranhaPlantBig();
+    virtual ~daFPkn_c();
 
     virtual s32   OnYoshiTryEat();         /* slot 18 */
     virtual void  OnTurnIntoEgg(Player &player); /* slot 19 */
@@ -84,7 +84,7 @@ struct FirePiranhaPlantBig : dEnemyBase_c {
 
 #ifndef SM64DS_PLATFORM_PC
 /* ROM layout under mwccarm; host ABI divergence is tracked separately. */
-typedef char FirePiranhaPlantBig_size_must_be_0x22c[sizeof(FirePiranhaPlantBig) == 0x22c ? 1 : -1];
+typedef char daFPkn_c_size_must_be_0x22c[sizeof(daFPkn_c) == 0x22c ? 1 : -1];
 #endif
 
-#endif /* FIREPIRANHAPLANTBIG_H */
+#endif /* DAFPKN_C_H */

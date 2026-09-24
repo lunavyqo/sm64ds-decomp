@@ -3323,8 +3323,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN19FirePiranhaPlantBig16CleanupResourcesEv.cpp",
-      "name": "_ZN19FirePiranhaPlantBig16CleanupResourcesEv",
+      "file": "src/_ZN8daFPkn_c16CleanupResourcesEv.cpp",
+      "name": "_ZN8daFPkn_c16CleanupResourcesEv",
       "module": "ov084",
       "addr": "0x212e554",
       "verdict": "VERIFIED",
@@ -3332,8 +3332,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN19FirePiranhaPlantBig8BehaviorEv.cpp",
-      "name": "_ZN19FirePiranhaPlantBig8BehaviorEv",
+      "file": "src/_ZN8daFPkn_c8BehaviorEv.cpp",
+      "name": "_ZN8daFPkn_c8BehaviorEv",
       "module": "ov084",
       "addr": "0x212e614",
       "verdict": "VERIFIED",
@@ -20836,7 +20836,7 @@
           "src/_ZN15daObjMarioCap_c13InitResourcesEv.cpp",
           "src/_ZN16dScMgPachinko2_c13OnYoshiTryEatEi.cpp",
           "src/_ZN16daKing_Donketu_c13InitResourcesEv.cpp",
-          "src/_ZN19FirePiranhaPlantBig16CleanupResourcesEv.cpp",
+          "src/_ZN8daFPkn_c16CleanupResourcesEv.cpp",
           "src/_ZN22RotatingUpDownPlatform13InitResourcesEv.cpp",
           "src/_ZN8dMeter_c17RenderHealthMeterEv.cpp",
           "src/_ZN3OAM11GetObjWidthEii.cpp",
@@ -20961,7 +20961,7 @@
           "src/_ZN15daObjMarioCap_c13InitResourcesEv.cpp",
           "src/_ZN16dScMgPachinko2_c13OnYoshiTryEatEi.cpp",
           "src/_ZN16daKing_Donketu_c13InitResourcesEv.cpp",
-          "src/_ZN19FirePiranhaPlantBig16CleanupResourcesEv.cpp",
+          "src/_ZN8daFPkn_c16CleanupResourcesEv.cpp",
           "src/_ZN22RotatingUpDownPlatform13InitResourcesEv.cpp",
           "src/_ZN8dMeter_c17RenderHealthMeterEv.cpp",
           "src/_ZN3OAM11GetObjWidthEii.cpp",
@@ -21097,7 +21097,7 @@
           "src/_ZN16BowserShockwaves13InitResourcesEv.cpp",
           "src/_ZN16dScMgSmartball_c13InitResourcesEv.cpp",
           "src/_ZN17BowserPuzzlePiece13InitResourcesEv.cpp",
-          "src/_ZN19FirePiranhaPlantBig8BehaviorEv.cpp",
+          "src/_ZN8daFPkn_c8BehaviorEv.cpp",
           "src/_ZN22RotatingUpDownPlatform8BehaviorEv.cpp",
           "src/_ZN8dMeter_c17UpdateHealthMeterEv.cpp",
           "src/_ZN3OAM12GetObjHeightEii.cpp",
@@ -21222,7 +21222,7 @@
           "src/_ZN16BowserShockwaves13InitResourcesEv.cpp",
           "src/_ZN16dScMgSmartball_c13InitResourcesEv.cpp",
           "src/_ZN17BowserPuzzlePiece13InitResourcesEv.cpp",
-          "src/_ZN19FirePiranhaPlantBig8BehaviorEv.cpp",
+          "src/_ZN8daFPkn_c8BehaviorEv.cpp",
           "src/_ZN22RotatingUpDownPlatform8BehaviorEv.cpp",
           "src/_ZN8dMeter_c17UpdateHealthMeterEv.cpp",
           "src/_ZN3OAM12GetObjHeightEii.cpp",
@@ -21758,8 +21758,8 @@
         "src/_ZN17BowserSkyPlatform16CleanupResourcesEv.cpp",
         "src/_ZN17SlidingPlatformWf16CleanupResourcesEv.cpp",
         "src/_ZN17SlidingPlatformWf8BehaviorEv.cpp",
-        "src/_ZN19FirePiranhaPlantBig16CleanupResourcesEv.cpp",
-        "src/_ZN19FirePiranhaPlantBig8BehaviorEv.cpp",
+        "src/_ZN8daFPkn_c16CleanupResourcesEv.cpp",
+        "src/_ZN8daFPkn_c8BehaviorEv.cpp",
         "src/_ZN19FloatOnLavaPlatform13InitResourcesEv.cpp",
         "src/_ZN19FloatOnLavaPlatform16CleanupResourcesEv.cpp",
         "src/_ZN19FloatOnLavaPlatform8BehaviorEv.cpp",
@@ -22947,12 +22947,12 @@
           "name": "_ZN17SlidingPlatformWf8BehaviorEv"
         },
         {
-          "file": "src/_ZN19FirePiranhaPlantBig16CleanupResourcesEv.cpp",
-          "name": "_ZN19FirePiranhaPlantBig16CleanupResourcesEv"
+          "file": "src/_ZN8daFPkn_c16CleanupResourcesEv.cpp",
+          "name": "_ZN8daFPkn_c16CleanupResourcesEv"
         },
         {
-          "file": "src/_ZN19FirePiranhaPlantBig8BehaviorEv.cpp",
-          "name": "_ZN19FirePiranhaPlantBig8BehaviorEv"
+          "file": "src/_ZN8daFPkn_c8BehaviorEv.cpp",
+          "name": "_ZN8daFPkn_c8BehaviorEv"
         },
         {
           "file": "src/_ZN19FloatOnLavaPlatform13InitResourcesEv.cpp",

@@ -30935,11 +30935,8 @@
       ]
     },
     "data_ov084_02130dfc": {
-      "src/_ZN19FirePiranhaPlantBig13InitResourcesEv.cpp": [
+      "src/actors/daFPkn_c.cpp": [
         "return:SharedFilePtr"
-      ],
-      "src/_ZN19FirePiranhaPlantBig16CleanupResourcesEv.cpp": [
-        "return:int"
       ],
       "src/__sinit_ov084_02130654.c": [
         "return:char []"

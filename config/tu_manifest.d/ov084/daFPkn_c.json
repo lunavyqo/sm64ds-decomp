@@ -1,0 +1,115 @@
+{
+  "id": "ov084/daFPkn_c",
+  "module": "ov084",
+  "source": "src/actors/daFPkn_c.cpp",
+  "promoted_source": "src/actors/daFPkn_c.cpp",
+  "status": "promoted",
+  "boundary_confidence": "high",
+  "boundary_evidence": [
+    "Contiguous _ZN8daFPkn_c* run 0x0212e554..0x0212ea18, 7 functions, each delinks entry complete and the ranges abut.",
+    "D1/D0 at 0x0212d248..0x0212d2dc are a separate run; nine func_ov084 helpers sit between them and this span and are not absorbed.",
+    "The next function, daFPkn_c_classInit_PAKUN2 at 0x0212ea18, is the start of the factory TU and is not absorbed.",
+    "Vtable address point 0x02130b28; the word before it relocates to _ZTI8daFPkn_c at 0x02130ac0, whose name string at 0x02130ab4 is 8daFPkn_c."
+  ],
+  "sections": [
+    {
+      "name": ".text",
+      "start": "0x0212e554",
+      "end": "0x0212ea18"
+    }
+  ],
+  "functions": [
+    {
+      "symbol": "_ZN8daFPkn_c16CleanupResourcesEv",
+      "address": "0x0212e554",
+      "size": "0x00000054",
+      "legacy_source": "src/_ZN8daFPkn_c16CleanupResourcesEv.cpp",
+      "ordinal": 0
+    },
+    {
+      "symbol": "_ZN8daFPkn_c6RenderEv",
+      "address": "0x0212e5a8",
+      "size": "0x0000006c",
+      "legacy_source": "src/_ZN8daFPkn_c6RenderEv.cpp",
+      "ordinal": 1
+    },
+    {
+      "symbol": "_ZN8daFPkn_c8BehaviorEv",
+      "address": "0x0212e614",
+      "size": "0x00000160",
+      "legacy_source": "src/_ZN8daFPkn_c8BehaviorEv.cpp",
+      "ordinal": 2
+    },
+    {
+      "symbol": "_ZN8daFPkn_c13InitResourcesEv",
+      "address": "0x0212e774",
+      "size": "0x00000224",
+      "legacy_source": "src/_ZN8daFPkn_c13InitResourcesEv.cpp",
+      "ordinal": 3
+    },
+    {
+      "symbol": "_ZN8daFPkn_c16OnAimedAtWithEggEv",
+      "address": "0x0212e998",
+      "size": "0x0000003c",
+      "legacy_source": "src/_ZN8daFPkn_c16OnAimedAtWithEggEv.cpp",
+      "ordinal": 4
+    },
+    {
+      "symbol": "_ZN8daFPkn_c13OnTurnIntoEggER6Player",
+      "address": "0x0212e9d4",
+      "size": "0x00000024",
+      "legacy_source": "src/_ZN8daFPkn_c13OnTurnIntoEggER6Player.cpp",
+      "ordinal": 5
+    },
+    {
+      "symbol": "_ZN8daFPkn_c13OnYoshiTryEatEv",
+      "address": "0x0212e9f8",
+      "size": "0x00000020",
+      "legacy_source": "src/_ZN8daFPkn_c13OnYoshiTryEatEv.cpp",
+      "ordinal": 6
+    }
+  ],
+  "data": [],
+  "bss": [],
+  "notes": [
+    "Seven-function span of the coined daFPkn_c methods. ROM RTTI name is daFPkn_c. Destructor and state helpers are outside this run."
+  ],
+  "compiler_only_output": [
+    {
+      "symbol": "_ZN7Vector3D1Ev",
+      "disposition": "deadstrip-duplicate",
+      "canonical_module": "arm9",
+      "canonical_address": "0x020072c0",
+      "reason": "InitResources holds a local Vector3. include/types.h defines ~Vector3() inline, so the TU re-emits that 4-byte vague-linkage body. The cartridge owns it at arm9:0x020072c0 (src/_ZN7Vector3D1Ev.cpp); deadstrip-duplicate discards this copy only after the body is proved identical."
+    }
+  ],
+  "verification": {
+    "round": "tools/tubuild.py verify -- text-only, whole shadow TU compiled once",
+    "toolchain": "tools/mwccarm/2004/b56/mwccarm.exe",
+    "flags": "-O4,p -enum int -lang c++ -char signed -interworking -proc arm946e -gccext,on -msgstyle gcc -Cpp_exceptions off",
+    "object": "build/tu/ov084-daFPkn_c/daFPkn_c.o (gitignored)",
+    "comparison": "tools/match.py extract_func+compare (bytes/relocs) AND tools/objisolate.py plan() (relocation type/addend) AND tools/reloc_audit.py check_destinations() (relocation target identity)",
+    "functions_matched": 7,
+    "functions_declared": 7,
+    "compilerOnlyOutput": {
+      "requested": [
+        "_ZN7Vector3D1Ev"
+      ],
+      "deadstripped": [
+        "_ZN7Vector3D1Ev"
+      ],
+      "droppedSections": [
+        8
+      ],
+      "data": [],
+      "dataExternalized": []
+    },
+    "criteria": {
+      "every_declared_function_defined": "PASS",
+      "every_declared_function_bytes_match": "PASS",
+      "declared_function_set_equals_defined_function_set": "PASS",
+      "functions_occur_in_expected_order": "PASS",
+      "relocation_destinations_verified": "PASS"
+    }
+  }
+}

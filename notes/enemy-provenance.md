@@ -178,7 +178,7 @@ stays as it is — the file already documents that the add must sit inside the i
 
 ---
 
-## `FirePiranhaPlantBig` (`include/FirePiranhaPlantBig.h`, [ov084](../config/arm9/overlays/ov084/symbols.txt))
+## `daFPkn_c` (`include/daFPkn_c.h`, [ov084](../config/arm9/overlays/ov084/symbols.txt))
 
 | offset | new name | evidence |
 | --- | --- | --- |

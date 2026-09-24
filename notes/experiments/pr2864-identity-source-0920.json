@@ -1028,7 +1028,7 @@
           "definitions": [{"file": "src/UnloadBlueCoinModel.c", "line": 9, "spelling": "void (void)"}],
           "declarations": [
             {"file": "src/_ZN15BookShotSpawner16CleanupResourcesEv.cpp", "line": 11, "spelling": "void (char *)"},
-            {"file": "src/_ZN19FirePiranhaPlantBig16CleanupResourcesEv.cpp", "line": 9, "spelling": "void (void *)"},
+            {"file": "src/_ZN8daFPkn_c16CleanupResourcesEv.cpp", "line": 9, "spelling": "void (void *)"},
             {"file": "src/_ZN3MrI16CleanupResourcesEv.cpp", "line": 6, "spelling": "void (void)"},
             {"file": "src/_ZN5Koopa16CleanupResourcesEv.cpp", "line": 7, "spelling": "void (void *)"},
             {"file": "src/_ZN8BookShot16CleanupResourcesEv.cpp", "line": 7, "spelling": "void (void *)"},

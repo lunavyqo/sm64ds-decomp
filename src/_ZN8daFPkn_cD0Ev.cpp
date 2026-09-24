@@ -1,17 +1,17 @@
 //cpp
-// @symbol _ZN19FirePiranhaPlantBigD0Ev
+// @symbol _ZN8daFPkn_cD0Ev
 /* recovered: real C++ deleting destructor -- the compiler emits the whole body
  *
  * D0 is the DELETING destructor: destroy through this class and its bases, then
- * return the object to its heap. Nobody writes that; declaring `~FirePiranhaPlantBig()` is
+ * return the object to its heap. Nobody writes that; declaring `~daFPkn_c()` is
  * enough, because mwcc emits D2, D0 and D1 together and objisolate keeps the
  * one this file is bound to.
  *
  * The deallocation is an inline operator delete -- dEnemyBase_c's, reachable because
  * dEnemyBase_c is this class's IMMEDIATE base.
  */
-#include "FirePiranhaPlantBig.h"
+#include "daFPkn_c.h"
 
-FirePiranhaPlantBig::~FirePiranhaPlantBig()
+daFPkn_c::~daFPkn_c()
 {
 }

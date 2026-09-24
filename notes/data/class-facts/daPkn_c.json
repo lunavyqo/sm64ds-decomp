@@ -152,7 +152,7 @@
     "ov084_neighbours": [
       {"class": "daKrb_c",        "run": "0x02129020..0x0212c10c", "note": "ROM RTTI name; coined alias none"},
       {"class": "daRedBombhei_c", "run": "0x0212c10c..0x0212d248", "note": "coined alias BobOmbBuddy"},
-      {"class": "daFPkn_c",       "run": "0x0212d248..0x0212eaf0", "note": "coined alias FirePiranhaPlantBig"},
+      {"class": "daFPkn_c",       "run": "0x0212d248..0x0212eaf0", "note": "coined alias daFPkn_c"},
       {"class": "daPkn_c",        "run": "0x0212eaf0..0x02130174", "note": "coined alias PiranhaPlant -- this class"}
     ]
   },
@@ -231,7 +231,7 @@
 
   "non_virtual": [
     {"address": "0x0212ebb4", "size": "0x50",  "kind": "helper",  "callers": ["9x from 0x0212f6d8 (state 2)", "8x from 0x0212ef00"], "note": "sets mState = 5 and starts an animation from data_ov084_02130e24.w[1]"},
-    {"address": "0x0212ec04", "size": "0x54",  "kind": "helper",  "callers": ["1x from func_ov084_0212dc30 at 0x0212dd5c -- INSIDE ov084 but in the daFPkn_c run"], "note": "sets mState = 2, calls ModelAnim::SetAnim on this+0x110, writes this+0x168. The caller spawns a PAKUN by profile id 0xfa via dActor_c::Spawn and passes the returned actor as `this`, so this is a daPkn_c entry point called by FirePiranhaPlantBig code."},
+    {"address": "0x0212ec04", "size": "0x54",  "kind": "helper",  "callers": ["1x from func_ov084_0212dc30 at 0x0212dd5c -- INSIDE ov084 but in the daFPkn_c run"], "note": "sets mState = 2, calls ModelAnim::SetAnim on this+0x110, writes this+0x168. The caller spawns a PAKUN by profile id 0xfa via dActor_c::Spawn and passes the returned actor as `this`, so this is a daPkn_c entry point called by daFPkn_c code."},
     {"address": "0x0212ec60", "size": "0x2a0", "kind": "helper",  "callers": ["1x from _ZN12PiranhaPlant8BehaviorEv"]},
     {"address": "0x0212ef00", "size": "0x2d0", "kind": "helper",  "callers": ["1x from 0x0212f630 (state 3)", "1x from 0x0212fa7c (state 1)", "1x from 0x0212fc10 (state 0)"]},
     {"address": "0x0212f1d0", "size": "0x34",  "kind": "helper",  "callers": ["1x from 0x0212f588 (state 4)", "1x from 0x0212fa7c (state 1)"], "note": "reads a pointer from this+0x460 and tests two fields on it"},
@@ -345,7 +345,7 @@
     {
       "severity": "medium",
       "what": "func_ov084_0212ec04 has its only caller in another class's shard.",
-      "detail": "src/func_ov084_0212dc30.c (the daFPkn_c / FirePiranhaPlantBig run, an UNPROMOTED queue row) calls it at 0x0212dd5c, passing a freshly Spawn'ed PAKUN actor as `this`. If it is converted to a daPkn_c member, that call site in a different class's shard must move with it, and a class member function cannot be called from a plain C shard without a matching declaration. Leaving it as a free function is the cheap option."
+      "detail": "src/func_ov084_0212dc30.c (the daFPkn_c / daFPkn_c run, an UNPROMOTED queue row) calls it at 0x0212dd5c, passing a freshly Spawn'ed PAKUN actor as `this`. If it is converted to a daPkn_c member, that call site in a different class's shard must move with it, and a class member function cannot be called from a plain C shard without a matching declaration. Leaving it as a free function is the cheap option."
     },
     {
       "severity": "medium",
