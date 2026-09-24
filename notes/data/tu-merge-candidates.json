@@ -24297,22 +24297,22 @@
    "start": "0x2111314",
    "end": "0x2111ba0",
    "classes": [
-    "KnockDownPlank"
+    "daObjBk_Botaosi_c"
    ],
    "n_functions_map": 13,
    "n_files": 12,
    "files": [
-    "src/_ZN14KnockDownPlankD1Ev.cpp",
-    "src/_ZN14KnockDownPlankD0Ev.cpp",
-    "src/_ZN14KnockDownPlank15OnHitByMegaCharER6Player.cpp",
-    "src/_ZN14KnockDownPlank8OnKickedER8dActor_c.cpp",
-    "src/_ZN14KnockDownPlank11OnAttacked2ER8dActor_c.cpp",
+    "src/_ZN17daObjBk_Botaosi_cD1Ev.cpp",
+    "src/_ZN17daObjBk_Botaosi_cD0Ev.cpp",
+    "src/_ZN17daObjBk_Botaosi_c15OnHitByMegaCharER6Player.cpp",
+    "src/_ZN17daObjBk_Botaosi_c8OnKickedER8dActor_c.cpp",
+    "src/_ZN17daObjBk_Botaosi_c11OnAttacked2ER8dActor_c.cpp",
     "src/func_ov015_02111414.c",
     "src/func_ov015_0211166c.c",
-    "src/_ZN14KnockDownPlank16CleanupResourcesEv.cpp",
-    "src/_ZN14KnockDownPlank6RenderEv.cpp",
-    "src/_ZN14KnockDownPlank8BehaviorEv.cpp",
-    "src/_ZN14KnockDownPlank13InitResourcesEv.cpp",
+    "src/_ZN17daObjBk_Botaosi_c16CleanupResourcesEv.cpp",
+    "src/_ZN17daObjBk_Botaosi_c6RenderEv.cpp",
+    "src/_ZN17daObjBk_Botaosi_c8BehaviorEv.cpp",
+    "src/_ZN17daObjBk_Botaosi_c13InitResourcesEv.cpp",
     "src/d_a_obj_bk_botaosi.c"
    ],
    "ext_mix": {
