@@ -1,8 +1,22 @@
 /* Memory Match (MG_MEMORY). Twelve cards and three markers on the
  * touch screen.
  *
- * dScMgMemory_c_classInit is reconstructed (RTTI dScMgMemory_c, MG_MEMORY
- * registry). Retail does not store that spelling.
+ * RTTI at ov006:0x0213d090 names the class dScMgMemory_c; its vtable
+ * begins at 0x0213d1b8. SIZE 0x5340, measured by the MG_MEMORY factory at
+ * 0x020f5504.
+ *
+ * Coined names: this tree first called the class MgMemoryMatch
+ * (`_ZN13MgMemoryMatchD1Ev`, `_ZTV13MgMemoryMatch`). The ROM disagrees: the
+ * RTTI pointer one word below the vptr value 0x0213d1b8 is
+ * `_ZTI13dScMgMemory_c`, whose `_ZTS` reads "13dScMgMemory_c". Both names
+ * are 13 characters, so no mangled prefix changed. dScMgMemory_c_classInit
+ * (historical alias MgMemoryMatch_Spawn) is reconstructed; retail does not
+ * store that spelling. The address-only handler names are coined as well,
+ * and disclosed in symbols/actor_renames.tsv.
+ *
+ * Shared table at 0x4f38 (mShared, 0x270 bytes), built by
+ * func_ov006_020c1d80 and torn down by func_ov006_020c1c64 -- the same
+ * pair dScMgCard_c, dScMgMCarlo2_c and dScMgRoulette_c use.
  */
 #ifndef DSCMGMEMORY_C_H
 #define DSCMGMEMORY_C_H

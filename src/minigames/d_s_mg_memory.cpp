@@ -8,6 +8,8 @@
  * Leftover: ShuffleCards. mValueCounts[slot] hoists the base; adding the
  *   slot to 0x5330 matches.
  * Leftover: cstd::atan2 stays the mangled symbol.
+ * Leftover: the factory builds the object by hand because the class has no
+ *   constructor declared yet.
  */
 
 #include "dScMgMemory_c.h"
@@ -92,7 +94,9 @@ void func_ov006_020c1d80(void *sharedState);
 extern void *_ZTV19dScMgSingle3DBase_c[];
 }
 
-/* Load-bearing: source order, and the opt pragmas on DrawCards and CardFlyAway. */
+/* Load-bearing: source order, and the opt pragmas on DrawCards and
+ * CardFlyAway. Under deferred emission the last pragma setting wins for the
+ * whole file; defer_codegen off lets push/pop scope them to one function. */
 #pragma defer_codegen off
 
 // @symbol _ZN13dScMgMemory_cD1Ev
