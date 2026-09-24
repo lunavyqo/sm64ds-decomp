@@ -107,6 +107,34 @@ keep the extern-C definition with scalar args and declare the true signature in
 the class header for callers; a call emits the same substituted symbol either way,
 which the byte gate confirms.
 
+### CORRECTED 2026-09-23: the CALLER pays too
+
+The last sentence above holds for the symbol, not for the bytes. Handing mwccarm a
+`Fix12<int>` BY VALUE costs at the call site as well, independent of what the
+callee does with it -- so "declare the true signature in the class header for
+callers" does not reproduce while the parameter is the class.
+
+First measured on `daObjBC_Switch_c` (#2176): retail passes a constant in a
+register (`mov r3,#0x1000`); every class-typed spelling homes it to the literal
+pool and reloads it (`ldr r3,[pc,#..]` then `ldm r3,{r3}`), 0x68 against 0x60.
+Refuted there: a brace-init local, a `const` local, an inline helper returning the
+wrapper, a gccext compound literal, and a raw-bits constructor on `Fix12`.
+
+Re-measured with a field argument: `daEyBm_c::Render` (ov071 0x02121d14, target
+0x6c) calling `Particle::System::NewUnkCallback818` through a header declaration.
+A pointer cast `*(Fix12<int> *)&mPosX` gives 0x7c -- the field's address is formed
+and read back with `ldmia` instead of the retail `ldr r2,[r4,#0x5c]`. Brace-init
+locals give 0xa4, as does a converting constructor; both copy through stack
+temporaries.
+
+**How to apply.** A `5Fix12IiE` callee cannot be reached through a class-typed
+header declaration. Callers keep a C-linkage extern with a scalar `Fix12i`
+parameter, as `src/game/actors/d_a_obj_bc_switch.cpp` does for
+`Sound::ChangeMusicVolume` -- or, following `IsGoingOffCliff` above, the symbol
+is renamed to its scalar mangling so a real declaration works on both sides.
+The 2026-08-27 result is untouched: inside the callee, an unread class parameter
+still costs nothing.
+
 ## 1. Ground rules of the build
 
 - **Reloc slots are wildcards.** Every `bl`/`blx` target and every pc-relative `ldr` of an
@@ -7471,7 +7499,7 @@ the first ten words: 69. The ROM puts the selector in r0 in 30 of them and in r1
 r0 untouched in 36, and 2004/b56 reproduces BOTH groups on the matched members (20 of the
 r1/r2 group have matched source, five of them ov063 siblings), so the skip is
 source-reachable and the question was what separates the groups. Not the count of
-`mov r0,<home>` copies in the body (`PyramidLift::Behavior` has three and a selector in r0;
+`mov r0,<home>` copies in the body (`daDpLift_c::Behavior` has three and a selector in r0;
 `KnockDownPlank::Behavior` has the identical `switch (mState)` spelling and a selector in
 r1), so the property lives in the case bodies, not the switch. What separates them is a case
 that consumes r0 STRAIGHT FROM THE ENTRY without a copy: `func_ov063_021172a8`, the
