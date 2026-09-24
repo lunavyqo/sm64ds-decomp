@@ -3701,8 +3701,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN12daBasabasa_c8BehaviorEv.cpp",
-      "name": "_ZN12daBasabasa_c8BehaviorEv",
+      "file": "src/_ZN5Swoop8BehaviorEv.cpp",
+      "name": "_ZN5Swoop8BehaviorEv",
       "module": "ov065",
       "addr": "0x2117b64",
       "verdict": "VERIFIED",
@@ -20843,7 +20843,7 @@
           "src/_ZN4Fish16CleanupResourcesEv.cpp",
           "src/_ZN5Crate13InitResourcesEv.cpp",
           "src/_ZN5Stage14GraphCallback2Ev.cpp",
-          "src/_ZN12daBasabasa_c8BehaviorEv.cpp",
+          "src/_ZN5Swoop8BehaviorEv.cpp",
           "src/_ZN5Whomp13InitResourcesEv.cpp",
           "src/_ZN6Bullet8BehaviorEv.cpp",
           "src/_ZN6Coffin8BehaviorEv.cpp",
@@ -20968,7 +20968,7 @@
           "src/_ZN4Fish16CleanupResourcesEv.cpp",
           "src/_ZN5Crate13InitResourcesEv.cpp",
           "src/_ZN5Stage14GraphCallback2Ev.cpp",
-          "src/_ZN12daBasabasa_c8BehaviorEv.cpp",
+          "src/_ZN5Swoop8BehaviorEv.cpp",
           "src/_ZN5Whomp13InitResourcesEv.cpp",
           "src/_ZN6Bullet8BehaviorEv.cpp",
           "src/_ZN6Coffin8BehaviorEv.cpp",
@@ -21800,7 +21800,7 @@
         "src/_ZN5Stage22RenderModelTransparentEv.cpp",
         "src/_ZN5Stage7LoadFogEv.cpp",
         "src/_ZN5Stump16CleanupResourcesEv.cpp",
-        "src/_ZN12daBasabasa_c8BehaviorEv.cpp",
+        "src/_ZN5Swoop8BehaviorEv.cpp",
         "src/_ZN5Timer10StartTimerEv.cpp",
         "src/_ZN5Timer7GetTimeEv.cpp",
         "src/_ZN5Timer9StopTimerEv.cpp",
@@ -23115,8 +23115,8 @@
           "name": "_ZN5Stump16CleanupResourcesEv"
         },
         {
-          "file": "src/_ZN12daBasabasa_c8BehaviorEv.cpp",
-          "name": "_ZN12daBasabasa_c8BehaviorEv"
+          "file": "src/_ZN5Swoop8BehaviorEv.cpp",
+          "name": "_ZN5Swoop8BehaviorEv"
         },
         {
           "file": "src/_ZN5Timer10StartTimerEv.cpp",

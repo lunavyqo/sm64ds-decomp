@@ -3,8 +3,11 @@
  * 21 functions, .text 0x02116f98..0x02117ee8. The swoop (profile BASABASA).
  *
  * NAME: the vtable address point is ov065 0x0211cca0. The word at -4 is
- * 0x0211cc60 (_ZTI12daBasabasa_c); typeinfo+4 is 0x0211cc6c, the cartridge
- * string "12daBasabasa_c". The coined Swoop alias of that vtable is gone.
+ * 0x0211cc60 (_ZTI12daBasabasa_c), which reads [__si_class_type_info,
+ * 0x0211cc6c, _ZTI12dEnemyBase_c]: _ZTS12daBasabasa_c at 0x0211cc6c is the
+ * cartridge string "12daBasabasa_c", and the single base is dEnemyBase_c.
+ * The class was coined Swoop before the ROM name was read (factory alias
+ * Swoop_Spawn); the _ZTV5Swoop label of that vtable is gone.
  *
  * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
  * _ZTS and the ancestor RTTI. Under `#pragma defer_codegen off` it comes out
