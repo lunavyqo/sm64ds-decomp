@@ -459,7 +459,7 @@ at `0x020d3dcc`–`0x020d3de0`, threshold and factor both exact.
 
 Earlier notes described the [ov098](../../config/arm9/overlays/ov098/symbols.txt) jump table (30/45/60/100 → `+0x5f0`) as a surface-type→speed
 table. **It is quicksand sink depth.** [ov098](../../config/arm9/overlays/ov098/symbols.txt) is the Shifting Sand Land object overlay;
-[func_ov098_02139228](../../src/func_ov098_02139228.cpp) = `Crate::UpdateQuicksand`. `+0x5f0` is target sink depth, `+0x5f4` current,
+[func_ov098_02139228](../../src/func_ov098_02139228.cpp) = `daObjBlockS_c::UpdateQuicksand`. `+0x5f0` is target sink depth, `+0x5f4` current,
 approached at 0.5/frame. Render position is built as `pos.y − this[0x5f4]` — verbatim N64
 `mario.c:1552` `o->header.gfx.pos[1] -= m->quicksandDepth`.
 
@@ -495,7 +495,7 @@ So **CLPS surface-type values 6-9 are the four quicksand types.** Corroborated o
 `0x020d4d88` `Player::UpdateGroundSpeed` · `0x020d3b9c` `Player::UpdateWalkingSpeed` ·
 `0x020d45c0` `Player::Walk_UpdateRunDustFx` · `0x020d413c` `Player::Walk_UpdateBodyLean` ·
 `0x020bf30c` `Player::ScaleSpeedByCharacter` · `0x020c29d4` `Player::UpdateQuicksandFlag` ·
-[ov098](../../config/arm9/overlays/ov098/symbols.txt):`0x02139228` `Crate::UpdateQuicksand` · [ov002](../../config/arm9/overlays/ov002/symbols.txt):`0x02110514` `St_Crawl` state descriptor
+[ov098](../../config/arm9/overlays/ov098/symbols.txt):`0x02139228` `daObjBlockS_c::UpdateQuicksand` · [ov002](../../config/arm9/overlays/ov002/symbols.txt):`0x02110514` `St_Crawl` state descriptor
 
 **Player offsets recovered:** `+0x8e` visual yaw · `+0x94` moveYaw · `+0x98` forwardVel ·
 `+0xa8` velY · `+0x554/558/55c` floorNormal xyz (fx12, already rescaled from KCL's 0x400) ·

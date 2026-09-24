@@ -144,7 +144,7 @@ either way; only the narration was wrong.
 
   | row | old cell | refreshed | source file | lines base → here |
   |---|---|---|---|---|
-  | `Crate` | 1431 | **1427** | `src/_ZN5Crate13OnTurnIntoEggER6Player.cpp` | 42 → 38 |
+  | `daObjBlockS_c` | 1431 | **1427** | `src/_ZN13daObjBlockS_c13OnTurnIntoEggER6Player.cpp` | 42 → 38 |
   | `Coin` | 1148 | **1147** | `src/_ZN4Coin13OnTurnIntoEggER6Player.cpp` | 24 → 23 |
   | `daGmch_c` | 1119 | **1120** | `src/actors/daGmch_c.cpp` | 1119 → 1120 |
 

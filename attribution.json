@@ -4785,6 +4785,13 @@
     "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c6RenderEv": "tangosdev",
     "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c8BehaviorEv": "lunavyqo",
-    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c13InitResourcesEv": "lunavyqo"
+    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c13InitResourcesEv": "lunavyqo",
+    "src/actors/daObjBlockS_c.cpp#_ZN13daObjBlockS_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daObjBlockS_c.cpp#_ZN13daObjBlockS_c6RenderEv": "tangosdev",
+    "src/actors/daObjBlockS_c.cpp#_ZN13daObjBlockS_c8BehaviorEv": "tangosdev",
+    "src/actors/daObjBlockS_c.cpp#_ZN13daObjBlockS_c13InitResourcesEv": "tangosdev",
+    "src/actors/daObjBlockS_c.cpp#_ZN13daObjBlockS_c15OnGroundPoundedER8dActor_c": "tangosdev",
+    "src/actors/daObjBlockS_c.cpp#_ZN13daObjBlockS_c13OnYoshiTryEatEv": "tangosdev",
+    "src/actors/daObjBlockS_c.cpp#_ZN13daObjBlockS_c13OnTurnIntoEggER6Player": "tangosdev"
   }
 }
