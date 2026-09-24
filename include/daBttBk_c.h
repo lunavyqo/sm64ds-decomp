@@ -26,8 +26,11 @@
  *
  * mWithMeshClsn was mistyped `u8` at 0x180 in the generated header --
  * daBttBk_c_classInit calls _ZN10dBgCh_ActrC1Ev at that offset, so it is the
- * real 0x1bc-byte member (0x180..0x33c); the 0x38 bytes from 0x33c..0x374
- * are genuinely unevidenced padding.
+ * real 0x1bc-byte member (0x180..0x33c). The 0x38 bytes from 0x33c..0x374
+ * stay padding here, but src/actors/daBttBk_c.cpp now evidences them: a
+ * shadow matrix at 0x33c (func_ov080_02124c3c), the current state-table
+ * row at 0x36c and its index at 0x370; unk_374 holds the carrier actor
+ * (func_ov080_02124acc stores it, 02124c3c/02124edc read it).
  *
  * THE VTABLE was diffed slot by slot against _ZTV8dActor_c. daBttBk_c
  * overrides slot 0 (InitResources), slot 3 (CleanupResources), slot 6
@@ -45,17 +48,17 @@
 struct daBttBk_c : dActor_c {
     u8  pad_0d0[0x4];
     /* Model member, named by the class's own destructor calling
-       Model's D1 at +0x0d4. [_ZN9daBttBk_cD0Ev.c] */
+       Model's D1 at +0x0d4. [daBttBk_c D0, src/actors/daBttBk_c.cpp] */
     Model mModel;            /* 0x0d4 */
     /* ShadowModel member, named by the class's own destructor calling
-       ShadowModel's D1 at +0x124. [_ZN9daBttBk_cD0Ev.c] */
+       ShadowModel's D1 at +0x124. [daBttBk_c D0, src/actors/daBttBk_c.cpp] */
     ShadowModel mShadowModel;            /* 0x124 */
     /* dCcAc_c member, named by the class's own destructor calling
-       dCcAc_c's D1 at +0x14c. [_ZN9daBttBk_cD0Ev.c] */
+       dCcAc_c's D1 at +0x14c. [daBttBk_c D0, src/actors/daBttBk_c.cpp] */
     dCcAc_c mdCcAc_c;            /* 0x14c */
     /* dBgCh_Actr member, named by daBttBk_c_classInit's own C1 call and the
        class's own destructor's D1 call at +0x180.
-       [daBttBk_c_classInit.c, _ZN9daBttBk_cD0Ev.c] */
+       [daBttBk_c_classInit in src/d_a_btt_bk.c; D0] */
     dBgCh_Actr mWithMeshClsn;            /* 0x180 */
     u8  pad_33c[0x38];
     s32 unk_374;            /* 0x374 */

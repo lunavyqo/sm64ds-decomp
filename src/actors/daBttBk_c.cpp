@@ -1,28 +1,63 @@
 //cpp
-/**
- * Battler block (BATTA_BLOCK). The cartridge RTTI is daBttBk_c: _ZTS at
- * ov080 0x0212815c is "9daBttBk_c", _ZTI at 0x02128168 is
- * [__si_class_type_info+8, that string, _ZTI8dActor_c], and the vtable
- * preamble word at 0x02128194 is that same _ZTI. The address point
- * _ZTV is 0x02128198 (slot 0, InitResources).
+/* Production translation unit for ov080/daBttBk_c.
+ * 20 function(s), .text 0x02124a20..0x021253b4.
  *
- * .text 0x02124a20..0x021253b4, twenty functions. The factory
- * daBttBk_c_classInit is the next function (0x021253b4) and stays in its
- * own TU: every other unit in ov080 ends on a classInit, and this one is
- * not part of the daBttBk_c run tubuild cuts.
+ * The BATTA_BLOCK crate. InitResources drops it onto the ground below its
+ * spawn point and enters state 0, where it falls and bounces; landing on a
+ * carrier actor (stored at +0x374) moves it to state 1, where it rides that
+ * actor's angles and matrix. A Mega Mario hit (02124acc), or the flag test
+ * in state 1 (02124edc), breaks it into dust and five coins.
  *
- * Emission is ROM-ascending under `#pragma defer_codegen off`. The
- * destructor is defined once, out of line; mwccarm emits D1 then D0.
- * D2 has no ROM home.
+ * NAME: daBttBk_c is the cartridge's RTTI spelling -- _ZTS at ov080
+ * 0x0212815c is the byte string "9daBttBk_c", and _ZTI at 0x02128168 reads
+ * [__si_class_type_info vtable (0x0209a764), that string, _ZTI8dActor_c
+ * (0x0208e390)]. The vtable's offset-to-top word (0x02128190) is 0 and its
+ * RTTI word (0x02128194) is that _ZTI; the address point _ZTV9daBttBk_c is
+ * 0x02128198 (slot 0, InitResources). The class was previously the coined
+ * name CrazedCrate.
+ *
+ * THE DESTRUCTOR IS THE KEY FUNCTION, declared first in daBttBk_c.h and
+ * defined first below, so this TU emits _ZTV9daBttBk_c and the RTTI chain
+ * as vague linkage. Under `#pragma defer_codegen off` mwccarm emits each
+ * function as it is parsed, so the file is written in ROM-ascending order
+ * and the out-of-line destructor comes out D1 (0x02124a20), D0
+ * (0x02124a68), then a D2 the cartridge has no home for (deadstripped;
+ * vtable slots 16/17 hold D1 and D0 only). D0's deallocation is an inline
+ * operator delete, which is why nothing below mentions a heap.
+ *
+ * THE STATE MACHINE. The eleven func_ov080_* functions of this run keep
+ * their address names: the cartridge preserves no spelling for them. The
+ * ROM ties each one to this class instead of a name --
+ *   - the six state bodies are the pointer-to-member constants at ov080
+ *     0x0212812c..0x02128158, the .data words directly before
+ *     _ZTS9daBttBk_c. __sinit_ov080_02127a60 constructs this class's model
+ *     file data_ov080_02128468 and copies those constants into the 3-row
+ *     state table data_ov080_0212847c (.bss): state 0 = {0212509c enter,
+ *     0212500c update}, state 1 = {02124fec, 02124edc}, state 2 =
+ *     {02124eb0, 02124e60}. Each enter function stores its own index at
+ *     +0x370;
+ *   - 0212513c points +0x36c at a row and runs its enter function through
+ *     02125104; 021250c8 runs the row's update function from Behavior;
+ *   - 02124acc (collision reaction, from state 0's update) and 02124c3c
+ *     (matrices and drop shadow, from Behavior and InitResources) have no
+ *     callers outside this run.
+ * All eleven lie between OnYoshiTryEat (0x02124ac4) and CleanupResources
+ * (0x02125158) with no gap, and nothing outside this run and its PMF
+ * constants references any of them.
+ *
+ * Leftover: func_ov080_02124eb0's old one-function source called it
+ *   "MontyMole_Kill" (daChoropu_c::Kill); the state table makes it this
+ *   class's state-2 enter function, not a daChoropu_c method.
+ * Leftover: Particle::System::NewSimple, dActor_c::SpawnCoins and
+ *   dActor_c::DropShadowScaleXYZ stay mangled extern "C" calls -- each
+ *   takes Fix12<int> by value, and a member call homes the argument and
+ *   changes the ROM ABI.
+ * Leftover: the factory daBttBk_c_classInit (0x021253b4; reconstructed
+ *   name, historical alias CrazedCrate_Spawn) sits just past this run's
+ *   right edge and stays in src/d_a_btt_bk.c.
  */
 
-/* decl_common.h spells func_ov080_0212513c as one argument. The body
- * takes the state index too. Hide that declaration; this TU is the
- * only caller. */
-#define func_ov080_0212513c func_ov080_0212513c_hidden_decl
 #include "decl_common.h"
-#undef func_ov080_0212513c
-extern "C" void func_ov080_0212513c(char *c, int i);
 #include "daBttBk_c.h"
 #include "dBgCh_Gnd.h"
 #include "SharedFilePtr.h"
@@ -43,7 +78,7 @@ void *_ZN8dActor_c10FindWithIDEj(unsigned int id);
 void _ZN6Player16IncMegaKillCountEv(void *p);
 void _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(unsigned int id, int x, int y, int z);
 void _ZN8dActor_c10PoofDustAtERK7Vector3(void *self, const Vector3 &vec);
-void _ZN8dActor_c10SpawnCoinsERK7Vector3j5Fix12IiES(void *self, const Vector3 &v, unsigned int n, int vel, short unk);
+void _ZN8dActor_c10SpawnCoinsERK7Vector3j5Fix12IiEs(void *self, const Vector3 &v, unsigned int n, int vel, short unk);
 void _ZN5Sound9PlayBank3EjRK7Vector3(unsigned int id, const Vector3 &pos);
 void _ZN7fBase_c18MarkForDestructionEv(void *self);
 void _ZN5dCc_c5ClearEv(void *);
@@ -86,6 +121,10 @@ s32 daBttBk_c::OnYoshiTryEat()
     return 1;
 }
 
+/* Collision reaction, run from state 0's update: a carrier found by
+ * func_02010304 is stored at +0x374 and enters state 1; otherwise, against
+ * actor id 0xbf, mFlags bit 17 enters state 2 and a +0x16c bit 4 contact
+ * breaks the crate (Player::IncMegaKillCount, dust, five coins). */
 // @symbol func_ov080_02124acc
 extern "C" void func_ov080_02124acc(char *c)
 {
@@ -116,11 +155,13 @@ extern "C" void func_ov080_02124acc(char *c)
     v.y = t;
     v3.y = t;
     v3.z = v.z;
-    _ZN8dActor_c10SpawnCoinsERK7Vector3j5Fix12IiES(c, v3, 5, 0xf000, 0);
+    _ZN8dActor_c10SpawnCoinsERK7Vector3j5Fix12IiEs(c, v3, 5, 0xf000, 0);
     _ZN5Sound9PlayBank3EjRK7Vector3(0x41, *(Vector3 *)(c + 0x74));
     _ZN7fBase_c18MarkForDestructionEv(c);
 }
 
+/* Model and shadow matrices: follows the carrier's matrix while carried,
+ * then rebuilds the model matrix at +0xf0 and the drop shadow at +0x33c. */
 // @symbol func_ov080_02124c3c
 extern "C" void func_ov080_02124c3c(char *c)
 {
@@ -176,6 +217,8 @@ extern "C" void func_ov080_02124c3c(char *c)
     }
 }
 
+/* State 2 update: back to state 0 once neither flag bit 17 nor 18 is set.
+ * The one-argument call selects state 0 through the r1 left at 0. */
 // @symbol func_ov080_02124e60
 extern "C" int func_ov080_02124e60(char *c)
 {
@@ -190,6 +233,7 @@ done:
     return 1;
 }
 
+/* State 2 enter. */
 // @symbol func_ov080_02124eb0
 extern "C" int func_ov080_02124eb0(char *c)
 {
@@ -199,6 +243,8 @@ extern "C" int func_ov080_02124eb0(char *c)
     return 1;
 }
 
+/* State 1 update: copies the carrier's angles; breaks the crate unless
+ * mFlags bit 8 is set and bit 13 clear. */
 // @symbol func_ov080_02124edc
 extern "C" int func_ov080_02124edc(char *c)
 {
@@ -238,7 +284,7 @@ extern "C" int func_ov080_02124edc(char *c)
                 v3.z = zz;
                 vec.y = y2;
                 v3.y = y2;
-                _ZN8dActor_c10SpawnCoinsERK7Vector3j5Fix12IiES(c, v3, 5, 0xf000, 0);
+                _ZN8dActor_c10SpawnCoinsERK7Vector3j5Fix12IiEs(c, v3, 5, 0xf000, 0);
             }
 
             _ZN5Sound9PlayBank3EjRK7Vector3(0x41, *(Vector3 *)(c + 0x74));
@@ -250,6 +296,7 @@ clear:
     return 1;
 }
 
+/* State 1 enter. */
 // @symbol func_ov080_02124fec
 extern "C" int func_ov080_02124fec(int *c)
 {
@@ -260,6 +307,7 @@ extern "C" int func_ov080_02124fec(int *c)
     return one;
 }
 
+/* State 0 update: fall, bounce at 60% on landing, collide. */
 // @symbol func_ov080_0212500c
 extern "C" int func_ov080_0212500c(char *c)
 {
@@ -277,6 +325,7 @@ extern "C" int func_ov080_0212500c(char *c)
     return 1;
 }
 
+/* State 0 enter. */
 // @symbol func_ov080_0212509c
 extern "C" int func_ov080_0212509c(char *c)
 {
@@ -286,6 +335,7 @@ extern "C" int func_ov080_0212509c(char *c)
     return 1;
 }
 
+/* Runs the current state row's update function (second PMF). */
 // @symbol func_ov080_021250c8
 extern "C" void func_ov080_021250c8(char *raw)
 {
@@ -294,6 +344,7 @@ extern "C" void func_ov080_021250c8(char *raw)
     (c->**p)();
 }
 
+/* Runs the current state row's enter function (first PMF). */
 // @symbol func_ov080_02125104
 extern "C" void func_ov080_02125104(C *c)
 {
@@ -301,6 +352,7 @@ extern "C" void func_ov080_02125104(C *c)
     (c->**p)();
 }
 
+/* Changes state: points +0x36c at row i of the state table, then enters it. */
 // @symbol func_ov080_0212513c
 extern "C" void func_ov080_0212513c(char *c, int i)
 {
@@ -308,6 +360,7 @@ extern "C" void func_ov080_0212513c(char *c, int i)
     func_ov080_02125104((C *)c);
 }
 
+/* Slot 3: one shared model file handle to give back. */
 // @symbol _ZN9daBttBk_c16CleanupResourcesEv
 s32 daBttBk_c::CleanupResources()
 {
@@ -315,6 +368,7 @@ s32 daBttBk_c::CleanupResources()
     return 1;
 }
 
+/* Slot 12: empty override. */
 // @symbol _ZN9daBttBk_c16OnPendingDestroyEv
 void daBttBk_c::OnPendingDestroy()
 {
