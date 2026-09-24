@@ -203,7 +203,7 @@ first module where a `config_tu/` conversion becomes conceivable.
 |----|---------|-------|-------------|--------|
 |[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20b09b0|  n=9|   `daChScene_c`|                   CONF1|
 |[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20b46a0|  n=8|   `MegaMushroomCreateTag`|  CONF1 pcov=5|
-|[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20bc5e0|  n=8|   `HealingHeart`|          CONF1 pcov=4|
+|[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20bc5e0|  n=8|   `daObjHeart_c`|          CONF1 pcov=4|
 |[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20f0894|  n=8|   `daObjNumber_c`|                 CONF1|
 |[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20f11b0|  n=9|   `daObjBC_Switch_c`|         CONF2|
 |[ov006](../config/arm9/overlays/ov006/symbols.txt)| 0x212471c|  n=2|   `MgTrampolineTerror`|     CONF1|
@@ -240,7 +240,7 @@ first module where a `config_tu/` conversion becomes conceivable.
 |[ov036](../config/arm9/overlays/ov036/symbols.txt)| 0x21111a0|  n=8|   `daObjRcBuranko_c`|   CONF1|
 |[ov043](../config/arm9/overlays/ov043/symbols.txt)| 0x21113fc|  n=5|   `RickshawBdw`|       CONF1|
 |[ov052](../config/arm9/overlays/ov052/symbols.txt)| 0x21111a0|  n=7|   `daObjEmmLog_c`|      CONF3 WHOLEMOD pcov=3 (1 distinct include)|
-|[ov052](../config/arm9/overlays/ov052/symbols.txt)| 0x2111440|  n=7|   `SquarePathLift`|     CONF2|
+|[ov052](../config/arm9/overlays/ov052/symbols.txt)| 0x2111440|  n=7|   `daObjEmmYuka_c`|     CONF2|
 |[ov056](../config/arm9/overlays/ov056/symbols.txt)| 0x21111a0|  n=7|   `BigMovingIceBlock`|  CONF2 WHOLEMOD pcov=2|
 |[ov062](../config/arm9/overlays/ov062/symbols.txt)| 0x211af38|  n=8|   `daRFlag_c`|          CONF2 pcov=3|
 |[ov064](../config/arm9/overlays/ov064/symbols.txt)| 0x211a930|  n=8|   `daObjShell_c`|               CONF1|
