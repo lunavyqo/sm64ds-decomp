@@ -1224,8 +1224,8 @@ void dScMgMemory2_c::OnYoshiTryEat(int /* arg */)
  * and the shared dMeter_c. */
 s32 dScMgMemory2_c::Render()
 {
-    /* 0x4660..0x471c is dScMgSingle3DBase_c's minigame camera. */
-    func_ov006_020c0aa8((char *)this + 0x4660);
+    /* pad_4660 is the minigame camera, in dScMgSingle3DBase_c's padding. */
+    func_ov006_020c0aa8((char *)pad_4660);
     func_ov004_020b1bc8((char *)this, 0xc, 0xc, 0);
     func_ov004_020b6430();
     DrawMessage();
