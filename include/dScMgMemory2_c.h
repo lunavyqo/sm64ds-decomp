@@ -1,6 +1,14 @@
 /* Memory Master (MG_MEMORY_J). Twenty cards, three player markers, one cursor.
  * Deal them face-up, hide them, then touch matching pairs.
  *
+ * RTTI: dScMgMemory2_c : dScMgSingle3DBase_c. This tree first shipped the
+ * class under the coined name MgMemoryMaster; the ROM disagrees. The vptr is
+ * ov006:0x0213d4d4, and the word below it is _ZTI14dScMgMemory2_c. The
+ * factory is dScMgMemory2_c_classInit (historical alias
+ * MgMemoryMaster_Spawn). SIZE 0x5410, from classInit's
+ * fBase_c::operator new(0x5410). The out-of-line destructor emits D1
+ * 0x020f5564 then D0 0x020f55b8.
+ *
  * mShared is what func_ov006_020c1d80 builds and func_ov006_020c1c64 tears
  * down. The real BlendModelAnim / Model / ShadowModel stay byte arrays:
  * a member with a destructor would run twice.
@@ -25,7 +33,7 @@ struct dMgMemory2SharedState_c {
        ShadowModel at +0x88. */
     u8  at_0dc[0xf8];         /* 0x0dc */
     u8  pad_1d4[0x8];         /* 0x1d4 */
-    s16 unk_1dc;              /* 0x1dc -- ctor stores 0 */
+    s16 unk_1dc;              /* 0x1dc -- func_ov006_020c1d80 stores 0 */
     u8  pad_1de[0x8];         /* 0x1de */
     s16 ready;                /* 0x1e6 */
     u8  filePtr[0x78];        /* 0x1e8 -- 15 SharedFilePtr, through +0x258 */
@@ -66,7 +74,7 @@ struct dMgMemory2Player_c {
 struct dMgMemory2Cursor_c {
     s32 x;
     s32 y;
-    s16 angle;
+    s16 blinkTimer;
     u8 pad_0a[2];
     u8 visible;
     u8 frame;
@@ -85,7 +93,11 @@ typedef char dMgMemory2Cursor_c_size_must_be_0x10[sizeof(dMgMemory2Cursor_c) == 
 struct dScMgMemory2_c : dScMgSingle3DBase_c {
     virtual ~dScMgMemory2_c();
 
-    s32 InitResources();   /* slot  0 */
+    /* The out-of-line destructor is the key function, so this TU emits
+       _ZTV/_ZTI/_ZTS14dScMgMemory2_c as compiler-only output; the manifest
+       licenses the cartridge copies at 0x0213d4d4, 0x0213d350 and 0x0213d35c
+       as deadstrip data. */
+    s32 InitResources();   /* slot  0 -- 0x020f74b4 */
     virtual void OnYoshiTryEat(int arg);               /* slot 18 */
     virtual int  OnTurnIntoEgg(int mode);              /* slot 19 */
     virtual void OnGroundPounded();                    /* slot 21 */

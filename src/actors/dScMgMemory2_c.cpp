@@ -1,6 +1,10 @@
 //cpp
 /* Memory Master (MG_MEMORY_J). Deal the cards, move the markers, judge pairs.
  *
+ * Functions are in ROM order; do not reorder. The local pragmas keep their
+ * emission. Earlier probes are in
+ * notes/experiments/pr2875-source-repair-0920.json.
+ *
  * Leftover: DrawCards, RoundWaitDeal, RoundReadyCards, RoundHideCards,
  *   RoundShowCards, ResultFinish, ResetGame and InitPlayers step char* by
  *   0x18 or 0x14 from this. A card or player pointer changes those loops.
@@ -8,7 +12,7 @@
  * Leftover: CheckFinished calls inline_fn(this+0xa8) and this+0xb4.
  *   unk_0a8 and mHudScore directly miss. unk_5407 is only cleared.
  * Leftover: ResultWait decrements mResultTimer as (int)this+0x53e4.
- * Leftover: func_ov006_020c0aa8 sets the camera at pad_4660 and tail-calls
+ * Leftover: func_ov006_020c0aa8 sets the camera at this+0x4660 and tail-calls
  *   Camera_UpdateMatrices. Render and InitResources call that wrapper.
  * Leftover: func_ov004_020b1e34, func_ov004_020ad79c and func_ov006_020c1a88
  *   stay the linker names. Their bodies are not in this file.
@@ -164,8 +168,7 @@ void dScMgMemory2_c::DrawCursor() {
 void dScMgMemory2_c::UpdateCursor() {
   if (mCursor.visible == 0) return;
   {
-    /* mCursor.angle counts frames here, not a heading. */
-    unsigned short* timer = (unsigned short *)&mCursor.angle;
+    unsigned short* timer = (unsigned short *)&mCursor.blinkTimer;
     *timer = *timer + 1;
     if (*timer < 0x14) return;
     *timer = 0;
@@ -183,7 +186,7 @@ void dScMgMemory2_c::ShowCursor()
     mCursor.enabled = 1;
     mCursor.x = 966656;
     mCursor.y = 688128;
-    mCursor.angle = 0;
+    mCursor.blinkTimer = 0;
     mCursor.frame = 0;
 }
 
@@ -1221,7 +1224,8 @@ void dScMgMemory2_c::OnYoshiTryEat(int /* arg */)
  * and the shared dMeter_c. */
 s32 dScMgMemory2_c::Render()
 {
-    func_ov006_020c0aa8((char *)pad_4660);
+    /* 0x4660..0x471c is dScMgSingle3DBase_c's minigame camera. */
+    func_ov006_020c0aa8((char *)this + 0x4660);
     func_ov004_020b1bc8((char *)this, 0xc, 0xc, 0);
     func_ov004_020b6430();
     DrawMessage();
@@ -1265,7 +1269,8 @@ s32 dScMgMemory2_c::InitResources()
     Deallocate(palette);
     data_0209d454 = 0x18;
     ResetGame();
-    func_ov006_020c0aa8((char *)pad_4660);
+    /* 0x4660..0x471c is dScMgSingle3DBase_c's minigame camera. */
+    func_ov006_020c0aa8((char *)this + 0x4660);
     if (func_ov006_020c1a88(&mShared) == 0) return 0;
     unk_0a8 = func_ov004_020ad8b8();
     unk_0ac = unk_0a8;
