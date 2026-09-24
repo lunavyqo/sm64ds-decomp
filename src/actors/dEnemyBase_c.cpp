@@ -1,16 +1,26 @@
 //cpp
 /**
- * Shared base for the walking enemies.
+ * Shared base for enemies and other actors that use the enemy collision,
+ * death and Yoshi-eat handling.
  *
- * IsGoingOffCliff probes the floor ahead and stores the result in
- * mCliffState. AngleAwayFromWallOrCliff turns the actor when that
- * probe says the floor is gone or too steep.
+ * IsGoingOffCliff probes straight down from the actor and stores the
+ * result in mCliffState. AngleAwayFromWallOrCliff turns the actor when
+ * that probe says the floor is gone or too steep.
  *
- * The constructor and destructor are empty in the source. The compiler
- * fills in the base call and the vtable store, which is why they stay
- * declared and not inlined. Source order is the reverse of the ROM
- * because codegen is deferred. decl_common.h is left out: its helper
- * spellings disagree with this file.
+ * The constructor and destructor bodies are empty. The compiler supplies
+ * the base call and the vptr store (see the constructor note). Source
+ * order is the reverse of the ROM because codegen is deferred.
+ * decl_common.h is left out: its helper spellings disagree with this file.
+ *
+ * The out-of-line destructor is the class's key function. It emits D2, D0
+ * and D1 in cartridge order (0x020aed18, 0x020aed3c, 0x020aed74), so this
+ * object carries _ZTV/_ZTI/_ZTS12dEnemyBase_c and the inherited RTTI. The
+ * manifest's compiler_only_output licenses them, and the promotion claims
+ * no data.
+ *
+ * The name is the cartridge's: ov002 holds _ZTI12dEnemyBase_c/
+ * _ZTS12dEnemyBase_c at 0x021081c0/0x021081cc, and da1up_c's
+ * __si_class_type_info reaches them through its +8 word.
  */
 #include "dEnemyBase_c.h"
 #include "decl_dBgPi.h"
@@ -37,7 +47,7 @@ dEnemyBase_c::dEnemyBase_c()
 {
 }
 
-/* _ZN12dEnemyBase_cD1Ev 0x020aed74.  ONE definition, three emitted sections.          */
+/* One definition, three emitted sections: D2 0x020aed18, D0 0x020aed3c, D1 0x020aed74. */
 // @symbol _ZN12dEnemyBase_cD2Ev
 // @symbol _ZN12dEnemyBase_cD0Ev
 // @symbol _ZN12dEnemyBase_cD1Ev
@@ -360,7 +370,7 @@ int dEnemyBase_c::UpdateDeath(dBgCh_Actr & clsn_)
 }
 
 // @symbol func_ov002_020ae64c
-/* Forward declaration, because ordinal 9 is written LOWER in this file (the whole
+/* Forward declaration, because func_ov002_020ae5c8 is written LOWER in this file (the whole
    TU runs highest ROM address first).
 
    THE SECOND PARAMETER IS REAL AND IS LOAD-BEARING, and merging is what proved
@@ -394,7 +404,7 @@ extern "C" int func_ov002_020ae608(void* c, void* a){
 }
 
 // @symbol func_ov002_020ae5c8
-/* `x` is unused on purpose -- see the note on ordinal 11, which passes it. */
+/* `x` is unused on purpose -- see the note on func_ov002_020ae64c, which passes it. */
 extern "C" int func_ov002_020ae5c8(void* c, int x){
   unsigned short* p=(unsigned short*)((char*)c+0x100);
   if(p[1]!=0) return 0;
@@ -454,7 +464,6 @@ extern "C" int func_ov002_020ae454(char* c, void* a){
   return 0;
 }
 
-/* 0x020ae2b8, size 0x19c                                                     */
 /* Written as the real method over the real dBgCh_Lin/dBgPi classes, which is the
    form the legacy shard recovered and byte-matched. The two by-value Fix12i
    parameters the mangled name claims are spelled as themselves. */
@@ -508,7 +517,6 @@ int dEnemyBase_c::IsGoingOffCliff(dBgCh_Actr &clsn_, Fix12i fix2, s16 a3,
   return this->mCliffState != 0;
 }
 
-/* 0x020ae244, size 0x74                                                      */
 /* On a wall, reflect the heading off it; on a cliff edge (mCliffState), turn
    around; otherwise report that nothing was done. */
 extern "C" {
@@ -533,7 +541,6 @@ int dEnemyBase_c::AngleAwayFromWallOrCliff(dBgCh_Actr & clsn_, short & outAngle_
     return 1;
 }
 
-/* 0x020ade78, size 0x3cc                                                     */
 /* One frame of "this enemy is in Yoshi's mouth / has just been spat out". The
    three flag bits at 0x0b0 pick the phase: 0x40000 = held in the mouth (track the
    eater's position and return 2), 0x20000 = swallowed (return 1), 0x80000 = just
@@ -552,7 +559,7 @@ int dEnemyBase_c::AngleAwayFromWallOrCliff(dBgCh_Actr & clsn_, short & outAngle_
    not name every field this function touches; `this` and the reference argument
    arrive in r0/r1 exactly as the free-function form did, so the body is unchanged.
 
-   Ordinal 26 above already declared GetLimMovFlag, UpdateContinuous, IsOnGround,
+   UpdateWMClsn above already declared GetLimMovFlag, UpdateContinuous, IsOnGround,
    GetFloorResult and CopyNormalTo with typed receivers in a file-scope extern "C"
    region. A member function cannot sit inside such a region, so those cannot be
    re-declared here with this member's narrower `char *` view -- extern "C" has no
@@ -679,7 +686,6 @@ int dEnemyBase_c::UpdateYoshiEat(dBgCh_Actr & clsn_)
     return 0;
 }
 
-/* 0x020addc0, size 0xb8                                                      */
 /* While mEatenByYoshi is set, a cylinder collision against anything other than actor
    IDs 0x120/0x121 spawns the mega-character particles; otherwise bit 0x20000 on
    the collision is raised. Clearing mEatenByYoshi clears that bit instead. */
@@ -718,7 +724,6 @@ done:
     return 0;
 }
 
-/* 0x020adb40, size 0x280                                                     */
 // @symbol _ZN12dEnemyBase_c22SpawnMegaCharParticlesER8dActor_cPc
 extern "C" {
 extern void Vec3_Sub(Vector3 *out, const Vector3 *a, const Vector3 *b);
@@ -798,7 +803,6 @@ void dEnemyBase_c::SpawnMegaCharParticles(dActor_c &a, char *p)
         0, 0xc0, dst.x, dst.y, dst.z, 0, 0);
 }
 
-/*                  R6Player5Fix12IiE, 0x020ada40, size 0x100                 */
 /* What happens when a mega/invincible Mario runs an enemy over. The enemy is
    turned to face the player, given the launch velocity the caller passed, put into
    death state 8 with a 30-frame timer, and two particle systems are spawned at its
@@ -845,7 +849,6 @@ void dEnemyBase_c::KillByInvincibleChar(const Vector3_16 & vel_, Player & player
 }
 
 
-/*                  R9ModelAnimj, 0x020ad838, size 0x208                      */
 /* One frame of the death an invincible (mega) character inflicts. `flags` is a
    two-bit selector, not a boolean: bit 0 drops a coin, bit 1 books the kill in
    the death table. Both reference parameters are null-checked -- the compiler
