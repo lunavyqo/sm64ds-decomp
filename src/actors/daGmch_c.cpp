@@ -3,7 +3,13 @@
  * 37 functions, enrolled and canonical. All 36 helpers are real class
  * methods; the factory is the one free function.
  *
+ * Class name is ROM RTTI: "8daGmch_c" at 0x02128bc8, with its
+ * __si_class_type_info at 0x02128bd4. The tree used to call it
+ * Moneybag; that name is not in the cartridge.
+ *
  * Source runs ROM-ascending under defer_codegen off. Do not reorder.
+ * The ROM has D1 (0x02126504) below D0 (0x02126554) and no D2:
+ * mwccarm emits D1, D0, D2 here and the D2 is deadstripped.
  * common.h comes before daGmch_c.h (flat Matrix4x3 block-move).
  * decl_common.h is deliberately NOT included (it contradicts this
  * TU's own helper spellings).
@@ -19,7 +25,7 @@
  * Leftover: unk_0a4 and unk_0ac stay those names. They are
  *   dActor_c's world-velocity X/Z beside mVertSpeed (this TU
  *   multiplies them by the floor normal). The base header still
- *   spells them unk_ on purpose.
+ *   spells them unk_.
  * Leftover: ModelCache wants a shared home with da1up_c's copy.
  */
 
@@ -27,7 +33,7 @@
 
 #include "types.h"
 /* BEFORE daGmch_c.h, and load-bearing: common.h and math/Matrix.h both define
-   Matrix4x3 under one guard and whichever is seen FIRST stands.  Ordinal 34
+   Matrix4x3 under one guard and whichever is seen FIRST stands.  InitResources
    assigns IDENTITY_MATRIX4X3 whole into mMatrix; under common.h flat s32[12]
    spelling mwccarm block-moves it, under math/Matrix.h Matrix3x3+Vector3
    spelling it splits into a 9-word ldm/stm plus a CSE tail -- measured here as
@@ -52,11 +58,11 @@ struct ModelCache { int pad0; BMD_File *file; };
  * member's ROM address.
  * ------------------------------------------------------------------------- */
 
-/* EnterState7 (ordinal 12) -- a flat three-int vector, NOT types.h's
+/* EnterState7 -- a flat three-int vector, NOT types.h's
    Vector3: that one has a declared destructor and is not an aggregate. */
 typedef struct Vec3_26e28 { int x, y, z; } Vec3_26e28;
 
-/* CallStateUpdate and CallStateEnter (ordinals 27, 28), the two
+/* CallStateUpdate and CallStateEnter, the two
    pointer-to-member invokers.  Two separate tags
    even though the windows are identical: mwccarm's pointer-to-member
    representation depends on whether the class was complete when the PMF type
@@ -69,7 +75,7 @@ struct C_27744;
 typedef void (C_27744::*PMF_27744)();
 struct C_27744 { char pad[0x3dc]; PMF_27744 *pp; };
 
-/* EnterState4 and EnterState2 (ordinals 18, 22) -- the two-word BCA file-pointer records those members
+/* EnterState4 and EnterState2 -- the two-word BCA file-pointer records those members
    recovered as a struct rather than as an array.  Hoisted to file scope only
    because a block-scope tag cannot type an `extern` object once the member is a
    class method; the field expressions are untouched. */
@@ -94,16 +100,16 @@ struct Bca2 { int w[2]; };
  *   Vec3_Dist and dActor_c::DistToCPlayer spelt `Fix12i` and spelt `int` are
  *   the same declaration written twice.
  *
- *   FOUR disagreed only about something no call site can see: a return value
+ *   FIVE disagreed only about something no call site can see: a return value
  *   that every caller discards or compares against zero (func_02038414,
  *   ModelAnim::SetAnim, DecIfAbove0_Byte) or which pointer type spells the same
- *   address (Vec3_HorzAngle, ModelAnim::SetAnim).
+ *   address (Vec3_HorzAngle, ModelAnim::SetAnim, and ApproachLinear, which
+ *   keeps a short * so the turn helpers pass &mAngleY).
  *
- *   TWO needed a call site adapted rather than a declaration chosen.
+ *   ONE needed a call site adapted rather than a declaration chosen.
  *   Sound::PlayBank0's position is the camera-space triple, passed as
  *   *(Vector3 *)&mCamSpacePosX because dActor_c has no Pos().
- *   ApproachLinear keeps a short *, so the turn helpers pass &mAngleY.
- *   Same address, same register, and both members still match.
+ *   Same address, same register, and the member still matches.
  *
  * The NINTH is genuinely load-bearing: RandomIntInternal must return
  * `unsigned int`.  Measured -- declaring it `int` leaves 36/37 matching and
@@ -113,8 +119,8 @@ struct Bca2 { int w[2]; };
  * Data is different -- mwccarm leaves a file-scope variable's name unmangled in
  * C++ -- so every `data_*` declaration stays at block scope in the member that
  * recovered it, and the members that disagree about a data object's TYPE
- * (data_ov081_02128ec4 is a two-word struct to ordinal 18 and a pointer array
- * to ordinal 26) keep both views.
+ * (data_ov081_02128ec4 is a two-word struct to EnterState4 and a pointer
+ * array to EnterState0) keep both views.
  * ------------------------------------------------------------------------- */
 extern "C" {
 extern Fix12i Vec3_Dist(const void *a, const void *b);
@@ -152,8 +158,9 @@ extern void   _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void *
 
 // @symbol _ZN8daGmch_cD1Ev
 // @symbol _ZN8daGmch_cD0Ev
-/* One definition, two emitted variants, and this is the key function: it is the
-   first virtual daGmch_c.h declares out of line, so this TU is where the class's
+/* One definition, two ROM variants (the D2 mwccarm also emits is
+   deadstripped), and this is the key function: it is the first virtual
+   daGmch_c.h declares out of line, so this TU is where the class's
    _ZTV/_ZTI/_ZTS are emitted.  The compiler writes both bodies -- the vptr
    store, the five members destroyed in reverse construction order, then
    ~dActor_c -- and D0 additionally reaches Memory::Deallocate through
@@ -763,7 +770,7 @@ void daGmch_c::CallStateUpdate()
 
 // @symbol _ZN8daGmch_c14CallStateEnterEv
 /* Invokes PMF[0] -- the "enter" half -- of the current state's pair.  It is
-   never BL'd: ordinal 29 takes its address from a literal pool and tail-calls
+   never BL'd: SetState takes its address from a literal pool and tail-calls
    it through `bx ip`. */
 void daGmch_c::CallStateEnter()
 {
