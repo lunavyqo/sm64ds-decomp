@@ -9,8 +9,8 @@
 /* Reconstructed source-style name: SM64DS proves daObjBk_Botaosi_c through
  * RTTI, allocation size, vtable identity, and the BK_BOTAOSI registry profile;
  * later EAD lineage supplies classInit. Exact original spelling is not
- * preserved. The project's daObjBk_Botaosi_c implementation aliases remain
- * unchanged. Historical alias: KnockDownPlank_Spawn. */
+ * preserved. The class carried the coined name KnockDownPlank
+ * before the rename. Historical alias: KnockDownPlank_Spawn. */
 int *daObjBk_Botaosi_c_classInit(void)
 {
     int *p = (int *)_ZN7fBase_cnwEj(924);

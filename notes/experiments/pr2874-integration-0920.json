@@ -2954,8 +2954,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN17daObjBk_Botaosi_c16CleanupResourcesEv.cpp",
-      "name": "_ZN17daObjBk_Botaosi_c16CleanupResourcesEv",
+      "file": "src/_ZN14KnockDownPlank16CleanupResourcesEv.cpp",
+      "name": "_ZN14KnockDownPlank16CleanupResourcesEv",
       "module": "ov015",
       "addr": "0x21116b4",
       "verdict": "VERIFIED",
@@ -21090,7 +21090,7 @@
           "src/_ZN13daObjBlockL_c6RenderEv.cpp",
           "src/_ZN21daObjWlKoopaShutter_c16CleanupResourcesEv.cpp",
           "src/_ZN10daSnmBth_c8BehaviorEv.cpp",
-          "src/_ZN17daObjBk_Botaosi_c16CleanupResourcesEv.cpp",
+          "src/_ZN14KnockDownPlank16CleanupResourcesEv.cpp",
           "src/_ZN14dScMgBomroom_c13OnYoshiTryEatEi.cpp",
           "src/_ZN15FireSeaElevator13InitResourcesEv.cpp",
           "src/_ZN15TtcRotatingGear13InitResourcesEv.cpp",
@@ -21215,7 +21215,7 @@
           "src/_ZN13daObjBlockL_c6RenderEv.cpp",
           "src/_ZN21daObjWlKoopaShutter_c16CleanupResourcesEv.cpp",
           "src/_ZN10daSnmBth_c8BehaviorEv.cpp",
-          "src/_ZN17daObjBk_Botaosi_c16CleanupResourcesEv.cpp",
+          "src/_ZN14KnockDownPlank16CleanupResourcesEv.cpp",
           "src/_ZN14dScMgBomroom_c13OnYoshiTryEatEi.cpp",
           "src/_ZN15FireSeaElevator13InitResourcesEv.cpp",
           "src/_ZN15TtcRotatingGear13InitResourcesEv.cpp",
@@ -21717,7 +21717,7 @@
         "src/_ZN14CutsceneObject13InitResourcesEv.cpp",
         "src/_ZN14CutsceneObject6RenderEv.cpp",
         "src/_ZN14CutsceneObject8BehaviorEv.cpp",
-        "src/_ZN17daObjBk_Botaosi_c16CleanupResourcesEv.cpp",
+        "src/_ZN14KnockDownPlank16CleanupResourcesEv.cpp",
         "src/_ZN14UnchainedChomp8BehaviorEv.cpp",
         "src/_ZN14UnknownVsEntry13InitResourcesEv.cpp",
         "src/_ZN14UnknownVsEntry16CleanupResourcesEv.cpp",
@@ -22783,8 +22783,8 @@
           "name": "_ZN14CutsceneObject8BehaviorEv"
         },
         {
-          "file": "src/_ZN17daObjBk_Botaosi_c16CleanupResourcesEv.cpp",
-          "name": "_ZN17daObjBk_Botaosi_c16CleanupResourcesEv"
+          "file": "src/_ZN14KnockDownPlank16CleanupResourcesEv.cpp",
+          "name": "_ZN14KnockDownPlank16CleanupResourcesEv"
         },
         {
           "file": "src/_ZN14UnchainedChomp8BehaviorEv.cpp",
