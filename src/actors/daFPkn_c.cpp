@@ -114,11 +114,11 @@ void func_ov084_0212d2dc(char *c);
 void func_ov084_0212d42c(char *self);
 void func_ov084_0212d560(void *self);
 
-extern int data_ov084_02130e24[];
+extern PknSharedFile data_ov084_02130e24;   /* death animation */
 extern int data_ov084_0213029c[];
 extern int data_ov084_021302c4[];
 extern void *data_ov084_02130e1c[];
-extern void *data_ov084_02130e14[];
+extern PknSharedFile data_ov084_02130e14;   /* lunge animation */
 extern void *data_ov084_02130e04[];
 extern u8 data_ov084_02130294[];
 extern s32 data_020a0e68[];
@@ -128,7 +128,7 @@ extern s16 data_02082214[];
 void func_ov084_0212d2dc(char* c)
 {
     void* o;
-    if (*(int*)(c + 0x170) != data_ov084_02130e24[1])
+    if (*(void **)(c + 0x170) != data_ov084_02130e24.file)
         return;
 
     *(u32*)(c + 0x224) = _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(
@@ -160,7 +160,7 @@ void func_ov084_0212d42c(char *self)
     volatile int *xtbl;
     s16 *st;
 
-    if (*(int *)(self + 0x170) != data_ov084_02130e24[1])
+    if (*(void **)(self + 0x170) != data_ov084_02130e24.file)
         return;
     idx = (int)((unsigned)(*(int *)(self + 0x168) << 4) >> 16);
     if (idx >= 0xa)
@@ -328,7 +328,7 @@ void func_ov084_0212d86c(char *r5)
                 *p18c |= 1u;
                 *pb0 &= ~0x10000000u;
             }
-            _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(r5 + 0x110, (void *)data_ov084_02130e24[1], 0x40000000, 0x1000, 0);
+            _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(r5 + 0x110, data_ov084_02130e24.file, 0x40000000, 0x1000, 0);
             *(u8 *)(r5 + 0x21e) = 0;
             *(int *)(r5 + 0x224) = 0;
         }
@@ -403,7 +403,7 @@ second:
             *p18c |= 1u;
             *pb0 &= ~0x10000000u;
         }
-        _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(r5 + 0x110, (void *)data_ov084_02130e24[1], 0x40000000, 0x1000, 0);
+        _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(r5 + 0x110, data_ov084_02130e24.file, 0x40000000, 0x1000, 0);
         *(u8 *)(r5 + 0x21e) = 0;
         *(int *)(r5 + 0x224) = 0;
         return;
@@ -661,7 +661,7 @@ void func_ov084_0212e010(char* self)
     b = *(u16*)(self + 0xc) == 0xfd;
     if (b != false) {
         *(int*)(self + 0x1ec) = 3;
-        _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(self + 0x110, data_ov084_02130e14[1], 0x40000000, 0x1000, 0);
+        _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(self + 0x110, data_ov084_02130e14.file, 0x40000000, 0x1000, 0);
     } else {
         *(int*)(self + 0x1ec) = 2;
         _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(self + 0x110, data_ov084_02130e04[1], 0x40000000, 0x1000, 0);
