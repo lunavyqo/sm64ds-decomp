@@ -57,7 +57,7 @@ typedef char dScMgCurling2_piece_size_must_be_0x24[sizeof(struct dScMgCurling2_p
 struct dScMgCurling2_value {
     s32 x;              /* 0x00, 20.12 */
     s32 y;              /* 0x04, 20.12 */
-    s32 unk08;          /* 0x08 */
+    s32 xInc;           /* 0x08, zeroed at spawn and never read */
     s32 yInc;           /* 0x0c, decays by 0x40 a frame */
     u16 lifetime;       /* 0x10 */
     u16 value;          /* 0x12, drawn as the sprite's number */

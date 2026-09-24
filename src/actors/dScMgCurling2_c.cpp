@@ -4,8 +4,8 @@
  * stones when they collide.
  *
  * Leftover: SpawnValue still reads the other stone as
- *   raw + 0x4000 + other * 0x30 + 0x660. One constant loses the shared
- *   raw + 0x4000.
+ *   raw + 0x4000 + other * 0x30 + 0x660. mStone[other] folds that into one
+ *   constant and loses the raw + 0x4000 base the ROM shares.
  * Leftover: DragUpdate and func_ov006_020e513c call
  *   _ZN4cstd5atan2E5Fix12IiES1_. cstd::atan2 takes Fix12 by value.
  * Leftover: func_ov006_020e4a84 and func_ov006_020e4b00 still walk the
@@ -161,7 +161,7 @@ void dScMgCurling2_c::SpawnValue(int stone, int other)
         mValue[i].x = sx >> 1;
         mValue[i].y = sy >> 1;
         mValue[i].lifetime = 0x40;
-        mValue[i].unk08 = 0;
+        mValue[i].xInc = 0;
         mValue[i].yInc = 0;
 
         /* The && and || arms really do compute the same value; collapsing them
