@@ -10,11 +10,14 @@
  *   dActor_c::ReflectAngle / DropShadowRadHeight / IsTooFarAwayFromPlayer,
  *   dEnemyBase_c::KillByInvincibleChar, Player::Bounce / Hurt and
  *   Particle::RunningSlidingDustAt stay mangled. Each passes Fix12<int>
- *   by value (wall 6az), or the header declaration does not mangle to
- *   the ROM symbol. func_0201267c is the bank-3 Sound::Play wrapper.
+ *   by value (notes/mwccarm-codegen.md 6az), or the header declaration
+ *   does not mangle to the ROM symbol. func_0201267c is the bank-3
+ *   Sound::Play wrapper.
  *   GetWallResult / GetFloorResult are not methods on dBgCh_Actr.h.
  *   Particle bytes at +0x50 are Particle::System::callbackScale
  *   (func_ov062_021175c0 / func_ov062_02117724).
+ * Leftover: some helpers below still read fields through raw offsets;
+ *   tracked in #2871.
  */
 // Inline definitions in Koopa.h, emitted here by the two factories:
 #include "Koopa.h"
@@ -43,7 +46,6 @@ typedef int Fix12i;
 
 /* shadow typedef 'Vec3' */
 typedef struct { s32 x, y, z; } Vec3;
-
 
 extern "C" {
 extern int _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(u32 uniqueID, u32 effectID, s32 x, s32 y, s32 z, const void *dir, void *callback);
@@ -495,6 +497,9 @@ void func_ov062_02118b4c(char *self) {
 }  /* namespace tu */
 
 // @symbol func_ov062_02118a50
+/* ldrh cannot encode 0x3c6, so the state helpers test mTimer and mTurnTimer
+ * from mModelAnim (byte offsets 0xc6 and 0xc8) and decrement through &mTimer /
+ * &mTurnTimer. A single member expression folds that reload. */
 extern "C" {
 namespace tu {  /* namespaced: a conflicting file-scope view exists */
 void func_ov062_02118a50(char *c)
@@ -548,6 +553,7 @@ extern "C" void func_ov062_02118a00(void *c) {
 }  /* namespace tu */
 
 // @symbol func_ov062_02118718
+/* See the ldrh note at func_ov062_02118a50 for the mModelAnim + 0xc6/0xc8 reads. */
 extern "C" {
 void func_ov062_02118718(char *c)
 {
@@ -617,6 +623,7 @@ void func_ov062_02118718(char *c)
 }
 
 // @symbol func_ov062_02118588
+/* See the ldrh note at func_ov062_02118a50 for the mModelAnim + 0xc6/0xc8 reads. */
 extern "C" {
 void func_ov062_02118588(char *c)
 {
@@ -805,6 +812,7 @@ void func_ov062_021181a0(char *c) {
 }  /* namespace tu */
 
 // @symbol func_ov062_0211811c
+/* See the ldrh note at func_ov062_02118a50 for the mModelAnim + 0xc6/0xc8 reads. */
 extern "C" {
 namespace tu {  /* namespaced: a (void*) view of this symbol is in scope */
 void func_ov062_0211811c(char *c) {

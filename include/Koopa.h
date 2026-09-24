@@ -9,8 +9,9 @@
  * factories both allocate 0x3d0 bytes of this one class.
  *
  * Field names below are from this TU's reads. mKoopaVariant is 0 while
- * the Koopa still has its shell, 1 after the shell is popped (actor
- * 0x11d), and 2 for the small Koopa. mHomePos is the spawn point the
+ * the Koopa still has its shell, 1 after the shell is popped
+ * (func_ov062_02117bf4), back to 0 when it touches a SHELL (actor 0x11d)
+ * in state 2, and 2 for the small Koopa. mHomePos is the spawn point the
  * leash is measured from. mSafePos is the last spot that was not a
  * cliff edge. mAimAngle faces the closest player, or home when that
  * player is outside the leash. mTargetAngle is what mPrevAngleY is
@@ -18,11 +19,6 @@
  * mTurnTimer counts down to the next random heading. mTurning stays set
  * while AngleAwayFromWallOrCliff's turn is still running. mFootstep
  * blocks a second dust puff in the same animation window.
- * ldrh cannot encode 0x3c6, so the state helpers test mTimer and
- * mTurnTimer from mModelAnim (byte offsets 0xc6 and 0xc8) and decrement
- * through &mTimer / &mTurnTimer. A single member expression folds that
- * reload. dEnemyBase_c::unk_106 keeps that name: this branch's base
- * header still spells it unk_106.
  */
 
 #include "dEnemyBase_c.h"
