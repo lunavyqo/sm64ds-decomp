@@ -1,6 +1,7 @@
 //cpp
 /* Boom-box minigame. Each round deals mNotes on the touch screen; a touch
- * plays that pitch and pops icons in mPops.
+ * plays that pitch and pops icons in mPops. The class is a
+ * dScMgSingle3DBase_c (its RTTI is at 0x0213f6e4).
  *
  * The compiler emits .text in reverse source order, so the functions run
  * here from the highest address down. Do not reorder.
@@ -77,7 +78,6 @@ namespace GXS {
     void LoadOBJPltt(const void *data, u32 offset, u32 size);
 }
 
-#define M(p) ((void*)(int)(((long long)(int)(p)) & ~0LL))
 #define RND (((u32)RandomIntInternal(&data_0209d4b8) >> 16) & 0x7fff)
 #define LAUNDER(p) ((int)(p))
 
@@ -405,9 +405,7 @@ void dScMgSound_c::OnYoshiTryEat(int mode)
    known yet. */
 void dScMgSound_c::Virtual50()
 {
-    char *raw = (char *)this;
-
-    func_ov006_020c2594(raw + 0x4f38);
+    func_ov006_020c2594((char *)&mTable);
 }
 
 // @symbol func_ov006_0211c478
@@ -434,8 +432,8 @@ void func_ov006_0211c478(char *scene)
     }
 
     for (cnt2 = 0; cnt2 < 5; cnt2++) {
-        *(unsigned char *)(scene + 0x561a + cnt2) = 0;
-        *(unsigned char *)(scene + 0x561f + cnt2) = 0;
+        self->mPairUses[cnt2] = 0;
+        self->mPairNotes[cnt2] = 0;
     }
 
     b = scene;
@@ -450,8 +448,8 @@ void func_ov006_0211c478(char *scene)
         pop->pop.active = 0;
         pop->pop.visible = 0;
         pop->pop.sprite = 0;
-        pop->pop.pad_1f = 0;
-        pop->pop.active = 0;
+        pop->pop.unk_1f = 0;
+        pop->pop.active = 0; /* stored twice, as in the ROM */
         pop->pop.state = 0;
         pop->pop.phase = 0;
         pop->pop.kind = 0;
@@ -477,7 +475,7 @@ void func_ov006_0211c478(char *scene)
     self->mTouchCount = 0;
     self->mResultTimer = 0;
 
-    func_ov006_020c2924(scene + 0x4f38);
+    func_ov006_020c2924((char *)&self->mTable);
 }
 }
 
@@ -494,7 +492,7 @@ void func_ov006_0211c080(char *scene)
     int speed;
     int i;
 
-    sel = *(int *)(scene + 0xbc);
+    sel = self->unk_0bc;
     self->mPrevPattern = self->mPattern;
     if (sel >= 5) {
         sel = (u32)(RND * 5) >> 15;
@@ -511,21 +509,21 @@ void func_ov006_0211c080(char *scene)
     if (k == 3) {
         int a = (u32)(RND << 2) >> 15;
         int b = (u32)(RND * 3) >> 15;
-        self->mLanes[0] = b;
-        self->mLanes[1] = self->mLanes[0] + 1;
-        if (self->mLanes[1] >= 3)
-            *(u8 *)LAUNDER(scene + 0x5620) -= 3;
-        self->mLanes[2] = self->mLanes[1] + 1;
-        if (self->mLanes[2] >= 3)
-            *(u8 *)LAUNDER(scene + 0x5621) -= 3;
-        *(u8 *)LAUNDER(scene + 0x561f) += a * 3;
-        *(u8 *)LAUNDER(scene + 0x5620) += a * 3;
-        *(u8 *)LAUNDER(scene + 0x5621) += a * 3;
+        self->mPairNotes[0] = b;
+        self->mPairNotes[1] = self->mPairNotes[0] + 1;
+        if (self->mPairNotes[1] >= 3)
+            self->mPairNotes[1] -= 3;
+        self->mPairNotes[2] = self->mPairNotes[1] + 1;
+        if (self->mPairNotes[2] >= 3)
+            self->mPairNotes[2] -= 3;
+        self->mPairNotes[0] += a * 3;
+        self->mPairNotes[1] += a * 3;
+        self->mPairNotes[2] += a * 3;
     } else {
         half = count >> 1;
         for (i = 0; i < half; i++) {
             int v = (u32)(RND * speed) >> 15;
-            *(u8 *)(scene + i + 0x561f) = v;
+            self->mPairNotes[i] = v;
             if (i != 0) {
                 int dup;
                 int j;
@@ -533,25 +531,25 @@ void func_ov006_0211c080(char *scene)
                     dup = 0;
                     j = 0;
                     for (; j < i; j++) {
-                        if (*(u8 *)(scene + i + 0x561f) == *(u8 *)(scene + j + 0x561f)) {
+                        if (self->mPairNotes[i] == self->mPairNotes[j]) {
                             dup = 1;
                             break;
                         }
                     }
                     if (dup == 0)
                         break;
-                    *(u8 *)LAUNDER(scene + i + 0x561f) = (u32)(RND * speed) >> 15;
+                    self->mPairNotes[i] = (u32)(RND * speed) >> 15;
                 }
             }
         }
     }
     k = self->mPattern;
     if (k == 1 || k == 4) {
-        self->mBank = data_ov006_0212efb0[((u32)*(int *)(scene + 0xbc) >> 2) & 3];
+        self->mBank = data_ov006_0212efb0[((u32)self->unk_0bc >> 2) & 3];
     }
     half = count >> 1;
     for (i = 0; i < half; i++) {
-        *(u8 *)LAUNDER(scene + i + 0x561f) += data_ov006_0212ef9c[self->mPattern];
+        self->mPairNotes[i] += data_ov006_0212ef9c[self->mPattern];
     }
     {
         int xi;
@@ -641,27 +639,20 @@ void func_ov006_0211bf44(dScMgSound_c* scene, int slot)
     scene->mNotes[slot].state = 1;
     scene->mNotes[slot].timer = 0;
     scene->mNotes[slot].frame = 0;
-    {
-        u8* counter = (u8*)(int)((char*)scene + 0x5624);
-        *counter = *counter + 1;
-    }
+    scene->mTouchCount++;
     Sound::PlayBank2_2D(0x201);
 }
 }
 
 // @symbol func_ov006_0211bc8c
 /* Advances one note slot's animation. When the slot's last frame is
-   reached its note goes on the playback queue at 0x5610 and is played; the
-   instrument at 0x5627 and Virtual8C choose between func_02012790, the bank
-   handle at 0x560c and Sound::PlayBank2_2D.
-   Two spellings are load-bearing. func_ov006_0211b654 is passed `idx` even
-   though it is already in r1: dropping it changes the register allocation
-   of the queue block. And the two queue stores keep their different forms:
-   the compiler picks a different address shape for each, and forcing
-   either one breaks the other. */
+   reached its note goes on mQueue and is played; mPattern and Virtual8C
+   choose between func_02012790, the bank handle mBank and
+   Sound::PlayBank2_2D.
+   func_ov006_0211b654 is passed `idx` even though it is already in r1:
+   dropping it changes the register allocation of the queue block. */
 extern "C" void func_ov006_0211bc8c(dScMgSound_c *self, int idx)
 {
-    char *raw = (char *)self;
     u8 note;
     u8 instrument;
 
@@ -673,21 +664,21 @@ extern "C" void func_ov006_0211bc8c(dScMgSound_c *self, int idx)
     self->mNotes[idx].frame = 6;
     self->mNotes[idx].state = 2;
 
-    *(u16 *)(raw + self->mQueueLen * 2 + 0x5610) = self->mNotes[idx].note + 1;
-    ((u16 *)(raw + 0x5610))[self->mQueueLen] |= idx << 8;
+    self->mQueue[self->mQueueLen] = self->mNotes[idx].note + 1;
+    self->mQueue[self->mQueueLen] |= idx << 8;
     self->mQueueLen++;
-    *(u16 *)(raw + 0x5614) = 0x20;
+    self->mQueueTimer = 0x20;
 
     func_ov006_0211b654(self, idx);
     note = self->mNotes[idx].note;
 
     if (self->Virtual8C()) {
-        instrument = *(u8 *)(raw + 0x5627);
+        instrument = self->mPattern;
         if (instrument == 0 || instrument == 2) {
             if (data_ov006_0213f794[note] == 2) {
                 func_02012790(data_ov006_0213f7e8[note]);
             } else {
-                func_02012174(*(u32 *)(raw + 0x560c), data_ov006_0213f7e8[note]);
+                func_02012174(self->mBank, data_ov006_0213f7e8[note]);
             }
         } else if (instrument == 1) {
             int n = note - 0x1a;
@@ -698,29 +689,29 @@ extern "C" void func_ov006_0211bc8c(dScMgSound_c *self, int idx)
             Sound::PlayBank2_2D(data_ov006_0213f7e8[note]);
         }
     } else {
-        instrument = *(u8 *)(raw + 0x5627);
+        instrument = self->mPattern;
         if (instrument == 0 || instrument == 2) {
             func_02012790(data_ov006_0213f7e8[note]);
         } else if (instrument == 1) {
-            func_02012174(*(u32 *)(raw + 0x560c), data_ov006_0213f7e8[note]);
+            func_02012174(self->mBank, data_ov006_0213f7e8[note]);
         } else if (instrument == 4) {
             if (data_ov006_0213f794[note] == 2) {
                 Sound::PlayBank2_2D(data_ov006_0213f7e8[note]);
             } else {
-                func_02012174(*(u32 *)(raw + 0x560c), data_ov006_0213f7e8[note]);
+                func_02012174(self->mBank, data_ov006_0213f7e8[note]);
             }
         } else {
             Sound::PlayBank2_2D(data_ov006_0213f7e8[note]);
         }
     }
 
-    if (*(u8 *)(raw + 0x5624) == 1) func_ov006_020c2300((char *)&self->mTable);
+    if (self->mTouchCount == 1) func_ov006_020c2300((char *)&self->mTable);
 }
 
 // @symbol func_ov006_0211bc68
 extern "C" {
 void func_ov006_0211bc68(char* scene, int slot) {
-    if (*(unsigned char*)(scene+0x5624) == 0) {
+    if (((dScMgSound_c *)scene)->mTouchCount == 0) {
         ((dScMgSound_c *)scene)->mNotes[slot].state = 3;
     }
 }
@@ -743,9 +734,8 @@ void func_ov006_0211bbe0(dScMgSound_c *scene, int slot){
 /* Scrolls one note slot left by 0x10 per call and clears it once it has
    gone off screen. Its column comes from the per-mode tables
    data_ov006_0212ef5c and data_ov006_0212ef6c.
-   Three spellings are load-bearing: Virtual8C is asked through `this` in
-   C++, the store at +0x0c is a byte, and the last two clears index the table
-   as an array while every earlier access multiplies by 0x14. */
+   Two spellings are load-bearing: Virtual8C is asked through `this` in
+   C++, and the store at +0x0c is a byte. */
 void func_ov006_0211ba88(dScMgSound_c *scene, int slot)
 {
     int n;
@@ -754,10 +744,10 @@ void func_ov006_0211ba88(dScMgSound_c *scene, int slot)
 
     scene->mNotes[slot].x -= 0x10000;
 
-    if (((dScMgSound_c *)scene)->Virtual8C() != 0) {
-        limit = data_ov006_0212ef5c[((dScMgSound_c *)scene)->mPattern];
+    if (scene->Virtual8C() != 0) {
+        limit = data_ov006_0212ef5c[scene->mPattern];
     } else {
-        limit = data_ov006_0212ef6c[((dScMgSound_c *)scene)->mPattern];
+        limit = data_ov006_0212ef6c[scene->mPattern];
     }
 
     if (scene->mNotes[slot].checked == 0) {
@@ -796,9 +786,9 @@ extern "C" void func_ov006_0211b9c8(char *scene) {
     int found;
     int off;
     if (obj->check()) {
-        lr = data_ov006_0212ef7c[*(unsigned char*)((char*)obj + 0x5627)];
+        lr = data_ov006_0212ef7c[((dScMgSound_c *)obj)->mPattern];
     } else {
-        lr = data_ov006_0212ef8c[*(unsigned char*)((char*)obj + 0x5627)];
+        lr = data_ov006_0212ef8c[((dScMgSound_c *)obj)->mPattern];
     }
     for (ip = 0, off = 0; ip < 2; ip++) {
         int sb;
@@ -845,29 +835,30 @@ void func_ov006_0211b954(char* scene){
 // @symbol func_ov006_0211b80c
 extern "C" {
 void func_ov006_0211b80c(char *scene){
-  if((unsigned char)scene[0x5625] < 2) return;
-  if(*(unsigned short*)(scene+0x5614) != 0){
-    *(unsigned short*)M(scene + 0x5614) -= 1;
-    if(*(short*)(scene+0x5614) <= 0) *(unsigned short*)(scene+0x5614) = 0;
+  dScMgSound_c *self = (dScMgSound_c *)scene;
+  if(self->mQueueLen < 2) return;
+  if(self->mQueueTimer != 0){
+    self->mQueueTimer -= 1;
+    if((short)self->mQueueTimer <= 0) self->mQueueTimer = 0;
     return;
   }
-  if((*(unsigned short*)(scene+0x5610) & 0xff) == (*(unsigned short*)(scene+0x5612) & 0xff)){
-    ((dScMgSound_c *)scene)->mNotes[*(unsigned short*)(scene+0x5610) >> 8].alive = 0;
-    ((dScMgSound_c *)scene)->mNotes[*(unsigned short*)(scene+0x5612) >> 8].alive = 0;
+  if((self->mQueue[0] & 0xff) == (self->mQueue[1] & 0xff)){
+    self->mNotes[self->mQueue[0] >> 8].alive = 0;
+    self->mNotes[self->mQueue[1] >> 8].alive = 0;
     func_02012790(0x26);
-    { volatile void* p = (void*)(scene+0x4f38); func_ov006_020c271c((void*)p); }
+    func_ov006_020c271c(&self->mTable);
   } else {
-    ((dScMgSound_c *)scene)->mNotes[*(unsigned short*)(scene+0x5610) >> 8].state = 3;
-    ((dScMgSound_c *)scene)->mNotes[*(unsigned short*)(scene+0x5612) >> 8].state = 3;
+    self->mNotes[self->mQueue[0] >> 8].state = 3;
+    self->mNotes[self->mQueue[1] >> 8].state = 3;
     func_02012790(0xe);
-    (*(unsigned char*)M(scene + 0x5626))--;
+    self->mTries--;
     func_02012790(0x12f);
-    func_ov006_020c2664(scene+0x4f38);
+    func_ov006_020c2664((char *)&self->mTable);
   }
-  *(unsigned short*)(scene+0x5612) = 0;
-  *(unsigned short*)(scene+0x5610) = *(unsigned short*)(scene+0x5612);
-  scene[0x5625] = 0;
-  scene[0x5624] = 0;
+  self->mQueue[1] = 0;
+  self->mQueue[0] = self->mQueue[1];
+  self->mQueueLen = 0;
+  self->mTouchCount = 0;
 }
 }
 

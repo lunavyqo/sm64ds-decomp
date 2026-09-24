@@ -1,10 +1,15 @@
 /* Boom-box minigame (MG_SOUND). Each round deals note slots on the
  * touch screen; a touch plays the note and pops a bouncing icon.
  *
- * dScMgSound_c_classInit is reconstructed (RTTI dScMgSound_c, MG_SOUND
- * registry). Retail does not store that spelling.
+ * RTTI: dScMgSound_c : dScMgSingle3DBase_c (tools/rtti_extract.py). SIZE
+ * 0x562c, from classInit's fBase_c::operator new(0x562c).
+ * dScMgSound_c_classInit is reconstructed (historical alias
+ * MgBoomBox_Spawn) and installs the vtable for the MG_SOUND registry
+ * profile. Retail does not store that spelling.
  *
- * The destructor is inline and declared first so D1 is emitted before D0.
+ * The destructor is defined inline and declared first. mwccarm 2004/b56
+ * emits D1 then D0 for an in-class body and D2/D0/D1 for an out-of-line
+ * one, and ov006 puts D1 at 0x02119904 below D0 at 0x02119958.
  */
 #ifndef DSCMGSOUND_C_H
 #define DSCMGSOUND_C_H
@@ -52,17 +57,20 @@ struct dMgSoundPop_c {
     u8  active;       /* +0x1c gates the behavior */
     u8  visible;      /* +0x1d gates the draw */
     u8  sprite;       /* +0x1e sprite-table index */
-    u8  pad_1f;
+    u8  unk_1f;       /* +0x1f cleared by func_ov006_0211c478 */
     u8  state;        /* +0x20 behavior index */
     u8  phase;        /* +0x21 step inside that behavior */
     u8  kind;         /* +0x22 motion-table index */
     u8  dir;          /* +0x23 velX oscillation */
 };
 
-/* Model table constructed at 0x4f38. +0x1a8 is checked before it plays. */
+/* Storage for the component accesses observed at scene offset 0x4f38.
+ * The constructor clears +0x1a8 and the animation callbacks test it before
+ * requesting sound. The type and field names are descriptive; 0x1ac is the
+ * observed minimum extent, not a recovered original class boundary. */
 struct dMgSoundComponentStorage {
     u8 raw_000[0x1a8];
-    s32 mSuppressSound;       /* +0x1a8 */
+    s32 mSuppressSound;       /* +0x1a8 -- zero permits animation sounds */
 };
 
 #ifndef SM64DS_PLATFORM_PC
@@ -90,19 +98,20 @@ struct dScMgSound_c : dScMgSingle3DBase_c {
     u16 mQueueTimer;                 /* 0x5614 */
     u16 mResultTimer;                /* 0x5616 */
     u16 mIntroTimer;                 /* 0x5618 */
-    u8  mLaneUses[5];                /* 0x561a */
-    u8  mLanes[3];                   /* 0x561f each previous lane + 1, mod 3 */
-    u8  pad_5622[2];
+    u8  mPairUses[5];                /* 0x561a notes dealt from each pair */
+    u8  mPairNotes[5];               /* 0x561f pitch of each pair; pattern 3
+                                        fills [0..2] with consecutive lanes,
+                                        each previous + 1, mod 3 */
     u8  mTouchCount;                 /* 0x5624 */
     u8  mQueueLen;                   /* 0x5625 write index into mQueue */
     u8  mTries;                      /* 0x5626 counts down from 3 */
-    u8  mPattern;                    /* 0x5627 */
+    u8  mPattern;                    /* 0x5627 0..4; indexes 0212ee10/ee18 */
     u8  mPrevPattern;                /* 0x5628 */
     u8  pad_5629[3];
 
-    s32 InitResources();
-    s32 Behavior();
-    s32 Render();
+    s32 InitResources();             /* slot 0 */
+    s32 Behavior();                  /* slot 6 */
+    s32 Render();                    /* slot 9 */
 };
 
 #ifndef SM64DS_PLATFORM_PC
