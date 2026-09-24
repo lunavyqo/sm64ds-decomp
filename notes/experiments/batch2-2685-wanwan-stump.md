@@ -1,20 +1,20 @@
-# daObjPile_c.h include changes matrix copies (BATCH2-2685-02, PR #2685)
+# Stump.h include changes matrix copies (BATCH2-2685-02, PR #2685)
 
 - tested_commit: 019a7cc06 (cleanup-leftover-overlay-batch-2 at experiment time)
 - compiler: mwccarm 2004/b56 (tools/mwccarm/2004/b56/mwccarm.exe)
 - claim: `src/game/actors/d_a_wanwan.cpp:20-23` keeps
-  stump +0x320 raw because including daObjPile_c.h pulls
+  stump +0x320 raw because including Stump.h pulls
   dBgActor_c/common.h and would change this TU's matrix copies.
 - attempted_change (scratch-applied, then reverted):
 
 ```diff
  #include "common.h"
  #include "daWanwan_c.h"
-+#include "daObjPile_c.h"
++#include "Stump.h"
  #include "decl_common.h"
 @@
 -    *(unsigned char *)((unsigned char *)spawned + 0x320) = (unsigned char)one;
-+    ((daObjPile_c *)spawned)->mBusy = (unsigned char)one;
++    ((Stump *)spawned)->mBusy = (unsigned char)one;
 ```
 
 - command:
@@ -26,7 +26,7 @@
 ```
 
 - result: baseline MATCH; variant MATCH (no bytes differ).
-  InitResources with mBusy also MATCHes. daObjPile_c.h first also MATCHes.
+  InitResources with mBusy also MATCHes. Stump.h first also MATCHes.
   dBgActor_c.h includes common.h before Model.h, so flat still wins.
 - log (variant):
 

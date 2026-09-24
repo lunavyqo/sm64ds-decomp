@@ -23,7 +23,7 @@
   (`d_a_obj_wc_obj01.cpp:18`, `d_a_obj_wc_obj06.cpp:18`).
 - Extra8 wanwan-factory SUPPORTED (`d_a_wanwan.cpp:39`).
 - Extra9 wanwan-matrix SUPPORTED (`d_a_wanwan.cpp:42`).
-- Extra13 wanwan-stump DISPROVED (`d_a_wanwan.cpp:31` daObjPile_c part).
+- Extra13 wanwan-stump DISPROVED (`d_a_wanwan.cpp:31` Stump part).
 - Extra10 damky-matrix DISPROVED (`daMky_c.cpp:22` matrix part).
 - Extra11 damip-matrix DISPROVED (`daMip_c.cpp:75` matrix part).
 
@@ -88,7 +88,7 @@
 - `src/actors/daSanbo_c.cpp:65` (Player/data/S14/veneer part) — Player+8 on Player, data_ov096_*/state records, S14, func_02038414 veneer naming.
 - `src/game/actors/d_a_obj_bk_dossunbar.cpp:19` — unk_0a4 is dActor_c X speed, not this class's field.
 - `src/game/actors/d_a_pg_mthr.cpp:37` — talk/message/func_0201267c names with callees, held-actor slots on Player.
-- `src/game/actors/d_a_wanwan.cpp:31` (Player part) — +0x6fb byte name belongs on Player (daObjPile_c part DISPROVED via Extra13).
+- `src/game/actors/d_a_wanwan.cpp:31` (Player part) — +0x6fb byte name belongs on Player (Stump part DISPROVED via Extra13).
 - `src/game/actors/d_a_wanwan.cpp:34` — Pos() not on this branch's dActor_c, needs shared-header decl (issue #2566).
 - `src/game/actors/d_a_s_cre.cpp:13` — Pos() leaf overlay, the shared dActor_c::Pos() boundary is issue #2566, not this branch.
 - `src/game/actors/d_a_bakubaku.cpp:37` — water height + particle/sound helper names belong with callees.

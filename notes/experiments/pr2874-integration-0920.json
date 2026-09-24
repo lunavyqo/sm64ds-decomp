@@ -3692,8 +3692,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN11daObjPile_c16CleanupResourcesEv.cpp",
-      "name": "_ZN11daObjPile_c16CleanupResourcesEv",
+      "file": "src/_ZN5Stump16CleanupResourcesEv.cpp",
+      "name": "_ZN5Stump16CleanupResourcesEv",
       "module": "ov091",
       "addr": "0x21336cc",
       "verdict": "VERIFIED",
@@ -20580,7 +20580,7 @@
           "src/_ZN4Door16CleanupResourcesEv.cpp",
           "src/_ZN4Heap8AllocateEji.cpp",
           "src/_ZN5Stage11RenderModelEv.cpp",
-          "src/_ZN11daObjPile_c16CleanupResourcesEv.cpp",
+          "src/_ZN5Stump16CleanupResourcesEv.cpp",
           "src/_ZN5Unagi8BehaviorEv.cpp",
           "src/_ZN6Bullet13InitResourcesEv.cpp",
           "src/_ZN6Coffin16CleanupResourcesEv.cpp",
@@ -20705,7 +20705,7 @@
           "src/_ZN4Door16CleanupResourcesEv.cpp",
           "src/_ZN4Heap8AllocateEji.cpp",
           "src/_ZN5Stage11RenderModelEv.cpp",
-          "src/_ZN11daObjPile_c16CleanupResourcesEv.cpp",
+          "src/_ZN5Stump16CleanupResourcesEv.cpp",
           "src/_ZN5Unagi8BehaviorEv.cpp",
           "src/_ZN6Bullet13InitResourcesEv.cpp",
           "src/_ZN6Coffin16CleanupResourcesEv.cpp",
@@ -21799,7 +21799,7 @@
         "src/_ZN5Stage17UpdateMenuButtonsEb.cpp",
         "src/_ZN5Stage22RenderModelTransparentEv.cpp",
         "src/_ZN5Stage7LoadFogEv.cpp",
-        "src/_ZN11daObjPile_c16CleanupResourcesEv.cpp",
+        "src/_ZN5Stump16CleanupResourcesEv.cpp",
         "src/_ZN5Swoop8BehaviorEv.cpp",
         "src/_ZN5Timer10StartTimerEv.cpp",
         "src/_ZN5Timer7GetTimeEv.cpp",
@@ -23111,8 +23111,8 @@
           "name": "_ZN5Stage7LoadFogEv"
         },
         {
-          "file": "src/_ZN11daObjPile_c16CleanupResourcesEv.cpp",
-          "name": "_ZN11daObjPile_c16CleanupResourcesEv"
+          "file": "src/_ZN5Stump16CleanupResourcesEv.cpp",
+          "name": "_ZN5Stump16CleanupResourcesEv"
         },
         {
           "file": "src/_ZN5Swoop8BehaviorEv.cpp",

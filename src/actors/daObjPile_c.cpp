@@ -1,5 +1,23 @@
 //cpp
-/* daObjPile_c -- the stump (ov091). */
+/* Production translation unit for ov091/daObjPile_c.
+ * 10 function(s), .text 0x021333fc..0x02133938. The PILE stump: a ground
+ * pound sinks it one step, a mega hit sinks the rest, and the last step
+ * drops coins.
+ *
+ * NAME: _ZTS11daObjPile_c is "11daObjPile_c" at ov091 0x02135288; _ZTI at
+ * 0x0213527c reads [__si_class_type_info, that string, _ZTI10dBgActor_c].
+ * The tree previously called the class Stump (coined; vtable address only).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x021333fc), D0
+ * (0x02133440), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is ROM-ascending.
+ * The factory daObjPile_c_classInit (0x02133938) sits just past this run's
+ * right edge and stays a one-function source.
+ *
+ * Leftover: dBgActor_c::IsClsnInRangeOnScreen, dActor_c::SpawnCoins and
+ *   dBgW_KcMbg::SetFile take Fix12<int> by value, so they stay mangled.
+ */
 
 #include "decl_common.h"
 #include "daObjPile_c.h"
@@ -20,8 +38,6 @@ extern "C" {
 extern unsigned char DecIfAbove0_Byte(unsigned char *p);
 extern int _ZN10dBgActor_c21IsClsnInRangeOnScreenE5Fix12IiES1_(void *c, int a, int b);
 extern void _ZN8dActor_c10SpawnCoinsERK7Vector3j5Fix12IiEs(void *c, V3 v, unsigned int n, int f, short s);
-extern void *_ZN5Model8LoadFileER13SharedFilePtr(void *);
-extern void *_ZN7dBgW_Kc8LoadFileER13SharedFilePtr(void *);
 extern void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
     void *self, void *kcl, void *mtx, int fix, short s, void *clps);
 extern int func_02012694(int a, void *b);
@@ -196,11 +212,11 @@ s32 daObjPile_c::Behavior()
 // @symbol _ZN11daObjPile_c13InitResourcesEv
 s32 daObjPile_c::InitResources()
 {
-    void *m = _ZN5Model8LoadFileER13SharedFilePtr(data_ov091_02135654);
+    void *m = Model::LoadFile(*(SharedFilePtr *)data_ov091_02135654);
     mModel.SetFile((BMD_File *)m, 1, -1);
     UpdateModelPosAndRotY();
     UpdateClsnPosAndRot();
-    void *k = _ZN7dBgW_Kc8LoadFileER13SharedFilePtr(data_ov091_0213564c);
+    void *k = dBgW_Kc::LoadFile(*(SharedFilePtr *)data_ov091_0213564c);
     _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
         &mMeshCollider, k, &mClsnMat, 0x199, mAngleY, data_ov002_0210d874);
     mState = 3;
