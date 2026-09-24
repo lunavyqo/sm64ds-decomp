@@ -19,9 +19,16 @@
  * emits the vtable and RTTI; the build externalizes them to the addresses
  * above. The one out-of-line destructor emits D1 then D0; its D2, and the
  * particle's C2/D2, are deadstripped (no module gives them a symbol).
- * Under `#pragma defer_codegen off` the file is ROM-ascending. The factory
+ * `#pragma defer_codegen off` makes the out-of-line destructor emit D1, D0,
+ * D2 and the rest of the file emit in source order, so the source is
+ * ROM-ascending. A Matrix4x3 member, whose implicit destructor runs
+ * Vector3's inline one, flips the group back to D2, D0, D1 even with the
+ * pragma (measured), which is why mInvModelMat is flat words in
+ * daSnmBth_c.h. The particle array does not have that effect. The factory
  * daSnmBth_c_classInit (0x02112ab4) is the next file, src/d_a_snm_bth.c.
  */
+
+#pragma defer_codegen off
 
 #include "daSnmBth_c.h"
 #include "decl_common.h"
@@ -83,8 +90,6 @@ extern SharedFilePtr data_ov002_0210d9c0;
 typedef struct { s32 words[12]; } MatrixWords;
 typedef struct { int w[12]; } M48;
 }
-
-#pragma defer_codegen off
 
 /* -------------------------------------------------------------------------- */
 /* ROM ordinals 0/1 -- _ZN10daSnmBth_cD1Ev 0x021120c4 (0x40),                 */
