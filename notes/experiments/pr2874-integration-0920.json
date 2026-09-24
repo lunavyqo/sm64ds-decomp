@@ -3089,8 +3089,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN15daObjFl_KomaU_c8BehaviorEv.cpp",
-      "name": "_ZN15daObjFl_KomaU_c8BehaviorEv",
+      "file": "src/_ZN15RotatingFirebar8BehaviorEv.cpp",
+      "name": "_ZN15RotatingFirebar8BehaviorEv",
       "module": "ov064",
       "addr": "0x2118274",
       "verdict": "VERIFIED",
@@ -20310,7 +20310,7 @@
           "src/_ZN14CutsceneObject13InitResourcesEv.cpp",
           "src/_ZN14UnknownVsEntry16CleanupResourcesEv.cpp",
           "src/_ZN14daWater_Ring_c13InitResourcesEv.cpp",
-          "src/_ZN15daObjFl_KomaU_c8BehaviorEv.cpp",
+          "src/_ZN15RotatingFirebar8BehaviorEv.cpp",
           "src/_ZN15dScMgPachinko_c13InitResourcesEv.cpp",
           "src/_ZN16RotatingCogSmall16CleanupResourcesEv.cpp",
           "src/_ZN16dScMgSmartball_c8OnPushedEv.cpp",
@@ -20434,7 +20434,7 @@
           "src/_ZN14CutsceneObject13InitResourcesEv.cpp",
           "src/_ZN14UnknownVsEntry16CleanupResourcesEv.cpp",
           "src/_ZN14daWater_Ring_c13InitResourcesEv.cpp",
-          "src/_ZN15daObjFl_KomaU_c8BehaviorEv.cpp",
+          "src/_ZN15RotatingFirebar8BehaviorEv.cpp",
           "src/_ZN15dScMgPachinko_c13InitResourcesEv.cpp",
           "src/_ZN16RotatingCogSmall16CleanupResourcesEv.cpp",
           "src/_ZN16dScMgSmartball_c8OnPushedEv.cpp",
@@ -21732,7 +21732,7 @@
         "src/_ZN15FireSeaElevator13InitResourcesEv.cpp",
         "src/_ZN15FireSeaElevator16CleanupResourcesEv.cpp",
         "src/_ZN15RollingIronBall13InitResourcesEv.cpp",
-        "src/_ZN15daObjFl_KomaU_c8BehaviorEv.cpp",
+        "src/_ZN15RotatingFirebar8BehaviorEv.cpp",
         "src/_ZN15TtcRotatingCube16CleanupResourcesEv.cpp",
         "src/_ZN15TtcRotatingCube8BehaviorEv.cpp",
         "src/_ZN15TtcRotatingGear13InitResourcesEv.cpp",
@@ -22843,8 +22843,8 @@
           "name": "_ZN15RollingIronBall13InitResourcesEv"
         },
         {
-          "file": "src/_ZN15daObjFl_KomaU_c8BehaviorEv.cpp",
-          "name": "_ZN15daObjFl_KomaU_c8BehaviorEv"
+          "file": "src/_ZN15RotatingFirebar8BehaviorEv.cpp",
+          "name": "_ZN15RotatingFirebar8BehaviorEv"
         },
         {
           "file": "src/_ZN15TtcRotatingCube16CleanupResourcesEv.cpp",

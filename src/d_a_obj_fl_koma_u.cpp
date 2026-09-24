@@ -10,7 +10,6 @@ extern void* _ZTV15daObjFl_KomaU_c[];
 /* Reconstructed source-style name: SM64DS proves daObjFl_KomaU_c through RTTI,
  * allocation size, vtable identity, and the FL_KOMA_U registry profile; later
  * EAD lineage supplies classInit. Exact original spelling is not preserved.
- * The project's daObjFl_KomaU_c implementation aliases remain unchanged.
  * Historical alias: RotatingFirebar_Spawn. */
 int* daObjFl_KomaU_c_classInit(void) {
     int* p = (int*)_ZN7fBase_cnwEj(0x540);

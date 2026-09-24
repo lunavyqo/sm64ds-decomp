@@ -27010,17 +27010,17 @@
    "start": "0x2118138",
    "end": "0x21185c0",
    "classes": [
-    "daObjFl_KomaU_c"
+    "RotatingFirebar"
    ],
    "n_functions_map": 7,
    "n_files": 7,
    "files": [
-    "src/_ZN15daObjFl_KomaU_cD1Ev.cpp",
-    "src/_ZN15daObjFl_KomaU_cD0Ev.c",
-    "src/_ZN15daObjFl_KomaU_c16CleanupResourcesEv.cpp",
-    "src/_ZN15daObjFl_KomaU_c6RenderEv.cpp",
-    "src/_ZN15daObjFl_KomaU_c8BehaviorEv.cpp",
-    "src/_ZN15daObjFl_KomaU_c13InitResourcesEv.cpp",
+    "src/_ZN15RotatingFirebarD1Ev.cpp",
+    "src/_ZN15RotatingFirebarD0Ev.c",
+    "src/_ZN15RotatingFirebar16CleanupResourcesEv.cpp",
+    "src/_ZN15RotatingFirebar6RenderEv.cpp",
+    "src/_ZN15RotatingFirebar8BehaviorEv.cpp",
+    "src/_ZN15RotatingFirebar13InitResourcesEv.cpp",
     "src/d_a_obj_fl_koma_u.cpp"
    ],
    "ext_mix": {

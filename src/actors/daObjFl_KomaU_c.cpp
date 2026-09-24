@@ -1,5 +1,20 @@
 //cpp
-/* The rotating fire bar. */
+/* Production translation unit for ov064/daObjFl_KomaU_c.
+ * 6 function(s), .text 0x02118138..0x02118564. The rotating fire bar
+ * (registry profile FL_KOMA_U).
+ *
+ * NAME: _ZTS15daObjFl_KomaU_c is "15daObjFl_KomaU_c" at ov064 0x0211bdd8;
+ * _ZTI at 0x0211bdcc reads [__si_class_type_info, that string,
+ * _ZTI10dBgActor_c]. The tree previously called the class RotatingFirebar
+ * (coined).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x02118138), D0
+ * (0x02118194), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is
+ * ROM-ascending. The factory daObjFl_KomaU_c_classInit (0x02118564) stays in
+ * its own source, src/d_a_obj_fl_koma_u.cpp.
+ */
 
 #include "decl_common.h"
 #include "daObjFl_KomaU_c.h"
@@ -17,6 +32,8 @@ struct FileTable {
     CLPS_Block *clps;
 };
 
+/* Leftover: dBgActor_c::IsClsnInRange, dBgW_KcMbg::SetFile, dCcPos_c::Init
+ * and Particle::System::New take Fix12<int> by value, so they stay mangled. */
 extern "C" {
 extern FileTable data_ov064_0211adbc;
 extern Matrix4x3 data_020a0e68;
@@ -36,6 +53,7 @@ u32 _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(
 }
 
 // @symbol _ZN15daObjFl_KomaU_cD1Ev
+// @symbol _ZN15daObjFl_KomaU_cD0Ev
 daObjFl_KomaU_c::~daObjFl_KomaU_c()
 {
 }
@@ -102,7 +120,9 @@ s32 daObjFl_KomaU_c::Behavior()
         MulVec3Mat4x3(&in, &data_020a0e68, &out);
         AddVec3(&out, (Vector3 *)&mPosX, &out);
 
-        /* Leftover: Behavior. cyl->pos / otherOwner recompute the address and DIFF. */
+        /* Leftover: raw offsets from w, not cyl->pos / cyl->otherOwner. The
+         * member spelling makes mwccarm recompute the element address and
+         * Behavior stops matching. */
         *(int *)(w + 0x390) = out.x;
         *(int *)(w + 0x394) = out.y;
         *(int *)(w + 0x398) = out.z;
