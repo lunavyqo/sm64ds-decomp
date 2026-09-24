@@ -1908,6 +1908,9 @@
       ],
       "src/func_ov094_021362e0.c": [
         "param:#1 Mtx43 *"
+      ],
+      "src/actors/daBttBk_c.cpp": [
+        "param:#1 Mtx43 *"
       ]
     },
     "Matrix4x3_FromQuaternion": {
@@ -5411,6 +5414,10 @@
       ],
       "src/game/actors/d_a_jgm.cpp": [
         "return:void"
+      ],
+      "src/actors/daBttBk_c.cpp": [
+        "param:#1 Vector3 *",
+        "return:void"
       ]
     },
     "Vec3_MulScalar": {
@@ -7145,6 +7152,10 @@
       "src/game/actors/daTrs_c/_ZN7daTrs_c13InitResourcesEv.cpp": [
         "param:#2 void *",
         "param:#5 void *"
+      ],
+      "src/actors/daBttBk_c.cpp": [
+        "param:#2 void *",
+        "param:#5 void *"
       ]
     },
     "_ZN10dBgCh_ActrC1Ev": {
@@ -7562,6 +7573,9 @@
         "return:void"
       ],
       "src/_ZN5Crate13InitResourcesEv.cpp": [
+        "return:void"
+      ],
+      "src/actors/daBttBk_c.cpp": [
         "return:void"
       ]
     },
@@ -11439,6 +11453,9 @@
         "return:BMD_File *"
       ],
       "src/actors/daObjSm_Lift_c.cpp": [
+        "param:#1 void *"
+      ],
+      "src/actors/daBttBk_c.cpp": [
         "param:#1 void *"
       ]
     },
@@ -15360,6 +15377,9 @@
       ],
       "src/unnamed/ov063/func_ov063_021177b0.c": [
         "return:void"
+      ],
+      "src/actors/daBttBk_c.cpp": [
+        "return:void"
       ]
     },
     "_ZN8Particle7Manager9AddSystemEiR7Vector3": {
@@ -15943,6 +15963,9 @@
       ],
       "src/actors/daMenbo_c.cpp": [
         "return:void *"
+      ],
+      "src/actors/daBttBk_c.cpp": [
+        "return:void *"
       ]
     },
     "_ZN8dActor_c10PoofDustAtERK7Vector3": {
@@ -16487,6 +16510,9 @@
         "param:#7 unsigned int"
       ],
       "src/game/actors/daObjPathLift_c.cpp": [
+        "param:#7 unsigned int"
+      ],
+      "src/actors/daBttBk_c.cpp": [
         "param:#7 unsigned int"
       ]
     },
@@ -18526,6 +18552,9 @@
       ],
       "src/actors/daObjSm_Lift_c.cpp": [
         "return:void"
+      ],
+      "src/actors/daBttBk_c.cpp": [
+        "return:void"
       ]
     },
     "_ZN9dBgCh_Gnd10DetectClsnEv": {
@@ -19984,6 +20013,9 @@
         "arity:1"
       ],
       "src/game/actors/daBrq_c.cpp": [
+        "arity:1"
+      ],
+      "src/actors/daBttBk_c.cpp": [
         "arity:1"
       ]
     },
@@ -23125,6 +23157,9 @@
       ],
       "src/minigames/d_s_mg_jump2.cpp": [
         "return:int"
+      ],
+      "src/actors/daBttBk_c.cpp": [
+        "return:Mtx43"
       ]
     },
     "data_020a0e9c": {

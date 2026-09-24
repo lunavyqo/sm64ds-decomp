@@ -4785,6 +4785,26 @@
     "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c6RenderEv": "tangosdev",
     "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c8BehaviorEv": "lunavyqo",
-    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c13InitResourcesEv": "lunavyqo"
+    "src/actors/daObjSm_Lift_c.cpp#_ZN14daObjSm_Lift_c13InitResourcesEv": "lunavyqo",
+    "src/actors/daBttBk_c.cpp#_ZN9daBttBk_cD1Ev": "tangosdev",
+    "src/actors/daBttBk_c.cpp#_ZN9daBttBk_cD0Ev": "tangosdev",
+    "src/actors/daBttBk_c.cpp#_ZN9daBttBk_c13OnYoshiTryEatEv": "tangosdev",
+    "src/actors/daBttBk_c.cpp#func_ov080_02124acc": "tangosdev",
+    "src/actors/daBttBk_c.cpp#func_ov080_02124c3c": "tangosdev",
+    "src/actors/daBttBk_c.cpp#func_ov080_02124e60": "tangosdev",
+    "src/actors/daBttBk_c.cpp#func_ov080_02124eb0": "tangosdev",
+    "src/actors/daBttBk_c.cpp#func_ov080_02124edc": "tangosdev",
+    "src/actors/daBttBk_c.cpp#func_ov080_02124fec": "tangosdev",
+    "src/actors/daBttBk_c.cpp#func_ov080_0212500c": "tangosdev",
+    "src/actors/daBttBk_c.cpp#func_ov080_0212509c": "tangosdev",
+    "src/actors/daBttBk_c.cpp#func_ov080_021250c8": "tangosdev",
+    "src/actors/daBttBk_c.cpp#func_ov080_02125104": "tangosdev",
+    "src/actors/daBttBk_c.cpp#func_ov080_0212513c": "tangosdev",
+    "src/actors/daBttBk_c.cpp#_ZN9daBttBk_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daBttBk_c.cpp#_ZN9daBttBk_c16OnPendingDestroyEv": "tangosdev",
+    "src/actors/daBttBk_c.cpp#_ZN9daBttBk_c6RenderEv": "tangosdev",
+    "src/actors/daBttBk_c.cpp#_ZN9daBttBk_c8BehaviorEv": "tangosdev",
+    "src/actors/daBttBk_c.cpp#_ZN9daBttBk_c13InitResourcesEv": "tangosdev",
+    "src/actors/daBttBk_c.cpp#_ZN9daBttBk_c13OnTurnIntoEggER6Player": "tangosdev"
   }
 }
