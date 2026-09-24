@@ -12,8 +12,9 @@
  * 0x02124040 abuts the end and stays out of this compiler input.
  *
  * #pragma defer_codegen off emits .text in source order, so this file is
- * ROM-ascending. One out-of-line destructor is the key function: it emits
- * D1 (0x02123740) then D0 (0x02123788). ov081 has no D2 for this class.
+ * ROM-ascending. One out-of-line destructor is the key function, so this TU
+ * emits _ZTV/_ZTI/_ZTS: D1 (0x02123740), D0 (0x02123788), then a D2 the
+ * cartridge has no home for (manifest: deadstrip).
  *
  * common.h is first so its flat Matrix4x3 { s32 m[12]; } is seen before
  * daHuwa_c.h reaches math/Matrix.h. func_ov081_021237ec copies that matrix
@@ -50,6 +51,11 @@ struct HuwaModelView {
     virtual void m3(); virtual void m4(); virtual void m5(int);
 };
 
+/* Spell the ROM's own symbols. The shards once called these through local
+ * stand-in classes whose methods mangled to names that exist nowhere
+ * (_ZN7dCcAc_c4InitEP8dActor_ciijj and friends). match.py wildcards every
+ * relocated word, so only check_references saw it; these are the real symbols,
+ * and the bytes are unchanged. */
 extern "C" {
 /* Same spellings InitResources matched under: a char, and an int array
  * whose [1] is the animation file pointer. */
@@ -100,13 +106,19 @@ void _ZN10dBgCh_Actr19StartDetectingWaterEv(void *self);
 }
 
 /* One written destructor. The compiler emits D1 then D0 and anchors
- * _ZTV8daHuwa_c. */
+ * _ZTV8daHuwa_c. The members D1 used to destroy by hand are typed members of
+ * daHuwa_c now (see daHuwa_c.h for the two layout witnesses), so the compiler
+ * emits the same chain. D0 is the deleting destructor: it destroys through
+ * this class and its bases, which is why more than one vptr store appears,
+ * then frees through an inline operator delete, which is why nothing here
+ * mentions a heap. */
 // @symbol _ZN8daHuwa_cD1Ev
 // @symbol _ZN8daHuwa_cD0Ev
 daHuwa_c::~daHuwa_c()
 {
 }
 
+/* Vtable slot 29: _ZTV8daHuwa_c + 0x74 -> 0x021237e4. */
 // @symbol _ZN8daHuwa_c16OnAimedAtWithEggEv
 s32 daHuwa_c::OnAimedAtWithEgg() {
     return 245760;
@@ -359,6 +371,8 @@ int daHuwa_c::InitResources()
     return 1;
 }
 
+/* Vtable slot 19: _ZTV8daHuwa_c + 0x4c -> 0x02123fd8 (formerly
+ * func_ov081_02123fd8). */
 // @symbol _ZN8daHuwa_c13OnTurnIntoEggER6Player
 void daHuwa_c::OnTurnIntoEgg(Player &player)
 {
