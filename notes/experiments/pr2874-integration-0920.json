@@ -4979,8 +4979,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN9SeesawBob13InitResourcesEv.cpp",
-      "name": "_ZN9SeesawBob13InitResourcesEv",
+      "file": "src/_ZN13daObjSeesaw_c13InitResourcesEv.cpp",
+      "name": "_ZN13daObjSeesaw_c13InitResourcesEv",
       "module": "ov095",
       "addr": "0x2135b74",
       "verdict": "VERIFIED",
@@ -4988,8 +4988,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN9SeesawBob16CleanupResourcesEv.cpp",
-      "name": "_ZN9SeesawBob16CleanupResourcesEv",
+      "file": "src/_ZN13daObjSeesaw_c16CleanupResourcesEv.cpp",
+      "name": "_ZN13daObjSeesaw_c16CleanupResourcesEv",
       "module": "ov095",
       "addr": "0x21359c4",
       "verdict": "VERIFIED",
@@ -20345,7 +20345,7 @@
           "src/_ZN8SignPost16CleanupResourcesEv.cpp",
           "src/_ZN8dActor_c9TrackStarEjj.cpp",
           "src/_ZN9JetStream13InitResourcesEv.cpp",
-          "src/_ZN9SeesawBob13InitResourcesEv.cpp",
+          "src/_ZN13daObjSeesaw_c13InitResourcesEv.cpp",
           "src/_ZN9Spindrift13InitResourcesEv.cpp",
           "src/_ZN14daObjTtWater_c13InitResourcesEv.cpp",
           "src/_ZN9dScDSMT_c16CleanupResourcesEv.cpp",
@@ -20469,7 +20469,7 @@
           "src/_ZN8SignPost16CleanupResourcesEv.cpp",
           "src/_ZN8dActor_c9TrackStarEjj.cpp",
           "src/_ZN9JetStream13InitResourcesEv.cpp",
-          "src/_ZN9SeesawBob13InitResourcesEv.cpp",
+          "src/_ZN13daObjSeesaw_c13InitResourcesEv.cpp",
           "src/_ZN9Spindrift13InitResourcesEv.cpp",
           "src/_ZN14daObjTtWater_c13InitResourcesEv.cpp",
           "src/_ZN9dScDSMT_c16CleanupResourcesEv.cpp",
@@ -20604,7 +20604,7 @@
           "src/_ZN8SignPost6RenderEv.cpp",
           "src/_ZN8dActor_cC1Ev.cpp",
           "src/_ZN9daRFlag_c8BehaviorEv.cpp",
-          "src/_ZN9SeesawBob16CleanupResourcesEv.cpp",
+          "src/_ZN13daObjSeesaw_c16CleanupResourcesEv.cpp",
           "src/_ZN9Spindrift8BehaviorEv.cpp",
           "src/_ZN14daObjTtWater_c16CleanupResourcesEv.cpp",
           "src/_ZN9dScDSMT_c6RenderEv.cpp",
@@ -20729,7 +20729,7 @@
           "src/_ZN8SignPost6RenderEv.cpp",
           "src/_ZN8dActor_cC1Ev.cpp",
           "src/_ZN9daRFlag_c8BehaviorEv.cpp",
-          "src/_ZN9SeesawBob16CleanupResourcesEv.cpp",
+          "src/_ZN13daObjSeesaw_c16CleanupResourcesEv.cpp",
           "src/_ZN9Spindrift8BehaviorEv.cpp",
           "src/_ZN14daObjTtWater_c16CleanupResourcesEv.cpp",
           "src/_ZN9dScDSMT_c6RenderEv.cpp",
@@ -21942,8 +21942,8 @@
         "src/_ZN9PowerStar13AddStarMarkerEv.cpp",
         "src/_ZN9PowerStar16CleanupResourcesEv.cpp",
         "src/_ZN9PowerStar8BehaviorEv.cpp",
-        "src/_ZN9SeesawBob13InitResourcesEv.cpp",
-        "src/_ZN9SeesawBob16CleanupResourcesEv.cpp",
+        "src/_ZN13daObjSeesaw_c13InitResourcesEv.cpp",
+        "src/_ZN13daObjSeesaw_c16CleanupResourcesEv.cpp",
         "src/_ZN9SolidHeap11VDeallocateEPv.cpp",
         "src/_ZN9SolidHeap7VSizeofEPv.cpp",
         "src/_ZN9SpikeBomb13InitResourcesEv.cpp",
@@ -23683,12 +23683,12 @@
           "name": "_ZN9PowerStar8BehaviorEv"
         },
         {
-          "file": "src/_ZN9SeesawBob13InitResourcesEv.cpp",
-          "name": "_ZN9SeesawBob13InitResourcesEv"
+          "file": "src/_ZN13daObjSeesaw_c13InitResourcesEv.cpp",
+          "name": "_ZN13daObjSeesaw_c13InitResourcesEv"
         },
         {
-          "file": "src/_ZN9SeesawBob16CleanupResourcesEv.cpp",
-          "name": "_ZN9SeesawBob16CleanupResourcesEv"
+          "file": "src/_ZN13daObjSeesaw_c16CleanupResourcesEv.cpp",
+          "name": "_ZN13daObjSeesaw_c16CleanupResourcesEv"
         },
         {
           "file": "src/_ZN9SolidHeap11VDeallocateEPv.cpp",
