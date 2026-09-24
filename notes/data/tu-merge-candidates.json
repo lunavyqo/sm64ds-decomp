@@ -5399,18 +5399,18 @@
    "start": "0x2112ff8",
    "end": "0x211354c",
    "classes": [
-    "SlidingBox"
+    "daSlide_Box_c"
    ],
    "n_functions_map": 8,
    "n_files": 8,
    "files": [
-    "src/_ZN10SlidingBoxD1Ev.c",
-    "src/_ZN10SlidingBoxD0Ev.c",
+    "src/_ZN13daSlide_Box_cD1Ev.c",
+    "src/_ZN13daSlide_Box_cD0Ev.c",
     "src/func_ov016_021130a4.c",
-    "src/_ZN10SlidingBox16CleanupResourcesEv.cpp",
-    "src/_ZN10SlidingBox6RenderEv.cpp",
-    "src/_ZN10SlidingBox8BehaviorEv.c",
-    "src/_ZN10SlidingBox13InitResourcesEv.cpp",
+    "src/_ZN13daSlide_Box_c16CleanupResourcesEv.cpp",
+    "src/_ZN13daSlide_Box_c6RenderEv.cpp",
+    "src/_ZN13daSlide_Box_c8BehaviorEv.c",
+    "src/_ZN13daSlide_Box_c13InitResourcesEv.cpp",
     "src/d_a_slide_box.c"
    ],
    "ext_mix": {

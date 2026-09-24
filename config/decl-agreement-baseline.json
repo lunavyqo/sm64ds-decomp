@@ -6823,10 +6823,6 @@
         "param:#2 void *",
         "param:#5 void *"
       ],
-      "src/_ZN10SlidingBox13InitResourcesEv.cpp": [
-        "param:#2 void *",
-        "param:#5 void *"
-      ],
       "src/_ZN11BabyPenguin13InitResourcesEv.cpp": [
         "param:#2 void *",
         "param:#5 void *"
@@ -10884,10 +10880,6 @@
     },
     "_ZN4dBgW22UpdatePosWithTransformERS_P8dActor_cR5dBgPiR7Vector3P10Vector3_16S8_": {
       "src/_ZN10LavaSeesaw13InitResourcesEv.cpp": [
-        "arity:0",
-        "mangled:0 parameter(s)"
-      ],
-      "src/_ZN10SlidingBox13InitResourcesEv.cpp": [
         "arity:0",
         "mangled:0 parameter(s)"
       ],
@@ -18923,6 +18915,9 @@
       ],
       "src/game/actors/d_a_nknk.cpp": [
         "return:dBgCh_Actr *"
+      ],
+      "src/actors/daSlide_Box_c.cpp": [
+        "return:dBgPi *"
       ]
     },
     "_ZNK11SurfaceInfo12CopyNormalToER7Vector3": {
@@ -19855,9 +19850,6 @@
       "src/_ZN10DonutBlock8BehaviorEv.cpp": [
         "arity:1"
       ],
-      "src/_ZN10SlidingBox8BehaviorEv.cpp": [
-        "arity:1"
-      ],
       "src/_ZN7Tornado6State1Ev.cpp": [
         "arity:1"
       ],
@@ -19966,6 +19958,9 @@
         "arity:1"
       ],
       "src/game/actors/daPiano_c/d_a_piano.cpp": [
+        "arity:1"
+      ],
+      "src/actors/daSlide_Box_c.cpp": [
         "arity:1"
       ]
     },
@@ -36584,9 +36579,6 @@
       "src/_ZN10PyramidTop13InitResourcesEv.cpp": [
         "param:#2 void *"
       ],
-      "src/_ZN10SlidingBox13InitResourcesEv.cpp": [
-        "param:#2 void *"
-      ],
       "src/_ZN10daKpa2Bg_c13InitResourcesEv.cpp": [
         "param:#2 void *",
         "return:int"
@@ -36732,6 +36724,9 @@
       ],
       "src/actors/daObjCtMecha10_c.cpp": [
         "param:#1 dBgW *",
+        "param:#2 void *"
+      ],
+      "src/actors/daSlide_Box_c.cpp": [
         "param:#2 void *"
       ]
     },
