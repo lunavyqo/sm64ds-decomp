@@ -651,10 +651,6 @@
     "src/_ZN15dScMgPachinko_c6RenderEv.cpp",
     "src/_ZN15daObjGuragura_cD0Ev.cpp",
     "src/_ZN15daObjGuragura_cD1Ev.cpp",
-    "src/actors/daFRing_c.cpp#_ZN9daFRing_c16CleanupResourcesEv",
-    "src/actors/daFRing_c.cpp#_ZN9daFRing_c6RenderEv",
-    "src/actors/daFRing_c.cpp#_ZN9daFRing_cD0Ev",
-    "src/actors/daFRing_c.cpp#_ZN9daFRing_cD1Ev",
     "src/actors/daObjCtMecha10_c.cpp#_ZN16daObjCtMecha10_c16CleanupResourcesEv",
     "src/actors/daObjCtMecha10_c.cpp#_ZN16daObjCtMecha10_c6RenderEv",
     "src/actors/daObjCtMecha10_c.cpp#_ZN16daObjCtMecha10_cD0Ev",
@@ -1467,8 +1463,8 @@
     "src/_ZN9Spindrift6RenderEv.cpp",
     "src/_ZN9SpindriftD0Ev.cpp",
     "src/_ZN9SpindriftD1Ev.cpp",
-    "src/_ZN9WaterBombD0Ev.cpp",
-    "src/_ZN9WaterBombD1Ev.cpp",
+    "src/actors/daWbm_c.cpp#_ZN7daWbm_cD0Ev",
+    "src/actors/daWbm_c.cpp#_ZN7daWbm_cD1Ev",
     "src/_ZN9Whirlpool16CleanupResourcesEv.cpp",
     "src/_ZN9Whirlpool16OnPendingDestroyEv.cpp",
     "src/_ZN9Whirlpool6RenderEv.cpp",
@@ -3002,6 +2998,10 @@
     "src/nds_print.c",
     "src/nds_printf.c",
     "src/unnamed/ov063/__sinit_ov063_0211e3cc.c",
-    "src/unnamed/ov063/__sinit_ov063_0211e590.c"
+    "src/unnamed/ov063/__sinit_ov063_0211e590.c",
+    "src/actors/daFRing_c.cpp#_ZN9daFRing_c16CleanupResourcesEv",
+    "src/actors/daFRing_c.cpp#_ZN9daFRing_c6RenderEv",
+    "src/actors/daFRing_c.cpp#_ZN9daFRing_cD0Ev",
+    "src/actors/daFRing_c.cpp#_ZN9daFRing_cD1Ev"
   ]
 }
