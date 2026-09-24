@@ -4831,6 +4831,17 @@
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c6RenderEv": "tangosdev",
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c8BehaviorEv": "ruspecial",
-    "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c13InitResourcesEv": "andrewboudreau"
+    "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c13InitResourcesEv": "andrewboudreau",
+    "src/actors/daWater_Hakidasi_c.cpp#_ZN18daWater_Hakidasi_cD1Ev": "tangosdev",
+    "src/actors/daWater_Hakidasi_c.cpp#_ZN18daWater_Hakidasi_cD0Ev": "tangosdev",
+    "src/actors/daWater_Hakidasi_c.cpp#func_ov064_021193b4": "tangosdev",
+    "src/actors/daWater_Hakidasi_c.cpp#func_ov064_021197fc": "tangosdev",
+    "src/actors/daWater_Hakidasi_c.cpp#func_ov064_0211982c": "tangosdev",
+    "src/actors/daWater_Hakidasi_c.cpp#func_ov064_0211987c": "tangosdev",
+    "src/actors/daWater_Hakidasi_c.cpp#_ZN18daWater_Hakidasi_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daWater_Hakidasi_c.cpp#_ZN18daWater_Hakidasi_c16OnPendingDestroyEv": "tangosdev",
+    "src/actors/daWater_Hakidasi_c.cpp#_ZN18daWater_Hakidasi_c6RenderEv": "tangosdev",
+    "src/actors/daWater_Hakidasi_c.cpp#_ZN18daWater_Hakidasi_c8BehaviorEv": "tangosdev",
+    "src/actors/daWater_Hakidasi_c.cpp#_ZN18daWater_Hakidasi_c13InitResourcesEv": "tangosdev"
   }
 }
