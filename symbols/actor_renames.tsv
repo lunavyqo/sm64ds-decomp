@@ -725,12 +725,12 @@ ov014	0x0211488c	ChainChompFence_SpawnInfo	g_profile_WANWAN_SHUTTER	reconstructe
 ov014	0x021148b0	data_ov014_021148b0	_ZTV20daObjWanwanShutter_c	vtable alloc=0x320
 ov015	0x021112dc	func_ov015_021112dc	PoleBillboard_Spawn	spawnfunc
 ov015	0x021112dc	PoleBillboard_Spawn	daObjBkBillboard_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
-ov015	0x02111314	func_ov015_02111314	_ZN14KnockDownPlankD1Ev	vtable slot 16 (was _ZN18daObjBkBillboard_cD1Ev)
-ov015	0x02111360	func_ov015_02111360	_ZN14KnockDownPlankD0Ev	vtable slot 17 (was _ZN18daObjBkBillboard_cD0Ev)
-ov015	0x021116b4	func_ov015_021116b4	_ZN14KnockDownPlank16CleanupResourcesEv	vtable slot 3 (was _ZN18daObjBkBillboard_c16CleanupResourcesEv)
-ov015	0x021116f8	func_ov015_021116f8	_ZN14KnockDownPlank6RenderEv	vtable slot 9 (was _ZN18daObjBkBillboard_c6RenderEv)
-ov015	0x02111720	func_ov015_02111720	_ZN14KnockDownPlank8BehaviorEv	vtable slot 6 (was _ZN18daObjBkBillboard_c8BehaviorEv)
-ov015	0x02111960	func_ov015_02111960	_ZN14KnockDownPlank13InitResourcesEv	vtable slot 0 (was _ZN18daObjBkBillboard_c13InitResourcesEv)
+ov015	0x02111314	func_ov015_02111314	_ZN17daObjBk_Botaosi_cD1Ev	vtable slot 16 (was _ZN18daObjBkBillboard_cD1Ev)
+ov015	0x02111360	func_ov015_02111360	_ZN17daObjBk_Botaosi_cD0Ev	vtable slot 17 (was _ZN18daObjBkBillboard_cD0Ev)
+ov015	0x021116b4	func_ov015_021116b4	_ZN17daObjBk_Botaosi_c16CleanupResourcesEv	vtable slot 3 (was _ZN18daObjBkBillboard_c16CleanupResourcesEv)
+ov015	0x021116f8	func_ov015_021116f8	_ZN17daObjBk_Botaosi_c6RenderEv	vtable slot 9 (was _ZN18daObjBkBillboard_c6RenderEv)
+ov015	0x02111720	func_ov015_02111720	_ZN17daObjBk_Botaosi_c8BehaviorEv	vtable slot 6 (was _ZN18daObjBkBillboard_c8BehaviorEv)
+ov015	0x02111960	func_ov015_02111960	_ZN17daObjBk_Botaosi_c13InitResourcesEv	vtable slot 0 (was _ZN18daObjBkBillboard_c13InitResourcesEv)
 ov015	0x02111b68	func_ov015_02111b68	KnockDownPlank_Spawn	spawnfunc
 ov015	0x02111b68	KnockDownPlank_Spawn	daObjBk_Botaosi_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
 ov015	0x02111ba0	func_ov015_02111ba0	_ZN19daObjBk_Dossunbar_cD1Ev	vtable slot 16 (was _ZN14KnockDownPlankD1Ev)
@@ -771,7 +771,7 @@ ov015	0x0211433c	data_ov015_0211433c	PoleBillboard_SpawnInfo	spawninfo
 ov015	0x0211433c	PoleBillboard_SpawnInfo	g_profile_BK_BILLBOARD	reconstructed profile global; literal ROM ID BK_BILLBOARD+registry role+later EAD lineage; exact SM64DS spelling not preserved
 ov015	0x021143fc	data_ov015_021143fc	KnockDownPlank_SpawnInfo	spawninfo
 ov015	0x021143fc	KnockDownPlank_SpawnInfo	g_profile_BK_BOTAOSI	reconstructed profile global; literal ROM ID BK_BOTAOSI+registry role+later EAD lineage; exact SM64DS spelling not preserved
-ov015	0x02114420	data_ov015_02114420	_ZTV14KnockDownPlank	vtable alloc=? (was _ZTV18daObjBkBillboard_c)
+ov015	0x02114420	data_ov015_02114420	_ZTV17daObjBk_Botaosi_c	vtable alloc=? (was _ZTV18daObjBkBillboard_c)
 ov015	0x0211454c	data_ov015_0211454c	MovingBarSmall_SpawnInfo	spawninfo
 ov015	0x0211454c	MovingBarSmall_SpawnInfo	g_profile_BK_DOSSUNBAR_S	reconstructed profile global; literal ROM ID BK_DOSSUNBAR_S+registry role+later EAD lineage; exact SM64DS spelling not preserved
 ov015	0x02114568	data_ov015_02114568	MovingBarBig_SpawnInfo	spawninfo
@@ -1357,14 +1357,14 @@ ov035	0x0211165c	RotatingCogSmall_Spawn	daObjCtMecha10_c_classInit_CT_MECHA12S	r
 ov035	0x0211168c	func_ov035_0211168c	daObjCtMecha10_c_classInit_CT_MECHA12L	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
 ov035	0x021116bc	func_ov035_021116bc	RotatingClockHand_Spawn	spawnfunc
 ov035	0x021116bc	RotatingClockHand_Spawn	daObjCtMecha10_c_classInit_CT_MECHA10	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
-ov035	0x021116ec	func_ov035_021116ec	_ZN16SpinningPlatformD1Ev	vtable slot 16; method-symbol spelling and class-only TU
-ov035	0x02111738	func_ov035_02111738	_ZN16SpinningPlatformD0Ev	vtable slot 17; method-symbol spelling and class-only TU
-ov035	0x02111798	func_ov035_02111798	_ZN16SpinningPlatform12UpdateShadowEv	SpinningPlatform TU helper; direct class-only call from Behavior
-ov035	0x021118a8	func_ov035_021118a8	_ZN16SpinningPlatform11UpdateModelEv	SpinningPlatform TU helper; direct class-only calls from InitResources and Behavior
-ov035	0x021118f0	func_ov035_021118f0	_ZN16SpinningPlatform16CleanupResourcesEv	vtable slot 3; method-symbol spelling and class-only TU
-ov035	0x02111934	func_ov035_02111934	_ZN16SpinningPlatform6RenderEv	vtable slot 9; method-symbol spelling and class-only TU
-ov035	0x0211195c	func_ov035_0211195c	_ZN16SpinningPlatform8BehaviorEv	vtable slot 6; method-symbol spelling and class-only TU
-ov035	0x02111a98	func_ov035_02111a98	_ZN16SpinningPlatform13InitResourcesEv	vtable slot 0; method-symbol spelling and class-only TU
+ov035	0x021116ec	func_ov035_021116ec	_ZN16daObjCtMecha11_cD1Ev	vtable slot 16; method-symbol spelling and class-only TU
+ov035	0x02111738	func_ov035_02111738	_ZN16daObjCtMecha11_cD0Ev	vtable slot 17; method-symbol spelling and class-only TU
+ov035	0x02111798	func_ov035_02111798	_ZN16daObjCtMecha11_c12UpdateShadowEv	daObjCtMecha11_c TU helper; direct class-only call from Behavior
+ov035	0x021118a8	func_ov035_021118a8	_ZN16daObjCtMecha11_c11UpdateModelEv	daObjCtMecha11_c TU helper; direct class-only calls from InitResources and Behavior
+ov035	0x021118f0	func_ov035_021118f0	_ZN16daObjCtMecha11_c16CleanupResourcesEv	vtable slot 3; method-symbol spelling and class-only TU
+ov035	0x02111934	func_ov035_02111934	_ZN16daObjCtMecha11_c6RenderEv	vtable slot 9; method-symbol spelling and class-only TU
+ov035	0x0211195c	func_ov035_0211195c	_ZN16daObjCtMecha11_c8BehaviorEv	vtable slot 6; method-symbol spelling and class-only TU
+ov035	0x02111a98	func_ov035_02111a98	_ZN16daObjCtMecha11_c13InitResourcesEv	vtable slot 0; method-symbol spelling and class-only TU
 ov035	0x02111b98	func_ov035_02111b98	SpinningPlatform_Spawn	spawnfunc
 ov035	0x02111b98	SpinningPlatform_Spawn	daObjCtMecha11_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
 ov035	0x02112aa4	data_ov035_02112aa4	RotatingClockHand_SpawnInfo	spawninfo
@@ -1375,7 +1375,7 @@ ov035	0x02112adc	RotatingCogSmall_SpawnInfo	g_profile_CT_MECHA12S	reconstructed 
 ov035	0x02112b00	data_ov035_02112b00	_ZTV16daObjCtMecha10_c	vtable alloc=0x330 (was _ZTV16RotatingCogSmall)
 ov035	0x02112ba8	data_ov035_02112ba8	SpinningPlatform_SpawnInfo	spawninfo
 ov035	0x02112ba8	SpinningPlatform_SpawnInfo	g_profile_CT_MECHA11	reconstructed profile global; literal ROM ID CT_MECHA11+registry role+later EAD lineage; exact SM64DS spelling not preserved
-ov035	0x02112bcc	data_ov035_02112bcc	_ZTV16SpinningPlatform	vtable alloc=0x380; ROM RTTI name is daObjCtMecha11_c
+ov035	0x02112bcc	data_ov035_02112bcc	_ZTV16daObjCtMecha11_c	vtable alloc=0x380; ROM RTTI name is daObjCtMecha11_c
 ov036	0x02111414	func_ov036_02111414	SwingingPlatform_Spawn	spawnfunc
 ov036	0x02111414	SwingingPlatform_Spawn	daObjRcBuranko_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
 ov036	0x02111544	func_ov036_02111544	RotatingPlatformRr_Spawn	spawnfunc
@@ -1978,12 +1978,12 @@ ov065	0x021195ec	func_ov065_021195ec	DorrieCap_Spawn	spawnfunc
 ov065	0x021195ec	DorrieCap_Spawn	daDossyCap_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
 ov065	0x02119634	func_ov065_02119634	Dorrie_Spawn	spawnfunc
 ov065	0x02119634	Dorrie_Spawn	daDossy_c_classInit	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
-ov065	0x021196d8	func_ov065_021196d8	_ZN15TtcRotatingCubeD1Ev	vtable slot 16
-ov065	0x0211972c	func_ov065_0211972c	_ZN15TtcRotatingCubeD0Ev	vtable slot 17
-ov065	0x02119984	func_ov065_02119984	_ZN15TtcRotatingCube16CleanupResourcesEv	vtable slot 3
-ov065	0x021199fc	func_ov065_021199fc	_ZN15TtcRotatingCube6RenderEv	vtable slot 9
-ov065	0x02119a50	func_ov065_02119a50	_ZN15TtcRotatingCube8BehaviorEv	vtable slot 6
-ov065	0x02119c38	func_ov065_02119c38	_ZN15TtcRotatingCube13InitResourcesEv	vtable slot 0
+ov065	0x021196d8	func_ov065_021196d8	_ZN20daObjCtRotateBlock_cD1Ev	vtable slot 16
+ov065	0x0211972c	func_ov065_0211972c	_ZN20daObjCtRotateBlock_cD0Ev	vtable slot 17
+ov065	0x02119984	func_ov065_02119984	_ZN20daObjCtRotateBlock_c16CleanupResourcesEv	vtable slot 3
+ov065	0x021199fc	func_ov065_021199fc	_ZN20daObjCtRotateBlock_c6RenderEv	vtable slot 9
+ov065	0x02119a50	func_ov065_02119a50	_ZN20daObjCtRotateBlock_c8BehaviorEv	vtable slot 6
+ov065	0x02119c38	func_ov065_02119c38	_ZN20daObjCtRotateBlock_c13InitResourcesEv	vtable slot 0
 ov065	0x02119ebc	func_ov065_02119ebc	TtcRotatingPrism_Spawn	spawnfunc
 ov065	0x02119ebc	TtcRotatingPrism_Spawn	daObjCtRotateBlock_c_classInit_CT_MECHA02	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
 ov065	0x02119efc	func_ov065_02119efc	TtcRotatingCube_Spawn	spawnfunc
@@ -2045,7 +2045,7 @@ ov065	0x0211cfe8	TtcRotatingCube_SpawnInfo	g_profile_CT_MECHA01	reconstructed pr
 ov065	0x0211d004	data_ov065_0211d004	TtcRotatingPrism_SpawnInfo	spawninfo
 ov065	0x0211d004	TtcRotatingPrism_SpawnInfo	g_profile_CT_MECHA02	reconstructed profile global; literal ROM ID CT_MECHA02+registry role+later EAD lineage; exact SM64DS spelling not preserved
 ov065	0x0211d0c8	data_ov065_0211d0c8	g_profile_CT_MECHA03	reconstructed profile global; literal ROM ID CT_MECHA03+registry role+later EAD lineage; exact SM64DS spelling not preserved
-ov065	0x0211d028	data_ov065_0211d028	_ZTV15TtcRotatingCube	vtable alloc=0x3d8
+ov065	0x0211d028	data_ov065_0211d028	_ZTV20daObjCtRotateBlock_c	vtable alloc=0x3d8
 ov065	0x0211d1ac	data_ov065_0211d1ac	TtcConveyorBeltSmall_SpawnInfo	spawninfo
 ov065	0x0211d1ac	TtcConveyorBeltSmall_SpawnInfo	g_profile_CT_MECHA04S	reconstructed profile global; literal ROM ID CT_MECHA04S+registry role+later EAD lineage; exact SM64DS spelling not preserved
 ov065	0x0211d1c8	data_ov065_0211d1c8	TtcConveyorBeltLarge_SpawnInfo	spawninfo
