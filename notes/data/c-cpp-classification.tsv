@@ -1060,7 +1060,7 @@ src/_ZN16daObjPushblock_c8OnPushedER8dActor_c.c	P1-vtable+mangled	ov002	daObjPus
 src/_ZN14daObjKsWater_c13InitResourcesEv.c	P1-vtable+mangled	ov017	daObjKsWater_c	daObjKsWater_c/daObjKsWater_c	vtable daObjKsWater_c slot 0 @0x21113c0 | _ZN14daObjKsWater_c13InitResourcesEv	1		True		-
 src/_ZN9SolidHeapC1EPvjP4HeapP18SolidHeapAllocator.c	P3-mangled-method-only	arm9		SolidHeap	_ZN9SolidHeapC1EPvjP4HeapP18SolidHeapAllocator	1		True	_ZTV9SolidHeap	-
 src/_ZN9SolidHeapD1Ev.cpp	DTOR-ONLY	arm9	mHeap::SolidHeap_t	SolidHeap/mHeap	_ZN9SolidHeapD1Ev	1		True	_ZTV9SolidHeap	-
-src/_ZN9SpindriftD0Ev.c	DTOR-ONLY	ov081	daHuwa_c	Spindrift/daHuwa_c	_ZN9SpindriftD0Ev	1		True		-
+src/_ZN8daHuwa_cD0Ev.c	DTOR-ONLY	ov081	daHuwa_c	daHuwa_c/daHuwa_c	_ZN8daHuwa_cD0Ev	1		True		-
 src/_ZN18daObjWlSubmarine_cD0Ev.c	DTOR-ONLY	ov026	daObjWlSubmarine_c	daObjWlSubmarine_c/daObjWlSubmarine_c	_ZN18daObjWlSubmarine_cD0Ev	1		True	_ZTV10dBgActor_c/_ZTV18daObjWlSubmarine_c	-
 src/_ZN13daObjTtFuta_cD0Ev.c	DTOR-ONLY	ov033	daObjTtFuta_c	daObjTtFuta_c/daObjTtFuta_c	_ZN13daObjTtFuta_cD0Ev	1		True	_ZTV10dBgActor_c/_ZTV13daObjTtFuta_c	-
 src/_ZN14daObjTtWater_c8BehaviorEv.c	P1-vtable+mangled	ov033	daObjTtWater_c	daObjTtWater_c/daObjTtWater_c	vtable daObjTtWater_c slot 6 @0x21114f8 | _ZN14daObjTtWater_c8BehaviorEv	1		True		-

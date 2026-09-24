@@ -4325,23 +4325,23 @@
    "start": "0x2123740",
    "end": "0x2124090",
    "classes": [
-    "Spindrift"
+    "daHuwa_c"
    ],
    "n_functions_map": 13,
    "n_files": 13,
    "files": [
-    "src/_ZN9SpindriftD1Ev.cpp",
-    "src/_ZN9SpindriftD0Ev.c",
-    "src/_ZN9Spindrift16OnAimedAtWithEggEv.cpp",
+    "src/_ZN8daHuwa_cD1Ev.cpp",
+    "src/_ZN8daHuwa_cD0Ev.c",
+    "src/_ZN8daHuwa_c16OnAimedAtWithEggEv.cpp",
     "src/func_ov081_021237ec.cpp",
     "src/func_ov081_02123910.cpp",
     "src/func_ov081_02123b20.cpp",
-    "src/_ZN9Spindrift16CleanupResourcesEv.cpp",
-    "src/_ZN9Spindrift6RenderEv.cpp",
-    "src/_ZN9Spindrift8BehaviorEv.cpp",
-    "src/_ZN9Spindrift13InitResourcesEv.cpp",
-    "src/_ZN9Spindrift13OnTurnIntoEggER6Player.cpp",
-    "src/_ZN9Spindrift13OnYoshiTryEatEv.cpp",
+    "src/_ZN8daHuwa_c16CleanupResourcesEv.cpp",
+    "src/_ZN8daHuwa_c6RenderEv.cpp",
+    "src/_ZN8daHuwa_c8BehaviorEv.cpp",
+    "src/_ZN8daHuwa_c13InitResourcesEv.cpp",
+    "src/_ZN8daHuwa_c13OnTurnIntoEggER6Player.cpp",
+    "src/_ZN8daHuwa_c13OnYoshiTryEatEv.cpp",
     "src/d_a_huwa.c"
    ],
    "ext_mix": {

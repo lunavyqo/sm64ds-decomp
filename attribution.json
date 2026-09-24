@@ -4831,6 +4831,18 @@
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c6RenderEv": "tangosdev",
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c8BehaviorEv": "ruspecial",
-    "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c13InitResourcesEv": "andrewboudreau"
+    "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c13InitResourcesEv": "andrewboudreau",
+    "src/actors/daHuwa_c.cpp#_ZN8daHuwa_cD1Ev": "tangosdev",
+    "src/actors/daHuwa_c.cpp#_ZN8daHuwa_cD0Ev": "tangosdev",
+    "src/actors/daHuwa_c.cpp#_ZN8daHuwa_c16OnAimedAtWithEggEv": "tangosdev",
+    "src/actors/daHuwa_c.cpp#func_ov081_021237ec": "tangosdev",
+    "src/actors/daHuwa_c.cpp#func_ov081_02123910": "tangosdev",
+    "src/actors/daHuwa_c.cpp#func_ov081_02123b20": "tangosdev",
+    "src/actors/daHuwa_c.cpp#_ZN8daHuwa_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daHuwa_c.cpp#_ZN8daHuwa_c6RenderEv": "tangosdev",
+    "src/actors/daHuwa_c.cpp#_ZN8daHuwa_c8BehaviorEv": "tangosdev",
+    "src/actors/daHuwa_c.cpp#_ZN8daHuwa_c13InitResourcesEv": "tangosdev",
+    "src/actors/daHuwa_c.cpp#_ZN8daHuwa_c13OnTurnIntoEggER6Player": "tangosdev",
+    "src/actors/daHuwa_c.cpp#_ZN8daHuwa_c13OnYoshiTryEatEv": "tangosdev"
   }
 }

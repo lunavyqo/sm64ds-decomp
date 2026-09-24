@@ -5033,8 +5033,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN9Spindrift13InitResourcesEv.cpp",
-      "name": "_ZN9Spindrift13InitResourcesEv",
+      "file": "src/_ZN8daHuwa_c13InitResourcesEv.cpp",
+      "name": "_ZN8daHuwa_c13InitResourcesEv",
       "module": "ov081",
       "addr": "0x2123ed0",
       "verdict": "VERIFIED",
@@ -5042,8 +5042,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN9Spindrift8BehaviorEv.cpp",
-      "name": "_ZN9Spindrift8BehaviorEv",
+      "file": "src/_ZN8daHuwa_c8BehaviorEv.cpp",
+      "name": "_ZN8daHuwa_c8BehaviorEv",
       "module": "ov081",
       "addr": "0x2123c6c",
       "verdict": "VERIFIED",
@@ -20346,7 +20346,7 @@
           "src/_ZN8dActor_c9TrackStarEjj.cpp",
           "src/_ZN9JetStream13InitResourcesEv.cpp",
           "src/_ZN9SeesawBob13InitResourcesEv.cpp",
-          "src/_ZN9Spindrift13InitResourcesEv.cpp",
+          "src/_ZN8daHuwa_c13InitResourcesEv.cpp",
           "src/_ZN14daObjTtWater_c13InitResourcesEv.cpp",
           "src/_ZN9dScDSMT_c16CleanupResourcesEv.cpp",
           "src/d_a_b_donketu.c",
@@ -20470,7 +20470,7 @@
           "src/_ZN8dActor_c9TrackStarEjj.cpp",
           "src/_ZN9JetStream13InitResourcesEv.cpp",
           "src/_ZN9SeesawBob13InitResourcesEv.cpp",
-          "src/_ZN9Spindrift13InitResourcesEv.cpp",
+          "src/_ZN8daHuwa_c13InitResourcesEv.cpp",
           "src/_ZN14daObjTtWater_c13InitResourcesEv.cpp",
           "src/_ZN9dScDSMT_c16CleanupResourcesEv.cpp",
           "src/d_a_b_donketu.c",
@@ -20605,7 +20605,7 @@
           "src/_ZN8dActor_cC1Ev.cpp",
           "src/_ZN9daRFlag_c8BehaviorEv.cpp",
           "src/_ZN9SeesawBob16CleanupResourcesEv.cpp",
-          "src/_ZN9Spindrift8BehaviorEv.cpp",
+          "src/_ZN8daHuwa_c8BehaviorEv.cpp",
           "src/_ZN14daObjTtWater_c16CleanupResourcesEv.cpp",
           "src/_ZN9dScDSMT_c6RenderEv.cpp",
           "src/d_a_basabasa.c",
@@ -20730,7 +20730,7 @@
           "src/_ZN8dActor_cC1Ev.cpp",
           "src/_ZN9daRFlag_c8BehaviorEv.cpp",
           "src/_ZN9SeesawBob16CleanupResourcesEv.cpp",
-          "src/_ZN9Spindrift8BehaviorEv.cpp",
+          "src/_ZN8daHuwa_c8BehaviorEv.cpp",
           "src/_ZN14daObjTtWater_c16CleanupResourcesEv.cpp",
           "src/_ZN9dScDSMT_c6RenderEv.cpp",
           "src/d_a_basabasa.c",
@@ -21948,8 +21948,8 @@
         "src/_ZN9SolidHeap7VSizeofEPv.cpp",
         "src/_ZN9SpikeBomb13InitResourcesEv.cpp",
         "src/_ZN9SpikeBomb8BehaviorEv.cpp",
-        "src/_ZN9Spindrift13InitResourcesEv.cpp",
-        "src/_ZN9Spindrift8BehaviorEv.cpp",
+        "src/_ZN8daHuwa_c13InitResourcesEv.cpp",
+        "src/_ZN8daHuwa_c8BehaviorEv.cpp",
         "src/_ZN18daObjWlSubmarine_c13InitResourcesEv.cpp",
         "src/_ZN18daObjWlSubmarine_c16CleanupResourcesEv.cpp",
         "src/_ZN13daObjTtFuta_c13InitResourcesEv.cpp",
@@ -23707,12 +23707,12 @@
           "name": "_ZN9SpikeBomb8BehaviorEv"
         },
         {
-          "file": "src/_ZN9Spindrift13InitResourcesEv.cpp",
-          "name": "_ZN9Spindrift13InitResourcesEv"
+          "file": "src/_ZN8daHuwa_c13InitResourcesEv.cpp",
+          "name": "_ZN8daHuwa_c13InitResourcesEv"
         },
         {
-          "file": "src/_ZN9Spindrift8BehaviorEv.cpp",
-          "name": "_ZN9Spindrift8BehaviorEv"
+          "file": "src/_ZN8daHuwa_c8BehaviorEv.cpp",
+          "name": "_ZN8daHuwa_c8BehaviorEv"
         },
         {
           "file": "src/_ZN18daObjWlSubmarine_c13InitResourcesEv.cpp",
