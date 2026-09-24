@@ -6196,24 +6196,24 @@
    "start": "0x21121fc",
    "end": "0x2112490",
    "classes": [
-    "daWater_Suikomi_c",
+    "WaterSuction",
     "daWater_Tatumaki_c"
    ],
    "n_functions_map": 13,
    "n_files": 13,
    "files": [
-    "src/_ZN17daWater_Suikomi_cD1Ev.cpp",
-    "src/_ZN17daWater_Suikomi_cD0Ev.cpp",
+    "src/_ZN12WaterSuctionD1Ev.cpp",
+    "src/_ZN12WaterSuctionD0Ev.cpp",
     "src/func_ov026_02112280.c",
     "src/func_ov026_021122b0.c",
     "src/func_ov026_021122cc.c",
     "src/func_ov026_021122d4.cpp",
     "src/func_ov026_02112324.c",
-    "src/_ZN17daWater_Suikomi_c16CleanupResourcesEv.cpp",
-    "src/_ZN17daWater_Suikomi_c16OnPendingDestroyEv.cpp",
-    "src/_ZN17daWater_Suikomi_c6RenderEv.cpp",
-    "src/_ZN17daWater_Suikomi_c8BehaviorEv.cpp",
-    "src/_ZN17daWater_Suikomi_c13InitResourcesEv.cpp",
+    "src/_ZN12WaterSuction16CleanupResourcesEv.cpp",
+    "src/_ZN12WaterSuction16OnPendingDestroyEv.cpp",
+    "src/_ZN12WaterSuction6RenderEv.cpp",
+    "src/_ZN12WaterSuction8BehaviorEv.cpp",
+    "src/_ZN12WaterSuction13InitResourcesEv.cpp",
     "src/d_a_water_suikomi.c"
    ],
    "ext_mix": {
