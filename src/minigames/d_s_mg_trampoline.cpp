@@ -1,5 +1,5 @@
 //cpp
-/* dScMgTrampoline_c — Trampoline Time. Draw a line on the touch screen
+/* dScMgTrampoline_c -- Trampoline Time. Draw a line on the touch screen
  * (up to three at once) and bounce Mario to the lit door. Three misses
  * end the round.
  *
@@ -41,7 +41,8 @@ struct Desc {
     int targetX;    /* +0x0c */
     int targetY;    /* +0x10 */
     int speedX;     /* +0x14 */
-    int speedY;     /* +0x18 -- damped with speedX; not applied here */
+    int speedY;     /* +0x18 -- func_0203d630 damps it with speedX (it
+                       scales both words); not applied here */
     u16 life;       /* +0x1c */
     u16 number;     /* +0x1e */
     u16 active;     /* +0x20 */
@@ -69,15 +70,8 @@ struct B4 {
     unsigned char pad[3];
 };
 
-/* The flashing mark on the lit door, stored at mDoorMarkRow.
-   Helpers below keep a short* / char* parameter so they still match
-   decl_common.h; this is the layout those offsets are. */
-struct DoorMark {
-    s16 row;
-    s16 timer;
-    s32 active;
-    s32 shown;
-};
+/* The door mark's layout lives in the header. */
+typedef dScMgTrampoline_DoorMark DoorMark;
 
 /* Raw storage form of mwccarm's eight-byte single-inheritance PMF. Behavior
    gives the live scene storage its dScMgTrampoline_c::State meaning at the
@@ -491,7 +485,7 @@ void dScMgTrampoline_c::OnYoshiTryEat(int /* arg */)
     func_ov006_02120ca0();
     func_ov006_020c8a9c(0, data_ov006_0213fb18[GetGameLanguage()]);
 
-    func_ov006_02120a44((char *)&mDoorMarkRow);
+    func_ov006_02120a44((char *)&mDoorMark);
 
     self->mInputEnabled = 0;
     self->mRoundOver = 0;
@@ -598,7 +592,7 @@ void dScMgTrampoline_c::BeginPlay()
 {
     mTimer = 0x1e;
     mInputEnabled = 1;
-    func_ov006_02120a18((u16 *)&mDoorMarkRow, mDoorSide);
+    func_ov006_02120a18((u16 *)&mDoorMark, mDoorSide);
     mDragSoundHandle = 0;
     Sound::PlayBank2_2D(0x1b6);
     *(P2Words *)mState = *(P2Words *)&data_ov006_0213fac0;
@@ -680,10 +674,10 @@ void dScMgTrampoline_c::StatePlay()
         if (_Z15ApproachLinear2Rsss((short *)&mDoorSwitchTimer, 0, 1)) {
             if (func_ov006_02121768(c)) {
                 func_ov006_02121750(c, 0);
-                func_ov006_02120a18((u16 *)&mDoorMarkRow, mDoorSide);
+                func_ov006_02120a18((u16 *)&mDoorMark, mDoorSide);
             } else {
                 func_ov006_02121750(c, 1);
-                func_ov006_02120a18((u16 *)&mDoorMarkRow, mDoorSide);
+                func_ov006_02120a18((u16 *)&mDoorMark, mDoorSide);
             }
             Sound::PlayBank2_2D(0x1b6);
             {
@@ -838,7 +832,7 @@ s32 dScMgTrampoline_c::Behavior()
     func_ov006_02120c40();
     (this->*(*(State *)mState))();
     UpdateTouchInput();
-    func_ov006_021209ac(&mDoorMarkRow);
+    func_ov006_021209ac(&mDoorMark.row);
     if (saved != data_ov006_02140588)
         func_ov004_020adb1c(data_ov006_02140588);
     return 1;
@@ -857,7 +851,7 @@ s32 dScMgTrampoline_c::Render()
     int r6, r5;
     int t;
 
-    func_ov006_0212093c(&mDoorMarkRow, mScrollY);
+    func_ov006_0212093c(&mDoorMark.row, mScrollY);
     func_ov006_02120c08();
 
     if (unk_4664 == 1) {
@@ -1037,8 +1031,11 @@ void func_ov006_02120f18(struct Obj *self, int layer)
 #pragma opt_loop_invariants off
 
 // @symbol _ZN17dScMgTrampoline_c9Virtual88Eiiii
-/* Brush stamp. bgLayer (+0x6c, in the base padding) picks the character
-   base. No wrapped-region branch: a 3D minigame owns the top screen. */
+/* Slot 34, the brush stamp. dScMgD3DBase_c does not override this slot,
+   so each trampoline class has its own; they differ only in the shape
+   table (data_ov006_02142f6c here, _02142f78 in dScMgTrampoline2_c).
+   bgLayer (+0x6c, in the base padding) picks the character base. No
+   wrapped-region branch: a 3D minigame owns the top screen. */
 void dScMgTrampoline_c::Virtual88(int x_base, int y, int val, int n)
 {
     char *raw = (char *)this;
@@ -1205,17 +1202,17 @@ void func_ov006_02120b7c(struct Node* node) {
 /* Fills a particle descriptor with fixed parameters and tail-calls
  * func_ov006_02120bc8. */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
-void func_ov006_02120b30(struct Desc *self, int x, int y)
+void func_ov006_02120b30(struct Desc *self, int y, int number)
 {
     self->x = 0x110000;
-    self->y = x;
+    self->y = y;
     self->speedX = -0x4000;
     self->speedY = 0;
     self->targetX = 0xc0000;
-    self->targetY = x;
+    self->targetY = y;
     self->life = 0x80;
     self->active = 1;
-    self->number = y;
+    self->number = number;
     func_ov006_02120bc8((int *)self);
 }
 }

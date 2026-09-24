@@ -1,13 +1,19 @@
-/* dScMgTrampoline_c — Trampoline Time. Draw up to three lines on the touch
+/* dScMgTrampoline_c -- Trampoline Time. Draw up to three lines on the touch
  * screen; Mario bounces off them toward the lit door. Three misses end
  * the round. Child of dScMgD3DBase_c, size 0x5dc8 from the factory's
  * operator new.
  *
- * The destructor is defined in the class body. An out-of-line definition
- * emits D0 before D1, plus a D2 this ROM does not have, so this translation
- * unit cannot be linked in address order. InitResources is the first virtual
- * not defined here and stays the key function. dScMgD3DBase_c supplies
- * operator delete.
+ * RTTI: dScMgTrampoline_c : dScMgD3DBase_c (tools/rtti_extract.py); vtable
+ * ov006:0x0213fb34. Factory dScMgTrampoline_c_classInit (historical alias
+ * MgTrampolineTime_Spawn) installs it for the MG_TRAMPOLINE profile. The
+ * factory builds 0x500c, 0x534c and 0x5cd0; the destructor tears them down
+ * in exact reverse.
+ *
+ * The destructor is defined in the class body: D1 0x021207dc sits below D0
+ * 0x02120880. An out-of-line definition emits D0 before D1, plus a D2 this
+ * ROM does not have, so the TU (.text 0x021207dc..0x02122490) could not be
+ * linked in address order. InitResources is the first virtual not defined
+ * here and stays the key function. dScMgD3DBase_c supplies operator delete.
  *
  * The three element arrays stay raw: their private types are not recovered.
  * From 0x5d84 the tail is the flashing door mark, the scroll, the stylus
@@ -22,6 +28,16 @@ extern "C" void *func_ov006_020ccfc8(void);
 extern "C" void func_ov006_020d1008(void);
 extern "C" void func_ov006_02120938(void);
 
+/* The flashing mark on the lit door, 0xc bytes at 0x5d84. The helpers that
+   drive it keep short* / char* parameters so they still match decl_common.h. */
+struct dScMgTrampoline_DoorMark {
+    s16 row;            /* 0x00 -- which door the flash marks, 0 or 1 */
+    s16 timer;          /* 0x02 -- counts down from 0x3c while it blinks */
+    s32 active;         /* 0x04 -- nonzero while that blink is running */
+    s32 shown;          /* 0x08 -- toggles with timer / 10 */
+};
+typedef char dScMgTrampoline_DoorMark_size_must_be_0xc[sizeof(dScMgTrampoline_DoorMark) == 0xc ? 1 : -1];
+
 struct dScMgTrampoline_c : dScMgD3DBase_c {
     typedef void (dScMgTrampoline_c::*State)();
 
@@ -34,41 +50,41 @@ struct dScMgTrampoline_c : dScMgD3DBase_c {
         __cxa_vec_cleanup(mArray1, 4, 0xd0, (void *)func_ov006_020ccfc8);
     }
 
-    virtual s32 InitResources();
-    virtual s32 CleanupResources();
-    virtual s32 Behavior();
-    virtual s32 Render();
-    virtual void OnYoshiTryEat(int arg);
-    virtual int  OnTurnIntoEgg(int mode);
-    virtual int  OnAttacked2();
-    virtual int  OnKicked();
-    virtual int  OnPushed();
-    virtual void Virtual88(int cx, int cy, int colour, int size);
+    virtual s32 InitResources();     /* slot 0 */
+    virtual s32 CleanupResources();  /* slot 3 -- ov006 0x021212e0 */
+    virtual s32 Behavior();          /* slot 6 -- ov006 0x021214f8 */
+    virtual s32 Render();            /* slot 9 -- ov006 0x021212fc */
+    virtual void OnYoshiTryEat(int arg);               /* slot 18 */
+    virtual int  OnTurnIntoEgg(int mode);              /* slot 19 */
+    virtual int  OnAttacked2();                        /* slot 23 */
+    virtual int  OnKicked();                           /* slot 24 */
+    virtual int  OnPushed();                           /* slot 25 */
+    virtual void Virtual88(int cx, int cy, int colour, int size); /* slot 34 */
 
-    /* State callbacks stored in mState. Behavior dispatches the same
-       eight-byte pointer-to-member every frame. */
-    void StateDone();
-    void StateWaitExit();
-    void StateResults();
-    void StatePlay();
-    void StateIntro();
+    /* State callbacks stored in mState. The PMF descriptors at
+       ov006:0x0213faa0..0x0213fad0 show these are no-argument members of
+       this class; Behavior dispatches the same eight-byte pointer-to-member
+       every frame. The State/Begin/Update names are coined from the
+       matched bodies; the ROM symbols were address-only. */
+    void StateDone();      /* ov006 0x02121774 */
+    void StateWaitExit();  /* ov006 0x02121778 */
+    void StateResults();   /* ov006 0x02121848 */
+    void StatePlay();      /* ov006 0x021218fc */
+    void StateIntro();     /* ov006 0x02121d64 */
 
-    void BeginResults();
-    void BeginPlay();
-    void BeginIntro();
+    void BeginResults();   /* ov006 0x021218c4 */
+    void BeginPlay();      /* ov006 0x02121cf4 */
+    void BeginIntro();     /* ov006 0x02121f04 */
 
-    void UpdateTouchInput();
-    void UpdateScroll();
+    void UpdateTouchInput(); /* ov006 0x0212157c */
+    void UpdateScroll();     /* ov006 0x02121bc8 */
 
     u32 mState[2];          /* 0x5004 -- raw eight-byte State encoding; a
                                typed global PMF emits a non-ROM __sinit */
     u8  mArray1[0x340];     /* 0x500c -- 4 * 0xd0; StatePlay launches one */
     u8  mArray2[0x984];     /* 0x534c -- 3 * 0x32c, elem dtor func_ov006_020d1008 */
     u8  mArray3[0xb4];      /* 0x5cd0 -- 5 * 0x24 floating scores (Desc) */
-    s16 mDoorMarkRow;       /* 0x5d84 -- which door the flash marks, 0 or 1 */
-    s16 mDoorMarkTimer;     /* 0x5d86 -- counts down from 0x3c while it blinks */
-    s32 mDoorMarkActive;    /* 0x5d88 -- nonzero while that blink is running */
-    s32 mDoorMarkShown;     /* 0x5d8c -- toggles with mDoorMarkTimer / 10 */
+    dScMgTrampoline_DoorMark mDoorMark; /* 0x5d84 */
     int mTimer;             /* 0x5d90 -- countdown gating state transitions */
     s32 mScrollY;           /* 0x5d94 -- approached toward mScrollTargetY by 2 a
                                tick; the BG2 offset is mScrollY + mScrollOffsetY */
