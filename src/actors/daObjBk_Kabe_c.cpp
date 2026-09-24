@@ -1,11 +1,18 @@
 //cpp
-/* Bowser's castle walls (BK_KABE00 / BK_KABE01), ov079 .text
- * 0x021271e4..0x0212757c. The two classInit factories sit in the next
+/* Production translation unit for ov079/daObjBk_Kabe_c.
+ * 8 function(s), .text 0x021271e4..0x0212757c. Bowser's castle walls
+ * (BK_KABE00 / BK_KABE01). The two classInit factories sit in the next
  * run and are not part of this TU.
  *
- * #pragma defer_codegen off emits functions in source order, which is
- * ROM order. One out-of-line destructor emits D1, then D0, then a
- * homeless D2.
+ * NAME: _ZTS14daObjBk_Kabe_c is "14daObjBk_Kabe_c" at ov079 0x02128044; _ZTI
+ * at 0x02128038 reads [__si_class_type_info, that string, _ZTI10dBgActor_c].
+ * The tree previously called the class FortressWall (coined; vtable address
+ * only).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x021271e4), D0
+ * (0x02127228), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is ROM-ascending.
  */
 
 #include "decl_common.h"
@@ -26,6 +33,9 @@ extern FileSlot data_ov079_0212805c[];
 extern FileSlot data_ov079_02128060[];
 
 void func_020393a4(int *collider, int range);
+/* dBgActor_c::IsClsnInRange, dBgW_KcMbg::SetFile and Particle::System::NewSimple
+   take Fix12<int> by value, which mwccarm passes differently at the call site,
+   so they stay mangled. */
 int _ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_(dBgActor_c *self, int radius, int yOffset);
 void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
     void *self, void *kcl, const Matrix4x3 *mtx, int scale, short angY, void *clps);
