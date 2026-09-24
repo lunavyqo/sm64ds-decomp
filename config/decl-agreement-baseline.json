@@ -6501,10 +6501,6 @@
         "param:#3 int",
         "return:int"
       ],
-      "src/func_ov073_02122200.cpp": [
-        "param:#1 short &",
-        "return:int"
-      ],
       "src/func_ov075_021147d4.cpp": [
         "return:int"
       ],
@@ -6576,6 +6572,10 @@
       "src/actors/daObjCtRotateBlock_c.cpp": [
         "param:#2 int",
         "param:#3 int",
+        "return:int"
+      ],
+      "src/actors/daObjEwbIce_c.cpp": [
+        "param:#1 short &",
         "return:int"
       ]
     },
@@ -6736,9 +6736,6 @@
         "return:int"
       ],
       "src/_ZN15FireSeaElevator8BehaviorEv.cpp": [
-        "return:int"
-      ],
-      "src/_ZN8CccArena13InitResourcesEv.cpp": [
         "return:int"
       ],
       "src/_ZN9SeesawBob13InitResourcesEv.cpp": [
@@ -7219,11 +7216,6 @@
       "src/_ZN6Eyerok13InitResourcesEv.cpp": [
         "param:#2 int"
       ],
-      "src/_ZN8CccArena13InitResourcesEv.cpp": [
-        "param:#2 int",
-        "param:#6 int",
-        "return:int"
-      ],
       "src/_ZN8IceBlock13InitResourcesEv.cpp": [
         "param:#3 char *"
       ],
@@ -7328,6 +7320,11 @@
       "src/actors/daObjCtMecha11_c.cpp": [
         "param:#3 const Matrix4x3 &",
         "param:#6 CLPS_Block &"
+      ],
+      "src/actors/daObjEwbIce_c.cpp": [
+        "param:#2 int",
+        "param:#6 int",
+        "return:int"
       ]
     },
     "_ZN10dBgW_KcMbg9TransformERK9Matrix4x3s": {
@@ -10925,9 +10922,6 @@
       "src/_ZN6ToxBox13InitResourcesEv.cpp": [
         "kind:data"
       ],
-      "src/_ZN8CccArena13InitResourcesEv.cpp": [
-        "kind:data"
-      ],
       "src/_ZN9SeesawBob13InitResourcesEv.cpp": [
         "kind:data"
       ],
@@ -10968,6 +10962,9 @@
         "mangled:0 parameter(s)"
       ],
       "src/actors/daObjSm_Lift_c.cpp": [
+        "kind:data"
+      ],
+      "src/actors/daObjEwbIce_c.cpp": [
         "kind:data"
       ]
     },
@@ -11285,10 +11282,6 @@
         "param:#1 void *",
         "return:void"
       ],
-      "src/_ZN8CccArena13InitResourcesEv.cpp": [
-        "param:#1 int",
-        "return:int"
-      ],
       "src/_ZN8Goomboss13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
@@ -11444,6 +11437,10 @@
       ],
       "src/actors/daObjSm_Lift_c.cpp": [
         "param:#1 void *"
+      ],
+      "src/actors/daObjEwbIce_c.cpp": [
+        "param:#1 int",
+        "return:int"
       ]
     },
     "_ZN5ModelC1Ev": {
@@ -14527,10 +14524,6 @@
         "param:#1 void *",
         "return:void"
       ],
-      "src/_ZN8CccArena13InitResourcesEv.cpp": [
-        "param:#1 int",
-        "return:int"
-      ],
       "src/_ZN8IceBlock13InitResourcesEv.cpp": [
         "param:#1 void *",
         "return:void *"
@@ -14589,6 +14582,10 @@
       "src/actors/daObjSm_Lift_c.cpp": [
         "param:#1 void *",
         "return:void *"
+      ],
+      "src/actors/daObjEwbIce_c.cpp": [
+        "param:#1 int",
+        "return:int"
       ]
     },
     "_ZN7dCcAc_c10GetOwnerIDEv": {
@@ -15107,9 +15104,6 @@
       "src/_ZN6Player4HurtERK7Vector3j5Fix12IiEjjj.cpp": [
         "return:void"
       ],
-      "src/_ZN8CccArena4KillEv.cpp": [
-        "return:void"
-      ],
       "src/_ZN8Fireball8BehaviorEv.cpp": [
         "return:void"
       ],
@@ -15269,9 +15263,6 @@
       "src/func_ov071_02120d30.c": [
         "return:void"
       ],
-      "src/func_ov073_02122034.cpp": [
-        "return:void"
-      ],
       "src/func_ov079_021246dc.c": [
         "return:void"
       ],
@@ -15354,6 +15345,9 @@
         "return:void"
       ],
       "src/unnamed/ov063/func_ov063_021177b0.c": [
+        "return:void"
+      ],
+      "src/actors/daObjEwbIce_c.cpp": [
         "return:void"
       ]
     },
@@ -16350,10 +16344,6 @@
       "src/func_ov064_02118da0.cpp": [
         "return:char *"
       ],
-      "src/func_ov073_021222ec.c": [
-        "param:#2 char *",
-        "return:char *"
-      ],
       "src/func_ov084_0212c4a0.c": [
         "return:void *"
       ],
@@ -16372,6 +16362,10 @@
       ],
       "src/unnamed/ov063/func_ov063_02119c18.c": [
         "return:void *"
+      ],
+      "src/actors/daObjEwbIce_c.cpp": [
+        "param:#2 char *",
+        "return:char *"
       ]
     },
     "_ZN8dActor_c15GivePlayerCoinsER6Playerhj": {
@@ -18402,9 +18396,6 @@
       "src/_ZN7Wiggler13InitResourcesEv.cpp": [
         "return:void"
       ],
-      "src/_ZN8CccArena13InitResourcesEv.cpp": [
-        "param:#2 int"
-      ],
       "src/_ZN8Goomboss13InitResourcesEv.cpp": [
         "return:void"
       ],
@@ -18512,6 +18503,9 @@
       ],
       "src/actors/daObjSm_Lift_c.cpp": [
         "return:void"
+      ],
+      "src/actors/daObjEwbIce_c.cpp": [
+        "param:#2 int"
       ]
     },
     "_ZN9dBgCh_Gnd10DetectClsnEv": {
@@ -32694,14 +32688,6 @@
       "src/func_ov066_02118188.c": [
         "param:#1 int"
       ],
-      "src/func_ov073_02122034.cpp": [
-        "param:#1 int",
-        "param:#2 const Vector3 &",
-        "return:int"
-      ],
-      "src/func_ov073_02122200.cpp": [
-        "param:#1 int"
-      ],
       "src/func_ov074_0212199c.c": [
         "param:#1 int"
       ],
@@ -32850,6 +32836,11 @@
       ],
       "src/actors/daMenbo_c.cpp": [
         "param:#1 int"
+      ],
+      "src/actors/daObjEwbIce_c.cpp": [
+        "param:#1 int",
+        "param:#2 const Vector3 &",
+        "return:int"
       ]
     },
     "func_02012718": {
@@ -36448,9 +36439,6 @@
       "src/_ZN6Eyerok13InitResourcesEv.cpp": [
         "param:#2 void *"
       ],
-      "src/_ZN8CccArena13InitResourcesEv.cpp": [
-        "param:#2 void *"
-      ],
       "src/_ZN9SeesawBob13InitResourcesEv.cpp": [
         "param:#2 void *"
       ],
@@ -36504,6 +36492,9 @@
         "param:#2 void *"
       ],
       "src/game/actors/d_a_obj_wc_obj05.cpp": [
+        "param:#2 void *"
+      ],
+      "src/actors/daObjEwbIce_c.cpp": [
         "param:#2 void *"
       ]
     },
@@ -36559,9 +36550,6 @@
         "param:#2 void *"
       ],
       "src/_ZN6ToxBox13InitResourcesEv.cpp": [
-        "param:#2 void *"
-      ],
-      "src/_ZN8CccArena13InitResourcesEv.cpp": [
         "param:#2 void *"
       ],
       "src/_ZN9SeesawBob13InitResourcesEv.cpp": [
@@ -36669,6 +36657,9 @@
         "param:#2 void *"
       ],
       "src/actors/daObjCtMecha11_c.cpp": [
+        "param:#2 void *"
+      ],
+      "src/actors/daObjEwbIce_c.cpp": [
         "param:#2 void *"
       ]
     },
@@ -46398,9 +46389,6 @@
       ]
     },
     "func_ov073_021223a4": {
-      "src/func_ov073_021220c0.c": [
-        "return:void"
-      ],
       "src/func_ov073_02122730.c": [
         "param:#1 char *",
         "return:void"

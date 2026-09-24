@@ -4628,8 +4628,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN8CccArena13InitResourcesEv.cpp",
-      "name": "_ZN8CccArena13InitResourcesEv",
+      "file": "src/_ZN13daObjEwbIce_c13InitResourcesEv.cpp",
+      "name": "_ZN13daObjEwbIce_c13InitResourcesEv",
       "module": "ov073",
       "addr": "0x2122578",
       "verdict": "VERIFIED",
@@ -4637,8 +4637,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN8CccArena16CleanupResourcesEv.cpp",
-      "name": "_ZN8CccArena16CleanupResourcesEv",
+      "file": "src/_ZN13daObjEwbIce_c16CleanupResourcesEv.cpp",
+      "name": "_ZN13daObjEwbIce_c16CleanupResourcesEv",
       "module": "ov073",
       "addr": "0x2122464",
       "verdict": "VERIFIED",
@@ -4646,8 +4646,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN8CccArena8BehaviorEv.cpp",
-      "name": "_ZN8CccArena8BehaviorEv",
+      "file": "src/_ZN13daObjEwbIce_c8BehaviorEv.cpp",
+      "name": "_ZN13daObjEwbIce_c8BehaviorEv",
       "module": "ov073",
       "addr": "0x21224f0",
       "verdict": "VERIFIED",
@@ -20085,7 +20085,7 @@
           "src/_ZN7Message22DisplayOptionsMenuTextEt.cpp",
           "src/_ZN7Wiggler13InitResourcesEv.cpp",
           "src/_ZN7dWipe_cD0Ev.cpp",
-          "src/_ZN8CccArena8BehaviorEv.cpp",
+          "src/_ZN13daObjEwbIce_c8BehaviorEv.cpp",
           "src/_ZN8IceBlock8BehaviorEv.cpp",
           "src/_ZN8Particle10SysTrackerD1Ev.cpp",
           "src/_ZN8SignPost13InitResourcesEv.cpp",
@@ -20204,7 +20204,7 @@
           "src/_ZN7Message22DisplayOptionsMenuTextEt.cpp",
           "src/_ZN7Wiggler13InitResourcesEv.cpp",
           "src/_ZN7dWipe_cD0Ev.cpp",
-          "src/_ZN8CccArena8BehaviorEv.cpp",
+          "src/_ZN13daObjEwbIce_c8BehaviorEv.cpp",
           "src/_ZN8IceBlock8BehaviorEv.cpp",
           "src/_ZN8Particle10SysTrackerD1Ev.cpp",
           "src/_ZN8SignPost13InitResourcesEv.cpp",
@@ -21121,7 +21121,7 @@
           "src/_ZN7Message21DisplayLevelClearTextEta.cpp",
           "src/_ZN7Tornado13InitResourcesEv.cpp",
           "src/_ZN7dWipe_c14SetForwardTimeEj.cpp",
-          "src/_ZN8CccArena13InitResourcesEv.cpp",
+          "src/_ZN13daObjEwbIce_c13InitResourcesEv.cpp",
           "src/_ZN8IceBlock13InitResourcesEv.cpp",
           "src/_ZN8Particle10SysTracker10InitialiseEv.cpp",
           "src/_ZN8SaveData16SetDefaultValuesEP12FileSaveData.cpp",
@@ -21246,7 +21246,7 @@
           "src/_ZN7Message21DisplayLevelClearTextEta.cpp",
           "src/_ZN7Tornado13InitResourcesEv.cpp",
           "src/_ZN7dWipe_c14SetForwardTimeEj.cpp",
-          "src/_ZN8CccArena13InitResourcesEv.cpp",
+          "src/_ZN13daObjEwbIce_c13InitResourcesEv.cpp",
           "src/_ZN8IceBlock13InitResourcesEv.cpp",
           "src/_ZN8Particle10SysTracker10InitialiseEv.cpp",
           "src/_ZN8SaveData16SetDefaultValuesEP12FileSaveData.cpp",
@@ -21380,7 +21380,7 @@
           "src/_ZN7Message21DisplaySaveStatusTextEt.cpp",
           "src/_ZN7Tornado8BehaviorEv.cpp",
           "src/_ZN7dWipe_c15SetBackwardTimeEj.c",
-          "src/_ZN8CccArena16CleanupResourcesEv.cpp",
+          "src/_ZN13daObjEwbIce_c16CleanupResourcesEv.cpp",
           "src/_ZN8IceBlock16CleanupResourcesEv.cpp",
           "src/_ZN8Particle10SysTracker6UpdateEv.cpp",
           "src/_ZN8SaveData18SetDefaultValuesMgEP16MinigameSaveData.cpp",
@@ -21503,7 +21503,7 @@
           "src/_ZN7Message21DisplaySaveStatusTextEt.cpp",
           "src/_ZN7Tornado8BehaviorEv.cpp",
           "src/_ZN7dWipe_c15SetBackwardTimeEj.c",
-          "src/_ZN8CccArena16CleanupResourcesEv.cpp",
+          "src/_ZN13daObjEwbIce_c16CleanupResourcesEv.cpp",
           "src/_ZN8IceBlock16CleanupResourcesEv.cpp",
           "src/_ZN8Particle10SysTracker6UpdateEv.cpp",
           "src/_ZN8SaveData18SetDefaultValuesMgEP16MinigameSaveData.cpp",
@@ -21903,9 +21903,9 @@
         "src/_ZN7dWipe_cD1Ev.cpp",
         "src/_ZN7fBase_cnwEj.cpp",
         "src/_ZN8BookShot8BehaviorEv.cpp",
-        "src/_ZN8CccArena13InitResourcesEv.cpp",
-        "src/_ZN8CccArena16CleanupResourcesEv.cpp",
-        "src/_ZN8CccArena8BehaviorEv.cpp",
+        "src/_ZN13daObjEwbIce_c13InitResourcesEv.cpp",
+        "src/_ZN13daObjEwbIce_c16CleanupResourcesEv.cpp",
+        "src/_ZN13daObjEwbIce_c8BehaviorEv.cpp",
         "src/_ZN8Goomboss16CleanupResourcesEv.cpp",
         "src/_ZN8Goomboss6RenderEv.cpp",
         "src/_ZN8Goomboss8BehaviorEv.cpp",
@@ -23527,16 +23527,16 @@
           "name": "_ZN8BookShot8BehaviorEv"
         },
         {
-          "file": "src/_ZN8CccArena13InitResourcesEv.cpp",
-          "name": "_ZN8CccArena13InitResourcesEv"
+          "file": "src/_ZN13daObjEwbIce_c13InitResourcesEv.cpp",
+          "name": "_ZN13daObjEwbIce_c13InitResourcesEv"
         },
         {
-          "file": "src/_ZN8CccArena16CleanupResourcesEv.cpp",
-          "name": "_ZN8CccArena16CleanupResourcesEv"
+          "file": "src/_ZN13daObjEwbIce_c16CleanupResourcesEv.cpp",
+          "name": "_ZN13daObjEwbIce_c16CleanupResourcesEv"
         },
         {
-          "file": "src/_ZN8CccArena8BehaviorEv.cpp",
-          "name": "_ZN8CccArena8BehaviorEv"
+          "file": "src/_ZN13daObjEwbIce_c8BehaviorEv.cpp",
+          "name": "_ZN13daObjEwbIce_c8BehaviorEv"
         },
         {
           "file": "src/_ZN8Goomboss16CleanupResourcesEv.cpp",
