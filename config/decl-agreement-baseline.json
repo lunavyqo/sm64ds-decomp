@@ -1495,7 +1495,7 @@
       "src/_ZN9daManta_c8BehaviorEv.cpp": [
         "param:#1 Vector3 *"
       ],
-      "src/_ZN9daShark_c8BehaviorEv.cpp": [
+      "src/actors/daShark_c.cpp": [
         "param:#1 Vector3 *"
       ],
       "src/actors/daJango_c.cpp": [
@@ -1844,7 +1844,7 @@
         "param:#3 short",
         "param:#4 short"
       ],
-      "src/func_ov090_02133904.c": [
+      "src/actors/daShark_c.cpp": [
         "param:#2 short",
         "param:#3 short",
         "param:#4 short"
@@ -4901,7 +4901,7 @@
         "param:#1 const void *",
         "param:#2 const void *"
       ],
-      "src/_ZN9daShark_c8BehaviorEv.cpp": [
+      "src/actors/daShark_c.cpp": [
         "param:#1 Vector3 *",
         "param:#2 Vector3 *"
       ],
@@ -5661,7 +5661,7 @@
         "param:#2 Vector3 *",
         "param:#3 Vector3 *"
       ],
-      "src/_ZN9daShark_c8BehaviorEv.cpp": [
+      "src/actors/daShark_c.cpp": [
         "param:#1 Vector3 *",
         "param:#2 Vector3 *",
         "param:#3 Vector3 *"
@@ -5864,7 +5864,7 @@
         "param:#1 const void *",
         "param:#2 const void *"
       ],
-      "src/_ZN9daShark_c8BehaviorEv.cpp": [
+      "src/actors/daShark_c.cpp": [
         "param:#1 Vector3 *",
         "param:#2 Vector3 *"
       ],
@@ -6934,7 +6934,7 @@
         "param:#5 Vector3_16 *",
         "param:#6 Vector3_16 *"
       ],
-      "src/_ZN8Snowball13InitResourcesEv.cpp": [
+      "src/actors/daSnowball_c.cpp": [
         "param:#2 void *",
         "param:#5 void *"
       ],
@@ -7377,7 +7377,7 @@
       "src/func_ov081_021243cc.cpp": [
         "param:#2 void *"
       ],
-      "src/func_ov090_02133710.cpp": [
+      "src/actors/daShark_c.cpp": [
         "param:#2 void *"
       ],
       "src/func_ov094_021357a4.c": [
@@ -11288,9 +11288,6 @@
       "src/_ZN8SignPost13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
-      "src/_ZN8Snowball13InitResourcesEv.cpp": [
-        "param:#1 void *"
-      ],
       "src/_ZN9MontyMole13InitResourcesEv.cpp": [
         "param:#1 SharedFilePtr *",
         "return:struct BMD_File *"
@@ -11311,7 +11308,7 @@
       "src/_ZN9daDossy_c13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
-      "src/_ZN9daShark_c13InitResourcesEv.cpp": [
+      "src/actors/daShark_c.cpp": [
         "param:#1 void *"
       ],
       "src/actors/Goomboss.cpp": [
@@ -13511,11 +13508,11 @@
         "param:#7 unsigned int",
         "return:void"
       ],
-      "src/func_ov090_02133710.cpp": [
+      "src/actors/daShark_c.cpp": [
+        "return:void",
         "param:#5 unsigned int",
         "param:#6 unsigned int",
-        "param:#7 unsigned int",
-        "return:void"
+        "param:#7 unsigned int"
       ],
       "src/func_ov098_02138e6c.cpp": [
         "param:#5 unsigned int",
@@ -15859,7 +15856,7 @@
       "src/func_ov090_02132730.cpp": [
         "return:Player *"
       ],
-      "src/func_ov090_02133710.cpp": [
+      "src/actors/daShark_c.cpp": [
         "return:void *"
       ],
       "src/func_ov091_021339fc.c": [
@@ -17586,9 +17583,9 @@
         "param:#1 void *",
         "return:void *"
       ],
-      "src/_ZN9daShark_c13InitResourcesEv.cpp": [
-        "param:#1 void *",
-        "return:void"
+      "src/actors/daShark_c.cpp": [
+        "return:void",
+        "param:#1 void *"
       ],
       "src/actors/Goomboss.cpp": [
         "param:#1 void *",
@@ -18174,10 +18171,10 @@
         "param:#5 unsigned int",
         "return:int"
       ],
-      "src/func_ov090_0213387c.c": [
+      "src/actors/daShark_c.cpp": [
+        "return:int",
         "param:#1 char *",
-        "param:#5 unsigned int",
-        "return:int"
+        "param:#5 unsigned int"
       ],
       "src/func_ov091_02133f24.c": [
         "return:int"
@@ -18431,7 +18428,7 @@
       "src/_ZN9daDossy_c13InitResourcesEv.cpp": [
         "return:void"
       ],
-      "src/_ZN9daShark_c13InitResourcesEv.cpp": [
+      "src/actors/daShark_c.cpp": [
         "return:void"
       ],
       "src/actors/Goomboss.cpp": [
@@ -19093,7 +19090,7 @@
       "src/_ZN5Unagi13InitResourcesEv.cpp": [
         "param:#2 char *"
       ],
-      "src/_ZN9daShark_c13InitResourcesEv.cpp": [
+      "src/actors/daShark_c.cpp": [
         "param:#2 void *"
       ],
       "src/actors/daBgSnmBdy_c.cpp": [
@@ -22987,7 +22984,7 @@
       "src/_ZN9daManta_c8BehaviorEv.cpp": [
         "return:char []"
       ],
-      "src/_ZN9daShark_c8BehaviorEv.cpp": [
+      "src/actors/daShark_c.cpp": [
         "return:char []"
       ],
       "src/actors/Eyerok.cpp": [
@@ -23079,9 +23076,6 @@
       ],
       "src/func_ov089_021311c0.c": [
         "return:char"
-      ],
-      "src/func_ov090_02133710.cpp": [
-        "return:int []"
       ],
       "src/func_ov091_02130fac.cpp": [
         "return:char []"
@@ -30710,11 +30704,8 @@
       "src/_ZN10MrBlizzard16CleanupResourcesEv.cpp": [
         "return:SharedFilePtr"
       ],
-      "src/_ZN8Snowball13InitResourcesEv.cpp": [
-        "return:char"
-      ],
-      "src/_ZN8Snowball16CleanupResourcesEv.cpp": [
-        "return:int []"
+      "src/actors/daSnowball_c.cpp": [
+        "return:SharedFilePtr"
       ]
     },
     "data_ov081_02128d98": {
@@ -31348,19 +31339,6 @@
     "data_ov090_02134594": {
       "src/__sinit_ov090_02133f4c.c": [
         "return:S16"
-      ]
-    },
-    "data_ov090_021345a4": {
-      "src/_ZN9daShark_c16CleanupResourcesEv.cpp": [
-        "return:SharedFilePtr"
-      ]
-    },
-    "data_ov090_021345ac": {
-      "src/_ZN9daShark_c16CleanupResourcesEv.cpp": [
-        "return:SharedFilePtr"
-      ],
-      "src/func_ov090_0213387c.c": [
-        "return:int []"
       ]
     },
     "data_ov091_021344f4": {
@@ -32780,9 +32758,9 @@
       "src/func_ov089_02131b18.c": [
         "arity:3"
       ],
-      "src/func_ov090_02133830.c": [
-        "param:#1 int",
-        "return:int"
+      "src/actors/daShark_c.cpp": [
+        "return:int",
+        "param:#1 int"
       ],
       "src/func_ov091_021339fc.c": [
         "param:#1 int"
@@ -46787,16 +46765,6 @@
     "func_ov090_02132ac4": {
       "src/_ZN9daManta_c13InitResourcesEv.cpp": [
         "param:#1 unsigned char *"
-      ]
-    },
-    "func_ov090_02133710": {
-      "src/func_ov090_02133830.c": [
-        "return:int"
-      ]
-    },
-    "func_ov090_02133904": {
-      "src/_ZN9daShark_c8BehaviorEv.cpp": [
-        "param:#1 daShark_c *"
       ]
     },
     "func_ov091_02131cb0": {
