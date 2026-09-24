@@ -8781,8 +8781,8 @@
         "diffs": []
       },
       {
-        "file": "src/_ZN3MrI16CleanupResourcesEv.cpp",
-        "name": "_ZN3MrI16CleanupResourcesEv",
+        "file": "src/_ZN8daEykn_c16CleanupResourcesEv.cpp",
+        "name": "_ZN8daEykn_c16CleanupResourcesEv",
         "module": "ov071",
         "addr": "0x2121650",
         "verdict": "VERIFIED",

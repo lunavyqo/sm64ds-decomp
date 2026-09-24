@@ -11,7 +11,7 @@
     "whole_overlay_string_census": "ov071 contains exactly five printable runs of >=5 characters in its entire 0x3f80 bytes: 7daSpd_c (0x02122bf0), 8daEykn_c (0x02122cd8), 8daEyBm_c (0x02122dac), STANDUP (0x02122e6c) and 13daObjCasket_c (0x02122ea0). Four of the five are _ZTS records; there is no room for a hidden English name.",
     "tooling_corroboration": "tools/rtti_extract.py builds build/rtti.json from the ROM (429 records, 0 unresolved). Its record for this class is {module: ov071, addr: 0x02122bfc, kind: si, mangled: 7daSpd_c, name: daSpd_c, name_addr: 0x02122bf0, vtable: 0x02122c2c}. `tools/rtti_vtables.py --own daSpd_c` prints the full override set; `--own Scuttlebug` prints 'no vtable for Scuttlebug' -- the ROM-derived database has never heard the name.",
     "symbols_txt_asymmetry": "config/arm9/overlays/ov071/symbols.txt aliases the VTABLE under both spellings at one address (_ZTV10Scuttlebug and _ZTV7daSpd_c, both addr:0x02122c2c) but names _ZTS/_ZTI under the daSpd_c spelling only. So a TU compiled as `class Scuttlebug` emits _ZTS10Scuttlebug (13 bytes) and _ZTI10Scuttlebug, neither of which has any home in the cartridge. That is survivable on the queue's declared text-only route, where the RTTI data is externalized/deadstripped, and FATAL to an intact-object route. Do not attempt intact-object under the coined spelling.",
-    "sibling_naming_pattern": "Three of ov071's four classes carry coined tree names and one does not: Scuttlebug=daSpd_c (coined), MrI=daEykn_c (coined; symbols.txt aliases _ZTV3MrI and _ZTV8daEykn_c at 0x02122d30), Coffin=daObjCasket_c (coined), daEyBm_c=daEyBm_c (the ROM name, and the one class already promoted)."
+    "sibling_naming_pattern": "Three of ov071's four classes carry coined tree names and one does not: Scuttlebug=daSpd_c (coined), daEykn_c=daEykn_c (coined; symbols.txt aliases _ZTV8daEykn_c and _ZTV8daEykn_c at 0x02122d30), Coffin=daObjCasket_c (coined), daEyBm_c=daEyBm_c (the ROM name, and the one class already promoted)."
   },
 
   "overlay": "ov071",
@@ -38,7 +38,7 @@
     "address_point_note": "The symbol IS the address point. offset-to-top at 0x02122c24 = 0x00000000 and the typeinfo pointer at 0x02122c28 = 0x02122bfc (_ZTI7daSpd_c). Read from extracted/overlays/overlay_0071.bin at file offsets 0x3c24/0x3c28. Confirmed a third time from code: both daSpd_c_classInit (literal at 0x02120664) and _ZN10ScuttlebugD1Ev (literal at 0x0211f044) store the bare value 0x02122c2c into this+0, not &_ZTV[2].",
     "extent_evidence": [
       "Next symbol: config/arm9/overlays/ov071/symbols.txt has data_ov071_02122ca8 immediately after _ZTV7daSpd_c, so the table cannot run past 0x02122ca8.",
-      "Content: the word at 0x02122ca8 is 0x021214f4 = func_ov071_021214f4, a function belonging to daEykn_c/MrI, not to this class. It is the first entry of daEykn_c's own state table, laid out in exactly the same shape as this class's.",
+      "Content: the word at 0x02122ca8 is 0x021214f4 = func_ov071_021214f4, a function belonging to daEykn_c/daEykn_c, not to this class. It is the first entry of daEykn_c's own state table, laid out in exactly the same shape as this class's.",
       "Relocations: config/arm9/overlays/ov071/relocs.txt carries an unbroken run of `kind:load` records from 0x02122c28 through 0x02122ca4 with no gap, and the next record, from:0x02122ca8, targets 0x021214f4.",
       "Base length: _ZTV8dActor_c in arm9 runs 0x0208e3a4..0x0208e420 (next symbol data_0208e420) = 0x7c = 31 words, the same length. This class adds no slot; it only overrides."
     ],
@@ -77,7 +77,7 @@
   "text_run": {
     "span": "0x0211f000..0x02120668",
     "functions": 37,
-    "contiguity": "37 consecutive delinks entries with zero gaps -- each entry's end is the next entry's start. The run starts at the first byte of ov071's .text and ends immediately before _ZN3MrID1Ev at 0x02120668.",
+    "contiguity": "37 consecutive delinks entries with zero gaps -- each entry's end is the next entry's start. The run starts at the first byte of ov071's .text and ends immediately before _ZN8daEykn_cD1Ev at 0x02120668.",
     "source": "config/arm9/overlays/ov071/delinks.txt on base bc660e83e"
   },
 

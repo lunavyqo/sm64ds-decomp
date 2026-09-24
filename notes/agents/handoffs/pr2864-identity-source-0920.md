@@ -39,7 +39,7 @@ interface: receiver, attacker and nullable collision. No original prototype is
 claimed uniquely recovered. Existing handlers consume the attacker and ignore
 the forwarded collision value; incoming r3 is overwritten. Removing purported
 fourth arguments and daKrb's variadic spelling preserves every tested instruction.
-UnloadBlueCoinModel accepts an unused context pointer, MrI passes `this`, and
+UnloadBlueCoinModel accepts an unused context pointer, daEykn_c passes `this`, and
 BookShotSpawner's prototype uses the same opaque pointer spelling.
 
 ## Proof and limits

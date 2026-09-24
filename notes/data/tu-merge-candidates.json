@@ -27651,13 +27651,13 @@
    "end": "0x2121a6c",
    "classes": [
     "BigMrI",
-    "MrI"
+    "daEykn_c"
    ],
    "n_functions_map": 25,
    "n_files": 23,
    "files": [
-    "src/_ZN3MrID1Ev.cpp",
-    "src/_ZN3MrID0Ev.c",
+    "src/_ZN8daEykn_cD1Ev.cpp",
+    "src/_ZN8daEykn_cD0Ev.c",
     "src/func_ov071_0212070c.c",
     "src/func_ov071_02120860.cpp",
     "src/func_ov071_021209c8.cpp",
@@ -27673,10 +27673,10 @@
     "src/func_ov071_021215c0.cpp",
     "src/func_ov071_021215fc.cpp",
     "src/func_ov071_02121634.c",
-    "src/_ZN3MrI16CleanupResourcesEv.cpp",
-    "src/_ZN3MrI16OnPendingDestroyEv.c",
-    "src/_ZN3MrI6RenderEv.cpp",
-    "src/_ZN3MrI8BehaviorEv.cpp",
+    "src/_ZN8daEykn_c16CleanupResourcesEv.cpp",
+    "src/_ZN8daEykn_c16OnPendingDestroyEv.c",
+    "src/_ZN8daEykn_c6RenderEv.cpp",
+    "src/_ZN8daEykn_c8BehaviorEv.cpp",
     "src/daEykn_c_classInit_EYEKUN_BOSS.c",
     "src/daEykn_c_classInit_EYEKUN.c"
    ],
