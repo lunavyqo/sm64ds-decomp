@@ -1,5 +1,16 @@
 //cpp
-/* daObjHeart_c -- the healing heart pickup. */
+/* Production translation unit for ov002/daObjHeart_c.
+ * 8 function(s), .text 0x020bc5e0..0x020bc8f4. The HEART healing pickup.
+ *
+ * NAME: _ZTS12daObjHeart_c is "12daObjHeart_c" at ov002 0x02109c40; _ZTI at
+ * 0x02109c34 reads [__si_class_type_info, that string, _ZTI8dActor_c]. The tree
+ * previously called the class HealingHeart (coined; vtable address only).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x020bc5e0), D0
+ * (0x020bc618), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is ROM-ascending.
+ */
 
 #pragma defer_codegen off
 
@@ -25,6 +36,7 @@ void _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(
 }
 
 // @symbol _ZN12daObjHeart_cD1Ev
+// @symbol _ZN12daObjHeart_cD0Ev
 daObjHeart_c::~daObjHeart_c()
 {
 }
@@ -100,11 +112,10 @@ s32 daObjHeart_c::Behavior()
 s32 daObjHeart_c::InitResources()
 {
     mModelAnim.SetFile((BMD_File *)Model::LoadFile(data_ov002_0210e104), 1, -1);
-    /* Leftover: InitResources. ModelAnim::SetAnim. */
+    /* Leftover: ModelAnim::SetAnim and dCcAc_c::Init take Fix12<int> by value, so they stay mangled. */
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(
         &mModelAnim, (BCA_File *)Animation::LoadFile(data_ov002_0210e0fc),
         0, 0x1000, 0);
-    /* Leftover: InitResources. dCcAc_c::Init. */
     _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(
         &mdCcAc_c, this, 0x3c000, 0x78000, 0x100002, 0x8000);
     mAnimSpeed = 0x1000;
@@ -113,6 +124,7 @@ s32 daObjHeart_c::InitResources()
 }
 
 // @symbol daObjHeart_c_classInit
+/* Reconstructed source-style name; historical alias HealingHeart_Spawn. */
 extern "C" daObjHeart_c *daObjHeart_c_classInit(void)
 {
     return new daObjHeart_c();
