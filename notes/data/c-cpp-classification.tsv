@@ -370,7 +370,7 @@ src/d_a_obj_simple_bg_ki_hasira_dai.c	WEAK-refs-only	ov102				1		None		-
 src/d_a_ibl.c	WEAK-refs-only	ov100				1		None		-
 src/d_a_obj_fl_maruta.c	S1-stores-rom-vptr	ov022			stores _ZTV15daObjFlMaruta_c	1		None	_ZTV15daObjFlMaruta_c/_ZTV13daObjMaruta_c	-
 src/d_a_obj_hm_maruta.c	S1-stores-rom-vptr	ov030			stores _ZTV13RollingLogTtm	1		None	_ZTV13RollingLogTtm/_ZTV13daObjMaruta_c	-
-src/d_a_grock.c	S1-stores-rom-vptr	ov021			stores _ZTV9daGrock_c	1		None	_ZTV9daGrock_c	-
+src/d_a_grock.c	S1-stores-rom-vptr	ov021			stores _ZTV11RollingRock	1		None	_ZTV11RollingRock	-
 src/d_a_obj_simple_bg_mc_hazad.c	WEAK-refs-only	ov102				1		None		-
 src/d_a_obj_ct_mecha10_ct_mecha10.c	WEAK-refs-only	ov035				1		None		-
 src/d_a_obj_ct_mecha10_ct_mecha12s.c	WEAK-refs-only	ov035				1		None		-
@@ -627,7 +627,7 @@ src/_ZN11RaycastLine10GetClsnPosEv.c	P3-mangled-method-only	arm9		RaycastLine	_Z
 src/_ZN11RaycastLine4Line3SetERK7Vector3S3_.c	P3-mangled-method-only	ov002		Line	_ZN11RaycastLine4Line3SetERK7Vector3S3_	1		False		no-header:Line
 src/_ZN11RaycastLineD1Ev.c	DTOR-ONLY	arm9	dBgCh_Lin	RaycastLine/dBgCh_Lin	_ZN11RaycastLineD1Ev	1		True	_ZTV11RaycastLine	-
 src/_ZN11RickshawBdwD0Ev.c	DTOR-ONLY	ov043	daObjKm1_Kurumajiku_c	RickshawBdw/daObjKm1_Kurumajiku_c	_ZN11RickshawBdwD0Ev	1		True	_ZTV10dBgActor_c/_ZTV11RickshawBdw/_ZTV17daObjKurumajiku_c	-
-src/_ZN9daGrock_c8BehaviorEv.c	P1-vtable+mangled	ov021	daGrock_c	daGrock_c/daGrock_c	vtable daGrock_c slot 6 @0x2112854 | _ZN9daGrock_c8BehaviorEv	1		True		-
+src/_ZN11RollingRock8BehaviorEv.c	P1-vtable+mangled	ov021	daGrock_c	RollingRock/daGrock_c	vtable daGrock_c slot 6 @0x2112854 | _ZN11RollingRock8BehaviorEv	1		True		-
 src/_ZN11ShadowModel9InitModelEP9Matrix4x35Fix12IiES3_S3_j.c	P3-mangled-method-only	arm9		ShadowModel	_ZN11ShadowModel9InitModelEP9Matrix4x35Fix12IiES3_S3_j	1		True		by-value-class-param
 src/_ZN11ShadowModelC1Ev.c	P3-mangled-method-only	arm9		ShadowModel	_ZN11ShadowModelC1Ev	1		True	_ZTV11ShadowModel	-
 src/_ZN11ShadowModelD0Ev.cpp	DTOR-ONLY	arm9	dExtShadowModel_c	ShadowModel/dExtShadowModel_c	_ZN11ShadowModelD0Ev	1		True	_ZTV11ShadowModel	-

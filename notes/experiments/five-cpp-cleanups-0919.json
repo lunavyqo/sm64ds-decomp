@@ -127,8 +127,8 @@
       "complete_object_signature_unchanged": true
     },
     {
-      "source": "src/_ZN9daGrock_c6RenderEv.cpp",
-      "symbol": "_ZN9daGrock_c6RenderEv",
+      "source": "src/_ZN11RollingRock6RenderEv.cpp",
+      "symbol": "_ZN11RollingRock6RenderEv",
       "module": "ov021",
       "address": "0x211281c",
       "rom_size": 56,
@@ -141,7 +141,7 @@
           "object_signature": {
             "definitions": [
               {
-                "name": "_ZN9daGrock_c6RenderEv",
+                "name": "_ZN11RollingRock6RenderEv",
                 "size": 56,
                 "bind": "STB_GLOBAL",
                 "section": ".text",
@@ -159,14 +159,14 @@
             "relocations": []
           },
           "linkcheck": {
-            "name": "_ZN9daGrock_c6RenderEv",
+            "name": "_ZN11RollingRock6RenderEv",
             "module": "ov021",
             "addr": "0x0211281c",
             "verdict": "VERIFIED",
             "diffs": [],
             "blind": 0
           },
-          "reproduce_linkcheck": "python tools/linkcheck.py --name _ZN9daGrock_c6RenderEv --c src/_ZN9daGrock_c6RenderEv.cpp --addr 0x211281c --size 0x38 --module ov021"
+          "reproduce_linkcheck": "python tools/linkcheck.py --name _ZN11RollingRock6RenderEv --c src/_ZN11RollingRock6RenderEv.cpp --addr 0x211281c --size 0x38 --module ov021"
         },
         {
           "variant": "candidate",
@@ -176,7 +176,7 @@
           "object_signature": {
             "definitions": [
               {
-                "name": "_ZN9daGrock_c6RenderEv",
+                "name": "_ZN11RollingRock6RenderEv",
                 "size": 56,
                 "bind": "STB_GLOBAL",
                 "section": ".text",
@@ -194,14 +194,14 @@
             "relocations": []
           },
           "linkcheck": {
-            "name": "_ZN9daGrock_c6RenderEv",
+            "name": "_ZN11RollingRock6RenderEv",
             "module": "ov021",
             "addr": "0x0211281c",
             "verdict": "VERIFIED",
             "diffs": [],
             "blind": 0
           },
-          "reproduce_linkcheck": "python tools/linkcheck.py --name _ZN9daGrock_c6RenderEv --c src/_ZN9daGrock_c6RenderEv.cpp --addr 0x211281c --size 0x38 --module ov021"
+          "reproduce_linkcheck": "python tools/linkcheck.py --name _ZN11RollingRock6RenderEv --c src/_ZN11RollingRock6RenderEv.cpp --addr 0x211281c --size 0x38 --module ov021"
         }
       ],
       "complete_object_signature_unchanged": true

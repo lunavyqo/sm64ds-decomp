@@ -1,7 +1,19 @@
 //cpp
-/* Production translation unit for ov021 daGrock_c.
- * ROM name daGrock_c, type string 9daGrock_c. Span 0x021121e8..0x02112d64,
- * 12 functions. daGrock_c_classInit stays the next function.
+/* Production translation unit for ov021/daGrock_c.
+ * 12 function(s), .text 0x021121e8..0x02112d64. The GORO_ROCK rolling rock.
+ *
+ * NAME: _ZTS9daGrock_c is "9daGrock_c" at ov021 0x0211480c; _ZTI at
+ * 0x02114818 reads [__si_class_type_info, that string, _ZTI12dEnemyBase_c].
+ * The vtable address point is 0x02114848, and the word at -4 is that _ZTI.
+ * The tree previously called the class RollingRock (coined; vtable address
+ * only).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x021121e8), D0
+ * (0x02112230), then a D2 the cartridge has no home for (manifest:
+ * compiler_only_output); the same pragma lays .text down in source order, so
+ * this file is ROM-ascending. daGrock_c_classInit at 0x02112d64 abuts the run
+ * and stays in src/d_a_grock.c.
  */
 
 #pragma defer_codegen off
@@ -83,6 +95,11 @@ extern u8 _ZN8dActor_c9TrackStarEjj(void *a, u32 x, u32 y);
 extern SharedFilePtr data_ov021_02114a50;
 }
 
+/* D1 is one vtable store and a destructor call per member, every one a
+ * consequence of `struct daGrock_c : dEnemyBase_c` and the members it types,
+ * destroyed in reverse declaration order, then dEnemyBase_c::~dEnemyBase_c.
+ * That body is the evidence for the header: each member's size closes exactly
+ * on the next one's offset. D0 adds dEnemyBase_c's inline operator delete. */
 // @symbol _ZN9daGrock_cD1Ev
 // @symbol _ZN9daGrock_cD0Ev
 daGrock_c::~daGrock_c()
