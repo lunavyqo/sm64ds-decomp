@@ -5,8 +5,7 @@ extern int _ZTV18daObjBkKillerdai_c[];
 /* Reconstructed source-style name: SM64DS proves daObjBkKillerdai_c through
  * RTTI, allocation size, vtable identity, and the BK_KILLER_DAI registry
  * profile; later EAD lineage supplies classInit. Exact original spelling is
- * not preserved. The project's daObjBkKillerdai_c implementation aliases remain
- * unchanged. Historical alias: BillBlaster_Spawn. */
+ * not preserved. Historical alias: BillBlaster_Spawn. */
 int *daObjBkKillerdai_c_classInit(void)
 {
     int *p = (int *)_ZN7fBase_cnwEj(804);

@@ -1,13 +1,23 @@
 //cpp
-/**
- * Bullet Bill launcher (BK_KILLER_DAI).
+/* Production translation unit for ov079/daObjBkKillerdai_c.
+ * 8 function(s), .text 0x02126dbc..0x021271b4. The Bullet Bill launcher
+ * (BK_KILLER_DAI).
  *
  * Behavior fires actor 0xde when none is already out and the player
  * is in front of the barrel. InitResources loads the launcher model
  * and mesh, and leaves the actor dormant on two courses.
  *
- * Functions are ROM-ascending under `#pragma defer_codegen off`. One
- * out-of-line destructor emits D1 then D0; D2 is homeless.
+ * NAME: _ZTS18daObjBkKillerdai_c is "18daObjBkKillerdai_c" at ov079
+ * 0x02127f7c; _ZTI at 0x02127f70 reads [__si_class_type_info, that string,
+ * _ZTI10dBgActor_c]. The tree previously called the class BillBlaster
+ * (coined; vtable address only).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x02126dbc), D0
+ * (0x02126e00), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is ROM-ascending.
+ * The factory daObjBkKillerdai_c_classInit (0x021271b4) sits just past this
+ * run's right edge and stays a one-function source.
  */
 
 #include "decl_common.h"
@@ -45,8 +55,9 @@ daObjBkKillerdai_c::~daObjBkKillerdai_c()
 }
 
 // @symbol _ZN18daObjBkKillerdai_c4KillEv
-/* Leftover: Kill -- Particle::System::NewSimple. Fix12<int> parameters
- * do not match. dustPos is stored memberwise; a Vector3 assignment does not. */
+/* Leftover: Particle::System::NewSimple takes Fix12<int> by value, so it
+ * stays mangled. dustPos is stored memberwise; a Vector3 assignment does not
+ * match. */
 void daObjBkKillerdai_c::Kill()
 {
     Vector3 pos;
@@ -94,8 +105,8 @@ s32 daObjBkKillerdai_c::Render()
 }
 
 // @symbol _ZN18daObjBkKillerdai_c8BehaviorEv
-/* Leftover: Behavior -- dBgActor_c::UpdateKillByMegaChar and
- * dBgActor_c::IsClsnInRange. Fix12<int> parameters do not match.
+/* Leftover: dBgActor_c::UpdateKillByMegaChar and dBgActor_c::IsClsnInRange
+ * take Fix12<int> by value, so they stay mangled.
  * mPosY is widened through a long long before the spawn-height add;
  * a plain add misses. */
 s32 daObjBkKillerdai_c::Behavior()
@@ -126,8 +137,8 @@ s32 daObjBkKillerdai_c::Behavior()
 }
 
 // @symbol _ZN18daObjBkKillerdai_c13InitResourcesEv
-/* Leftover: InitResources -- dBgW_KcMbg::SetFile. Fix12<int> parameters
- * do not match. */
+/* Leftover: dBgW_KcMbg::SetFile takes Fix12<int> by value, so it stays
+ * mangled. */
 s32 daObjBkKillerdai_c::InitResources()
 {
     void *file;
