@@ -1,6 +1,6 @@
 //cpp
 #pragma opt_loop_invariants off
-/* dScMgTrampoline2_c — Trampoline Terror. Draw lines on the touch screen
+/* dScMgTrampoline2_c -- Trampoline Terror. Draw lines on the touch screen
  * so Mario can bounce through the shapes that drop in.
  *
  * Functions are in reverse ROM order; do not reorder.
@@ -8,11 +8,15 @@
  * stay; the manifest pairs them.
  *
  * State callbacks stay free functions; their original names are unknown.
- * func_ov006_02123cb4 keeps raw wave-timer offsets: member form sent
- * ApproachLinear to the wrong function. Its mRamp access matches.
+ * func_ov006_02123cb4 keeps raw int offsets for mTimer, mPattern, mScoreGate,
+ * mScriptDone and mWaveStep: member form DIFFs there (code shifts; the
+ * function grows). Its mRamp access matches.
  * 0x7acc has no matched read. The factory still builds the arrays by offset.
- * Model, the particle tracker and most helpers stay mangled: a global named
- * G2 hides that namespace, and the other headers did not verify here.
+ * Model / TextureTransformer / SysTracker C1/D1 stay mangled (built on raw
+ * storage); NewUnkCallback818 takes Fix12 by value; FromUniqueID did not
+ * verify via Particle__System.h; the G2 BG getters stay mangled because
+ * decl_common.h's global G2 hides the namespace; SetBlendAlpha keeps a
+ * local declaration.
  */
 
 #include "common.h"
@@ -44,7 +48,7 @@ struct SharedFilePtr { void Release(); };
 struct BMD_File;
 
 /* Shadow of the scene's +0x68/+0x6c, in dScMgBase_c padding.
-   The brush layer. Not the velocity words on a spawned shape. */
+   The brush layer. */
 struct Obj {
     unsigned char pad0[0x68];
     unsigned char brushOn;
@@ -590,7 +594,7 @@ void func_ov006_02123cb4(char *raw)
     }
     func_ov006_020cad3c((data_ov006_02140818 / 10) * 64 + 0x1000);
     if (data_ov006_0213b0f0 == 0) {
-        *(u16 *)(raw + 0x7ba4) = 0;
+        ((dScMgTrampoline2_c *)raw)->mInputEnabled = 0;
         func_ov006_02123c78(raw);
         return;
     }
@@ -612,9 +616,8 @@ void func_ov006_02123cb4(char *raw)
     }
     if (data_ov006_02140828 != 0)
         return;
-    /* Member form DIFFed here: ApproachLinear's reloc went to the wrong
-       function. These are mTimer, mScoreGate, mPattern, mScriptDone,
-       mWaveStep and mInputEnabled. */
+    /* Member form DIFFs here (bytes, not relocations): these are mTimer,
+       mScoreGate, mPattern, mScriptDone and mWaveStep. */
     if (ApproachLinear(*(int *)(raw + 0x7b84), 0, 1) == 0)
         return;
     if (*(int *)(raw + 0x7b94) == 0) {

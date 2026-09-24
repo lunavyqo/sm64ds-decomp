@@ -1,6 +1,11 @@
-/* dScMgTrampoline2_c — Trampoline Terror. Draw lines on the touch screen
+/* dScMgTrampoline2_c -- Trampoline Terror. Draw lines on the touch screen
  * so Mario can bounce through the shapes that drop in. Child of
  * dScMgD3DBase_c, size 0x7bac from the factory's operator new.
+ *
+ * RTTI: dScMgTrampoline2_c : dScMgD3DBase_c; vtable ov006:0x0213fc7c.
+ * Historical alias MgTrampolineTerror_Spawn. Element dtors 020d1008 and
+ * 02120938 are shared with dScMgTrampoline_c, 020eed64 with dScMgJump2_c.
+ * Typed arrays and the state PMF remain #2497.
  *
  * The destructor is inline and destroys the six arrays in reverse of the
  * order the factory builds them. dScMgD3DBase_c supplies operator delete.
