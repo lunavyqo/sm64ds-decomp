@@ -26,7 +26,9 @@
  * is not independent evidence about the ROM.
  *
  * SM64DS proves this class as daFPkn_c through RTTI, allocation size and
- * vtable identity. The factory and profile spellings below are reconstructed
+ * vtable identity: _ZTI8daFPkn_c at ov084 0x02130ac0 names "8daFPkn_c" at
+ * 0x02130ab4. This header called the class FirePiranhaPlantBig, a readable
+ * invention, until the rename that promoted src/actors/daFPkn_c.cpp. The factory and profile spellings below are reconstructed
  * source-style names -- evidence-bounded proposals, not recovered SM64DS
  * symbols.
  *
