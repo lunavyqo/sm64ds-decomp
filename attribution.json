@@ -4831,6 +4831,16 @@
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c6RenderEv": "tangosdev",
     "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c8BehaviorEv": "ruspecial",
-    "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c13InitResourcesEv": "andrewboudreau"
+    "src/actors/daObjFl_KomaU_c.cpp#_ZN15daObjFl_KomaU_c13InitResourcesEv": "andrewboudreau",
+    "src/actors/daObjKey_c.cpp#func_ov089_02131b18": "tangosdev",
+    "src/actors/daObjKey_c.cpp#func_ov089_02131dcc": "tangosdev",
+    "src/actors/daObjKey_c.cpp#func_ov089_02131df4": "tangosdev",
+    "src/actors/daObjKey_c.cpp#_ZN10daObjKey_c13OnTurnIntoEggER6Player": "tangosdev",
+    "src/actors/daObjKey_c.cpp#_ZN10daObjKey_c13OnYoshiTryEatEv": "tangosdev",
+    "src/actors/daObjKey_c.cpp#func_ov089_02131f54": "tangosdev",
+    "src/actors/daObjKey_c.cpp#_ZN10daObjKey_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daObjKey_c.cpp#_ZN10daObjKey_c6RenderEv": "tangosdev",
+    "src/actors/daObjKey_c.cpp#_ZN10daObjKey_c8BehaviorEv": "tangosdev",
+    "src/actors/daObjKey_c.cpp#_ZN10daObjKey_c13InitResourcesEv": "tangosdev"
   }
 }

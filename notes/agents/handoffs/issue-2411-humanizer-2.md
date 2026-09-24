@@ -80,9 +80,9 @@ consumes a value from them.
 
 OneUp's `func_ov002_020af684` no longer has an `int` definition that
 falls through after a `void` call. Its two PMF forwarding helpers also return `void`,
-retaining the player lookup result, null test and actual argument. Key's helper
+retaining the player lookup result, null test and actual argument. daObjKey_c's helper
 and destruction prototype now agree with the existing `void` destruction method;
-Key and PowerStar forwarding declarations agree with their helper definitions.
+daObjKey_c and PowerStar forwarding declarations agree with their helper definitions.
 Early `return void_expression;` control flow is retained. No arbitrary result,
 assembly, warning suppression, altered address or symbol name was introduced.
 
@@ -211,7 +211,7 @@ Independent verification must still pin the final candidate.
 
 - `build/humanizer-contract-targeted.json`: **34 VERIFIED**, empty diffs, blind 0.
   This passes each source explicitly to normal linkcheck: 25 hooks, three OneUp
-  helpers, Key's helper, and five observed Player callers.
+  helpers, daObjKey_c's helper, and five observed Player callers.
 - `build/humanizer-contract-tus.json`: all **251 functions MATCH** across eight
   edited promoted TUs, clean relocation type/addend and destinations, with expected
   ROM emission order. Seven runs exit 0. Propeller's promotion audit exits 1 for
