@@ -1,17 +1,26 @@
 //cpp
-/* Production translation unit for ov027/daSnmBth_c.
- * 16 function(s), .text 0x021120c4..0x02112ab4. The snowman breath actor.
- * daSnmBth_c owns fifty SnowmanBreathParticle members. Those particle
+/* ov027/daSnmBth_c -- the snowman's breath (d_a_snm_bth). 16 functions,
+ * .text 0x021120c4..0x02112ab4.
+ *
+ * daSnmBth_c owns fifty SnowmanBreathParticle members. The particle's eight
  * functions sit in the cartridge between this actor's destructors and its
- * other methods, so both types are this file.
+ * other methods, so both types were compiled from this one file.
  *
- * NAME: _ZTS10daSnmBth_c is "10daSnmBth_c" at ov027 0x02113b1c; _ZTV at
- * 0x02113b50. SnowmanBreathParticle has no type string; it is the member
- * struct in daSnmBth_c.h.
+ * RTTI (ov027): _ZTS10daSnmBth_c "10daSnmBth_c" at 0x02113b1c; _ZTI10daSnmBth_c
+ * at 0x02113b10 is an __si_class_type_info whose base is _ZTI8dActor_c
+ * (0x0208e390); _ZTV10daSnmBth_c at 0x02113b50 (two-word header at 0x02113b48)
+ * has dActor_c's 31 slots, slot 16 = D1 0x021120c4, slot 17 = D0 0x02112104.
+ * The class was coined "SnowmanBreath" before its RTTI name was read.
+ * SnowmanBreathParticle is still a coined name: ov027 carries no type string
+ * for it (it is a non-polymorphic member struct), so there is no ROM name to
+ * adopt.
  *
- * The out-of-line destructor emits D1 (0x021120c4) then D0 (0x02112104).
+ * ~daSnmBth_c() is the key function (first non-inline virtual), so this file
+ * emits the vtable and RTTI; the build externalizes them to the addresses
+ * above. The one out-of-line destructor emits D1 then D0; its D2, and the
+ * particle's C2/D2, are deadstripped (no module gives them a symbol).
  * Under `#pragma defer_codegen off` the file is ROM-ascending. The factory
- * daSnmBth_c_classInit at 0x02112ab4 stays in the next file.
+ * daSnmBth_c_classInit (0x02112ab4) is the next file, src/d_a_snm_bth.c.
  */
 
 #include "daSnmBth_c.h"
@@ -23,67 +32,71 @@
 
 extern "C" {
 void _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(u32, s32, s32, s32);
+u32 _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(
+    u32, u32, s32, s32, s32, const void *, void *);
 int _ZN6Player15IsCollectingCapEv(void *);
-s16 Vec3_HorzAngle(const Vector3 *, const Vector3 *);
 void _ZN6Player18SetNewHatCharacterEjjb(void *, u32, u32, int);
 int _ZN8SaveData16HasPlayerLostCapEv();
 void _ZN8SaveData13PlayerLoseCapEv();
-extern Vector3 data_ov027_02113d10;
+s16 Vec3_HorzAngle(const Vector3 *, const Vector3 *);
 s32 Vec3_Dist(const Vector3 *, const Vector3 *);
-extern Matrix4x3 data_020a0e68;
 void Matrix4x3_FromRotationY(Matrix4x3 *, s16);
 void Matrix4x3_ApplyInPlaceToRotationX(Matrix4x3 *, s16);
 void Matrix4x3_ApplyInPlaceToTranslation(Matrix4x3 *, s32, s32, s32);
 void AddVec3(const Vector3 *, const Vector3 *, Vector3 *);
-extern "C" u32 _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE( u32, u32, s32, s32, s32, const void *, void *);
-extern "C" int DecIfAbove0_Byte(void *);
+int DecIfAbove0_Byte(void *);
 s32 RandomIntInternal(s32 *);
-extern s32 data_0209e650;
 /* Fix12<int> by-value arguments are kept in their measured raw ABI view: a
-* direct C++ definition of this imported signature hits the mwccarm 6az wall. */
+ * direct C++ definition of this imported signature hits the mwccarm 6az wall. */
 void _ZN8dCcPos_c4InitERK7Vector35Fix12IiES4_jj(
-dCcPos_c *, const Vector3 *, s32, s32, u32, u32);
+    dCcPos_c *, const Vector3 *, s32, s32, u32, u32);
 void Vec3_Asr(Vector3 *, const Vector3 *, int);
 void MulVec3Mat4x3(const Vector3 *, const Matrix4x3 *, Vector3 *);
 void Vec3_LslInPlace(Vector3 *, int);
-typedef struct { s32 words[12]; } MatrixWords;
+void Matrix4x3_FromTranslation(Matrix4x3 *m, int x, int y, int z);
+void Matrix4x3_ApplyInPlaceToRotationY(Matrix4x3 *m, short angY);
+void InvMat4x3(Matrix4x3 *dst, const Matrix4x3 *src);
+/* The Player/Sound calls below stay mangled names inside this block: they
+ * take Player as void*, and a bare `extern` on a mangled name in a C++ file
+ * is mangled a second time (ShowMessage once reached the linker as
+ * _Z48_ZN6Player11ShowMessage...). Byte gates cannot see that, because
+ * relocations compare as wildcards; only the link does. */
+int _ZN6Player9StartTalkER7fBase_cb(void *self, void *actor, int b);
+int _ZN6Player11ShowMessageER7fBase_cjPK7Vector3hh(void *self, void *actor,
+                                                    unsigned int msg,
+                                                    const Vector3 *pos,
+                                                    unsigned int a,
+                                                    unsigned int b);
+int _ZN6Player12GetTalkStateEv(void *self);
+int _ZN5Sound8PlayLongEjjjRK7Vector3s(int handle, unsigned int a,
+                                     unsigned int b, void *pos,
+                                     unsigned int c);
+extern Vector3 data_ov027_02113d10;
+extern Matrix4x3 data_020a0e68;
+extern s32 data_0209e650;
+extern u8 data_0209f2d8[];
 extern SharedFilePtr data_ov002_0210da40;
 extern SharedFilePtr data_ov002_0210d9a0;
 extern SharedFilePtr data_ov002_0210d9c0;
-extern unsigned char data_0209f2d8[];
-extern u8 data_0209f2d8[];
-extern int _ZN6Player9StartTalkER7fBase_cb(void *self, void *actor, int b);
-/* Moved INSIDE the extern "C" block. A bare `extern` on a mangled name in a
-//cpp file mangles it a second time -- this one was reaching the linker as
-_Z48_ZN6Player11ShowMessage... and sat in the unresolved baseline. Byte
-gates cannot see it, because relocations compare as wildcards; only
-check_references does. */
-extern int _ZN6Player11ShowMessageER7fBase_cjPK7Vector3hh(void *self, void *actor,
-unsigned int msg,
-const Vector3 *pos,
-unsigned int a,
-unsigned int b);
-extern int _ZN6Player12GetTalkStateEv(void *self);
-/* Same double-mangle defect as ShowMessage above: outside this block the
-bare `extern` reached the linker as _Z33_ZN5Sound8PlayLongEjjjRK7Vector3sijjPvj. */
-extern int _ZN5Sound8PlayLongEjjjRK7Vector3s(int handle, unsigned int a,
-unsigned int b, void *pos,
-unsigned int c);
-extern void Matrix4x3_FromTranslation(Matrix4x3 *m, int x, int y, int z);
-extern void Matrix4x3_ApplyInPlaceToRotationY(Matrix4x3 *m, short angY);
-extern void InvMat4x3(Matrix4x3 *dst, const Matrix4x3 *src);
+/* Whole-matrix copies (InitResources, IsPlayerInRange) cast through a plain
+ * 48-byte struct; that is the form both were matched in, so it stays. */
+typedef struct { s32 words[12]; } MatrixWords;
 typedef struct { int w[12]; } M48;
 }
 
-/* -------------------------------------------------------------------------- */
 #pragma defer_codegen off
 
-/* ROM ordinal 0 -- _ZN10daSnmBth_cD1Ev, 0x021120c4, size 0x40 */
+/* -------------------------------------------------------------------------- */
+/* ROM ordinals 0/1 -- _ZN10daSnmBth_cD1Ev 0x021120c4 (0x40),                 */
+/*                     _ZN10daSnmBth_cD0Ev 0x02112104 (0x54)                  */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN10daSnmBth_cD1Ev
+// @symbol _ZN10daSnmBth_cD0Ev
 daSnmBth_c::~daSnmBth_c()
 {
 }
+
+/* -------------------------------------------------------------------------- */
 /* ROM ordinal 2 -- _ZN21SnowmanBreathParticleD1Ev, 0x02112158, size 0x18 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN21SnowmanBreathParticleD1Ev
@@ -430,5 +443,3 @@ int daSnmBth_c::InitResources()
     *(M48*)&mInvModelMat = *(M48*)&data_020a0e68;
     return 1;
 }
-
-/* -------------------------------------------------------------------------- */
