@@ -71,10 +71,10 @@ struct Eyerok : dBgActor_c {
     void *mState;                                           /* 0x48c */
     /* Player locked for the defeat dialogue. */
     Player *mTalkPlayer;                                    /* 0x490 */
-    /* Alternates which hand attacks. Cleared on entry, then toggled 0/1. */
-    s32 mAltHand;                                           /* 0x494 */
-    /* Set once ShowMessage accepts. */
-    s32 mMessageShown;                                      /* 0x498 */
+    /* Per-state scratch, cleared by every state entry. 02118cdc toggles
+       which hand attacks; 0211903c latches ShowMessage acceptance. */
+    s32 mStateWork0;                                        /* 0x494 */
+    s32 mStateWork1;                                        /* 0x498 */
     s32 mPartIdx;                                           /* 0x49c */
     /* Step within the current state. The entries reset it to 0. */
     s32 mSubState;                                          /* 0x4a0 */
@@ -181,8 +181,8 @@ struct Eyerok {
     s32 mShadowMtx[12];              /* 0x45c */
     void *mState;            /* 0x48c */
     void *mTalkPlayer;       /* 0x490 */
-    s32 mAltHand;            /* 0x494 */
-    s32 mMessageShown;       /* 0x498 */
+    s32 mStateWork0;         /* 0x494 */
+    s32 mStateWork1;         /* 0x498 */
     s32 mPartIdx;            /* 0x49c */
     s32 mSubState;           /* 0x4a0 */
     s32 mRestPosX;            /* 0x4a4 */

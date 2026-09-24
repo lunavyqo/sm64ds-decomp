@@ -1,7 +1,8 @@
 //cpp
-/* Eyerok, the two-handed pyramid boss. ROM RTTI is daIwante_c; this tree
- * keeps the coined name. Partial TU: an unmatched draft holes the run, so
- * this file is only the contiguous side.
+/* Eyerok, the two-handed pyramid boss (.text 0x021184c0..0x02119ce8).
+ * ROM RTTI daIwante_c (_ZTS10daIwante_c ov066:0x0211ad30); this tree keeps
+ * the coined name. Partial: shards 8,16,20,22,24,59 reference 0x02112c08..
+ * (co-resident overlay, unresolved), so they can't link.
  *
  * Source is ROM-ascending under defer_codegen off. Do not reorder.
  *
@@ -157,10 +158,10 @@ extern "C" {
 int func_ov066_021184c0(char *p)
 {
     Eyerok *self = (Eyerok *)p;
-    ((Eyerok *)p)->mAltHand = 0;
-    ((Eyerok *)p)->mMessageShown = 0;
+    self->mStateWork0 = 0;
+    self->mStateWork1 = 0;
     self->mTimer1 = 0;
-    ((Eyerok *)p)->mSubState = 0;
+    self->mSubState = 0;
     return 1;
 }
 }
@@ -171,30 +172,30 @@ int func_ov066_021184e0(char *c)
 {
     Eyerok *self = (Eyerok *)c;
     if (func_ov066_021168ec(c) != 0 && func_ov066_021168ec(c) != 4) {
-        ((Eyerok *)c)->mFlags = 0;
+        self->mFlags = 0;
         func_ov066_021162e8((int *)c);
         return 1;
     }
     func_ov066_0211632c(c);
-    switch (((Eyerok *)c)->mSubState) {
+    switch (self->mSubState) {
     case 0:
         if (data_ov066_0211ae0c == self->mPartIdx) {
-            int *p = &((Eyerok *)c)->mSubState;
-            ((Eyerok *)c)->mVertAccel = -0x14000;
-            ((Eyerok *)c)->mVertSpeed = 0x64000;
+            int *p = &self->mSubState;
+            self->mVertAccel = -0x14000;
+            self->mVertSpeed = 0x64000;
             *p = *p + 1;
         }
         break;
     case 1:
-        if (((Eyerok *)c)->mVertAccel != 0) {
-            if (self->mRestPosY >= ((Eyerok *)c)->mPosY) {
-                ((Eyerok *)c)->mPosY = self->mRestPosY;
-                ((Eyerok *)c)->mVertSpeed = 0;
-                ((Eyerok *)c)->mVertAccel = 0;
+        if (self->mVertAccel != 0) {
+            if (self->mRestPosY >= self->mPosY) {
+                self->mPosY = self->mRestPosY;
+                self->mVertSpeed = 0;
+                self->mVertAccel = 0;
                 func_ov066_02116ac4(c, 0x7d0000);
                 if ((data_ov066_0211ae0c & self->mPartIdx) != 0)
                     data_ov066_0211ae0c ^= self->mPartIdx;
-                ((Eyerok *)c)->mSubState = 0;
+                self->mSubState = 0;
             }
         }
         break;
@@ -208,10 +209,10 @@ extern "C" {
 int func_ov066_021185e4(char *p)
 {
     Eyerok *self = (Eyerok *)p;
-    ((Eyerok *)p)->mAltHand = 0;
-    ((Eyerok *)p)->mMessageShown = 0;
+    self->mStateWork0 = 0;
+    self->mStateWork1 = 0;
     self->mTimer1 = 0;
-    ((Eyerok *)p)->mSubState = 0;
+    self->mSubState = 0;
     return 1;
 }
 }
@@ -235,10 +236,10 @@ extern "C" {
 int func_ov066_02118658(char *p)
 {
     Eyerok *self = (Eyerok *)p;
-    ((Eyerok *)p)->mAltHand = 0;
-    ((Eyerok *)p)->mMessageShown = 0;
+    self->mStateWork0 = 0;
+    self->mStateWork1 = 0;
     self->mTimer1 = 0;
-    ((Eyerok *)p)->mSubState = 0;
+    self->mSubState = 0;
     return 1;
 }
 }
@@ -248,37 +249,37 @@ extern "C" {
 int func_ov066_02118678(char* c)
 {
     Eyerok *self = (Eyerok *)c;
-    if (((Eyerok *)c)->mAltHand == 0) {
+    if (self->mStateWork0 == 0) {
         if (data_ov066_0211ae04 == 2) {
-            ((Eyerok *)c)->mBlendModelAnim.speed = 0x1000;
+            self->mBlendModelAnim.speed = 0x1000;
             if (self->mPartIdx == 1) {
-                ((Eyerok *)c)->mVertSpeed = 0x2d000;
-                ((Eyerok *)c)->mVertAccel = -0x2000;
+                self->mVertSpeed = 0x2d000;
+                self->mVertAccel = -0x2000;
             } else {
-                ((Eyerok *)c)->mVertSpeed = 0xa000;
-                ((Eyerok *)c)->mVertAccel = -0x800;
+                self->mVertSpeed = 0xa000;
+                self->mVertAccel = -0x800;
             }
-            ((Eyerok *)c)->mAltHand = 1;
-            func_02012694(0x144, &((Eyerok *)c)->mCamSpacePosX);
+            self->mStateWork0 = 1;
+            func_02012694(0x144, &self->mCamSpacePosX);
         }
         return 1;
     }
 
-    Vec3_ApproachHorz(&((Eyerok *)c)->mPosX, &((Eyerok *)c)->mRestPosX, 0x14000);
-    if (((Eyerok *)c)->mVertAccel != 0) {
+    Vec3_ApproachHorz(&self->mPosX, &self->mRestPosX, 0x14000);
+    if (self->mVertAccel != 0) {
         int v = self->mRestPosY;
-        if (v >= ((Eyerok *)c)->mPosY) {
-            ((Eyerok *)c)->mPosY = v;
-            ((Eyerok *)c)->mVertSpeed = 0;
-            ((Eyerok *)c)->mVertAccel = 0;
+        if (v >= self->mPosY) {
+            self->mPosY = v;
+            self->mVertSpeed = 0;
+            self->mVertAccel = 0;
             func_ov066_02116ac4(c, 0x7d0000);
         }
     }
 
-    if (((Eyerok *)c)->mVertAccel == 0
-        && Vec3_HorzDist(&((Eyerok *)c)->mPosX, &((Eyerok *)c)->mRestPosX) <= 0x14000
-        && ((Eyerok *)c)->mBlendModelAnim.Finished()) {
-        _ZN4dBgW6EnableEP8dActor_c(&((Eyerok *)c)->mMeshCollider2, c);
+    if (self->mVertAccel == 0
+        && Vec3_HorzDist(&self->mPosX, &self->mRestPosX) <= 0x14000
+        && self->mBlendModelAnim.Finished()) {
+        _ZN4dBgW6EnableEP8dActor_c(&self->mMeshCollider2, c);
         data_ov066_0211ae0c |= self->mPartIdx;
         func_ov066_02119454(c, &data_ov066_0211b06c);
     }
@@ -291,15 +292,15 @@ extern "C" {
 int func_ov066_021187c8(char* c){
     Eyerok *self = (Eyerok *)c;
   if(self->mPartIdx == 2){
-    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&((Eyerok *)c)->mBlendModelAnim, (void*)data_ov066_0211ae74[1], 4, 0x40000000, 0x1000, 0);
-    _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(&((Eyerok *)c)->mTextureSequence, (void*)data_ov066_0211ae3c[1], 0x40000000, 0x1000, 0);
+    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&self->mBlendModelAnim, (void*)data_ov066_0211ae74[1], 4, 0x40000000, 0x1000, 0);
+    _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(&self->mTextureSequence, (void*)data_ov066_0211ae3c[1], 0x40000000, 0x1000, 0);
   } else {
-    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&((Eyerok *)c)->mBlendModelAnim, (void*)data_ov066_0211ae7c[1], 4, 0x40000000, 0x1000, 0);
-    _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(&((Eyerok *)c)->mTextureSequence, (void*)data_ov066_0211aebc[1], 0x40000000, 0x1000, 0);
+    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&self->mBlendModelAnim, (void*)data_ov066_0211ae7c[1], 4, 0x40000000, 0x1000, 0);
+    _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(&self->mTextureSequence, (void*)data_ov066_0211aebc[1], 0x40000000, 0x1000, 0);
   }
-  ((Eyerok *)c)->mBlendModelAnim.speed = 0;
-  ((Eyerok *)c)->mAltHand = 0;
-  ((Eyerok *)c)->mMessageShown = 0;
+  self->mBlendModelAnim.speed = 0;
+  self->mStateWork0 = 0;
+  self->mStateWork1 = 0;
   return 1;
 }
 }
@@ -326,10 +327,10 @@ extern "C" {
 int func_ov066_02118934(char *p)
 {
     Eyerok *self = (Eyerok *)p;
-    ((Eyerok *)p)->mAltHand = 0;
-    ((Eyerok *)p)->mMessageShown = 0;
+    self->mStateWork0 = 0;
+    self->mStateWork1 = 0;
     self->mTimer1 = 0;
-    ((Eyerok *)p)->mSubState = 0;
+    self->mSubState = 0;
     return 1;
 }
 }
@@ -353,10 +354,10 @@ extern "C" {
 int func_ov066_021189a0(char *p)
 {
     Eyerok *self = (Eyerok *)p;
-    ((Eyerok *)p)->mAltHand = 0;
-    ((Eyerok *)p)->mMessageShown = 0;
+    self->mStateWork0 = 0;
+    self->mStateWork1 = 0;
     self->mTimer1 = 0;
-    ((Eyerok *)p)->mSubState = 0;
+    self->mSubState = 0;
     return 1;
 }
 }
@@ -381,10 +382,10 @@ extern "C" {
 int func_ov066_02118a30(char *p)
 {
     Eyerok *self = (Eyerok *)p;
-    ((Eyerok *)p)->mAltHand = 0;
-    ((Eyerok *)p)->mMessageShown = 0;
+    self->mStateWork0 = 0;
+    self->mStateWork1 = 0;
     self->mTimer1 = 0;
-    ((Eyerok *)p)->mSubState = 0;
+    self->mSubState = 0;
     return 1;
 }
 }
@@ -416,10 +417,10 @@ extern "C" {
 int func_ov066_02118b08(char *p)
 {
     Eyerok *self = (Eyerok *)p;
-    ((Eyerok *)p)->mAltHand = 0;
-    ((Eyerok *)p)->mMessageShown = 0;
+    self->mStateWork0 = 0;
+    self->mStateWork1 = 0;
     self->mTimer1 = 0;
-    ((Eyerok *)p)->mSubState = 0;
+    self->mSubState = 0;
     return 1;
 }
 }
@@ -451,10 +452,10 @@ extern "C" {
 int func_ov066_02118be0(char *p)
 {
     Eyerok *self = (Eyerok *)p;
-    ((Eyerok *)p)->mAltHand = 0;
-    ((Eyerok *)p)->mMessageShown = 0;
+    self->mStateWork0 = 0;
+    self->mStateWork1 = 0;
     self->mTimer1 = 0;
-    ((Eyerok *)p)->mSubState = 0;
+    self->mSubState = 0;
     return 1;
 }
 }
@@ -486,10 +487,10 @@ extern "C" {
 int func_ov066_02118cb8(char *p)
 {
     Eyerok *self = (Eyerok *)p;
-    ((Eyerok *)p)->mAltHand = 0;
-    ((Eyerok *)p)->mMessageShown = 0;
+    self->mStateWork0 = 0;
+    self->mStateWork1 = 0;
     self->mTimer1 = 30;
-    ((Eyerok *)p)->mSubState = 0;
+    self->mSubState = 0;
     return 1;
 }
 }
@@ -513,14 +514,14 @@ int func_ov066_02118cdc(char* c) {
     }
     if (data_ov066_0211ae0c == 0) {
         if (data_ov066_0211abe0 == 3) {
-            if (((Eyerok *)c)->mAltHand == 0)
+            if (self->mStateWork0 == 0)
                 data_ov066_0211ae0c = 1;
             else
                 data_ov066_0211ae0c = 2;
         } else {
             data_ov066_0211ae0c = data_ov066_0211abe0;
         }
-        volatile int* tmp = (volatile int*)((int)&((Eyerok *)c)->mAltHand);
+        volatile int* tmp = (volatile int*)((int)&self->mStateWork0);
         *tmp = *tmp + 1;
         *tmp = *tmp & 1;
     }
@@ -533,10 +534,10 @@ extern "C" {
 int func_ov066_02118de0(char *p)
 {
     Eyerok *self = (Eyerok *)p;
-    ((Eyerok *)p)->mAltHand = 0;
-    ((Eyerok *)p)->mMessageShown = 0;
+    self->mStateWork0 = 0;
+    self->mStateWork1 = 0;
     self->mTimer1 = 30;
-    ((Eyerok *)p)->mSubState = 0;
+    self->mSubState = 0;
     return 1;
 }
 }
@@ -607,10 +608,10 @@ extern "C" {
 int func_ov066_0211901c(char *p)
 {
     Eyerok *self = (Eyerok *)p;
-    ((Eyerok *)p)->mAltHand = 0;
-    ((Eyerok *)p)->mMessageShown = 0;
+    self->mStateWork0 = 0;
+    self->mStateWork1 = 0;
     self->mTimer1 = 0;
-    ((Eyerok *)p)->mSubState = 0;
+    self->mSubState = 0;
     return 1;
 }
 }
@@ -651,7 +652,7 @@ int func_ov066_0211903c(char* self) {
         if (data_ov066_0211ae0c != 3) return 1;
     }
 
-    if (((Eyerok *)self)->mMessageShown == 0) {
+    if (((Eyerok *)self)->mStateWork1 == 0) {
         if (((Eyerok *)self)->mTalkPlayer != 0) {
             in.x = 0; in.y = 0; in.z = 0;
             out.x = 0; out.y = 0; out.z = 0;
@@ -674,7 +675,7 @@ int func_ov066_0211903c(char* self) {
             ((Eyerok *)self)->mTalkPlayer->mStateFlags |= 0x400;
             _ZN7Message11PrepareTalkEv();
             if (_ZN6Player11ShowMessageER7fBase_cjPK7Vector3hh(((Eyerok *)self)->mTalkPlayer, self, msgid, &out, 0, 0) == 1) {
-                ((Eyerok *)self)->mMessageShown = 1;
+                ((Eyerok *)self)->mStateWork1 = 1;
                 func_02012694(0x145, &((Eyerok *)self)->mCamSpacePosX);
             }
         }
@@ -711,8 +712,8 @@ int func_ov066_02119348(void *c)
     if (_ZN4dBgW9IsEnabledEv((char *)&((Eyerok *)c)->mMeshCollider2) != 0) {
         _ZN4dBgW7DisableEv((char *)&((Eyerok *)c)->mMeshCollider2);
     }
-    ((Eyerok *)c)->mAltHand = 0;
-    ((Eyerok *)c)->mMessageShown = 0;
+    ((Eyerok *)c)->mStateWork0 = 0;
+    ((Eyerok *)c)->mStateWork1 = 0;
     ((Eyerok *)c)->mTimer1 = 0;
     ((Eyerok *)c)->mSubState = 0;
     return 1;
@@ -780,16 +781,16 @@ void func_ov066_021194fc(char* c)
 {
     Eyerok *self = (Eyerok *)c;
     int v[3];
-    Vec3_Asr(v, &((Eyerok *)c)->mPosX, 3);
+    Vec3_Asr(v, &self->mPosX, 3);
     Matrix4x3_FromTranslation(data_020a0e68, v[0], v[1], v[2]);
-    Matrix4x3_ApplyInPlaceToRotationXYZExt(data_020a0e68, ((Eyerok *)c)->mAngleX, ((Eyerok *)c)->mAngleY, ((Eyerok *)c)->mAngleZ);
+    Matrix4x3_ApplyInPlaceToRotationXYZExt(data_020a0e68, self->mAngleX, self->mAngleY, self->mAngleZ);
     if (self->mPartIdx == 0)
-        *(M48 *)&((Eyerok *)c)->mModel2.mat4x3 = *(M48*)data_020a0e68;
+        *(M48 *)&self->mModel2.mat4x3 = *(M48*)data_020a0e68;
     else
-        *(M48 *)&((Eyerok *)c)->mBlendModelAnim.mat4x3 = *(M48*)data_020a0e68;
+        *(M48 *)&self->mBlendModelAnim.mat4x3 = *(M48*)data_020a0e68;
     if (self->mPartIdx == 0)
         return;
-    if (self->mRestPosY >= ((Eyerok *)c)->mPosY)
+    if (self->mRestPosY >= self->mPosY)
         return;
     {
         int d;
@@ -798,13 +799,13 @@ void func_ov066_021194fc(char* c)
         else
             d = -0x64000;
         Matrix4x3_FromTranslation(data_020a0e68,
-            (((Eyerok *)c)->mPosX + d) >> 3,
-            (((Eyerok *)c)->mPosY - 0x8000) >> 3,
-            (((Eyerok *)c)->mPosZ + 0xa0000) >> 3);
+            (self->mPosX + d) >> 3,
+            (self->mPosY - 0x8000) >> 3,
+            (self->mPosZ + 0xa0000) >> 3);
     }
-    *(M48 *)((Eyerok *)c)->mShadowMtx = *(M48*)data_020a0e68;
+    *(M48 *)self->mShadowMtx = *(M48*)data_020a0e68;
     _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(
-        c, &((Eyerok *)c)->mShadowModel, ((Eyerok *)c)->mShadowMtx, 0x140000, 0x258000, 0xf);
+        c, &self->mShadowModel, self->mShadowMtx, 0x140000, 0x258000, 0xf);
 }
 }
 
