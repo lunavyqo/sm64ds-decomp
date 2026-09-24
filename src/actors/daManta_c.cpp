@@ -2,10 +2,17 @@
 /* daManta_c -- ov090 0x0213269c..0x02132fe8, twelve functions.
  *
  * The cartridge spells the class 9daManta_c at 0x021341f4. _ZTI9daManta_c
- * at 0x0213420c is the __si_class_type_info record, and _ZTV9daManta_c at
- * 0x0213423c is the vtable. One out-of-line destructor is the key function:
- * it emits D1 (0x0213269c) then D0 (0x021326dc). daManta_c_classInit at
- * 0x02132fe8 abuts this run and stays in src/d_a_manta.c.
+ * at 0x0213420c is the __si_class_type_info record [__si_class_type_info,
+ * that string, _ZTI12dEnemyBase_c], and _ZTV9daManta_c at 0x0213423c is the
+ * vtable; the word before it, at 0x02134238, relocates to _ZTI9daManta_c.
+ * The name is the cartridge's own; the tree's historical factory alias was
+ * MantaRay_Spawn.
+ *
+ * One out-of-line destructor is the key function, so this object emits
+ * _ZTV9daManta_c, _ZTI9daManta_c and _ZTS9daManta_c. It comes out D1
+ * (0x0213269c) then D0 (0x021326dc); the D2 the compiler also emits has no
+ * home on the cartridge (manifest: compiler_only_output). daManta_c_classInit
+ * at 0x02132fe8 abuts this run and stays in src/d_a_manta.c.
  *
  * tu_map also hangs daMenbo_c on this run. daMenbo_c's table is 31 slots
  * and ends at 0x021341e4; the two words there and at 0x021341ec relocate
@@ -102,7 +109,15 @@ void func_ov090_02132b14(char *self);
 
 int ApproachLinear(short &v, short target, short step);
 
-/* One written destructor. The compiler emits D1 then D0. */
+/* One written destructor. The compiler emits D1 then D0.
+ *
+ * D1 is one vtable store and four destructor calls, every one a consequence
+ * of `struct daManta_c : dEnemyBase_c` and the members it types: the
+ * vptr, then ModelAnim (0x30c), dBgCh_Actr (0x150) and dCcAcPos_c (0x110) in
+ * reverse declaration order, then dEnemyBase_c::~dEnemyBase_c. That body is
+ * the evidence for the header's member layout; daManta_c_classInit constructs
+ * the same types at the same offsets. D0 adds dEnemyBase_c's inline operator
+ * delete, which is why nothing here names a heap. */
 // @symbol _ZN9daManta_cD1Ev
 // @symbol _ZN9daManta_cD0Ev
 daManta_c::~daManta_c()
