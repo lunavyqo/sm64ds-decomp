@@ -2477,8 +2477,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN12FortressWall16CleanupResourcesEv.cpp",
-      "name": "_ZN12FortressWall16CleanupResourcesEv",
+      "file": "src/_ZN14daObjBk_Kabe_c16CleanupResourcesEv.cpp",
+      "name": "_ZN14daObjBk_Kabe_c16CleanupResourcesEv",
       "module": "ov079",
       "addr": "0x2127300",
       "verdict": "VERIFIED",
@@ -2486,8 +2486,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN12FortressWall24OnHitByCannonBlastedCharER8dActor_c.cpp",
-      "name": "_ZN12FortressWall24OnHitByCannonBlastedCharER8dActor_c",
+      "file": "src/_ZN14daObjBk_Kabe_c24OnHitByCannonBlastedCharER8dActor_c.cpp",
+      "name": "_ZN14daObjBk_Kabe_c24OnHitByCannonBlastedCharER8dActor_c",
       "module": "ov079",
       "addr": "0x21272e0",
       "verdict": "VERIFIED",
@@ -20045,7 +20045,7 @@
           "src/_ZN11dCapEnemy_c12Unk_02005d94Ev.cpp",
           "src/_ZN11dScMgBase_c25OnAimedAtWithEggReturnVecEv.cpp",
           "src/_ZN11daC_Jugem_c8BehaviorEv.cpp",
-          "src/_ZN12FortressWall24OnHitByCannonBlastedCharER8dActor_c.cpp",
+          "src/_ZN14daObjBk_Kabe_c24OnHitByCannonBlastedCharER8dActor_c.cpp",
           "src/_ZN12WorkElevator16CleanupResourcesEv.cpp",
           "src/_ZN12dScMgSlot1_c13InitResourcesEv.cpp",
           "src/_ZN12dScMgSlot3_c8BehaviorEv.cpp",
@@ -20164,7 +20164,7 @@
           "src/_ZN11dCapEnemy_c12Unk_02005d94Ev.cpp",
           "src/_ZN11dScMgBase_c25OnAimedAtWithEggReturnVecEv.cpp",
           "src/_ZN11daC_Jugem_c8BehaviorEv.cpp",
-          "src/_ZN12FortressWall24OnHitByCannonBlastedCharER8dActor_c.cpp",
+          "src/_ZN14daObjBk_Kabe_c24OnHitByCannonBlastedCharER8dActor_c.cpp",
           "src/_ZN12WorkElevator16CleanupResourcesEv.cpp",
           "src/_ZN12dScMgSlot1_c13InitResourcesEv.cpp",
           "src/_ZN12dScMgSlot3_c8BehaviorEv.cpp",
@@ -21340,7 +21340,7 @@
           "src/_ZN12daBgSnmHed_c13InitResourcesEv.cpp",
           "src/_ZN11dScMgBase_c19OnHitFromUnderneathEv.cpp",
           "src/_ZN11daC_Jugem_c13InitResourcesEv.cpp",
-          "src/_ZN12FortressWall16CleanupResourcesEv.cpp",
+          "src/_ZN14daObjBk_Kabe_c16CleanupResourcesEv.cpp",
           "src/_ZN12WaterSuction8BehaviorEv.cpp",
           "src/_ZN12dScMg3DEsp_c8BehaviorEv.cpp",
           "src/_ZN12dScMgSlot3_c6RenderEv.cpp",
@@ -21463,7 +21463,7 @@
           "src/_ZN12daBgSnmHed_c13InitResourcesEv.cpp",
           "src/_ZN11dScMgBase_c19OnHitFromUnderneathEv.cpp",
           "src/_ZN11daC_Jugem_c13InitResourcesEv.cpp",
-          "src/_ZN12FortressWall16CleanupResourcesEv.cpp",
+          "src/_ZN14daObjBk_Kabe_c16CleanupResourcesEv.cpp",
           "src/_ZN12WaterSuction8BehaviorEv.cpp",
           "src/_ZN12dScMg3DEsp_c8BehaviorEv.cpp",
           "src/_ZN12dScMgSlot3_c6RenderEv.cpp",
@@ -21663,8 +21663,8 @@
         "src/_ZN11daKinopio_c16CleanupResourcesEv.cpp",
         "src/_ZN19daObjFlamethrower_c13InitResourcesEv.cpp",
         "src/_ZN19daObjFlamethrower_c8BehaviorEv.cpp",
-        "src/_ZN12FortressWall16CleanupResourcesEv.cpp",
-        "src/_ZN12FortressWall24OnHitByCannonBlastedCharER8dActor_c.cpp",
+        "src/_ZN14daObjBk_Kabe_c16CleanupResourcesEv.cpp",
+        "src/_ZN14daObjBk_Kabe_c24OnHitByCannonBlastedCharER8dActor_c.cpp",
         "src/_ZN12HealingHeart13InitResourcesEv.cpp",
         "src/_ZN12MetalNetLift13InitResourcesEv.cpp",
         "src/_ZN12MetalNetLift16CleanupResourcesEv.cpp",
@@ -22571,12 +22571,12 @@
           "name": "_ZN19daObjFlamethrower_c8BehaviorEv"
         },
         {
-          "file": "src/_ZN12FortressWall16CleanupResourcesEv.cpp",
-          "name": "_ZN12FortressWall16CleanupResourcesEv"
+          "file": "src/_ZN14daObjBk_Kabe_c16CleanupResourcesEv.cpp",
+          "name": "_ZN14daObjBk_Kabe_c16CleanupResourcesEv"
         },
         {
-          "file": "src/_ZN12FortressWall24OnHitByCannonBlastedCharER8dActor_c.cpp",
-          "name": "_ZN12FortressWall24OnHitByCannonBlastedCharER8dActor_c"
+          "file": "src/_ZN14daObjBk_Kabe_c24OnHitByCannonBlastedCharER8dActor_c.cpp",
+          "name": "_ZN14daObjBk_Kabe_c24OnHitByCannonBlastedCharER8dActor_c"
         },
         {
           "file": "src/_ZN12HealingHeart13InitResourcesEv.cpp",

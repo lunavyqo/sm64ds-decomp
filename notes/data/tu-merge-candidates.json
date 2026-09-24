@@ -3203,19 +3203,19 @@
    "start": "0x21271e4",
    "end": "0x21275ac",
    "classes": [
-    "FortressWall"
+    "daObjBk_Kabe_c"
    ],
    "n_functions_map": 9,
    "n_files": 9,
    "files": [
-    "src/_ZN12FortressWallD1Ev.cpp",
-    "src/_ZN12FortressWallD0Ev.cpp",
-    "src/_ZN12FortressWall4KillEv.cpp",
-    "src/_ZN12FortressWall24OnHitByCannonBlastedCharER8dActor_c.cpp",
-    "src/_ZN12FortressWall16CleanupResourcesEv.cpp",
-    "src/_ZN12FortressWall6RenderEv.cpp",
-    "src/_ZN12FortressWall8BehaviorEv.cpp",
-    "src/_ZN12FortressWall13InitResourcesEv.cpp",
+    "src/_ZN14daObjBk_Kabe_cD1Ev.cpp",
+    "src/_ZN14daObjBk_Kabe_cD0Ev.cpp",
+    "src/_ZN14daObjBk_Kabe_c4KillEv.cpp",
+    "src/_ZN14daObjBk_Kabe_c24OnHitByCannonBlastedCharER8dActor_c.cpp",
+    "src/_ZN14daObjBk_Kabe_c16CleanupResourcesEv.cpp",
+    "src/_ZN14daObjBk_Kabe_c6RenderEv.cpp",
+    "src/_ZN14daObjBk_Kabe_c8BehaviorEv.cpp",
+    "src/_ZN14daObjBk_Kabe_c13InitResourcesEv.cpp",
     "src/daObjBk_Kabe_c_classInit_BK_KABE01.c"
    ],
    "ext_mix": {

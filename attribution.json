@@ -4769,6 +4769,14 @@
     "src/actors/daWbm_c.cpp#_ZN7daWbm_c6RenderEv": "tangosdev",
     "src/actors/daWbm_c.cpp#_ZN7daWbm_c8BehaviorEv": "tangosdev",
     "src/actors/daWbm_c.cpp#_ZN7daWbm_c13InitResourcesEv": "tangosdev",
-    "src/actors/daWbm_c.cpp#daWbm_c_classInit": "tangosdev"
+    "src/actors/daWbm_c.cpp#daWbm_c_classInit": "tangosdev",
+    "src/actors/daObjBk_Kabe_c.cpp#_ZN14daObjBk_Kabe_cD1Ev": "tangosdev",
+    "src/actors/daObjBk_Kabe_c.cpp#_ZN14daObjBk_Kabe_cD0Ev": "tangosdev",
+    "src/actors/daObjBk_Kabe_c.cpp#_ZN14daObjBk_Kabe_c4KillEv": "tangosdev",
+    "src/actors/daObjBk_Kabe_c.cpp#_ZN14daObjBk_Kabe_c24OnHitByCannonBlastedCharER8dActor_c": "tangosdev",
+    "src/actors/daObjBk_Kabe_c.cpp#_ZN14daObjBk_Kabe_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daObjBk_Kabe_c.cpp#_ZN14daObjBk_Kabe_c6RenderEv": "tangosdev",
+    "src/actors/daObjBk_Kabe_c.cpp#_ZN14daObjBk_Kabe_c8BehaviorEv": "tangosdev",
+    "src/actors/daObjBk_Kabe_c.cpp#_ZN14daObjBk_Kabe_c13InitResourcesEv": "tangosdev"
   }
 }
