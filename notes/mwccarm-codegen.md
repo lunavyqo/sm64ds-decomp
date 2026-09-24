@@ -4231,9 +4231,9 @@ each instead of sampling it, so "exhaustive over the discriminating states" beco
 claim with a number behind it (2700 here), and report the per-arm coverage next to the
 PASS -- a branch never taken is a branch the audit cannot speak for.
 
-## 6bp. A named local holding an ADDRESS outranks the compiler's own address temp, and that rotates every register below it (`_ZN7Wiggler8BehaviorEv`, div 122 -> 20, 2026-08-30)
+## 6bp. A named local holding an ADDRESS outranks the compiler's own address temp, and that rotates every register below it (`_ZN12daHanachan_c8BehaviorEv`, div 122 -> 20, 2026-08-30)
 
-The Wiggler's `Behavior` (ov034, 0x02112b5c, 0x6e0, 440 words) sat banked at div 122
+The daHanachan_c's `Behavior` (ov034, 0x02112b5c, 0x6e0, 440 words) sat banked at div 122
 with a floor claim about "a global r6/r7 vs cylinder r5/r4/r6 allocation tradeoff". The
 tradeoff was real but it was a symptom. One source change moved 85 of the 102 words that
 eventually fell.

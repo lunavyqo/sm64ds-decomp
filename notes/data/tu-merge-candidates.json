@@ -25552,13 +25552,13 @@
    "start": "0x21111a0",
    "end": "0x2113820",
    "classes": [
-    "Wiggler"
+    "daHanachan_c"
    ],
    "n_functions_map": 35,
    "n_files": 34,
    "files": [
-    "src/_ZN7WigglerD1Ev.cpp",
-    "src/_ZN7WigglerD0Ev.cpp",
+    "src/_ZN12daHanachan_cD1Ev.cpp",
+    "src/_ZN12daHanachan_cD0Ev.cpp",
     "src/func_ov034_021113d4.c",
     "src/func_ov034_02111520.c",
     "src/func_ov034_02111588.cpp",
@@ -25587,9 +25587,9 @@
     "src/func_ov034_02112688.c",
     "src/func_ov034_02112874.c",
     "src/func_ov034_021129ec.c",
-    "src/_ZN7Wiggler16CleanupResourcesEv.cpp",
-    "src/_ZN7Wiggler6RenderEv.cpp",
-    "src/_ZN7Wiggler13InitResourcesEv.cpp",
+    "src/_ZN12daHanachan_c16CleanupResourcesEv.cpp",
+    "src/_ZN12daHanachan_c6RenderEv.cpp",
+    "src/_ZN12daHanachan_c13InitResourcesEv.cpp",
     "src/d_a_hanachan.c"
    ],
    "ext_mix": {

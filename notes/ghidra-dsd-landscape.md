@@ -62,7 +62,7 @@ current path imports a flat binary with no memory map: no overlay boundaries, no
 ITCM/DTCM, no relocations, no symbol names, and function starts guessed by
 auto-analysis or forced by address. SyncDsd supplies all five from the config we already
 maintain. Whether better decompiler *output* follows is [medium] — a cross-overlay `bl`
-resolving to `_ZN7Wiggler8BehaviorEv` instead of `undefined FUN_02112b5c` is a
+resolving to `_ZN12daHanachan_c8BehaviorEv` instead of `undefined FUN_02112b5c` is a
 straightforward gain; the s64-matrix and stack-frame misses in G1.5 are decompiler
 limitations that a correct memory map does not fix.
 
