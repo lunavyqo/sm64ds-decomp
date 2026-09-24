@@ -5838,18 +5838,18 @@
    "start": "0x20f0dd0",
    "end": "0x20f11b0",
    "classes": [
-    "OneUpLogo"
+    "daObj1UpLogo_c"
    ],
    "n_functions_map": 8,
    "n_files": 8,
    "files": [
-    "src/_ZN9OneUpLogoD1Ev.cpp",
-    "src/_ZN9OneUpLogoD0Ev.cpp",
+    "src/_ZN14daObj1UpLogo_cD1Ev.cpp",
+    "src/_ZN14daObj1UpLogo_cD0Ev.cpp",
     "src/func_ov002_020f0e54.c",
-    "src/_ZN9OneUpLogo16CleanupResourcesEv.cpp",
-    "src/_ZN9OneUpLogo6RenderEv.cpp",
-    "src/_ZN9OneUpLogo8BehaviorEv.cpp",
-    "src/_ZN9OneUpLogo13InitResourcesEv.cpp",
+    "src/_ZN14daObj1UpLogo_c16CleanupResourcesEv.cpp",
+    "src/_ZN14daObj1UpLogo_c6RenderEv.cpp",
+    "src/_ZN14daObj1UpLogo_c8BehaviorEv.cpp",
+    "src/_ZN14daObj1UpLogo_c13InitResourcesEv.cpp",
     "src/d_a_obj1_up_logo.c"
    ],
    "ext_mix": {
