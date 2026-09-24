@@ -28,6 +28,11 @@
  * Fix12<int> by value, so they stay mangled. dBgCh_Actr::GetWallResult stays
  * mangled because include/dBgCh_Actr.h does not declare it yet. */
 extern "C" {
+/* The texture animation InitResources hands to mTextureTransformer lives in
+ * the level overlay, not here. ov096 relocs.txt lists the load at 0x021376b0
+ * as ambiguous between ten level overlays; tools/overlay_residency.py settles
+ * it to ov024, the only level whose tables load ov096. */
+extern int data_ov024_02112968[];
 s16 data_02082214[];
 s32 Vec3_HorzDist(const void *a, const void *b);
 s16 Vec3_HorzAngle(const void *a, const void *b);
@@ -50,7 +55,7 @@ void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(
     void *self, void *actor, int radius, int height, void *a, int b);
 }
 
-void ApproachLinear(s16 *value, s16 target, s16 step);
+void ApproachLinear(s16 &value, s16 target, s16 step);
 
 // @symbol _ZN7daTor_cD1Ev
 // @symbol _ZN7daTor_cD0Ev
@@ -145,11 +150,11 @@ void daTor_c::State1()
         && mChaseTimer < 0x384) {
         angle = Vec3_HorzAngle(&mPosX, &playerPos);
         mAngleToPlayer = angle;
-        ApproachLinear(&mPrevAngleY, mAngleToPlayer, 0x200);
+        ApproachLinear(mPrevAngleY, mAngleToPlayer, 0x200);
         if (mCaughtActor != 0 && func_ov002_020de328(mCaughtActor) != 0)
             ++mTriggerCount;
     } else {
-        ApproachLinear(&mPrevAngleY, mAngleToHome, 0x200);
+        ApproachLinear(mPrevAngleY, mAngleToHome, 0x200);
         if (Vec3_HorzDist(&mHomePosX, &mPosX) < 0xc8000)
             mState = 2;
     }
@@ -279,9 +284,9 @@ int daTor_c::InitResources()
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(
         &mModelAnim, (void *)data_ov096_02137bb0[1], 0, 0x1000, 0);
     _ZN18TextureTransformer7PrepareER8BMD_FileR8BTA_File(
-        (void *)data_ov096_02137ba8[1], func_02112968);
+        (void *)data_ov096_02137ba8[1], data_ov024_02112968);
     _ZN18TextureTransformer7SetFileER8BTA_Filei5Fix12IiEj(
-        &mTextureTransformer, func_02112968, 0, 0x1000, 0);
+        &mTextureTransformer, data_ov024_02112968, 0, 0x1000, 0);
     _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(&mdCcAc_c, this, 0, 0, 0x200002, 0);
     _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(
         &mWithMeshClsn, this, 0x50000, 0x50000, 0, 0);
