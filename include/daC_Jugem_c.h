@@ -23,6 +23,11 @@
  *     0x270 shadow matrix              0x30    -> 0x2a0
  *     0x2a0 Player* (who he talks to)   0x4    -> 0x2a4
  *
+ * Plain fields (not constructed, so neither witness covers them): 0x1ec
+ * state-table pointer (func_ov085_0212e728, Behavior); 0x240/0x270 shadow
+ * matrices (the DropShadowRadHeight arguments); 0x2a0 the Player Lakitu
+ * talks to (set in func_ov085_0212e310).
+ *
  * Typing them absorbed markers that were their insides:
  *   - unk_16c = ModelAnim.speed
  *

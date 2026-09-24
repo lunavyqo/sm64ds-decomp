@@ -13,6 +13,10 @@
 #include "Camera.h"
 #include "SharedFilePtr.h"
 
+/* Every external call is declared once, with C linkage, under its ROM name.
+   Pointer parameters are spelled void *: the mangled names already carry the
+   real types. By-value Fix12<int> parameters and return types are kept exact,
+   because mwccarm passes the first differently and callers test the second. */
 extern "C" {
 
 /* camera */
@@ -106,7 +110,8 @@ extern char           data_ov085_0213073c[];
 
 /* The state objects this class drives itself with. Each is a pair of
    pointers-to-member: the setter at 0x0212e728 calls the one at offset 0,
-   Behavior calls the one at offset 8. */
+   Behavior calls the one at offset 8. The two views stay separate (JugemHost
+   here, BehState in Behavior) rather than merged into one invented struct. */
 struct JugemHost;
 typedef int (JugemHost::*JugemInitPMF)();
 struct JugemHost { char pad[0x1ec]; JugemInitPMF *pp; };
@@ -126,10 +131,10 @@ extern JugemInitPMF data_ov085_02130820;
 extern JugemInitPMF data_ov085_02130830;
 }
 
-#pragma defer_codegen off /* ~daC_Jugem_c out of line: D1 then D0; deferred emits D2, D0, D1 */
+/* Source order is ROM-ascending; do not reorder. Out-of-line ~daC_Jugem_c:
+   D1 then D0 (deferred codegen would emit D2, D0, D1). */
+#pragma defer_codegen off
 
-/* ROM ordinals 0 and 1 -- _ZN11daC_Jugem_cD1Ev 0x0212d528 size 0x50,
-                          _ZN11daC_Jugem_cD0Ev 0x0212d578 size 0x64 */
 // @symbol _ZN11daC_Jugem_cD1Ev
 // @symbol _ZN11daC_Jugem_cD0Ev
 /* recovered: real C++ destructor -- the compiler emits the whole body.
@@ -665,9 +670,7 @@ int func_ov085_0212e310(daC_Jugem_c *c)
 }
 
 // @symbol func_ov085_0212e480
-// recovered name: daObj_Mip_Key_c_Kill
-/* recovered: renamed to Class_Method */
-/* daObj_Mip_Key_c::Kill - recovered from vtable slot identity */
+/* A daC_Jugem_c state function: it writes this class's mTimer and mStateTimer. */
 extern "C" {  /* .c-derived member: C linkage for the whole block */
 int func_ov085_0212e480(daC_Jugem_c *p)
 {
@@ -765,7 +768,8 @@ int func_ov085_0212e5ac(daC_Jugem_c *self)
     }
     *(int *)(((int)&self->mPosZ)) += out.z;
     self->mPrevAngleY = 0x8000 - cam->mAngleY;
-    /* Camera.h leaves the pitch halfword at 0x17e inside pad_17e. */
+    /* The halfword after Camera::mAngleY at 0x17e (Camera.h has no member for
+       it). Possibly the pitch, but only this one negated use suggests so. */
     self->mPrevAngleX = -*(short *)((char *)&cam->mAngleY + 2);
     return 1;
 }
