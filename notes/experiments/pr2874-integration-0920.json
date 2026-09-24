@@ -3170,8 +3170,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN9daFRing_c13InitResourcesEv.cpp",
-      "name": "_ZN9daFRing_c13InitResourcesEv",
+      "file": "src/_ZN16BowserShockwaves13InitResourcesEv.cpp",
+      "name": "_ZN16BowserShockwaves13InitResourcesEv",
       "module": "ov060",
       "addr": "0x2119004",
       "verdict": "VERIFIED",
@@ -3179,8 +3179,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN9daFRing_c8BehaviorEv.cpp",
-      "name": "_ZN9daFRing_c8BehaviorEv",
+      "file": "src/_ZN16BowserShockwaves8BehaviorEv.cpp",
+      "name": "_ZN16BowserShockwaves8BehaviorEv",
       "module": "ov060",
       "addr": "0x2118eb8",
       "verdict": "VERIFIED",
@@ -21094,7 +21094,7 @@
           "src/_ZN14dScMgBomroom_c13OnYoshiTryEatEi.cpp",
           "src/_ZN15FireSeaElevator13InitResourcesEv.cpp",
           "src/_ZN15TtcRotatingGear13InitResourcesEv.cpp",
-          "src/_ZN9daFRing_c13InitResourcesEv.cpp",
+          "src/_ZN16BowserShockwaves13InitResourcesEv.cpp",
           "src/_ZN16dScMgSmartball_c13InitResourcesEv.cpp",
           "src/_ZN17BowserPuzzlePiece13InitResourcesEv.cpp",
           "src/_ZN19FirePiranhaPlantBig8BehaviorEv.cpp",
@@ -21219,7 +21219,7 @@
           "src/_ZN14dScMgBomroom_c13OnYoshiTryEatEi.cpp",
           "src/_ZN15FireSeaElevator13InitResourcesEv.cpp",
           "src/_ZN15TtcRotatingGear13InitResourcesEv.cpp",
-          "src/_ZN9daFRing_c13InitResourcesEv.cpp",
+          "src/_ZN16BowserShockwaves13InitResourcesEv.cpp",
           "src/_ZN16dScMgSmartball_c13InitResourcesEv.cpp",
           "src/_ZN17BowserPuzzlePiece13InitResourcesEv.cpp",
           "src/_ZN19FirePiranhaPlantBig8BehaviorEv.cpp",
@@ -21353,7 +21353,7 @@
           "src/_ZN14dScMgCurling_c13InitResourcesEv.cpp",
           "src/_ZN15FireSeaElevator16CleanupResourcesEv.cpp",
           "src/_ZN15TtcRotatingGear16CleanupResourcesEv.cpp",
-          "src/_ZN9daFRing_c8BehaviorEv.cpp",
+          "src/_ZN16BowserShockwaves8BehaviorEv.cpp",
           "src/_ZN16dScMgSmartball_c21AfterCleanupResourcesEj.cpp",
           "src/_ZN17BowserPuzzlePiece16CleanupResourcesEv.cpp",
           "src/_ZN19FloatOnLavaPlatform13InitResourcesEv.cpp",
@@ -21476,7 +21476,7 @@
           "src/_ZN14dScMgCurling_c13InitResourcesEv.cpp",
           "src/_ZN15FireSeaElevator16CleanupResourcesEv.cpp",
           "src/_ZN15TtcRotatingGear16CleanupResourcesEv.cpp",
-          "src/_ZN9daFRing_c8BehaviorEv.cpp",
+          "src/_ZN16BowserShockwaves8BehaviorEv.cpp",
           "src/_ZN16dScMgSmartball_c21AfterCleanupResourcesEj.cpp",
           "src/_ZN17BowserPuzzlePiece16CleanupResourcesEv.cpp",
           "src/_ZN19FloatOnLavaPlatform13InitResourcesEv.cpp",
@@ -21741,8 +21741,8 @@
         "src/_ZN15dScMgPachinko_c13InitResourcesEv.cpp",
         "src/_ZN15dScMgPachinko_c13OnYoshiTryEatEi.cpp",
         "src/_ZN15daObjMarioCap_c13InitResourcesEv.cpp",
-        "src/_ZN9daFRing_c13InitResourcesEv.cpp",
-        "src/_ZN9daFRing_c8BehaviorEv.cpp",
+        "src/_ZN16BowserShockwaves13InitResourcesEv.cpp",
+        "src/_ZN16BowserShockwaves8BehaviorEv.cpp",
         "src/_ZN16RotatingCogSmall13InitResourcesEv.cpp",
         "src/_ZN16RotatingCogSmall16CleanupResourcesEv.cpp",
         "src/_ZN16dScMgPachinko2_c13InitResourcesEv.cpp",
@@ -22879,12 +22879,12 @@
           "name": "_ZN15daObjMarioCap_c13InitResourcesEv"
         },
         {
-          "file": "src/_ZN9daFRing_c13InitResourcesEv.cpp",
-          "name": "_ZN9daFRing_c13InitResourcesEv"
+          "file": "src/_ZN16BowserShockwaves13InitResourcesEv.cpp",
+          "name": "_ZN16BowserShockwaves13InitResourcesEv"
         },
         {
-          "file": "src/_ZN9daFRing_c8BehaviorEv.cpp",
-          "name": "_ZN9daFRing_c8BehaviorEv"
+          "file": "src/_ZN16BowserShockwaves8BehaviorEv.cpp",
+          "name": "_ZN16BowserShockwaves8BehaviorEv"
         },
         {
           "file": "src/_ZN16RotatingCogSmall13InitResourcesEv.cpp",

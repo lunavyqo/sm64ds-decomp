@@ -1,5 +1,19 @@
 //cpp
-/* daFRing_c -- Bowser's shockwaves. */
+/* Production translation unit for ov060/daFRing_c.
+ * 6 function(s), .text 0x02118cfc..0x021191f4. Bowser's shockwave rings
+ * (registry profile FIRERING).
+ *
+ * NAME: _ZTS9daFRing_c is "9daFRing_c" at ov060 0x0211ab08; _ZTI at 0x0211ab14
+ * reads [__si_class_type_info, that string, _ZTI8dActor_c]. The tree
+ * previously called the class BowserShockwaves (coined).
+ *
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x02118cfc), D0
+ * (0x02118d64), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is
+ * ROM-ascending. The factory daFRing_c_classInit (0x021191f4) stays in its own
+ * source, src/d_a_f_ring.c.
+ */
 
 #pragma defer_codegen off
 
@@ -9,11 +23,21 @@
 #include "SharedFilePtr.h"
 
 extern "C" {
+/* The ring's material and texture animations live in the level overlay, not
+ * in ov060. ov060 relocs.txt lists the two literals at 0x021191ec/0x021191f0
+ * as ambiguous between ~20 level overlays; tools/overlay_residency.py narrows
+ * them to the three Bowser fights (ov044/ov046/ov048). Only ov048 holds an
+ * animation record at both addresses: a frame count of 0x64 followed by
+ * pointers ov048 relocates into its own data (ov048 relocs.txt, from
+ * 0x021115e8..0x02111608). ov044's words there sit inside
+ * g_profile_KB1_BILLBOARD, and ov046's carry no relocations. */
+extern BMA_File data_ov048_021115e4;
+extern BTA_File data_ov048_021115f4;
 void func_02016b24(void *model, unsigned int mask);
 Fix12i Vec3_HorzDist(const Vector3 *a, const Vector3 *b);
 void Matrix4x3_FromTranslation(void *m, int x, int y, int z);
-/* InitResources: these four take Fix12<int> by value, and that spelling
- * spills the 0x1000. The int bridge is what matches. */
+/* Leftover: these four take Fix12<int> by value, so they stay mangled; the
+ * member spelling spills the 0x1000 and InitResources stops matching. */
 void _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(ModelAnim *self, BCA_File *file, int flags, int speed, unsigned int start);
 void _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(TextureSequence *self, BTP_File *file, int flags, int speed, unsigned int start);
 void _ZN15MaterialChanger7SetFileER8BMA_Filei5Fix12IiEj(MaterialChanger *self, BMA_File *file, int flags, int speed, unsigned int start);
@@ -105,15 +129,15 @@ s32 daFRing_c::InitResources()
     _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(&mTextureSequence1, (BTP_File *)data_ov060_0211b200[1], 0x40000000, 0x1000, 0);
     _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(&mTextureSequence2, (BTP_File *)data_ov060_0211b200[1], 0x40000000, 0x1000, 0);
 
-    MaterialChanger::Prepare(*(BMD_File *)data_ov060_0211b208[1], *(BMA_File *)func_021115e4);
-    MaterialChanger::Prepare(*(BMD_File *)data_ov060_0211b208[1], *(BMA_File *)func_021115e4);
-    _ZN15MaterialChanger7SetFileER8BMA_Filei5Fix12IiEj(&mMaterialChanger1, (BMA_File *)func_021115e4, 0x40000000, 0x1000, 0);
-    _ZN15MaterialChanger7SetFileER8BMA_Filei5Fix12IiEj(&mMaterialChanger2, (BMA_File *)func_021115e4, 0x40000000, 0x1000, 0);
+    MaterialChanger::Prepare(*(BMD_File *)data_ov060_0211b208[1], data_ov048_021115e4);
+    MaterialChanger::Prepare(*(BMD_File *)data_ov060_0211b208[1], data_ov048_021115e4);
+    _ZN15MaterialChanger7SetFileER8BMA_Filei5Fix12IiEj(&mMaterialChanger1, &data_ov048_021115e4, 0x40000000, 0x1000, 0);
+    _ZN15MaterialChanger7SetFileER8BMA_Filei5Fix12IiEj(&mMaterialChanger2, &data_ov048_021115e4, 0x40000000, 0x1000, 0);
 
-    TextureTransformer::Prepare(*(BMD_File *)data_ov060_0211b208[1], *(BTA_File *)func_021115f4);
-    TextureTransformer::Prepare(*(BMD_File *)data_ov060_0211b208[1], *(BTA_File *)func_021115f4);
-    _ZN18TextureTransformer7SetFileER8BTA_Filei5Fix12IiEj(&mTextureTransformer1, (BTA_File *)func_021115f4, 0x40000000, 0x1000, 0);
-    _ZN18TextureTransformer7SetFileER8BTA_Filei5Fix12IiEj(&mTextureTransformer2, (BTA_File *)func_021115f4, 0x40000000, 0x1000, 0);
+    TextureTransformer::Prepare(*(BMD_File *)data_ov060_0211b208[1], data_ov048_021115f4);
+    TextureTransformer::Prepare(*(BMD_File *)data_ov060_0211b208[1], data_ov048_021115f4);
+    _ZN18TextureTransformer7SetFileER8BTA_Filei5Fix12IiEj(&mTextureTransformer1, &data_ov048_021115f4, 0x40000000, 0x1000, 0);
+    _ZN18TextureTransformer7SetFileER8BTA_Filei5Fix12IiEj(&mTextureTransformer2, &data_ov048_021115f4, 0x40000000, 0x1000, 0);
 
     mFrame = 0;
     return 1;

@@ -26301,17 +26301,17 @@
    "start": "0x2118cfc",
    "end": "0x2119264",
    "classes": [
-    "daFRing_c"
+    "BowserShockwaves"
    ],
    "n_functions_map": 7,
    "n_files": 7,
    "files": [
-    "src/_ZN9daFRing_cD1Ev.cpp",
-    "src/_ZN9daFRing_cD0Ev.cpp",
-    "src/_ZN9daFRing_c16CleanupResourcesEv.cpp",
-    "src/_ZN9daFRing_c6RenderEv.cpp",
-    "src/_ZN9daFRing_c8BehaviorEv.cpp",
-    "src/_ZN9daFRing_c13InitResourcesEv.cpp",
+    "src/_ZN16BowserShockwavesD1Ev.cpp",
+    "src/_ZN16BowserShockwavesD0Ev.cpp",
+    "src/_ZN16BowserShockwaves16CleanupResourcesEv.cpp",
+    "src/_ZN16BowserShockwaves6RenderEv.cpp",
+    "src/_ZN16BowserShockwaves8BehaviorEv.cpp",
+    "src/_ZN16BowserShockwaves13InitResourcesEv.cpp",
     "src/d_a_f_ring.c"
    ],
    "ext_mix": {
