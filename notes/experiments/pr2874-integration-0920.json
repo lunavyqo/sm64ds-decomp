@@ -2000,8 +2000,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN10LavaSeesaw16CleanupResourcesEv.cpp",
-      "name": "_ZN10LavaSeesaw16CleanupResourcesEv",
+      "file": "src/_ZN16daObjFl_Seesaw_c16CleanupResourcesEv.cpp",
+      "name": "_ZN16daObjFl_Seesaw_c16CleanupResourcesEv",
       "module": "ov022",
       "addr": "0x2111d90",
       "verdict": "VERIFIED",
@@ -20811,7 +20811,7 @@
           "src/Camera_UpdateMatrices.c",
           "src/_ZN10BowserFire8BehaviorEv.cpp",
           "src/_ZN19daObjBlockItemTag_c8BehaviorEv.cpp",
-          "src/_ZN10LavaSeesaw16CleanupResourcesEv.cpp",
+          "src/_ZN16daObjFl_Seesaw_c16CleanupResourcesEv.cpp",
           "src/_ZN10PyramidTop8BehaviorEv.cpp",
           "src/_ZN10StarMarker13InitResourcesEv.cpp",
           "src/_ZN10dBgCh_Actr20UpdateDiscreteNoLavaEv.cpp",
@@ -20936,7 +20936,7 @@
           "src/Camera_UpdateMatrices.c",
           "src/_ZN10BowserFire8BehaviorEv.cpp",
           "src/_ZN19daObjBlockItemTag_c8BehaviorEv.cpp",
-          "src/_ZN10LavaSeesaw16CleanupResourcesEv.cpp",
+          "src/_ZN16daObjFl_Seesaw_c16CleanupResourcesEv.cpp",
           "src/_ZN10PyramidTop8BehaviorEv.cpp",
           "src/_ZN10StarMarker13InitResourcesEv.cpp",
           "src/_ZN10dBgCh_Actr20UpdateDiscreteNoLavaEv.cpp",
@@ -21609,7 +21609,7 @@
         "src/_ZN10DonutBlock16CleanupResourcesEv.cpp",
         "src/_ZN10HootTheOwl13InitResourcesEv.cpp",
         "src/_ZN10HootTheOwl8BehaviorEv.cpp",
-        "src/_ZN10LavaSeesaw16CleanupResourcesEv.cpp",
+        "src/_ZN16daObjFl_Seesaw_c16CleanupResourcesEv.cpp",
         "src/_ZN10MrBlizzard13InitResourcesEv.cpp",
         "src/_ZN10MrBlizzard8BehaviorEv.cpp",
         "src/_ZN10PyramidTop13InitResourcesEv.cpp",
@@ -22359,8 +22359,8 @@
           "name": "_ZN10HootTheOwl8BehaviorEv"
         },
         {
-          "file": "src/_ZN10LavaSeesaw16CleanupResourcesEv.cpp",
-          "name": "_ZN10LavaSeesaw16CleanupResourcesEv"
+          "file": "src/_ZN16daObjFl_Seesaw_c16CleanupResourcesEv.cpp",
+          "name": "_ZN16daObjFl_Seesaw_c16CleanupResourcesEv"
         },
         {
           "file": "src/_ZN10MrBlizzard13InitResourcesEv.cpp",

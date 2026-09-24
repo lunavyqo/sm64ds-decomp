@@ -10896,10 +10896,6 @@
       ]
     },
     "_ZN4dBgW22UpdatePosWithTransformERS_P8dActor_cR5dBgPiR7Vector3P10Vector3_16S8_": {
-      "src/_ZN10LavaSeesaw13InitResourcesEv.cpp": [
-        "arity:0",
-        "mangled:0 parameter(s)"
-      ],
       "src/_ZN10SlidingBox13InitResourcesEv.cpp": [
         "arity:0",
         "mangled:0 parameter(s)"
@@ -11146,9 +11142,6 @@
       "src/_ZN10DonutBlock13InitResourcesEv.cpp": [
         "param:#1 void *",
         "return:int"
-      ],
-      "src/_ZN10LavaSeesaw13InitResourcesEv.cpp": [
-        "param:#1 void *"
       ],
       "src/_ZN10MrBlizzard13InitResourcesEv.cpp": [
         "param:#1 void *"
@@ -14457,10 +14450,6 @@
       "src/_ZN10DonutBlock13InitResourcesEv.cpp": [
         "param:#1 void *",
         "return:int"
-      ],
-      "src/_ZN10LavaSeesaw13InitResourcesEv.cpp": [
-        "param:#1 void *",
-        "return:void *"
       ],
       "src/_ZN10PyramidTop13InitResourcesEv.cpp": [
         "param:#1 void *",
@@ -28104,16 +28093,6 @@
         "return:SharedFilePtr"
       ]
     },
-    "data_ov022_021145a0": {
-      "src/_ZN10LavaSeesaw13InitResourcesEv.cpp": [
-        "return:void *"
-      ]
-    },
-    "data_ov022_021145a8": {
-      "src/_ZN10LavaSeesaw13InitResourcesEv.cpp": [
-        "return:void *"
-      ]
-    },
     "data_ov022_02114618": {
       "src/__sinit_ov022_02112f78.c": [
         "return:int []"
@@ -36509,9 +36488,6 @@
     },
     "func_020393d4": {
       "src/_ZN10DonutBlock13InitResourcesEv.cpp": [
-        "param:#2 void *"
-      ],
-      "src/_ZN10LavaSeesaw13InitResourcesEv.cpp": [
         "param:#2 void *"
       ],
       "src/_ZN10PyramidTop13InitResourcesEv.cpp": [
