@@ -333,24 +333,25 @@ extern "C" void func_ov071_02120278(ScuttlebugState *c)
 // @symbol func_ov071_02120200
 extern "C" int func_ov071_02120200(char *c)
 {
-    int *p = (int *)&((Scuttlebug *)c)->mFlags;
+    Scuttlebug *self = (Scuttlebug *)c;
+    int *p = (int *)&self->mFlags;
     int z;
     short ang;
 
     *p = *p & ~0x10000001;
-    ((Scuttlebug *)c)->mPosX = ((Scuttlebug *)c)->mHomeX;
+    self->mPosX = self->mHomeX;
     z = 0;
-    ((Scuttlebug *)c)->mPosY = ((Scuttlebug *)c)->mHomeY;
-    ((Scuttlebug *)c)->mPosZ = ((Scuttlebug *)c)->mHomeZ;
-    ((Scuttlebug *)c)->mPrevAngleY = ((Scuttlebug *)c)->mHomeAngleY;
-    ang = ((Scuttlebug *)c)->mHomeAngleY;
-    ((Scuttlebug *)c)->mAngleX = z;
-    ((Scuttlebug *)c)->mAngleY = ang;
-    ((Scuttlebug *)c)->mAngleZ = z;
-    ((Scuttlebug *)c)->mHorzSpeed = z;
-    ((Scuttlebug *)c)->mTimer = 0x1e;
-    _ZN5dCc_c5ClearEv(&((Scuttlebug *)c)->mdCcAc_c);
-    ((Scuttlebug *)c)->mState = 0;
+    self->mPosY = self->mHomeY;
+    self->mPosZ = self->mHomeZ;
+    self->mPrevAngleY = self->mHomeAngleY;
+    ang = self->mHomeAngleY;
+    self->mAngleX = z;
+    self->mAngleY = ang;
+    self->mAngleZ = z;
+    self->mHorzSpeed = z;
+    self->mTimer = 0x1e;
+    _ZN5dCc_c5ClearEv(&self->mdCcAc_c);
+    self->mState = 0;
     return 1;
 }
 
@@ -365,126 +366,132 @@ extern "C" int func_ov071_021201b4(void *c)
 // @symbol func_ov071_02120130
 extern "C" int func_ov071_02120130(char *c)
 {
-    ((Scuttlebug *)c)->mVertAccel = -0x4000;
-    ((Scuttlebug *)c)->mTerminalVelocity = -0x3e000;
-    ((Scuttlebug *)c)->mHorzSpeed = 0x16000;
-    ((Scuttlebug *)c)->mVertSpeed = 0x4d000;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&((Scuttlebug *)c)->mModelAnim, (void *)data_ov071_02122f88[1], 0, 0x1000, 0);
-    ((Scuttlebug *)c)->mModelAnim.speed = 0x1000;
-    _ZN10dBgCh_Actr13SetLimMovFlagEv(&((Scuttlebug *)c)->mWithMeshClsn);
-    func_0201267c(0xf1, &((Scuttlebug *)c)->mCamSpacePosX);
-    ((Scuttlebug *)c)->mState = 1;
+    Scuttlebug *self = (Scuttlebug *)c;
+    self->mVertAccel = -0x4000;
+    self->mTerminalVelocity = -0x3e000;
+    self->mHorzSpeed = 0x16000;
+    self->mVertSpeed = 0x4d000;
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModelAnim, (void *)data_ov071_02122f88[1], 0, 0x1000, 0);
+    self->mModelAnim.speed = 0x1000;
+    _ZN10dBgCh_Actr13SetLimMovFlagEv(&self->mWithMeshClsn);
+    func_0201267c(0xf1, &self->mCamSpacePosX);
+    self->mState = 1;
     return 1;
 }
 
 // @symbol func_ov071_02120028
 extern "C" int func_ov071_02120028(char *c)
 {
-    ((Scuttlebug *)c)->mModelAnim.Advance();
-    _ZN8dActor_c9UpdatePosEP5dCc_c(c, &((Scuttlebug *)c)->mdCcAc_c);
-    dBgCh_Actr_UpdateDiscreteNoLava_veneer(&((Scuttlebug *)c)->mWithMeshClsn);
-    if (_ZNK10dBgCh_Actr13JustHitGroundEv(&((Scuttlebug *)c)->mWithMeshClsn)) {
+    Scuttlebug *self = (Scuttlebug *)c;
+    self->mModelAnim.Advance();
+    _ZN8dActor_c9UpdatePosEP5dCc_c(c, &self->mdCcAc_c);
+    dBgCh_Actr_UpdateDiscreteNoLava_veneer(&self->mWithMeshClsn);
+    if (_ZNK10dBgCh_Actr13JustHitGroundEv(&self->mWithMeshClsn)) {
         Vec3 v;
         int x, y, z;
-        x = *(volatile int *)&((Scuttlebug *)c)->mPosX;
+        x = *(volatile int *)&self->mPosX;
         *(volatile int *)&v.x = x;
-        y = *(volatile int *)&((Scuttlebug *)c)->mPosY;
+        y = *(volatile int *)&self->mPosY;
         *(volatile int *)&v.y = y;
-        z = *(volatile int *)&((Scuttlebug *)c)->mPosZ;
+        z = *(volatile int *)&self->mPosZ;
         y += 0x28000;
         *(volatile int *)&v.z = z;
         *(volatile int *)&v.y = y;
         _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(0xb2, x, y, z);
-        ((Scuttlebug *)c)->mVertSpeed = ((Scuttlebug *)c)->mVertSpeed * -0x28 / 100;
-    } else if (_ZNK10dBgCh_Actr10IsOnGroundEv(&((Scuttlebug *)c)->mWithMeshClsn)) {
-        ((Scuttlebug *)c)->mVertSpeed = 0;
-        _ZN10dBgCh_Actr15ClearLimMovFlagEv(&((Scuttlebug *)c)->mWithMeshClsn);
-        ((Scuttlebug *)c)->mAnchorX = ((Scuttlebug *)c)->mPosX;
-        ((Scuttlebug *)c)->mAnchorY = ((Scuttlebug *)c)->mPosY;
-        ((Scuttlebug *)c)->mAnchorZ = ((Scuttlebug *)c)->mPosZ;
-        ((Scuttlebug *)c)->mFlags |= 0x10000001;
+        self->mVertSpeed = self->mVertSpeed * -0x28 / 100;
+    } else if (_ZNK10dBgCh_Actr10IsOnGroundEv(&self->mWithMeshClsn)) {
+        self->mVertSpeed = 0;
+        _ZN10dBgCh_Actr15ClearLimMovFlagEv(&self->mWithMeshClsn);
+        self->mAnchorX = self->mPosX;
+        self->mAnchorY = self->mPosY;
+        self->mAnchorZ = self->mPosZ;
+        self->mFlags |= 0x10000001;
         Scuttlebug_SetState(c, 2);
     }
     func_ov071_0211f29c(c);
-    _ZN5dCc_c5ClearEv(&((Scuttlebug *)c)->mdCcAc_c);
-    _ZN5dCc_c6UpdateEv(&((Scuttlebug *)c)->mdCcAc_c);
+    _ZN5dCc_c5ClearEv(&self->mdCcAc_c);
+    _ZN5dCc_c6UpdateEv(&self->mdCcAc_c);
     return 1;
 }
 
 // @symbol func_ov071_0211ff84
 extern "C" int func_ov071_0211ff84(char *c)
 {
-    if (Vec3_Dist((Vector3 *)&((Scuttlebug *)c)->mPosX,
-                  (Vector3 *)&((Scuttlebug *)c)->mAnchorX) > 0x5dc000) {
+    Scuttlebug *self = (Scuttlebug *)c;
+    if (Vec3_Dist((Vector3 *)&self->mPosX,
+                  (Vector3 *)&self->mAnchorX) > 0x5dc000) {
         Scuttlebug_SetState(c, 5);
         return 1;
     }
-    ((Scuttlebug *)c)->mVertAccel = -0x2000;
-    ((Scuttlebug *)c)->mTerminalVelocity = -0x3c000;
-    ((Scuttlebug *)c)->mHorzSpeed = 0x4000;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&((Scuttlebug *)c)->mModelAnim, *(void **)((char *)data_ov071_02122f88 + 4), 0, 0x1000, 0);
-    ((Scuttlebug *)c)->mModelAnim.speed = 0x1000;
-    ((Scuttlebug *)c)->mState = 2;
+    self->mVertAccel = -0x2000;
+    self->mTerminalVelocity = -0x3c000;
+    self->mHorzSpeed = 0x4000;
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModelAnim, *(void **)((char *)data_ov071_02122f88 + 4), 0, 0x1000, 0);
+    self->mModelAnim.speed = 0x1000;
+    self->mState = 2;
     return 1;
 }
 
 // @symbol func_ov071_0211fee4
 extern "C" int func_ov071_0211fee4(char *c)
 {
-    ((Scuttlebug *)c)->mAngleY = (short)(((Scuttlebug *)c)->mAngleY + 0x2bc);
-    ((Scuttlebug *)c)->mPrevAngleY = ((Scuttlebug *)c)->mAngleY;
-    ((Scuttlebug *)c)->mModelAnim.Advance();
-    unsigned short f = (unsigned short)(((Scuttlebug *)c)->mModelAnim.currFrame >> 12);
+    Scuttlebug *self = (Scuttlebug *)c;
+    self->mAngleY = (short)(self->mAngleY + 0x2bc);
+    self->mPrevAngleY = self->mAngleY;
+    self->mModelAnim.Advance();
+    unsigned short f = (unsigned short)(self->mModelAnim.currFrame >> 12);
     if (f == 0 || f == 8 || f == 0x17 || f == 0x1f) {
-        func_0201267c(0xf0, (void *)(&((Scuttlebug *)c)->mCamSpacePosX));
+        func_0201267c(0xf0, (void *)(&self->mCamSpacePosX));
     }
     func_ov071_0211f0b4(c);
-    ((dActor_c *)c)->UpdatePos((dCc_c *)(&((Scuttlebug *)c)->mdCcAc_c));
-    func_ov071_0211f148(c, (char *)(&((Scuttlebug *)c)->mWithMeshClsn));
+    ((dActor_c *)c)->UpdatePos((dCc_c *)(&self->mdCcAc_c));
+    func_ov071_0211f148(c, (char *)(&self->mWithMeshClsn));
     func_ov071_0211f29c(c);
-    ((dCc_c *)(&((Scuttlebug *)c)->mdCcAc_c))->Clear();
-    ((dCc_c *)(&((Scuttlebug *)c)->mdCcAc_c))->Update();
+    ((dCc_c *)(&self->mdCcAc_c))->Clear();
+    ((dCc_c *)(&self->mdCcAc_c))->Update();
     return 1;
 }
 
 // @symbol func_ov071_0211fe38
 extern "C" int func_ov071_0211fe38(char *c)
 {
-    int *p3a0 = &((Scuttlebug *)c)->mLeapDist;
-    ((Scuttlebug *)c)->mVertAccel = -0x2000;
-    ((Scuttlebug *)c)->mTerminalVelocity = -0x3c000;
-    ((Scuttlebug *)c)->mHorzSpeed = 0xf000;
-    ((Scuttlebug *)c)->mVertSpeed = 0x12000;
-    ((Scuttlebug *)c)->mAngleY = ((Scuttlebug *)c)->mLeapAngle;
-    ((Scuttlebug *)c)->mPrevAngleY = ((Scuttlebug *)c)->mAngleY;
+    Scuttlebug *self = (Scuttlebug *)c;
+    int *p3a0 = &self->mLeapDist;
+    self->mVertAccel = -0x2000;
+    self->mTerminalVelocity = -0x3c000;
+    self->mHorzSpeed = 0xf000;
+    self->mVertSpeed = 0x12000;
+    self->mAngleY = self->mLeapAngle;
+    self->mPrevAngleY = self->mAngleY;
     *p3a0 += 0x12c000;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&((Scuttlebug *)c)->mModelAnim, (void *)data_ov071_02122f88[1], 0, 0x1000, 0);
-    ((Scuttlebug *)c)->mModelAnim.speed = 0x2c00;
-    ((Scuttlebug *)c)->mModelAnim.currFrame = 0;
-    func_0201267c(0xf1, &((Scuttlebug *)c)->mCamSpacePosX);
-    ((Scuttlebug *)c)->mState = 3;
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModelAnim, (void *)data_ov071_02122f88[1], 0, 0x1000, 0);
+    self->mModelAnim.speed = 0x2c00;
+    self->mModelAnim.currFrame = 0;
+    func_0201267c(0xf1, &self->mCamSpacePosX);
+    self->mState = 3;
     return 1;
 }
 
 // @symbol func_ov071_0211fd58
 extern "C" int func_ov071_0211fd58(char *c)
 {
-    ((Scuttlebug *)c)->mModelAnim.Advance();
-    int *p = &((Scuttlebug *)c)->mLeapDist;
+    Scuttlebug *self = (Scuttlebug *)c;
+    self->mModelAnim.Advance();
+    int *p = &self->mLeapDist;
     *p -= 0xf000;
-    if (((Scuttlebug *)c)->mLeapDist <= 0) {
-        ((Scuttlebug *)c)->mTimer = 0x3c;
+    if (self->mLeapDist <= 0) {
+        self->mTimer = 0x3c;
         Scuttlebug_SetState(c, 2);
     }
-    _ZN8dActor_c9UpdatePosEP5dCc_c(c, &((Scuttlebug *)c)->mdCcAc_c);
-    func_ov071_0211f148(c, (char *)&((Scuttlebug *)c)->mWithMeshClsn);
+    _ZN8dActor_c9UpdatePosEP5dCc_c(c, &self->mdCcAc_c);
+    func_ov071_0211f148(c, (char *)&self->mWithMeshClsn);
     func_ov071_0211f29c(c);
-    _ZN5dCc_c5ClearEv(&((Scuttlebug *)c)->mdCcAc_c);
-    _ZN5dCc_c6UpdateEv(&((Scuttlebug *)c)->mdCcAc_c);
-    if (_ZNK10dBgCh_Actr10IsOnGroundEv(&((Scuttlebug *)c)->mWithMeshClsn) != 0) {
-        unsigned int t = (unsigned int)(((Scuttlebug *)c)->mModelAnim.currFrame << 4) >> 0x10;
+    _ZN5dCc_c5ClearEv(&self->mdCcAc_c);
+    _ZN5dCc_c6UpdateEv(&self->mdCcAc_c);
+    if (_ZNK10dBgCh_Actr10IsOnGroundEv(&self->mWithMeshClsn) != 0) {
+        unsigned int t = (unsigned int)(self->mModelAnim.currFrame << 4) >> 0x10;
         if ((t <= 2) || (t >= 8 && t <= 0xa) || (t >= 0x18 && t <= 0x1a) || (t >= 0x20 && t <= 0x22)) {
-            func_0201267c(0xf0, &((Scuttlebug *)c)->mCamSpacePosX);
+            func_0201267c(0xf0, &self->mCamSpacePosX);
         }
     }
     return 1;
@@ -493,65 +500,69 @@ extern "C" int func_ov071_0211fd58(char *c)
 // @symbol func_ov071_0211fcd4
 extern "C" int func_ov071_0211fcd4(char *c)
 {
-    ((Scuttlebug *)c)->mVertAccel = -0x2000;
-    ((Scuttlebug *)c)->mTerminalVelocity = -0x3c000;
-    ((Scuttlebug *)c)->mHorzSpeed = -0x4000;
-    ((Scuttlebug *)c)->mVertSpeed = 0x12000;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&((Scuttlebug *)c)->mModelAnim, (void *)data_ov071_02122f88[1], 0, 0x1000, 0);
-    ((Scuttlebug *)c)->mModelAnim.speed = 0x2c00;
-    func_0201267c(0xf1, &((Scuttlebug *)c)->mCamSpacePosX);
-    ((Scuttlebug *)c)->mState = 4;
+    Scuttlebug *self = (Scuttlebug *)c;
+    self->mVertAccel = -0x2000;
+    self->mTerminalVelocity = -0x3c000;
+    self->mHorzSpeed = -0x4000;
+    self->mVertSpeed = 0x12000;
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModelAnim, (void *)data_ov071_02122f88[1], 0, 0x1000, 0);
+    self->mModelAnim.speed = 0x2c00;
+    func_0201267c(0xf1, &self->mCamSpacePosX);
+    self->mState = 4;
     return 1;
 }
 
 // @symbol func_ov071_0211fc60
 extern "C" int func_ov071_0211fc60(char *c)
 {
-    ((Scuttlebug *)c)->mModelAnim.Advance();
-    if (_ZNK10dBgCh_Actr10IsOnGroundEv(&((Scuttlebug *)c)->mWithMeshClsn)) {
-        ((Scuttlebug *)c)->mTimer = 0x3c;
+    Scuttlebug *self = (Scuttlebug *)c;
+    self->mModelAnim.Advance();
+    if (_ZNK10dBgCh_Actr10IsOnGroundEv(&self->mWithMeshClsn)) {
+        self->mTimer = 0x3c;
         Scuttlebug_SetState(c, 2);
     }
-    _ZN8dActor_c9UpdatePosEP5dCc_c(c, &((Scuttlebug *)c)->mdCcAc_c);
-    func_ov071_0211f148(c, (char *)&((Scuttlebug *)c)->mWithMeshClsn);
+    _ZN8dActor_c9UpdatePosEP5dCc_c(c, &self->mdCcAc_c);
+    func_ov071_0211f148(c, (char *)&self->mWithMeshClsn);
     func_ov071_0211f29c(c);
-    _ZN5dCc_c5ClearEv(&((Scuttlebug *)c)->mdCcAc_c);
-    _ZN5dCc_c6UpdateEv(&((Scuttlebug *)c)->mdCcAc_c);
+    _ZN5dCc_c5ClearEv(&self->mdCcAc_c);
+    _ZN5dCc_c6UpdateEv(&self->mdCcAc_c);
     return 1;
 }
 
 // @symbol func_ov071_0211fbf4
 extern "C" int func_ov071_0211fbf4(char *c)
 {
-    ((Scuttlebug *)c)->mVertAccel = -0x2000;
-    ((Scuttlebug *)c)->mTerminalVelocity = -0x3c000;
-    ((Scuttlebug *)c)->mHorzSpeed = 0x4000;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&((Scuttlebug *)c)->mModelAnim, (void *)data_ov071_02122f88[1], 0, 0x1000, 0);
-    ((Scuttlebug *)c)->mModelAnim.speed = 0x1000;
-    ((Scuttlebug *)c)->mState = 5;
+    Scuttlebug *self = (Scuttlebug *)c;
+    self->mVertAccel = -0x2000;
+    self->mTerminalVelocity = -0x3c000;
+    self->mHorzSpeed = 0x4000;
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModelAnim, (void *)data_ov071_02122f88[1], 0, 0x1000, 0);
+    self->mModelAnim.speed = 0x1000;
+    self->mState = 5;
     return 1;
 }
 
 // @symbol func_ov071_0211fb24
 extern "C" int func_ov071_0211fb24(char *c)
 {
-    short ang = Vec3_HorzAngle((Vector3 *)&((Scuttlebug *)c)->mPosX,
-                               (Vector3 *)&((Scuttlebug *)c)->mAnchorX);
-    _Z14ApproachLinearRsss(((Scuttlebug *)c)->mAngleY, ang, 0x2bc);
-    ((Scuttlebug *)c)->mPrevAngleY = ((Scuttlebug *)c)->mAngleY;
-    ((Scuttlebug *)c)->mModelAnim.Advance();
-    if (Vec3_Dist((Vector3 *)&((Scuttlebug *)c)->mPosX,
-                  (Vector3 *)&((Scuttlebug *)c)->mAnchorX) < 0x12c000)
+    Scuttlebug *self = (Scuttlebug *)c;
+    short ang = Vec3_HorzAngle((Vector3 *)&self->mPosX,
+                               (Vector3 *)&self->mAnchorX);
+    _Z14ApproachLinearRsss(self->mAngleY, ang, 0x2bc);
+    self->mPrevAngleY = self->mAngleY;
+    self->mModelAnim.Advance();
+    if (Vec3_Dist((Vector3 *)&self->mPosX,
+                  (Vector3 *)&self->mAnchorX) < 0x12c000)
         Scuttlebug_SetState(c, 2);
     func_ov071_0211f0b4(c);
-    _ZN8dActor_c9UpdatePosEP5dCc_c(c, &((Scuttlebug *)c)->mdCcAc_c);
-    func_ov071_0211f148(c, (char *)&((Scuttlebug *)c)->mWithMeshClsn);
+    _ZN8dActor_c9UpdatePosEP5dCc_c(c, &self->mdCcAc_c);
+    func_ov071_0211f148(c, (char *)&self->mWithMeshClsn);
     func_ov071_0211f29c(c);
-    _ZN5dCc_c5ClearEv(&((Scuttlebug *)c)->mdCcAc_c);
-    _ZN5dCc_c6UpdateEv(&((Scuttlebug *)c)->mdCcAc_c);
-    unsigned short v = (unsigned short)(((Scuttlebug *)c)->mModelAnim.currFrame >> 0xc);
+    _ZN5dCc_c5ClearEv(&self->mdCcAc_c);
+    _ZN5dCc_c6UpdateEv(&self->mdCcAc_c);
+    unsigned short v = (unsigned short)(self->mModelAnim.currFrame >> 0xc);
     if (v == 0 || v == 8 || v == 0x17 || v == 0x1f)
-        func_0201267c(0xf0, &((Scuttlebug *)c)->mCamSpacePosX);
+        func_0201267c(0xf0, &self->mCamSpacePosX);
     return 1;
 }
 
@@ -707,19 +718,20 @@ extern "C" int func_ov071_0211f7d4(dActor_c *self)
 // @symbol func_ov071_0211f6f8
 extern "C" int func_ov071_0211f6f8(char *c)
 {
-    _ZN5Sound9PlayBank0EjRK7Vector3(9, (const void *)(&((Scuttlebug *)c)->mCamSpacePosX));
-    ((Scuttlebug *)c)->mFlags &= ~1;
-    ((Scuttlebug *)c)->mHorzSpeed = 0xa000;
-    ((Scuttlebug *)c)->mVertSpeed = 0x28000;
-    ((Scuttlebug *)c)->mTimer = 0x2d;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&((Scuttlebug *)c)->mModelAnim, *(void **)((char *)data_ov071_02122f88 + 4), 0, 0x1000, 0);
-    ((Scuttlebug *)c)->mModelAnim.speed = 0x4000;
+    Scuttlebug *self = (Scuttlebug *)c;
+    _ZN5Sound9PlayBank0EjRK7Vector3(9, (const void *)(&self->mCamSpacePosX));
+    self->mFlags &= ~1;
+    self->mHorzSpeed = 0xa000;
+    self->mVertSpeed = 0x28000;
+    self->mTimer = 0x2d;
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModelAnim, *(void **)((char *)data_ov071_02122f88 + 4), 0, 0x1000, 0);
+    self->mModelAnim.speed = 0x4000;
     VSlot29 *b = (VSlot29 *)c;
     int yOffset1 = b->m29();
-    _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(0x43, ((Scuttlebug *)c)->mPosX, ((Scuttlebug *)c)->mPosY + yOffset1, ((Scuttlebug *)c)->mPosZ);
+    _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(0x43, self->mPosX, self->mPosY + yOffset1, self->mPosZ);
     int yOffset2 = b->m29();
-    _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(0x44, ((Scuttlebug *)c)->mPosX, ((Scuttlebug *)c)->mPosY + yOffset2, ((Scuttlebug *)c)->mPosZ);
-    ((Scuttlebug *)c)->mState = 8;
+    _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(0x44, self->mPosX, self->mPosY + yOffset2, self->mPosZ);
+    self->mState = 8;
     return 1;
 }
 
@@ -738,34 +750,35 @@ extern "C" int func_ov071_0211f694(char *t)
 // @symbol func_ov071_0211f524
 extern "C" void func_ov071_0211f524(char *c)
 {
-    int b = (int)((((Scuttlebug *)c)->mFlags & 0x40000) != 0);
+    Scuttlebug *self = (Scuttlebug *)c;
+    int b = (int)((self->mFlags & 0x40000) != 0);
     if (b) {
-        if (((Scuttlebug *)c)->mState == 0)
+        if (self->mState == 0)
             return;
     }
 
-    Matrix4x3_FromRotationY(&((Scuttlebug *)c)->mModelAnim.mat4x3, ((Scuttlebug *)c)->mAngleY);
-    ((Scuttlebug *)c)->mModelAnim.mat4x3.m[9] = ((Scuttlebug *)c)->mPosX >> 3;
-    ((Scuttlebug *)c)->mModelAnim.mat4x3.m[10] = ((Scuttlebug *)c)->mPosY >> 3;
-    ((Scuttlebug *)c)->mModelAnim.mat4x3.m[11] = ((Scuttlebug *)c)->mPosZ >> 3;
+    Matrix4x3_FromRotationY(&self->mModelAnim.mat4x3, self->mAngleY);
+    self->mModelAnim.mat4x3.m[9] = self->mPosX >> 3;
+    self->mModelAnim.mat4x3.m[10] = self->mPosY >> 3;
+    self->mModelAnim.mat4x3.m[11] = self->mPosZ >> 3;
 
-    if (((Scuttlebug *)c)->mAngleX != 0) {
-        data_020a0e68 = *(Mtx43 *)&((Scuttlebug *)c)->mModelAnim.mat4x3;
+    if (self->mAngleX != 0) {
+        data_020a0e68 = *(Mtx43 *)&self->mModelAnim.mat4x3;
         int y1 = ((VSlot29 *)c)->m29() >> 3;
         Matrix4x3_ApplyInPlaceToTranslation(&data_020a0e68, 0, y1, 0);
-        Matrix4x3_ApplyInPlaceToRotationX(&data_020a0e68, ((Scuttlebug *)c)->mAngleX);
+        Matrix4x3_ApplyInPlaceToRotationX(&data_020a0e68, self->mAngleX);
         int y2 = (-((VSlot29 *)c)->m29()) >> 3;
         Matrix4x3_ApplyInPlaceToTranslation(&data_020a0e68, 0, y2, 0);
-        *(Mtx43 *)&((Scuttlebug *)c)->mModelAnim.mat4x3 = data_020a0e68;
+        *(Mtx43 *)&self->mModelAnim.mat4x3 = data_020a0e68;
     }
 
-    ((Scuttlebug *)c)->mShadowMtx[9] = ((Scuttlebug *)c)->mPosX >> 3;
-    ((Scuttlebug *)c)->mShadowMtx[10] = ((Scuttlebug *)c)->mPosY >> 3;
-    ((Scuttlebug *)c)->mShadowMtx[11] = ((Scuttlebug *)c)->mPosZ >> 3;
+    self->mShadowMtx[9] = self->mPosX >> 3;
+    self->mShadowMtx[10] = self->mPosY >> 3;
+    self->mShadowMtx[11] = self->mPosZ >> 3;
 
-    int dh = (((Scuttlebug *)c)->mState == 8) ? 0x190000 : 0xc8000;
+    int dh = (self->mState == 8) ? 0x190000 : 0xc8000;
     _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(
-        c, &((Scuttlebug *)c)->mShadowModel, ((Scuttlebug *)c)->mShadowMtx, 0xa0000, dh, 0xf);
+        c, &self->mShadowModel, self->mShadowMtx, 0xa0000, dh, 0xf);
 }
 
 // @symbol func_ov071_0211f498
@@ -899,18 +912,19 @@ extern "C" void func_ov071_0211f148(char *a, char *w)
 // @symbol func_ov071_0211f0b4
 extern "C" void func_ov071_0211f0b4(char *c)
 {
+    Scuttlebug *self = (Scuttlebug *)c;
     dActor_c *p;
     Fix12i d;
     short ang;
-    if (((Scuttlebug *)c)->mTimer != 0) return;
+    if (self->mTimer != 0) return;
     p = (dActor_c *)_ZN8dActor_c22ClosestNonVanishPlayerEv(c);
     if (p == 0) return;
-    d = Vec3_Dist((const Vector3 *)&((Scuttlebug *)c)->mPosX, (const Vector3 *)&p->mPosX);
+    d = Vec3_Dist((const Vector3 *)&self->mPosX, (const Vector3 *)&p->mPosX);
     if (d > 0x5dc000) return;
-    ang = Vec3_HorzAngle((const Vector3 *)&((Scuttlebug *)c)->mPosX, (const Vector3 *)&p->mPosX);
-    if (AngleDiff(ang, ((Scuttlebug *)c)->mAngleY) > 0x12c) return;
-    ((Scuttlebug *)c)->mLeapDist = d;
-    ((Scuttlebug *)c)->mLeapAngle = ang;
+    ang = Vec3_HorzAngle((const Vector3 *)&self->mPosX, (const Vector3 *)&p->mPosX);
+    if (AngleDiff(ang, self->mAngleY) > 0x12c) return;
+    self->mLeapDist = d;
+    self->mLeapAngle = ang;
     Scuttlebug_SetState(c, 3);
 }
 

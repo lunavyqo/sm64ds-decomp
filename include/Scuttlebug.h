@@ -62,8 +62,11 @@ struct Scuttlebug : dActor_c {
     u8  mCoinCount;                          /* 0x3aa */
     u8  pad_3ab[0x1];
 
-    /* Declared, not defined. ~Scuttlebug is the key function and lives in its
-       own file; defining it here would emit _ZTI10Scuttlebug. */
+    /* Declared, not defined: ~Scuttlebug is the key function. ROM has D1
+       0x0211f000, D0 0x0211f048, no D2. src/_ZN10ScuttlebugD1Ev.cpp defines
+       it; objisolate keeps its .text and drops the homeless _ZTI/_ZTS10Scuttlebug.
+       An inline body would give those vague linkage in every TU. This TU's
+       licensed run is 0x0211f0a4..0x02120668. */
     virtual ~Scuttlebug();            /* slots 16 (D1), 17 (D0) */
 
     virtual int   OnYoshiTryEat();               /* slot 18 */
