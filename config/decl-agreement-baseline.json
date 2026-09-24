@@ -43,6 +43,11 @@
         "param:#2 const Vector3 *",
         "param:#3 Vector3 *"
       ],
+      "src/actors/daSnmBth_c.cpp": [
+        "param:#1 const Vector3 *",
+        "param:#2 const Vector3 *",
+        "param:#3 Vector3 *"
+      ],
       "src/func_02007b98.c": [
         "param:#1 const Vector3 *",
         "param:#2 const Vector3 *",
@@ -893,6 +898,9 @@
       "src/actors/daPgDfdr_c.cpp": [
         "return:int"
       ],
+      "src/actors/daSnmBth_c.cpp": [
+        "return:int"
+      ],
       "src/func_ov002_020b2070.cpp": [
         "return:void"
       ],
@@ -1356,6 +1364,11 @@
       "src/actors/daObjGuragura_c.cpp": [
         "param:#1 Matrix4x3 *",
         "param:#2 Matrix4x3 *",
+        "return:void"
+      ],
+      "src/actors/daSnmBth_c.cpp": [
+        "param:#1 Matrix4x3 *",
+        "param:#2 const Matrix4x3 *",
         "return:void"
       ],
       "src/func_0200f4f4.c": [
@@ -1956,6 +1969,9 @@
       "src/actors/daPgDfdr_c.cpp": [
         "param:#2 short"
       ],
+      "src/actors/daSnmBth_c.cpp": [
+        "param:#2 short"
+      ],
       "src/func_ov015_021114f0.c": [
         "param:#2 short"
       ],
@@ -2237,6 +2253,10 @@
       "src/actors/daObjKurumajiku_c.cpp": [
         "param:#1 const Vector3 *",
         "param:#2 const void *"
+      ],
+      "src/actors/daSnmBth_c.cpp": [
+        "param:#1 const Vector3 *",
+        "param:#2 const Matrix4x3 *"
       ],
       "src/actors/daYurei_Mucho_c.cpp": [
         "param:#1 const void *",
@@ -4581,6 +4601,10 @@
         "param:#1 Vector3 *",
         "param:#2 Vector3 *"
       ],
+      "src/actors/daSnmBth_c.cpp": [
+        "param:#1 Vector3 *",
+        "param:#2 const Vector3 *"
+      ],
       "src/actors/daWbm_c.cpp": [
         "param:#1 Vector3 *",
         "param:#2 const Vector3 *"
@@ -5341,6 +5365,10 @@
       ],
       "src/actors/daPkn_c.cpp": [
         "param:#1 PknVec3 *",
+        "return:void"
+      ],
+      "src/actors/daSnmBth_c.cpp": [
+        "param:#1 Vector3 *",
         "return:void"
       ],
       "src/func_ov002_020e8244.c": [
@@ -12108,6 +12136,11 @@
         "param:#5 unsigned int",
         "return:unsigned int"
       ],
+      "src/actors/daSnmBth_c.cpp": [
+        "param:#1 int",
+        "param:#4 void *",
+        "param:#5 unsigned int"
+      ],
       "src/func_02012120.c": [
         "param:#4 const Vector3 *",
         "param:#5 unsigned int",
@@ -13101,6 +13134,9 @@
         "param:#4 const Vector3 *"
       ],
       "src/actors/daPeach_c.cpp": [
+        "param:#4 const Vector3 *"
+      ],
+      "src/actors/daSnmBth_c.cpp": [
         "param:#4 const Vector3 *"
       ],
       "src/func_ov034_02112284.c": [
@@ -14775,6 +14811,10 @@
         "param:#6 const void *",
         "return:unsigned int"
       ],
+      "src/actors/daSnmBth_c.cpp": [
+        "param:#6 const void *",
+        "return:unsigned int"
+      ],
       "src/actors/daTgz_c.cpp": [
         "param:#6 const void *",
         "return:unsigned int"
@@ -15159,6 +15199,9 @@
         "return:void"
       ],
       "src/actors/daSanbo_c.cpp": [
+        "return:void"
+      ],
+      "src/actors/daSnmBth_c.cpp": [
         "return:void"
       ],
       "src/func_0200fa04.c": [
@@ -21625,6 +21668,9 @@
         "return:unsigned char []"
       ],
       "src/actors/daObjMarioCap_c.cpp": [
+        "return:unsigned char []"
+      ],
+      "src/actors/daSnmBth_c.cpp": [
         "return:unsigned char []"
       ],
       "src/func_ov100_021435e8.cpp": [
