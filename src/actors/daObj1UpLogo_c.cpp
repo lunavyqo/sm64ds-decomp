@@ -1,12 +1,16 @@
 //cpp
-/* 1-Up logo popup (OBJ_1UPLOGO / 331).
+/* Production translation unit for ov002/daObj1UpLogo_c.
+ * 8 function(s), .text 0x020f0dd0..0x020f11b0. The 1-Up logo popup
+ * (OBJ_1UPLOGO / 331).
  *
- * ov002/daObj1UpLogo_c, one translation unit, 8 functions,
- * .text 0x020f0dd0..0x020f11b0. The class name is the cartridge's own
- * (_ZTS14daObj1UpLogo_c at ov002 0x0210b174). Direct base dActor_c.
+ * NAME: _ZTS14daObj1UpLogo_c is "14daObj1UpLogo_c" at ov002 0x0210b174; _ZTI
+ * at 0x0210b168 reads [__si_class_type_info, that string, _ZTI8dActor_c]. The
+ * tree previously called the class OneUpLogo (coined; vtable address only).
  *
- * `#pragma defer_codegen off` emits source order, which is ROM order.
- * The destructor is defined once, first, so mwccarm emits D1 then D0.
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x020f0dd0), D0
+ * (0x020f0e08), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is ROM-ascending.
  */
 
 #include "common.h"
@@ -163,6 +167,7 @@ s32 daObj1UpLogo_c::InitResources()
 }
 
 // @symbol daObj1UpLogo_c_classInit
+/* Reconstructed source-style name; historical alias OneUpLogo_Spawn. */
 extern "C" daObj1UpLogo_c *daObj1UpLogo_c_classInit()
 {
     return new daObj1UpLogo_c();

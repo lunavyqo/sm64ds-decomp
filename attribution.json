@@ -4783,7 +4783,7 @@
     "src/actors/daObj1UpLogo_c.cpp#func_ov002_020f0e54": "tangosdev",
     "src/actors/daObj1UpLogo_c.cpp#_ZN14daObj1UpLogo_c16CleanupResourcesEv": "tangosdev",
     "src/actors/daObj1UpLogo_c.cpp#_ZN14daObj1UpLogo_c6RenderEv": "tangosdev",
-    "src/actors/daObj1UpLogo_c.cpp#_ZN14daObj1UpLogo_c8BehaviorEv": "tangosdev",
+    "src/actors/daObj1UpLogo_c.cpp#_ZN14daObj1UpLogo_c8BehaviorEv": "ruspecial",
     "src/actors/daObj1UpLogo_c.cpp#_ZN14daObj1UpLogo_c13InitResourcesEv": "tangosdev",
     "src/actors/daObj1UpLogo_c.cpp#daObj1UpLogo_c_classInit": "tangosdev"
   }

@@ -81,7 +81,7 @@
       ],
       [
         "Matrix4x3_FromTranslation",
-        "src/_ZN14daObj1UpLogo_c8BehaviorEv.cpp",
+        "src/_ZN9OneUpLogo8BehaviorEv.cpp",
         "param:#1 Matrix4x3 *"
       ],
       [
@@ -1107,7 +1107,7 @@
       ],
       [
         "Matrix4x3_FromTranslation",
-        "src/_ZN14daObj1UpLogo_c8BehaviorEv.cpp",
+        "src/_ZN9OneUpLogo8BehaviorEv.cpp",
         "param:#1 Matrix4x3 *"
       ],
       [
@@ -1707,7 +1707,7 @@
         {
           "symbol": "Matrix4x3_FromTranslation",
           "kind": "param",
-          "file": "src/_ZN14daObj1UpLogo_c8BehaviorEv.cpp",
+          "file": "src/_ZN9OneUpLogo8BehaviorEv.cpp",
           "line": 8,
           "decl": "void (Matrix4x3 *, int, int, int)",
           "got": "#1 Matrix4x3 *",
