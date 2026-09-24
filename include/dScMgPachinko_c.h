@@ -33,7 +33,8 @@ struct dScMgPachinko_ball {
     s32 unk20;          /* 0x20 */
     u16 unk24;          /* 0x24 */
     u16 angle;          /* 0x26 */
-    u16 timer;          /* 0x28 seeded with 16 when a hit forces state 6 */
+    u16 timer;          /* 0x28 seeded with 16 when a hit forces state 6;
+                           only ever written here, so the name is inferred */
     u8  unk2a[0x2];     /* 0x2a */
     u8  active;         /* 0x2c */
     u8  unk2d;          /* 0x2d */

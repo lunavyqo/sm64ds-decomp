@@ -16,7 +16,8 @@
  * targets at 0x5bcc, the effects at 0x5958, the score popups at 0x4cf0,
  * the scrolling background at 0x5bfc and the pipes at 0x4ea0 are padding
  * in the header, so they are reached by offset. Shot and ball fields go
- * through `p + i * 0x38`: mShot[i] / mBall[i] is a different address.
+ * through `p + i * 0x38`: indexing mShot[i]/mBall[i] is one word different,
+ * so the multiply forms stay.
  */
 
 #pragma defer_codegen off
@@ -75,13 +76,15 @@ struct E { char pad[0x1c]; };
 
 /* The scene seen through a char pointer, for the free helpers below. */
 #define PACHINKO(p) ((dScMgPachinko_c *)(p))
-/* One record, already stepped by i * 0x38. A saved pointer to the array
- * element is not the address the ROM uses. */
-#define SHOT(p) ((dScMgPachinko_shot *)((p) + 0x4ed8))
-#define BALL(p) ((dScMgPachinko_ball *)((p) + 0x4660))
+/* One record, already stepped by i * 0x38; indexing the array or saving an
+ * element pointer is one word different. */
+#define SHOT_BASE ((int)&((dScMgPachinko_c *)0)->mShot)
+#define BALL_BASE ((int)&((dScMgPachinko_c *)0)->mBall)
+#define SHOT(p) ((dScMgPachinko_shot *)((p) + SHOT_BASE))
+#define BALL(p) ((dScMgPachinko_ball *)((p) + BALL_BASE))
 /* func_ov006_020fbd38 adds the field first, then the index. `&SHOT(p)->f`
  * shares one base and does not match. */
-#define SHOT_OFF(member) (0x4ed8 + (int)&((dScMgPachinko_shot *)0)->member)
+#define SHOT_OFF(member) (SHOT_BASE + (int)&((dScMgPachinko_shot *)0)->member)
 
 namespace G2S {
     unsigned GetBG2CharPtr();
