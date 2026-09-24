@@ -23,13 +23,9 @@ struct CupModelParts {
     u8  textureSequence[0x14];   /* +0xc8 -- TextureSequence */
     u8  textureTransformer[0x14];/* +0xdc -- TextureTransformer */
     u8  filePtr[0x90];           /* +0xf0 -- 18 SharedFilePtr, through +0x178 */
-    s32 unk_180;                 /* +0x180 -- func_ov006_020c3050 zeroes these three */
-    s32 unk_184;
-    s32 unk_188;
-    s32 unk_18c;                 /* +0x18c -- func_ov006_020c29dc adds these into the model */
-    s32 unk_190;
-    s32 unk_194;
-    s32 unk_198;
+    s32 pos[3];                  /* +0x180 -- func_ov006_020c2290's translation; func_ov006_020c3050 zeroes it */
+    s32 lean[4];                 /* +0x18c -- func_ov006_020c2be8 eases these toward the touch;
+                                    func_ov006_020c29dc adds them into the model */
 };
 
 #ifndef SM64DS_PLATFORM_PC
@@ -116,11 +112,11 @@ struct dScMgCup_c : dScMgSingle3DBase_c {
     u8  unk_5462[3];      /* 0x5462 -- per-cup value; deed8's mode argument */
     u8  mFlags[3];        /* 0x5465 */
     u8  unk_5468;         /* 0x5468 -- the value the HUD is asking for */
-    u8  unk_5469;         /* 0x5469 -- 1 when the touch matched unk_5468 */
-    u8  unk_546a;         /* 0x546a */
-    u8  unk_546b;         /* 0x546b */
-    u8  unk_546c;         /* 0x546c */
-    u8  unk_546d;         /* 0x546d -- cup index, or 0xff */
+    u8  mCorrect;         /* 0x5469 -- 1 when the touched cup's unk_5462 matched unk_5468 */
+    u8  mFakeOut;         /* 0x546a -- the next swap turns back a third of the way in */
+    u8  mSparkleShuffles; /* 0x546b -- shuffles left that trail mFx; nothing here sets it */
+    u8  mFakeOutAt;       /* 0x546c -- 1..10; row 7 fakes out when unk_5460 reaches it */
+    u8  mRevealCup;       /* 0x546d -- first cup with a nonzero unk_5462 revealed while mCorrect != 1, or 0xff */
     u8  pad_546e[2];      /* 0x546e */
 };
 

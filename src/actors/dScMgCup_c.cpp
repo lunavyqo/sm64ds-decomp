@@ -9,7 +9,7 @@
  * Leftover: func_ov006_020def80 keeps the 0x5000 bases. mFlags[i] / mAnim[i]
  *   come out 0xa0 bytes instead of 0xa4.
  * Leftover: StatePrepareShuffle re-reads mTimer as raw+0x5000+0x41c and
- *   decrements unk_546b through a byte pointer. The member form misses.
+ *   decrements mSparkleShuffles through a byte pointer. The member form misses.
  * Leftover: StateShuffle's angle read-modify-write stays on raw+0x5400.
  *   mShuffleAngle += folds the address.
  * Leftover: Render's frame index stays ((int *)raw + k)[0x1510], and the
@@ -297,7 +297,7 @@ extern "C" void func_ov006_020dedfc(char *raw, int anim, int frame, int cup)
             func_02012718(0x1d0, self->mCup[cup].x);
         }
     }
-    if (anim == 5 && frame == 6 && cup == self->unk_546d) {
+    if (anim == 5 && frame == 6 && cup == self->mRevealCup) {
         func_02012718(0x1ce, self->mCup[cup].x);
     }
     if (anim != 1 && anim != 4) return;
@@ -322,7 +322,7 @@ extern "C" void func_ov006_020deed8(int scene, void *list, int x, int y, int sca
         int oam = func_ov004_020af770((int)entry, sx, sy, -1, -1, scale, 0);
         if (oam != 0) {
             if (mode == 2) {
-                /* attr2/attr3 as one word. Bits 12..15 == 3. */
+                /* Loaded as one word; the shifts keep attr2 bits 12..15, the palette. */
                 if ((unsigned)(*(int *)((char *)entry + 4) << 0x10) >> 0x1c == 3) {
                     int *p = (int *)(oam + 4);
                     *p = (*p & ~0xf000) | 0x4000;
@@ -422,7 +422,7 @@ extern "C" void func_ov006_020df024(char *raw)
     {
         u8 kind = self->unk_5461;
         if (kind == 7) {
-            if (self->unk_5460 == self->unk_546c) {
+            if (self->unk_5460 == self->mFakeOutAt) {
                 goto set1;
             }
         }
@@ -436,10 +436,10 @@ extern "C" void func_ov006_020df024(char *raw)
             }
         }
     set1:
-        self->unk_546a = 1;
+        self->mFakeOut = 1;
         return;
     set0:
-        self->unk_546a = 0;
+        self->mFakeOut = 0;
         return;
     }
 }
@@ -454,7 +454,7 @@ void dScMgCup_c::StateFinish()
 {
     mTimer -= 1;
     if (mTimer > 0) return;
-    if (unk_5469 != 0) {
+    if (mCorrect != 0) {
         if (mHudScore < 0x270f) mHudScore += 1;
         if (mHudScore > unk_0b8) unk_0b8 = mHudScore;
         func_ov004_020b0a54(0);
@@ -486,7 +486,7 @@ void dScMgCup_c::StateResult()
         }
     }
     score = mHudScore;
-    if (unk_5469 != 0) {
+    if (mCorrect != 0) {
         mTimer = 0x3c;
         func_ov006_020c2594(&mModel);
         score++;
@@ -538,10 +538,10 @@ void dScMgCup_c::StateSelect()
         func_ov006_020def80(raw, cup);
 
         if (unk_5468 == unk_5462[cup]) {
-            unk_5469 = 1;
+            mCorrect = 1;
             mAnim[cup] = 6;
         } else {
-            unk_5469 = 0;
+            mCorrect = 0;
         }
 
         mState = 5;
@@ -805,17 +805,17 @@ void dScMgCup_c::StateSetup()
         unk_5468 = 2;
     }
 
-    unk_546b = 0;
-    unk_5469 = 0;
+    mSparkleShuffles = 0;
+    mCorrect = 0;
     mState = 1;
     mTimer = 0x1e;
-    unk_546d = 0xff;
+    mRevealCup = 0xff;
     mShuffleSound = 0;
     FreeGfxSlotsById(0x1d);
 
     rnd = (unsigned int)RandomIntInternal(&data_0209e650);
     picked = (rnd % 10) + 1;
-    unk_546c = (unsigned char)picked;
+    mFakeOutAt = (unsigned char)picked;
 
     if (mPromptBlinkCount == 0) {
         mPromptEnabled = 1;
