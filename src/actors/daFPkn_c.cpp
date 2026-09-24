@@ -47,18 +47,6 @@ extern SharedFilePtr data_ov002_0210da38;
 extern PknSharedFile data_ov084_02130df4;
 }
 
-/* One vtable store and four destructor calls, every one a consequence of
- * `struct daFPkn_c : dEnemyBase_c` and the members that declaration types,
- * destroyed in reverse declaration order, then dEnemyBase_c::~dEnemyBase_c.
- * That body is the evidence for the header: each member's size closes
- * exactly on the next one's offset. D0 ends in dEnemyBase_c's inline
- * operator delete, reachable because dEnemyBase_c is the immediate base. */
-// @symbol _ZN8daFPkn_cD1Ev
-// @symbol _ZN8daFPkn_cD0Ev
-daFPkn_c::~daFPkn_c()
-{
-}
-
 /* The nine state helpers. Behavior dispatches mState 0..3 to 0212e4e0,
  * 0212e010, 0212ddbc and 0212dc30, then runs 0212d86c (damage) and 0212d564
  * (fire position); 0212e010 calls 0212d2dc, 0212d42c and 0212d560.
@@ -123,6 +111,18 @@ extern void *data_ov084_02130e04[];
 extern u8 data_ov084_02130294[];
 extern s32 data_020a0e68[];
 extern s16 data_02082214[];
+
+/* One vtable store and four destructor calls, every one a consequence of
+ * `struct daFPkn_c : dEnemyBase_c` and the members that declaration types,
+ * destroyed in reverse declaration order, then dEnemyBase_c::~dEnemyBase_c.
+ * That body is the evidence for the header: each member's size closes
+ * exactly on the next one's offset. D0 ends in dEnemyBase_c's inline
+ * operator delete, reachable because dEnemyBase_c is the immediate base. */
+// @symbol _ZN8daFPkn_cD1Ev
+// @symbol _ZN8daFPkn_cD0Ev
+daFPkn_c::~daFPkn_c()
+{
+}
 
 // @symbol func_ov084_0212d2dc
 void func_ov084_0212d2dc(char* c)
