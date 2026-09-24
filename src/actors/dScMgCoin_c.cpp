@@ -17,7 +17,7 @@
  * Leftover: func_ov006_020dcd74 reads the other score at
  *   data_ov004_020beb68 + 0xac. That word is not a field of dScMgBase_c.
  * Leftover: func_ov006_020dc6d0 casts the scene through unsigned long
- *   long before clearing the caption frame. Five words without it.
+ *   long before clearing the caption frameTime. Five words without it.
  * Leftover: func_ov006_020dc900, func_ov006_020dc960 and
  *   func_ov006_020dcb1c stay on byte offsets. The popup and sparkle
  *   structs miss (timer address reused, 0x18 kept as both stride and
@@ -63,9 +63,10 @@ enum {
     kHopVy = -0x3000,
     kKickVy = -0x4000,
     kParkedY = -0xf0000,
-    kFloorRows = -0xf0,
+    kParkRow = -0xf0,
     kOffBottom = 0xd0,
     kSpinStep = 0x400,
+    kSparkleFall = 0x180,
     kSparkleDrag = 0x180,
     kSparkleCap = 0x300,
     kCaptionHold = 0x3c,
@@ -179,7 +180,7 @@ extern "C" void func_ov006_020dc1c4(BagView *scene, int index)
     scene->bag[index].y = scene->bag[index].y + scene->bag[index].vy;
     scene->bag[index].vy = scene->bag[index].vy - kFallStep;
     scene->bag[index].spin = scene->bag[index].spin + kSpinStep;
-    if ((scene->bag[index].y >> 12) > kFloorRows)
+    if ((scene->bag[index].y >> 12) > kParkRow)
         return;
     scene->bag[index].y = kParkedY;
     scene->bag[index].state = 2;
@@ -191,7 +192,7 @@ extern "C" void func_ov006_020dc1c4(BagView *scene, int index)
 extern "C" void func_ov006_020dc26c(dScMgCoin_c *scene)
 {
     scene->mBouncer.state = 1;
-    scene->mBouncer.unk16 = 1;
+    scene->mBouncer.sprite = 1;
     scene->mBouncer.vx = 0;
     scene->mBouncer.vy = kKickVy;
 }
@@ -230,7 +231,7 @@ extern "C" void func_ov006_020dc2f8(char *raw)
     dScMgCoin_c *scene = (dScMgCoin_c *)raw;
     scene->mBouncer.active = 1;
     scene->mBouncer.shown = 1;
-    scene->mBouncer.unk16 = 0;
+    scene->mBouncer.sprite = 0;
     scene->mBouncer.state = 0;
     scene->mBouncer.spin = 0;
     scene->mBouncer.x = kBagRestX;
@@ -513,7 +514,7 @@ extern "C" void func_ov006_020dca04(SparkView *scene)
             }
             scene->spark[i].x += scene->spark[i].vx;
             scene->spark[i].y += scene->spark[i].vy;
-            scene->spark[i].vy += kSparkleDrag;
+            scene->spark[i].vy += kSparkleFall;
             if (scene->spark[i].vx > kSparkleCap)
                 scene->spark[i].vx -= kSparkleDrag;
             else if (scene->spark[i].vx < -kSparkleCap)
@@ -647,7 +648,7 @@ extern "C" void func_ov006_020dcea8(dScMgCoin_c *scene)
         } else {
             if (sprite != 0 && scene->mCoins[i].value != 0)
                 func_ov004_020afdd0(data_ov006_02133f10[sprite], x, y, -1, highlight);
-            if (scene->mCoins[i].unk15 == 0 && scene->mCoins[i].value != 0)
+            if (scene->mCoins[i].collected == 0 && scene->mCoins[i].value != 0)
                 func_ov004_020b2444(x, y, scene->mCoins[i].value, 0, -1, 0, 0);
         }
     }

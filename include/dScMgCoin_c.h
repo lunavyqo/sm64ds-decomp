@@ -15,7 +15,8 @@ struct dScMgCoin_Coin {
     u8 visible;       /* 0x12 */
     u8 value;         /* 0x13 */
     u8 pad14;         /* 0x14 */
-    u8 unk15;         /* 0x15 -- value is drawn only while this is 0 */
+    u8 collected;     /* 0x15 -- func_ov006_020de440 ends the round once every valued
+                         coin has it; the result screen prints value only while 0 */
     u8 bounces;       /* 0x16 */
     u8 pad17;         /* 0x17 */
 };
@@ -94,7 +95,7 @@ struct dScMgCoin_Bouncer {
     u16 countdown;    /* 0x12 */
     u8 active;        /* 0x14 */
     u8 shown;         /* 0x15 */
-    u8 unk16;         /* 0x16 */
+    u8 sprite;        /* 0x16 -- into data_ov006_02134b4c (func_ov006_020dbe9c) */
     u8 state;         /* 0x17 */
     u8 bouncesLeft;   /* 0x18 */
     u8 stage;         /* 0x19 */
