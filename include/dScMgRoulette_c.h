@@ -1,6 +1,13 @@
-/* dScMgRoulette_c — Mushroom Roulette. Racers are dealt onto a spinning
+/* dScMgRoulette_c -- Mushroom Roulette. Racers are dealt onto a spinning
  * board and paid by the tile they stop on. Child of dScMgSingle3DBase_c,
  * size 0x5400.
+ *
+ * RTTI: dScMgRoulette_c : dScMgSingle3DBase_c (tools/rtti_extract.py).
+ * Factory dScMgRoulette_c_classInit; historical alias MgMushroomRoulette_Spawn.
+ * ROM: D1 0x0210788c below D0 0x02107920, no D2; out of line would emit
+ * D2, D0, D1. InitResources is then the first declared non-inline virtual,
+ * so it is the key function; this TU licenses _ZTV/_ZTI/_ZTS in
+ * compiler_only_output.
  *
  * The destructor is inline and declared first, so D1 comes out before D0
  * and no D2 is emitted. Its four calls follow the ROM: second model, first
@@ -73,7 +80,7 @@ struct dScMgRoulette_c : dScMgSingle3DBase_c {
     u8    pad_53f1[0x1];
     s16   mScore;            /* 0x53f2 -- the payout summed over the racers;
                                 phase 4 compares it against mTargetScore */
-    s16   mPayoutPosted;     /* 0x53f4 -- cleared when that sum is posted */
+    s16   unk_53f4;          /* 0x53f4 -- cleared when the payout is posted */
     s16   mTargetScore;      /* 0x53f6 -- one per racer that missed the winning
                                 tile; the bar mScore has to beat */
     s32   mDealIndex;        /* 0x53f8 -- how many racers have been dealt out;

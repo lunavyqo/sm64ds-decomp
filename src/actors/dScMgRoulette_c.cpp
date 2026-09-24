@@ -1,5 +1,5 @@
 //cpp
-/* dScMgRoulette_c — Mushroom Roulette. Racers are dealt onto a spinning
+/* dScMgRoulette_c -- Mushroom Roulette. Racers are dealt onto a spinning
  * board, the countdown runs, and each racer is paid by the tile it stops on.
  *
  * Functions are in reverse ROM order; do not reorder.
@@ -8,7 +8,8 @@
  * guard; func_ov006_02107db8 copies a whole matrix and needs that spelling.
  *
  * Leftover: the camera at 0x4660 stays an offset; it lives on the base.
- * Behavior keeps mPhase, mPhaseTimer and mDealIndex behind H/HA/I,
+ * Behavior keeps mPhase, mPhaseTimer, mDealIndex, mTableReady (0x53d8),
+ * mTilesScored (0x53dc) and the payout clear at 0x53f4 behind H/HA/I,
  * and its meter and slider calls at raw offsets: member form DIFFed
  * there. The slider's PMF stays a local view.
  * Most func_ and data_ helpers are unnamed.
@@ -70,10 +71,10 @@ struct C {
 
 /* One racer, 0x34 bytes, five of them at 0x51a8. Thing, RacerXY and
    RacerPos are three views of the same record; each helper keeps the view
-   it was matched with. */
-/* One racer. x/y slide toward targetX/targetY by stepX/stepY.
-   state: 1 sliding, 2 under the stylus, 3 stopped, 4 about to hop,
-   5 hopping, 6 settled, 7 sent to the side pile. */
+   it was matched with. x/y slide toward targetX/targetY by stepX/stepY.
+   state: 0 handled with 3, 1 sliding, 2 under the stylus,
+   3 stopped, 4 about to hop, 5 hopping, 6 settled, 7 sent to the side
+   pile. */
 typedef struct Thing {
     s32 x;
     s32 y;
@@ -95,10 +96,10 @@ typedef struct Thing {
 
 struct RacerXY {
     int pad[4];
-    int x;
-    int y;
-    int a;
-    int b;
+    int stepX;
+    int stepY;
+    int targetX;
+    int targetY;
 };
 
 struct RacerPos {
@@ -763,16 +764,16 @@ void func_ov006_02109530(int* out, int* target, int scale){
 extern "C" {
 void func_ov006_021094ac(RacerXY *racer, int *target) {
     int v[2];
-    racer->a = target[0];
-    racer->b = target[1];
-    Vec2_Sub(v, &racer->a, (int *)racer);
-    racer->x = v[0];
-    racer->y = v[1];
-    if (func_0203d434(&racer->x)) {
-        func_0203d630(&racer->x, 0x18000);
+    racer->targetX = target[0];
+    racer->targetY = target[1];
+    Vec2_Sub(v, &racer->targetX, (int *)racer);
+    racer->stepX = v[0];
+    racer->stepY = v[1];
+    if (func_0203d434(&racer->stepX)) {
+        func_0203d630(&racer->stepX, 0x18000);
     }
-    if (racer->x < 0) racer->x = -racer->x;
-    if (racer->y < 0) racer->y = -racer->y;
+    if (racer->stepX < 0) racer->stepX = -racer->stepX;
+    if (racer->stepY < 0) racer->stepY = -racer->stepY;
 }
 }
 
