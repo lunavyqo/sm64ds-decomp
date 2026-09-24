@@ -2,12 +2,17 @@
 /**
  * The flag at the end of Koopa the Quick's race.
  *
- * Mario touching the cylinder stops the course timer and plays the
- * finish chirp. A second and a half later the fanfare plays. The
- * model sits 60 units above the actor.
+ * While armed (mHasTouchedFlag == 0), Mario touching the cylinder stops
+ * the race timer and plays sound 0x1F/0x14. From then mVictoryTimer
+ * counts frames; from frame 90 it retries sound 0x1F/0x7F each frame
+ * until PlaySub accepts it. The model sits 60.0 above the actor.
  *
- * daRFlag_c_classInit is reconstructed from the daRFlag_c RTTI.
- * Retail does not store that spelling.
+ * Source order is ROM-ascending: `#pragma defer_codegen off` makes mwcc
+ * emit each definition where it stands, and the one destructor
+ * definition emits retail D1 then D0 (no D2).
+ *
+ * The name daRFlag_c_classInit is coined from the RTTI class name; the
+ * ROM has no symbol for the factory.
  *
  * Leftover: SetAnim and dCcAc_c::Init stay the mangled calls. Spelling
  *   them as methods changed this function's size (Fix12 by value).
@@ -50,8 +55,8 @@ daRFlag_c::~daRFlag_c()
 
 // @symbol func_ov062_0211afbc
 /* Builds the model matrix from the actor's facing and position.
- * The flag graphic sits 60.0 (0x3c000) above mPosY. Translation in the
- * matrix is in 4.12, so the Fix12 position is shifted down by 3. */
+ * The flag graphic sits 60.0 (0x3c000) above mPosY. Model-matrix
+ * translation is in 1/8 world units, so the position is shifted down by 3. */
 extern "C" void func_ov062_0211afbc(char *raw)
 {
     daRFlag_c *flag = (daRFlag_c *)raw;
