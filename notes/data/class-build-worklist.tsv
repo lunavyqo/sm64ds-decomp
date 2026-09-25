@@ -119,7 +119,7 @@ daECreate_c	DONE	include\EnemySpawner.h  [alias: header uses pre-rename name]	dA
 daESwitch_c	DONE	include\EnemySwitchTag.h  [alias: header uses pre-rename name]	dActor_c	0	ov002	5
 daEyBm_c	DONE	include\daEyBm_c.h	dActor_c	0	ov071	12
 daEykn_c	DONE	include\MrI.h  [alias: header uses pre-rename name]	dActor_c	0	ov071	7
-daFRing_c	DONE	include\BowserShockwaves.h  [alias: header uses pre-rename name]	dActor_c	0	ov060	6
+daFRing_c	DONE	include\daFRing_c.h  [alias: header uses pre-rename name]	dActor_c	0	ov060	6
 daFeather_c	DONE	include\daFeather_c.h	dActor_c	0	ov002	6
 daFish_c	DONE	include\Fish.h  [alias: header uses pre-rename name]	dActor_c	0	ov100	7
 daGmch_c	DONE	include\daGmch_c.h	dActor_c	0	ov081	10
@@ -151,7 +151,7 @@ daObjHeart_c	DONE	include\daObjHeart_c.h	dActor_c	0	ov002	6
 daObjHsBillboard_c	DONE	include\daObjHsBillboard_c.h	dActor_c	0	ov031	5
 daObjKb1Billboard_c	DONE	include\daObjKb1Billboard_c.h	dActor_c	0	ov044	6
 daObjKinokoTag_c	DONE	include\daObjKinokoTag_c.h	dActor_c	0	ov002	7
-daObjKm2_Nobiru_c	DONE	include\ExtendingPlatform.h  [alias: header uses pre-rename name]	dActor_c	0	ov045	9
+daObjKm2_Nobiru_c	DONE	include\daObjKm2_Nobiru_c.h  [alias: header uses pre-rename name]	dActor_c	0	ov045	9
 daObjKumo_c	DONE	include\daObjKumo_c.h	dActor_c	0	ov039	6
 daObjLava_c	DONE	include\daObjLava_c.h	dActor_c	0	ov002	3
 daObjNumber_c	DONE	include\daObjNumber_c.h	dActor_c	0	ov002	6
@@ -184,7 +184,7 @@ daSpd_c	DONE	include\Scuttlebug.h  [alias: header uses pre-rename name]	dActor_c
 daStarBase_c	DONE	include\StarMarker.h  [alias: header uses pre-rename name]	dActor_c	0	ov002	9
 daStarGate_c	DONE	include\StarDoor.h  [alias: header uses pre-rename name]	dActor_c	0	ov100	7
 daTgz_c	DONE	include\daTgz_c.h  [alias: header uses pre-rename name]	dActor_c	0	ov077	10
-daTor_c	DONE	include\Tornado.h  [alias: header uses pre-rename name]	dActor_c	0	ov096	10
+daTor_c	DONE	include\daTor_c.h  [alias: header uses pre-rename name]	dActor_c	0	ov096	10
 daTree_c	DONE	include\daTree_c.h	dActor_c	0	ov002	7
 daTrsIcon_c	DONE	include\daTrsIcon_c.h	dActor_c	0	ov063	3
 daTrsTrap_c	DONE	include\daTrsTrap_c.h	dActor_c	0	ov063	7
@@ -251,10 +251,10 @@ daObjDpBrock_c	DONE	include\daObjDpBrock_c.h	dBgActor_c	0	ov025	6
 daObjEmmLog_c	DONE	include\daObjEmmLog_c.h	dBgActor_c	0	ov052	6
 daObjEmmYuka_c	DONE	include\daObjEmmYuka_c.h	dBgActor_c	0	ov052	6
 daObjEwbIce_c	DONE	include\CccArena.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov073	7
-daObjEwmIceBlock_c	DONE	include\BigMovingIceBlock.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov056	6
+daObjEwmIceBlock_c	DONE	include\daObjEwmIceBlock_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov056	6
 daObjFl_Amilift_c	DONE	include\MetalNetLift.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov064	6
 daObjFl_Block_c	DONE	include\daObjFl_Block_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov022	6
-daObjFl_KomaU_c	DONE	include\RotatingFirebar.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov064	6
+daObjFl_KomaU_c	DONE	include\daObjFl_KomaU_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov064	6
 daObjFl_London_c	PARTIAL	include\daObjFl_London_c.h	dBgActor_c	0	ov022	6
 daObjFl_Puzzle_c	DONE	include\BowserPuzzlePiece.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov064	6
 daObjFl_Ring_c	DONE	include\daObjFl_Ring_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov022	6
@@ -281,8 +281,8 @@ daObjRcBuranko_c	DONE	include\daObjRcBuranko_c.h	dBgActor_c	0	ov036	6
 daObjRc_Guruguru_c	DONE	include\daObjRc_Guruguru_c.h	dBgActor_c	0	ov036	6
 daObjRc_Tikuwa_c	MISSING	include/daObjRc_Tikuwa_c.h (MISSING)	dBgActor_c	0	ov036	0
 daObjRotateUpdownLift_c	DONE	include\RotatingUpDownPlatformUtm.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov091	8
-daObjSeesaw_c	DONE	include\SeesawBob.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov095	7
-daObjSimpleBg_c	DONE	include\FortressTower.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov102	6
+daObjSeesaw_c	DONE	include\daObjSeesaw_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov095	7
+daObjSimpleBg_c	DONE	include\daObjSimpleBg_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov102	6
 daObjSimpleLift_c	DONE	include\daObjSimpleLift_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov091	6
 daObjSlIceBlock_c	DONE	include\daObjSlIceBlock_c.h  [alias: header uses pre-rename name]	dBgActor_c	0	ov027	7
 daObjSm_Lift_c	PARTIAL	include\daObjSm_Lift_c.h	dBgActor_c	0	ov018	7
@@ -319,7 +319,7 @@ daC_Jugem_c	DONE	include\daC_Jugem_c.h	dEnemyBase_c	0	ov085	7
 daChoro_Rock_c	DONE	include\MontyMoleRock.h  [alias: header uses pre-rename name]	dEnemyBase_c	0	ov080	6
 daFPknBall_c	DONE	include\Fireball.h  [alias: header uses pre-rename name]	dEnemyBase_c	0	ov002	6
 daFPkn_c	DONE	include\FirePiranhaPlantBig.h  [alias: header uses pre-rename name]	dEnemyBase_c	0	ov084	9
-daGrock_c	DONE	include\RollingRock.h  [alias: header uses pre-rename name]	dEnemyBase_c	0	ov021	7
+daGrock_c	DONE	include\daGrock_c.h  [alias: header uses pre-rename name]	dEnemyBase_c	0	ov021	7
 daHanachan_c	DONE	include\Wiggler.h  [alias: header uses pre-rename name]	dEnemyBase_c	0	ov034	6
 daHolhei_c	DONE	include\daHolhei_c.h  [alias: header uses pre-rename name]	dEnemyBase_c	0	ov062	8
 daHuwa_c	DONE	include\Spindrift.h  [alias: header uses pre-rename name]	dEnemyBase_c	0	ov081	9
