@@ -24124,11 +24124,20 @@
       "src/__sinit_ov002_02100560.c": [
         "return:void *"
       ],
+      "src/actors/daObjTbox_c.cpp": [
+        "return:SharedFilePtr"
+      ],
       "src/actors/daSCoin_c.cpp": [
         "return:char"
       ],
+      "src/actors/daWater_Hakidasi_c.cpp": [
+        "return:SharedFilePtr"
+      ],
       "src/func_ov002_020e5948.c": [
         "return:int []"
+      ],
+      "src/game/actors/d_a_obj_number.cpp": [
+        "return:SharedFilePtr"
       ]
     },
     "data_ov002_0210d9b8": {
