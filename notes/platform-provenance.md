@@ -305,11 +305,11 @@ below 0x320 is `fBase_c`'s and `dActor_c`'s, restated by `gen_header.py`.
 bytes of padding by the generated header; every access in the ROM is 32-bit, so
 they are `s32` / `u32` now. Same offsets, same size, byte-verified.
 
-## `include/daObjSm_Lift_c.h` (SkiLift)
+## `include/daObjSm_Lift_c.h` (daObjSm_Lift_c)
 
 An RTTI-derived flat placeholder credited to a `deepen_rtti.py` that has
 never existed in this repo (see notes/minigame-provenance.md), shared by
-`SkiLift::InitResources` and [func_ov018_021122ec](../src/game/actors/d_a_pg_mthr.cpp) ([ov018](../config/arm9/overlays/ov018/symbols.txt)).
+`daObjSm_Lift_c::InitResources` and [func_ov018_021122ec](../src/game/actors/d_a_pg_mthr.cpp) ([ov018](../config/arm9/overlays/ov018/symbols.txt)).
 
 | offset | name | evidence |
 |---|---|---|
@@ -390,7 +390,7 @@ symbol names.
 No fields of its own: `StairsBs_Spawn` passes 0xdcc, which `daObjDorifu_c` fills.
 It overrides slots 0 and 3, which the base leaves null.
 
-## `include/SpinningPlatform.h`
+## `include/daObjCtMecha11_c.h`
 
 `mClsnMat` at 0x2ec: `InitResources` hands `this+0x2ec` to `dBgW_KcMbg::SetFile`
 as its `const Matrix4x3 &`. Was a `u8` marker plus its pad.
@@ -400,7 +400,7 @@ as its `const Matrix4x3 &`. Was a `u8` marker plus its pad.
 which lands exactly on the next member), and 0x350 + 0x30 closes on the 0x380
 `SpinningPlatform_Spawn` allocates.
 
-## `include/ExtendingPlatform.h`
+## `include/daObjKm2_Nobiru_c.h`
 
 The `Model` marker's pad ran 0x30 bytes past the end of the object; that space is
 not evidenced and stays explicit padding rather than being folded into the
