@@ -1,11 +1,19 @@
 //cpp
 /* daObjKey_c, ov089. Matched run 0x02131b18..0x021327d0, ten functions.
- * Cartridge type string at 0x02132b58 is 10daObjKey_c; vtable _ZTV10daObjKey_c
- * is 0x02132ba8.
  *
- * The destructors stay shards. D1 at 0x02130f00 and D0 at 0x02130f50 sit in
- * front of the unmatched func_ov089_0213162c, so one file cannot contain both
- * them and this run. This TU defines no destructor and does not emit the vtable.
+ * NAME: _ZTS10daObjKey_c is the cartridge string "10daObjKey_c" at
+ * 0x02132b58. _ZTI10daObjKey_c at 0x02132b4c reads [__si_class_type_info,
+ * 0x02132b58, _ZTI12dEnemyBase_c], so the single base is dEnemyBase_c, and
+ * the word before _ZTV10daObjKey_c (0x02132ba8) is that _ZTI. The class was
+ * coined Key before the ROM name was read (factory alias Key_Spawn).
+ *
+ * PARTIAL: this is not the whole class. The destructors stay shards. D1 at
+ * 0x02130f00 and D0 at 0x02130f50 sit in front of the unmatched
+ * func_ov089_0213162c, so one file cannot contain both them and this run.
+ * func_ov089_02130fb4, UnloadKeyModels, LoadKeyModels, func_ov089_0213115c
+ * and func_ov089_021311c0 stay shards for the same reason. The D1 shard
+ * holds the out-of-line destructor, the key function, so it emits
+ * _ZTV/_ZTI/_ZTS; this TU defines no destructor and emits no vtable.
  *
  * Source order is ROM-ascending. `#pragma defer_codegen off` emits each
  * function where it stands.
@@ -256,6 +264,8 @@ void func_ov089_02131df4(char* c, char* player)
 /* _ZN10daObjKey_c13OnTurnIntoEggER6Player, 0x02131f04 */
 /* -------------------------------------------------------------------------- */
 // @symbol _ZN10daObjKey_c13OnTurnIntoEggER6Player
+/* Vtable slot 19, verified against ov089 relocs.txt: _ZTV10daObjKey_c
+ * (0x02132ba8) + 0x4c -> 0x02131f04 (former name func_ov089_02131f04). */
 void daObjKey_c::OnTurnIntoEgg(Player &player)
 {
     unsigned isMatch = (actorID == 0x11a);
