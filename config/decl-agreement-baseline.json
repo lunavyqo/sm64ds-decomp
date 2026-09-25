@@ -152,7 +152,7 @@
         "param:#2 Vector3 *",
         "param:#3 Vector3 *"
       ],
-      "src/func_ov021_021127b4.c": [
+      "src/actors/daGrock_c.cpp": [
         "param:#1 Vector3 *",
         "param:#2 Vector3 *",
         "param:#3 Vector3 *"
@@ -1837,7 +1837,7 @@
         "param:#3 short",
         "param:#4 short"
       ],
-      "src/func_ov021_021122fc.cpp": [
+      "src/actors/daGrock_c.cpp": [
         "param:#2 short",
         "param:#3 short",
         "param:#4 short"
@@ -6836,7 +6836,7 @@
         "param:#5 void *",
         "param:#6 void *"
       ],
-      "src/_ZN11RollingRock13InitResourcesEv.cpp": [
+      "src/actors/daGrock_c.cpp": [
         "param:#2 void *",
         "param:#5 void *",
         "param:#6 void *"
@@ -7343,7 +7343,7 @@
       "src/_ZN10BulletBill8BehaviorEv.cpp": [
         "param:#2 const Vector3 *"
       ],
-      "src/_ZN11RollingRock8BehaviorEv.cpp": [
+      "src/actors/daGrock_c.cpp": [
         "param:#2 const Vector3 *"
       ],
       "src/_ZN16daKing_Donketu_c8BehaviorEv.cpp": [
@@ -10767,7 +10767,7 @@
       "src/func_ov006_02100bac.c": [
         "return:int"
       ],
-      "src/func_ov021_02112544.cpp": [
+      "src/actors/daGrock_c.cpp": [
         "return:int"
       ],
       "src/func_ov064_02117a14.cpp": [
@@ -11126,9 +11126,9 @@
       "src/_ZN11PowerFlower13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
-      "src/_ZN11RollingRock13InitResourcesEv.cpp": [
-        "param:#1 void *",
-        "return:void"
+      "src/actors/daGrock_c.cpp": [
+        "return:void",
+        "param:#1 void *"
       ],
       "src/actors/daObjFl_Ring_c.cpp": [
         "param:#1 void *"
@@ -12101,10 +12101,10 @@
         "param:#5 unsigned int",
         "return:unsigned int"
       ],
-      "src/func_ov021_02112544.cpp": [
+      "src/actors/daGrock_c.cpp": [
+        "return:void *",
         "param:#4 void *",
-        "param:#5 unsigned int",
-        "return:void *"
+        "param:#5 unsigned int"
       ],
       "src/func_ov060_021132a4.c": [
         "param:#4 void *",
@@ -12307,7 +12307,7 @@
       "src/func_ov020_0211174c.c": [
         "param:#2 void *"
       ],
-      "src/func_ov021_021123b0.c": [
+      "src/actors/daGrock_c.cpp": [
         "param:#2 void *"
       ],
       "src/func_ov084_0212d86c.c": [
@@ -13380,11 +13380,11 @@
         "param:#7 unsigned int",
         "return:void"
       ],
-      "src/func_ov021_021123b0.c": [
+      "src/actors/daGrock_c.cpp": [
+        "return:void",
         "param:#5 unsigned int",
         "param:#6 unsigned int",
-        "param:#7 unsigned int",
-        "return:void"
+        "param:#7 unsigned int"
       ],
       "src/func_ov034_02112688.c": [
         "param:#5 unsigned int",
@@ -14855,7 +14855,7 @@
         "param:#6 const void *",
         "return:void *"
       ],
-      "src/func_ov021_02112544.cpp": [
+      "src/actors/daGrock_c.cpp": [
         "return:void *"
       ],
       "src/func_ov060_02112ee0.cpp": [
@@ -14987,7 +14987,7 @@
       "src/_ZN11CrazedCrate13OnTurnIntoEggER6Player.cpp": [
         "return:void"
       ],
-      "src/_ZN11RollingRock8BehaviorEv.cpp": [
+      "src/actors/daGrock_c.cpp": [
         "return:void"
       ],
       "src/_ZN12FortressWall4KillEv.cpp": [
@@ -15159,9 +15159,6 @@
         "return:void"
       ],
       "src/func_ov002_020edca4.c": [
-        "return:void"
-      ],
-      "src/func_ov021_021123b0.c": [
         "return:void"
       ],
       "src/func_ov024_021112c0.c": [
@@ -15447,7 +15444,7 @@
       "src/_ZN10StarMarker8BehaviorEv.cpp": [
         "return:char *"
       ],
-      "src/_ZN11RollingRock8BehaviorEv.cpp": [
+      "src/actors/daGrock_c.cpp": [
         "return:void *"
       ],
       "src/_ZN13MontyMoleRock8BehaviorEv.cpp": [
@@ -15649,9 +15646,6 @@
         "return:void *"
       ],
       "src/func_ov020_0211174c.c": [
-        "return:void *"
-      ],
-      "src/func_ov021_021123b0.c": [
         "return:void *"
       ],
       "src/func_ov026_02112280.c": [
@@ -16010,7 +16004,7 @@
       ]
     },
     "_ZN8dActor_c11UntrackStarERa": {
-      "src/_ZN11RollingRock8BehaviorEv.cpp": [
+      "src/actors/daGrock_c.cpp": [
         "param:#2 signed char *"
       ],
       "src/_ZN9PowerStar16CleanupResourcesEv.cpp": [
@@ -16202,7 +16196,7 @@
       ]
     },
     "_ZN8dActor_c14GetSubtractionEss": {
-      "src/func_ov021_02112544.cpp": [
+      "src/actors/daGrock_c.cpp": [
         "param:#3 int"
       ],
       "src/func_ov100_02142130.cpp": [
@@ -16520,9 +16514,9 @@
       "src/func_ov002_020f8b24.c": [
         "param:#6 unsigned int"
       ],
-      "src/func_ov021_021122fc.cpp": [
-        "param:#6 unsigned int",
-        "return:int"
+      "src/actors/daGrock_c.cpp": [
+        "return:int",
+        "param:#6 unsigned int"
       ],
       "src/func_ov060_0211577c.c": [
         "param:#6 unsigned int"
@@ -16647,11 +16641,11 @@
         "param:#5 unsigned int",
         "return:void"
       ],
-      "src/func_ov021_02112294.c": [
+      "src/actors/daGrock_c.cpp": [
+        "return:void",
         "param:#2 void *",
         "param:#4 void *",
-        "param:#5 unsigned int",
-        "return:void"
+        "param:#5 unsigned int"
       ],
       "src/func_ov034_02111788.cpp": [
         "param:#2 signed char *",
@@ -16775,11 +16769,11 @@
         "param:#5 int",
         "param:#6 int"
       ],
-      "src/_ZN11RollingRock8BehaviorEv.cpp": [
+      "src/actors/daGrock_c.cpp": [
+        "return:void *",
         "param:#3 const Vector3 *",
         "param:#5 int",
-        "param:#6 int",
-        "return:void *"
+        "param:#6 int"
       ],
       "src/actors/daObjFl_Ring_c.cpp": [
         "param:#3 void *",
@@ -17290,10 +17284,10 @@
       ]
     },
     "_ZN8dActor_c9TrackStarEjj": {
-      "src/_ZN11RollingRock13InitResourcesEv.cpp": [
+      "src/_ZN8daEykn_c13InitResourcesEv.cpp": [
         "return:unsigned char"
       ],
-      "src/_ZN8daEykn_c13InitResourcesEv.cpp": [
+      "src/actors/daGrock_c.cpp": [
         "return:unsigned char"
       ],
       "src/_ZN5Whomp13InitResourcesEv.cpp": [
@@ -18847,7 +18841,7 @@
       "src/func_ov020_02111b28.cpp": [
         "param:#2 void *"
       ],
-      "src/func_ov021_02112544.cpp": [
+      "src/actors/daGrock_c.cpp": [
         "param:#2 Vec3 *"
       ],
       "src/func_ov060_021128c0.cpp": [
@@ -19754,7 +19748,7 @@
       "src/func_ov020_02111b28.cpp": [
         "arity:1"
       ],
-      "src/func_ov021_02112544.cpp": [
+      "src/actors/daGrock_c.cpp": [
         "arity:1"
       ],
       "src/func_ov060_021128c0.cpp": [
@@ -24068,17 +24062,26 @@
       "src/_ZN6Player16CleanupResourcesEv.cpp": [
         "return:char []"
       ],
+      "src/_ZN9JetStream13InitResourcesEv.cpp": [
+        "return:SharedFilePtr"
+      ],
       "src/_ZN9JetStream16CleanupResourcesEv.cpp": [
         "return:char"
       ],
       "src/__sinit_ov002_02100560.c": [
         "return:void *"
       ],
+      "src/actors/daObjTbox_c.cpp": [
+        "return:SharedFilePtr"
+      ],
       "src/actors/daSCoin_c.cpp": [
         "return:char"
       ],
       "src/func_ov002_020e5948.c": [
         "return:int []"
+      ],
+      "src/game/actors/d_a_obj_number.cpp": [
+        "return:SharedFilePtr"
       ]
     },
     "data_ov002_0210d9b8": {
@@ -27946,8 +27949,8 @@
       ]
     },
     "data_ov021_02114a50": {
-      "src/_ZN11RollingRock13InitResourcesEv.cpp": [
-        "return:SharedFilePtr"
+      "src/__sinit_ov021_02113688.c": [
+        "return:int []"
       ]
     },
     "data_ov022_02113da4": {
@@ -32222,7 +32225,7 @@
         "param:#1 int",
         "return:int"
       ],
-      "src/func_ov021_02112544.cpp": [
+      "src/actors/daGrock_c.cpp": [
         "param:#1 int"
       ],
       "src/func_ov034_02111974.c": [
@@ -32338,7 +32341,7 @@
       "src/_ZN11BobOmbBuddy8BehaviorEv.cpp": [
         "param:#1 int"
       ],
-      "src/_ZN11RollingRock8BehaviorEv.cpp": [
+      "src/actors/daGrock_c.cpp": [
         "param:#1 int"
       ],
       "src/_ZN14UnchainedChomp8BehaviorEv.cpp": [
@@ -32439,9 +32442,6 @@
       "src/func_ov016_02111994.cpp": [
         "arity:3",
         "return:int"
-      ],
-      "src/func_ov021_021123b0.c": [
-        "param:#1 int"
       ],
       "src/func_ov060_02113564.c": [
         "arity:3"
