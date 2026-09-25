@@ -257,7 +257,7 @@ Independent verification must still pin the final candidate.
 |---|---|---|---|
 | RollingIronBall InitResources | [ov100](../../../config/arm9/overlays/ov100/symbols.txt) | BLIND-14 | No: incomplete delink entry |
 | daObjMarioCap_c InitResources shard | [ov002](../../../config/arm9/overlays/ov002/symbols.txt) | BLIND-33 | No: incomplete delink entry |
-| daEykn_c InitResources | [ov071](../../../config/arm9/overlays/ov071/symbols.txt) | NO-REPRO | No: not enrolled |
+| MrI InitResources | [ov071](../../../config/arm9/overlays/ov071/symbols.txt) | NO-REPRO | No: not enrolled |
 | `__sinit_d_a_obj_fm_battan.cpp` | [ov023](../../../config/arm9/overlays/ov023/symbols.txt) | BLIND-6 | Yes |
 | `__sinit_d_a_obj_kb1_billboard.cpp` | [ov044](../../../config/arm9/overlays/ov044/symbols.txt) | BLIND-3 | Yes |
 | `__sinit_d_a_star_gate.cpp` | [ov100](../../../config/arm9/overlays/ov100/symbols.txt) | BLIND-3 | Yes |

@@ -11,9 +11,11 @@
 #include "dCcAcPos_c.h"
 #include "TextureSequence.h"
 
-/* The ROM's RTTI name for this class is daEykn_c (_ZTS8daEykn_c /
- * _ZTI8daEykn_c). The vtable is _ZTV8daEykn_c; the old coined _ZTV3MrI alias
- * was the same address and is gone. */
+/* The ROM's RTTI name for this class is daEykn_c: _ZTS8daEykn_c at ov071
+ * 0x02122cd8, and _ZTI8daEykn_c at 0x02122ce4 is an __si_class_type_info whose
+ * base is _ZTI8dActor_c, so the base is dActor_c. The vtable is _ZTV8daEykn_c
+ * (address point 0x02122d30); the tree's old coined name MrI only aliased
+ * _ZTV3MrI to that same address, and the alias is gone. */
 struct daEykn_c : dActor_c {
     /* dActor_c ends at 0x0d0; the derived payload begins at 0x0d4. */
     u8 pad_0d0[0x4];

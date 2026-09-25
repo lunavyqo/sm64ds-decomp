@@ -7,7 +7,7 @@
   "boundary_confidence": "medium",
   "boundary_evidence": [
     "tu_map cut (build/tu_map.json): 0x02120668..0x021219cc, 23 functions, class daEykn_c. That cut includes _ZN8daEykn_c13InitResourcesEv, whose delink is not complete.",
-    "shipped span: .text 0x02120668..0x02121734, 22 function(s). InitResources (0x02121734..0x021219cc) stays a shard because it is not matched. daEykn_c_classInit_EYEKUN_BOSS and daEykn_c_classInit_EYEKUN are the next unattributed unit and are not absorbed.",
+    "shipped span: .text 0x02120668..0x02121734, 22 function(s). InitResources (0x02121734..0x021219cc) stays a shard: it byte-matches but has no delinks.txt entry, so it is not part of the linked build. daEykn_c_classInit_EYEKUN_BOSS and daEykn_c_classInit_EYEKUN are the next unattributed unit and are not absorbed.",
     "class label(s): daEykn_c",
     "module sinit corroboration: 4 sinit(s) / 4 .ctor entries, sinit_vs_tu=ok, corroborated=False (module-wide, NOT narrowed to this one TU)"
   ],

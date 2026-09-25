@@ -18,7 +18,7 @@
     "include/Koopa.h": "5541a7d3d7db281ad7e9345dd8a5c020d80b664adfa27dfd48072f2d6c570695",
     "src/UnloadBlueCoinModel.c": "1171e16a7174078dc2c4b06f0df177dfe166efe42192e1c4e424f79a73bd161e",
     "src/_ZN15BookShotSpawner16CleanupResourcesEv.cpp": "1b0493881d6b2d4db5b85cd521020bc99879eb1278d11a8e873296fdfe1b7d2b",
-    "src/_ZN8daEykn_c16CleanupResourcesEv.cpp": "99bd5ce5a7257fe1bb1a7c1d65cc1aec6678fc4b1c379674bcd9ba4b3c6b24e9",
+    "src/_ZN3MrI16CleanupResourcesEv.cpp": "99bd5ce5a7257fe1bb1a7c1d65cc1aec6678fc4b1c379674bcd9ba4b3c6b24e9",
     "src/_ZN9daMenbo_c8BehaviorEv.cpp": "2b42e4b0dc2a6a09350d21171b74680b05c36d648617063d4adefe9053f038aa",
     "src/actors/daKrb_c.cpp": "bcffbe6d53b97aede5f56eb6c78d3772824ecd53ecdd6e90ff2a73e1bc5277db",
     "src/actors/daYurei_Mucho_c.cpp": "7517ad4881845440ce97ac71bb7662073af319148677309119d6ddbcd2ba00c7",
@@ -613,12 +613,12 @@
       "strict": [{"name": "UnloadBlueCoinModel", "module": "arm9", "addr": "0x0200fe70", "verdict": "VERIFIED", "diffs": [], "blind": 0}]
     },
     {
-      "path": "src/_ZN8daEykn_c16CleanupResourcesEv.cpp",
+      "path": "src/_ZN3MrI16CleanupResourcesEv.cpp",
       "object_sha256": "72d561bde19ab5b5724458f73f15a87700da4923dae2f38648d3deddc0ff9b07",
       "control_object_sha256": "72d561bde19ab5b5724458f73f15a87700da4923dae2f38648d3deddc0ff9b07",
       "whole_object_identical": true,
       "strict_count": 1,
-      "strict": [{"name": "_ZN8daEykn_c16CleanupResourcesEv", "module": "ov071", "addr": "0x02121650", "verdict": "VERIFIED", "diffs": [], "blind": 0}]
+      "strict": [{"name": "_ZN3MrI16CleanupResourcesEv", "module": "ov071", "addr": "0x02121650", "verdict": "VERIFIED", "diffs": [], "blind": 0}]
     },
     {
       "path": "src/func_ov002_020aea30.cpp",
@@ -1029,7 +1029,7 @@
           "declarations": [
             {"file": "src/_ZN15BookShotSpawner16CleanupResourcesEv.cpp", "line": 11, "spelling": "void (char *)"},
             {"file": "src/_ZN19FirePiranhaPlantBig16CleanupResourcesEv.cpp", "line": 9, "spelling": "void (void *)"},
-            {"file": "src/_ZN8daEykn_c16CleanupResourcesEv.cpp", "line": 6, "spelling": "void (void)"},
+            {"file": "src/_ZN3MrI16CleanupResourcesEv.cpp", "line": 6, "spelling": "void (void)"},
             {"file": "src/_ZN5Koopa16CleanupResourcesEv.cpp", "line": 7, "spelling": "void (void *)"},
             {"file": "src/_ZN8BookShot16CleanupResourcesEv.cpp", "line": 7, "spelling": "void (void *)"},
             {"file": "src/_ZN8YoshiEgg16CleanupResourcesEv.cpp", "line": 8, "spelling": "void (void *)"},
@@ -1288,8 +1288,8 @@
     ],
     "context_and_fourth_argument_calls": [
       {
-        "path": "src/_ZN8daEykn_c16CleanupResourcesEv.cpp",
-        "symbol": "_ZN8daEykn_c16CleanupResourcesEv",
+        "path": "src/_ZN3MrI16CleanupResourcesEv.cpp",
+        "symbol": "_ZN3MrI16CleanupResourcesEv",
         "module": "ov071",
         "address": "0x2121650",
         "size": "0x64",
@@ -1299,13 +1299,13 @@
             "tag": "control",
             "object_sha256": "72d561bde19ab5b5724458f73f15a87700da4923dae2f38648d3deddc0ff9b07",
             "emitted_size": "0x64",
-            "strict": {"name": "_ZN8daEykn_c16CleanupResourcesEv", "module": "ov071", "addr": "0x02121650", "verdict": "VERIFIED", "diffs": [], "blind": 0}
+            "strict": {"name": "_ZN3MrI16CleanupResourcesEv", "module": "ov071", "addr": "0x02121650", "verdict": "VERIFIED", "diffs": [], "blind": 0}
           },
           {
             "tag": "corrected",
             "object_sha256": "72d561bde19ab5b5724458f73f15a87700da4923dae2f38648d3deddc0ff9b07",
             "emitted_size": "0x64",
-            "strict": {"name": "_ZN8daEykn_c16CleanupResourcesEv", "module": "ov071", "addr": "0x02121650", "verdict": "VERIFIED", "diffs": [], "blind": 0}
+            "strict": {"name": "_ZN3MrI16CleanupResourcesEv", "module": "ov071", "addr": "0x02121650", "verdict": "VERIFIED", "diffs": [], "blind": 0}
           }
         ]
       },

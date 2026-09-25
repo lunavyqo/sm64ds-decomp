@@ -1,15 +1,24 @@
 //cpp
-/* ov071 daEykn_c. Licensed .text 0x02120668..0x02121734 (22 functions).
- * InitResources at 0x02121734 stays a shard because it is not matched.
- * daEykn_c_classInit_EYEKUN_BOSS sits after that unmatched function and is
- * not part of this compiler input.
+/* Production translation unit for ov071/daEykn_c.
+ * 22 function(s), .text 0x02120668..0x02121734. Mr. I (EYEKUN / EYEKUN_BOSS).
  *
- * Vtable 0x02122d30: offset-to-top 0, typeinfo 0x02122ce4, name "8daEykn_c"
- * at 0x02122cd8. The base is dActor_c.
+ * NAME: _ZTS8daEykn_c is "8daEykn_c" at ov071 0x02122cd8; _ZTI at 0x02122ce4
+ * reads [__si_class_type_info, that string, _ZTI8dActor_c]. The vtable address
+ * point _ZTV8daEykn_c is 0x02122d30 (offset-to-top 0 at 0x02122d28, typeinfo
+ * 0x02122ce4 at 0x02122d2c). The tree previously called the class MrI (coined;
+ * ov071/symbols.txt only aliased _ZTV3MrI to the same vtable address).
  *
- * Out-of-line ~daEykn_c is the key function. Under #pragma defer_codegen off
- * the TU emits D1 (0x02120668), D0 (0x021206b0), then a D2 the cartridge does
- * not keep. Definitions below are ROM-ascending.
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS (externalized to those addresses; the TU is text-only). Under
+ * `#pragma defer_codegen off` it comes out D1 (0x02120668), D0 (0x021206b0),
+ * then a D2 the cartridge has no home for (manifest: deadstrip); the same
+ * pragma lays .text down in source order, so this file is ROM-ascending.
+ *
+ * InitResources (0x02121734..0x021219cc) stays in
+ * src/_ZN8daEykn_c13InitResourcesEv.cpp: it byte-matches but has no
+ * delinks.txt entry, so it is not part of the linked build and cannot be
+ * licensed here. The two classInit factories after it (src/d_a_eykn_eyekun_boss.c,
+ * src/d_a_eykn_eyekun.c) are separate units and are not absorbed.
  */
 
 #pragma defer_codegen off
