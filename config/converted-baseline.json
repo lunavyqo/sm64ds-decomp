@@ -253,9 +253,9 @@
     "src/_ZN10KoopaShell8BehaviorEv.cpp",
     "src/_ZN10KoopaShellD0Ev.cpp",
     "src/_ZN10KoopaShellD1Ev.cpp",
-    "src/_ZN10LavaSeesaw6RenderEv.cpp",
-    "src/_ZN10LavaSeesawD0Ev.cpp",
-    "src/_ZN10LavaSeesawD1Ev.cpp",
+    "src/actors/daObjFl_Seesaw_c.cpp#_ZN16daObjFl_Seesaw_c6RenderEv",
+    "src/actors/daObjFl_Seesaw_c.cpp#_ZN16daObjFl_Seesaw_cD0Ev",
+    "src/actors/daObjFl_Seesaw_c.cpp#_ZN16daObjFl_Seesaw_cD1Ev",
     "src/_ZN10ModelAnim24CopyERKS_Pcj.cpp",
     "src/_ZN10ModelAnim2C1Ev.cpp",
     "src/_ZN10ModelAnim2D1Ev.cpp",
@@ -1129,10 +1129,6 @@
     "src/_ZN7Message19DisplaySaveMenuTextEt.cpp",
     "src/_ZN7Message21DisplayLevelClearTextEta.cpp",
     "src/_ZN7PathPtr6FromIDEj.cpp",
-    "src/_ZN7Tornado16CleanupResourcesEv.cpp",
-    "src/_ZN7Tornado6RenderEv.cpp",
-    "src/_ZN7TornadoD0Ev.cpp",
-    "src/_ZN7TornadoD1Ev.cpp",
     "src/_ZN7Vector3D1Ev.cpp",
     "src/_ZN7Wiggler16CleanupResourcesEv.cpp",
     "src/_ZN7WigglerD0Ev.cpp",
@@ -3002,6 +2998,10 @@
     "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c23UpdateColliderTransformEv",
     "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_c6RenderEv",
     "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_cD0Ev",
-    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_cD1Ev"
+    "src/actors/daObjKm2_Nobiru_c.cpp#_ZN17daObjKm2_Nobiru_cD1Ev",
+    "src/actors/daTor_c.cpp#_ZN7daTor_c16CleanupResourcesEv",
+    "src/actors/daTor_c.cpp#_ZN7daTor_c6RenderEv",
+    "src/actors/daTor_c.cpp#_ZN7daTor_cD0Ev",
+    "src/actors/daTor_c.cpp#_ZN7daTor_cD1Ev"
   ]
 }
