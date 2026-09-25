@@ -141,7 +141,7 @@ spent. **Run first; 10 minutes, and it de-risks every later "is it me or is it t
 |[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20b5734|  n=7|  L=164|  `daObjFire_c`|                uncorrob|
 |[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20b6e08|  n=5|  L=67|   `WaterfallMist`|            uncorrob|
 |[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20ec388|  n=8|  L=148|  `daWarpkun_c`|             uncorrob|
-|[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20f0dd0|  n=8|  L=176|  `OneUpLogo`|                uncorrob|
+|[ov002](../config/arm9/overlays/ov002/symbols.txt)| 0x20f0dd0|  n=8|  L=176|  `daObj1UpLogo_c`|                uncorrob|
 |[ov006](../config/arm9/overlays/ov006/symbols.txt)| 0x20dbd54|  n=3|  L=36|   `MgPicturePoker`|           uncorrob|
 |[ov006](../config/arm9/overlays/ov006/symbols.txt)| 0x20fa6ac|  n=2|  L=30|   `MgPairAGoneAndOn`|         uncorrob|
 |[ov006](../config/arm9/overlays/ov006/symbols.txt)| 0x210a400|  n=2|  L=32|   `MgMushroomRoulette`|       uncorrob|
@@ -162,7 +162,7 @@ cheapest possible probe of post-regeneration [ov006](../config/arm9/overlays/ov0
 |[ov019](../config/arm9/overlays/ov019/symbols.txt)| 0x211261c|  n=5|  L=93|  `daSldMng_c`| |
 |[ov021](../config/arm9/overlays/ov021/symbols.txt)| 0x2112db4|  n=6|  L=105|  `daObjCvShutter_c`| |
 |[ov022](../config/arm9/overlays/ov022/symbols.txt)| 0x2111980|  n=8|  L=181|  `daObjFl_London_c`|               uncorrob|
-|[ov022](../config/arm9/overlays/ov022/symbols.txt)| 0x2111cac|  n=8|  L=170|  `LavaSeesaw`|               uncorrob|
+|[ov022](../config/arm9/overlays/ov022/symbols.txt)| 0x2111cac|  n=8|  L=170|  `daObjFl_Seesaw_c`|               uncorrob|
 
 
 **B3 — R0 · 10 TUs / 53 files / net −43 / 1,076 lines**
@@ -224,7 +224,7 @@ first module where a `config_tu/` conversion becomes conceivable.
 **B7 — R1 · 8 TUs / 63 files / net −55 / 1,440 lines**
 | TU | Address | Files | Description | Status |
 |----|---------|-------|-------------|--------|
-|[ov016](../config/arm9/overlays/ov016/symbols.txt)| 0x2112ff8|  n=8|   `SlidingBox`|           CONF2 pcov=3|
+|[ov016](../config/arm9/overlays/ov016/symbols.txt)| 0x2112ff8|  n=8|   `daSlide_Box_c`|           CONF2 pcov=3|
 |[ov017](../config/arm9/overlays/ov017/symbols.txt)| 0x21111a0|  n=7|   `daObjKsWater_c`|            CONF2 WHOLEMOD pcov=2|
 |[ov022](../config/arm9/overlays/ov022/symbols.txt)| 0x21111a0|  n=9|   `daObjFl_Ring_c`|          CONF1|
 |[ov022](../config/arm9/overlays/ov022/symbols.txt)| 0x21116c4|  n=9|   `daObjFl_Block_c`|  CONF2|
@@ -251,8 +251,8 @@ first module where a `config_tu/` conversion becomes conceivable.
 |----|---------|-------|-------------|--------|
 |[ov065](../config/arm9/overlays/ov065/symbols.txt)| 0x211ab60|  n=8|   `daObjCtMecha05_c`|   CONF3|
 |[ov065](../config/arm9/overlays/ov065/symbols.txt)| 0x211b328|  n=8|   `daObjCtKaitendai_c`|      CONF2|
-|[ov079](../config/arm9/overlays/ov079/symbols.txt)| 0x2126dbc|  n=9|   `BillBlaster`|        CONF2|
-|[ov079](../config/arm9/overlays/ov079/symbols.txt)| 0x21271e4|  n=9|   `FortressWall`|       CONF1|
+|[ov079](../config/arm9/overlays/ov079/symbols.txt)| 0x2126dbc|  n=9|   `daObjBkKillerdai_c`|        CONF2|
+|[ov079](../config/arm9/overlays/ov079/symbols.txt)| 0x21271e4|  n=9|   `daObjBk_Kabe_c`|       CONF1|
 |[ov091](../config/arm9/overlays/ov091/symbols.txt)| 0x2132404|  n=7|   `daObjSimpleLift_c`|  CONF2|
 
 
