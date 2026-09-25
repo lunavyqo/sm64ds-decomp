@@ -390,7 +390,7 @@ symbol names.
 No fields of its own: `StairsBs_Spawn` passes 0xdcc, which `daObjDorifu_c` fills.
 It overrides slots 0 and 3, which the base leaves null.
 
-## `include/SpinningPlatform.h`
+## `include/daObjCtMecha11_c.h`
 
 `mClsnMat` at 0x2ec: `InitResources` hands `this+0x2ec` to `dBgW_KcMbg::SetFile`
 as its `const Matrix4x3 &`. Was a `u8` marker plus its pad.
@@ -400,7 +400,7 @@ as its `const Matrix4x3 &`. Was a `u8` marker plus its pad.
 which lands exactly on the next member), and 0x350 + 0x30 closes on the 0x380
 `SpinningPlatform_Spawn` allocates.
 
-## `include/ExtendingPlatform.h`
+## `include/daObjKm2_Nobiru_c.h`
 
 The `Model` marker's pad ran 0x30 bytes past the end of the object; that space is
 not evidenced and stays explicit padding rather than being folded into the
