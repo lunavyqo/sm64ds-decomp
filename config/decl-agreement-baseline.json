@@ -5174,10 +5174,6 @@
         "param:#1 const void *",
         "param:#2 const void *"
       ],
-      "src/_ZN16BowserShockwaves8BehaviorEv.cpp": [
-        "param:#1 const void *",
-        "param:#2 const void *"
-      ],
       "src/_ZN9dBgCh_Gnd10DetectClsnEv.cpp": [
         "param:#1 Vec3 *",
         "param:#2 Vec3 *"
@@ -8478,6 +8474,9 @@
         "param:#2 BMA_File &",
         "param:#5 unsigned int",
         "return:int"
+      ],
+      "src/actors/daFRing_c.cpp": [
+        "param:#5 unsigned int"
       ]
     },
     "_ZN15MaterialChangerC1Ev": {
@@ -8550,9 +8549,6 @@
         "param:#5 unsigned int"
       ],
       "src/_ZN15dMg3DEspModel_c13InitResourcesEv.cpp": [
-        "param:#5 unsigned int"
-      ],
-      "src/_ZN16BowserShockwaves13InitResourcesEv.cpp": [
         "param:#5 unsigned int"
       ],
       "src/_ZN3MrI13InitResourcesEv.cpp": [
@@ -8675,6 +8671,9 @@
         "param:#2 BTP_File &",
         "param:#5 unsigned int",
         "return:unsigned int"
+      ],
+      "src/actors/daFRing_c.cpp": [
+        "param:#5 unsigned int"
       ]
     },
     "_ZN15TextureSequence8LoadFileER13SharedFilePtr": {
@@ -8684,10 +8683,6 @@
       "src/_ZN15dMg3DEspModel_c13InitResourcesEv.cpp": [
         "param:#1 void *",
         "return:void"
-      ],
-      "src/_ZN16BowserShockwaves13InitResourcesEv.cpp": [
-        "param:#1 void *",
-        "return:int"
       ],
       "src/_ZN5Whomp13InitResourcesEv.cpp": [
         "param:#1 void *"
@@ -8934,10 +8929,6 @@
         "param:#1 BMD_File *",
         "param:#2 BTA_File *"
       ],
-      "src/_ZN16BowserShockwaves13InitResourcesEv.cpp": [
-        "param:#1 void *",
-        "param:#2 void *"
-      ],
       "src/_ZN5Stage23LoadTextureTransformersEv.cpp": [
         "param:#1 void *",
         "param:#2 void *"
@@ -8969,9 +8960,6 @@
       ],
       "src/_ZN14daWater_Ring_c13InitResourcesEv.cpp": [
         "param:#1 char *",
-        "param:#5 unsigned int"
-      ],
-      "src/_ZN16BowserShockwaves13InitResourcesEv.cpp": [
         "param:#5 unsigned int"
       ],
       "src/_ZN5Stage23LoadTextureTransformersEv.cpp": [
@@ -9048,6 +9036,9 @@
         "param:#2 BTA_File &",
         "param:#5 unsigned int",
         "return:unsigned int"
+      ],
+      "src/actors/daFRing_c.cpp": [
+        "param:#5 unsigned int"
       ],
       "src/actors/daTor_c.cpp": [
         "param:#5 unsigned int"
@@ -10881,10 +10872,6 @@
       ]
     },
     "_ZN4dBgW22UpdatePosWithTransformERS_P8dActor_cR5dBgPiR7Vector3P10Vector3_16S8_": {
-      "src/_ZN10LavaSeesaw13InitResourcesEv.cpp": [
-        "arity:0",
-        "mangled:0 parameter(s)"
-      ],
       "src/_ZN10SlidingBox13InitResourcesEv.cpp": [
         "arity:0",
         "mangled:0 parameter(s)"
@@ -11120,9 +11107,6 @@
         "param:#1 void *",
         "return:BMD_File *"
       ],
-      "src/_ZN10LavaSeesaw13InitResourcesEv.cpp": [
-        "param:#1 void *"
-      ],
       "src/_ZN10MrBlizzard13InitResourcesEv.cpp": [
         "param:#1 void *"
       ],
@@ -11184,10 +11168,6 @@
       ],
       "src/_ZN15daObjMarioCap_c13InitResourcesEv.cpp": [
         "param:#1 void *"
-      ],
-      "src/_ZN16BowserShockwaves13InitResourcesEv.cpp": [
-        "param:#1 void *",
-        "return:int"
       ],
       "src/_ZN16daKing_Donketu_c13InitResourcesEv.cpp": [
         "param:#1 SharedFilePtr *",
@@ -13548,11 +13528,6 @@
         "param:#7 int"
       ]
     },
-    "_ZN6Player5ShockEj": {
-      "src/_ZN16BowserShockwaves8BehaviorEv.cpp": [
-        "return:void"
-      ]
-    },
     "_ZN6Player6BounceE5Fix12IiE": {
       "src/func_ov065_0211704c.c": [
         "param:#1 char *"
@@ -14410,10 +14385,6 @@
       ]
     },
     "_ZN7dBgW_Kc8LoadFileER13SharedFilePtr": {
-      "src/_ZN10LavaSeesaw13InitResourcesEv.cpp": [
-        "param:#1 void *",
-        "return:void *"
-      ],
       "src/_ZN10PyramidTop13InitResourcesEv.cpp": [
         "param:#1 void *",
         "return:void *"
@@ -17455,10 +17426,6 @@
         "param:#1 void *",
         "return:void"
       ],
-      "src/_ZN16BowserShockwaves13InitResourcesEv.cpp": [
-        "param:#1 void *",
-        "return:int"
-      ],
       "src/_ZN16daKing_Donketu_c13InitResourcesEv.cpp": [
         "param:#1 SharedFilePtr *",
         "return:void *"
@@ -17638,9 +17605,6 @@
         "param:#5 unsigned int"
       ],
       "src/_ZN15dMg3DEspModel_c13InitResourcesEv.cpp": [
-        "param:#5 unsigned int"
-      ],
-      "src/_ZN16BowserShockwaves13InitResourcesEv.cpp": [
         "param:#5 unsigned int"
       ],
       "src/_ZN17dMg3DEspAnimSet_c13InitResourcesEv.cpp": [
@@ -18221,6 +18185,9 @@
       "src/actors/daObjKey_c.cpp": [
         "param:#5 unsigned int"
       ],
+      "src/actors/daFRing_c.cpp": [
+        "param:#5 unsigned int"
+      ],
       "src/actors/daTor_c.cpp": [
         "param:#5 unsigned int"
       ]
@@ -18286,9 +18253,6 @@
       ],
       "src/_ZN15FireSeaElevator13InitResourcesEv.cpp": [
         "param:#2 int",
-        "return:void"
-      ],
-      "src/_ZN16BowserShockwaves13InitResourcesEv.cpp": [
         "return:void"
       ],
       "src/_ZN16daKing_Donketu_c13InitResourcesEv.cpp": [
@@ -28023,16 +27987,6 @@
         "return:SharedFilePtr"
       ]
     },
-    "data_ov022_021145a0": {
-      "src/_ZN10LavaSeesaw13InitResourcesEv.cpp": [
-        "return:void *"
-      ]
-    },
-    "data_ov022_021145a8": {
-      "src/_ZN10LavaSeesaw13InitResourcesEv.cpp": [
-        "return:void *"
-      ]
-    },
     "data_ov022_02114618": {
       "src/__sinit_ov022_02112f78.c": [
         "return:int []"
@@ -28819,25 +28773,16 @@
       ]
     },
     "data_ov060_0211b1f8": {
-      "src/_ZN16BowserShockwaves16CleanupResourcesEv.cpp": [
-        "return:char"
-      ],
       "src/__sinit_ov060_0211a428.c": [
         "return:void *"
       ]
     },
     "data_ov060_0211b200": {
-      "src/_ZN16BowserShockwaves16CleanupResourcesEv.cpp": [
-        "return:char"
-      ],
       "src/__sinit_ov060_0211a428.c": [
         "return:void *"
       ]
     },
     "data_ov060_0211b208": {
-      "src/_ZN16BowserShockwaves16CleanupResourcesEv.cpp": [
-        "return:char"
-      ],
       "src/_ZN6Bowser16CleanupResourcesEv.cpp": [
         "return:char"
       ],
@@ -33202,9 +33147,6 @@
       ]
     },
     "func_02016b24": {
-      "src/_ZN16BowserShockwaves13InitResourcesEv.cpp": [
-        "param:#2 int"
-      ],
       "src/_ZN5Model9DoSetFileEPcii.cpp": [
         "param:#1 Model *",
         "param:#2 int"
@@ -36363,9 +36305,6 @@
       ]
     },
     "func_020393d4": {
-      "src/_ZN10LavaSeesaw13InitResourcesEv.cpp": [
-        "param:#2 void *"
-      ],
       "src/_ZN10PyramidTop13InitResourcesEv.cpp": [
         "param:#2 void *"
       ],
