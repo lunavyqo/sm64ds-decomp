@@ -297,8 +297,8 @@ extern "C" void func_ov064_0211987c(void *c)
 // @symbol _ZN18daWater_Hakidasi_c16CleanupResourcesEv
 s32 daWater_Hakidasi_c::CleanupResources()
 {
-    ((SharedFilePtr *)(&data_ov002_0210da10))->Release();
-    ((SharedFilePtr *)(&data_ov002_0210d9a8))->Release();
+    data_ov002_0210da10.Release();
+    data_ov002_0210d9a8.Release();
     return 1;
 }
 
