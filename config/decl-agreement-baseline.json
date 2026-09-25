@@ -30472,6 +30472,9 @@
       ],
       "src/_ZN10BulletBill16CleanupResourcesEv.cpp": [
         "return:SharedFilePtr"
+      ],
+      "src/__sinit_ov079_02127a10.c": [
+        "return:int []"
       ]
     },
     "data_ov079_02128300": {
@@ -30480,6 +30483,9 @@
       ],
       "src/_ZN10BulletBill16CleanupResourcesEv.cpp": [
         "return:SharedFilePtr"
+      ],
+      "src/__sinit_ov079_02127a10.c": [
+        "return:int []"
       ]
     },
     "data_ov080_021283c0": {
