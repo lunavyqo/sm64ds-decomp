@@ -77,6 +77,9 @@ extern unsigned char data_0209f220;
 
 #define M(p) (p)
 
+/* D0 is the deleting destructor: it destroys through this class and its
+ * bases, which is why more than one vptr store appears, then frees through an
+ * inline operator delete, which is why nothing here mentions a heap. */
 // @symbol _ZN18daWater_Hakidasi_cD1Ev
 // @symbol _ZN18daWater_Hakidasi_cD0Ev
 daWater_Hakidasi_c::~daWater_Hakidasi_c()
@@ -288,6 +291,9 @@ extern "C" void func_ov064_0211987c(void *c)
 {
 }
 
+/* Gives back the two shared files the jet renders from. Both live in ov002,
+ * not in this overlay: the class borrows models the always-resident module
+ * owns, so the handles are released rather than freed. */
 // @symbol _ZN18daWater_Hakidasi_c16CleanupResourcesEv
 s32 daWater_Hakidasi_c::CleanupResources()
 {
@@ -296,17 +302,23 @@ s32 daWater_Hakidasi_c::CleanupResources()
     return 1;
 }
 
+/* Empty: the ROM body is a single `bx lr`. The override exists to suppress
+ * whatever the base does on pending destroy. */
 // @symbol _ZN18daWater_Hakidasi_c16OnPendingDestroyEv
 void daWater_Hakidasi_c::OnPendingDestroy()
 {
 }
 
+/* `mov r0,#1; bx lr` and nothing else: the class draws nothing of its own
+ * from the render slot. */
 // @symbol _ZN18daWater_Hakidasi_c6RenderEv
 s32 daWater_Hakidasi_c::Render()
 {
     return 1;
 }
 
+/* The state pointer at 0x300 is daWater_Hakidasi_c::State (see the header),
+ * the same shape and treatment as Bullet::Behavior. */
 // @symbol _ZN18daWater_Hakidasi_c8BehaviorEv
 s32 daWater_Hakidasi_c::Behavior()
 {
