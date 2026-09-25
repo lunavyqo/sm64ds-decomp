@@ -1,9 +1,22 @@
 //cpp
 /* daObjEwbIce_c, ov073. Sixteen functions, .text 0x02121f90..0x02122730.
  *
- * `#pragma defer_codegen off` is load-bearing. The out-of-line destructor
- * then emits D1, D0, and a D2 the cartridge does not keep, and every other
- * function follows source order. This file is ROM-ascending. One destructor.
+ * NAME: _ZTS13daObjEwbIce_c is the cartridge string "13daObjEwbIce_c" at
+ * 0x02123158. _ZTI13daObjEwbIce_c at 0x0212314c reads [__si_class_type_info,
+ * 0x02123158, _ZTI10dBgActor_c], so the single base is dBgActor_c, and the
+ * word before _ZTV13daObjEwbIce_c (0x021231e8), at 0x021231e4, is that _ZTI.
+ * The class was coined CccArena before the ROM name was read (factory
+ * aliases CccArena_Spawn, CccBigIce_Spawn and CccSmallIce_Spawn for the
+ * EWB_ICE_A/B/C profiles, all one class).
+ *
+ * `#pragma defer_codegen off` is load-bearing. The out-of-line destructor is
+ * the key function, so this TU emits _ZTV/_ZTI/_ZTS. It comes out D1
+ * (0x02121f90), D0 (0x02121fd4), then a D2 the cartridge does not keep
+ * (manifest: deadstrip), and every other function follows source order.
+ * This file is ROM-ascending. One destructor.
+ *
+ * func_ov073_02122730 and func_ov073_021227d0 sit between InitResources and
+ * the three factories and stay one-function sources.
  *
  * The class header comes first so mModel.mat4x3.t sees the structured
  * Matrix4x3. Including dBgActor_c.h ahead of it would lock in common.h's
@@ -67,6 +80,11 @@ extern int _ZN4dBgW22UpdatePosWithTransformERS_P8dActor_cR5dBgPiR7Vector3P10Vect
 
 // @symbol _ZN13daObjEwbIce_cD1Ev
 // @symbol _ZN13daObjEwbIce_cD0Ev
+/* D1: own vptr, then dBgActor_c's -- inlined, because dBgActor_c's
+ * destructor is defined in its class body -- then dBgActor_c's own dBgW_Kc
+ * and Model, then dActor_c. This class adds no member with a destructor of
+ * its own (see include/daObjEwbIce_c.h). D0 adds the inline operator delete
+ * inherited from dActor_c. */
 daObjEwbIce_c::~daObjEwbIce_c()
 {
 }
@@ -216,6 +234,9 @@ extern "C" int func_ov073_021223a4(C *c, PMF *p)
 }
 
 // @symbol _ZN13daObjEwbIce_c4KillEv
+/* Slot 31, attributed by the vtable: _ZTV13daObjEwbIce_c + 4*31 =
+ * 0x021231e8 + 0x7c = 0x02123264; ov073 relocs.txt: 0x02123264 -> 0x021223f4.
+ * Not the key function. */
 void daObjEwbIce_c::Kill()
 {
     char *c = (char *)this;
