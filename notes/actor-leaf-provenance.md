@@ -173,18 +173,21 @@ one up, and its parameter list is half the evidence here.
 | 0x14c | `mDelay` | the `delay` argument of `SpawnNumber`: while nonzero `Behavior` returns immediately and `Render` decrements it and draws nothing. |
 | 0x14e | `mState` | the bounce. 0: rising, and the first frame back below `mStartPosY` snaps to that floor, sets `mVertSpeed` 0xf000 and advances to 1. 1: the next fall below the floor emits particle 0xd2 and marks the popup for destruction. |
 
-## CrazedCrate, MontyMole, BowserShockwaves -- nothing named
+## daBttBk_c (was CrazedCrate), MontyMole -- nothing named
 
 Listed so the next reader does not repeat the search.
 
-- `CrazedCrate` 0x374: zeroed in `src/_ZN11CrazedCrate13InitResourcesEv.cpp`, never read.
+- `daBttBk_c` (formerly `CrazedCrate`) 0x374: zeroed in `InitResources`. Once its
+  state-machine helpers were promoted into `src/actors/daBttBk_c.cpp` it turned out
+  to be read: `func_ov080_02124acc` stores the carrier actor there and
+  `func_ov080_02124c3c`/`func_ov080_02124edc` read it.
 - `MontyMole` 0x17c/0x180..0x184/0x188 and the 16 bytes from 0x16c: all written
   in `src/_ZN9MontyMole13InitResourcesEv.cpp` -- 0x180 is `param1 & 0xf`, 0x182
   is `(param1 >> 4) & 0xf`, 0x181 is 1 when 0x180 is 0 and `(param1 >> 8) & 1`
   otherwise -- and none of them is read by any enrolled body. Which nibble means
   what is a guess until the class's other functions are enrolled.
-- `BowserShockwaves` 0x214: zeroed in
-  `src/_ZN16BowserShockwaves13InitResourcesEv.cpp`, never read.
+- `daFRing_c` 0x214: zeroed in
+  `src/actors/daFRing_c.cpp` InitResources, and Behavior reads it as the shock frame.
 
 ## Three shapes that repeat across these leaves
 
