@@ -4538,8 +4538,8 @@
       "diffs": []
     },
     {
-      "file": "src/_ZN12daHanachan_c13InitResourcesEv.cpp",
-      "name": "_ZN12daHanachan_c13InitResourcesEv",
+      "file": "src/_ZN7Wiggler13InitResourcesEv.cpp",
+      "name": "_ZN7Wiggler13InitResourcesEv",
       "module": "ov034",
       "addr": "0x211323c",
       "verdict": "VERIFIED",
@@ -20083,7 +20083,7 @@
           "src/_ZN6Player6BounceE5Fix12IiE.cpp",
           "src/_ZN7Message17DisplayVsExitTextEt.cpp",
           "src/_ZN7Message22DisplayOptionsMenuTextEt.cpp",
-          "src/_ZN12daHanachan_c13InitResourcesEv.cpp",
+          "src/_ZN7Wiggler13InitResourcesEv.cpp",
           "src/_ZN7dWipe_cD0Ev.cpp",
           "src/_ZN8CccArena8BehaviorEv.cpp",
           "src/_ZN8IceBlock8BehaviorEv.cpp",
@@ -20202,7 +20202,7 @@
           "src/_ZN6Player6BounceE5Fix12IiE.cpp",
           "src/_ZN7Message17DisplayVsExitTextEt.cpp",
           "src/_ZN7Message22DisplayOptionsMenuTextEt.cpp",
-          "src/_ZN12daHanachan_c13InitResourcesEv.cpp",
+          "src/_ZN7Wiggler13InitResourcesEv.cpp",
           "src/_ZN7dWipe_cD0Ev.cpp",
           "src/_ZN8CccArena8BehaviorEv.cpp",
           "src/_ZN8IceBlock8BehaviorEv.cpp",
@@ -21893,7 +21893,7 @@
         "src/_ZN7SkiLift16CleanupResourcesEv.cpp",
         "src/_ZN7Tornado13InitResourcesEv.cpp",
         "src/_ZN7Tornado8BehaviorEv.cpp",
-        "src/_ZN12daHanachan_c13InitResourcesEv.cpp",
+        "src/_ZN7Wiggler13InitResourcesEv.cpp",
         "src/_ZN7dScMB_c13InitResourcesEv.cpp",
         "src/_ZN7dScMB_c8BehaviorEv.cpp",
         "src/_ZN7dWipe_c11AdvanceFadeEv.cpp",
@@ -23487,8 +23487,8 @@
           "name": "_ZN7Tornado8BehaviorEv"
         },
         {
-          "file": "src/_ZN12daHanachan_c13InitResourcesEv.cpp",
-          "name": "_ZN12daHanachan_c13InitResourcesEv"
+          "file": "src/_ZN7Wiggler13InitResourcesEv.cpp",
+          "name": "_ZN7Wiggler13InitResourcesEv"
         },
         {
           "file": "src/_ZN7dScMB_c13InitResourcesEv.cpp",

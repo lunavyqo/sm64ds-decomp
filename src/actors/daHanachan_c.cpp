@@ -1,17 +1,20 @@
 //cpp
-/* daHanachan_c -- ov034, .text 0x021111a0..0x021136a4, 34 functions.
+/* Production translation unit for ov034/daHanachan_c, the Wiggler.
+ * 34 function(s), .text 0x021111a0..0x021136a4.
  *
- * Cartridge type name 12daHanachan_c. _ZTI12daHanachan_c is at 0x0211445c,
- * _ZTS12daHanachan_c at 0x02114478, _ZTV12daHanachan_c at 0x021144bc.
- * The word at 0x021144b8 is the typeinfo.
+ * NAME: _ZTS12daHanachan_c is "12daHanachan_c" at ov034 0x02114478; _ZTI at
+ * 0x0211445c reads [__si_class_type_info, that string, _ZTI12dEnemyBase_c].
+ * The vtable's address point is 0x021144bc; the word before it (0x021144b8)
+ * is that _ZTI. The tree previously called the class Wiggler (coined).
  *
  * Six methods and the 28 func_ov034 helpers between them. The run is
  * gap-free and this is the only class in it. daHanachan_c_classInit at
  * 0x021136a4 is the next function and is not part of this translation unit.
  *
  * #pragma defer_codegen off emits .text in source order, so the file is
- * ROM-ascending. One out-of-line destructor is the key function: it emits
- * D1 (0x021111a0), D0 (0x021112b0), and a D2 the cartridge has no home for.
+ * ROM-ascending. One out-of-line destructor is the key function, so this TU
+ * emits _ZTV/_ZTI/_ZTS: D1 (0x021111a0), D0 (0x021112b0), then a D2 the
+ * cartridge has no home for (manifest: deadstrip).
  */
 
 #pragma defer_codegen off
@@ -126,6 +129,10 @@ extern void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void *se
  * Vector3s array of per-segment values, and two sets of collision cylinders.
  *
  * The Vector3s array at 0x444 is what named func_02011508.
+ *
+ * D0 is the deleting destructor: it destroys through this class and its
+ * bases, which is why more than one vptr store appears, then frees through
+ * an inline operator delete, which is why nothing here mentions a heap.
  */
 daHanachan_c::~daHanachan_c()
 {

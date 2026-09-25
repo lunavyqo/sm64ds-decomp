@@ -173,7 +173,7 @@ lost four times over. `cpp/minigame-tu-4`, wave 24 and wave 38 turn between 16 a
 declaration form decides which destructor variants mwccarm emits, and each was taken
 against a measured D1/D0 address justification. Wave 25 re-declares the cap
 destructor out of line, and wave 29 does the same to `daDgr_c` while also dropping
-`main`'s richer daHanachan_c field decode.
+`main`'s richer Wiggler field decode.
 
 **Corrected prose, and one corrected declaration.** `cpp/Eyerok-tu-build` would
 restore a `0x4b0 -> 0x4ac` size claim that `main` re-measured and explicitly

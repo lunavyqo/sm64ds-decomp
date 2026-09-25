@@ -3,7 +3,7 @@
 
 #include "types.h"
 
-/* The daHanachan_c. Five body segments, so five of everything -- and EIGHT arrays,
+/* The Wiggler (daHanachan_c). Five body segments, so five of everything -- and EIGHT arrays,
  * which close on eight consecutive boundaries:
  *
  *     dEnemyBase_c                        ends 0x110
