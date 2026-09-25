@@ -5,7 +5,6 @@ extern int _ZTV16daObjFl_Seesaw_c[];
 /* Reconstructed source-style name: SM64DS proves daObjFl_Seesaw_c through RTTI,
  * allocation size, vtable identity, and the FL_SEESAW registry profile; later
  * EAD lineage supplies classInit. Exact original spelling is not preserved.
- * The project's daObjFl_Seesaw_c implementation aliases remain unchanged.
  * Historical alias: LavaSeesaw_Spawn. */
 int *daObjFl_Seesaw_c_classInit(void)
 {

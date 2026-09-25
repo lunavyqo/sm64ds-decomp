@@ -6728,18 +6728,18 @@
    "start": "0x2111cac",
    "end": "0x2111f6c",
    "classes": [
-    "daObjFl_Seesaw_c"
+    "LavaSeesaw"
    ],
    "n_functions_map": 8,
    "n_files": 8,
    "files": [
-    "src/_ZN16daObjFl_Seesaw_cD1Ev.cpp",
-    "src/_ZN16daObjFl_Seesaw_cD0Ev.c",
+    "src/_ZN10LavaSeesawD1Ev.cpp",
+    "src/_ZN10LavaSeesawD0Ev.c",
     "src/func_ov022_02111d48.c",
-    "src/_ZN16daObjFl_Seesaw_c16CleanupResourcesEv.cpp",
-    "src/_ZN16daObjFl_Seesaw_c6RenderEv.cpp",
-    "src/_ZN16daObjFl_Seesaw_c8BehaviorEv.cpp",
-    "src/_ZN16daObjFl_Seesaw_c13InitResourcesEv.cpp",
+    "src/_ZN10LavaSeesaw16CleanupResourcesEv.cpp",
+    "src/_ZN10LavaSeesaw6RenderEv.cpp",
+    "src/_ZN10LavaSeesaw8BehaviorEv.cpp",
+    "src/_ZN10LavaSeesaw13InitResourcesEv.cpp",
     "src/d_a_obj_fl_seesaw.c"
    ],
    "ext_mix": {

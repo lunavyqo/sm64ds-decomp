@@ -1,13 +1,20 @@
 //cpp
-/**
- * Lethal Lava Land seesaw. ov022/daObjFl_Seesaw_c, 7 functions,
- * .text 0x02111cac..0x02111f3c.
+/* Production translation unit for ov022/daObjFl_Seesaw_c.
+ * 7 function(s), .text 0x02111cac..0x02111f3c. The Lethal Lava Land seesaw
+ * (registry profile FL_SEESAW).
  *
- * daObjFl_Seesaw_c_classInit at 0x02111f3c is the next function and stays
- * in its own file.
+ * NAME: _ZTS16daObjFl_Seesaw_c is "16daObjFl_Seesaw_c" at ov022 0x02113ffc;
+ * _ZTI at 0x02113ff0 reads [__si_class_type_info, that string,
+ * _ZTI10dBgActor_c]. The vtable's address point is 0x02114034; the word
+ * before it is that _ZTI. The tree previously called the class LavaSeesaw
+ * (coined).
  *
- * #pragma defer_codegen off emits .text in source order, which is ROM order.
- * One out-of-line destructor supplies D1 and D0.
+ * The out-of-line destructor is the key function, so this TU emits _ZTV/_ZTI/
+ * _ZTS. Under `#pragma defer_codegen off` it comes out D1 (0x02111cac), D0
+ * (0x02111cf0), then a D2 the cartridge has no home for (manifest: deadstrip);
+ * the same pragma lays .text down in source order, so this file is
+ * ROM-ascending. The factory daObjFl_Seesaw_c_classInit (0x02111f3c) is the
+ * next function and stays in its own source, src/d_a_obj_fl_seesaw.c.
  */
 
 #include "math/Matrix.h"
@@ -32,6 +39,11 @@ extern CLPS_Block data_ov064_0211bacc;
 
 #pragma defer_codegen off
 
+/* Vtable slots 16 (D1) and 17 (D0). D1 is one vtable store, the members in
+ * reverse, then ~dBgActor_c. D0 is the deleting destructor: it destroys
+ * through this class and its bases, which is why more than one vptr store
+ * appears, then frees through an inline operator delete, which is why
+ * nothing here mentions a heap. */
 // @symbol _ZN16daObjFl_Seesaw_cD1Ev
 // @symbol _ZN16daObjFl_Seesaw_cD0Ev
 daObjFl_Seesaw_c::~daObjFl_Seesaw_c()
@@ -66,6 +78,10 @@ s32 daObjFl_Seesaw_c::Render()
     return 1;
 }
 
+/* Slot 6. mSwingStep/mSwingCooldown are this class's own fields
+ * (daObjFl_Seesaw_c.h). dBgActor_c::IsClsnInRange stays extern "C" under its
+ * ROM symbol: it takes Fix12<int> by value, which the bytes refuse as a real
+ * parameter (dBgActor_c.h's own note). */
 // @symbol _ZN16daObjFl_Seesaw_c8BehaviorEv
 s32 daObjFl_Seesaw_c::Behavior()
 {
@@ -84,6 +100,10 @@ s32 daObjFl_Seesaw_c::Behavior()
     return 1;
 }
 
+/* Slot 0. ModelBase::SetFile and UpdateClsnPosAndRot are real method calls.
+ * dBgW_KcMbg::SetFile stays extern "C" under its exact ROM symbol: it takes
+ * Fix12<int> BY VALUE, which the bytes refuse as a real parameter
+ * (mwccarm-codegen.md 6az). */
 // @symbol _ZN16daObjFl_Seesaw_c13InitResourcesEv
 s32 daObjFl_Seesaw_c::InitResources()
 {
