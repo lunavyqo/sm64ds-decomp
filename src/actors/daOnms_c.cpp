@@ -2,15 +2,19 @@
 /* daOnms_c -- the rolling crush box. ov092 0x02130f00..0x02132018,
  * twenty-two functions.
  *
- * The cartridge spells the class 8daOnms_c at 0x02132288. _ZTI8daOnms_c
- * at 0x021322a0 is the __si_class_type_info record (base dBgActor_c), and
- * _ZTV8daOnms_c at 0x021322d0 is the vtable. daOnms_c_classInit at
- * 0x02132018 abuts this run and stays in src/d_a_onms.cpp.
+ * The cartridge spells the class 8daOnms_c: _ZTS8daOnms_c at 0x02132288.
+ * _ZTI8daOnms_c at 0x021322a0 reads [__si_class_type_info, 0x02132288,
+ * _ZTI10dBgActor_c], so the single base is dBgActor_c, and the word before
+ * _ZTV8daOnms_c (0x021322d0) is that _ZTI. The class was coined ToxBox
+ * before the ROM name was read (factory alias ToxBox_Spawn).
+ * daOnms_c_classInit at 0x02132018 abuts this run and stays in
+ * src/d_a_onms.cpp.
  *
  * #pragma defer_codegen off emits .text in source order, so this file is
  * ROM-ascending. One out-of-line destructor is the key function: it emits
- * D1 (0x02130f00) then D0 (0x02130f5c) and anchors _ZTV8daOnms_c. ov092
- * has no D2 for this class. The factory is not instantiated here.
+ * D1 (0x02130f00) then D0 (0x02130f5c) and anchors _ZTV8daOnms_c. The D2
+ * it also emits has no home in ov092 (manifest: deadstrip). The factory is
+ * not instantiated here.
  *
  * daOnms_c.h is included first so common.h's flat Matrix4x3 stands.
  * These bodies copy that matrix as twelve words and do not use .t.
@@ -90,7 +94,9 @@ void func_ov092_021319b0(char *c);
 // @symbol _ZN8daOnms_cD1Ev
 // @symbol _ZN8daOnms_cD0Ev
 /* recovered: native complete destructor -- the compiler emits the typed
- * dCcAcPos_c/dBgCh_Actr teardown and the inline dBgActor_c base teardown. */
+ * dCcAcPos_c/dBgCh_Actr teardown and the inline dBgActor_c base teardown.
+ * D0, the deleting destructor, is the same typed teardown followed by the
+ * inherited actor-heap deallocation. */
 daOnms_c::~daOnms_c()
 {
 }
