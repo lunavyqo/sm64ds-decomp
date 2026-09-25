@@ -6,8 +6,9 @@
  * The rolling crush box. mParam's low two bits pick how it moves: 0..2 index
  * data_ov092_02132294 for a canned direction sequence, 3 makes it follow the
  * path whose id is in mParam bits 8..11. That choice is mMoveKind, and it is
- * what src/func_ov092_021314d0.c and src/func_ov092_021313b0.cpp branch on to
- * choose the next mMoveDir.
+ * what func_ov092_021314d0 and func_ov092_021313b0 branch on to
+ * choose the next mMoveDir. Every function this header cites is in
+ * src/actors/daOnms_c.cpp.
  *
  * 0x008, 0x05c..0x064 and 0x08c..0x090 ARE fBase_c's and dActor_c's OWN
  * LAYOUT, not this class's, and were already named from include/dActor_c.h by
@@ -98,9 +99,9 @@ struct daOnms_c {
        tools/dtor_members.py. D1 and not D2, so it is this type and not an inlined base. */
     dBgW_KcMbg mMeshCollider;            /* 0x124 */
     u8  pad_2ec[0x34];
-    /* The player who set this box moving. src/func_ov092_021319b0.cpp resolves
+    /* The player who set this box moving. func_ov092_021319b0 resolves
        it from the collision's own id at 0x50c, keeps it only if its actorID is
-       0xbf, and src/func_ov092_021311b0.cpp uses its position as the epicentre
+       0xbf, and func_ov092_021311b0 uses its position as the epicentre
        of the landing earthquake before clearing this back to 0. A dActor_c*,
        stored through an int. */
     s32 mPlayerActor;            /* 0x320 */
@@ -114,7 +115,7 @@ struct daOnms_c {
        tools/dtor_members.py. D1 and not D2, so it is this type and not an inlined base. */
     dCcAcPos_c mdCcAcPos_c;            /* 0x4e8 */
     /* 0x528..0x557 is ONE Matrix4x3, written whole: InitResources copies
-       mModel's own matrix at 0xf0 into it, and src/func_ov092_02131aec.cpp
+       mModel's own matrix at 0xf0 into it, and func_ov092_02131aec
        copies it back out again -- so it is the box's untumbled base transform,
        kept while the render matrix is rebuilt each frame. Four separate
        members rather than a typed one because that is the spelling the bytes
@@ -123,27 +124,27 @@ struct daOnms_c {
     u8  pad_529[0x2f];
     s32 mRestPosX;               /* 0x558 -- where the box rests. InitResources
                                      copies mPos here after lifting mPosY by
-                                     0xfa000; src/func_ov092_021311b0.cpp
+                                     0xfa000; func_ov092_021311b0
                                      refreshes mRestPosY from mPosY every time
                                      the box lands. */
     s32 mRestPosY;               /* 0x55c */
     s32 mRestPosZ;               /* 0x560 */
     u8  pad_564[0x4];
     s32 mMoveDir;                /* 0x568 -- which way the box rolls next.
-                                     src/func_ov092_021314d0.c reads it out of
+                                     func_ov092_021314d0 reads it out of
                                      mMoveSeq for a canned pattern;
-                                     src/func_ov092_021313b0.cpp derives it
+                                     func_ov092_021313b0 derives it
                                      from the horizontal angle to the next path
                                      node (2/3/4/5 for the four quadrants, 1
                                      when the node did not move); and
-                                     src/func_ov092_021311b0.cpp overrides it
+                                     func_ov092_021311b0 overrides it
                                      with 7 or 8 for the two special floor
                                      types it lands on. */
     s32 mMoveSeq;                /* 0x56c -- pointer to this box's canned
                                      direction sequence,
                                      ((int **)&data_ov092_02132294)[mMoveKind].
                                      A 0 entry ends the sequence and
-                                     src/func_ov092_021314d0.c wraps back to
+                                     func_ov092_021314d0 wraps back to
                                      the first. */
     s32 mMoveSeqIndex;           /* 0x570 -- how far into mMoveSeq the box is */
     u8  mMoveKind;               /* 0x574 -- mParam & 3. 0..2 pick a canned
@@ -153,18 +154,18 @@ struct daOnms_c {
                                      rotation angles (X >> 0xe, Y >> 0xc,
                                      Z >> 0xa). InitResources builds it from
                                      the spawn rotation and
-                                     src/func_ov092_021314d0.c rebuilds it
+                                     func_ov092_021314d0 rebuilds it
                                      after every roll;
-                                     src/func_ov092_021316d8.c and
-                                     src/func_ov092_02131878.c read it back to
+                                     func_ov092_021316d8 and
+                                     func_ov092_02131878 read it back to
                                      tell which face is down. */
     u8  pad_576[0x2];
     s32 mPathNodeCount;          /* 0x578 -- PathPtr::NumNodes for mPathPtr */
     s32 mPathNodeIndex;          /* 0x57c -- the node the box is heading for;
-                                     src/func_ov092_021313b0.cpp advances it
+                                     func_ov092_021313b0 advances it
                                      and wraps at mPathNodeCount */
     /* The Vector3 PathPtr::GetNode fills in for mPathNodeIndex.
-       src/func_ov092_021313b0.cpp keeps the previous one on the stack and
+       func_ov092_021313b0 keeps the previous one on the stack and
        takes the horizontal angle between the two to pick mMoveDir. */
     s32 mPathNodeX;              /* 0x580 */
     s32 mPathNodeY;              /* 0x584 */
