@@ -660,16 +660,10 @@
       ]
     },
     "Crate_SetState": {
-      "src/_ZN5Crate13InitResourcesEv.cpp": [
+      "src/actors/daObjBlockS_c.cpp": [
         "param:#1 char *"
       ],
-      "src/_ZN5Crate13OnTurnIntoEggER6Player.cpp": [
-        "param:#1 char *"
-      ],
-      "src/_ZN5Crate4KillEv.cpp": [
-        "param:#1 char *"
-      ],
-      "src/_ZN5Crate8BehaviorEv.cpp": [
+      "src/_ZN13daObjBlockS_c4KillEv.cpp": [
         "param:#1 char *"
       ],
       "src/func_ov098_0213814c.cpp": [
@@ -6879,7 +6873,7 @@
         "param:#2 void *",
         "param:#5 void *"
       ],
-      "src/_ZN5Crate13InitResourcesEv.cpp": [
+      "src/actors/daObjBlockS_c.cpp": [
         "param:#1 char *",
         "param:#2 char *",
         "param:#5 void *"
@@ -7199,7 +7193,7 @@
         "param:#3 const Matrix4x3 &",
         "param:#6 CLPS_Block &"
       ],
-      "src/_ZN5Crate13InitResourcesEv.cpp": [
+      "src/actors/daObjBlockS_c.cpp": [
         "param:#2 int",
         "param:#3 char *",
         "param:#6 int"
@@ -7576,10 +7570,10 @@
       "src/_ZN11CrazedCrate13InitResourcesEv.cpp": [
         "return:void"
       ],
-      "src/_ZN17daObjBk_Botaosi_c13InitResourcesEv.cpp": [
+      "src/actors/daObjBlockS_c.cpp": [
         "return:void"
       ],
-      "src/_ZN5Crate13InitResourcesEv.cpp": [
+      "src/_ZN17daObjBk_Botaosi_c13InitResourcesEv.cpp": [
         "return:void"
       ],
       "src/actors/daObjCtRotateBlock_c.cpp": [
@@ -11199,7 +11193,7 @@
       "src/_ZN4Door13InitResourcesEv.c": [
         "param:#1 void *"
       ],
-      "src/_ZN5Crate13InitResourcesEv.cpp": [
+      "src/actors/daObjBlockS_c.cpp": [
         "param:#1 char *",
         "return:int"
       ],
@@ -12337,7 +12331,7 @@
       "src/_ZN4Coin8BehaviorEv.cpp": [
         "param:#2 char *"
       ],
-      "src/_ZN5Crate4KillEv.cpp": [
+      "src/_ZN13daObjBlockS_c4KillEv.cpp": [
         "param:#2 const Vector3 *"
       ],
       "src/actors/daObjSwdoor_c.cpp": [
@@ -14067,7 +14061,7 @@
       ]
     },
     "_ZN6Player9DropActorEv": {
-      "src/_ZN5Crate8BehaviorEv.cpp": [
+      "src/actors/daObjBlockS_c.cpp": [
         "return:void"
       ],
       "src/_ZN6Player15St_Grabbed_MainEv.cpp": [
@@ -14428,7 +14422,7 @@
         "param:#1 void *",
         "return:void *"
       ],
-      "src/_ZN5Crate13InitResourcesEv.cpp": [
+      "src/actors/daObjBlockS_c.cpp": [
         "param:#1 char *",
         "return:int"
       ],
@@ -14629,7 +14623,7 @@
         "param:#6 const void *",
         "return:void *"
       ],
-      "src/_ZN5Crate8BehaviorEv.cpp": [
+      "src/actors/daObjBlockS_c.cpp": [
         "param:#6 const void *",
         "return:void *"
       ],
@@ -14990,7 +14984,7 @@
       "src/_ZN4Coin16CleanupResourcesEv.cpp": [
         "return:void"
       ],
-      "src/_ZN5Crate4KillEv.cpp": [
+      "src/_ZN13daObjBlockS_c4KillEv.cpp": [
         "return:void"
       ],
       "src/_ZN5Whomp15OnHitByMegaCharER6Player.cpp": [
@@ -18248,7 +18242,7 @@
       "src/_ZN4Door13InitResourcesEv.c": [
         "return:void"
       ],
-      "src/_ZN5Crate13InitResourcesEv.cpp": [
+      "src/actors/daObjBlockS_c.cpp": [
         "param:#2 int",
         "return:void"
       ],
@@ -20401,7 +20395,7 @@
       "src/RunKuppaScript.c": [
         "return:unsigned int"
       ],
-      "src/_ZN5Crate8BehaviorEv.cpp": [
+      "src/actors/daObjBlockS_c.cpp": [
         "return:unsigned int"
       ],
       "src/_ZN5Stage7VE_InitEv.cpp": [
@@ -31290,7 +31284,7 @@
       ]
     },
     "data_ov098_0213c4c8": {
-      "src/_ZN5Crate16CleanupResourcesEv.cpp": [
+      "src/actors/daObjBlockS_c.cpp": [
         "return:int []"
       ]
     },
