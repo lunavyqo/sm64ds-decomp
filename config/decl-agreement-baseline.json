@@ -27965,6 +27965,11 @@
         "return:Vector3 []"
       ]
     },
+    "data_ov021_02114a50": {
+      "src/__sinit_ov021_02113688.c": [
+        "return:int []"
+      ]
+    },
     "data_ov022_02113da4": {
       "src/_ZN19RotatingPlatformLll16CleanupResourcesEv.cpp": [
         "return:int []"
