@@ -16279,9 +16279,6 @@
         "param:#7 unsigned int",
         "return:int"
       ],
-      "src/func_ov065_0211bc88.cpp": [
-        "param:#7 unsigned int"
-      ],
       "src/func_ov079_02124188.c": [
         "param:#7 unsigned int"
       ],
@@ -16303,6 +16300,9 @@
         "param:#7 unsigned int"
       ],
       "src/game/actors/daObjCtMecha05_c.cpp": [
+        "param:#7 unsigned int"
+      ],
+      "src/actors/daObjCtMecha09_c.cpp": [
         "param:#7 unsigned int"
       ],
       "src/game/actors/daObjPathLift_c.cpp": [
@@ -21043,7 +21043,7 @@
       ]
     },
     "data_0209e650": {
-      "src/_ZN14TTC_MovingBeam8BehaviorEv.cpp": [
+      "src/actors/daObjCtMecha09_c.cpp": [
         "return:int []"
       ],
       "src/_ZN8dActor_c10SpawnCoinsERK7Vector3j5Fix12IiEs.cpp": [

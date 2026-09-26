@@ -1,5 +1,5 @@
-#ifndef TTC_MOVINGBEAM_H
-#define TTC_MOVINGBEAM_H
+#ifndef DAOBJCTMECHA09_C_H
+#define DAOBJCTMECHA09_C_H
 
 #include "types.h"
 #include "math/Matrix.h"
@@ -19,7 +19,7 @@
 #include "dBgActor_c.h"
 #include "ShadowModel.h"
 
-struct TTC_MovingBeam : dBgActor_c {
+struct daObjCtMecha09_c : dBgActor_c {
     u8  pad_31e[0x2];
     s32 mStartPosY;                      /* 0x320 */
     s32 mEndPosY;                      /* 0x324 */
@@ -29,11 +29,11 @@ struct TTC_MovingBeam : dBgActor_c {
     ShadowModel mShadowModel;         /* 0x334 */
 
     /* --- vtable --- */
-    virtual ~TTC_MovingBeam();
+    virtual ~daObjCtMecha09_c();
 
     /* An override the cartridge proves and this header never declared.
-       _ZTV14TTC_MovingBeam slot 6 pointed at fBase_c::Behavior; the ROM has
-       ov065:_ZN14TTC_MovingBeam8BehaviorEv (0x0211bd8c, 0x178 bytes), named in
+       _ZTV16daObjCtMecha09_c slot 6 pointed at fBase_c::Behavior; the ROM has
+       ov065:_ZN16daObjCtMecha09_c8BehaviorEv (0x0211bd8c, 0x178 bytes), named in
        symbols.txt but not yet decompiled -- the slot needs the symbol, not a body.
        No `virtual` keyword, matching the overrides beside it: a derived declaration
        of a base virtual overrides whether or not it repeats the word.
@@ -52,7 +52,7 @@ struct TTC_MovingBeam : dBgActor_c {
 
 #ifndef SM64DS_PLATFORM_PC
 /* ROM layout under mwccarm; host ABI divergence is tracked separately. */
-typedef char TTC_MovingBeam_size_must_be_0x38c[sizeof(TTC_MovingBeam) == 0x38c ? 1 : -1];
+typedef char daObjCtMecha09_c_size_must_be_0x38c[sizeof(daObjCtMecha09_c) == 0x38c ? 1 : -1];
 #endif
 
 #else
@@ -60,7 +60,7 @@ typedef char TTC_MovingBeam_size_must_be_0x38c[sizeof(TTC_MovingBeam) == 0x38c ?
 /* The C spelling of the same object, flat. Kept because the D0 file is a C
    translation unit that reads these fields, and D0 is compiler-generated so it
    can never be migrated. Same arrangement as include/ShadowModel.h. */
-struct TTC_MovingBeam {
+struct daObjCtMecha09_c {
     u8  pad_000[0x8];
     s32 mParam;            /* 0x008 */
     u8  pad_00c[0x50];
@@ -79,7 +79,7 @@ struct TTC_MovingBeam {
     Model mModel;            /* 0x0d4 */
     /* dBgW_KcMbg member, named by the class's own destructor calling
        dBgW_KcMbg's D1 at +0x124 -- a relocation the ROM build
-       checks. Was a u8 marker. [_ZN14TTC_MovingBeamD1Ev.c] */
+       checks. Was a u8 marker. [_ZN16daObjCtMecha09_cD1Ev.c] */
     dBgW_KcMbg mMeshCollider;            /* 0x124 */
     u8  mClsnMat;            /* 0x2ec */
     u8  pad_2ed[0x33];
@@ -93,4 +93,4 @@ struct TTC_MovingBeam {
 
 #endif /* __cplusplus */
 
-#endif /* TTC_MOVINGBEAM_H */
+#endif /* DAOBJCTMECHA09_C_H */
