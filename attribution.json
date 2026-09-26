@@ -5455,6 +5455,19 @@
     "src/actors/dScMgPachinko2_c.cpp#_ZN16dScMgPachinko2_c6RenderEv": "andrewboudreau",
     "src/actors/dScMgPachinko2_c.cpp#_ZN16dScMgPachinko2_c8BehaviorEv": "andrewboudreau",
     "src/actors/dScMgPachinko2_c.cpp#_ZN16dScMgPachinko2_c13InitResourcesEv": "andrewboudreau",
-    "src/actors/dScMgPachinko2_c.cpp#dScMgPachinko2_c_classInit": "tangosdev"
+    "src/actors/dScMgPachinko2_c.cpp#dScMgPachinko2_c_classInit": "tangosdev",
+    "src/actors/daWater_Tatumaki_c.cpp#func_ov026_02111b24": "tangosdev",
+    "src/actors/daWater_Tatumaki_c.cpp#func_ov026_02111cb4": "tangosdev",
+    "src/actors/daWater_Tatumaki_c.cpp#func_ov026_02111d4c": "tangosdev",
+    "src/actors/daWater_Tatumaki_c.cpp#func_ov026_02111ed8": "tangosdev",
+    "src/actors/daWater_Tatumaki_c.cpp#func_ov026_02111ee0": "tangosdev",
+    "src/actors/daWater_Tatumaki_c.cpp#func_ov026_02111f30": "tangosdev",
+    "src/actors/daWater_Tatumaki_c.cpp#_ZN18daWater_Tatumaki_cD1Ev": "tangosdev",
+    "src/actors/daWater_Tatumaki_c.cpp#_ZN18daWater_Tatumaki_cD0Ev": "tangosdev",
+    "src/actors/daWater_Tatumaki_c.cpp#_ZN18daWater_Tatumaki_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daWater_Tatumaki_c.cpp#_ZN18daWater_Tatumaki_c16OnPendingDestroyEv": "tangosdev",
+    "src/actors/daWater_Tatumaki_c.cpp#_ZN18daWater_Tatumaki_c6RenderEv": "tangosdev",
+    "src/actors/daWater_Tatumaki_c.cpp#_ZN18daWater_Tatumaki_c8BehaviorEv": "tangosdev",
+    "src/actors/daWater_Tatumaki_c.cpp#_ZN18daWater_Tatumaki_c13InitResourcesEv": "tangosdev"
   }
 }
