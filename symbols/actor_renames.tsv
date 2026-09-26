@@ -2363,12 +2363,12 @@ ov078	0x021265fc	KingBobOmb_Spawn	daBombking_c_classInit	reconstructed classInit
 ov078	0x02126e28	data_ov078_02126e28	KingBobOmb_SpawnInfo	spawninfo
 ov078	0x02126e28	KingBobOmb_SpawnInfo	g_profile_BOMBKING	reconstructed profile global; literal ROM ID BOMBKING+registry role+later EAD lineage; exact SM64DS spelling not preserved
 ov078	0x02126e4c	data_ov078_02126e4c	_ZTV12daBombking_c	vtable alloc=? (was _ZTV10KingBobOmb)
-ov079	0x02123740	func_ov079_02123740	_ZN5WhompD1Ev	vtable slot 16
-ov079	0x02123798	func_ov079_02123798	_ZN5WhompD0Ev	vtable slot 17
-ov079	0x02125eb0	func_ov079_02125eb0	_ZN5Whomp16CleanupResourcesEv	vtable slot 3
-ov079	0x02125f78	func_ov079_02125f78	_ZN5Whomp6RenderEv	vtable slot 9
-ov079	0x02125fcc	func_ov079_02125fcc	_ZN5Whomp8BehaviorEv	vtable slot 6
-ov079	0x02126164	func_ov079_02126164	_ZN5Whomp13InitResourcesEv	vtable slot 0
+ov079	0x02123740	func_ov079_02123740	_ZN7daBtn_cD1Ev	vtable slot 16
+ov079	0x02123798	func_ov079_02123798	_ZN7daBtn_cD0Ev	vtable slot 17
+ov079	0x02125eb0	func_ov079_02125eb0	_ZN7daBtn_c16CleanupResourcesEv	vtable slot 3
+ov079	0x02125f78	func_ov079_02125f78	_ZN7daBtn_c6RenderEv	vtable slot 9
+ov079	0x02125fcc	func_ov079_02125fcc	_ZN7daBtn_c8BehaviorEv	vtable slot 6
+ov079	0x02126164	func_ov079_02126164	_ZN7daBtn_c13InitResourcesEv	vtable slot 0
 ov079	0x02126588	func_ov079_02126588	WhompKing_Spawn	spawnfunc
 ov079	0x02126588	WhompKing_Spawn	daBtn_c_classInit_BATANKING	reconstructed classInit; ROM RTTI+factory shape+unique class factory+later EAD lineage; exact SM64DS spelling not preserved
 ov079	0x021265e8	func_ov079_021265e8	Whomp_Spawn	spawnfunc
@@ -2397,7 +2397,7 @@ ov079	0x02127c40	data_ov079_02127c40	WhompKing_SpawnInfo	spawninfo
 ov079	0x02127c40	WhompKing_SpawnInfo	g_profile_BATANKING	reconstructed profile global; literal ROM ID BATANKING+registry role+later EAD lineage; exact SM64DS spelling not preserved
 ov079	0x02127c5c	data_ov079_02127c5c	Whomp_SpawnInfo	spawninfo
 ov079	0x02127c5c	Whomp_SpawnInfo	g_profile_BATAN	reconstructed profile global; literal ROM ID BATAN+registry role+later EAD lineage; exact SM64DS spelling not preserved
-ov079	0x02127c80	data_ov079_02127c80	_ZTV5Whomp	vtable alloc=0x610
+ov079	0x02127c80	data_ov079_02127c80	_ZTV7daBtn_c	vtable alloc=0x610
 ov079	0x02127ec4	data_ov079_02127ec4	BulletBill_SpawnInfo	spawninfo
 ov079	0x02127ec4	BulletBill_SpawnInfo	g_profile_KILLER	reconstructed profile global; literal ROM ID KILLER+registry role+later EAD lineage; exact SM64DS spelling not preserved
 ov079	0x02127ee8	data_ov079_02127ee8	_ZTV7daKlr_c	vtable alloc=0x3e0
@@ -3749,3 +3749,20 @@ ov030	0x02111610	_ZN13RollingLogTtm16CleanupResourcesEv	_ZN15daObjHmMaruta_c16Cl
 ov030	0x02111624	_ZN13RollingLogTtm8BehaviorEv	_ZN15daObjHmMaruta_c8BehaviorEv	class renamed to the cartridge RTTI name; ov030 vtable storage 0x02115a40 has typeinfo word 0x021159f8, whose name word points at 0x02115a10 where the overlay reads 15daObjHmMaruta_c. Address unchanged. Ev encodes no parameter type.
 ov030	0x02111638	_ZN13RollingLogTtm13InitResourcesEv	_ZN15daObjHmMaruta_c13InitResourcesEv	class renamed to the cartridge RTTI name; ov030 vtable storage 0x02115a40 has typeinfo word 0x021159f8, whose name word points at 0x02115a10 where the overlay reads 15daObjHmMaruta_c. Address unchanged. Ev encodes no parameter type.
 ov030	0x02115a48	_ZTV13RollingLogTtm	_ZTV15daObjHmMaruta_c	coined vtable spelling retired for the cartridge RTTI name; 0x02115a48 is the address point, storage starts eight bytes lower at 0x02115a40 and its typeinfo word 0x021159f8 names 15daObjHmMaruta_c at 0x02115a10. Address unchanged.
+ov002	0x020ef3ec	func_ov002_020ef3ec	_ZN16dPathLiftActor_c9StateWaitEv	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name
+ov002	0x020ef3f0	func_ov002_020ef3f0	_ZN16dPathLiftActor_c13StateWaitInitEv	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name
+ov002	0x020ef408	func_ov002_020ef408	_ZN16dPathLiftActor_c9StateFallEv	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name
+ov002	0x020ef57c	func_ov002_020ef57c	_ZN16dPathLiftActor_c13StateFallInitEv	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name
+ov002	0x020ef670	func_ov002_020ef670	_ZN16dPathLiftActor_c9StatePathEv	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name
+ov002	0x020efa44	func_ov002_020efa44	_ZN16dPathLiftActor_c13StatePathInitEv	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name
+ov002	0x020efa54	func_ov002_020efa54	_ZN16dPathLiftActor_c8SetStateEi	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name; int parameter spelling inferred for word-sized argument, not proven by ARM bytes
+ov002	0x020efaf0	func_ov002_020efaf0	_ZN16dPathLiftActor_c17BaseInitResourcesEv	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name
+ov002	0x020efbdc	func_ov002_020efbdc	_ZN16dPathLiftActor_c9ResetPathEv	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name
+ov002	0x020efc74	func_ov002_020efc74	_ZN16dPathLiftActor_c16RenderPathModelsEv	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name
+ov002	0x020efcf4	func_ov002_020efcf4	_ZN16dPathLiftActor_c16UpdatePathModelsEv	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name
+ov002	0x020efe68	func_ov002_020efe68	_ZNK16dPathLiftActor_c16HasNonzeroAngleZEv	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name; const qualification inferred from read-only body, not established by ARM bytes
+ov002	0x020efe7c	func_ov002_020efe7c	_ZNK16dPathLiftActor_c14Param10ModeIs1Ev	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name; const qualification inferred from read-only body, not established by ARM bytes
+ov002	0x020efe9c	func_ov002_020efe9c	_ZNK16dPathLiftActor_c14Param12ModeIs1Ev	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name; const qualification inferred from read-only body, not established by ARM bytes
+ov002	0x020efebc	func_ov002_020efebc	_ZNK16dPathLiftActor_c14Param08ModeIs2Ev	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name; const qualification inferred from read-only body, not established by ARM bytes
+ov002	0x020efedc	func_ov002_020efedc	_ZNK16dPathLiftActor_c17Param08ModeIs1Or2Ev	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name; const qualification inferred from read-only body, not established by ARM bytes
+ov002	0x020eff04	func_ov002_020eff04	_ZNK16dPathLiftActor_c11IsUnk42cSetEv	coined helper spelling from matched body and state-table use; ROM RTTI proves class identity, not original member name; const qualification inferred from read-only body, not established by ARM bytes
