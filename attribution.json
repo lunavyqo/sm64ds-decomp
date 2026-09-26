@@ -5455,6 +5455,21 @@
     "src/actors/dScMgPachinko2_c.cpp#_ZN16dScMgPachinko2_c6RenderEv": "andrewboudreau",
     "src/actors/dScMgPachinko2_c.cpp#_ZN16dScMgPachinko2_c8BehaviorEv": "andrewboudreau",
     "src/actors/dScMgPachinko2_c.cpp#_ZN16dScMgPachinko2_c13InitResourcesEv": "andrewboudreau",
-    "src/actors/dScMgPachinko2_c.cpp#dScMgPachinko2_c_classInit": "tangosdev"
+    "src/actors/dScMgPachinko2_c.cpp#dScMgPachinko2_c_classInit": "tangosdev",
+    "src/actors/daKirai_c.cpp#_ZN9daKirai_cD1Ev": "tangosdev",
+    "src/actors/daKirai_c.cpp#_ZN9daKirai_cD0Ev": "tangosdev",
+    "src/actors/daKirai_c.cpp#func_ov060_021184bc": "tangosdev",
+    "src/actors/daKirai_c.cpp#func_ov060_02118544": "tangosdev",
+    "src/actors/daKirai_c.cpp#func_ov060_021185c4": "tangosdev",
+    "src/actors/daKirai_c.cpp#func_ov060_02118690": "tangosdev",
+    "src/actors/daKirai_c.cpp#func_ov060_021186d8": "tangosdev",
+    "src/actors/daKirai_c.cpp#func_ov060_02118728": "tangosdev",
+    "src/actors/daKirai_c.cpp#func_ov060_02118834": "tangosdev",
+    "src/actors/daKirai_c.cpp#func_ov060_021188e8": "tangosdev",
+    "src/actors/daKirai_c.cpp#func_ov060_02118970": "tangosdev",
+    "src/actors/daKirai_c.cpp#_ZN9daKirai_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daKirai_c.cpp#_ZN9daKirai_c6RenderEv": "tangosdev",
+    "src/actors/daKirai_c.cpp#_ZN9daKirai_c8BehaviorEv": "tangosdev",
+    "src/actors/daKirai_c.cpp#_ZN9daKirai_c13InitResourcesEv": "tangosdev"
   }
 }
