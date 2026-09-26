@@ -5455,6 +5455,16 @@
     "src/actors/dScMgPachinko2_c.cpp#_ZN16dScMgPachinko2_c6RenderEv": "andrewboudreau",
     "src/actors/dScMgPachinko2_c.cpp#_ZN16dScMgPachinko2_c8BehaviorEv": "andrewboudreau",
     "src/actors/dScMgPachinko2_c.cpp#_ZN16dScMgPachinko2_c13InitResourcesEv": "andrewboudreau",
-    "src/actors/dScMgPachinko2_c.cpp#dScMgPachinko2_c_classInit": "tangosdev"
+    "src/actors/dScMgPachinko2_c.cpp#dScMgPachinko2_c_classInit": "tangosdev",
+    "src/actors/daPicGate_c.cpp#func_ov080_021264ec": "tangosdev",
+    "src/actors/daPicGate_c.cpp#func_ov080_021265ec": "tangosdev",
+    "src/actors/daPicGate_c.cpp#func_ov080_0212677c": "tangosdev",
+    "src/actors/daPicGate_c.cpp#func_ov080_021269b8": "tangosdev",
+    "src/actors/daPicGate_c.cpp#func_ov080_02126a54": "tangosdev",
+    "src/actors/daPicGate_c.cpp#_ZN11daPicGate_c16CleanupResourcesEv": "tangosdev",
+    "src/actors/daPicGate_c.cpp#_ZN11daPicGate_c16OnPendingDestroyEv": "tangosdev",
+    "src/actors/daPicGate_c.cpp#_ZN11daPicGate_c6RenderEv": "tangosdev",
+    "src/actors/daPicGate_c.cpp#_ZN11daPicGate_c8BehaviorEv": "tangosdev",
+    "src/actors/daPicGate_c.cpp#_ZN11daPicGate_c13InitResourcesEv": "tangosdev"
   }
 }
