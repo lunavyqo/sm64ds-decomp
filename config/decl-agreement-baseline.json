@@ -1527,9 +1527,6 @@
       "src/func_0200b798.c": [
         "param:#1 Vector3 *"
       ],
-      "src/func_ov002_020efcf4.c": [
-        "param:#1 Vector3 *"
-      ],
       "src/func_ov006_020ce108.cpp": [
         "param:#1 Vector3 *"
       ],
@@ -5216,10 +5213,6 @@
         "param:#1 char *",
         "param:#2 char *"
       ],
-      "src/func_ov002_020ef57c.c": [
-        "param:#1 const void *",
-        "param:#2 const void *"
-      ],
       "src/func_ov016_021119ec.c": [
         "param:#1 const void *",
         "param:#2 const void *"
@@ -5309,6 +5302,10 @@
         "param:#2 const void *"
       ],
       "src/game/actors/d_a_btn.cpp": [
+        "param:#1 const void *",
+        "param:#2 const void *"
+      ],
+      "src/actors/dPathLiftActor_c.cpp": [
         "param:#1 const void *",
         "param:#2 const void *"
       ]
@@ -5763,11 +5760,6 @@
       "src/func_0200bec4.c": [
         "param:#1 Vector3 *",
         "param:#2 Vector3 *"
-      ],
-      "src/func_ov002_020efcf4.c": [
-        "param:#1 Vector3 *",
-        "param:#2 Vector3 *",
-        "param:#3 Vector3 *"
       ],
       "src/func_ov006_020c0364.c": [
         "param:#1 Vector3 *",
@@ -18303,9 +18295,6 @@
       "src/func_ov002_020b6c54.c": [
         "return:void"
       ],
-      "src/func_ov002_020efaf0.cpp": [
-        "return:void"
-      ],
       "src/func_ov006_020c092c.cpp": [
         "return:void"
       ],
@@ -18909,9 +18898,6 @@
       "include/decl_PathPtr.h": [
         "return:int"
       ],
-      "src/func_ov002_020efcf4.c": [
-        "return:int"
-      ],
       "src/actors/daObjSm_Lift_c.cpp": [
         "return:int"
       ]
@@ -18943,12 +18929,6 @@
         "param:#2 void *"
       ],
       "src/func_0200b0fc.c": [
-        "param:#2 Vector3 *"
-      ],
-      "src/func_ov002_020ef670.c": [
-        "param:#2 void *"
-      ],
-      "src/func_ov002_020efcf4.c": [
         "param:#2 Vector3 *"
       ],
       "src/func_ov016_021115c0.c": [
@@ -18986,9 +18966,6 @@
         "return:int"
       ],
       "src/actors/daBgSnmBdy_c.cpp": [
-        "return:int"
-      ],
-      "src/func_ov002_020efcf4.c": [
         "return:int"
       ],
       "src/game/actors/d_a_pg_rcer.cpp": [
@@ -23942,11 +23919,6 @@
         "return:ClpsRow []"
       ]
     },
-    "data_ov002_0210af2c": {
-      "src/_ZN16dPathLiftActor_c12BaseBehaviorEv.cpp": [
-        "return:PathLiftState []"
-      ]
-    },
     "data_ov002_0210bc88": {
       "src/func_ov002_020f6c34.c": [
         "return:int []"
@@ -24086,7 +24058,7 @@
       "src/__sinit_ov002_02100560.c": [
         "return:void *"
       ],
-      "src/func_ov002_020efaf0.cpp": [
+      "src/actors/dPathLiftActor_c.cpp": [
         "return:PathStuff"
       ]
     },
@@ -32268,9 +32240,6 @@
       "src/_ZN14UnchainedChomp8BehaviorEv.cpp": [
         "param:#1 int"
       ],
-      "src/_ZN16dPathLiftActor_c9AfterClsnEi.cpp": [
-        "param:#1 int"
-      ],
       "src/_ZN16daKing_Donketu_c8BehaviorEv.cpp": [
         "param:#1 int"
       ],
@@ -32578,6 +32547,9 @@
         "return:int"
       ],
       "src/game/actors/d_a_btn.cpp": [
+        "param:#1 int"
+      ],
+      "src/actors/dPathLiftActor_c.cpp": [
         "param:#1 int"
       ]
     },
@@ -36191,9 +36163,6 @@
       "src/func_ov002_020b5e58.cpp": [
         "param:#2 void *"
       ],
-      "src/func_ov002_020efaf0.cpp": [
-        "param:#1 char *"
-      ],
       "src/func_ov066_021166c8.cpp": [
         "param:#2 void *"
       ],
@@ -36232,6 +36201,9 @@
       "src/actors/daObjRc_Tikuwa_c.cpp": [
         "param:#1 dBgW *",
         "param:#2 void *"
+      ],
+      "src/actors/dPathLiftActor_c.cpp": [
+        "param:#1 char *"
       ]
     },
     "func_020393d4": {
@@ -41799,43 +41771,6 @@
       "src/_ZN6Player19St_GroundPound_MainEv.cpp": [
         "param:#2 void *",
         "return:void"
-      ]
-    },
-    "func_ov002_020efa54": {
-      "include/decl_common.h": [
-        "param:#1 char *"
-      ],
-      "src/_ZN16dPathLiftActor_c9AfterClsnEi.cpp": [
-        "param:#1 dPathLiftActor_c *"
-      ],
-      "src/func_ov002_020efaf0.cpp": [
-        "param:#1 char *"
-      ]
-    },
-    "func_ov002_020efaf0": {
-      "src/game/actors/d_a_obj_rc_carpet.cpp": [
-        "param:#1 dPathLiftActor_c *"
-      ],
-      "src/game/actors/daObjPathLift_c.cpp": [
-        "param:#1 dPathLiftActor_c *"
-      ]
-    },
-    "func_ov002_020efcf4": {
-      "src/game/actors/daObjPathLift_c.cpp": [
-        "param:#1 dPathLiftActor_c *"
-      ]
-    },
-    "func_ov002_020efedc": {
-      "src/_ZN16dPathLiftActor_c9AfterClsnEi.cpp": [
-        "param:#1 dPathLiftActor_c *"
-      ],
-      "src/func_ov002_020efaf0.cpp": [
-        "param:#1 char *"
-      ]
-    },
-    "func_ov002_020eff90": {
-      "src/func_ov002_020efaf0.cpp": [
-        "arity:0"
       ]
     },
     "func_ov002_020effb8": {
