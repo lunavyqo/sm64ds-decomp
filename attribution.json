@@ -5648,11 +5648,11 @@
     "src/actors/daFPknBall_c.cpp#_ZN12daFPknBall_cD1Ev": "tangosdev",
     "src/actors/daFPknBall_c.cpp#_ZN12daFPknBall_cD0Ev": "tangosdev",
     "src/actors/daFPknBall_c.cpp#func_ov002_020f88ec": "tangosdev",
-    "src/actors/daFPknBall_c.cpp#func_ov002_020f897c": "tangosdev",
+    "src/actors/daFPknBall_c.cpp#func_ov002_020f897c": "andrewboudreau",
     "src/actors/daFPknBall_c.cpp#func_ov002_020f8b24": "tangosdev",
     "src/actors/daFPknBall_c.cpp#_ZN12daFPknBall_c6RenderEv": "tangosdev",
-    "src/actors/daFPknBall_c.cpp#_ZN12daFPknBall_c8BehaviorEv": "tangosdev",
-    "src/actors/daFPknBall_c.cpp#_ZN12daFPknBall_c13InitResourcesEv": "tangosdev",
+    "src/actors/daFPknBall_c.cpp#_ZN12daFPknBall_c8BehaviorEv": "andrewboudreau",
+    "src/actors/daFPknBall_c.cpp#_ZN12daFPknBall_c13InitResourcesEv": "ruspecial",
     "src/actors/daFPknBall_c.cpp#_ZN12daFPknBall_c13OnYoshiTryEatEv": "tangosdev"
   }
 }

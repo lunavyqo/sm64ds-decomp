@@ -75,6 +75,11 @@ extern void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void* th
 extern void _ZN10dBgCh_Actr19StartDetectingWaterEv(void* thiz);
 }
 
+// @symbol _ZN12daFPknBall_cD1Ev
+// @symbol _ZN12daFPknBall_cD0Ev
+/* D1: own vptr, then the members in reverse declaration order (ShadowModel,
+ * dBgCh_Actr, dCcAc_c), then dEnemyBase_c's destructor. D0 is the same body
+ * plus the inherited operator delete; it has no source of its own. */
 daFPknBall_c::~daFPknBall_c()
 {
 }
@@ -370,8 +375,8 @@ int daFPknBall_c::InitResources()
 {
     if (_ZN11ShadowModel12InitCylinderEv((char*)&mShadowModel) == 0)
         return 0;
-    _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(((char*)this) + 0x110, ((char*)this), 0x28000, 0x50000, 0x200002, 0);
-    _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(((char*)this) + 0x144, ((char*)this), 0x32000, 0x32000, 0, 0);
+    _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(&mdCcAc_c, this, 0x28000, 0x50000, 0x200002, 0);
+    _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(&mWithMeshClsn, this, 0x32000, 0x32000, 0, 0);
     _ZN10dBgCh_Actr19StartDetectingWaterEv((char*)&mWithMeshClsn);
     mStateTimer = 0;
     unk_36a = 0;
@@ -391,8 +396,7 @@ int daFPknBall_c::InitResources()
 
 // @symbol _ZN12daFPknBall_c13OnYoshiTryEatEv
 s32 daFPknBall_c::OnYoshiTryEat() {
-    char * p = (char *)this;
-    unsigned char b = *(unsigned char *)(p + 0x36d);
+    unsigned char b = unk_36d;
     if (b != 0 && b != 4)
         return 5;
     return 0;
