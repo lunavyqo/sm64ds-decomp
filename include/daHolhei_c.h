@@ -78,6 +78,15 @@ struct daHolhei_c : dEnemyBase_c {
     int InitResources();
     void OnPendingDestroy();
     int Render();
+
+    int func_ov062_021164e8();
+    int func_ov062_021165e8();
+    int func_ov062_021167c0();
+    int func_ov062_02116894();
+    int func_ov062_02116980();
+    int func_ov062_02116bf8();
+    int func_ov062_02116c78();
+    void func_ov062_02116d28();
 };
 
 #ifndef SM64DS_PLATFORM_PC

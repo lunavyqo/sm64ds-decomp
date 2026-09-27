@@ -121,7 +121,6 @@ extern int data_ov062_0211df18[];
 
 extern int func_ov062_02115f84(char* c);
 void func_ov062_02116010(void* self);
-void func_ov062_02116d28(char* c);
 void func_ov062_02116e80(void* c);
 void func_ov062_02116dbc(char* c);
 extern void func_ov062_02116edc(void *c);
@@ -240,7 +239,7 @@ int daHolhei_c::Behavior()
             int flag = (mFlags & 0x4000) != 0;
             if (flag) {
                 if (*(int*)(p3f8 + 0xc8) != 0) {
-                    func_ov062_02116d28(c);
+                    func_ov062_02116d28();
                     goto ret;
                 }
             }
@@ -344,20 +343,19 @@ extern "C" void func_ov062_02116dbc(char* thiz)
 }
 
 /* Shadow under the held actor. mHeld is reloaded before each word. */
-// @symbol func_ov062_02116d28
-extern "C" void func_ov062_02116d28(char *c)
+// @symbol _ZN10daHolhei_c19func_ov062_02116d28Ev
+void daHolhei_c::func_ov062_02116d28()
 {
-    daHolhei_c *self = (daHolhei_c *)c;
     struct M12w { int w[12]; };
-    *(M12w *)&self->mShadowMtx = *(M12w *)&IDENTITY_MATRIX4X3;
-    char *o = *(char **)(c + 0x3f8);
-    self->mShadowMtx.m[9] = *(int *)(o + 0x5c) >> 3;
-    o = *(char **)(c + 0x3f8);
-    self->mShadowMtx.m[10] = *(int *)(o + 0x60) >> 3;
-    o = *(char **)(c + 0x3f8);
-    self->mShadowMtx.m[11] = *(int *)(o + 0x64) >> 3;
+    *(M12w *)&mShadowMtx = *(M12w *)&IDENTITY_MATRIX4X3;
+    char *o = *(char **)((char *)this + 0x3f8);
+    mShadowMtx.m[9] = *(int *)(o + 0x5c) >> 3;
+    o = *(char **)((char *)this + 0x3f8);
+    mShadowMtx.m[10] = *(int *)(o + 0x60) >> 3;
+    o = *(char **)((char *)this + 0x3f8);
+    mShadowMtx.m[11] = *(int *)(o + 0x64) >> 3;
     _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(
-        self, self->mShadowModel, self->mShadowMtx, 0x12c000, 0x32000, 0xf);
+        this, mShadowModel, mShadowMtx, 0x12c000, 0x32000, 0xf);
 }
 
 /* Coined. Calls the PMF at the front of the state record, which is the
@@ -368,26 +366,24 @@ extern "C" int daHolhei_c_ChangeState(C *c, PMF *p) { c->pp = p; PMF *q = c->pp;
 }
 
 /* Face home, on the walk animation, and wait before turning. */
-// @symbol func_ov062_02116c78
-extern "C" int func_ov062_02116c78(char *c){
-    daHolhei_c *self = (daHolhei_c *)c;
-    self->mTurnWait = 0x3c;
-    self->mChargeStep = 0;
-    self->mModel.speed = 0x1000;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModel, ((HolheiFile *)&data_ov062_0211ddf8)->file, 0, 0x1000, 0);
-    self->mTargetAngY = Vec3_HorzAngle(&self->mPosX, &self->mHomePosX);
+// @symbol _ZN10daHolhei_c19func_ov062_02116c78Ev
+int daHolhei_c::func_ov062_02116c78(){
+    mTurnWait = 0x3c;
+    mChargeStep = 0;
+    mModel.speed = 0x1000;
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModel, ((HolheiFile *)&data_ov062_0211ddf8)->file, 0, 0x1000, 0);
+    mTargetAngY = Vec3_HorzAngle(&mPosX, &mHomePosX);
     return 1;
 }
 
 /* Brake, then turn onto mTargetAngY and go back to the walk state. */
-// @symbol func_ov062_02116bf8
-extern "C" int func_ov062_02116bf8(char* c){
-    daHolhei_c *self = (daHolhei_c *)c;
-    ApproachLinear(self->mHorzSpeed, 0, 0x2000);
-    if (self->mTurnWait == 0) {
-        ApproachAngle(&self->mPrevAngleY, self->mTargetAngY, 0xa, 0x200, 0x100);
-        if (AngleDiff(self->mTargetAngY, self->mAngleY) < 0x100)
-            ::daHolhei_c_ChangeState(c, data_ov062_0211dee0);
+// @symbol _ZN10daHolhei_c19func_ov062_02116bf8Ev
+int daHolhei_c::func_ov062_02116bf8(){
+    ApproachLinear(mHorzSpeed, 0, 0x2000);
+    if (mTurnWait == 0) {
+        ApproachAngle(&mPrevAngleY, mTargetAngY, 0xa, 0x200, 0x100);
+        if (AngleDiff(mTargetAngY, mAngleY) < 0x100)
+            ::daHolhei_c_ChangeState(this, data_ov062_0211dee0);
     }
     return 1;
 }
@@ -455,42 +451,40 @@ extern "C" int func_ov062_02116a08(char* c)
 }
 
 /* Step back to the saved position and pick a new facing toward home. */
-// @symbol func_ov062_02116980
-extern "C" int func_ov062_02116980(char *c) {
-    daHolhei_c *self = (daHolhei_c *)c;
-    self->mPosX = self->mPrevPosX;
-    self->mPosY = self->mPrevPosY;
-    self->mPosZ = self->mPrevPosZ;
-    self->mHorzSpeed = 0;
-    if (AngleDiff(self->mTargetAngY, Vec3_HorzAngle(&self->mPosX, &self->mHomePosX)) <= 0x2000)
-        self->mTargetAngY = (s16)(self->mPrevAngleY - 0x1000);
+// @symbol _ZN10daHolhei_c19func_ov062_02116980Ev
+int daHolhei_c::func_ov062_02116980() {
+    mPosX = mPrevPosX;
+    mPosY = mPrevPosY;
+    mPosZ = mPrevPosZ;
+    mHorzSpeed = 0;
+    if (AngleDiff(mTargetAngY, Vec3_HorzAngle(&mPosX, &mHomePosX)) <= 0x2000)
+        mTargetAngY = (s16)(mPrevAngleY - 0x1000);
     else
-        self->mTargetAngY = Vec3_HorzAngle(&self->mPosX, &self->mHomePosX);
-    self->mStateTimer = 0x46;
+        mTargetAngY = Vec3_HorzAngle(&mPosX, &mHomePosX);
+    mStateTimer = 0x46;
     return 1;
 }
 
 /* After the timer, either commit the turn into a walk or keep steering. */
-// @symbol func_ov062_02116894
-extern "C" int func_ov062_02116894(char* c){
-    daHolhei_c *self = (daHolhei_c *)c;
-    if (*(unsigned short *)&self->mStateTimer != 0)
+// @symbol _ZN10daHolhei_c19func_ov062_02116894Ev
+int daHolhei_c::func_ov062_02116894(){
+    if (*(unsigned short *)&mStateTimer != 0)
         return 1;
-    if (self->mHorzSpeed == 0)
+    if (mHorzSpeed == 0)
         goto angle;
-    if (func_ov062_02115f84(c) != 0 || self->mEdgeStop == 1) {
-        self->mTargetAngY = (s16)(self->mPrevAngleY - 0x2000);
+    if (func_ov062_02115f84((char *)this) != 0 || mEdgeStop == 1) {
+        mTargetAngY = (s16)(mPrevAngleY - 0x2000);
         goto angle;
     }
-    self->mPrevAngleY = self->mTargetAngY;
-    ::daHolhei_c_ChangeState(c, data_ov062_0211dee0);
-    self->mChaseCooldown = 0x1e;
-    self->mTargetAngY = self->mPrevAngleY;
+    mPrevAngleY = mTargetAngY;
+    ::daHolhei_c_ChangeState(this, data_ov062_0211dee0);
+    mChaseCooldown = 0x1e;
+    mTargetAngY = mPrevAngleY;
     return 1;
 angle:
-    if (AngleDiff(self->mTargetAngY, self->mAngleY) < 0x100)
-        self->mHorzSpeed = 0xa000;
-    ApproachAngle(&self->mPrevAngleY, self->mTargetAngY, 0xa, 0x200, 0x100);
+    if (AngleDiff(mTargetAngY, mAngleY) < 0x100)
+        mHorzSpeed = 0xa000;
+    ApproachAngle(&mPrevAngleY, mTargetAngY, 0xa, 0x200, 0x100);
     return 1;
 }
 
@@ -507,17 +501,16 @@ extern "C" s16 func_ov062_02116850(void* c) {
 
 /* Turn toward mTargetAngY. Facing it starts the walk; otherwise the timer
    is refreshed. When the timer expires, cool down and return to the walk. */
-// @symbol func_ov062_021167c0
-extern "C" int func_ov062_021167c0(char* c){
-    daHolhei_c *self = (daHolhei_c *)c;
-    ApproachAngle(&self->mPrevAngleY, self->mTargetAngY, 0xa, 0x200, 0x100);
-    if (AngleDiff(self->mTargetAngY, self->mAngleY) < 0x100)
-        self->mHorzSpeed = 0xa000;
+// @symbol _ZN10daHolhei_c19func_ov062_021167c0Ev
+int daHolhei_c::func_ov062_021167c0(){
+    ApproachAngle(&mPrevAngleY, mTargetAngY, 0xa, 0x200, 0x100);
+    if (AngleDiff(mTargetAngY, mAngleY) < 0x100)
+        mHorzSpeed = 0xa000;
     else
-        self->mStateTimer = 0x14;
-    if (*(unsigned short *)&self->mStateTimer == 0) {
-        self->mChaseCooldown = 0x1e;
-        ::daHolhei_c_ChangeState(c, data_ov062_0211dee0);
+        mStateTimer = 0x14;
+    if (*(unsigned short *)&mStateTimer == 0) {
+        mChaseCooldown = 0x1e;
+        ::daHolhei_c_ChangeState(this, data_ov062_0211dee0);
     }
     return 1;
 }
@@ -533,22 +526,21 @@ extern "C" int func_ov062_02116784(char *c) {
 
 /* Charge the player. Step 0 turns, step 1 runs at the saved point, step 2
    gives up once Chuckya has gone past it. */
-// @symbol func_ov062_021165e8
-extern "C" int func_ov062_021165e8(char* c)
+// @symbol _ZN10daHolhei_c19func_ov062_021165e8Ev
+int daHolhei_c::func_ov062_021165e8()
 {
-    daHolhei_c *self = (daHolhei_c *)c;
     char* player;
     int r;
     volatile struct Vector3 pos;
     struct Vector3* pp;
 
-    player = (char*)self->ClosestPlayer();
-    r = func_ov062_02115f84(c);
-    if (r != 0 || self->mEdgeStop == 1) {
+    player = (char*)ClosestPlayer();
+    r = func_ov062_02115f84((char *)this);
+    if (r != 0 || mEdgeStop == 1) {
         if (r != 2)
-            ::daHolhei_c_ChangeState(c, data_ov062_0211df00);
+            ::daHolhei_c_ChangeState(this, data_ov062_0211df00);
         else
-            ::daHolhei_c_ChangeState(c, data_ov062_0211de70);
+            ::daHolhei_c_ChangeState(this, data_ov062_0211de70);
         return 1;
     }
 
@@ -560,29 +552,29 @@ extern "C" int func_ov062_021165e8(char* c)
     pos.y = pp->y;
     pos.z = pp->z;
 
-    if (self->mChargeStep == 0) {
-        self->mTargetAngY = (short)self->HorzAngleToCPlayer();
-        ApproachAngle(&self->mPrevAngleY, self->mTargetAngY, 0x80, 0x200, 0x400);
-        if (AngleDiff(self->mTargetAngY, self->mAngleY) < 0x200) {
-            self->mHorzSpeed = 0x1e000;
-            self->mChargeStep = 1;
-            self->mChasePosX = pos.x;
-            self->mChasePosY = pos.y;
-            self->mChasePosZ = pos.z;
+    if (mChargeStep == 0) {
+        mTargetAngY = (short)HorzAngleToCPlayer();
+        ApproachAngle(&mPrevAngleY, mTargetAngY, 0x80, 0x200, 0x400);
+        if (AngleDiff(mTargetAngY, mAngleY) < 0x200) {
+            mHorzSpeed = 0x1e000;
+            mChargeStep = 1;
+            mChasePosX = pos.x;
+            mChasePosY = pos.y;
+            mChasePosZ = pos.z;
         }
     }
 
-    self->mMoveSound = Sound::PlayLong(self->mMoveSound, 3, 0x18a, *(const Vector3 *)&self->mCamSpacePosX, 0);
+    mMoveSound = Sound::PlayLong(mMoveSound, 3, 0x18a, *(const Vector3 *)&mCamSpacePosX, 0);
 
     {
-        int s = self->mChargeStep;
+        int s = mChargeStep;
         if (s != 0) {
             if (s == 1) {
-                if (Vec3_Dist(&self->mPosX, &self->mChasePosX) < 0x3c000)
-                    self->mChargeStep = 2;
+                if (Vec3_Dist(&mPosX, &mChasePosX) < 0x3c000)
+                    mChargeStep = 2;
             } else {
-                if (Vec3_Dist(&self->mPosX, &self->mChasePosX) > 0xc8000)
-                    ::daHolhei_c_ChangeState(c, data_ov062_0211ded0);
+                if (Vec3_Dist(&mPosX, &mChasePosX) > 0xc8000)
+                    ::daHolhei_c_ChangeState(this, data_ov062_0211ded0);
             }
         }
     }
@@ -597,20 +589,19 @@ extern "C" int func_ov062_021165e0(void)
 
 /* While carried: play the grab animation once, then on release copy the
    holder's facing, mark the cylinder, and hop if param1 is 2. */
-// @symbol func_ov062_021164e8
-extern "C" int func_ov062_021164e8(char *c)
+// @symbol _ZN10daHolhei_c19func_ov062_021164e8Ev
+int daHolhei_c::func_ov062_021164e8()
 {
-    daHolhei_c *self = (daHolhei_c *)c;
     int flag;
     int t;
-    if (self->mGrabAnim == 0) {
-        t = (self->mFlags & 0x4000) != 0;
+    if (mGrabAnim == 0) {
+        t = (mFlags & 0x4000) != 0;
         if (t) {
-            _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModel, ((HolheiFile *)data_ov062_0211de00)->file, 0, 0x1000, 0);
-            self->mGrabAnim = 1;
+            _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModel, ((HolheiFile *)data_ov062_0211de00)->file, 0, 0x1000, 0);
+            mGrabAnim = 1;
         }
     }
-    flag = self->mFlags;
+    flag = mFlags;
     t = (flag & 0x400) != 0;
     if (t) goto do_block;
     t = (flag & 0x2000) != 0;
@@ -619,15 +610,15 @@ extern "C" int func_ov062_021164e8(char *c)
     if (t) goto done;
 do_block:
     {
-        dActor_c *held = self->mHeld;
-        self->mPrevAngleY = held->mAngleY;
-        self->mdCc_c.flags |= 2;
-        ::daHolhei_c_ChangeState(c, data_ov062_0211dec0);
-        if (self->mHeld->param1 == 2) {
-            self->mVertSpeed = 0x50000;
-            self->mHorzSpeed = 0x14000;
+        dActor_c *held = mHeld;
+        mPrevAngleY = held->mAngleY;
+        mdCc_c.flags |= 2;
+        ::daHolhei_c_ChangeState(this, data_ov062_0211dec0);
+        if (mHeld->param1 == 2) {
+            mVertSpeed = 0x50000;
+            mHorzSpeed = 0x14000;
         }
-        self->mHeld = 0;
+        mHeld = 0;
     }
 done:
     return 1;
