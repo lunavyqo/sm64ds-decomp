@@ -30,9 +30,6 @@
  *   size-DIFF 0x3ec->0x41c. All three stay scalar externs.
  * - InitResources: dBgW_KcMbg::SetFile with a Fix12<int> temporary
  *   size-DIFF 0xbc->0xc8. The scalar extern stays.
- * - func_ov025_0211123c / 021112e0 / 02111344: a daDgr_c* parameter matches
- *   these bytes, and contradicts include/decl_common.h's char*. The char*
- *   spelling stays so this TU does not add a declaration disagreement.
  */
 
 #include "common.h"
@@ -75,10 +72,6 @@ void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
     short angY, CLPS_Block &clps);
 void func_020393d4(int *collider, int callback);
 int Vec3_Dist(void *a, void *b);
-
-void func_ov025_02111344(char *self);
-void func_ov025_021112e0(char *self);
-int func_ov025_0211123c(char *self);
 }
 
 // @symbol daDgr_c_classInit
@@ -90,8 +83,8 @@ extern "C" daDgr_c *daDgr_c_classInit()
 // @symbol _ZN7daDgr_c13InitResourcesEv
 s32 daDgr_c::InitResources()
 {
-    func_ov025_02111344((char *)this);
-    func_ov025_021112e0((char *)this);
+    func_ov025_02111344();
+    func_ov025_021112e0();
     {
         BMD_File *bmd = (BMD_File *)Model::LoadFile(data_ov025_02113a68);
         mModel.SetFile(bmd, 1, -1);
@@ -128,9 +121,9 @@ s32 daDgr_c::Behavior()
             mPhaseTimer++;
             unk_0ac = 0;
             mAngleXSpeed = 0;
-            func_ov025_02111344((char *)this);
+            func_ov025_02111344();
             if (_ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_(this, 0, 0))
-                func_ov025_021112e0((char *)this);
+                func_ov025_021112e0();
             return 1;
         }
     }
@@ -225,9 +218,9 @@ s32 daDgr_c::Behavior()
         }
     }
 
-    func_ov025_02111344((char *)this);
-    if (_ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_(this, 0, 0) || func_ov025_0211123c((char *)this))
-        func_ov025_021112e0((char *)this);
+    func_ov025_02111344();
+    if (_ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_(this, 0, 0) || func_ov025_0211123c())
+        func_ov025_021112e0();
 
     mPhaseTimer++;
     return 1;
@@ -250,45 +243,42 @@ s32 daDgr_c::CleanupResources()
     return 1;
 }
 
-// @symbol func_ov025_02111344
+// @symbol _ZN7daDgr_c19func_ov025_02111344Ev
 /* Model matrix: X rotation, then translation at 1/8 of the actor position. */
-extern "C" void func_ov025_02111344(char *raw)
+void daDgr_c::func_ov025_02111344()
 {
-    daDgr_c *self = (daDgr_c *)raw;
-    Matrix4x3_FromRotationX(&self->mModel.mat4x3, self->mAngleX);
-    self->mModel.mat4x3.m[9] = self->mPosX >> 3;
-    self->mModel.mat4x3.m[10] = self->mPosY >> 3;
-    self->mModel.mat4x3.m[11] = self->mPosZ >> 3;
+    Matrix4x3_FromRotationX(&mModel.mat4x3, mAngleX);
+    mModel.mat4x3.m[9] = mPosX >> 3;
+    mModel.mat4x3.m[10] = mPosY >> 3;
+    mModel.mat4x3.m[11] = mPosZ >> 3;
 }
 
-// @symbol func_ov025_021112e0
+// @symbol _ZN7daDgr_c19func_ov025_021112e0Ev
 /* Collision matrix. Flat Matrix4x3, copied whole, then translation in full units. */
-extern "C" void func_ov025_021112e0(char *raw)
+void daDgr_c::func_ov025_021112e0()
 {
-    daDgr_c *self = (daDgr_c *)raw;
-    self->mClsnMat = self->mModel.mat4x3;
-    self->mClsnMat.m[9] = self->mPosX;
-    self->mClsnMat.m[10] = self->mPosY;
-    self->mClsnMat.m[11] = self->mPosZ;
-    self->mMeshCollider.Transform(self->mClsnMat, self->mAngleY);
+    mClsnMat = mModel.mat4x3;
+    mClsnMat.m[9] = mPosX;
+    mClsnMat.m[10] = mPosY;
+    mClsnMat.m[11] = mPosZ;
+    mMeshCollider.Transform(mClsnMat, mAngleY);
 }
 
-// @symbol func_ov025_0211123c
+// @symbol _ZN7daDgr_c19func_ov025_0211123cEv
 /* Yoshi egg within eight clip-radii: turn the mesh collider on.
  * aimPos is volatile and unused. Its stores, and ~Vector3, are in the bytes. */
-extern "C" int func_ov025_0211123c(char *raw)
+int daDgr_c::func_ov025_0211123c()
 {
-    daDgr_c *self = (daDgr_c *)raw;
-    dActor_c *egg = self->ClosestWithActorID(kYoshiEggActorID);
+    dActor_c *egg = ClosestWithActorID(kYoshiEggActorID);
     if (egg != 0) {
         volatile struct Vector3 aimPos;
-        aimPos.x = self->mPosX;
-        aimPos.y = self->mPosY;
-        aimPos.z = self->mPosZ;
-        aimPos.y += self->OnAimedAtWithEgg();
-        if (Vec3_Dist(&self->mPosX, &egg->mPosX) < (self->mClipRadius << 3)) {
-            if (!self->mMeshCollider.IsEnabled()) {
-                self->mMeshCollider.Enable(self);
+        aimPos.x = mPosX;
+        aimPos.y = mPosY;
+        aimPos.z = mPosZ;
+        aimPos.y += OnAimedAtWithEgg();
+        if (Vec3_Dist(&mPosX, &egg->mPosX) < (mClipRadius << 3)) {
+            if (!mMeshCollider.IsEnabled()) {
+                mMeshCollider.Enable(this);
                 return 1;
             }
         }
