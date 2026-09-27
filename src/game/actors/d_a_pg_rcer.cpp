@@ -112,15 +112,8 @@ extern u32 _ZN5Sound8PlayLongEjjjRK7Vector3s(u32 handle, u32 a, u32 id, void *po
 extern void *_ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(u32 handle, u32 effect, int x, int y, int z, void *dir, void *cb);
 
 int func_ov019_02111254(void *unused, int playerLead);
-int func_ov019_0211127c(daPgRcer_c *self, Vector3 *pos, unsigned int node);
-void func_ov019_021112b8(daPgRcer_c *self);
-int func_ov019_0211131c(daPgRcer_c *self);
-void func_ov019_021113b0(daPgRcer_c *self);
 int func_ov019_0211140c(daPgRcer_c *self, dBgCh_Actr *clsn);
 void func_ov019_021114ec(daPgRcer_c *self);
-void func_ov019_02112268(daPgRcer_c *self);
-void func_ov019_021122a4(daPgRcer_c *self);
-void func_ov019_021122dc(daPgRcer_c *self, int state);
 
 }
 
@@ -169,11 +162,11 @@ int daPgRcer_c::InitResources()
     }
 
     mStarSlot = (u8)TrackStar((u8)((param1 >> 8) & 0xf), 2);
-    func_ov019_021122dc(this, 0);
+    func_ov019_021122dc(0);
     mPath.FromID(param1 & 0xff);
     mPathNodeIndex = 0;
     mPath.GetNode(*(Vector3 *)&mPosX, mPathNodeIndex);
-    func_ov019_021113b0(this);
+    func_ov019_021113b0();
     func_ov019_021114ec(this);
     return 1;
 }
@@ -181,7 +174,7 @@ int daPgRcer_c::InitResources()
 // @symbol _ZN10daPgRcer_c8BehaviorEv
 int daPgRcer_c::Behavior()
 {
-    func_ov019_02112268(this);
+    func_ov019_02112268();
     mModelAnim.Animation::Advance();
     mTextureSequence.Advance();
     mdCcAc_c.Clear();
@@ -214,28 +207,28 @@ int daPgRcer_c::CleanupResources()
     return 1;
 }
 
+// @symbol _ZN10daPgRcer_c19func_ov019_021122dcEi
+void daPgRcer_c::func_ov019_021122dc(int state)
+{
+    mStateDesc = &data_ov019_0211356c[state];
+    func_ov019_021122a4();
+}
+
+// @symbol _ZN10daPgRcer_c19func_ov019_021122a4Ev
+void daPgRcer_c::func_ov019_021122a4()
+{
+    daPgRcerStateMethod *p = &mStateDesc->init;
+    (this->**p)();
+}
+
+// @symbol _ZN10daPgRcer_c19func_ov019_02112268Ev
+void daPgRcer_c::func_ov019_02112268()
+{
+    daPgRcerStateMethod *p = &mStateDesc->behavior;
+    (this->**p)();
+}
+
 extern "C" {
-
-// @symbol func_ov019_021122dc
-void func_ov019_021122dc(daPgRcer_c *self, int state)
-{
-    self->mStateDesc = &data_ov019_0211356c[state];
-    func_ov019_021122a4(self);
-}
-
-// @symbol func_ov019_021122a4
-void func_ov019_021122a4(daPgRcer_c *self)
-{
-    daPgRcerStateMethod *p = &self->mStateDesc->init;
-    (self->**p)();
-}
-
-// @symbol func_ov019_02112268
-void func_ov019_02112268(daPgRcer_c *self)
-{
-    daPgRcerStateMethod *p = &self->mStateDesc->behavior;
-    (self->**p)();
-}
 
 /* State 0: idle. */
 // @symbol func_ov019_021121f8
@@ -250,23 +243,27 @@ int func_ov019_021121f8(daPgRcer_c *self)
     return 1;
 }
 
-// @symbol func_ov019_02112168
-int func_ov019_02112168(daPgRcer_c *self)
+}
+
+// @symbol _ZN10daPgRcer_c19func_ov019_02112168Ev
+int daPgRcer_c::func_ov019_02112168()
 {
-    if (DecIfAbove0_Byte(&self->mTalkWaitTimer))
+    if (DecIfAbove0_Byte(&mTalkWaitTimer))
         return 1;
-    Player *pl = self->ClosestPlayer();
+    Player *pl = ClosestPlayer();
     if (pl == 0)
         return 1;
-    int radius = self->mdCcAc_c.radius;
-    if (Vec3_Dist((Vector3 *)&self->mPosX, (Vector3 *)&pl->mPosX) < radius + 0x78000) {
-        if (pl->StartTalk(*(fBase_c *)self, 1)) {
-            self->mTalkPlayer = pl;
-            func_ov019_021122dc(self, 1);
+    int radius = mdCcAc_c.radius;
+    if (Vec3_Dist((Vector3 *)&mPosX, (Vector3 *)&pl->mPosX) < radius + 0x78000) {
+        if (pl->StartTalk(*(fBase_c *)this, 1)) {
+            mTalkPlayer = pl;
+            func_ov019_021122dc(1);
         }
     }
     return 1;
 }
+
+extern "C" {
 
 /* State 1: invite. */
 // @symbol func_ov019_0211213c
@@ -312,12 +309,12 @@ int func_ov019_02111fec(daPgRcer_c *self)
             unsigned char choice = data_0209d684;
             if (choice == 1) {
                 func_02012790(0x98);
-                func_ov019_021122dc(self, 2);
+                self->func_ov019_021122dc(2);
             } else if (choice == 2) {
                 func_02012790(0x63);
                 self->mTalkWaitTimer = 0x5a;
                 self->mTalkPlayer->HasFinishedTalking();
-                func_ov019_021122dc(self, 0);
+                self->func_ov019_021122dc(0);
             }
         }
         break;
@@ -366,7 +363,7 @@ int func_ov019_02111dec(daPgRcer_c *self)
         if (self->mTalkPlayer->GetTalkState() == -1) {
             _ZN5Sound7PlaySubEjjj5Fix12IiEb(0x1f, 0x7f, 0, 0x15666, 0);
             func_0201267c(0x4d, &self->mCamSpacePosX);
-            func_ov019_021122dc(self, 3);
+            self->func_ov019_021122dc(3);
         }
         break;
     }
@@ -393,8 +390,8 @@ int func_ov019_0211197c(daPgRcer_c *self)
 {
     switch (self->mActionStep) {
     case 0:
-        if (func_ov019_0211131c(self)) {
-            func_ov019_021113b0(self);
+        if (self->func_ov019_0211131c()) {
+            self->func_ov019_021113b0();
         }
         if (self->mModelAnim.Animation::Finished()) {
             _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModelAnim, LOADED(data_ov019_02113488), 0, 0x1000, 0);
@@ -409,7 +406,7 @@ int func_ov019_0211197c(daPgRcer_c *self)
                 v.x = self->mPosX;
                 v.y = self->mPosY;
                 v.z = self->mPosZ;
-                if (func_ov019_0211127c(self, &v, self->mPenguinCheckpoints)) {
+                if (self->func_ov019_0211127c(&v, self->mPenguinCheckpoints)) {
                     self->mPenguinCheckpoints++;
                 }
             }
@@ -420,7 +417,7 @@ int func_ov019_0211197c(daPgRcer_c *self)
                 v.x = *(int *)p;
                 v.y = *(int *)(p + 4);
                 v.z = *(int *)(p + 8);
-                if (func_ov019_0211127c(self, &v, self->mPlayerCheckpoints)) {
+                if (self->func_ov019_0211127c(&v, self->mPlayerCheckpoints)) {
                     self->mPlayerCheckpoints++;
                 }
             }
@@ -428,12 +425,12 @@ int func_ov019_0211197c(daPgRcer_c *self)
         break;
 
     case 1:
-        if (func_ov019_0211131c(self)) {
+        if (self->func_ov019_0211131c()) {
             if (self->mPathNodeIndex >= (int)self->mPath.NumNodes() - 2) {
                 _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModelAnim, LOADED(data_ov019_02113490), 0x40000000, 0x1000, 0);
                 self->mActionStep++;
             } else {
-                func_ov019_021113b0(self);
+                self->func_ov019_021113b0();
             }
         }
         self->UpdatePos(&self->mdCcAc_c);
@@ -445,7 +442,7 @@ int func_ov019_0211197c(daPgRcer_c *self)
                 v.x = self->mPosX;
                 v.y = self->mPosY;
                 v.z = self->mPosZ;
-                if (func_ov019_0211127c(self, &v, self->mPenguinCheckpoints)) {
+                if (self->func_ov019_0211127c(&v, self->mPenguinCheckpoints)) {
                     self->mPenguinCheckpoints++;
                 }
             }
@@ -456,7 +453,7 @@ int func_ov019_0211197c(daPgRcer_c *self)
                 v.x = *(int *)p;
                 v.y = *(int *)(p + 4);
                 v.z = *(int *)(p + 8);
-                if (func_ov019_0211127c(self, &v, self->mPlayerCheckpoints)) {
+                if (self->func_ov019_0211127c(&v, self->mPlayerCheckpoints)) {
                     self->mPlayerCheckpoints++;
                 }
             }
@@ -483,12 +480,12 @@ int func_ov019_0211197c(daPgRcer_c *self)
 
     case 2:
         if (self->mModelAnim.Animation::Finished()) {
-            func_ov019_021122dc(self, 4);
+            self->func_ov019_021122dc(4);
         }
         break;
     }
 
-    func_ov019_021112b8(self);
+    self->func_ov019_021112b8();
     if (Vec3_Dist(&data_ov019_0211353c, (Vector3 *)&self->mTalkPlayer->mPosX) < 0x280000) {
         self->mPlayerCheated = 1;
     }
@@ -540,7 +537,7 @@ int func_ov019_021117a8(daPgRcer_c *self)
     case 1: {
         short ang = Vec3_HorzAngle((Vector3 *)&self->mPosX, (Vector3 *)&self->mTalkPlayer->mPosX);
         if (_Z14ApproachLinearRsss(self->mAngleY, ang, 0x514) != 0) {
-            func_ov019_021122dc(self, 5);
+            self->func_ov019_021122dc(5);
         }
         break;
     }
@@ -658,38 +655,40 @@ int func_ov019_0211140c(daPgRcer_c *self, dBgCh_Actr *clsn)
     }
 }
 
-// @symbol func_ov019_021113b0
-void func_ov019_021113b0(daPgRcer_c *self)
+}
+
+// @symbol _ZN10daPgRcer_c19func_ov019_021113b0Ev
+void daPgRcer_c::func_ov019_021113b0()
 {
     Vector3 node;
-    self->mPathNodeIndex = self->mPathNodeIndex + 1;
-    self->mPath.GetNode(node, self->mPathNodeIndex);
-    self->mPathDist = Vec3_Dist((Vector3 *)&self->mPosX, &node);
-    TARGET_ANG_Y(self) = Vec3_HorzAngle((Vector3 *)&self->mPosX, &node);
+    mPathNodeIndex = mPathNodeIndex + 1;
+    mPath.GetNode(node, mPathNodeIndex);
+    mPathDist = Vec3_Dist((Vector3 *)&mPosX, &node);
+    TARGET_ANG_Y(this) = Vec3_HorzAngle((Vector3 *)&mPosX, &node);
 }
 
-// @symbol func_ov019_0211131c
-int func_ov019_0211131c(daPgRcer_c *self)
+// @symbol _ZN10daPgRcer_c19func_ov019_0211131cEv
+int daPgRcer_c::func_ov019_0211131c()
 {
-    _Z11UpdateAngleRssis(self->mPrevAngleY, TARGET_ANG_Y(self), 2, 0x600);
-    int n = self->mPathNodeIndex;
-    if (n >= (int)self->mPath.NumNodes() - 2) {
-        self->mAngleY = self->mPrevAngleY;
+    _Z11UpdateAngleRssis(mPrevAngleY, TARGET_ANG_Y(this), 2, 0x600);
+    int n = mPathNodeIndex;
+    if (n >= (int)mPath.NumNodes() - 2) {
+        mAngleY = mPrevAngleY;
     } else {
         Vector3 node;
-        self->mPath.GetNode(node, n + 1);
-        self->mAngleY = Vec3_HorzAngle((Vector3 *)&self->mPosX, &node);
+        mPath.GetNode(node, n + 1);
+        mAngleY = Vec3_HorzAngle((Vector3 *)&mPosX, &node);
     }
-    self->mPathDist = self->mPathDist - self->mHorzSpeed;
-    return self->mPathDist < 0 ? 1 : 0;
+    mPathDist = mPathDist - mHorzSpeed;
+    return mPathDist < 0 ? 1 : 0;
 }
 
-// @symbol func_ov019_021112b8
-void func_ov019_021112b8(daPgRcer_c *self)
+// @symbol _ZN10daPgRcer_c19func_ov019_021112b8Ev
+void daPgRcer_c::func_ov019_021112b8()
 {
-    if (self->mPlayerCheated != 0)
+    if (mPlayerCheated != 0)
         return;
-    Player *t = self->mTalkPlayer;
+    Player *t = mTalkPlayer;
     if (t->mIsAirborne != 0) {
         int vertSpeed = t->mVertSpeed;
         int terminalVel = t->mTerminalVelocity;
@@ -699,23 +698,25 @@ void func_ov019_021112b8(daPgRcer_c *self)
             int d = vertSpeed;
             if (d < 0)
                 d = -d;
-            self->mFallAccum = self->mFallAccum + d;
-            if (self->mFallAccum > 0x7d0000)
-                self->mPlayerCheated = 1;
+            mFallAccum = mFallAccum + d;
+            if (mFallAccum > 0x7d0000)
+                mPlayerCheated = 1;
         }
         return;
     }
-    self->mFallAccum = 0;
+    mFallAccum = 0;
 }
 
-// @symbol func_ov019_0211127c
-int func_ov019_0211127c(daPgRcer_c *self, Vector3 *pos, unsigned int nodeIndex)
+// @symbol _ZN10daPgRcer_c19func_ov019_0211127cEP7Vector3j
+int daPgRcer_c::func_ov019_0211127c(Vector3 *pos, unsigned int nodeIndex)
 {
     Vector3 node;
-    self->mPath.GetNode(node, nodeIndex);
+    mPath.GetNode(node, nodeIndex);
     Fix12i dist = Vec3_HorzDist(&node, pos);
     return dist <= 0x320000 ? 1 : 0;
 }
+
+extern "C" {
 
 // @symbol func_ov019_02111254
 /* The further ahead the player is, in path nodes, the faster the penguin
