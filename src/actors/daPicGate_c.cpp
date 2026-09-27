@@ -97,7 +97,9 @@ extern int func_ov080_02125630(void *self, int picture);
 extern u8 data_ov080_02127714[];
 extern void func_020553a4(void *mtx);
 extern void *data_ov080_02127834;
+extern void func_0203cbc0(void *a);
 }
+namespace Memory { void *operator_new2(unsigned int size); }
 
 /* Call-site names. The symbols stay the ROM's: the state table relocates
  * to the five handlers below, and the others are defined outside this file. */
@@ -334,7 +336,7 @@ void func_ov080_02126a54(daPicGate_c *self)
 
 // @symbol _ZN11daPicGate_c16CleanupResourcesEv
 s32 daPicGate_c::CleanupResources() {
-    delete[] mCells;
+    func_0203cbc0(mCells);
     return 1;
 }
 
@@ -409,7 +411,7 @@ s32 daPicGate_c::InitResources() {
         mNumCells = (u16)(mCols * mRows);
     }
 
-    mCells = new Vertex[mNumCells];
+    mCells = (Vertex *)Memory::operator_new2((unsigned)mNumCells * 0x18u);
     mTexRecord = LoadTexture(this, (int)((unsigned char)((param1 >> 8) & 0x1f)));
     mWaveParams = (const daPicGate_c::WaveParams *)&kDefaultWave;
     mState = &kStates[(unsigned char)((param1 >> 0xd) & 3)];
