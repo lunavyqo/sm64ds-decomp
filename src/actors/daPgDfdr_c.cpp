@@ -81,11 +81,9 @@ void _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(void *self, void *actor, int radi
 void _ZN10dBgActor_c21IsClsnInRangeOnScreenE5Fix12IiES1_(void *self, int x, int z);
 
 void func_ov027_02111994(daPgDfdr_c *self);
-int func_ov027_02111a28(daPgDfdr_c *self);
 void func_ov027_02111b2c(daPgDfdr_c *self);
 int func_ov027_02111c48(daPgDfdr_c *self);
 int func_ov027_02111ca8(daPgDfdr_c *self);
-void func_ov027_02111d38(void *self);
 
 extern FileRef data_ov027_02113c6c;
 extern FileRef data_ov027_02113c7c;
@@ -143,7 +141,7 @@ s32 daPgDfdr_c::InitResources()
     mVertAccel = 0;
     mTerminalVelocity = 0;
     _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(&mdCcAc_c, this, 0x82000, 0xc8000, 0x800004, 0);
-    func_ov027_02111d70(this, kStateWalk);
+    func_ov027_02111d70(kStateWalk);
 
     pos.x = mPosX;
     pos.y = mPosY;
@@ -165,7 +163,7 @@ s32 daPgDfdr_c::InitResources()
 s32 daPgDfdr_c::Behavior()
 {
     _ZN10dBgActor_c21IsClsnInRangeOnScreenE5Fix12IiES1_(this, 0, 0);
-    func_ov027_02111cfc(this);
+    func_ov027_02111cfc();
     if (ClosestPlayer()->IsInsideOfCannon()) {
         mFlags &= ~kSkipRender;
     } else {
@@ -208,31 +206,28 @@ s32 daPgDfdr_c::CleanupResources()
     return 1;
 }
 
-// @symbol func_ov027_02111d70
+// @symbol _ZN10daPgDfdr_c19func_ov027_02111d70Ei
 /* Select state idx and run its enter function. */
-extern "C" void func_ov027_02111d70(void *self, int idx)
+void daPgDfdr_c::func_ov027_02111d70(int idx)
 {
-    daPgDfdr_c *c = (daPgDfdr_c *)self;
-    c->mStateTable = &data_ov027_02113ce4[idx];
-    func_ov027_02111d38(self);
+    mStateTable = &data_ov027_02113ce4[idx];
+    func_ov027_02111d38();
 }
 
-// @symbol func_ov027_02111d38
-extern "C" void func_ov027_02111d38(void *self)
+// @symbol _ZN10daPgDfdr_c19func_ov027_02111d38Ev
+void daPgDfdr_c::func_ov027_02111d38()
 {
-    daPgDfdr_c *c = (daPgDfdr_c *)self;
     typedef void (daPgDfdr_c::*Fn)();
-    Fn *fn = (Fn *)c->mStateTable;
-    (c->**fn)();
+    Fn *fn = (Fn *)mStateTable;
+    (this->**fn)();
 }
 
-// @symbol func_ov027_02111cfc
-extern "C" void func_ov027_02111cfc(void *self)
+// @symbol _ZN10daPgDfdr_c19func_ov027_02111cfcEv
+void daPgDfdr_c::func_ov027_02111cfc()
 {
-    daPgDfdr_c *c = (daPgDfdr_c *)self;
     typedef void (daPgDfdr_c::*Fn)();
-    Fn *fn = (Fn *)c->mStateTable + 1;
-    (c->**fn)();
+    Fn *fn = (Fn *)mStateTable + 1;
+    (this->**fn)();
 }
 
 // @symbol func_ov027_02111ca8
@@ -254,7 +249,7 @@ extern "C" int func_ov027_02111c48(daPgDfdr_c *self)
         unsigned char step = self->mStepIndex;
         short endHeading = data_ov027_02113a1c[step].endHeading;
         if (_Z14ApproachLinearRsss(&self->mAngleY, endHeading, 0x514) != 0) {
-            func_ov027_02111d70(self, kStateWalk);
+            self->func_ov027_02111d70(kStateWalk);
         }
     }
     return 1;
@@ -278,46 +273,46 @@ extern "C" void func_ov027_02111b2c(daPgDfdr_c *self)
     self->unk_3d0 = 1;
 }
 
-// @symbol func_ov027_02111a28
+// @symbol _ZN10daPgDfdr_c19func_ov027_02111a28Ev
 /* State 1 tick: spend mDistanceLeft. At zero, wrap the step and enter the turn.
    Otherwise update position and play 0xf3 on the walk clip's footstep frames. */
-extern "C" int func_ov027_02111a28(daPgDfdr_c *self)
+int daPgDfdr_c::func_ov027_02111a28()
 {
-    int distLeft = self->mDistanceLeft;
+    int distLeft = mDistanceLeft;
     if (distLeft == 0) {
         /* 0x3d9 is mStepIndex. Named ++ is ldrb [this, #0x3d9] and drops the
            pooled add (this function 0x104 -> 0xf8). */
-        unsigned char *step = (unsigned char *)((int)self + 0x3d9);
+        unsigned char *step = (unsigned char *)((int)this + 0x3d9);
         *step = *step + 1;
-        if (self->mStepIndex >= kStepCount) self->mStepIndex = 0;
-        func_ov027_02111d70(self, kStateTurn);
+        if (mStepIndex >= kStepCount) mStepIndex = 0;
+        func_ov027_02111d70(kStateTurn);
         return 1;
     }
     {
-        int speed = self->mHorzSpeed;
+        int speed = mHorzSpeed;
         if (distLeft < speed) {
-            self->mHorzSpeed = distLeft;
-            self->mDistanceLeft = 0;
+            mHorzSpeed = distLeft;
+            mDistanceLeft = 0;
         } else {
-            self->mDistanceLeft -= speed;
+            mDistanceLeft -= speed;
         }
     }
-    self->UpdatePos(&self->mdCcAc_c);
+    UpdatePos(&mdCcAc_c);
     {
         /* currFrame is +0x378 and the BCA is +0x380. Naming them reorders
            6 words; the ternary keeps the straight-walk file in the compare. */
-        char *c = (char *)self;
+        char *c = (char *)this;
         int frameRaw = *(int *)(c + 0x378);
         int walkAnim = (int)data_ov027_02113c74.file;
         int curAnim = walkAnim ? *(int *)(c + 0x380) : *(int *)(c + 0x380);
         unsigned int frame = (unsigned int)(frameRaw << 4) >> 0x10;
         if (curAnim == walkAnim) {
             if (frame == 0xa || frame == 0x16) {
-                func_0201267c(0xf3, (char *)&self->mCamSpacePosX);
+                func_0201267c(0xf3, (char *)&mCamSpacePosX);
             }
         } else if (curAnim == (int)data_ov027_02113c8c.file) {
             if (frame == 9 || frame == 0x16) {
-                func_0201267c(0xf3, (char *)&self->mCamSpacePosX);
+                func_0201267c(0xf3, (char *)&mCamSpacePosX);
             }
         }
     }
