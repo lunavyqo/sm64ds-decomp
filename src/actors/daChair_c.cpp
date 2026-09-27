@@ -31,7 +31,7 @@
  * Leftover: cstd::atan2's symbol carries 5Fix12IiE. A scalar
  *   namespace declaration would mangle as ii.
  * Leftover: dActor_c has no Pos(). Callers pass &mPosX.
- *   State2 still copies the player's position through a PlainVector3;
+ *   State2 still copies the player's position through a plain Vec3;
  *   player->mPosX by name changes that function's size.
  * Leftover: State2 compares mStateTimer and mActionTimer through a
  *   view based at this+0x300. The same words are updated through
@@ -55,7 +55,7 @@
 extern SharedFilePtr data_ov020_02114af0;
 extern Matrix4x3 IDENTITY_MATRIX4X3;
 
-typedef struct { s32 x, y, z; } PlainVector3;
+typedef struct { s32 x, y, z; } Vec3;
 
 /* mStateTimer at +0x9e and mActionTimer at +0xa0, addressed from
  * this+0x300 rather than from the fields. */
@@ -71,13 +71,13 @@ extern "C" {
 void func_0200f760(void *self, void *cyl);
 void func_0201267c(unsigned int id, void *pos);
 void dBgCh_Actr_UpdateContinuous_Veneer(void *clsn);
-void Vec3_Sub(void *res, const void *v0, const void *v1);
+void Vec3_Sub(Vec3 *res, Vec3 *v0, Vec3 *v1);
 s16 _ZN4cstd5atan2E5Fix12IiES1_(s32 y, s32 x);
-s32 Vec3_HorzLen(const void *v);
+s32 Vec3_HorzLen(const Vector3 *v);
 void *_ZNK10dBgCh_Actr13GetWallResultEv(void *clsn);
-void AddVec3(void *dst, const void *add, const void *src);
-int Vec3_Dist(const void *a, const void *b);
-short Vec3_HorzAngle(const void *a, const void *b);
+void AddVec3(Vec3 *dst, Vec3 *add, Vec3 *src);
+int Vec3_Dist(const Vector3 *a, const Vector3 *b);
+short Vec3_HorzAngle(const Vector3 *a, const Vector3 *b);
 int AngleDiff(int a, int b);
 void Matrix4x3_FromRotationZXYExt(void *m, int x, int y, int z);
 
@@ -219,7 +219,7 @@ void daChair_c::State0()
     mTargetID = 0;
     if (piano == 0)
         return;
-    if (Vec3_Dist(&mPosX, &piano->mPosX) < 0x12c000) {
+    if (Vec3_Dist((const Vector3 *)&mPosX, (const Vector3 *)&piano->mPosX) < 0x12c000) {
         mTargetID = piano->uniqueID;
         mActionTimer = 0;
     }
@@ -244,9 +244,9 @@ void daChair_c::State1()
         targetPos[0] = *av;
         targetPos[1] = av[1];
         targetPos[2] = av[2];
-        if (Vec3_Dist(&mPosX, targetPos) >= 0xfa000)
+        if (Vec3_Dist((const Vector3 *)&mPosX, (const Vector3 *)targetPos) >= 0xfa000)
             return;
-        delta = (short)(Vec3_HorzAngle(&mPosX, targetPos)
+        delta = (short)(Vec3_HorzAngle((const Vector3 *)&mPosX, (const Vector3 *)targetPos)
                         - mAngleY + 0x2000);
         if (delta & 0x4000) {
             mTrackedAngle = &mAngleZ;
@@ -272,7 +272,7 @@ void daChair_c::State1()
     if (mActionTimer != 0) {
         player = ClosestPlayer();
         if (player != 0) {
-            if (Vec3_Dist(&mPosX, &player->mPosX) < 0x1f4000)
+            if (Vec3_Dist((const Vector3 *)&mPosX, (const Vector3 *)&player->mPosX) < 0x1f4000)
                 mActionTimer = 0;
         }
         mStateTimer = 0;
@@ -335,9 +335,9 @@ void daChair_c::State2()
             (*(u16 *)((int)&mActionTimer))--;
             if (ST->timer == 0) {
                 dActor_c *player;
-                PlainVector3 *pp;
-                PlainVector3 playerPos;
-                PlainVector3 diff;
+                Vec3 *pp;
+                Vec3 playerPos;
+                Vec3 diff;
                 s32 reach;
                 func_0201267c(0x5d, &mCamSpacePosX);
                 player = ClosestPlayer();
@@ -345,14 +345,14 @@ void daChair_c::State2()
                     return;
                 /* Copied through a plain vector. player->mPosX by name
                  * changes the code size. */
-                pp = (PlainVector3 *)((char *)&player->mPosX);
+                pp = (Vec3 *)((char *)&player->mPosX);
                 playerPos.x = pp->x;
                 playerPos.y = pp->y;
                 playerPos.z = pp->z;
-                Vec3_Sub(&diff, &playerPos, &mPosX);
+                Vec3_Sub(&diff, &playerPos, (Vec3 *)&mPosX);
                 mPrevAngleY = _ZN4cstd5atan2E5Fix12IiES1_(diff.x, diff.z);
                 mPrevAngleX = _ZN4cstd5atan2E5Fix12IiES1_(
-                                  diff.y, Vec3_HorzLen(&diff)) * -1;
+                                  diff.y, Vec3_HorzLen((const Vector3 *)&diff)) * -1;
                 /* unk_0a4 / unk_0ac: lateral velocity beside mVertSpeed.
                  * Unsigned table index; mPrevAngleX/Y are s16. */
                 reach = (s32)(((long long)data_02082214[((*(u16 *)&mPrevAngleX) >> 4) * 2 + 1]
@@ -374,7 +374,7 @@ void daChair_c::State2()
                 Break();
             } else if (mWithMeshClsn.IsOnWall() != 0) {
                 void *wall = _ZNK10dBgCh_Actr13GetWallResultEv(&mWithMeshClsn);
-                PlainVector3 normal;
+                Vec3 normal;
                 ((SurfaceInfo *)((char *)wall + 4))->CopyNormalTo(
                     *(Vector3 *)&normal);
                 if (GetSubtraction(mPrevAngleY,
@@ -385,7 +385,7 @@ void daChair_c::State2()
         }
     }
 
-    AddVec3(&mPosX, &unk_0a4, &mPosX);
+    AddVec3((Vec3 *)&mPosX, (Vec3 *)&unk_0a4, (Vec3 *)&mPosX);
 
     {
         u32 id = mCylinder.otherOwner;
@@ -404,7 +404,7 @@ void daChair_c::State2()
         if (isPlayer != 0)
             return;
         {
-            PlainVector3 pos;
+            Vec3 pos;
             pos.x = mPosX;
             pos.y = mPosY;
             pos.z = mPosZ;
