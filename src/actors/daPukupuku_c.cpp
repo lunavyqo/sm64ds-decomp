@@ -55,9 +55,6 @@
 /* shadow typedef 'Fix12i' */
 typedef int Fix12i;
 
-struct PukuStateC;
-typedef int (PukuStateC::*PukuStatePMF)();
-
 /* Behavior calls the main PMF, which sits 8 bytes into the state record. */
 typedef void (dEnemyBase_c::*PukuMainPMF)();
 struct PukuMainView {
@@ -71,7 +68,6 @@ struct AnimFilePtr { int a; struct BCA_File *file; };
 extern "C" {
 extern "C" void _ZN6Player4HurtERK7Vector3j5Fix12IiEjjj( Player*, const Vector3&, unsigned int, Fix12i, unsigned int, unsigned int, unsigned int);
 extern Vector3 data_ov090_021342d8;
-extern int func_ov090_021332e8(PukuStateC *, PukuStatePMF *);
 extern int RandomIntInternal(void*);
 extern int data_0209e650[];
 extern s32 Vec3_Dist(void* a, void* b);
@@ -125,7 +121,7 @@ int daPukupuku_c::InitResources()
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(
         &mModelAnim, data_ov090_0213455c.file, 0, 0x1000, 0);
 
-    func_ov090_021332e8((PukuStateC *)this, (PukuStatePMF *)&data_ov090_02134594);
+    func_ov090_021332e8((PukuStatePMF *)&data_ov090_02134594);
     return 1;
 }
 
@@ -200,15 +196,15 @@ void func_ov090_02133338(char *c) {
 }
 }
 
-// @symbol func_ov090_021332e8
+// @symbol _ZN12daPukupuku_c19func_ov090_021332e8EPM10PukuStateCFivE
 struct PukuStateC { char pad[0x370]; PukuStatePMF *pp; };
-extern "C" int func_ov090_021332e8(PukuStateC *c, PukuStatePMF *p)
+int daPukupuku_c::func_ov090_021332e8(PukuStatePMF *p)
 {
-    c->pp = p;
-    PukuStatePMF *q = c->pp;
+    *(PukuStatePMF **)((char *)this + 0x370) = p;
+    PukuStatePMF *q = *(PukuStatePMF **)((char *)this + 0x370);
     if (*q == 0)
         return 1;
-    return (c->**q)();
+    return (((PukuStateC *)this)->**q)();
 }
 
 // @symbol func_ov090_02133290
@@ -224,20 +220,17 @@ int func_ov090_02133290(char* c){
 }
 }
 
-// @symbol func_ov090_02133200
-extern "C" {
-int func_ov090_02133200(char* c)
+// @symbol _ZN12daPukupuku_c19func_ov090_02133200Ev
+int daPukupuku_c::func_ov090_02133200()
 {
-    daPukupuku_c *self = (daPukupuku_c *)c;
-    if (Vec3_Dist(&self->mPosX, &self->mHomePosX) > 0x3e8000) {
-        *(unsigned short *)&self->mStateTimer = 0x32;
-        *(s16 *)(self->pad_380 + 4) = Vec3_HorzAngle(&self->mPosX, &self->mHomePosX);
+    if (Vec3_Dist(&mPosX, &mHomePosX) > 0x3e8000) {
+        *(unsigned short *)&mStateTimer = 0x32;
+        *(s16 *)(pad_380 + 4) = Vec3_HorzAngle(&mPosX, &mHomePosX);
     }
-    ApproachAngle(&self->mPrevAngleY, *(s16 *)(self->pad_380 + 4), 1, 0x100, 0x200);
-    if (*(unsigned short *)&self->mStateTimer == 0)
-        func_ov090_021332e8((PukuStateC *)c, (PukuStatePMF *)data_ov090_02134584);
+    ApproachAngle(&mPrevAngleY, *(s16 *)(pad_380 + 4), 1, 0x100, 0x200);
+    if (*(unsigned short *)&mStateTimer == 0)
+        func_ov090_021332e8((PukuStatePMF *)data_ov090_02134584);
     return 1;
-}
 }
 
 // @symbol func_ov090_021331c4
@@ -251,15 +244,12 @@ int func_ov090_021331c4(char* c){
 }
 }
 
-// @symbol func_ov090_02133190
-extern "C" {
-int func_ov090_02133190(char *c) {
-    daPukupuku_c *self = (daPukupuku_c *)c;
-    if (*(unsigned short *)&self->mStateTimer == 0) {
-        func_ov090_021332e8((PukuStateC *)c, (PukuStatePMF *)&data_ov090_02134594);
+// @symbol _ZN12daPukupuku_c19func_ov090_02133190Ev
+int daPukupuku_c::func_ov090_02133190() {
+    if (*(unsigned short *)&mStateTimer == 0) {
+        func_ov090_021332e8((PukuStatePMF *)&data_ov090_02134594);
     }
     return 1;
-}
 }
 
 // @symbol func_ov090_021330c8
