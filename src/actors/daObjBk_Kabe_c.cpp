@@ -51,8 +51,9 @@ struct KabeFiles {
 extern "C" {
 extern KabeFiles data_ov079_02128058[];
 
-/* Writes the mesh active range at dBgW+0x0c. */
-void func_020393a4(dBgW_KcMbg *mesh, int range);
+/* Writes the mesh active range at dBgW+0x0c. The definition is C and
+ * takes int *, so this spelling matches it and the call casts. */
+void func_020393a4(int *mesh, int range);
 
 /* Scalar ABI. These members take Fix12<int> by value, and that spelling
  * does not compile against the ints this file actually passes. */
@@ -140,7 +141,7 @@ int daObjBk_Kabe_c::Behavior()
         }
         return 1;
     }
-    func_020393a4(&mMeshCollider, kClsnRange);
+    func_020393a4((int *)&mMeshCollider, kClsnRange);
     _ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_(this, kClsnRange, 0);
     return 1;
 }
