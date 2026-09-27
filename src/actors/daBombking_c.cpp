@@ -433,17 +433,14 @@ int func_ov078_02123d3c(char* c)
 }
 
 /* -------------------------------------------------------------------------- */
-// @symbol func_ov078_02123eb8
-extern "C" {
-int func_ov078_02123eb8(int *t)
+// @symbol _ZN12daBombking_c19func_ov078_02123eb8Ev
+int daBombking_c::func_ov078_02123eb8()
 {
-    daBombking_c *self = (daBombking_c *)t;
-    self->mVertAccel = -0x2000;
-    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&self->mBlendModelAnim, (void*)(data_ov078_02126f28.file), 0, 0, 0x1000, 0);
-    self->mStateTimer = 0x32;
-    self->mHorzSpeed = 0xa000;
+    mVertAccel = -0x2000;
+    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&mBlendModelAnim, (void*)(data_ov078_02126f28.file), 0, 0, 0x1000, 0);
+    mStateTimer = 0x32;
+    mHorzSpeed = 0xa000;
     return 1;
-}
 }
 
 /* -------------------------------------------------------------------------- */
