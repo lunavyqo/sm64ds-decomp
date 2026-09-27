@@ -71,7 +71,7 @@ BowserFire	26	781	ov060	yes	no	compiler-only:>=11(derived from own chain: 5 clas
 daObjCtMecha03_c	1	253	ov065	yes	yes	compiler-only:>=11(derived from own chain: 5 classes incl. self via build/rtti.json; floor 2x5+1)	daObjCtMecha05_c	text-only
 daKing_Donketu_c	46	1993	ov073	yes	yes	pragma:2;compiler-only:>=11(derived from own chain: 5 classes incl. self via build/rtti.json + include/ base clause; floor 2x5+1)	-	text-only
 daDsnBase_c	3	444	ov091	yes	yes	compiler-only:>=11(derived from own chain: 5 classes incl. self via build/rtti.json; floor 2x5+1)	-	text-only
-PowerFlower	18	508	ov002	yes	no	compiler-only:>=9(derived from own chain: 4 classes incl. self via build/rtti.json + include/ base clause; floor 2x4+1)	daBar_c	text-only
+daObjPowerUpItem_c	18	508	ov002	yes	yes	compiler-only:>=9(derived from own chain: 4 classes incl. self via build/rtti.json + include/ base clause; floor 2x4+1)	daBar_c	text-only
 daYurei_Mucho_c	1	746	ov065	yes	yes	compiler-only:>=11(derived from own chain: 5 classes incl. self via build/rtti.json; floor 2x5+1)	daObjCtMecha05_c	text-only
 daDgr_c	1	392	ov025	yes	yes	compiler-only:>=11(derived from own chain: 5 classes incl. self via build/rtti.json; floor 2x5+1)	-	text-only
 daBasabasa_c	21	676	ov065	yes	yes	compiler-only:>=11(derived from own chain: 5 classes incl. self via build/rtti.json + include/ base clause; floor 2x5+1)	daObjCtMecha05_c	text-only
@@ -132,7 +132,7 @@ daObjLava_c+daObjLava_c	1	88	ov002	partial	yes	multi-class-tu:2;compiler-only:>=
 StarCamera	1	10	ov002	no	yes	compiler-only:unknown(no chain for StarCamera: no RTTI record in build/rtti.json and no include/ base clause; measure with tubuild verify)	daBar_c	text-only
 daDonketu_c	10	234	ov064	yes	yes	compiler-only:>=13(derived from own chain: 6 classes incl. self via build/rtti.json + include/ base clause; floor 2x6+1)	daObjFl_Gura_c	text-only
 daLuigi_c	11	276	ov055	yes	yes	compiler-only:>=9(derived from own chain: 4 classes incl. self via build/rtti.json + include/ base clause; floor 2x4+1)	-	text-only
-RotatingUpDownPlatformUtm	11	549	ov091	yes	no	compiler-only:>=11(derived from own chain: 5 classes incl. self via build/rtti.json + include/ base clause; floor 2x5+1)	-	text-only
+daObjRotateUpdownLift_c	11	549	ov091	yes	yes	compiler-only:>=11(derived from own chain: 5 classes incl. self via build/rtti.json + include/ base clause; floor 2x5+1)	-	text-only
 daLinelift2_c	11	316	ov091	yes	yes	compiler-only:>=11(derived from own chain: 5 classes incl. self via build/rtti.json + include/ base clause; floor 2x5+1)	-	text-only
 daUdlift_c	11	347	ov095	yes	yes	compiler-only:>=11(derived from own chain: 5 classes incl. self via build/rtti.json + include/ base clause; floor 2x5+1)	-	text-only
 daObj_volcanoCannon_c+daObjFlMaruta_c	11	203	ov022	partial	yes	multi-class-tu:2;classif:no-header:daObjFlMaruta_c;compiler-only:>=16(derived from own chain: 7 classes incl. self via build/rtti.json; floor 2x7+2)	daObjFl_Fall_Block_c	text-only
