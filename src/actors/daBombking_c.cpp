@@ -27,7 +27,7 @@
  * - Camera::mFlags (0x154, bit 8) is used. Behavior's store at Camera+0x114
  *   is the word after mTargetPlayer, still pad_114.
  * - func_02035550 is the call that ORs 0x4000 into dBgCh_Actr::mFlags
- *   (src/func_02035550.c). Inlining the or would delete the call.
+ *   Inlining the or would delete the call.
  * - func_02012694 plays bank 3 at mCamSpacePos. It is not Sound::PlayBank3
  *   (that body is 0x02012664). func_0200d8c8 shakes the camera.
  *   func_ov002_020db54c launches the grabbed player; func_ov002_020db5f4
