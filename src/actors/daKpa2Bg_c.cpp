@@ -23,8 +23,6 @@ extern "C" {
 extern SharedFilePtr daKpa2Bg_c_ModelFile;
 extern SharedFilePtr daKpa2Bg_c_ClsnFile;
 extern Matrix4x3 data_020a0e68;
-extern void *data_ov060_0211affc;
-extern void *data_ov060_0211aff4;
 extern CLPS_Block data_ov046_021115bc;
 
 int Sound_PlayIfNotActive(int handle, int a, int b, int c);
@@ -133,10 +131,10 @@ int daKpa2Bg_c::InitResources()
 {
   void* mdl;
   void* kcl;
-  mdl = _ZN5Model8LoadFileER13SharedFilePtr(&data_ov060_0211affc);
+  mdl = _ZN5Model8LoadFileER13SharedFilePtr(&daKpa2Bg_c_ModelFile);
   _ZN9ModelBase7SetFileEP8BMD_Fileii(&mModel2, mdl, 1, -1);
   func_ov060_02117a64(((char*)this));
-  kcl = _ZN7dBgW_Kc8LoadFileER13SharedFilePtr(&data_ov060_0211aff4);
+  kcl = _ZN7dBgW_Kc8LoadFileER13SharedFilePtr(&daKpa2Bg_c_ClsnFile);
   _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(&mMovingMeshCollider2, kcl, &mClsnMat, 0x1000, mAngleY, &data_ov046_021115bc);
   func_020393d4(&mMovingMeshCollider2, &_ZN4dBgW16UpdatePosAndAngsERS_P8dActor_cR5dBgPiR7Vector3P10Vector3_16S8_);
   ((dBgW *)&mMovingMeshCollider2)->Enable((dActor_c *)(((char*)this)));

@@ -17,7 +17,7 @@
  * 0x0211a8b0 in ov060's symbols.txt.
  *
  * src/actors/daKpa2Bg_c.cpp licenses 0x02117980..0x02117cdc (D1 through
- * InitResources). daKpa2Bg_c_classInit at 0x02117cdc stays in src/d_a_kpa2_bg.c.
+ * InitResources). daKpa2Bg_c_classInit at 0x02117cdc stays outside that TU.
  * InitResources' CLPS pointer is data_ov046_021115bc: of the three Bowser level
  * overlays resident with ov060, only ov046's bytes there are a CLPS block
  * ('CLPS' and stride 8). ov044 holds billboard typeinfo and ov048 holds the
