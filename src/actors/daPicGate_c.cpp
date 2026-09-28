@@ -78,22 +78,22 @@ enum {
 
 extern "C" {
 extern int IsStarCollectedInLevel(signed char levelID, int starID);
-extern void func_ov080_021256f8(daPicGate_c *self);
-extern int func_ov080_02125bb0(daPicGate_c *self, int dist);
-extern void func_ov080_02125940(daPicGate_c *self);
-extern void func_ov080_02125af0(daPicGate_c *self);
+extern void func_ov080_021256f8(void *self);
+extern int func_ov080_02125bb0(void *self, int dist);
+extern void func_ov080_02125940(void *self);
+extern void func_ov080_02125af0(void *self);
 extern int data_0209caa0[];
-extern void func_ov080_02126124(daPicGate_c *self);
-extern void func_ov080_02125de0(daPicGate_c *self, int x, int y, int front);
-extern void func_ov080_02125fd0(daPicGate_c *self);
+extern void func_ov080_02126124(void *self);
+extern void func_ov080_02125de0(void *self, int x, int y, int front);
+extern void func_ov080_02125fd0(void *self);
 extern void MulMat4x3Mat4x3(const int *a, const int *b, int *out);
-extern void func_ov080_02125460(daPicGate_c *self);
+extern void func_ov080_02125460(void *self);
 extern Matrix4x3 data_0209b3ec;
 extern unsigned short DecIfAbove0_Short(unsigned short *p);
 extern void _ZN8dActor_c9SetRangesE5Fix12IiES1_S1_S1_(
     void *self, int offsetY, int radius, int clip, int far);
-extern void func_ov080_0212555c(daPicGate_c *self);
-extern int func_ov080_02125630(void *self, int picture);
+extern void func_ov080_0212555c(void *self);
+extern unsigned char *func_ov080_02125630(void *self, int picture);
 extern u8 data_ov080_02127714[];
 extern void func_020553a4(void *mtx);
 extern void *data_ov080_02127834;
@@ -412,7 +412,7 @@ s32 daPicGate_c::InitResources() {
     }
 
     mCells = (Vertex *)Memory::operator_new2((unsigned)mNumCells * 0x18u);
-    mTexRecord = LoadTexture(this, (int)((unsigned char)((param1 >> 8) & 0x1f)));
+    mTexRecord = (s32)LoadTexture(this, (int)((unsigned char)((param1 >> 8) & 0x1f)));
     mWaveParams = (const daPicGate_c::WaveParams *)&kDefaultWave;
     mState = &kStates[(unsigned char)((param1 >> 0xd) & 3)];
     (this->*mState->init)();
