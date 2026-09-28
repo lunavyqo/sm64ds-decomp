@@ -76,7 +76,7 @@ typedef void (daBtfly_c::*ButterflyState)();
 extern "C" {
 void _Z14ApproachLinearRiii(int *p, int target, int step);
 void _Z14ApproachLinearRsss(s16 *p, s16 target, s16 step);
-s16 Vec3_VertAngle(const void *v1, const void *v0);
+s16 Vec3_VertAngle(const Vector3 *v1, const Vector3 *v0);
 s16 Vec3_HorzAngle(const void *a, const void *b);
 void Vec3_Sub(Vector3 *out, void *a, void *b);
 int Vec3_HorzLen(Vector3 *v);
@@ -87,7 +87,7 @@ void dBgCh_Actr_UpdateContinuous_Veneer(void *c);
 int RandomIntInternal(int *seed);
 extern int data_0209e650;
 extern s16 data_02082214[]; /* sin/cos; index (u16 angle >> 4) * 2 */
-extern Mtx data_020a0e68;   /* scratch matrix */
+extern Matrix4x3 data_020a0e68; /* scratch matrix */
 /* Init LoadFile: ov002 BMD shared with the other small fauna, this overlay's
  * BCA, the still-model BMD, and the animated-model BMD. Cleanup Release. */
 extern SharedFilePtr data_ov002_0210d9d8;
@@ -110,10 +110,14 @@ void _ZN6Player4HurtERK7Vector3j5Fix12IiEjjj(
     void *player, Vector3 *pos, unsigned int a, int damage, unsigned int c, unsigned int d, unsigned int e);
 }
 
+// @symbol _ZN9daBtfly_cD1Ev
+// @symbol _ZN9daBtfly_cD0Ev
+/* One ~daBtfly_c() emits both D1 and D0. */
 daBtfly_c::~daBtfly_c()
 {
 }
 
+// @symbol _ZN9daBtfly_c6State7Ev
 void daBtfly_c::State7()
 {
     char *c = (char *)this;
@@ -142,7 +146,7 @@ void daBtfly_c::State7()
     if (player != 0) {
         _Z14ApproachLinearRsss(&mPrevAngleY, HorzAngleToCPlayer(), 0x320);
         _Z14ApproachLinearRsss(&mPrevAngleX,
-            Vec3_VertAngle(&mPosX, &player->mPosX), 0x320);
+            Vec3_VertAngle((Vector3 *)&mPosX, (Vector3 *)&player->mPosX), 0x320);
     }
 
     dBgCh_Actr_UpdateContinuous_Veneer(&mWithMeshClsn);
@@ -192,6 +196,7 @@ cylinder_only:
     mdCcAcPos_c.Update();
 }
 
+// @symbol _ZN9daBtfly_c6State6Ev
 void daBtfly_c::State6()
 {
     if (mStateTimer == 0x14) {
@@ -215,6 +220,7 @@ void daBtfly_c::State6()
     mState = 7;
 }
 
+// @symbol _ZN9daBtfly_c6State5Ev
 void daBtfly_c::State5()
 {
     s16 hAngle;
@@ -253,6 +259,7 @@ void daBtfly_c::State5()
         (s16)((((unsigned)RandomIntInternal(&data_0209e650) >> 16) % 800) + 0x190));
 }
 
+// @symbol _ZN9daBtfly_c6State4Ev
 void daBtfly_c::State4()
 {
     int typ = param1 & 0xff;
@@ -299,10 +306,11 @@ void daBtfly_c::State4()
     mState = 5;
 }
 
+// @symbol _ZN9daBtfly_c6State3Ev
 void daBtfly_c::State3()
 {
     _Z14ApproachLinearRsss(&mPrevAngleY, Vec3_HorzAngle(&mPosX, &mHomePosX), 0x800);
-    _Z14ApproachLinearRsss(&mPrevAngleX, Vec3_VertAngle(&mPosX, &mHomePosX), 0x50);
+    _Z14ApproachLinearRsss(&mPrevAngleX, Vec3_VertAngle((Vector3 *)&mPosX, (Vector3 *)&mHomePosX), 0x50);
     UpdatePos(0);
 
     {
@@ -328,6 +336,7 @@ void daBtfly_c::State3()
 }
 
 #pragma opt_common_subs off
+// @symbol _ZN9daBtfly_c6State2Ev
 void daBtfly_c::State2()
 {
     char *player;
@@ -372,7 +381,7 @@ void daBtfly_c::State2()
         v.y = py;
         v.z = pp[2];
         v.y = py + ((mStateTimer * five + 0x100) << 12) / 4;
-        _Z14ApproachLinearRsss(&mPrevAngleX, Vec3_VertAngle(&mPosX, &v), 0x500);
+        _Z14ApproachLinearRsss(&mPrevAngleX, Vec3_VertAngle((Vector3 *)&mPosX, &v), 0x500);
 
         UpdatePos(0);
 
@@ -397,6 +406,7 @@ void daBtfly_c::State2()
 
 #pragma opt_common_subs on
 
+// @symbol _ZN9daBtfly_c6State1Ev
 void daBtfly_c::State1()
 {
     if (IsPlayerInRange(0x3e8) == 0)
@@ -406,6 +416,7 @@ void daBtfly_c::State1()
     mPrevAngleY = Vec3_HorzAngle(&mPosX, &p->mPosX);
 }
 
+// @symbol _ZN9daBtfly_c6State0Ev
 void daBtfly_c::State0()
 {
     struct AngleTriple { u16 w[3]; };
@@ -434,6 +445,7 @@ void daBtfly_c::State0()
     mState = 1;
 }
 
+// @symbol _ZN9daBtfly_c16CleanupResourcesEv
 int daBtfly_c::CleanupResources()
 {
     data_ov100_02148608.Release();
@@ -443,10 +455,12 @@ int daBtfly_c::CleanupResources()
     return 1;
 }
 
+// @symbol _ZN9daBtfly_c16OnPendingDestroyEv
 void daBtfly_c::OnPendingDestroy()
 {
 }
 
+// @symbol _ZN9daBtfly_c6RenderEv
 int daBtfly_c::Render()
 {
     if (mState == 4)
@@ -458,6 +472,7 @@ int daBtfly_c::Render()
     return 1;
 }
 
+// @symbol _ZN9daBtfly_c8BehaviorEv
 int daBtfly_c::Behavior()
 {
     (this->*data_ov100_02148628[mState])();
@@ -498,12 +513,12 @@ int daBtfly_c::Behavior()
         mAngleY = mPrevAngleY;
         Matrix4x3_ApplyInPlaceToRotationY(&data_020a0e68, mAngleY);
         if (mUseAnimModel != 0) {
-            *(Mtx *)&mModelAnim.mat4x3 = data_020a0e68;
+            *(Mtx *)&mModelAnim.mat4x3 = *(Mtx *)&data_020a0e68;
             _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(
                 this, &mShadowModel1, &mModelAnim.mat4x3, 0x14000, 0x12c000, 0xf);
             mModelAnim.Advance();
         } else {
-            *(Mtx *)&mModel.mat4x3 = data_020a0e68;
+            *(Mtx *)&mModel.mat4x3 = *(Mtx *)&data_020a0e68;
             _ZN8dActor_c19DropShadowRadHeightER11ShadowModelR9Matrix4x35Fix12IiES5_j(
                 this, &mShadowModel2, &mModel.mat4x3, 0x64000, 0x12c000, 0xf);
         }
@@ -511,6 +526,7 @@ int daBtfly_c::Behavior()
     return 1;
 }
 
+// @symbol _ZN9daBtfly_c13InitResourcesEv
 int daBtfly_c::InitResources()
 {
     Model::LoadFile(data_ov002_0210d9d8);
