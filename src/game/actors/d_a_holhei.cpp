@@ -45,7 +45,7 @@
 
 /* Second word is the loaded file. SharedFilePtr.h has no fields.
    The externs below keep the spellings already banked against
-   __sinit_ov062_0211cf30.c; this view is only a cast at the use. */
+   __sinit_ov062_0211cf30; this view is only a cast at the use. */
 struct HolheiFile { int id; void *file; };
 
 /* daHolhei_c_ChangeState stores a pointer to one of these and calls the
