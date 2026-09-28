@@ -50,7 +50,8 @@
  *   dBgCh_Actr.h. SurfaceInfo starts at +4 of the returned record.
  * - func_0203568c / func_02035684 (InitState0, State2): store mRadius /
  *   mHeight (p[6] / p[7]). Direct stores on State2 are 0x1a8 -> 0x1a0
- *   (2 words) and drop those bls.
+ *   (2 words) and drop those bls. Their C definitions take int *, so
+ *   the calls cast.
  * - func_0201267c (State3): Sound::Play(3, id, pos) at 0x0201267c.
  *   Sound::PlayBank3 is the twin at 0x02012664, a different function.
  * - data_ov072_02122b20 / 02122b40 / 02122b58 / 02122b64: model file,
@@ -97,9 +98,9 @@ short Vec3_HorzAngle(const void *a, const void *b);
 void  Vec3_Asr(void *dst, const void *src, int shift);
 unsigned short DecIfAbove0_Short(unsigned short *timer);
 void  Matrix4x3_FromRotationXYZExt(void *m, int x, int y, int z);
-void  func_0201267c(int id, const void *pos);
-void  func_0203568c(dBgCh_Actr *clsn, int radius);
-void  func_02035684(dBgCh_Actr *clsn, int height);
+void  func_0201267c(unsigned int id, const Vector3 *pos);
+void  func_0203568c(int *clsn, int radius);
+void  func_02035684(int *clsn, int height);
 void  dBgCh_Actr_UpdateContinuous_Veneer(void *self);
 
 void      _ZN8dActor_c9SetRangesE5Fix12IiES1_S1_S1_(void *self, int offsetY,
@@ -288,8 +289,8 @@ int daBgSnmBdy_c::InitState0()
     mRadius = (int)(((long long)mScaleX * 0x82000 + 0x800) >> 12);
     mCylinder.radius = mRadius;
     mCylinder.height = mRadius << 1;
-    func_0203568c(&mWithMeshClsn, mRadius);
-    func_02035684(&mWithMeshClsn, mRadius);
+    func_0203568c((int *)&mWithMeshClsn, mRadius);
+    func_02035684((int *)&mWithMeshClsn, mRadius);
     _ZN8dActor_c9SetRangesE5Fix12IiES1_S1_S1_(
         this, mRadius, mRadius, 0x1000000, 0x1000000);
     mFlags |= 1;
@@ -378,8 +379,8 @@ int daBgSnmBdy_c::State2()
         mRadius = (int)(((long long)growScale * 0x82000 + 0x800) >> 12);
         mCylinder.radius = mRadius;
         mCylinder.height = mRadius << 1;
-        func_0203568c(&mWithMeshClsn, mRadius);
-        func_02035684(&mWithMeshClsn, mRadius);
+        func_0203568c((int *)&mWithMeshClsn, mRadius);
+        func_02035684((int *)&mWithMeshClsn, mRadius);
         _ZN8dActor_c9SetRangesE5Fix12IiES1_S1_S1_(
             this, mRadius, mRadius, 0x1000000, 0x1000000);
     }
@@ -431,7 +432,7 @@ int daBgSnmBdy_c::State3()
             if (distToLanding < 0x17c000) {
                 dActor_c *head = dActor_c::FindWithActorID(0x111, 0); /* BIG_SNOWMAN_HEAD */
                 ((daBgSnmHed_c *)head)->unk_336 = 1;
-                func_0201267c(0x114, &mCamSpacePosX);
+                func_0201267c(0x114, (const Vector3 *)&mCamSpacePosX);
                 mVertSpeed = 0x1d000;
                 mHorzSpeed = 0xe000;
                 state = (unsigned char *)((int)this + 0x3a2);
