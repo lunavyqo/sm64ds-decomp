@@ -18,6 +18,10 @@
  * - InitResources: ModelAnim::SetAnim, both calls, Fix12<int> speed, size
  *   0x32c -> 0x344 (+0x18). dCcAcPos_c::Init, both calls, Fix12<int>
  *   radius/height, size 0x32c -> 0x34c (+0x20).
+ * - InitResources: mWithMeshClsn.Init(...) links to the undefined
+ *   _ZN10dBgCh_Actr4InitEP8dActor_ciiP10Vector3_16S3_: dBgCh_Actr.h spells
+ *   the radii Fix12i, a plain s32, so the ROM's Fix12<int> mangling is
+ *   called by name.
  * - func_ov089_02131df4: one control arm (mState != 7) size 0x110 -> 0xe8
  *   (-0x28). The ROM has both copies.
  *   func_ov089_02131dcc / func_ov089_02131df4 stay C names: the shards call
@@ -133,6 +137,7 @@ extern void AddVec3(void *d, void *a, void *b);
 extern void LoadKeyModels(int idx);
 extern void _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(void *thiz, void *bca, int a, int fx, unsigned int f);
 extern void _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(void *thiz, void *actor, void *pos, int r, int s, unsigned int a, unsigned int b);
+extern void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void *thiz, void *actor, int a, int b, void *v, void *w);
 extern ObjKeyFile data_ov002_0211094c;
 extern int data_0209cef0;
 void func_ov089_02131df4(char *c, char *p);
@@ -469,7 +474,7 @@ int daObjKey_c::InitResources()
         offset7.y = data_ov089_02132b40.y;
         offset7.z = data_ov089_02132b40.z;
         _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(&mdCcAcPos_c, this, &offset7, CC_R, STAR_CC_H, CC_FLAGS, CC_VULN);
-        mWithMeshClsn.Init(this, STAR_CLSN_R, 0, 0, 0);
+        _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(&mWithMeshClsn, this, STAR_CLSN_R, 0, 0, 0);
         mSpinSpeed = SPIN_FAST;
         mVertAccel = 0;
         Sound::PlayBank3(SND_APPEAR, *(Vector3 *)&mCamSpacePosX);
@@ -496,7 +501,7 @@ int daObjKey_c::InitResources()
         offset.y = data_ov089_02132ca4.y;
         offset.z = data_ov089_02132ca4.z;
         _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(&mdCcAcPos_c, this, &offset, CC_R, KEY_CC_H, CC_FLAGS, CC_VULN);
-        mWithMeshClsn.Init(this, KEY_CLSN_R, 0, 0, 0);
+        _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(&mWithMeshClsn, this, KEY_CLSN_R, 0, 0, 0);
         mVertAccel = GRAVITY;
         mSpinSpeed = 0;
     }
