@@ -93,9 +93,9 @@ extern int _ZN4cstd4fdivEii(int a, int b);
 extern Fix12i Vec3_HorzDist(const Vector3 *a, const Vector3 *b);
 extern short Vec3_HorzAngle(const Vector3 *a, const Vector3 *b);
 extern int Vec3_Dist(const Vector3 *a, const Vector3 *b);
-extern void _Z11UpdateAngleRssis(short &ang, short target, int step, short max);
-extern int _Z14ApproachLinearRsss(short &cur, short target, short step);
-extern void _Z14ApproachLinearRiii(int &cur, int target, int step);
+extern void _Z11UpdateAngleRssis(short *ang, short target, int step, short max);
+extern int _Z14ApproachLinearRsss(short *cur, short target, short step);
+extern void _Z14ApproachLinearRiii(int *cur, int target, int step);
 extern void Matrix4x3_FromRotationY(Matrix4x3 *m, short angle);
 
 extern void _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(void *clsn, void *actor, int radius, int height, unsigned int flags, unsigned int vuln);
@@ -281,7 +281,7 @@ int func_ov019_02111fec(daPgRcer_c *self)
     switch (self->mActionStep) {
     case 0: {
         short ang = Vec3_HorzAngle((Vector3 *)&self->mPosX, (Vector3 *)&self->mTalkPlayer->mPosX);
-        if (_Z14ApproachLinearRsss(self->mAngleY, ang, 0x514) != 0) {
+        if (_Z14ApproachLinearRsss(&self->mAngleY, ang, 0x514) != 0) {
             Vector3 pos;
             int msg;
             int eq;
@@ -347,7 +347,7 @@ int func_ov019_02111dec(daPgRcer_c *self)
         }
         break;
     case 1:
-        _Z11UpdateAngleRssis(self->mPrevAngleY, TARGET_ANG_Y(self), 2, 0x800);
+        _Z11UpdateAngleRssis(&self->mPrevAngleY, TARGET_ANG_Y(self), 2, 0x800);
         self->mAngleY = self->mPrevAngleY;
         self->UpdatePos(&self->mdCcAc_c);
         func_ov019_0211140c(self, &self->mWithMeshClsn);
@@ -463,7 +463,7 @@ int func_ov019_0211197c(daPgRcer_c *self)
             if (self->mPlayerCheated != 0 || self->mPlayerFinished != 0) {
                 val = 0x65000;
             }
-            _Z14ApproachLinearRiii(self->mHorzSpeed, val, 0x800);
+            _Z14ApproachLinearRiii(&self->mHorzSpeed, val, 0x800);
         }
         if (self->mPenguinFinished == 0 && Vec3_Dist(&data_ov019_021134e8, (Vector3 *)&self->mPosX) < 0x190000) {
             if (self->mPlayerFinished != 0) {
@@ -518,7 +518,7 @@ int func_ov019_021117a8(daPgRcer_c *self)
         self->mPath.GetNode(*(Vector3 *)node, n - 1);
         self->mPathDist = Vec3_Dist((Vector3 *)&self->mPosX, (Vector3 *)node);
         TARGET_ANG_Y(self) = Vec3_HorzAngle((Vector3 *)&self->mPosX, (Vector3 *)node);
-        _Z14ApproachLinearRsss(self->mAngleY, TARGET_ANG_Y(self), 0x200);
+        _Z14ApproachLinearRsss(&self->mAngleY, TARGET_ANG_Y(self), 0x200);
         self->mPrevAngleY = self->mAngleY;
         if (self->mPathDist < self->mHorzSpeed) {
             self->mHorzSpeed = self->mPathDist;
@@ -536,7 +536,7 @@ int func_ov019_021117a8(daPgRcer_c *self)
     }
     case 1: {
         short ang = Vec3_HorzAngle((Vector3 *)&self->mPosX, (Vector3 *)&self->mTalkPlayer->mPosX);
-        if (_Z14ApproachLinearRsss(self->mAngleY, ang, 0x514) != 0) {
+        if (_Z14ApproachLinearRsss(&self->mAngleY, ang, 0x514) != 0) {
             self->func_ov019_021122dc(5);
         }
         break;
@@ -578,7 +578,7 @@ int func_ov019_02111558(daPgRcer_c *self)
     }
     case 1: {
         short ang = Vec3_HorzAngle((Vector3 *)&self->mPosX, (Vector3 *)&self->mTalkPlayer->mPosX);
-        if (_Z14ApproachLinearRsss(self->mAngleY, ang, 0x514) != 0) {
+        if (_Z14ApproachLinearRsss(&self->mAngleY, ang, 0x514) != 0) {
             unsigned int id;
             struct { int x, y, z; } v;
             int z = self->mPosZ;
@@ -670,7 +670,7 @@ void daPgRcer_c::func_ov019_021113b0()
 // @symbol _ZN10daPgRcer_c19func_ov019_0211131cEv
 int daPgRcer_c::func_ov019_0211131c()
 {
-    _Z11UpdateAngleRssis(mPrevAngleY, TARGET_ANG_Y(this), 2, 0x600);
+    _Z11UpdateAngleRssis(&mPrevAngleY, TARGET_ANG_Y(this), 2, 0x600);
     int n = mPathNodeIndex;
     if (n >= (int)mPath.NumNodes() - 2) {
         mAngleY = mPrevAngleY;
