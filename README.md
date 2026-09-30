@@ -63,14 +63,10 @@ ROM — is in [CONTRIBUTING.md](CONTRIBUTING.md) and
 
 ## How matching works
 
-The matching compiler is pinned to **mwccarm 2004/b56** with these flags:
-
-```sh
--O4,p -enum int -lang c99 -char signed -interworking -proc arm946e -gccext,on -msgstyle gcc
-```
-
-C++ sources use `-lang c++` and `-Cpp_exceptions off`; `tools/match.py` makes both
-substitutions itself for a file whose first line is `//cpp`.
+The matching compiler is pinned to **mwccarm 2004/b56**, with the flag set recorded in
+[`tools/rombuild.py`](tools/rombuild.py) and written up in
+[notes/mwccarm-codegen.md](notes/mwccarm-codegen.md). C++ sources swap in `-lang c++`;
+`tools/match.py` makes that substitution itself for a file whose first line is `//cpp`.
 
 Every function is compiled and compared to the ROM byte-for-byte, relocation-aware.
 Nothing counts as matched until that check passes, and near misses are banked in the
