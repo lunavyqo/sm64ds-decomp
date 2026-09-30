@@ -137,6 +137,26 @@ still costs nothing.
 
 ## 1. Ground rules of the build
 
+- **How a candidate is actually invoked.** The pinned compiler is mwccarm 2004/b56
+  (`rombuild.VERSION`) and the flag set is `rombuild.CFLAGS`; the linker is a different
+  revision, 1.2/sp2p3 `mwldarm`, because b56 ships none. Those two constants are the
+  source of truth — do not copy the flag string into a note or a PR description, read
+  it from `tools/rombuild.py`. (`tools/build_pin.py` answers the same question per file
+  stem, since `config/rombuild-versions.txt` can pin an individual file to another
+  mwccarm version.)
+- **Language mode is chosen by the source, not the extension.** A file whose first
+  bytes are a literal `//cpp` is compiled with `-lang c++` in place of `-lang c99`
+  (`tools/match.py:resolve_cpp_flags`). The marker must be the FIRST bytes — an
+  `#include` above it makes it inert, silently compiling the file as C.
+- **`-Cpp_exceptions off` rides along with C++ mode however that mode was reached**,
+  because the build compiles every C++ source with it. Without it a source holding an
+  object with a destructor gets exception cleanup the ROM's bytes do not have. The
+  tool appends it whenever `-lang c++` is in the flag set and no explicit
+  `-Cpp_exceptions` was passed, so a hand-written `--flags "... -lang c++ ..."` measures
+  the same bytes the build would produce instead of a near miss with no source-level
+  cause.
+- **`extern "C"` keeps the symbol unmangled** so the oracle can find it. We only `-c`
+  compile, never link at match time; only the vtable layout is read.
 - **Reloc slots are wildcards.** Every `bl`/`blx` target and every pc-relative `ldr` of an
   external address is a relocation the oracle compares as a wildcard. So the *name* you call
   only has to compile - it does not have to be the byte-correct address. Still resolve the
