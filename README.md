@@ -7,7 +7,7 @@
 
 > **Looking for the PC port?** [Download it here.](https://tangos.dev/downloads)
 
-A work-in-progress decompilation of Super Mario 64 DS.
+A work-in-progress decompilation of Super Mario 64 DS
 
 This repo holds source code and tooling. It contains no ROM and no Nintendo assets.
 Everything here runs against a cartridge dump you supply yourself, which stays on your
