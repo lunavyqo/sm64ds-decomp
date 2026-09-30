@@ -93,7 +93,7 @@ ROM, and collects your matches into a formatted PR.
 Symbol names and struct knowledge build on community reverse-engineering work. See
 [CREDITS.md](CREDITS.md) for the full list, and the contributor chart for per-person
 match counts. The rule is import knowledge, write code: you may use known symbol names
-and field offsets, but all C must be written from scratch against your own ROM.
+and field offsets, but all source must be written from scratch against your own ROM.
 
 Function contributions: [RyanCopley](https://github.com/RyanCopley) hand-matched a set of
 functions across ov002, ov006, arm9, and ov034 (PR #1), including the first functions in
@@ -123,7 +123,7 @@ on LLM-assisted decompilation and the Coddog similarity tool it describes.
 
 ## Legal and scope
 
-The original work here — the C, the tooling, the notes — is MIT licensed, see
+The original work here — the source, the tooling, the notes — is MIT licensed, see
 [LICENSE](LICENSE), and grants no rights to any Nintendo material. The one documented
 exception is the `chaos-data` branch, which carries annotated disassembly text of
 still-unmatched functions so contributors can pick up work without a full local setup.
