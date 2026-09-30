@@ -88,10 +88,38 @@ Most matches land through [tangOS Console](https://tangos.dev/downloads), the fr
 desktop app built for this repo, which hands out work, verifies candidates against the
 ROM, and collects your matches into a formatted PR.
 
-Symbol names and struct knowledge build on community reverse-engineering work — see
-[CREDITS.md](CREDITS.md). The rule is import knowledge, write code: you may use known
-symbol names and field offsets, but all C must be written from scratch against your
-own ROM.
+## Credits
+
+Symbol names and struct knowledge build on community reverse-engineering work. See
+[CREDITS.md](CREDITS.md) for the full list, and the contributor chart for per-person
+match counts. The rule is import knowledge, write code: you may use known symbol names
+and field offsets, but all C must be written from scratch against your own ROM.
+
+Function contributions: [RyanCopley](https://github.com/RyanCopley) hand-matched a set of
+functions across ov002, ov006, arm9, and ov034 (PR #1), including the first functions in
+ov034 and several that had resisted the automated passes.
+[andrewboudreau](https://github.com/andrewboudreau) has hand-matched a large and growing set of
+functions across arm9 and many overlays (PRs #2, #45, #48, and the #50 through #60 constructor and
+static-initializer batches), contributed codegen notes on boolean materialization and
+predicated-select shapes (PR #49), and reported the scheduler bug fixed in #61.
+[Moundistz](https://github.com/Moundistz) contributed 3 matched functions and 8 nonmatching
+floor entries, plus a pass of placeholder-to-resolved callee renames across the arm9 corpus.
+[lunavyqo](https://github.com/lunavyqo) has hand-matched across ov001 and a wide spread of
+the scene overlays, and carries the class translation-unit cleanup work, promoting a folded
+actor TU and then clearing the one-function leftovers it strands.
+[ruspecial](https://github.com/ruspecial) has hand-matched large batches across ov002, ov006
+and the arm9 BIOS SVC stubs, banked 174 near-misses with the C++ exception-handling and
+split-symbol triage notes behind them (PR #806), and contributed oracle-verified host copies
+for the two Bowser ov060 holes on the port side (PR #1505).
+
+Tooling contributions: [webheadvr](https://github.com/webheadvr) made the relocation
+symbol resolver module-aware, fixing wrong-overlay symbol picks where overlay address
+ranges overlap. [andrewboudreau](https://github.com/andrewboudreau) added a relocation
+destination audit and an opt-in strict-relocs check to the verify path (PR #47).
+
+The `tools/coddog.py` fuzzy opcode-similarity scheduler was inspired by
+[Chris Lewis's writeup](https://blog.chrislewis.au/the-long-tail-of-llm-assisted-decompilation/)
+on LLM-assisted decompilation and the Coddog similarity tool it describes.
 
 ## Legal and scope
 
