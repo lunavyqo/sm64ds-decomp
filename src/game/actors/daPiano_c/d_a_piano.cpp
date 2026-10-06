@@ -22,17 +22,12 @@
  * whole .text run 0x0211d4b8..0x0211e1c0, seventeen functions, and the
  * manifest entry ov063/daPiano_c carries the licenses.
  *
- * deslop leftovers:
- * - Factory stays hand-rolled (see the comment above it): `return new
- *   daPiano_c()` matches the factory's own bytes but instantiates
- *   dBgActor_cD2 and Vector3D1 copies on top of them. Promotion now gives
- *   this class a manifest that could license those, so the wall is gone --
- *   but converting the factory is a codegen change this promotion did not
- *   measure, and promotion deliberately changes no codegen. Left as it is,
- *   for a follow-up that carries its own byte proof. daWanwan-consistent.
+ * Leftovers:
  * - __sinit_ov063_0211e5fc stays split: delinks places one range per
  *   file, and nothing owns .text plus .init. It keeps its own entry in
  *   config/arm9/overlays/ov063/delinks.txt and is NOT in this TU's range.
+ * - ~daPiano_c() stays inline in the header. Moving the body into this
+ *   TU would make it the key function and emit a competing vtable.
  * - ModelAnim::SetAnim / dBgCh_Actr::Init / dCcAcPos_c::Init /
  *   dBgW_KcMbg::SetFile stay mangled free declarations (wall 6az: the
  *   ROM signatures carry Fix12<int> by value; the header method forms
@@ -42,10 +37,8 @@
  *   every argument and func_ov063_0211d5f4 grows 0x234 -> 0x29c; the
  *   literal spelling does not compile at all. Measured, not assumed --
  *   notes/experiments/piano-2712-dropshadow-advance.md.
- * - func_ov063_* helpers keep their ROM labels (true names unknown) and
- *   the C-origin ones keep PianoVec3 locals: Vector3's inline dtor
- *   would emit _ZN7Vector3D1Ev (S3). Volatile reloads and sine taps are
- *   ROM-true.
+ * - func_ov063_* helpers keep their ROM labels (true names unknown).
+ *   Volatile reloads and sine taps are ROM-true.
  * - (Vector3 *)&mPosX puns stay (daWanwan-consistent; dActor_c::Pos()
  *   is out of scope for this TU's shared-header budget).
  * - func_0203568c / func_02035684: dBgCh_Actr radius/height stores; no
@@ -90,62 +83,22 @@ void func_0203568c(int *clsn, int radius);
 void func_02035684(int *clsn, int height);
 int _ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_(dBgActor_c *, int, int);
 void func_ov063_0211ddf4(daPiano_c *self);
-void *_ZN10dBgActor_cC2Ev(void *self);
-void *_ZN9ModelAnimC1Ev(void *self);
-void *_ZN17dExtShadowModel_cC1Ev(void *self);
-void __cxa_vec_ctor(void *array, int count, int stride, void *ctor, void *dtor);
-void *_ZN10dCcAcPos_cC1Ev(void *self);
-void _ZN10dCcAcPos_cD1Ev(void *self);
-void *_ZN10dBgCh_ActrC1Ev(void *self);
 }
 
 /* The registry factory. C LINKAGE IS LOAD-BEARING -- the ROM symbol is the
- * bare name.
- *
- * deslop leftover: this factory stays hand-rolled, and that is measured, not
- * stylistic. `return new daPiano_c()` MATCHES the factory's own bytes (0x98,
- * linkcheck VERIFIED) -- but the TU then will not LINK in production: the
- * new-expression makes mwccarm emit unreferenced vague copies of
- * _ZN10dBgActor_cD2Ev (0x38, dBgActor_c's dtor is inline in its header) and
- * _ZN7Vector3D1Ev (0x4) alongside the TU's text, and objisolate's fail-closed
- * multi-symbol path admits no content no manifest licenses -- and ov063 has
- * no manifest to carry a deadstrip-duplicate license (daBmb_c's Vector3D1
- * row is the shape of the fix). Bisected 4-way: hand-rolled with and without
- * the leaf operator new header is clean; the new-expression strays with and
- * without parens. Until this TU is promoted with a compiler_only license,
- * the factory keeps the explicit ABI boundary and the subobjects keep the
- * real class layout. (dossunbar's factories on main are hand-rolled for the
- * same production shape; daWanwan keeps its hand-rolled factory on a
- * size-DIFF.)
+ * bare name. `return new daPiano_c()` is the retail body: fBase_c::operator
+ * new, the base and member constructors, and the null check. The copies of
+ * _ZN10dBgActor_cD2Ev and _ZN7Vector3D1Ev that the new-expression emits are
+ * licensed on ov063/daPiano_c, not linked.
  *
  * Reconstructed source-style name: SM64DS proves daPiano_c through RTTI,
  * allocation size, vtable identity, and the PIANO registry profile;
  * later EAD lineage supplies classInit. Exact original spelling is not
  * preserved. Historical alias: daPiano_c_Spawn. */
-/* Promotion makes this TU the emitter of the class's own vtable, so the vptr
- * seam is a plain namespace-scope array declaration here rather than an
- * extern "C" pointer. mwccarm's _ZTV9daPiano_c addresses the vtable OBJECT;
- * config/arm9/overlays/ov063/symbols.txt records the public address point
- * 0x0211ed34, eight bytes later. On an int[] that bias is exactly &arr[2], so
- * the compiler computes it and no relocation is ever hand-edited. */
-extern int _ZTV9daPiano_c[];
-
 // @symbol daPiano_c_classInit
 extern "C" daPiano_c *daPiano_c_classInit()
 {
-    daPiano_c *actor = (daPiano_c *)_ZN7fBase_cnwEj(sizeof(daPiano_c));
-    if (actor) {
-        _ZN10dBgActor_cC2Ev(actor);
-        *(int *)actor = (int)&_ZTV9daPiano_c[2];
-        _ZN9ModelAnimC1Ev(&actor->mModelAnim);
-        _ZN17dExtShadowModel_cC1Ev(&actor->mShadowModel1);
-        _ZN17dExtShadowModel_cC1Ev(&actor->mShadowModel2);
-        _ZN17dExtShadowModel_cC1Ev(&actor->mShadowModel3);
-        __cxa_vec_ctor(actor->mCylinderClsn, 2, sizeof(dCcAcPos_c),
-            (void *)_ZN10dCcAcPos_cC1Ev, (void *)_ZN10dCcAcPos_cD1Ev);
-        _ZN10dBgCh_ActrC1Ev(&actor->mWithMeshClsn);
-    }
-    return actor;
+    return new daPiano_c();
 }
 
 /* Load the piano's three shared assets, initialize its typed render/collision
@@ -253,12 +206,6 @@ struct PianoStateEntry { PianoPMF pmf[2]; };
  * Proven by who calls ddac with what and which routine runs per-frame. */
 enum PianoState { kStateSearch = 0, kStateAttack = 1 };
 
-/* TU-local POD shadow for the scratch vectors in the absorbed C-origin
- * helpers. types.h's Vector3 carries an inline destructor, which would make
- * this TU emit _ZN7Vector3D1Ev -- unlicensed content the production
- * multi-symbol path refuses. Plain ints keep the C codegen exactly. */
-struct PianoVec3 { int x, y, z; };
-
 extern "C" {
 // @symbol func_ov063_0211ddf4
 /* Run the current state's body routine (pmf[1]) every frame. */
@@ -309,8 +256,8 @@ extern "C" {
  * within 500.0 and attack it; otherwise refresh the idle cylinder sweep
  * (current position plus a 36.0 lookahead along the facing). */
 void func_ov063_0211dbb8(daPiano_c *self) {
-    extern void Vec3_Sub(PianoVec3* out, PianoVec3* a, PianoVec3* b);
-    extern int LenVec3(PianoVec3* v);
+    extern void Vec3_Sub(Vector3* out, Vector3* a, Vector3* b);
+    extern int LenVec3(Vector3* v);
     extern int func_ov063_0211dd84(int unused, dActor_c* cand);
     extern void func_ov063_0211ddac(daPiano_c* c, int state);
 
@@ -318,8 +265,8 @@ void func_ov063_0211dbb8(daPiano_c *self) {
     extern void* data_0209f394[];
     extern short data_02082214[];   /* sine table: (angle >> 4) * 2 taps sin/cos */
 
-    volatile PianoVec3 tmp;
-    PianoVec3 v;
+    volatile Vector3 tmp;
+    Vector3 v;
     int bestDist;
     int i;
     void* cand;
@@ -329,7 +276,7 @@ void func_ov063_0211dbb8(daPiano_c *self) {
     for (i = 0; i < data_0209f21c; i++) {
         cand = data_0209f394[i];
         if (cand == 0) continue;
-        Vec3_Sub(&v, (PianoVec3*)&self->mPosX, (PianoVec3*)&((dActor_c*)cand)->mPosX);
+        Vec3_Sub(&v, (Vector3*)&self->mPosX, (Vector3*)&((dActor_c*)cand)->mPosX);
         dist = LenVec3(&v);
         if (func_ov063_0211dd84((int)self, (dActor_c*)cand) != 0 && dist < 0x1f4000 && dist < bestDist) {
             self->mTarget = (dActor_c*)cand;
@@ -391,20 +338,20 @@ extern "C" {
 void func_ov063_0211d8cc(daPiano_c* self)
 {
     extern u8 DecIfAbove0_Byte(u8* p);
-    extern void _ZN6Player4HurtERK7Vector3j5Fix12IiEjjj(Player* self, const PianoVec3* v, unsigned int a, int fix, unsigned int b, unsigned int d, unsigned int e);
+    extern void _ZN6Player4HurtERK7Vector3j5Fix12IiEjjj(Player* self, const Vector3* v, unsigned int a, int fix, unsigned int b, unsigned int d, unsigned int e);
     extern void func_0201267c(int a, void* p);
-    extern void Vec3_Sub(PianoVec3* out, PianoVec3* a, PianoVec3* b);
-    extern int LenVec3(PianoVec3* v);
-    extern s16 Vec3_HorzAngle(const PianoVec3* v0, const PianoVec3* v1);
+    extern void Vec3_Sub(Vector3* out, Vector3* a, Vector3* b);
+    extern int LenVec3(Vector3* v);
+    extern s16 Vec3_HorzAngle(const Vector3* v0, const Vector3* v1);
     extern void func_ov063_0211ddac(daPiano_c* c, int state);
 
     extern s16 data_02082214[];   /* sine table: (angle >> 4) * 2 taps sin/cos */
 
     dActor_c* victim;
     int i;
-    volatile PianoVec3 proj;
-    PianoVec3 hurtPos;
-    PianoVec3 tmp;
+    volatile Vector3 proj;
+    Vector3 hurtPos;
+    Vector3 tmp;
     int zero;
     int one;
     int three;
@@ -452,11 +399,11 @@ void func_ov063_0211d8cc(daPiano_c* self)
 
     target = self->mTarget;
     if (target != 0) {
-        Vec3_Sub(&tmp, (PianoVec3*)&self->mPosX, (PianoVec3*)&target->mPosX);
+        Vec3_Sub(&tmp, (Vector3*)&self->mPosX, (Vector3*)&target->mPosX);
         dist = LenVec3(&tmp);
         ApproachLinear(
             self->mPrevAngleY,
-            Vec3_HorzAngle((PianoVec3*)&self->mPosX, (PianoVec3*)&self->mTarget->mPosX),
+            Vec3_HorzAngle((Vector3*)&self->mPosX, (Vector3*)&self->mTarget->mPosX),
             0x200);
         self->mAngleY = self->mPrevAngleY;
         if (dist > 0x3ab000) {
@@ -536,8 +483,8 @@ extern "C" {
 void func_ov063_0211d5f4(daPiano_c *self)
 {
     extern void Matrix4x3_FromRotationY(Matrix4x3* m, int angle);
-    extern void MulVec3Mat4x3(PianoVec3* in, Matrix4x3* m, PianoVec3* out);
-    extern void AddVec3(PianoVec3* a, PianoVec3* b, PianoVec3* c);
+    extern void MulVec3Mat4x3(Vector3* in, Matrix4x3* m, Vector3* out);
+    extern void AddVec3(Vector3* a, Vector3* b, Vector3* c);
     extern void _ZN8dActor_c19DropShadowRadHeightER17dExtShadowModel_cR9Matrix4x35Fix12IiES5_j(
         dActor_c* self, dExtShadowModel_c* sm, Matrix4x3* mtx, Fix12i fx, Fix12i t, unsigned int u);
     extern void _ZN8dActor_c18DropShadowScaleXYZER17dExtShadowModel_cR9Matrix4x35Fix12IiES5_S5_j(
@@ -545,7 +492,7 @@ void func_ov063_0211d5f4(daPiano_c *self)
 
     extern Matrix4x3 data_020a0e68;   /* shared scratch matrix */
 
-    PianoVec3 in, out;
+    Vector3 in, out;
 
     in.x = 0x40000;
     in.y = 0;
@@ -555,7 +502,7 @@ void func_ov063_0211d5f4(daPiano_c *self)
     in.z = -0x10000;
     Matrix4x3_FromRotationY(&data_020a0e68, self->mAngleY);
     MulVec3Mat4x3(&in, &data_020a0e68, &out);
-    AddVec3(&out, (PianoVec3*)&self->mPosX, &out);
+    AddVec3(&out, (Vector3*)&self->mPosX, &out);
     Matrix4x3_FromRotationY(&self->mShadowMats[2], self->mAngleY);
     self->mShadowMats[2].m[9] = out.x >> 3;
     self->mShadowMats[2].m[10] = self->mPosY >> 3;
@@ -569,7 +516,7 @@ void func_ov063_0211d5f4(daPiano_c *self)
     in.x = -0x60000;
     Matrix4x3_FromRotationY(&data_020a0e68, self->mAngleY);
     MulVec3Mat4x3(&in, &data_020a0e68, &out);
-    AddVec3(&out, (PianoVec3*)&self->mPosX, &out);
+    AddVec3(&out, (Vector3*)&self->mPosX, &out);
     Matrix4x3_FromRotationY(&self->mShadowMats[0], self->mAngleY);
     self->mShadowMats[0].m[9] = out.x >> 3;
     self->mShadowMats[0].m[10] = self->mPosY >> 3;
@@ -583,7 +530,7 @@ void func_ov063_0211d5f4(daPiano_c *self)
     in.z = -0x10000;
     Matrix4x3_FromRotationY(&data_020a0e68, self->mAngleY);
     MulVec3Mat4x3(&in, &data_020a0e68, &out);
-    AddVec3(&out, (PianoVec3*)&self->mPosX, &out);
+    AddVec3(&out, (Vector3*)&self->mPosX, &out);
     Matrix4x3_FromRotationY(&self->mShadowMats[1], self->mAngleY);
     self->mShadowMats[1].m[9] = out.x >> 3;
     self->mShadowMats[1].m[10] = self->mPosY >> 3;
