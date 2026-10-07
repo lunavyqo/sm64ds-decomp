@@ -4,6 +4,7 @@
   "source": "src/game/actors/d_a_shl.cpp",
   "promoted_source": "src/game/actors/d_a_shl.cpp",
   "status": "promoted",
+  "production_mode": "intact-object",
   "boundary_confidence": "medium",
   "boundary_evidence": [
     "contiguous linker run: 0x214c748..0x214d70c, 24 function(s): the 23 from build/tu_map.json (tools/tu_map.py) -- D1/D0, the fifteen state/helper routines and the six class members -- extended over the zero-gap registry factory daShl_c_classInit (0x0214d6b4..0x0214d70c), which tu_map cannot label because it cuts on symbol name. daBmb_c_classInit ends at 0x0214c748 below; .text ends at 0x0214d70c above (then .rodata).",
@@ -15,6 +16,26 @@
       "name": ".text",
       "start": "0x0214c748",
       "end": "0x0214d70c"
+    },
+    {
+      "name": ".init",
+      "start": "0x0214dfac",
+      "end": "0x0214e0a0"
+    },
+    {
+      "name": ".ctor",
+      "start": "0x0214e0ac",
+      "end": "0x0214e0b0"
+    },
+    {
+      "name": ".data",
+      "start": "0x0214e5d4",
+      "end": "0x0214e614"
+    },
+    {
+      "name": ".bss",
+      "start": "0x0214ea48",
+      "end": "0x0214ea88"
     }
   ],
   "functions": [
@@ -187,10 +208,388 @@
       "ordinal": 23
     }
   ],
-  "data": [],
-  "bss": [],
+  "init": [
+    {
+      "symbol": "__sinit_d_a_shl.cpp",
+      "address": "0x0214dfac",
+      "size": "0xf4",
+      "binding": "STB_GLOBAL",
+      "evidence": "compiler-generated static initializer is raw-byte-identical to retail __sinit_ov102_0214dfac and carries the same twelve relocation sites"
+    }
+  ],
+  "ctor": [
+    {
+      "symbol": ".p__sinit_d_a_shl.cpp",
+      "address": "0x0214e0ac",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "compiler-generated constructor-table word relocates to the owned initializer exactly as retail"
+    }
+  ],
+  "data": [
+    {
+      "symbol": "@721",
+      "address": "0x0214e5d4",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "anonymous held-tick pointer-to-member; retail first word is 0x0214cfe4"
+    },
+    {
+      "symbol": "@717",
+      "address": "0x0214e5dc",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "anonymous ridden-tick pointer-to-member; retail first word is 0x0214d044"
+    },
+    {
+      "symbol": "@707",
+      "address": "0x0214e5e4",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "anonymous idle-enter pointer-to-member; retail first word is 0x0214d1b8"
+    },
+    {
+      "symbol": "@719",
+      "address": "0x0214e5ec",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "anonymous held-enter pointer-to-member; retail first word is 0x0214d020"
+    },
+    {
+      "symbol": "@709",
+      "address": "0x0214e5f4",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "anonymous idle-tick pointer-to-member; retail first word is 0x0214d1b0"
+    },
+    {
+      "symbol": "@715",
+      "address": "0x0214e5fc",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "anonymous ridden-enter pointer-to-member; retail first word is 0x0214d0bc"
+    },
+    {
+      "symbol": "@711",
+      "address": "0x0214e604",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "anonymous sliding-enter pointer-to-member; retail first word is 0x0214d148"
+    },
+    {
+      "symbol": "@713",
+      "address": "0x0214e60c",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "anonymous sliding-tick pointer-to-member; retail first word is 0x0214d114"
+    }
+  ],
+  "bss": [
+    {
+      "symbol": "data_ov102_0214ea48",
+      "address": "0x0214ea48",
+      "size": "0x10",
+      "binding": "STB_GLOBAL",
+      "evidence": "ridden state record; the initializer copies its two descriptors into it"
+    },
+    {
+      "symbol": "data_ov102_0214ea58",
+      "address": "0x0214ea58",
+      "size": "0x10",
+      "binding": "STB_GLOBAL",
+      "evidence": "held state record; the initializer copies its two descriptors into it"
+    },
+    {
+      "symbol": "data_ov102_0214ea68",
+      "address": "0x0214ea68",
+      "size": "0x10",
+      "binding": "STB_GLOBAL",
+      "evidence": "idle state record; the initializer copies its two descriptors into it"
+    },
+    {
+      "symbol": "data_ov102_0214ea78",
+      "address": "0x0214ea78",
+      "size": "0x10",
+      "binding": "STB_GLOBAL",
+      "evidence": "sliding state record; the initializer copies its two descriptors into it"
+    }
+  ],
+  "symbol_binding_rewrites": [
+    {
+      "symbol": "__sinit_d_a_shl.cpp",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "mwcc emits the TU initializer local; DSD requires a configured global relocation destination at the same exact address"
+    },
+    {
+      "symbol": ".p__sinit_d_a_shl.cpp",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "mwcc emits the ctor-table object local; DSD exposes owned symbols globally and cannot encode a local symbols.txt entry"
+    },
+    {
+      "symbol": "@721",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "compiler-local held-tick descriptor is a configured initializer relocation destination at 0x0214e5d4"
+    },
+    {
+      "symbol": "@717",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "compiler-local ridden-tick descriptor is a configured initializer relocation destination at 0x0214e5dc"
+    },
+    {
+      "symbol": "@707",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "compiler-local idle-enter descriptor is a configured initializer relocation destination at 0x0214e5e4"
+    },
+    {
+      "symbol": "@719",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "compiler-local held-enter descriptor is a configured initializer relocation destination at 0x0214e5ec"
+    },
+    {
+      "symbol": "@709",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "compiler-local idle-tick descriptor is a configured initializer relocation destination at 0x0214e5f4"
+    },
+    {
+      "symbol": "@715",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "compiler-local ridden-enter descriptor is a configured initializer relocation destination at 0x0214e5fc"
+    },
+    {
+      "symbol": "@711",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "compiler-local sliding-enter descriptor is a configured initializer relocation destination at 0x0214e604"
+    },
+    {
+      "symbol": "@713",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "compiler-local sliding-tick descriptor is a configured initializer relocation destination at 0x0214e60c"
+    }
+  ],
+  "relocations": [
+    {
+      "section": ".init",
+      "source": "0x0214e070",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "@707",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214e5e4"
+    },
+    {
+      "section": ".init",
+      "source": "0x0214e074",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "@709",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214e5f4"
+    },
+    {
+      "section": ".init",
+      "source": "0x0214e078",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "@711",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214e604"
+    },
+    {
+      "section": ".init",
+      "source": "0x0214e07c",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "@713",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214e60c"
+    },
+    {
+      "section": ".init",
+      "source": "0x0214e080",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "@715",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214e5fc"
+    },
+    {
+      "section": ".init",
+      "source": "0x0214e084",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "@717",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214e5dc"
+    },
+    {
+      "section": ".init",
+      "source": "0x0214e088",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "@719",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214e5ec"
+    },
+    {
+      "section": ".init",
+      "source": "0x0214e08c",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "@721",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214e5d4"
+    },
+    {
+      "section": ".init",
+      "source": "0x0214e090",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "data_ov102_0214ea68",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214ea68"
+    },
+    {
+      "section": ".init",
+      "source": "0x0214e094",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "data_ov102_0214ea78",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214ea78"
+    },
+    {
+      "section": ".init",
+      "source": "0x0214e098",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "data_ov102_0214ea48",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214ea48"
+    },
+    {
+      "section": ".init",
+      "source": "0x0214e09c",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "data_ov102_0214ea58",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214ea58"
+    },
+    {
+      "section": ".ctor",
+      "source": "0x0214e0ac",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "__sinit_d_a_shl.cpp",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214dfac"
+    },
+    {
+      "section": ".data",
+      "source": "0x0214e5d4",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN7daShl_c19func_ov102_0214cfe4Ev",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214cfe4"
+    },
+    {
+      "section": ".data",
+      "source": "0x0214e5dc",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN7daShl_c19func_ov102_0214d044Ev",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214d044"
+    },
+    {
+      "section": ".data",
+      "source": "0x0214e5e4",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN7daShl_c19func_ov102_0214d1b8Ev",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214d1b8"
+    },
+    {
+      "section": ".data",
+      "source": "0x0214e5ec",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN7daShl_c19func_ov102_0214d020Ev",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214d020"
+    },
+    {
+      "section": ".data",
+      "source": "0x0214e5f4",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN7daShl_c19func_ov102_0214d1b0Ev",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214d1b0"
+    },
+    {
+      "section": ".data",
+      "source": "0x0214e5fc",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN7daShl_c19func_ov102_0214d0bcEv",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214d0bc"
+    },
+    {
+      "section": ".data",
+      "source": "0x0214e604",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN7daShl_c19func_ov102_0214d148Ev",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214d148"
+    },
+    {
+      "section": ".data",
+      "source": "0x0214e60c",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN7daShl_c19func_ov102_0214d114Ev",
+      "addend": 0,
+      "target_module": "ov102",
+      "target_address": "0x0214d114"
+    }
+  ],
   "notes": [
-    "Hand-assembled: tubuild create generated the 23 tu_map members (class members, D1/D0 and the fifteen state/helper routines); the zero-gap classInit factory was folded in by hand. The four state records (.bss, filled by __sinit_ov102_0214dfac) and the .rodata model-handle pair data_ov102_0214d70c stay unclaimed: this is a text-only TU, like its ov102 sibling daBmb_c."
+    "Hand-assembled: tubuild create generated the 23 tu_map members (class members, D1/D0 and the fifteen state/helper routines); the zero-gap classInit factory was folded in by hand. The four state records are defined in this TU. mwcc emits __sinit_d_a_shl.cpp, the ctor word, and eight anonymous pointer-to-member descriptors. Class RTTI and the vtable stay externalized. The .rodata model-handle pair data_ov102_0214d70c stays unclaimed. The handwritten src/__sinit_ov102_0214dfac.c is retired."
   ],
   "verification": {
     "round": "tools/tubuild.py verify -- text-only, whole shadow TU compiled once",
