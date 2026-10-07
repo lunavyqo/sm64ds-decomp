@@ -170,7 +170,7 @@ __sinit_ov064_0211b1d4 kind:function(arm,size=0x308) addr:0x0211b1d4
 __sinit_ov064_0211b4dc kind:function(arm,size=0x3c) addr:0x0211b4dc
 __sinit_ov064_0211b518 kind:function(arm,size=0x84) addr:0x0211b518
 __sinit_ov064_0211b59c kind:function(arm,size=0xfc) addr:0x0211b59c
-__sinit_ov064_0211b698 kind:function(arm,size=0x94) addr:0x0211b698
+__sinit_daObjShell_c.cpp kind:function(arm,size=0x94) addr:0x0211b698
 .p__sinit_ov064_0211ae00 kind:data(word) addr:0x0211b72c
 .p__sinit_ov064_0211aee0 kind:data(word) addr:0x0211b730
 .p__sinit_ov064_0211afc0 kind:data(word) addr:0x0211b734
@@ -181,7 +181,7 @@ __sinit_ov064_0211b698 kind:function(arm,size=0x94) addr:0x0211b698
 .p__sinit_ov064_0211b4dc kind:data(word) addr:0x0211b748
 .p__sinit_ov064_0211b518 kind:data(word) addr:0x0211b74c
 .p__sinit_ov064_0211b59c kind:data(word) addr:0x0211b750
-.p__sinit_ov064_0211b698 kind:data(word) addr:0x0211b754
+.p__sinit_daObjShell_c.cpp kind:data(word) addr:0x0211b754
 data_ov064_0211b768 kind:data(any) addr:0x0211b768
 _ZTV7daOts_c kind:data(any) addr:0x0211b768
 _ZTI11daDonketu_c kind:data(any) addr:0x0211b7fc
@@ -371,6 +371,7 @@ data_ov064_0211c98c kind:bss addr:0x0211c98c
 data_ov064_0211c9bc kind:bss addr:0x0211c9bc
 data_ov064_0211c9c4 kind:bss addr:0x0211c9c4
 data_ov064_0211c9cc kind:bss addr:0x0211c9cc
-data_ov064_0211c9d4 kind:bss addr:0x0211c9d4
-data_ov064_0211c9e0 kind:bss addr:0x0211c9e0
-data_ov064_0211c9ec kind:bss addr:0x0211c9ec
+@364 kind:bss addr:0x0211c9d4
+@365 kind:bss addr:0x0211c9e0
+@363 kind:bss addr:0x0211c9ec
+data_ov064_0211c9f8 kind:bss addr:0x0211c9f8

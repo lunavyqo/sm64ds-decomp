@@ -3,6 +3,7 @@
   "module": "ov064",
   "source": "src/actors/daObjShell_c.cpp",
   "promoted_source": "src/actors/daObjShell_c.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "medium",
   "boundary_evidence": [
@@ -10,6 +11,7 @@
     "right edge extended to 0x0211adb0 to take in daObjShell_c_classInit at 0x0211ad70: the run carries no mangled name for tu_map to attribute, but it allocates this class's own 0x174, installs _ZTV12daObjShell_c, constructs ModelAnim at 0x0d4 and dCcAc_c at 0x138, is the factory word of g_profile_OBJ_SHELL at 0x0211c5a4, and ends exactly at the end of the overlay's .text. Same registry/factory-backed join ov064/daObjTbox_c was promoted on",
     "left edge is the end of the already promoted ov064/daObjTbox_c entry (0x0211a930)",
     "class label(s): daObjShell_c",
+    "the compiler-generated __sinit_daObjShell_c.cpp is byte-identical to retail __sinit_ov064_0211b698 (0x94). It constructs the model handle at 0x0211c9c4 (file 1164) and the two animation handles at 0x0211c9cc (file 1166) and 0x0211c9bc (file 1165). The ctor word at 0x0211b754 points at that initializer.",
     "module sinit corroboration: 11 sinit(s) / 11 .ctor entries, sinit_vs_tu=ok, corroborated=False (module-wide, NOT narrowed to this one TU)"
   ],
   "sections": [
@@ -17,6 +19,21 @@
       "name": ".text",
       "start": "0x0211a930",
       "end": "0x0211adb0"
+    },
+    {
+      "name": ".init",
+      "start": "0x0211b698",
+      "end": "0x0211b72c"
+    },
+    {
+      "name": ".ctor",
+      "start": "0x0211b754",
+      "end": "0x0211b758"
+    },
+    {
+      "name": ".bss",
+      "start": "0x0211c9bc",
+      "end": "0x0211c9f8"
     }
   ],
   "functions": [
@@ -77,12 +94,295 @@
       "ordinal": 7
     }
   ],
+  "init": [
+    {
+      "symbol": "__sinit_daObjShell_c.cpp",
+      "address": "0x0211b698",
+      "size": "0x94",
+      "binding": "STB_GLOBAL",
+      "evidence": "compiler-generated static initializer is raw-byte-identical to retail __sinit_ov064_0211b698 and carries the same fourteen relocation sites"
+    }
+  ],
+  "ctor": [
+    {
+      "symbol": ".p__sinit_daObjShell_c.cpp",
+      "address": "0x0211b754",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "compiler-generated constructor-table word relocates to the owned initializer exactly as retail"
+    }
+  ],
   "data": [],
-  "bss": [],
+  "bss": [
+    {
+      "symbol": "data_ov064_0211c9bc",
+      "address": "0x0211c9bc",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "idle animation handle constructed with file ID 1165"
+    },
+    {
+      "symbol": "data_ov064_0211c9c4",
+      "address": "0x0211c9c4",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "model handle constructed with file ID 1164"
+    },
+    {
+      "symbol": "data_ov064_0211c9cc",
+      "address": "0x0211c9cc",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "lunge animation handle constructed with file ID 1166"
+    },
+    {
+      "symbol": "@364",
+      "address": "0x0211c9d4",
+      "size": "0xc",
+      "binding": "STB_GLOBAL",
+      "evidence": "compiler-generated destructor-registration node for the lunge animation handle"
+    },
+    {
+      "symbol": "@365",
+      "address": "0x0211c9e0",
+      "size": "0xc",
+      "binding": "STB_GLOBAL",
+      "evidence": "compiler-generated destructor-registration node for the idle animation handle"
+    },
+    {
+      "symbol": "@363",
+      "address": "0x0211c9ec",
+      "size": "0xc",
+      "binding": "STB_GLOBAL",
+      "evidence": "compiler-generated destructor-registration node for the model handle"
+    }
+  ],
+  "undefined_symbol_aliases": [
+    {
+      "symbol": "_ZN17ShellModelFilePtrC1Ej",
+      "canonical_symbol": "func_02017acc",
+      "canonical_module": "arm9",
+      "canonical_address": "0x02017acc",
+      "evidence": "retail initializer call destination for the model handle"
+    },
+    {
+      "symbol": "_ZN17ShellModelFilePtrD1Ev",
+      "canonical_symbol": "func_02017ab4",
+      "canonical_module": "arm9",
+      "canonical_address": "0x02017ab4",
+      "evidence": "retail destructor registration destination for the model handle"
+    },
+    {
+      "symbol": "_ZN21ShellAnimationFilePtrC1Ej",
+      "canonical_symbol": "_ZN13SharedFilePtr9ConstructEj",
+      "canonical_module": "arm9",
+      "canonical_address": "0x0201799c",
+      "evidence": "retail initializer call destination for both animation handles"
+    },
+    {
+      "symbol": "_ZN21ShellAnimationFilePtrD1Ev",
+      "canonical_symbol": "SharedFilePtr_Destruct_Anim",
+      "canonical_module": "arm9",
+      "canonical_address": "0x02017984",
+      "evidence": "retail destructor registration destination for both animation handles"
+    },
+    {
+      "symbol": "__register_global_object",
+      "canonical_symbol": "func_020731dc",
+      "canonical_module": "arm9",
+      "canonical_address": "0x020731dc",
+      "evidence": "compiler-generated static initialization call shape"
+    }
+  ],
+  "symbol_binding_rewrites": [
+    {
+      "symbol": "__sinit_daObjShell_c.cpp",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "mwcc emits the TU initializer local; DSD requires a configured global relocation destination at the same exact address"
+    },
+    {
+      "symbol": ".p__sinit_daObjShell_c.cpp",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "mwcc emits the ctor-table object local; DSD exposes owned symbols globally and cannot encode a local symbols.txt entry"
+    },
+    {
+      "symbol": "@363",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "compiler-local model registration node is a configured initializer relocation destination at 0x0211c9ec"
+    },
+    {
+      "symbol": "@364",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "compiler-local lunge-animation registration node is a configured initializer relocation destination at 0x0211c9d4"
+    },
+    {
+      "symbol": "@365",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "compiler-local idle-animation registration node is a configured initializer relocation destination at 0x0211c9e0"
+    }
+  ],
+  "relocations": [
+    {
+      "section": ".init",
+      "source": "0x0211b6a8",
+      "type": "R_ARM_PC24",
+      "kind": "arm_call",
+      "symbol": "func_02017acc",
+      "addend": -8,
+      "target_module": "arm9",
+      "target_address": "0x02017acc"
+    },
+    {
+      "section": ".init",
+      "source": "0x0211b6b8",
+      "type": "R_ARM_PC24",
+      "kind": "arm_call",
+      "symbol": "func_020731dc",
+      "addend": -8,
+      "target_module": "arm9",
+      "target_address": "0x020731dc"
+    },
+    {
+      "section": ".init",
+      "source": "0x0211b6c4",
+      "type": "R_ARM_PC24",
+      "kind": "arm_call",
+      "symbol": "_ZN13SharedFilePtr9ConstructEj",
+      "addend": -8,
+      "target_module": "arm9",
+      "target_address": "0x0201799c"
+    },
+    {
+      "section": ".init",
+      "source": "0x0211b6d4",
+      "type": "R_ARM_PC24",
+      "kind": "arm_call",
+      "symbol": "func_020731dc",
+      "addend": -8,
+      "target_module": "arm9",
+      "target_address": "0x020731dc"
+    },
+    {
+      "section": ".init",
+      "source": "0x0211b6e0",
+      "type": "R_ARM_PC24",
+      "kind": "arm_call",
+      "symbol": "_ZN13SharedFilePtr9ConstructEj",
+      "addend": -8,
+      "target_module": "arm9",
+      "target_address": "0x0201799c"
+    },
+    {
+      "section": ".init",
+      "source": "0x0211b6f0",
+      "type": "R_ARM_PC24",
+      "kind": "arm_call",
+      "symbol": "func_020731dc",
+      "addend": -8,
+      "target_module": "arm9",
+      "target_address": "0x020731dc"
+    },
+    {
+      "section": ".init",
+      "source": "0x0211b700",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "data_ov064_0211c9c4",
+      "addend": 0,
+      "target_module": "ov064",
+      "target_address": "0x0211c9c4"
+    },
+    {
+      "section": ".init",
+      "source": "0x0211b708",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "func_02017ab4",
+      "addend": 0,
+      "target_module": "arm9",
+      "target_address": "0x02017ab4"
+    },
+    {
+      "section": ".init",
+      "source": "0x0211b70c",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "@363",
+      "addend": 0,
+      "target_module": "ov064",
+      "target_address": "0x0211c9ec"
+    },
+    {
+      "section": ".init",
+      "source": "0x0211b710",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "data_ov064_0211c9cc",
+      "addend": 0,
+      "target_module": "ov064",
+      "target_address": "0x0211c9cc"
+    },
+    {
+      "section": ".init",
+      "source": "0x0211b718",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "SharedFilePtr_Destruct_Anim",
+      "addend": 0,
+      "target_module": "arm9",
+      "target_address": "0x02017984"
+    },
+    {
+      "section": ".init",
+      "source": "0x0211b71c",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "@364",
+      "addend": 0,
+      "target_module": "ov064",
+      "target_address": "0x0211c9d4"
+    },
+    {
+      "section": ".init",
+      "source": "0x0211b720",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "data_ov064_0211c9bc",
+      "addend": 0,
+      "target_module": "ov064",
+      "target_address": "0x0211c9bc"
+    },
+    {
+      "section": ".init",
+      "source": "0x0211b728",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "@365",
+      "addend": 0,
+      "target_module": "ov064",
+      "target_address": "0x0211c9e0"
+    },
+    {
+      "section": ".ctor",
+      "source": "0x0211b754",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "__sinit_daObjShell_c.cpp",
+      "addend": 0,
+      "target_module": "ov064",
+      "target_address": "0x0211b698"
+    }
+  ],
   "notes": [
     "Consolidates the seven daObjShell_c one-function sources plus the class factory into one translation unit. The destructor is inline in include/daObjShell_c.h so mwccarm emits D1 before D0, the cartridge's own order, and no leaf D2.",
     "func_ov064_0211a9b4 at 0x0211a9b4 is this TU's own helper and keeps its linker name. Its body is structurally the twin of the already named daObjTbox_c::UpdateModelTransform in the same overlay, but the cartridge records no name for it; coining one belongs in a rename PR rather than this promotion, so it is kept as an extern \"C\" definition inside the TU and the configured symbol is unchanged.",
-    "Class identity is the ROM's own, not coined: _ZTS12daObjShell_c at 0x0211c594 holds the literal \"12daObjShell_c\", _ZTI12daObjShell_c at 0x0211c588 is an __si_class_type_info record naming _ZTI8dActor_c (arm9:0x0208e390) as its single direct base at offset zero, and _ZTV12daObjShell_c at 0x0211c5c8 is a 31-slot table overriding slots 0, 3, 6, 9, 16 and 17."
+    "Class identity is the ROM's own, not coined: _ZTS12daObjShell_c at 0x0211c594 holds the literal \"12daObjShell_c\", _ZTI12daObjShell_c at 0x0211c588 is an __si_class_type_info record naming _ZTI8dActor_c (arm9:0x0208e390) as its single direct base at offset zero, and _ZTV12daObjShell_c at 0x0211c5c8 is a 31-slot table overriding slots 0, 3, 6, 9, 16 and 17.",
+    "The three file handles and their registration nodes are defined in this TU. mwcc emits __sinit_daObjShell_c.cpp and the ctor word. Class RTTI and the vtable stay externalized. The handwritten src/__sinit_ov064_0211b698.c is retired."
   ],
   "verification": {
     "round": "tools/tubuild.py verify -- text-only, whole shadow TU compiled once",
