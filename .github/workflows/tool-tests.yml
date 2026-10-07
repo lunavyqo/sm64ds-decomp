@@ -206,6 +206,7 @@ jobs:
             tools.test_asm_policy \
             tools.test_asset_catalog \
             tools.test_attribution \
+            tools.test_baseline_cache \
             tools.test_bytegate \
             tools.test_check_call_arity \
             tools.test_check_data_definitions \
@@ -262,6 +263,11 @@ jobs:
 #                                      never as a NitroFS file ID.
 #   test_attribution            (17)   chaos_db_ci.py -- rebuilds chaos-db.json from
 #                                      COMMITTED history; the credit data the site reads.
+#   test_baseline_cache         (33)   baseline_cache.py -- one stock linkcheck control
+#                                      per input set, shared by every worktree of the
+#                                      clone. A false hit would grade a TU against the
+#                                      wrong tree. The compiler is mocked; the tests
+#                                      cover the key, the lock, and reuse.
 #   test_bytegate               (39)   bytegate.py -- the byte-gate-failure half of the
 #                                      matched test, over layout_check/relocs/srcpath,
 #                                      plus is_zero_size_alias, which decides whether a

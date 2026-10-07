@@ -89,6 +89,12 @@ python tools/port_refcheck.py
 python tools/check_decl_agreement.py --changed <base>
 ```
 
+`linkcheck --baseline` is computed once per input set and reused by every
+worktree of this clone. The log says `baseline cache: reused` or `computed`
+and the key. `--no-baseline-cache` skips it; `--rebuild-baseline` forces it;
+`--verify-baseline-cache` rebuilds and diffs the stored control. Cache:
+`$GIT_COMMON_DIR/tu-baseline-cache`, or `TUBUILD_BASELINE_CACHE`.
+
 `--range <base>..HEAD` and `--head HEAD` inspect commits, not uncommitted edits.
 If a check causes further source or manifest changes, commit them and refresh the
 relevant proof before handing off the final immutable SHA. The local checkpoint

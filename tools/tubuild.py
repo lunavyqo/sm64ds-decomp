@@ -31,6 +31,12 @@ bare `build/` entry). `verify --no-write` still compiles into build/tu/ but
 leaves the manifest byte-for-byte unchanged; the default verify keeps writing
 the verification block CI and normal callers expect.
 
+`linkcheck --baseline` also stores that control under the clone's common git
+directory (`<git-common-dir>/tu-baseline-cache`, or `TUBUILD_BASELINE_CACHE`)
+so other worktrees on the same inputs reuse it. `--no-baseline-cache` skips
+the cache; `--rebuild-baseline` forces a new control; `--verify-baseline-cache`
+rebuilds and compares it to the stored one.
+
 Every byte/relocation comparison is delegated to the tree's existing gates --
 tools/match.py (compile + relocation-aware compare), tools/objisolate.py
 (relocation type/addend correctness -- the check that caught pilot #1's real
@@ -73,6 +79,7 @@ import rombuild_profile as RP   # noqa: E402
 import srcpath as SP            # noqa: E402
 import tu_manifest as TUM      # noqa: E402  the manifest's on-disk shape
 import tu_map as TM             # noqa: E402
+import baseline_cache as BC     # noqa: E402
 
 TU_MAP = REPO / "build" / "tu_map.json"
 BASELINE_LINK = REPO / "build" / "tu" / "_baseline" / "link"
@@ -4673,7 +4680,30 @@ def linkcheck_symbol_verdict(baseline, command_ok, new_errors):
     return command_ok
 
 
-def cmd_linkcheck(args):
+def baseline_dir_current(path):
+    """True when ``path`` is a stock control whose fingerprints still match.
+
+    A shared-cache copy is trusted only after this check. A missing artefact,
+    a report that is not a baseline, or a fingerprint mismatch all refuse it.
+    """
+    path = pathlib.Path(path)
+    report_path = path / "linkcheck.json"
+    elf_path = path / "final_link.o"
+    config_root = path / "config" / "arm9"
+    if not report_path.is_file() or not elf_path.is_file() or not config_root.is_dir():
+        return False
+    try:
+        report = json.loads(report_path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError):
+        return False
+    if not isinstance(report, dict) or report.get("baseline") is not True:
+        return False
+    _sha, error = validate_partition_baseline_evidence(
+        report, elf_path, config_root=config_root, tracked_config_root=CFG_ARM9)
+    return error is None
+
+
+def _cmd_linkcheck(args):
     data = load_manifest()
     entry = manifest_entry(data, args.id) if args.id else None
     if args.id and entry is None:
@@ -4717,6 +4747,12 @@ def cmd_linkcheck(args):
             raise SystemExit(f"missing {tool} - see notes/setup-mwccarm.md")
     if not (REPO / "extracted" / "dsd" / "config.yaml").is_file():
         raise SystemExit("no extracted ROM - run tools/unpack.py on your own dump first")
+
+    # A TU run diffs its symbol check against the stock control. If this worktree
+    # has no current one, copy the shared control for these inputs.
+    if not baseline and not bool(getattr(args, "no_baseline_cache", False)):
+        BC.restore_cached_baseline(
+            REPO, BASELINE_LINK, enabled=True, validate=baseline_dir_current)
 
     # ---------------------------------------------------------------- scratch config
     print("[1/8] scratch configuration")
@@ -5807,6 +5843,47 @@ def cmd_linkcheck(args):
     return 0 if verified else 1
 
 
+def cmd_linkcheck(args):
+    """Run linkcheck, reusing a shared stock control when the inputs match.
+
+    ``--baseline`` is the control. A hit returns the stored exit code and does
+    not compile. A miss holds the cache lock across the build, then publishes
+    only a successful control. A TU run (no ``--baseline``) only restores a
+    missing or stale local control; it does not build one.
+    """
+    baseline = bool(getattr(args, "baseline", False))
+    verify = bool(getattr(args, "verify_baseline_cache", False))
+    rebuild = bool(getattr(args, "rebuild_baseline", False))
+    no_cache = bool(getattr(args, "no_baseline_cache", False))
+    if verify and not baseline:
+        raise SystemExit("--verify-baseline-cache requires --baseline")
+    if rebuild and not baseline:
+        raise SystemExit("--rebuild-baseline requires --baseline")
+    if no_cache and verify:
+        raise SystemExit("--verify-baseline-cache cannot be combined with "
+                         "--no-baseline-cache")
+    if not baseline:
+        return _cmd_linkcheck(args)
+    session = BC.open_baseline_session(
+        REPO, BASELINE_LINK,
+        enabled=not no_cache,
+        rebuild=rebuild,
+        verify=verify,
+        build_rom=not bool(getattr(args, "no_rom", False)),
+        validate=baseline_dir_current,
+    )
+    if session.cached_exit is not None:
+        return session.cached_exit
+    code = None
+    try:
+        code = _cmd_linkcheck(args)
+    finally:
+        session.finish(code)
+    if session.override_exit is not None:
+        return session.override_exit
+    return code
+
+
 def partitioned_link_ready(*, equivalent, data_ok, storage_aliases_ok, artifacts_ok,
                            module_ok,
                            modules_check_ok, symbols_ok, rom_ok, rom_identical,
@@ -6330,6 +6407,15 @@ def main():
     p.add_argument("--no-rom", action="store_true", help="stop after the module comparison")
     p.add_argument("--clean", action="store_true",
                    help="delete this TU's scratch tree before running")
+    cache = p.add_mutually_exclusive_group()
+    cache.add_argument("--no-baseline-cache", action="store_true",
+                       help="do not read or write the shared baseline cache")
+    cache.add_argument("--rebuild-baseline", action="store_true",
+                       help="with --baseline: compute a new control and replace "
+                            "the shared entry for these inputs")
+    cache.add_argument("--verify-baseline-cache", action="store_true",
+                       help="with --baseline: compute a fresh control and compare "
+                            "it to the stored one (exit 1 if they differ)")
     p.set_defaults(func=cmd_linkcheck)
 
     p = sub.add_parser("promote", help="plan sec 7.7 -- only --dry-run is implemented")
