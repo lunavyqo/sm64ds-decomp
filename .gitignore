@@ -24,6 +24,9 @@ build/
 # third-party binaries (not our code)
 tools/bin/
 
+# local override for the shared linkcheck baseline cache (tools/baseline_cache.py)
+/tools/baseline-cache.path
+
 # proprietary, non-redistributable toolchain
 tools/mwccarm/
 license.dat
