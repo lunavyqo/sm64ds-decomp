@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import json
 import pathlib
+import shutil
 import sys
 import tempfile
 import unittest
@@ -179,14 +180,40 @@ class TrackedManifestTests(unittest.TestCase):
             return {p.relative_to(root).as_posix():
                     p.read_bytes().replace(b"\r\n", b"\n")
                     for p in root.rglob("*.json")}
-        before = snap(TUM.DEFAULT_ROOT)
+        # In place, on a copy. A fresh dump of a new directory would reformat
+        # arm9/SoundEngine.json (it is indent 1; save's canonical dump is indent
+        # 2) and the test would then require that churn, which is the bug.
         with tempfile.TemporaryDirectory() as td:
             mirror = pathlib.Path(td) / "tu_manifest.d"
-            TUM.save(TUM.load(), mirror)
+            shutil.copytree(TUM.DEFAULT_ROOT, mirror)
+            before = snap(mirror)
+            TUM.save(TUM.load(mirror), mirror)
             after = snap(mirror)
         self.assertEqual(sorted(before), sorted(after))
         for name in before:
             self.assertEqual(before[name], after[name], f"{name} would be rewritten")
+
+    def test_save_keeps_noncanonical_bytes_until_the_entry_changes(self):
+        """An untouched indent-1 entry stays byte-for-byte; a changed one is rewritten."""
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td) / "tu_manifest.d"
+            odd = root / "arm9"
+            odd.mkdir(parents=True)
+            path = odd / "SoundEngine.json"
+            entry = _entry("arm9/SoundEngine", notes=["leave the formatting"])
+            path.write_text(json.dumps(entry, indent=1) + "\n",
+                            encoding="utf-8", newline="\n")
+            raw = path.read_bytes()
+            self.assertIn(b'\n "id"', raw)
+            TUM.save(TUM.load(root), root)
+            self.assertEqual(path.read_bytes(), raw)
+            loaded = TUM.load(root)
+            loaded["entries"][0]["notes"] = ["recorded by this run"]
+            TUM.save(loaded, root)
+            self.assertNotEqual(path.read_bytes(), raw)
+            self.assertEqual(json.loads(path.read_text(encoding="utf-8"))["notes"],
+                             ["recorded by this run"])
+            self.assertIn(b'\n  "id"', path.read_bytes())
 
     def test_dump_writes_lf(self):
         """The other half of the property above: what tu_manifest writes is LF.

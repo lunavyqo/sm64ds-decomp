@@ -124,11 +124,31 @@ def _dump(path, obj):
                     encoding="utf-8", newline="\n")
 
 
+def _parsed_equal(path, obj):
+    """True when `path` already holds `obj`, whatever its formatting is.
+
+    `save` rewrites every entry it is handed. Callers such as linkcheck hand it
+    the whole manifest to record one TU, so a formatting-only rewrite of an
+    untouched entry shows up as a dirty file. `arm9/SoundEngine.json` is indent
+    1; the canonical dump is indent 2, and that one file is about a thousand
+    lines. Compare the parsed value and leave the bytes alone when they agree.
+    """
+    path = pathlib.Path(path)
+    if not path.is_file():
+        return False
+    try:
+        current = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, UnicodeError, json.JSONDecodeError):
+        return False
+    return current == obj
+
+
 def save(data, root=None):
     root = pathlib.Path(root or DEFAULT_ROOT)
 
     if is_single_file(root):
-        _dump(root, data)
+        if not _parsed_equal(root, data):
+            _dump(root, data)
         return
 
     root.mkdir(parents=True, exist_ok=True)
@@ -145,12 +165,14 @@ def save(data, root=None):
     meta = {k: v for k, v in data.items() if k != "entries"}
     meta.setdefault("schema_version", 1)
     meta.setdefault("about", DEFAULT_ABOUT)
-    _dump(root / META_NAME, meta)
+    if not _parsed_equal(root / META_NAME, meta):
+        _dump(root / META_NAME, meta)
 
     for entry in entries:
         path = root / slug(entry["id"])
         path.parent.mkdir(parents=True, exist_ok=True)
-        _dump(path, entry)
+        if not _parsed_equal(path, entry):
+            _dump(path, entry)
 
     # An entry that was renamed or dropped must not linger as a stale file that
     # the next load would silently read back in.
