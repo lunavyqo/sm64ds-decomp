@@ -4703,6 +4703,20 @@ def baseline_dir_current(path):
     return error is None
 
 
+def _require_linkcheck_tools():
+    """The compiler, linker, dsd, and extracted ROM this command reads.
+
+    A cache hit returns before the compile, so the check has to run on that
+    path too. A stored control is not a substitute for a missing toolchain.
+    """
+    for tool in (RB.DSD, RB.MW / RB.VERSION / "mwccarm.exe",
+                 RB.MW / RB.LD_VERSION / "mwldarm.exe"):
+        if not tool.is_file():
+            raise SystemExit(f"missing {tool} - see notes/setup-mwccarm.md")
+    if not (REPO / "extracted" / "dsd" / "config.yaml").is_file():
+        raise SystemExit("no extracted ROM - run tools/unpack.py on your own dump first")
+
+
 def _cmd_linkcheck(args):
     data = load_manifest()
     entry = manifest_entry(data, args.id) if args.id else None
@@ -4741,12 +4755,7 @@ def _cmd_linkcheck(args):
     print("real config/ and the shared build/ outputs are read-only for this command; "
           "everything written below lives under that scratch tree (build/ is gitignored).\n")
 
-    for tool in (RB.DSD, RB.MW / RB.VERSION / "mwccarm.exe",
-                 RB.MW / RB.LD_VERSION / "mwldarm.exe"):
-        if not tool.is_file():
-            raise SystemExit(f"missing {tool} - see notes/setup-mwccarm.md")
-    if not (REPO / "extracted" / "dsd" / "config.yaml").is_file():
-        raise SystemExit("no extracted ROM - run tools/unpack.py on your own dump first")
+    _require_linkcheck_tools()
 
     # A TU run diffs its symbol check against the stock control. If this worktree
     # has no current one, copy the shared control for these inputs.
@@ -5862,6 +5871,10 @@ def cmd_linkcheck(args):
     if no_cache and verify:
         raise SystemExit("--verify-baseline-cache cannot be combined with "
                          "--no-baseline-cache")
+    # Before a hit returns, and before a miss compiles. _cmd_linkcheck checks
+    # again for a TU run that never enters the baseline session.
+    if baseline:
+        _require_linkcheck_tools()
     if not baseline:
         return _cmd_linkcheck(args)
     session = BC.open_baseline_session(

@@ -263,7 +263,7 @@ jobs:
 #                                      never as a NitroFS file ID.
 #   test_attribution            (17)   chaos_db_ci.py -- rebuilds chaos-db.json from
 #                                      COMMITTED history; the credit data the site reads.
-#   test_baseline_cache         (33)   baseline_cache.py -- one stock linkcheck control
+#   test_baseline_cache         (37)   baseline_cache.py -- one stock linkcheck control
 #                                      per input set, shared by every worktree of the
 #                                      clone. A false hit would grade a TU against the
 #                                      wrong tree. The compiler is mocked; the tests
