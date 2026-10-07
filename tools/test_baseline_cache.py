@@ -5,6 +5,7 @@ compiler bytes would grade its TU against the wrong tree and still look green.
 These tests mock the compile. They check the key, the lock, and the reuse.
 """
 import io
+import json
 import os
 import pathlib
 import shutil
@@ -16,6 +17,7 @@ import threading
 import time
 import unittest
 from contextlib import redirect_stderr, redirect_stdout
+from unittest import mock
 
 TOOLS = pathlib.Path(__file__).resolve().parent
 sys.path.insert(0, str(TOOLS))
@@ -161,7 +163,11 @@ class KeyTests(unittest.TestCase):
         compiler = self.repo / "tools" / "mwccarm" / "2004" / "b56" / "mwccarm.exe"
         compiler.parent.mkdir(parents=True)
         compiler.write_bytes(b"mwcc")
-        self.assertNotEqual(_key(self.repo)[0], with_dsd2)
+        with_compiler = _key(self.repo)[0]
+        self.assertNotEqual(with_compiler, with_dsd2)
+        # The whole mwccarm directory is hashed, not only executables and headers.
+        (compiler.parent / "license.dat").write_bytes(b"lic")
+        self.assertNotEqual(_key(self.repo)[0], with_compiler)
 
     def test_extracted_bytes_and_the_stock_rom_change_the_key(self):
         before = _key(self.repo)[0]
@@ -208,11 +214,83 @@ class KeyTests(unittest.TestCase):
         info = BC.inspect_inputs(self.repo)
         self.assertTrue(info.ok, info.reason)
 
-    def test_tool_list_covers_the_fingerprint_tools(self):
+    def test_manifest_verification_does_not_change_the_key(self):
+        """A TU linkcheck rewrites verification.rom. The control does not read it."""
+        entry = {
+            "id": "ov002/Foo",
+            "module": "ov002",
+            "status": "text-verified",
+            "source": "src_tu/ov002/Foo.cpp",
+            "notes": "first",
+            "functions": [{"symbol": "foo", "address": "0x1", "size": "0x4"}],
+            "verification": {"linkcheck": {"rom": {"sha256": "ab" * 32, "bytes": 8},
+                                           "result": "link-verified"}},
+        }
+        path = self.repo / "config" / "tu_manifest.d" / "ov002" / "Foo.json"
+        path.parent.mkdir(parents=True)
+        path.write_text(json.dumps(entry), encoding="utf-8")
+        first = _key(self.repo)[0]
+        entry["verification"]["linkcheck"]["rom"]["sha256"] = "cd" * 32
+        entry["functions"][0]["address"] = "0x99"
+        entry["notes"] = "stamped later"
+        path.write_text(json.dumps(entry), encoding="utf-8")
+        self.assertEqual(_key(self.repo)[0], first)
+        entry["status"] = "promoted"
+        entry["production_mode"] = "intact-object"
+        path.write_text(json.dumps(entry), encoding="utf-8")
+        promoted = _key(self.repo)[0]
+        self.assertNotEqual(promoted, first)
+        entry["compiler_only_output"] = [{
+            "symbol": "bar", "disposition": "deadstrip", "reason": "because",
+        }]
+        path.write_text(json.dumps(entry), encoding="utf-8")
+        self.assertNotEqual(_key(self.repo)[0], promoted)
+
+    def test_a_tool_module_changes_the_key_and_a_test_does_not(self):
+        before = _key(self.repo)[0]
+        issues = self.repo / "config" / "layout-known-issues.txt"
+        issues.write_text("waiver\n", encoding="utf-8", newline="\n")
+        with_issues = _key(self.repo)[0]
+        self.assertNotEqual(with_issues, before)
+        tool = self.repo / "tools" / "match.py"
+        tool.parent.mkdir(parents=True)
+        tool.write_text("x = 1\n", encoding="utf-8", newline="\n")
+        with_tool = _key(self.repo)[0]
+        self.assertNotEqual(with_tool, with_issues)
+        (self.repo / "tools" / "test_match.py").write_text(
+            "x = 2\n", encoding="utf-8", newline="\n")
+        self.assertEqual(_key(self.repo)[0], with_tool)
+
+    def test_inspect_inputs_does_not_rev_parse_each_path(self):
+        calls = []
+        real = BC._git
+
+        def wrapped(repo, args, timeout=120, stdin=None):
+            calls.append(list(args))
+            return real(repo, args, timeout=timeout, stdin=stdin)
+
+        with mock.patch.object(BC, "_git", wrapped):
+            info = BC.inspect_inputs(self.repo)
+        self.assertTrue(info.ok, info.reason)
+        names = [args[0] for args in calls]
+        self.assertNotIn("rev-parse", names)
+        self.assertLessEqual(len(calls), 4)
+        self.assertIn("cat-file", names)
+        self.assertIn("ls-tree", names)
+
+    def test_tracked_tool_sources_cover_the_link_pipeline(self):
+        repo = pathlib.Path(__file__).resolve().parent.parent
+        index = BC._tool_index(repo)
+        self.assertIsNotNone(index)
+        names = {pathlib.PurePosixPath(rel).name for rel in index}
+        for name in ("tubuild.py", "match.py", "linkcheck.py", "layout_check.py",
+                     "tu_map.py", "probe_versions.py", "reverify_corpus.py",
+                     "swarm.py", "ledger.py", "rombuild.py"):
+            self.assertIn(name, names)
+        self.assertFalse(any(name.startswith("test_") for name in names))
         import tubuild
-        names = {path.name for path in tubuild.BASELINE_CONTROL_TOOLS}
-        covered = {pathlib.PurePosixPath(rel).name for rel in BC.TOOL_FILES}
-        self.assertTrue(names <= covered)
+        for path in tubuild.BASELINE_CONTROL_TOOLS:
+            self.assertIn(path.name, names)
 
 
 class CacheRootTests(unittest.TestCase):
@@ -481,39 +559,44 @@ class SessionTests(unittest.TestCase):
         self.assertFalse(BC.BaselineStore(self.cache).ready(key))
 
     def test_the_second_thread_waits_and_reuses(self):
+        # Hashing is mocked. On a loaded Windows box the real key took ~50s,
+        # and a 5s wait for the lock expired before the first thread had it.
+        info = BC.inspect_inputs(self.repo)
+        self.assertTrue(info.ok, info.reason)
         started = threading.Event()
         release = threading.Event()
         builds = []
         results = []
 
         def worker():
-            session = self._open(lock_timeout=5)
+            session = self._open(lock_timeout=30)
             if session.cached_exit is not None:
                 results.append("hit")
                 return
             builds.append(1)
             if len(builds) == 1:
                 started.set()
-                self.assertTrue(release.wait(5))
+                self.assertTrue(release.wait(30))
             _write_control(self.dest, elf=b"ONCE")
             session.finish(0)
             results.append("build")
 
-        first = threading.Thread(target=worker)
-        second = threading.Thread(target=worker)
-        first.start()
-        self.assertTrue(started.wait(5))
-        second.start()
-        store = BC.BaselineStore(self.cache)
-        deadline = time.time() + 5
-        while time.time() < deadline and not list(self.cache.glob("locks/*")):
-            time.sleep(0.02)
-        locks = list((self.cache / "locks").iterdir())
-        self.assertEqual(len(locks), 1)
-        self.assertIsNone(store.try_acquire(locks[0].name, stale_s=10**9, grace_s=10**9))
-        release.set()
-        first.join(5)
-        second.join(5)
+        with mock.patch.object(BC, "inspect_inputs", return_value=info):
+            first = threading.Thread(target=worker)
+            second = threading.Thread(target=worker)
+            first.start()
+            self.assertTrue(started.wait(30))
+            second.start()
+            store = BC.BaselineStore(self.cache)
+            deadline = time.time() + 30
+            while time.time() < deadline and not list(self.cache.glob("locks/*")):
+                time.sleep(0.02)
+            locks = list((self.cache / "locks").iterdir())
+            self.assertEqual(len(locks), 1)
+            self.assertIsNone(store.try_acquire(locks[0].name, stale_s=10**9, grace_s=10**9))
+            release.set()
+            first.join(30)
+            second.join(30)
         self.assertFalse(first.is_alive() or second.is_alive())
         self.assertEqual(builds, [1])
         self.assertIn("hit", results)
@@ -571,6 +654,22 @@ class CurrentControlTests(unittest.TestCase):
         report["baseline"] = False
         report_path.write_text(json.dumps(report), encoding="utf-8")
         self.assertFalse(tubuild.baseline_dir_current(dest))
+
+
+class WindowsPidTests(unittest.TestCase):
+    def test_windows_pid_probe_never_calls_os_kill(self):
+        """Signal 0 is CTRL_C_EVENT on Windows and kills the probing process."""
+        def explode(pid, sig):
+            raise AssertionError(f"os.kill({pid}, {sig})")
+
+        with mock.patch("os.kill", explode):
+            self.assertTrue(BC._pid_alive_windows(1, query=lambda pid: (259, 0)))
+            self.assertFalse(BC._pid_alive_windows(1, query=lambda pid: (0, 0)))
+            self.assertFalse(BC._pid_alive_windows(1, query=lambda pid: (None, 87)))
+            self.assertTrue(BC._pid_alive_windows(1, query=lambda pid: (None, 5)))
+            with mock.patch("os.name", "nt"), \
+                    mock.patch.object(BC, "_windows_query", return_value=(None, 87)):
+                self.assertFalse(BC._pid_alive(4242))
 
 
 class PorcelainTests(unittest.TestCase):
