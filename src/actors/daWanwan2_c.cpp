@@ -16,12 +16,11 @@
  * point (0x1000 = 1 unit, or 1.0 for a scale; a speed of 0x1000 is 1 unit per
  * frame); angles are 16 bit (0x10000 = a full turn, 0x4000 = a quarter turn);
  * model and shadow matrices take a position >> 3.
- * The only state table, data_ov100_021486f4, is seeded by the module's
- * static initializer from the constants at data_ov100_02148000
- * (func_ov100_02143ae0, the enter) and data_ov100_02147ff8
- * (func_ov100_02143aa4, the execute).
+ * The only state table, data_ov100_021486f4, is a file-scope record in
+ * this TU. __sinit_daWanwan2_c.cpp copies its two pointer-to-member
+ * descriptors (enter func_ov100_02143ae0, execute func_ov100_02143aa4).
  *
- * Those two constants sit straight after daIbl_c's 31-slot vtable
+ * Those descriptors sit straight after daIbl_c's 31-slot vtable
  * (0x02147f7c..0x02147ff8), which is why a vtable scan read three extra
  * slots into daIbl_c and once labelled func_ov100_02143aa4 a daIbl_c
  * "Kill". Neither is a virtual function of either class: both run on this
@@ -51,8 +50,8 @@
  *   daWanwan2_c * and func_ov100_02143b18 takes the ChompPmfSelf stand-in;
  *   func_ov100_02143370 and func_ov100_02143b68 stay `char *` because
  *   include/decl_common.h declares them that way and check_decl_agreement
- *   compares the two. func_ov100_02143aa4 and func_ov100_02143ae0 are the
- *   state pair's members, called through ChompPmfSelf rather than as methods.
+ *   compares the two. func_ov100_02143aa4 and func_ov100_02143ae0 are
+ *   ChompPmfSelf methods; the address is the method name.
  * Leftover: the callees with Fix12<int> parameters (dActor_c's shadow drop,
  *   Player::Hurt, ModelAnim::SetAnim, dCcAcPos_c::Init, cstd::atan2) stay
  *   spelled as mangled extern-C free functions.
@@ -134,6 +133,28 @@ struct ChompState {
 struct ChompPmfSelf {
     char pad[0x668];
     ChompState *state;  /* 0x668, daWanwan2_c::mStatePair */
+
+    /* Address-named state targets. A method on the real class is a
+     * different pointer-to-member shape, so these stay on the stand-in. */
+    int func_ov100_02143ae0();
+    int func_ov100_02143aa4();
+};
+
+/* 8-byte resource handles. Compiler member imports alias to the ROM
+ * constructors and destructors; see the manifest. The animation class
+ * name is long enough for that in-place rename. */
+struct Wanwan2ModelFilePtr : SharedFilePtr {
+    u32 words[2];
+
+    Wanwan2ModelFilePtr(u32 fileID);
+    ~Wanwan2ModelFilePtr();
+};
+
+struct Wanwan2AnimFileHandle : SharedFilePtr {
+    u32 words[2];
+
+    Wanwan2AnimFileHandle(u32 fileID);
+    ~Wanwan2AnimFileHandle();
 };
 
 struct Vector3_16;
@@ -179,10 +200,10 @@ void LoadSilverStarAndNumber();
 void UnloadSilverStarAndNumber();
 
 extern SharedFilePtr data_ov002_0211092c;
-extern SharedFilePtr data_ov100_021486bc;
-extern SharedFilePtr data_ov100_021486a4;
-extern SharedFilePtr data_ov100_021486ac;
-extern SharedFilePtr data_ov100_021486b4;
+extern Wanwan2ModelFilePtr data_ov100_021486bc;
+extern Wanwan2ModelFilePtr data_ov100_021486a4;
+extern Wanwan2AnimFileHandle data_ov100_021486ac;
+extern Wanwan2AnimFileHandle data_ov100_021486b4;
 extern s32 data_ov100_02148008[3];
 extern ChompState data_ov100_021486f4;
 extern unsigned char data_0209f2d8[];
@@ -496,15 +517,16 @@ extern "C" void func_ov100_021437d4(daWanwan2_c *thisx)
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 6 -- func_ov100_02143aa4, 0x02143aa4, size 0x3c */
 /* -------------------------------------------------------------------------- */
-// @symbol func_ov100_02143aa4
-/* The walking state's execute member (data_ov100_02147ff8, copied into
-   data_ov100_021486f4.execute): advance the walk animation at full speed,
-   then step the chain, the contact check and the chain-end actor. Formerly
-   recovered as "RollingIronBall_Kill" / "daIbl_c::Kill, from vtable slot
-   identity": the pointer-to-member constant that holds it follows daIbl_c's
-   vtable directly, and that is the whole of the old claim. Was a C source. */
-extern "C" int func_ov100_02143aa4(daWanwan2_c *c)
+// @symbol _ZN12ChompPmfSelf19func_ov100_02143aa4Ev
+/* The walking state's execute member (data_ov100_021486f4.execute): advance
+   the walk animation at full speed, then step the chain, the contact check
+   and the chain-end actor. Formerly recovered as "RollingIronBall_Kill" /
+   "daIbl_c::Kill, from vtable slot identity": the pointer-to-member constant
+   that holds it follows daIbl_c's vtable directly, and that is the whole of
+   the old claim. Was a C source. */
+int ChompPmfSelf::func_ov100_02143aa4()
 {
+    daWanwan2_c *c = (daWanwan2_c *)this;
     c->mModelAnim.speed = 4096;     /* 1.0 */
     _ZN15dExtFrameCtrl_c7AdvanceEv((dExtFrameCtrl_c *)&c->mModelAnim);
     func_ov100_021437d4(c);
@@ -516,11 +538,12 @@ extern "C" int func_ov100_02143aa4(daWanwan2_c *c)
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 7 -- func_ov100_02143ae0, 0x02143ae0, size 0x38 */
 /* -------------------------------------------------------------------------- */
-// @symbol func_ov100_02143ae0
-/* The walking state's enter member (data_ov100_02148000): start the walk
-   animation from data_ov100_021486ac. Was a C source. */
-extern "C" int func_ov100_02143ae0(daWanwan2_c *c)
+// @symbol _ZN12ChompPmfSelf19func_ov100_02143ae0Ev
+/* The walking state's enter member: start the walk animation from
+   data_ov100_021486ac. Was a C source. */
+int ChompPmfSelf::func_ov100_02143ae0()
 {
+    daWanwan2_c *c = (daWanwan2_c *)this;
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((char *)&c->mModelAnim,
         *(void **)((char *)&data_ov100_021486ac + 4), 0, 0x1000, 0);
     return 1;
@@ -886,3 +909,14 @@ s32 daWanwan2_c::OnAimedAtWithEgg()
  * constructor function, and types.h's Vector3 and Vector3s declare no
  * constructor, so the implicit one never emits those three calls. The
  * hand-built factory in src/d_a_wanwan2.cpp still reproduces them. */
+
+/* Handles first, in construction order, then the state record. That is
+ * what emits __sinit_daWanwan2_c.cpp. The two descriptors are anonymous. */
+Wanwan2ModelFilePtr data_ov100_021486bc(0x9c02);
+Wanwan2ModelFilePtr data_ov100_021486a4(0x9c01);
+Wanwan2AnimFileHandle data_ov100_021486ac(0x9c04);
+Wanwan2AnimFileHandle data_ov100_021486b4(0x9c03);
+ChompState data_ov100_021486f4 = {
+    &ChompPmfSelf::func_ov100_02143ae0,
+    &ChompPmfSelf::func_ov100_02143aa4,
+};
