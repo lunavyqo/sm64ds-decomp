@@ -555,7 +555,7 @@ That is expected — dsd's config has symbols and relocations, not struct defini
 there is nothing for SyncDsd to import. Class layouts would have to come from our own
 headers via Ghidra's data-type manager, which nothing currently does.
 
-**G9.4 — The specific historical miss is still missed.** [high] [CLAIMS.md](../CLAIMS.md) records
+**G9.4 — The specific historical miss is still missed.** [high] The claims log recorded
 [ov006](../config/arm9/overlays/ov006/symbols.txt) [func_ov006_020dbe9c](../src/actors/dScMgCoin_c.cpp) as "Ghidra missed s64 matrix". The SyncDsd'd draft is:
 
 ```c
