@@ -114,8 +114,8 @@ because both are cheap and both have been wrong before:
 - the delink **row count** against the formula, and
 - that `externalized_output` is empty (a non-empty block means the class took
   the text-verified-only route and cannot be promoted at all).
-- that every absorbed member has a `path#symbol` attribution mapping and the
-  audit reports `0 lost`.
+- that you did not add or change a row in `function-authors.json` for a move.
+  Who matched each function is already there, keyed by address.
 
 Also re-verify every canonical address against the **owning module's**
 `symbols.txt` — not the class's own overlay. Cross-module homes are normal and
@@ -131,8 +131,8 @@ Body must carry, because none of it is recoverable from the diff:
 - the list of source PRs being superseded, by number,
 - which commits you dropped and why,
 - the ledger verdict from step 4 above, with the identical-record count,
-- the attribution verdict (`consolidated with credit intact`, `0 lost`) and the
-  source-coverage verdict (`0 B handed back to the cartridge`),
+- the source-coverage verdict (`0 B handed back to the cartridge`). A credit
+  note in the validation report does not fail the merge,
 - one gate block per class, plus the single `rombuild` and `tiers_ratchet` lines
   that cover the whole batch.
 

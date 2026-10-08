@@ -316,11 +316,7 @@ who deduped by path would delete real history.
 
 Who matched a function is `function-authors.json`. A shallow clone cannot change
 it, and a fold does not either. Do not invent credit rows from `git log`.
-
-**So: never bank an attribution override from a shallow clone.** If
-`--is-shallow-repository` prints true, run `git fetch --unshallow` and recompute
-before writing anything. Worktrees share the parent clone's `.git`, so one
-shallow clone makes every worktree cut from it shallow too.
+Do not edit `attribution.json` to record credit.
 
 ## Two PowerShell traps that read as other people's bugs
 
@@ -445,8 +441,9 @@ files merged silently. Same rule as the ledgers — regenerate, never resolve:
 **In a merge train the conflict set is bigger than one file, and every builder
 hit the same three.** Across six promotions rebased onto each other in one
 afternoon, the recurring `UU` set was `notes/cpp-tu-current-state.md`,
-**`attribution.json`** and, on the larger folds, **`config/converted-baseline.json`**.
-The last two are sorted, keyed **sets**, so resolve them as **unions**, line-wise,
+`attribution.json`, and, on the larger folds, **`config/converted-baseline.json`**.
+Do not edit `attribution.json` for credit. If it conflicts, keep main.
+`converted-baseline.json` is a sorted, keyed **set**, so resolve it as a **union**, line-wise,
 and never re-serialise: a reorder conflicts with every other open PR in the train.
 The audit to run afterwards is `resolved == exact union of both parents` with
 0 missing, 0 invented, 0 value conflicts and 0 duplicate keys — three builders ran
@@ -712,20 +709,20 @@ Several validator lines are expected on a promotion and are not losses. All are
 the same many-to-one fold artifact: the counter credits only the delinks range's
 **first** symbol and reclassifies the rest as "claimed".
 
-    Contributor credit: 0 added, N changed, 0 lost
     N address range(s) left the byte-verified set
     N more function(s) now claim a match that nothing compiles
     Byte-verified functions -N, code bytes -N,NNN
 
-**These four N's are not one number, and reading them as a family invites a
-wrong PR body.** On a many-to-one fold the ranges-left count is exactly **one
+**These counts are not one number, and reading them as a family invites a
+wrong PR body.** A credit note in the validation report does not fail the merge.
+Do not edit `function-authors.json` to chase it. On a many-to-one fold the ranges-left count is exactly **one
 higher** than the byte-verified function delta, because the TU's own new range
 re-enters the set as the shard ranges leave: the 52-member `dScMgMemory2_c`
 promotion reports 52 ranges left against -51 functions.
 
 The byte figure reconciles exactly — on `daObjCtMecha03_c`, -1,236 is the eight
 functions' 1,312 bytes minus D1's `0x4c`. The same run reports `Relocation
-check: N checked; N VERIFIED`. Explain all four in the PR body, or the next
+check: N checked; N VERIFIED`. Explain each of these in the PR body, or the next
 builder chases the ones you left out.
 
 Add a plain-English TL;DR a CS generalist can read, above the evidence.
