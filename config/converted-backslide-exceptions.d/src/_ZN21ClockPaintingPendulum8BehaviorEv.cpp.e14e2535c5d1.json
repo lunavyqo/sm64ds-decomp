@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN21ClockPaintingPendulum8BehaviorEv.cpp",
+  "reason": "TU promotion ov013/daObjClockHuriko_c: the six per-function CONVERTED members become six path#symbol entries in the promoted TU. Rename only, no member lost."
+}

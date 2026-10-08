@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN6Eyerok16OnPendingDestroyEv.cpp",
+  "reason": "ov066/Eyerok TU promotion: 34 of the 61-function run at 0x02115ee0..0x0211a2e4 fold into src/actors/Eyerok.cpp (.text 0x021184c0..0x02119ce8). Partial because six shards in the run reference cross-overlay addresses no symbols.txt names and so carry no complete marker; a licensed claim cannot contain a hole."
+}

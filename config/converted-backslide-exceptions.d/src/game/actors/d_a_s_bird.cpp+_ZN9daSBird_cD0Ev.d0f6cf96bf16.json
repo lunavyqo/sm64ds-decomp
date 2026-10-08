@@ -1,0 +1,4 @@
+{
+  "path": "src/game/actors/d_a_s_bird.cpp#_ZN9daSBird_cD0Ev",
+  "reason": "ov009/daSBird_c hatch hole: D1/D0 cannot stay enrolled in the class TU because func_ov009_0211145c punches the class run; they remain matched leftover files src/_ZN9daSBird_cD1Ev.cpp and src/_ZN9daSBird_cD0Ev.cpp"
+}

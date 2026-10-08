@@ -1,24 +1,25 @@
 # Claims log
 
-This is a historical record, read by tooling (`tools/claims_md.py` and friends) and
-by contributors checking what's already spoken for — it is not a step in the
-contributing or merge workflow. See [`CONTRIBUTING.md`](CONTRIBUTING.md) for how to
-get a claims key; the live board at https://tangos.dev/claims is what actually locks
-work, and a lock made there is honored everywhere within a minute without anyone
-touching this file.
+FROZEN. This file is a historical record of a matching process that ended months
+ago. Do not append a row, do not edit a row, and do not resolve a merge by adding
+one. Tooling (`tools/claims_md.py` and friends) still reads the rows that are
+already here; nothing in review or CI asks you to update this file. See
+[`CONTRIBUTING.md`](CONTRIBUTING.md) for how to get a claims key. The live board
+at https://tangos.dev/claims is what locks work, and a lock made there is honored
+everywhere within a minute. If that API returns 401, note it once and proceed.
+Do not write the claim down here instead.
 
-Existing rows below still protect their ranges as a fallback, and the class/chain
-table stays the record of what's converted and what's in flight, but don't hand-edit
-this file as part of ordinary matching work — lock through the API instead.
+Existing rows below still protect their ranges as a fallback. The tables are the
+record of what was converted and what was in flight. They are not a place to
+register new work.
 
 ## Readable-C++ conversion claims (classes)
 
-The readable conversion works class by class (real C++ class in include/, files
+The readable conversion worked class by class (real C++ class in include/, files
 promoted to real methods, every file re-verified byte-identical), so the claim
-unit is a class or a class chain, not an address range - which is why these stay
-as rows here rather than on the range-based board. Claim below before you start
-converting a class; if a chain has not moved in a couple of weeks it is fair to
-take over, ping the claimant first.
+unit was a class or a class chain, not an address range. This table is frozen
+with the rest of the file. New class work is locked on the claims API, not by a
+row here.
 
 | Class / chain | Who | Claimed | Status |
 |---|---|---|---|

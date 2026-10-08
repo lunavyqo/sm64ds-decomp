@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN16daObjPushblock_cD0Ev.cpp",
+  "reason": "Verified ov002/daObjPushblock_c 9-to-1 production TU promotion keeps exact retail bytes and relocation destinations while retaining only measured Fix12-by-value and veneer ABI declarations; the absorbed methods no longer use raw offsets or codegen qualifier tricks, and byte identity outranks the file-wide no-mangled-refs metric."
+}

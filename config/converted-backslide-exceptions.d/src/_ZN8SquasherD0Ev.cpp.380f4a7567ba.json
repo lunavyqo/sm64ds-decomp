@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN8SquasherD0Ev.cpp",
+  "reason": "Atomic promotion consolidated these banked Squasher paths into src/game/actors/d_a_obj_fm_battan.cpp. Their compiler-owned symbols, exact bytes, and relocation identity remain verified in the promoted 9-function class TU; only the legacy paths disappeared. The absorbing TU retains the unresolved SpawnInfo word and narrow exact ABI/mangled seams required by the ROM."
+}

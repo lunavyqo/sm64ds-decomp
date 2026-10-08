@@ -67,7 +67,7 @@ CONVERTED   426 (3.8%) -> 1,558 (13.8%)      +1,139 gained, -7 lost
 ```
 
 The 7 losses are correct and are logged in
-`config/converted-backslide-exceptions.jsonl`: six `_ZThn80_*` thunks and one
+`config/converted-backslide-exceptions.d/`: six `_ZThn80_*` thunks and one
 `FUN_0202a130.c`, all of which passed only through the `^_Z[0-9NK]` hole.
 
 `PLACEHOLDER_PART` additionally rejects a placeholder wearing a real class prefix

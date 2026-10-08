@@ -1,0 +1,4 @@
+{
+  "path": "src/minigames/d_s_mg_jump2.cpp#_ZN12dScMgJump2_c16CleanupResourcesEv",
+  "reason": "ov006/dScMgJump2_c promoted to a single TU (src/minigames/d_s_mg_jump2.cpp); 29/29 MATCH, rombuild 106/106"
+}

@@ -49,7 +49,7 @@ This document describes this commit. The queue records its immutable output SHA.
   CONVERTED count in `notes/cpp-tu-current-state.md`, 2698 -> 2700); each diff is
   exactly one line. Untouched and deliberately so: `include/decl_common.h`,
   `symbols/actor_renames.tsv`, `config/converted-baseline.json`,
-  `config/converted-backslide-exceptions.jsonl`, `attribution.json`,
+  `config/converted-backslide-exceptions.d`, `attribution.json`,
   `config/match_attempts.jsonl`, `config/match_provenance.jsonl`,
   [config/arm9/overlays/ov081/symbols.txt](../../../config/arm9/overlays/ov081/symbols.txt), [config/arm9/overlays/ov081/delinks.txt](../../../config/arm9/overlays/ov081/delinks.txt),
   the manifest.
@@ -269,5 +269,5 @@ integration stage added on top of it; it changes no source, header or manifest.
   `config/converted-baseline.json` stays sorted and duplicate-free with its
   `count` field equal to its list length (2696 -> 2698: seven shard paths leave,
   nine `daGmch_c.cpp#symbol` rows enter), and
-  `config/converted-backslide-exceptions.jsonl` holds 404 rows with no
+  `config/converted-backslide-exceptions.d` holds 404 rows with no
   byte-identical duplicate record.

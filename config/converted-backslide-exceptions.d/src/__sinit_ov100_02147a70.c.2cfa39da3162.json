@@ -1,0 +1,4 @@
+{
+  "path": "src/__sinit_ov100_02147a70.c",
+  "reason": "ov100/daStarGate_c promotion consolidates legacy StarDoor and particle callback sources into the exact enrolled translation unit; member identities replace retired one-function paths."
+}

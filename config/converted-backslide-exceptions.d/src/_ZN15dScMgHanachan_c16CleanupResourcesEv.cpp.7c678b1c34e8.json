@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN15dScMgHanachan_c16CleanupResourcesEv.cpp",
+  "reason": "ov006/dScMgHanachan_c 49-of-61 TU promotion absorbed src/_ZN15dScMgHanachan_c16CleanupResourcesEv.cpp; the receiving TU carries 45 auto-named func_ovNN_ADDR members that fail the readability criteria, so CONVERTED ownership cannot transfer to it."
+}

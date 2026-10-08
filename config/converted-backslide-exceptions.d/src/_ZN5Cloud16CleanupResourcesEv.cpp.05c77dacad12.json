@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN5Cloud16CleanupResourcesEv.cpp",
+  "reason": "ov039/daObjKumo_c promoted to a single TU (PR #2216); the CONVERTED members move under src/game/actors/d_a_obj_kumo.cpp"
+}

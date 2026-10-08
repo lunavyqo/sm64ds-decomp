@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN12daObjAbuku_cD0Ev.cpp",
+  "reason": "TU promotion ov002/daObjAbuku_c (PR #1996) consolidated these two per-symbol files into src/game/actors/d_a_obj_abuku.cpp. A reconstructed TU must spell vague-linkage symbols directly (_ZN7fBase_cnwEj, _ZN8dActor_cC2Ev, _ZN8dActor_cD2Ev) or its range will not link, so no_mangled_refs cannot pass for the absorbing file. Byte-match outranks readability; the code was not reverted and no byte changed."
+}

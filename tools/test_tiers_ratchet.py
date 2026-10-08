@@ -2,6 +2,7 @@ import contextlib
 import io
 import json
 import pathlib
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -324,7 +325,7 @@ class OrphanDestinationSplit(unittest.TestCase):
         out = io.StringIO()
         with contextlib.redirect_stdout(out):
             TR.report_orphans(orphans, moves,
-                              "config/converted-backslide-exceptions.jsonl",
+                              "config/converted-backslide-exceptions.d",
                               set() if tracked is None else tracked,
                               {} if scores is None else scores,
                               {} if ownership is None else ownership,
@@ -599,7 +600,7 @@ class OrphanDestinationSplit(unittest.TestCase):
         text = self._report(["src/Vanished.cpp"], {})
 
         self.assertIn('python tools/tiers_ratchet.py --update --reason', text)
-        self.assertIn("converted-backslide-exceptions.jsonl", text)
+        self.assertIn("converted-backslide-exceptions.d", text)
         self.assertIn("only caller of append_exceptions()", text)
         self.assertNotIn("Do NOT re-bank", text)
 
@@ -1313,7 +1314,7 @@ class UpdateBehaviourPin(SyntheticTree, unittest.TestCase):
 
     def _update(self, banked, tree, ownership, argv, moves=None, extra=None):
         root, baseline = self._tree(tree, banked, extra)
-        exceptions = root / "exceptions.jsonl"
+        exceptions = root / "exceptions"
         full = ["tiers_ratchet.py", "--update", *argv, "--baseline", str(baseline),
                 "--exceptions", str(exceptions)]
         out = io.StringIO()
@@ -1359,7 +1360,9 @@ class UpdateBehaviourPin(SyntheticTree, unittest.TestCase):
 
         self.assertEqual(code, 0)
         self.assertTrue(exceptions.exists())
-        row = json.loads(exceptions.read_text(encoding="utf-8").strip())
+        rows = TR.load_exceptions(exceptions)
+        self.assertEqual(len(rows), 1)
+        row = rows[0]
         self.assertEqual(row["path"], "src/Gone.cpp")
         self.assertEqual(row["reason"], "the code really left the tree")
         self.assertNotIn("src/Gone.cpp", TR.load_baseline(str(baseline)))
@@ -1397,7 +1400,9 @@ class UpdateBehaviourPin(SyntheticTree, unittest.TestCase):
             moves={legacy: ("ov001/TU", dest)}, extra={dest: self.FAILING_TWO_FN})
 
         self.assertEqual(code, 0)
-        row = json.loads(exceptions.read_text(encoding="utf-8").strip())
+        rows = TR.load_exceptions(exceptions)
+        self.assertEqual(len(rows), 1)
+        row = rows[0]
         self.assertEqual(row["path"], legacy)
 
     def test_update_still_refuses_when_only_the_rewrite_target_passes(self):
@@ -1428,7 +1433,9 @@ class UpdateBehaviourPin(SyntheticTree, unittest.TestCase):
             extra={"src/actors/TU.cpp": self.MIXED_TWO_FN})
 
         self.assertEqual(code, 0)
-        row = json.loads(exceptions.read_text(encoding="utf-8").strip())
+        rows = TR.load_exceptions(exceptions)
+        self.assertEqual(len(rows), 1)
+        row = rows[0]
         self.assertEqual(row["path"], "src/Legacy.cpp")
 
 
@@ -1449,19 +1456,23 @@ class BaselineIntegrity(unittest.TestCase):
 
         self.assertIn("a.cpp", str(caught.exception))
 
-    def test_count_disagreeing_with_the_array_is_refused(self):
+    def test_a_stale_count_is_ignored(self):
+        """A stored count is not a second copy of the set.
+
+        Fold PRs used to rewrite the trailing count line, so any two of them
+        conflicted, and resolving that conflict left main declaring 3577 identities
+        over an array of 3576. The array is the set. A wrong count must not fail
+        the gate and must not have to be hand-edited.
+        """
         path = self._write({"count": 99, "converted": ["a.cpp", "b.cpp"]})
 
-        with self.assertRaises(TR.BaselineError) as caught:
-            TR.load_baseline(path)
-
-        self.assertIn("99", str(caught.exception))
+        self.assertEqual(TR.load_baseline(path), {"a.cpp", "b.cpp"})
 
     def test_a_dropped_identity_hidden_by_a_duplicate_is_caught(self):
-        """The shape this check exists for: `count` still matches, the set is smaller.
+        """The edit a derived length cannot see: drop one identity, duplicate another.
 
-        Removing one identity and duplicating another keeps len(array) == count, so the
-        count check alone would pass it. Only the distinctness check sees it.
+        The array stays the same length, so no stored count would have caught it
+        either once the count was updated to match. Distinctness is what refuses.
         """
         path = self._write({"count": 3, "converted": ["a.cpp", "b.cpp", "b.cpp"]})
 
@@ -1474,7 +1485,6 @@ class BaselineIntegrity(unittest.TestCase):
         self.assertEqual(TR.load_baseline(path), {"a.cpp", "b.cpp"})
 
     def test_absent_count_field_is_not_an_error(self):
-        """`count` is metadata; only a PRESENT and WRONG one is evidence of an edit."""
         path = self._write({"converted": ["a.cpp", "b.cpp"]})
 
         self.assertEqual(TR.load_baseline(path), {"a.cpp", "b.cpp"})
@@ -1499,6 +1509,165 @@ class BaselineIntegrity(unittest.TestCase):
 
             self.assertEqual(TR.load_baseline(path),
                              {"a.cpp", "b.cpp", "a.cpp#Member"})
+            written = json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
+            self.assertNotIn("count", written)
+
+    def test_a_removal_keeps_every_other_identity_on_its_line(self):
+        """Re-sorting the survivors is how a one-line fold becomes a whole-file diff."""
+        with tempfile.TemporaryDirectory() as td:
+            path = str(pathlib.Path(td) / "baseline.json")
+            previous = ["src/c.cpp", "src/a.cpp", "src/b.cpp"]
+            TR.write_baseline(path, set(previous), previous_order=previous)
+            TR.write_baseline(path, {"src/c.cpp", "src/b.cpp"},
+                              previous_order=previous)
+
+            self.assertEqual(TR.load_baseline_rows(path), ["src/c.cpp", "src/b.cpp"])
+
+
+class ExceptionLogFiles(unittest.TestCase):
+    """Each removal is its own file, so two folds do not share a tail line."""
+
+    def test_two_rows_land_in_two_files_and_the_same_row_is_idempotent(self):
+        with tempfile.TemporaryDirectory() as td:
+            directory = pathlib.Path(td) / "exceptions"
+            first = {"path": "src/unnamed/ov002/__sinit_ov002_02100938.c",
+                     "reason": "folded into the class TU"}
+            second = {"path": "src/unnamed/ov002/__sinit_ov002_02101588.c",
+                      "reason": "folded into the class TU"}
+            written = TR.append_exceptions(directory, [first, second])
+            again = TR.append_exceptions(directory, [first])
+
+            self.assertEqual(len(set(written)), 2)
+            self.assertEqual(again[0], written[0])
+            self.assertEqual(TR.load_exceptions(directory), [first, second])
+            member = {"path": "src/actors/Foo.cpp#Bar", "reason": "left the set"}
+            recorded = TR.append_exceptions(directory, [member])[0]
+            self.assertNotIn("#", recorded.name)
+            self.assertIn("+", recorded.name)
+            self.assertIn(member, TR.load_exceptions(directory))
+
+    def test_rows_that_share_a_path_and_differ_in_reason_do_not_overwrite(self):
+        with tempfile.TemporaryDirectory() as td:
+            directory = pathlib.Path(td) / "exceptions"
+            base = {"path": "src/_ZN6BobOmb13OnYoshiTryEatEv.cpp"}
+            TR.append_exceptions(directory, [
+                dict(base, reason="first trade"),
+                dict(base, reason="second trade"),
+            ])
+            self.assertEqual(
+                {r["reason"] for r in TR.load_exceptions(directory)},
+                {"first trade", "second trade"})
+
+
+class FoldLedgerMerge(unittest.TestCase):
+    """Two independent fold edits merge. The shapes they replaced do not."""
+
+    def _git(self, repo, *args):
+        subprocess.run(["git", "-C", str(repo), *args], check=True,
+                       stdout=subprocess.DEVNULL, stderr=subprocess.PIPE,
+                       text=True)
+
+    def _repo(self, td):
+        repo = pathlib.Path(td) / "repo"
+        repo.mkdir()
+        self._git(repo, "init", "-q", "-b", "main")
+        self._git(repo, "config", "user.email", "ledger@example.com")
+        self._git(repo, "config", "user.name", "ledger")
+        return repo
+
+    def _commit(self, repo, message):
+        self._git(repo, "add", "-A")
+        self._git(repo, "commit", "-q", "-m", message)
+
+    def _fold_merge(self, repo, edit):
+        """Apply `edit(branch)` on two branches cut from main, then merge them."""
+        edit("fold-a")
+        edit("fold-b")
+        self._git(repo, "checkout", "-q", "fold-a")
+        return subprocess.run(
+            ["git", "-C", str(repo), "merge", "--no-edit", "fold-b"],
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+    def test_two_fold_edits_merge_without_touching_the_same_line(self):
+        with tempfile.TemporaryDirectory() as td:
+            repo = self._repo(td)
+            baseline = repo / "config" / "converted-baseline.json"
+            exceptions = repo / "config" / "converted-backslide-exceptions.d"
+            baseline.parent.mkdir(parents=True)
+            identities = [
+                "src/keep_early.cpp",
+                "src/unnamed/ov002/__sinit_ov002_02100938.c",
+                "src/keep_middle.cpp",
+                "src/unnamed/ov060/__sinit_ov060_0211a388.c",
+                "src/keep_late.cpp",
+            ]
+            TR.write_baseline(baseline, identities, previous_order=identities)
+            exceptions.mkdir()
+            self._commit(repo, "base")
+
+            victims = {
+                "fold-a": (identities[1], "ov002 folded"),
+                "fold-b": (identities[3], "ov060 folded"),
+            }
+
+            def edit(branch):
+                self._git(repo, "checkout", "-q", "-B", branch, "main")
+                victim, reason = victims[branch]
+                rows = TR.load_baseline_rows(baseline)
+                TR.write_baseline(baseline, [r for r in rows if r != victim],
+                                  previous_order=rows)
+                TR.append_exceptions(exceptions,
+                                     [{"path": victim, "reason": reason}])
+                self._commit(repo, branch)
+
+            merge = self._fold_merge(repo, edit)
+            self.assertEqual(merge.returncode, 0, merge.stderr + merge.stdout)
+            self.assertEqual(
+                TR.load_baseline_rows(baseline),
+                ["src/keep_early.cpp", "src/keep_middle.cpp", "src/keep_late.cpp"])
+            self.assertEqual(
+                {r["path"] for r in TR.load_exceptions(exceptions)},
+                {identities[1], identities[3]})
+
+    def test_the_old_count_line_and_jsonl_tail_conflict(self):
+        """The shapes this change removes.
+
+        From one base, both PRs rewrote `count` (here to different numbers, which
+        is what a resolver produces once main has already moved) and both appended
+        to the jsonl. Either edit is enough for git to conflict; together they are
+        the fold-PR pair that kept re-merging main.
+        """
+        with tempfile.TemporaryDirectory() as td:
+            repo = self._repo(td)
+            baseline = repo / "baseline.json"
+            log = repo / "exceptions.jsonl"
+            baseline.write_text(
+                json.dumps({"converted": ["src/a.c", "src/b.c", "src/c.c"],
+                            "count": 3}, indent=2) + "\n", encoding="utf-8")
+            log.write_text('{"path": "src/old.c", "reason": "already logged"}\n',
+                           encoding="utf-8")
+            self._commit(repo, "base")
+            planned = {
+                "fold-a": ("src/a.c", 2),
+                "fold-b": ("src/c.c", 1),
+            }
+
+            def edit(branch):
+                self._git(repo, "checkout", "-q", "-B", branch, "main")
+                drop, count = planned[branch]
+                data = json.loads(baseline.read_text(encoding="utf-8"))
+                data["converted"] = [r for r in data["converted"] if r != drop]
+                data["count"] = count
+                baseline.write_text(json.dumps(data, indent=2) + "\n",
+                                    encoding="utf-8")
+                with log.open("a", encoding="utf-8") as handle:
+                    handle.write(json.dumps({"path": drop, "reason": branch}) + "\n")
+                self._commit(repo, branch)
+
+            merge = self._fold_merge(repo, edit)
+            self.assertNotEqual(merge.returncode, 0)
+            self.assertIn("CONFLICT", merge.stdout + merge.stderr)
+
 
 if __name__ == "__main__":
     unittest.main()

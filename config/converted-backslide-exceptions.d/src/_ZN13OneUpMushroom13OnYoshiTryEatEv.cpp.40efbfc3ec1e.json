@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN13OneUpMushroom13OnYoshiTryEatEv.cpp",
+  "reason": "TU promotion ov002/da1up_c: 36 shards absorbed into src/actors/da1up_c.cpp, 36/36 MATCH and SCRATCH-LINK-VERIFIED (ROM sha256 identical to the baseline control). A reconstructed TU must spell vague-linkage symbols directly (_ZN7fBase_cnwEj, _ZN12dEnemyBase_cD2Ev) and must keep the 27 members whose ROM names are auto-generated func_ov002_* spelled that way, so no_mangled_refs and real_function_name cannot pass for the merged file. Byte match outranks readability."
+}

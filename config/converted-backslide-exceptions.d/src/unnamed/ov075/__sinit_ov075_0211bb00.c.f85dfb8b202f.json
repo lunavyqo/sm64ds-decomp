@@ -1,0 +1,4 @@
+{
+  "path": "src/unnamed/ov075/__sinit_ov075_0211bb00.c",
+  "reason": "dScEntry_c::graphCallback_c's constructor is now a real compiler-owned C++ symbol. The static initializer remains a generated C reconstruction and cannot spell a constructor call in C++ source form, so its relocation must use _ZN10dScEntry_c15graphCallback_cC1Ev until the initializer's globals are reconstructed as typed C++ definitions."
+}

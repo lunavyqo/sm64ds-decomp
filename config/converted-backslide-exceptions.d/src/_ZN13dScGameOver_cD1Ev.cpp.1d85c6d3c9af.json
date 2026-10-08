@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN13dScGameOver_cD1Ev.cpp",
+  "reason": "ov003/dScGameOver_c promoted: 9 one-function shards absorbed into src/actors/dScGameOver_c.cpp (scratch-link-verified, ROM identical)"
+}

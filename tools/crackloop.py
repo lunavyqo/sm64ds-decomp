@@ -67,7 +67,7 @@ def prep(a):
         print("worklist is empty - nothing to do"); sys.exit(1)
 
     if a.no_claims:
-        print("--no-claims: skipping the lock step (coordinate via CLAIMS.md); "
+        print("--no-claims: skipping the lock step (CLAIMS.md is frozen; do not add a row); "
               "use when the local claims key is expired")
         active.write_text("{}")
     else:
@@ -78,7 +78,7 @@ def prep(a):
             active.write_text(json.dumps(held))
         except ImportError:
             print("tools/claims.py not present (public clone) - skipping the lock step; "
-                  "coordinate via CLAIMS.md")
+                  "CLAIMS.md is frozen; do not add a row")
 
     # re-read: the lock step drops conflicted rows from the worklist file in place
     rows = [json.loads(l) for l in wl.read_text(encoding="utf-8").splitlines() if l.strip()]
@@ -105,7 +105,7 @@ def refine(a):
     run("refine_wl.py", "--max-div", str(a.max_div), "--limit", str(a.limit))
     wlr = REPO / "progress" / "wl_refine.jsonl"
     if a.no_claims:
-        print("--no-claims: skipping the lock step (coordinate via CLAIMS.md)")
+        print("--no-claims: skipping the lock step (CLAIMS.md is frozen; do not add a row)")
         active.write_text("{}")
         rows = [__import__("json").loads(l) for l in wlr.read_text(encoding="utf-8").splitlines() if l.strip()]
         names = [r["name"] for r in rows]
@@ -276,7 +276,7 @@ def main():
                         "(coddog_sim < 0.5, size > 0x300); use for LARGE bands. "
                         "Needs vendor/m2c (notes/m2c-setup.md)")
     p.add_argument("--no-claims", action="store_true",
-                   help="skip claims locking (e.g. expired local key); coordinate via CLAIMS.md")
+                   help="skip claims locking (e.g. expired local key); CLAIMS.md is frozen; do not add a row")
     p.add_argument("--tag", default="ab",
                    help="batch tag: distinct worklist + claims files so several "
                         "fresh batches can run in parallel (default 'ab')")
@@ -293,7 +293,7 @@ def main():
                    help="refine batch: use wl_refine.jsonl, no parking, no claims")
     p.add_argument("--wl", default=None, help="explicit worklist override")
     p.add_argument("--no-claims", action="store_true",
-                   help="skip claims locking (e.g. expired local key); coordinate via CLAIMS.md")
+                   help="skip claims locking (e.g. expired local key); CLAIMS.md is frozen; do not add a row")
     p.add_argument("--tag", default="ab", help="batch tag used at prep time")
     p.set_defaults(fn=land)
     a = ap.parse_args()

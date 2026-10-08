@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN11CommonModelD0Ev.cpp",
+  "reason": "Folded into promoted TUs by #3503 (dExtCommonModel_c) and #3531 (Model); their host-spelling D0/D2 files were absorbed with the D1 files. Rows were banked on main after those PRs branched."
+}

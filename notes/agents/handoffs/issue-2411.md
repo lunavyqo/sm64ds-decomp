@@ -192,7 +192,7 @@ proof. The documentation corrections in this revision do not resolve them.
   (comment-only: the sibling's prose named OneUpMushroom).
   Not reserved, inherited unchanged from the accepted input and NOT reconciled
   here: `attribution.json`, `symbols/actor_renames.tsv`,
-  `config/converted-baseline.json`, `config/converted-backslide-exceptions.jsonl`,
+  `config/converted-baseline.json`, `config/converted-backslide-exceptions.d`,
   `config/match_attempts.jsonl`, `config/match_provenance.jsonl`,
   `include/decl_common.h` (one stale `extern int _ZTV13OneUpMushroom[];` removed).
   Session `prod-2411-0907` added only this handoff document; sessions

@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN5ModelD2Ev.cpp",
+  "reason": "Host spelling of the model family's destructor variants: MSVC folds the Itanium D1/D0/D2 triple into one ??1X@@QAE@XZ, so under _MSC_VER these six files define the ROM's own D0 and D2 names in terms of the one destructor the D1 file defines, and the host link binds all thirteen rows with no duplicate symbol (measured: LNK2005 twice for the ModelBase triple without it). The mangled spelling is the symbol being defined, exactly as src/_ZN7fBase_cnwEj.cpp spells its own, and it lives entirely inside the _MSC_VER arm -- the mwccarm arm is unchanged and every object is byte-identical under 2004/b56."
+}

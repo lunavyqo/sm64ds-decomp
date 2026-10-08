@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN18BowserFireSeaArena16CleanupResourcesEv.cpp",
+  "reason": "ov060: BowserFireSeaArena renamed to its ROM RTTI name daKpa2Bg_c; factory renamed to daKpa2Bg_c_classInit"
+}

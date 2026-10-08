@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN8StarDoor16CleanupResourcesEv.cpp",
+  "reason": "ov100/daStarGate_c promotion consolidates legacy StarDoor and particle callback sources into the exact enrolled translation unit; member identities replace retired one-function paths."
+}

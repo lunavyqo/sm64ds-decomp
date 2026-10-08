@@ -1,0 +1,4 @@
+{
+  "path": "src/__sinit_ov060_0211a388.c",
+  "reason": "The handwritten static initializer is retired. daKirai_c.cpp defines the model handle, its destructor-registration node, and the four-entry state table, and mwcc emits __sinit_daKirai_c.cpp with the same 0xa0 bytes and the same ten relocations."
+}

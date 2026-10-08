@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN6BobOmb13OnYoshiTryEatEv.cpp",
+  "reason": "Traded a raw ((unsigned char*)this)[263] cast for the header's own unk_107 field. The old spelling only scored CONVERTED by evading the RAW_OFFSET criterion; naming the byte is strictly more readable, and the one criterion it now fails -- No unk_<off> fields -- is a name the header has not settled yet, not a raw offset. Same trade re-banked in #1748 for two other files."
+}

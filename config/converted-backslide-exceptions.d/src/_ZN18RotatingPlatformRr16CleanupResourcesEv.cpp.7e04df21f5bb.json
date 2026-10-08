@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN18RotatingPlatformRr16CleanupResourcesEv.cpp",
+  "reason": "ov036/daObjRc_Kaitendai_c: four per-function sources promoted into src/game/actors/d_a_obj_rc_kaitendai.cpp (a move into a CONVERTED file, not a removal)"
+}

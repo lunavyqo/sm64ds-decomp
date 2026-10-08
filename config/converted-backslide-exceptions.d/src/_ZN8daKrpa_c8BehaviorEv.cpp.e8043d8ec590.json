@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN8daKrpa_c8BehaviorEv.cpp",
+  "reason": "Atomic promotion consolidated this banked one-function path into src/game/actors/d_a_krpa.cpp. Its compiler-owned symbol, exact bytes, and relocation identity remain verified in the promoted 25-function class TU; only the legacy path disappeared."
+}

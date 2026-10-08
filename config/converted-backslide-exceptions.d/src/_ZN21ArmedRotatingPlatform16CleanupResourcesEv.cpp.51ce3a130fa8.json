@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN21ArmedRotatingPlatform16CleanupResourcesEv.cpp",
+  "reason": "ov036/daObjRc_Guruguru_c promoted to a single TU: five per-function sources consolidated, members retained"
+}

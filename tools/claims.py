@@ -11,7 +11,8 @@ the OS username -- the API key is what proves identity. Endpoints:
 
 The API key is NOT in this file: it comes from the CLAIMS_API_KEY env var or the
 gitignored tools/claims_key.txt. Without a key, check() still works read-only;
-lock/renew/release will 401 (coordinate via CLAIMS.md instead).
+lock/renew/release will 401. CLAIMS.md is a frozen historical log: do not add a
+row. Note the missing key once and proceed (MERGE.md).
 
 CLI:
   python tools/claims.py check    --module ov006 --start 0x020f0000 --end 0x020f0100

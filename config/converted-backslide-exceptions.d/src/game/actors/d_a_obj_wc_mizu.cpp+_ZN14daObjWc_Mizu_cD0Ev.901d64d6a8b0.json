@@ -1,0 +1,4 @@
+{
+  "path": "src/game/actors/d_a_obj_wc_mizu.cpp#_ZN14daObjWc_Mizu_cD0Ev",
+  "reason": "ov029/daObjWc_Mizu_c promotion: the cartridge keeps D1 at 0x021121a4, BELOW D0 at 0x021121f0, while a real `daObjWc_Mizu_c::~daObjWc_Mizu_c()` member makes mwccarm emit the D2/D1/D0 triple as one group in the order D0-then-D1. objisolate then refuses the TU with `requested functions are not emitted in ROM order`, and the group also carries an unhomed D2. Writing D1 and D0 as separate `// @symbol` marked mangled bodies is the only placement that reaches both ROM addresses, and it costs this tier's no-raw-offset and no-mangled-refs criteria. Byte-match over readability; same wall as ov029/daObjWc_Obj04_c (#2183)."
+}

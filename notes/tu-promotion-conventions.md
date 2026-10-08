@@ -403,15 +403,22 @@ and `symbols.txt`.
   into `.gitattributes` in as many words.
 - And none of these three files are union-merged in the first place. They conflict
   outright the instant two promotions touch the same overlay.
-- `config/converted-baseline.json` is a **SET ratchet, not a count**. `tools/tiers_ratchet.py`
-  enforces `count == len(converted) == len(set(converted))`, and the identities are now
-  per-member `path#symbol`. A hand-resolved merge produces a baseline that is neither
-  branch's and still passes a casual read.
+- `config/converted-baseline.json` is a **SET ratchet, not a count**. The set is the
+  `converted` array. Its length is `len(converted)` and is not stored: a `"count"`
+  field is ignored, and `tools/tiers_ratchet.py` does not write one, because every
+  fold PR used to rewrite that one trailing line and any two of them conflicted.
+  What the tool still refuses is a duplicated identity (`len(set(converted))` must
+  equal `len(converted)`). Identities are per-member `path#symbol`. A removal is a
+  one-line deletion from the array. Do not re-sort the survivors and do not hand-edit
+  a count. `--update` keeps every identity that is still banked on its old line.
+- A removal's reason is one new file under `config/converted-backslide-exceptions.d/`,
+  not a line appended to a shared log. Two such files merge. The old jsonl did not,
+  on GitHub, whatever `.gitattributes` said about `merge=union`.
 
-**The rule.** Reserve and serialize shared bookkeeping through the integrator.
-Regenerate with `python tools/tiers_ratchet.py --update` after composing the
-accepted source changes; inspect symbol identities and credit, not just counts.
-Never resolve the baseline array by blindly taking one side or unioning text.
+**The rule.** Regenerate with `python tools/tiers_ratchet.py --update` after composing
+the accepted source changes; inspect symbol identities and credit, not a count.
+Never resolve the baseline array by blindly taking one side. Two deletions of
+different lines merge on their own.
 
 Independently accepted, coherent promotions may share an integration PR under
 [PIPELINE](agents/PIPELINE.md#integration-and-completion). Reprove the resulting
@@ -477,7 +484,8 @@ eleven of its thirteen members fall to the whole-file fallback and every one of 
 fails the same two criteria, `no_unk_field` and `no_mangled_refs` — properties of the
 factory and of `Behavior`, not of the members being scored. Inserting the eleven marker
 lines locally and changing nothing else raises the TU from two members at 5/5 to four.
-That promotion also spent five rows in `config/converted-backslide-exceptions.jsonl`.
+That promotion also spent five rows in the CONVERTED backslide log
+(`config/converted-backslide-exceptions.d/`).
 
 ### The marker must be unique in the file
 
@@ -607,8 +615,8 @@ lost member, writes a true-sounding reason on each, and the PR merges. What actu
 happened is that comment lines were traded for ledger rows.
 
 - **#2062** (`daObjHatenaSwitch_c`, thirteen functions) adds **zero** markers. Its diff
-  moves `config/converted-baseline.json` from `"count": 2568` to `"count": 2560` and adds
-  **eight** rows to `config/converted-backslide-exceptions.jsonl`, one per lost member.
+  moves `config/converted-baseline.json` from 2568 identities to 2560 and adds
+  **eight** files under `config/converted-backslide-exceptions.d/`, one per lost member.
   Every row carries the same reason, and that reason names the cause without naming the
   fix: the TU "needs the volatile stack value to avoid a 17-word codegen mismatch". The
   `volatile` is in one member. The other eight paid for it.

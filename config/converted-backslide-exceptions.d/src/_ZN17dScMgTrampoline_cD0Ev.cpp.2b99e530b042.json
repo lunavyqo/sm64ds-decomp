@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN17dScMgTrampoline_cD0Ev.cpp",
+  "reason": "ov006/dScMgTrampoline_c promoted to a single TU (src/minigames/d_s_mg_trampoline.cpp); 42 legacy one-function files consolidated"
+}

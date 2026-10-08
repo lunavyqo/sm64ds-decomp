@@ -1,0 +1,4 @@
+{
+  "path": "src/actors/dCapEnemy_c.cpp#_ZN11dCapEnemy_cD2Ev",
+  "reason": "dCapEnemy_c destructor pair: extern \"C\" ABI bodies spell mangled member-dtor calls; one out-of-line definition would emit a strong-bound stray D1 that isolation cannot deadstrip cross-module"
+}

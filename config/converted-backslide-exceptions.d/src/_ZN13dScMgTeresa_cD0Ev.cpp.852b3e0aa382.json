@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN13dScMgTeresa_cD0Ev.cpp",
+  "reason": "ov006/dScMgTeresa_c promotion: 48 one-function shards absorbed into src/actors/dScMgTeresa_c.cpp (ROM ordinals 0..47 of the 0x0211cbd0..0x021207a8 run; the other 33 stay enrolled behind a sourceless hole)"
+}

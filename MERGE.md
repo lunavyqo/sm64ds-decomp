@@ -20,8 +20,9 @@ coordinated v2 fleet.
 - Claims are **best-effort**. If they return `401` / "missing key", the claims service
   just is not configured on this machine — note it once and proceed. Each agent already
   gets a distinct batch, so an unclaimed target is fine to work.
-- `CLAIMS.md` is a historical/tooling log (`tools/claims_md.py` and friends read it), not
-  a step in this workflow — don't ask contributors to hand-edit it.
+- `CLAIMS.md` is a frozen historical log (`tools/claims_md.py` still reads the rows
+  already in it). Do not append a row for a match, a fold, or a class. If the claims
+  API returns 401, note it once and proceed.
 
 ## 2. What may be merged
 
@@ -70,8 +71,19 @@ coordinated v2 fleet.
 
 ## 4. Conflicts
 
-- A `CLAIMS.md` conflict resolves by taking **main's** version — the claim is moot once the
-  work lands — and keeping the `src` file.
+- A `CLAIMS.md` conflict resolves by taking **main's** version — the file is frozen,
+  and the claim is moot once the work lands — and keeping the `src` file. Do not
+  append your row on top of main's copy.
+- `config/converted-baseline.json`: delete your identity from the `converted` array
+  and leave every other line where it is. Do not write a `count` field and do not
+  re-sort the array. Two deletions of different lines merge.
+- `config/converted-backslide-exceptions.d/`: one new file per removal, written by
+  `python tools/tiers_ratchet.py --update --reason "..."`. Do not append to a shared
+  log. Two new files merge.
+- `attribution.json`, `include/decl_common.h`, and `config/dead-reference-baseline.json`
+  conflict only when two edits touch neighboring lines. A fold that inserts one
+  sorted key, or deletes one extern, does not by itself collide with a fold of a
+  different class. Do not rewrite the whole file to "clean it up".
 - For a fork PR with *maintainer edits allowed*, resolve on their branch and push the fix; keep
   their commit so authorship survives. Otherwise ask them to rebase.
 

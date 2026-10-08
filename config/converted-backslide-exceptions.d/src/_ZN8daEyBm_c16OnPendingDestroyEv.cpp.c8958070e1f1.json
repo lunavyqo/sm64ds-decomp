@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN8daEyBm_c16OnPendingDestroyEv.cpp",
+  "reason": "Genuine daEyBm_c TU promotion consolidates the 13 exact functions into src/game/actors/d_a_ey_bm.cpp. The absorbing TU retains only the measured allocator/base/member/vptr construction seam, exact by-value ABI imports, and the inherited unk_0a4 motion-vector spelling required for b56 bytes and relocation targets; mwccarm now owns D1/D0, RTTI, ZTS, and the complete vtable."
+}

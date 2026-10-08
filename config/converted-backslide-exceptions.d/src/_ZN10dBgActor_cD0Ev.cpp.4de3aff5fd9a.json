@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN10dBgActor_cD0Ev.cpp",
+  "reason": "ov002/dBgActor_c TU promotion: the four CONVERTED one-function sources are folded into src/actors/dBgActor_c.cpp, which is one physical entry. No function lost its tier; a many-to-one consolidation cannot keep four baseline paths."
+}

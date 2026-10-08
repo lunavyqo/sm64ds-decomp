@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN15IceSlideManagerD0Ev.cpp",
+  "reason": "Consolidate daSldMng_c into one snake_case TU (#2148); restack on main after #2130"
+}

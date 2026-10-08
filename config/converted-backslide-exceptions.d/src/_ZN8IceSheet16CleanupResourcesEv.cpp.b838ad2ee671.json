@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN8IceSheet16CleanupResourcesEv.cpp",
+  "reason": "ov018/daObjIceBoard_c promoted into src/game/actors/d_a_obj_ice_board.cpp; legacy one-function sources consolidated, not lost"
+}

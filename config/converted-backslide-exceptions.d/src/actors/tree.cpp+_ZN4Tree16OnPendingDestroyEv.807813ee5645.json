@@ -1,0 +1,4 @@
+{
+  "path": "src/actors/tree.cpp#_ZN4Tree16OnPendingDestroyEv",
+  "reason": "ov002/daTree_c snake_case TU promotion: renamed, not lost -- the class takes its cartridge RTTI name and the TU takes the snake_case stem, so the same member banks as src/game/actors/d_a_tree.cpp#_ZN8daTree_c16OnPendingDestroyEv"
+}

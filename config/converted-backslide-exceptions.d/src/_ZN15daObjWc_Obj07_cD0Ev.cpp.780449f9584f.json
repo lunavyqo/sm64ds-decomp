@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN15daObjWc_Obj07_cD0Ev.cpp",
+  "reason": "ov029/daObjWc_Obj07_c promoted to a genuine snake_case TU (src/game/actors/d_a_obj_wc_obj07.cpp); four per-function entries become four path#symbol entries in that file, so the ratchet is +4/-4 with no member lost; daObjWc_Obj07_c_Spawn was never CONVERTED"
+}

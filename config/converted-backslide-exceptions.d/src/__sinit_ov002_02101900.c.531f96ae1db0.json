@@ -1,0 +1,4 @@
+{
+  "path": "src/__sinit_ov002_02101900.c",
+  "reason": "The handwritten static initializer is retired. daObjHeart_c.cpp defines the model and animation resource handles, and mwcc emits __sinit_daObjHeart_c.cpp with the same 0x68 bytes and the same ten relocations."
+}

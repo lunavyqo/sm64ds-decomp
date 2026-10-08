@@ -7953,7 +7953,7 @@ body was already exact).
 **Cost and shape.** The .cpp gives way to a .c: the file scores real_name / no_raw_offset /
 no_unk_field / no_codegen_trick but fails no_mangled_refs (the four callees through their
 mangled names), so the CONVERTED identity leaves the baseline through the ratchet's own
-`--update --reason` road and the trade is recorded in config/converted-backslide-exceptions.jsonl.
+`--update --reason` road and the trade is recorded in config/converted-backslide-exceptions.d/.
 Byte-match outranks readability (the ratchet's own docstring). The three unscoped pragma offs
 stay load-bearing (6ay, CRK-N). A delinks entry for 0x02020994..0x02021024 is added: the
 NONMATCHING draft never had one.

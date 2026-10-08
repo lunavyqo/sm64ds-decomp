@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN7dScMB_c15graphCallback_c14GraphCallback0Ev.cpp",
+  "reason": "origin/main merge: fader-shard identities rewritten onto promoted dFader_c.cpp; dScene_c::SetFaders respelled FaderBrightness->dFdBrightness_c (mangled spelling change, same 15-char ABI)"
+}

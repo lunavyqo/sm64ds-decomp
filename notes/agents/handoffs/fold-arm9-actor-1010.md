@@ -59,7 +59,7 @@ restored shards re-emit it: `romdata_check` verifies `_ZTV8dActor_c`
   `src/game/actors/daObjPushblock_c.cpp` point at the promoted file.
 - `config/converted-baseline.json`: banked member identities migrated to
   `src/actors/dActor_c.cpp#symbol` keys; one member sits in
-  `converted-backslide-exceptions.jsonl` with a reason (below).
+  `config/converted-backslide-exceptions.d` with a reason (below).
 - `config/decl-agreement-baseline.json`: rows banked for every
   declaration another file (or this file's own reconciled externs) makes
   that disagrees with the moved definitions, e.g. `decl_Actor.h`'s stub

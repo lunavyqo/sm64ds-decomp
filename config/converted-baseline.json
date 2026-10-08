@@ -1,5 +1,5 @@
 {
-  "_note": "The CONVERTED source/member identity set, banked. One-function sources use their path; promoted TU members append #symbol to that path. tools/tiers_ratchet.py --check fails when an identity no longer passes all five criteria in tools/tiers.py. Removals need --reason and land in config/converted-backslide-exceptions.jsonl. Regenerate with `python tools/tiers_ratchet.py --update`.",
+  "_note": "The CONVERTED source/member identity set, banked. One-function sources use their path; promoted TU members append #symbol to that path. tools/tiers_ratchet.py --check fails when an identity no longer passes all five criteria in tools/tiers.py. The set is the converted array; its length is the array's length and is not stored. Removals need --reason and land as one file each under config/converted-backslide-exceptions.d/. Regenerate with `python tools/tiers_ratchet.py --update`.",
   "criteria": [
     "real_name",
     "no_raw_offset",
@@ -3584,6 +3584,5 @@
     "src/engine/sound/Sound.cpp#_ZN5Sound8EndMusicEjj",
     "src/engine/sound/Sound.cpp#_ZN5Sound8PlayLongEjjjRK7Vector3s",
     "src/engine/sound/Sound.cpp#_ZN5Sound8SetMusicEjj"
-  ],
-  "count": 3577
+  ]
 }

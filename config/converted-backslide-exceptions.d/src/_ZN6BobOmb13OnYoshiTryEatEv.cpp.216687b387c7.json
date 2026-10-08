@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN6BobOmb13OnYoshiTryEatEv.cpp",
+  "reason": "Both files traded a raw (unsigned char*)this cast at [263] for dEnemyBase_c's actual field at 0x107, which is still honestly named unk_107 because nobody has recovered what the byte means. The old spelling only scored because a raw index through a re-cast this pointer slips past the RAW_OFFSET criterion -- it was never more readable, only less legible to the gate. Reverting it to score would be exactly the regression the tier exists to prevent; naming the field properly is a dEnemyBase_c-wide rename touching 13 files and belongs in its own PR."
+}

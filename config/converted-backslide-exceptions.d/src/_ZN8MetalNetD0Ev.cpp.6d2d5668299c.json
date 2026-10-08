@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN8MetalNetD0Ev.cpp",
+  "reason": "ov009/daObjMc_Metalnet_c promoted to a single C++ TU (src/game/actors/d_a_obj_mc_metalnet.cpp); the per-symbol legacy sources were consolidated, so their identities move to the new path"
+}

@@ -23,20 +23,17 @@ config/match_attempts.jsonl   merge=union
 # next CI refresh - and load_db()/save_db() already key by (module, addr), so nothing that
 # reads the DB is confused by them in the meantime.
 #
-# CLAIMS.md is a human-read coordination table; duplicate rows from two sides touching the
-# same claim are harmless (and the claims API is taking over live locking anyway).
+# CLAIMS.md is a frozen historical log. Do not append rows. The union driver remains
+# only so two stale local branches that both touched it can still merge; GitHub does
+# not honor merge=union, and the resolution on a PR is to take main's copy (MERGE.md).
 nearmiss/db.jsonl merge=union
 CLAIMS.md         merge=union
 
-# Same shape again: tools/tiers_ratchet.py appends one row per file that left the
-# CONVERTED set, with the reason the byte match required it. Append-only, keyed by
-# path, read by humans -- a union of two sides is the right LOCAL merge resolution.
-#
-# NOTE: this driver only runs on a local `git merge`. GitHub's own merge (what actually
-# lands a PR) does not honor merge=union and will still show a real conflict the instant
-# two PRs touch this file's tail concurrently -- land PRs that append here one at a time,
-# same as the other union-merged ledgers above.
-config/converted-backslide-exceptions.jsonl merge=union
+# The CONVERTED backslide log is one JSON file per removal under
+# config/converted-backslide-exceptions.d/, written by tools/tiers_ratchet.py.
+# It used to be a single append-only jsonl with merge=union. GitHub never honored
+# that driver, so two fold PRs always conflicted at EOF. New files do not.
+config/converted-backslide-exceptions.d/**/*.json text eol=lf
 
 # A patch file must keep LF endings: core.autocrlf=true would give the working copy
 # CRLF, and `git apply` of a CRLF patch against LF sources fails every hunk.

@@ -13,6 +13,9 @@ checks — this file is setup and ground rules.
   version/flags to use, or getting unstuck.
 - Or open a GitHub issue to claim a function/class so two people don't grind
   the same one.
+- `CLAIMS.md` is a frozen historical log. Do not add rows to it. Live locks go
+  through the claims API (tangOS does this) or, if you have no key, note that
+  once and proceed.
 
 ## The easy path: tangOS Console
 
