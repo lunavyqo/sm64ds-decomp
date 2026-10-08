@@ -162,8 +162,10 @@ def rewrite_symbol_bindings(raw, policies):
                           f"invalid binding policy for {name}: {policy!r}"}
         matches = [(index, sym) for index, sym in enumerate(syms) if sym.name == name]
         if len(matches) != 1:
+            present = sorted(sym.name for sym in syms if sym.name.startswith("@"))
             return None, {"rewritten": rows, "error":
-                          f"binding rewrite symbol {name} has {len(matches)} entries"}
+                          f"binding rewrite symbol {name} has {len(matches)} entries"
+                          f" (object @ symbols: {', '.join(present) or 'none'})"}
         index, sym = matches[0]
         if sym["st_shndx"] == "SHN_UNDEF" or sym["st_info"]["bind"] != policy[0]:
             return None, {"rewritten": rows, "error":
