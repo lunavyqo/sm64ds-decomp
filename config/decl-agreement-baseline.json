@@ -2600,9 +2600,6 @@
         "param:#2 int",
         "return:int"
       ],
-      "src/unnamed/ov070/__sinit_ov070_02122d80.cpp": [
-        "return:int"
-      ],
       "src/unnamed/ov071/__sinit_ov071_021228c8.c": [
         "param:#2 int",
         "return:int"
@@ -2771,9 +2768,6 @@
       "src/unnamed/ov070/__sinit_ov070_02122afc.c": [
         "arity:0",
         "return:void"
-      ],
-      "src/unnamed/ov070/__sinit_ov070_02122d80.cpp": [
-        "kind:data"
       ],
       "src/unnamed/ov071/__sinit_ov071_021226ac.c": [
         "return:void"
@@ -3310,9 +3304,6 @@
       "src/unnamed/ov066/__sinit_ov066_0211a418.c": [
         "arity:0",
         "return:void"
-      ],
-      "src/unnamed/ov070/__sinit_ov070_02122d80.cpp": [
-        "kind:data"
       ],
       "src/unnamed/ov071/__sinit_ov071_021228c8.c": [
         "arity:0",
@@ -5948,9 +5939,6 @@
       ],
       "src/unnamed/ov070/__sinit_ov070_02122afc.c": [
         "param:#2 int",
-        "return:int"
-      ],
-      "src/unnamed/ov070/__sinit_ov070_02122d80.cpp": [
         "return:int"
       ],
       "src/unnamed/ov071/__sinit_ov071_021226ac.c": [
@@ -9778,9 +9766,6 @@
         "kind:data"
       ],
       "src/unnamed/ov027/__sinit_ov027_02112f70.c": [
-        "kind:data"
-      ],
-      "src/unnamed/ov070/__sinit_ov070_02122d80.cpp": [
         "kind:data"
       ],
       "src/unnamed/ov071/__sinit_ov071_02122a1c.c": [
@@ -19255,34 +19240,16 @@
       ]
     },
     "data_ov070_021235ec": {
-      "src/unnamed/ov070/__sinit_ov070_02122d80.cpp": [
-        "return:char []"
-      ]
     },
     "data_ov070_021235f4": {
-      "src/unnamed/ov070/__sinit_ov070_02122d80.cpp": [
-        "return:char []"
-      ]
     },
     "data_ov070_021235fc": {
-      "src/unnamed/ov070/__sinit_ov070_02122d80.cpp": [
-        "return:char []"
-      ]
     },
     "data_ov070_02123604": {
-      "src/unnamed/ov070/__sinit_ov070_02122d80.cpp": [
-        "return:char []"
-      ]
     },
     "data_ov070_0212360c": {
-      "src/unnamed/ov070/__sinit_ov070_02122d80.cpp": [
-        "return:char []"
-      ]
     },
     "data_ov070_0212365c": {
-      "src/unnamed/ov070/__sinit_ov070_02122d80.cpp": [
-        "return:int []"
-      ]
     },
     "data_ov070_02123698": {
       "src/game/actors/d_a_krpa.cpp": [
@@ -22193,9 +22160,6 @@
         "arity:0",
         "return:void"
       ],
-      "src/unnamed/ov070/__sinit_ov070_02122d80.cpp": [
-        "kind:data"
-      ],
       "src/unnamed/ov070/__sinit_ov070_02122f30.c": [
         "arity:0",
         "return:void"
@@ -22844,9 +22808,6 @@
       ],
       "src/unnamed/ov070/__sinit_ov070_02122afc.c": [
         "param:#2 int",
-        "return:int"
-      ],
-      "src/unnamed/ov070/__sinit_ov070_02122d80.cpp": [
         "return:int"
       ],
       "src/unnamed/ov070/__sinit_ov070_02122f30.c": [

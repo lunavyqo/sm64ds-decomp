@@ -29,8 +29,10 @@
  *   UpdateDefeatedState calls the interworking veneer
  *   dBgCh_Actr_UpdateDiscreteNoLava_veneer (0x02038420), not the method
  *   body at 0x02037024. The data_ov070_* resource handles and the PMF
- *   state table keep linker names; the deferred initializer at
- *   0x02122d80 is enrolled separately. SharedFilePtr+4 is read as the
+ *   state table keep linker names. The static initializer that constructs
+ *   the five resource handles, fills the three state-handler pairs and
+ *   builds the cylinder offset is emitted from the definitions at the end
+ *   of this file (__sinit_daBrq_c.cpp). SharedFilePtr+4 is read as the
  *   BMD/BTP pointer (Prepare/SetFile) -- the header has no field for it.
  *   The factory's `new` odr-uses inline ~Vector3; its vague D1 is a
  *   deadstrip duplicate of arm9:0x020072c0.
@@ -38,6 +40,7 @@
 
 #include "common.h"
 #include "daBrq_c.h"
+#include "SharedFilePtr.h"
 
 struct BrqSpawnInfo {
     daBrq_c *(*classInit)();
@@ -83,12 +86,49 @@ extern "C" void _ZN8dActor_c9SetRangesE5Fix12IiES1_S1_S1_(dActor_c *self, int a,
 extern "C" void _ZN10dCcAcPos_c4InitEP8dActor_cRK7Vector35Fix12IiES6_jj(void *self, dActor_c *a, Vector3 const &b, int c, int d, unsigned int e, unsigned int f);
 extern "C" void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void *self, dActor_c *a, int b, int c, Vector3_16 *d, Vector3_16 *e);
 
-extern SharedFilePtr data_ov070_021235fc;
-extern SharedFilePtr data_ov070_02123604;
+/* Resource handles this TU's static initializer constructs. The wrapper
+ * spellings are reconstructed; constructor and destructor addresses, file
+ * IDs, widths, and BSS order are the ROM's. */
+struct BrqModelFilePtr : SharedFilePtr {
+    u32 words[2];
+
+    BrqModelFilePtr(u32 fileID);
+    ~BrqModelFilePtr();
+};
+
+struct BrqAnimationSharedFilePtr : SharedFilePtr {
+    u32 words[2];
+
+    BrqAnimationSharedFilePtr(u32 fileID);
+    ~BrqAnimationSharedFilePtr();
+};
+
+struct BrqTextureSequenceFilePtr : SharedFilePtr {
+    u32 words[2];
+
+    BrqTextureSequenceFilePtr(u32 fileID);
+    ~BrqTextureSequenceFilePtr();
+};
+
+/* The cylinder offset is a Vector3. The subclass carries the inline
+ * three-word construction; the registered destructor stays the
+ * cartridge's _ZN7Vector3D1Ev. */
+struct BrqCylOffset : Vector3 {
+    BrqCylOffset(s32 x_, s32 y_, s32 z_)
+    {
+        x = x_;
+        y = y_;
+        z = z_;
+    }
+    ~BrqCylOffset();
+};
+
+extern BrqModelFilePtr data_ov070_021235fc;
+extern BrqModelFilePtr data_ov070_02123604;
 extern SharedFilePtr *data_ov070_021222e0[];
-extern SharedFilePtr data_ov070_021235ec;
+extern BrqTextureSequenceFilePtr data_ov070_021235ec;
 extern BTA_File data_ov070_021231f4;
-extern Vector3 data_ov070_0212365c;
+extern BrqCylOffset data_ov070_0212365c;
 extern char IDENTITY_MATRIX4X3;
 
 struct BrqMatrixWords { int words[12]; };
@@ -168,12 +208,10 @@ void daBrq_c::OnPendingDestroy()
 {
 }
 
-#include "SharedFilePtr.h"
-
-extern SharedFilePtr data_ov070_021235fc;
-extern SharedFilePtr data_ov070_02123604;
+extern BrqModelFilePtr data_ov070_021235fc;
+extern BrqModelFilePtr data_ov070_02123604;
 extern SharedFilePtr *data_ov070_021222e0[2];
-extern SharedFilePtr data_ov070_021235ec;
+extern BrqTextureSequenceFilePtr data_ov070_021235ec;
 
 // @symbol _ZN7daBrq_c16CleanupResourcesEv
 int daBrq_c::CleanupResources()
@@ -191,11 +229,29 @@ int daBrq_c::CleanupResources()
     return 1;
 }
 
-extern daBrq_c::State data_ov070_02123668[];
+/* The state table this TU's static initializer fills. Three entries of two
+ * PMFs, copied in slot order. The constructor is defined inline so it
+ * expands directly into the initializer, like the descriptors it
+ * materializes; an out-of-line copy leaves a call the ROM does not have. */
+struct BrqStateTable {
+    daBrq_c::State entries[3];
+
+    BrqStateTable()
+    {
+        entries[0].enter = &daBrq_c::EnterCooldownState;
+        entries[0].update = &daBrq_c::UpdateCooldownState;
+        entries[1].enter = &daBrq_c::EnterActiveState;
+        entries[1].update = &daBrq_c::UpdateActiveState;
+        entries[2].enter = &daBrq_c::EnterDefeatedState;
+        entries[2].update = &daBrq_c::UpdateDefeatedState;
+    }
+};
+
+extern BrqStateTable data_ov070_02123668;
 // @symbol _ZN7daBrq_c8SetStateEi
 void daBrq_c::SetState(s32 state)
 {
-    mStateHandlers = &data_ov070_02123668[state];
+    mStateHandlers = &data_ov070_02123668.entries[state];
     EnterState();
 }
 
@@ -215,12 +271,12 @@ void daBrq_c::UpdateState()
 
 extern "C" void _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(
     ModelAnim *model, BCA_File *file, int flags, int speed, u32 startFrame);
-extern int data_ov070_0212360c[];
+extern BrqAnimationSharedFilePtr data_ov070_0212360c;
 // @symbol _ZN7daBrq_c18EnterCooldownStateEv
 s32 daBrq_c::EnterCooldownState()
 {
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(
-        &mModelAnim, (BCA_File *)data_ov070_0212360c[1],
+        &mModelAnim, (BCA_File *)((int *)&data_ov070_0212360c)[1],
         0x40000000, 0x1000, 0);
     mStateTimer = 0x3c;
     mState = 0;
@@ -251,14 +307,15 @@ extern "C" unsigned int _ZN18TextureTransformer7SetFileER8BTA_Filei5Fix12IiEj(
 
 struct BrqAnimationResource { int state; BCA_File *file; };
 struct BrqTextureResource { int state; BTP_File *file; };
-extern BrqAnimationResource data_ov070_021235f4;
+extern BrqAnimationSharedFilePtr data_ov070_021235f4;
 extern BTA_File data_ov070_021231f4;
 
 // @symbol _ZN7daBrq_c16EnterActiveStateEv
 s32 daBrq_c::EnterActiveState()
 {
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(
-        &mModelAnim, data_ov070_021235f4.file, 0, 0x1000, 0);
+        &mModelAnim, ((BrqAnimationResource *)&data_ov070_021235f4)->file,
+        0, 0x1000, 0);
     mModelAnim.speed = 0x1000;
     _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(
         &mTextureSequence,
@@ -369,7 +426,7 @@ s32 daBrq_c::EnterDefeatedState()
     mVertSpeed = 0x28000;
     mStateTimer = 0x2d;
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(
-        &mModelAnim, (BCA_File *)data_ov070_0212360c[1],
+        &mModelAnim, (BCA_File *)((int *)&data_ov070_0212360c)[1],
         0x40000000, 0x1000, 0);
     _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(
         0x43, mPosX, mPosY, mPosZ);
@@ -500,4 +557,19 @@ foundPlayer:
 // @symbol _ZN7daBrq_cD0Ev
 /* The inline destructor and InitResources key function emit the retail D1/D0
  * group without a retained D2 or forcing helper. */
+
+/* Static-resource ownership (was the handwritten __sinit_ov070_02122d80 shard,
+ * 0x1b0). Definition order is the retail initializer's construction order:
+ * the two model handles (files 0x2b1, 0x2b3), the two animation handles
+ * (files 0x2b2, 0x2b5), then the texture-sequence handle (file 0x2b4).
+ * Their registration nodes are compiler temporaries, like the PMF
+ * descriptors the table initializer below materializes. */
+BrqModelFilePtr data_ov070_021235fc(0x2b1);
+BrqModelFilePtr data_ov070_02123604(0x2b3);
+BrqAnimationSharedFilePtr data_ov070_021235f4(0x2b2);
+BrqAnimationSharedFilePtr data_ov070_0212360c(0x2b5);
+BrqTextureSequenceFilePtr data_ov070_021235ec(0x2b4);
+
+BrqStateTable data_ov070_02123668;
+BrqCylOffset data_ov070_0212365c(0, -0x28000, 0);
 

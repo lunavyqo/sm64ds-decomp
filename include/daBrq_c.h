@@ -21,7 +21,7 @@
  */
 struct daBrq_c : dActor_c {
     /* The { enter, update } record the state machine runs; the tables live
-     * in ov070 .data at 0x02123668, filled by __sinit_ov070_02122d80. */
+     * in ov070 .data at 0x02123668, filled by __sinit_daBrq_c.cpp. */
     typedef s32 (daBrq_c::*StateFn)();
     struct State {
         StateFn enter;
@@ -65,6 +65,9 @@ struct daBrq_c : dActor_c {
        `return new daBrq_c()`. */
 
 private:
+    /* BrqStateTable (src/actors/daBrq_c.cpp) forms these handler addresses
+     * at file scope for the static initializer. */
+    friend struct BrqStateTable;
     /* These state-machine spellings are inferred aliases. Class ownership,
      * bodies, call graph, and the two-PMF table layout are proven; SetState's
      * signed parameter spelling is not distinguishable from other 32-bit forms. */

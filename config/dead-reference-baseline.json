@@ -643,6 +643,10 @@
   },
   {
    "file": "notes/handoff-issue-2422.md",
+   "ref": "src/unnamed/ov070/__sinit_ov070_02122d80.cpp"
+  },
+  {
+   "file": "notes/handoff-issue-2422.md",
    "ref": "tools/check_src_tu.py"
   },
   {
@@ -764,6 +768,10 @@
   {
    "file": "notes/runbook-type-reconstruction.md",
    "ref": "tools/deepen_rtti.py"
+  },
+  {
+   "file": "notes/sinit-dabrq-ownership.md",
+   "ref": "src/unnamed/ov070/__sinit_ov070_02122d80.cpp"
   },
   {
    "file": "notes/sinit-ownership-wave-resource-handles.md",
