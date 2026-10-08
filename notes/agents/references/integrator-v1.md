@@ -43,11 +43,9 @@ only record of what you rebased onto:
 Then cherry-pick each class's **content** commits, in class order, class by
 class. Recompose generated and shared bookkeeping once:
 
-- **Regenerate the TU state note once, but preserve attribution.** A promoted TU
-  must retain one `attribution.json` `path#symbol` mapping for every absorbed
-  member. Carry those mappings from the source PRs, or reconstruct them before
-  pushing, then run `prepush_attribution.py`. The feature-branch pre-push hook
-  does not regenerate or validate attribution for you.
+- **Regenerate the TU state note once.** Who matched each function is already
+  in `function-authors.json`, keyed by address. Do not copy credit onto the
+  new file, and do not run a credit script.
 - **Reconcile anything touching the two ratchet files once.** Take `origin/main`'s copies and
   reconcile once at the end (below). Cherry-picking them class by class is how
   double-banked rows get created.
@@ -106,10 +104,6 @@ an earlier green head is not evidence for the new merge commit.
     python tools/tiers_ratchet.py --check              # PASS
     python tools/cpp_tu_state.py --check-note
     python tools/source_coverage.py --check --base origin/main
-    python tools/prepush_attribution.py --base origin/main --head HEAD
-    #    ^ judge it on `lost`, not on `changed`. A fold changes attribution by
-    #      construction; only a LOST symbol is a defect. Do not go reconciling
-    #      credit beyond committing the mappings it names.
 
 Run `git status` after **every** `verify` — it writes to the manifest when it
 fails, and a dirty tree after a green-looking run means it did not pass.
