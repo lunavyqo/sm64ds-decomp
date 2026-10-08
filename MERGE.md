@@ -20,7 +20,7 @@ coordinated v2 fleet.
 - Claims are **best-effort**. If they return `401` / "missing key", the claims service
   just is not configured on this machine — note it once and proceed. Each agent already
   gets a distinct batch, so an unclaimed target is fine to work.
-- Locks live on the claims service. There is no markdown register to edit.
+- Locks live on the claims service.
 
 ## 2. What may be merged
 

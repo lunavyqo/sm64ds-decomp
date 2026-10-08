@@ -1,7 +1,7 @@
 """Active locks from the tangos.dev claims service.
 
 Schedulers skip a target someone else holds. The service is tangos.json
-`data.claimsApi`, scoped with `data.projectId`. There is no markdown register.
+`data.claimsApi`, scoped with `data.projectId`.
 
 Best-effort: offline, or with the service down, this returns no holds and the
 batch still builds. Set CLAIMS_NO_API=1 to skip the network.
