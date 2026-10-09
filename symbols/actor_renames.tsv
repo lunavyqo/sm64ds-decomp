@@ -1049,7 +1049,18 @@ ov015	0x021148b8	daObjBk_Fall_Block_c_SpawnInfo	g_profile_BK_DOWN_B	reconstructe
 ov015	0x021148dc	data_ov015_021148dc	_ZTV20daObjBk_Fall_Block_c	vtable alloc=0x34c
 ov016	0x021111a0	func_ov016_021111a0	_ZN9daMoray_cD1Ev	vtable slot 16
 ov016	0x02111208	func_ov016_02111208	_ZN9daMoray_cD0Ev	vtable slot 17
-ov016	0x021115a4	func_ov016_021115a4	BookSwitch_Spawn	spawnfunc
+ov016	0x02111284	func_ov016_02111284	_ZN9daMoray_c19func_ov016_02111284Ev	daMoray_c method. The first argument is the object, so the function is a member and the parameter is this. The address is kept as the method name.
+ov016	0x02111534	func_ov016_02111534	_ZN9daMoray_c19func_ov016_02111534Ev	daMoray_c method. The first argument is the object, so the function is a member and the parameter is this. The address is kept as the method name.
+ov016	0x021115a4	func_ov016_021115a4	_ZN9daMoray_c16BookSwitch_SpawnEv	spawnfunc
+ov016	0x021115c0	func_ov016_021115c0	_ZN9daMoray_c19func_ov016_021115c0Ev	daMoray_c method. The first argument is the object, so the function is a member and the parameter is this. The address is kept as the method name.
+ov016	0x02111718	func_ov016_02111718	_ZN9daMoray_c19func_ov016_02111718Ev	daMoray_c method. The first argument is the object, so the function is a member and the parameter is this. The address is kept as the method name.
+ov016	0x02111860	func_ov016_02111860	_ZN9daMoray_c19func_ov016_02111860Ev	daMoray_c method. The first argument is the object, so the function is a member and the parameter is this. The address is kept as the method name.
+ov016	0x021118b4	func_ov016_021118b4	_ZN9daMoray_c19func_ov016_021118b4Ev	daMoray_c method. The first argument is the object, so the function is a member and the parameter is this. The address is kept as the method name.
+ov016	0x02111994	func_ov016_02111994	_ZN9daMoray_c19func_ov016_02111994Ev	daMoray_c method. The first argument is the object, so the function is a member and the parameter is this. The address is kept as the method name.
+ov016	0x021119ec	func_ov016_021119ec	_ZN9daMoray_c19func_ov016_021119ecEv	daMoray_c method. The first argument is the object, so the function is a member and the parameter is this. The address is kept as the method name.
+ov016	0x02111bac	func_ov016_02111bac	_ZN9daMoray_c19func_ov016_02111bacEv	daMoray_c method. The first argument is the object, so the function is a member and the parameter is this. The address is kept as the method name.
+ov016	0x02111bf0	func_ov016_02111bf0	_ZN9daMoray_c19func_ov016_02111bf0EPNS_5StateE	daMoray_c method. The first argument is the object, so the function is a member and the parameter is this. The address is kept as the method name.
+ov016	0x02111c40	func_ov016_02111c40	_ZN9daMoray_c19func_ov016_02111c40Ev	daMoray_c method. The first argument is the object, so the function is a member and the parameter is this. The address is kept as the method name.
 ov016	0x02111f38	func_ov016_02111f38	_ZN9daMoray_c16CleanupResourcesEv	vtable slot 3
 ov016	0x02111f80	func_ov016_02111f80	_ZN9daMoray_c16OnPendingDestroyEv	vtable slot 12
 ov016	0x02111f84	func_ov016_02111f84	_ZN9daMoray_c6RenderEv	vtable slot 9
@@ -5577,6 +5588,15 @@ ov006	0x0211fe78	func_ov006_0211fe78	_ZN13dScMgTeresa_c19func_ov006_0211fe78Ev	o
 ov006	0x02120008	func_ov006_02120008	_ZN13dScMgTeresa_c19func_ov006_02120008Ev	object-as-this; sinit .data stores pointer-to-member records (state tables at data_ov006_02142e88/02142eb0/02142ed8/02142f18)
 ov006	0x021200a8	func_ov006_021200a8	_ZN13dScMgTeresa_c19func_ov006_021200a8Ev	object-as-this; sinit .data stores pointer-to-member records (state tables at data_ov006_02142e88/02142eb0/02142ed8/02142f18)
 ov006	0x021200cc	func_ov006_021200cc	_ZN13dScMgTeresa_c19func_ov006_021200ccEv	object-as-this; sinit .data stores pointer-to-member records (state tables at data_ov006_02142e88/02142eb0/02142ed8/02142f18)
+ov006	0x020ed274	func_ov006_020ed274	_ZN15dScMgHanachan_c19func_ov006_020ed274Ev	dScMgHanachan_c method; pointer-to-member target of the phase records in .data, dispatched through mPhaseFn
+ov006	0x020ed300	func_ov006_020ed300	_ZN15dScMgHanachan_c19func_ov006_020ed300Ev	object-as-this; receiver is the scene object, called with this in r0
+ov006	0x020ed32c	func_ov006_020ed32c	_ZN15dScMgHanachan_c19func_ov006_020ed32cEv	object-as-this; receiver is the scene object, called with this in r0
+ov006	0x020ed34c	func_ov006_020ed34c	_ZN15dScMgHanachan_c19func_ov006_020ed34cEv	dScMgHanachan_c method; pointer-to-member target of the phase records in .data, dispatched through mPhaseFn
+ov006	0x020ed40c	func_ov006_020ed40c	_ZN15dScMgHanachan_c19func_ov006_020ed40cEv	object-as-this; receiver is the scene object, called with this in r0
+ov006	0x020ed494	func_ov006_020ed494	_ZN15dScMgHanachan_c19func_ov006_020ed494Ev	dScMgHanachan_c method; pointer-to-member target of the phase records in .data, dispatched through mPhaseFn
+ov006	0x020ed81c	func_ov006_020ed81c	_ZN15dScMgHanachan_c19func_ov006_020ed81cEv	object-as-this; receiver is the scene object, called with this in r0
+ov006	0x020ed844	func_ov006_020ed844	_ZN15dScMgHanachan_c19func_ov006_020ed844Ev	dScMgHanachan_c method; pointer-to-member target of the phase records in .data, dispatched through mPhaseFn
+ov006	0x020ed8a4	func_ov006_020ed8a4	_ZN15dScMgHanachan_c19func_ov006_020ed8a4Ev	object-as-this; receiver is the scene object, called with this in r0
 ov006	0x02125804	func_ov006_02125804	_ZN15dScMgSnowball_c19func_ov006_02125804Ev	object-as-this
 ov006	0x02125890	func_ov006_02125890	_ZN15dScMgSnowball_c19func_ov006_02125890Ev	object-as-this
 ov006	0x02125994	func_ov006_02125994	_ZN15dScMgSnowball_c19func_ov006_02125994Ev	object-as-this
@@ -5735,3 +5755,19 @@ ov002	0x020ae608	func_ov002_020ae608	_ZN11EnemyDeathC19func_ov002_020ae608ER10dB
 ov002	0x020ae4cc	func_ov002_020ae4cc	_ZN11EnemyDeathC19func_ov002_020ae4ccER10dBgCh_Actr	pointer-to-member target of data_ov002_0210dbc0, dispatched by UpdateDeath on mDeathState
 ov002	0x020ae454	func_ov002_020ae454	_ZN11EnemyDeathC19func_ov002_020ae454ER10dBgCh_Actr	pointer-to-member target of data_ov002_0210dbc0, dispatched by UpdateDeath on mDeathState
 ov002	0x020aea24	func_ov002_020aea24	_ZN11EnemyDeathC19func_ov002_020aea24ER10dBgCh_Actr	pointer-to-member target of data_ov002_0210dbc0, dispatched by UpdateDeath on mDeathState
+ov002	0x020bccfc	func_ov002_020bccfc	_ZN6Player19func_ov002_020bccfcEPhii	Player method; Kuppa-script command, pointer-to-member target in the func_ov002_020bd664 dispatch table
+ov002	0x020bcd18	func_ov002_020bcd18	_ZN6Player19func_ov002_020bcd18EPhii	Player method; Kuppa-script command, pointer-to-member target in the func_ov002_020bd664 dispatch table
+ov002	0x020bcd38	func_ov002_020bcd38	_ZN6Player19func_ov002_020bcd38EPhii	Player method; Kuppa-script command, pointer-to-member target in the func_ov002_020bd664 dispatch table
+ov002	0x020bd06c	func_ov002_020bd06c	_ZN6Player19func_ov002_020bd06cEj	Player method; the step change func_ov002_020bd20c (a Kuppa-script command) makes, its only caller
+ov002	0x020bd20c	func_ov002_020bd20c	_ZN6Player19func_ov002_020bd20cEPhii	Player method; Kuppa-script command, pointer-to-member target in the func_ov002_020bd664 dispatch table
+ov002	0x020bd250	func_ov002_020bd250	_ZN6Player19func_ov002_020bd250EPhii	Player method; Kuppa-script command, pointer-to-member target in the func_ov002_020bd664 dispatch table
+ov002	0x020bd354	func_ov002_020bd354	_ZN6Player19func_ov002_020bd354EPhii	Player method; Kuppa-script command, pointer-to-member target in the func_ov002_020bd664 dispatch table
+ov002	0x020bd3a0	func_ov002_020bd3a0	_ZN6Player19func_ov002_020bd3a0EPhii	Player method; Kuppa-script command, pointer-to-member target in the func_ov002_020bd664 dispatch table
+ov002	0x020bd438	func_ov002_020bd438	_ZN6Player19func_ov002_020bd438EPhii	Player method; Kuppa-script command, pointer-to-member target in the func_ov002_020bd664 dispatch table
+ov002	0x020bd45c	func_ov002_020bd45c	_ZN6Player19func_ov002_020bd45cEPhii	Player method; Kuppa-script command, pointer-to-member target in the func_ov002_020bd664 dispatch table
+ov002	0x020bd480	func_ov002_020bd480	_ZN6Player19func_ov002_020bd480EPhii	Player method; Kuppa-script command, pointer-to-member target in the func_ov002_020bd664 dispatch table
+ov002	0x020bd4ac	func_ov002_020bd4ac	_ZN6Player19func_ov002_020bd4acEPhii	Player method; Kuppa-script command, pointer-to-member target in the func_ov002_020bd664 dispatch table
+ov002	0x020bd4c8	func_ov002_020bd4c8	_ZN6Player19func_ov002_020bd4c8EPhii	Player method; Kuppa-script command, pointer-to-member target in the func_ov002_020bd664 dispatch table
+ov002	0x020bd4e0	func_ov002_020bd4e0	_ZN6Player19func_ov002_020bd4e0EPhii	Player method; Kuppa-script command, pointer-to-member target in the func_ov002_020bd664 dispatch table
+ov002	0x020bd600	func_ov002_020bd600	_ZN6Player19func_ov002_020bd600EPhii	Player method; Kuppa-script command, pointer-to-member target in the func_ov002_020bd664 dispatch table
+ov002	0x020bd664	func_ov002_020bd664	_ZN6Player19func_ov002_020bd664EPhii	Player method; Kuppa-script player command dispatcher, called by func_0200e5ac on the player actor through pointer-to-member data_ov002_02110794

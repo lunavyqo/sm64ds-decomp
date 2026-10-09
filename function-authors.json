@@ -14279,15 +14279,15 @@
     },
     "ov002:0x020bccfc": {
       "author": "tangosdev",
-      "name": "func_ov002_020bccfc"
+      "name": "_ZN6Player19func_ov002_020bccfcEPhii"
     },
     "ov002:0x020bcd18": {
       "author": "tangosdev",
-      "name": "func_ov002_020bcd18"
+      "name": "_ZN6Player19func_ov002_020bcd18EPhii"
     },
     "ov002:0x020bcd38": {
       "author": "tangosdev",
-      "name": "func_ov002_020bcd38"
+      "name": "_ZN6Player19func_ov002_020bcd38EPhii"
     },
     "ov002:0x020bcdf0": {
       "author": "andrewboudreau",
@@ -14295,55 +14295,55 @@
     },
     "ov002:0x020bd06c": {
       "author": "andrewboudreau",
-      "name": "func_ov002_020bd06c"
+      "name": "_ZN6Player19func_ov002_020bd06cEj"
     },
     "ov002:0x020bd20c": {
       "author": "tangosdev",
-      "name": "func_ov002_020bd20c"
+      "name": "_ZN6Player19func_ov002_020bd20cEPhii"
     },
     "ov002:0x020bd250": {
       "author": "tangosdev",
-      "name": "func_ov002_020bd250"
+      "name": "_ZN6Player19func_ov002_020bd250EPhii"
     },
     "ov002:0x020bd354": {
       "author": "tangosdev",
-      "name": "func_ov002_020bd354"
+      "name": "_ZN6Player19func_ov002_020bd354EPhii"
     },
     "ov002:0x020bd3a0": {
       "author": "ruspecial",
-      "name": "func_ov002_020bd3a0"
+      "name": "_ZN6Player19func_ov002_020bd3a0EPhii"
     },
     "ov002:0x020bd438": {
       "author": "tangosdev",
-      "name": "func_ov002_020bd438"
+      "name": "_ZN6Player19func_ov002_020bd438EPhii"
     },
     "ov002:0x020bd45c": {
       "author": "tangosdev",
-      "name": "func_ov002_020bd45c"
+      "name": "_ZN6Player19func_ov002_020bd45cEPhii"
     },
     "ov002:0x020bd480": {
       "author": "tangosdev",
-      "name": "func_ov002_020bd480"
+      "name": "_ZN6Player19func_ov002_020bd480EPhii"
     },
     "ov002:0x020bd4ac": {
       "author": "tangosdev",
-      "name": "func_ov002_020bd4ac"
+      "name": "_ZN6Player19func_ov002_020bd4acEPhii"
     },
     "ov002:0x020bd4c8": {
       "author": "tangosdev",
-      "name": "func_ov002_020bd4c8"
+      "name": "_ZN6Player19func_ov002_020bd4c8EPhii"
     },
     "ov002:0x020bd4e0": {
       "author": "ruspecial",
-      "name": "func_ov002_020bd4e0"
+      "name": "_ZN6Player19func_ov002_020bd4e0EPhii"
     },
     "ov002:0x020bd600": {
       "author": "tangosdev",
-      "name": "func_ov002_020bd600"
+      "name": "_ZN6Player19func_ov002_020bd600EPhii"
     },
     "ov002:0x020bd664": {
       "author": "tangosdev",
-      "name": "func_ov002_020bd664"
+      "name": "_ZN6Player19func_ov002_020bd664EPhii"
     },
     "ov002:0x020bd828": {
       "author": "tangosdev",
@@ -30851,55 +30851,55 @@
     },
     "ov016:0x02111284": {
       "author": "lunavyqo",
-      "name": "func_ov016_02111284"
+      "name": "_ZN9daMoray_c19func_ov016_02111284Ev"
     },
     "ov016:0x02111534": {
       "author": "tangosdev",
-      "name": "func_ov016_02111534"
+      "name": "_ZN9daMoray_c19func_ov016_02111534Ev"
     },
     "ov016:0x021115a4": {
       "author": "tangosdev",
-      "name": "BookSwitch_Spawn"
+      "name": "_ZN9daMoray_c16BookSwitch_SpawnEv"
     },
     "ov016:0x021115c0": {
       "author": "tangosdev",
-      "name": "func_ov016_021115c0"
+      "name": "_ZN9daMoray_c19func_ov016_021115c0Ev"
     },
     "ov016:0x02111718": {
       "author": "tangosdev",
-      "name": "func_ov016_02111718"
+      "name": "_ZN9daMoray_c19func_ov016_02111718Ev"
     },
     "ov016:0x02111758": {
       "author": "tangosdev",
-      "name": "func_ov016_02111758"
+      "name": "_ZN9daMoray_c19func_ov016_02111758Ev"
     },
     "ov016:0x02111860": {
       "author": "tangosdev",
-      "name": "func_ov016_02111860"
+      "name": "_ZN9daMoray_c19func_ov016_02111860Ev"
     },
     "ov016:0x021118b4": {
       "author": "tangosdev",
-      "name": "func_ov016_021118b4"
+      "name": "_ZN9daMoray_c19func_ov016_021118b4Ev"
     },
     "ov016:0x02111994": {
       "author": "tangosdev",
-      "name": "func_ov016_02111994"
+      "name": "_ZN9daMoray_c19func_ov016_02111994Ev"
     },
     "ov016:0x021119ec": {
       "author": "tangosdev",
-      "name": "func_ov016_021119ec"
+      "name": "_ZN9daMoray_c19func_ov016_021119ecEv"
     },
     "ov016:0x02111bac": {
       "author": "tangosdev",
-      "name": "func_ov016_02111bac"
+      "name": "_ZN9daMoray_c19func_ov016_02111bacEv"
     },
     "ov016:0x02111bf0": {
       "author": "tangosdev",
-      "name": "func_ov016_02111bf0"
+      "name": "_ZN9daMoray_c19func_ov016_02111bf0EPNS_5StateE"
     },
     "ov016:0x02111c40": {
       "author": "tangosdev",
-      "name": "func_ov016_02111c40"
+      "name": "_ZN9daMoray_c19func_ov016_02111c40Ev"
     },
     "ov016:0x02111f38": {
       "author": "tangosdev",
