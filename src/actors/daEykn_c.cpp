@@ -86,6 +86,31 @@ struct LoadedFile {
     void *file;
 };
 
+/* SharedFilePtr has no fields or ctor of its own, so each file handle is a
+   declaration-only subclass carrying the observed {fileId, file} layout;
+   the manifest aliases the mangled ctor/dtor spellings to the arm9
+   destinations (func_02017acc/func_02017ab4 for the model,
+   SharedFilePtr_Construct_TexSeq/Destruct_TexSeq for the BTPs,
+   _ZN13SharedFilePtr9ConstructEj/SharedFilePtr_Destruct_Anim for the BCA). */
+struct EyknModelFileHandle : SharedFilePtr {
+    s32 fileId;
+    void *file;
+    EyknModelFileHandle(unsigned int fileID);
+    ~EyknModelFileHandle();
+};
+struct EyknTexSeqFileResHandle : SharedFilePtr {
+    s32 fileId;
+    void *file;
+    EyknTexSeqFileResHandle(unsigned int fileID);
+    ~EyknTexSeqFileResHandle();
+};
+struct EyknAnimationFileHandle : SharedFilePtr {
+    s32 fileId;
+    void *file;
+    EyknAnimationFileHandle(unsigned int fileID);
+    ~EyknAnimationFileHandle();
+};
+
 int ApproachLinear(int &value, int target, int step);
 bool ApproachLinear(short &value, short target, short step);
 void UpdateAngle(s16 &angle, s16 target, int div, s16 maxStep);
@@ -125,11 +150,11 @@ extern s16 data_02082214[];
 extern s8 data_0209f2f8; /* current sublevel id */
 extern Matrix4x3 IDENTITY_MATRIX4X3;
 extern daEykn_c::State data_ov071_02123088[];
-extern LoadedFile data_ov071_02123038; /* BTP 0x2f8 */
-extern LoadedFile data_ov071_02123040; /* BTP 0x2fb */
-extern LoadedFile data_ov071_02123048; /* BCA 0x2f9 */
+extern EyknTexSeqFileResHandle data_ov071_02123038; /* BTP 0x2f8 */
+extern EyknTexSeqFileResHandle data_ov071_02123040; /* BTP 0x2fb */
+extern EyknAnimationFileHandle data_ov071_02123048; /* BCA 0x2f9 */
 extern SharedFilePtr data_ov002_0210da38; /* blue-coin model */
-extern SharedFilePtr data_ov071_02123050; /* BMD 0x2f7 */
+extern EyknModelFileHandle data_ov071_02123050; /* BMD 0x2f7 */
 extern SharedFilePtr *data_ov071_021226a4[2]; /* the two BTPs */
 extern SharedFilePtr *data_ov071_021226a0; /* the BCA */
 }
@@ -845,3 +870,18 @@ extern "C" daEykn_c *daEykn_c_classInit_EYEKUN()
 {
     return new daEykn_c();
 }
+
+/* File-scope objects __sinit_daEykn_c.cpp initializes: the four resource
+   handles in construction order, then the three {init, exec} state pairs
+   SetState indexes through mState. The registration nodes and the PMF
+   literals are compiler temporaries. */
+EyknModelFileHandle data_ov071_02123050(0x2f7);      /* model */
+EyknTexSeqFileResHandle data_ov071_02123038(0x2f8);  /* eye texseq */
+EyknTexSeqFileResHandle data_ov071_02123040(0x2fb);  /* pupil texseq */
+EyknAnimationFileHandle data_ov071_02123048(0x2f9);  /* eye anim */
+
+daEykn_c::State data_ov071_02123088[3] = {
+    { &daEykn_c::St_Wait_Init, &daEykn_c::St_Wait_Main },     /* wait */
+    { &daEykn_c::St_Attack_Init, &daEykn_c::St_Attack_Main }, /* attack */
+    { &daEykn_c::St_Die_Init, &daEykn_c::St_Die_Main },       /* die */
+};
