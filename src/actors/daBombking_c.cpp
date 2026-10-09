@@ -93,40 +93,79 @@ extern "C" int _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(void *self, vo
  * writes the bytes at +4, which is the pointer SetAnim reads. 02126f38 is
  * the model (func_02017acc, id 0x2c7). The other twelve are animations
  * (SharedFilePtr::Construct, ids 0x2bb..0x2c6). */
-struct BombkingFile {
+struct BombkingModelFilePtr : SharedFilePtr {
     unsigned fileId;
     void *file;
+    BombkingModelFilePtr(unsigned fileId);
+    ~BombkingModelFilePtr();
+};
+struct BombkingAnimResFilePtr : SharedFilePtr {
+    unsigned fileId;
+    void *file;
+    BombkingAnimResFilePtr(unsigned fileId);
+    ~BombkingAnimResFilePtr();
+};
+
+extern "C" int func_ov078_021240a0(char *c);
+
+/* data_ov078_02126ffc's tick slot is the free func_ov078_021240a0, which stays
+ * extern "C" for matching (see the header note). A PMF cannot bind a free
+ * function, so the slot points at this declared-but-undefined class member;
+ * the manifest aliases its mangled name to func_ov078_021240a0. Both fields
+ * being PMFs keeps the record dynamically initialized into .bss. */
+struct BombkingFree { int call(); };
+typedef int (BombkingFree::*FreePMF)();
+struct BombkingFreeState { PMF enter; FreePMF tick; };
+
+/* The retail initializer stores these vectors into .bss and registers a
+ * destructor for each element; Vector3's inline-empty ~Vector3 lets mwcc
+ * elide both, so a twin layout with a declared destructor is used here.
+ * The mangled dtor is aliased to _ZN7Vector3D1Ev in the manifest. */
+struct BombkingVec3 : Vector3 {
+    BombkingVec3(int vx, int vy, int vz) { x = vx; y = vy; z = vz; }
+    ~BombkingVec3();
 };
 
 extern "C" {
-    extern BombkingFile data_ov078_02126ee0;
-    extern BombkingFile data_ov078_02126ee8;
-    extern BombkingFile data_ov078_02126ef0;
-    extern BombkingFile data_ov078_02126ef8;
-    extern BombkingFile data_ov078_02126f00;
-    extern BombkingFile data_ov078_02126f08;
-    extern BombkingFile data_ov078_02126f10;
-    extern BombkingFile data_ov078_02126f18;
-    extern BombkingFile data_ov078_02126f20;
-    extern BombkingFile data_ov078_02126f28;
-    extern BombkingFile data_ov078_02126f30;
-    extern BombkingFile data_ov078_02126f38;
-    extern BombkingFile data_ov078_02126f40;
+    BombkingModelFilePtr data_ov078_02126f38(0x2c7);
+    BombkingAnimResFilePtr data_ov078_02126f00(0x2bc);
+    BombkingAnimResFilePtr data_ov078_02126f20(0x2bb);
+    BombkingAnimResFilePtr data_ov078_02126f10(0x2bd);
+    BombkingAnimResFilePtr data_ov078_02126f08(0x2be);
+    BombkingAnimResFilePtr data_ov078_02126f18(0x2bf);
+    BombkingAnimResFilePtr data_ov078_02126ee0(0x2c1);
+    BombkingAnimResFilePtr data_ov078_02126ef0(0x2c2);
+    BombkingAnimResFilePtr data_ov078_02126f40(0x2c3);
+    BombkingAnimResFilePtr data_ov078_02126f30(0x2c4);
+    BombkingAnimResFilePtr data_ov078_02126ee8(0x2c5);
+    BombkingAnimResFilePtr data_ov078_02126f28(0x2c6);
+    BombkingAnimResFilePtr data_ov078_02126ef8(0x2c0);
+    BombkingVec3 bkvec_ov078_0212711c[2] = { BombkingVec3(0x2c000, -0x19000, 0x34000),
+                                            BombkingVec3(0x44000, -0x19000, 0x34000) };
+    PMF data_ov078_0212710c[2] = { &daBombking_c::func_ov078_02125bc8, &daBombking_c::func_ov078_021259ec };
+    PMF bkstate_ov078_0212700c[2] = { &daBombking_c::func_ov078_021259e4, &daBombking_c::func_ov078_02125950 };
+    PMF bkstate_ov078_0212701c[2] = { &daBombking_c::func_ov078_021258e4, &daBombking_c::func_ov078_02125790 };
+    PMF data_ov078_0212703c[2] = { &daBombking_c::func_ov078_02125734, &daBombking_c::func_ov078_02125448 };
+    PMF bkstate_ov078_0212704c[2] = { &daBombking_c::func_ov078_02125350, &daBombking_c::func_ov078_021250f8 };
+    PMF data_ov078_0212707c[2] = { &daBombking_c::func_ov078_021250d0, &daBombking_c::func_ov078_02124f28 };
+    PMF bkstate_ov078_0212708c[2] = { &daBombking_c::func_ov078_02124e9c, &daBombking_c::func_ov078_02124cf4 };
+    PMF bkstate_ov078_021270ac[2] = { &daBombking_c::func_ov078_02124c94, &daBombking_c::func_ov078_02124bc4 };
+    PMF bkstate_ov078_021270bc[2] = { &daBombking_c::func_ov078_02124b40, &daBombking_c::func_ov078_021247bc };
+    PMF data_ov078_021270dc[2] = { &daBombking_c::func_ov078_02124778, &daBombking_c::func_ov078_02124520 };
+    PMF bkstate_ov078_021270ec[2] = { &daBombking_c::func_ov078_021244d0, &daBombking_c::func_ov078_02124470 };
+    BombkingFreeState data_ov078_02126ffc = { &daBombking_c::func_ov078_021243c0, &BombkingFree::call };
+    PMF bkstate_ov078_0212702c[2] = { &daBombking_c::func_ov078_02124060, &daBombking_c::func_ov078_02124000 };
+    PMF bkstate_ov078_0212706c[2] = { &daBombking_c::func_ov078_02123fb4, &daBombking_c::func_ov078_02123f1c };
+    PMF data_ov078_0212709c[2] = { &daBombking_c::func_ov078_02123eb8, &daBombking_c::func_ov078_02123d3c };
+    PMF data_ov078_021270cc[2] = { &daBombking_c::func_ov078_02123cf0, &daBombking_c::func_ov078_02123c20 };
+    PMF data_ov078_021270fc[2] = { &daBombking_c::func_ov078_02123bc4, &daBombking_c::func_ov078_02123aa0 };
+    PMF data_ov078_0212705c[2] = { &daBombking_c::func_ov078_02123a3c, &daBombking_c::func_ov078_021238ac };
     /* Canonical single declaration per ROM data symbol -- the generated
      * preamble carried up to three contradictory spellings of each. */
     extern unsigned char data_0209f220[];
     extern void *data_0209f318;
     extern struct M12 data_020a0e68;
-    extern int data_ov078_0212703c[];
-    extern int data_ov078_0212705c[];
-    extern int data_ov078_0212707c[];
-    extern int data_ov078_0212709c[];
-    extern int data_ov078_021270cc[];
-    extern int data_ov078_021270dc[];
-    extern int data_ov078_021270fc[];
-    extern int data_ov078_0212710c[];
-extern int data_ov078_02126ffc[];
-extern int data_02092138;
+    extern int data_02092138;
 extern void MulMat4x3Mat4x3(void *dst, void *a, void *b);
 extern void Vec3_Lsl(void *d, void *s, int sh);
 extern void func_02012694(int a, void *p);
@@ -211,7 +250,7 @@ int daBombking_c::func_ov078_02123804()
     if (v == 0) return 0;
     if (dActor_c::FindWithID(v) == 0) return 0;
     if ((this->mdCcAcPos_c2.hitFlags & 0x4000) == 0) return 0;
-    KingBobOmb_SetState(data_ov078_02126ffc);
+    KingBobOmb_SetState(&data_ov078_02126ffc);
     return 1;
 }
 
@@ -555,7 +594,7 @@ int func_ov078_021240a0(char* c)
         }
         if ((unsigned short)k->mStateTimer == 0) {
             k->mSpawnSlot = 0;
-            k->KingBobOmb_SetState(&data_ov078_0212702c);
+            k->KingBobOmb_SetState(&bkstate_ov078_0212702c);
             return 1;
         }
         if (Vec3_Dist(&k->mArenaPosX, &k->mPosX) < 0x258000) {
@@ -633,7 +672,7 @@ int daBombking_c::func_ov078_02124470()
     ApproachAngle(&this->mPrevAngleY, ang, 1, 0x500, 0x500);
     this->mAngleY = this->mPrevAngleY;
     if ((u16)this->mStateTimer == 0)
-        KingBobOmb_SetState(&data_ov078_0212702c);
+        KingBobOmb_SetState(&bkstate_ov078_0212702c);
     return 1;
 }
 
@@ -868,7 +907,7 @@ int daBombking_c::func_ov078_02124bc4()
 {
     if ((unsigned short)this->mStateTimer != 0) return 1;
     if (*(int *)&data_02092138 > this->mPosY) {
-        KingBobOmb_SetState(data_ov078_021270bc);
+        KingBobOmb_SetState(bkstate_ov078_021270bc);
         return 1;
     }
     if (this->mWithMeshClsn.IsOnGround() != 0) {
@@ -881,7 +920,7 @@ int daBombking_c::func_ov078_02124bc4()
             this->mHorzSpeed = 0xa000;
             this->mActionStep = 1;
         } else {
-            KingBobOmb_SetState(data_ov078_021270bc);
+            KingBobOmb_SetState(bkstate_ov078_021270bc);
         }
     }
     return 1;
@@ -913,7 +952,7 @@ int daBombking_c::func_ov078_02124cf4()
     this->mHorzSpeed = 0;
     if ((int)(this->mArenaPosY - 0x28000) > this->mPosY) {
         func_02012694(0x128, &this->mCamSpacePosX);
-        KingBobOmb_SetState(&data_ov078_021270ac);
+        KingBobOmb_SetState(&bkstate_ov078_021270ac);
         goto done;
     }
     if (this->mActionStep == 0) {
@@ -925,7 +964,7 @@ int daBombking_c::func_ov078_02124cf4()
         this->mHealth -= 1;
     }
     if (this->mHealth > 0) {
-        KingBobOmb_SetState(&data_ov078_021270ec);
+        KingBobOmb_SetState(&bkstate_ov078_021270ec);
         goto done;
     }
     Player *other = this->mTalkingPlayer;
@@ -984,7 +1023,7 @@ int daBombking_c::func_ov078_02124f28()
     {
         Player *obj = this->mHeldActor;
         if (obj == 0) {
-            KingBobOmb_SetState(&data_ov078_0212708c);
+            KingBobOmb_SetState(&bkstate_ov078_0212708c);
             return 1;
         }
         {
@@ -999,7 +1038,7 @@ int daBombking_c::func_ov078_02124f28()
 drop:
     this->mHeldActor->DropActor();
     this->mHeldActor = 0;
-    KingBobOmb_SetState(&data_ov078_0212708c);
+    KingBobOmb_SetState(&bkstate_ov078_0212708c);
     return 1;
 
 flags:
@@ -1022,7 +1061,7 @@ flags:
             this->mAngleY = t;
         }
         this->mdCcAcPos_c.flags &= ~2;
-        KingBobOmb_SetState(&data_ov078_0212708c);
+        KingBobOmb_SetState(&bkstate_ov078_0212708c);
         {
             Player *p = this->mHeldActor;
             if (p != 0) {
@@ -1222,7 +1261,7 @@ int daBombking_c::func_ov078_02125448()
                     } else if (func_ov002_020db5f4((char *)a, (char *)this) != 0) {
                         this->mHeldActor = (Player *)a;
                         this->mHorzSpeed = 0;
-                        KingBobOmb_SetState(data_ov078_0212706c);
+                        KingBobOmb_SetState(bkstate_ov078_0212706c);
                     }
                 }
             }
@@ -1253,7 +1292,7 @@ int daBombking_c::func_ov078_02125448()
                         v4a0 = this->mPhase;
                         if ((v4a0 == 2 && this->mSpawnedId[1] == 0)
                             || (v4a0 == 1 && empty == 2)) {
-                            KingBobOmb_SetState(data_ov078_0212704c);
+                            KingBobOmb_SetState(bkstate_ov078_0212704c);
                             return 1;
                         }
                     }
@@ -1349,7 +1388,7 @@ int daBombking_c::func_ov078_02125950()
         Message::EndTalk();
         func_02011d44();
         _ZN5Sound22LoadAndSetMusic_Layer3Ej(0x2d);
-        KingBobOmb_SetState(&data_ov078_0212701c);
+        KingBobOmb_SetState(&bkstate_ov078_0212701c);
     }
     return 1;
 }
@@ -1414,7 +1453,7 @@ int daBombking_c::func_ov078_021259ec()
                     if (player->ShowMessage(*(fBase_c *)this, b, (Vector3 *)(&v), 0, 0)) {
                         func_02012694(0x12a, &this->mCamSpacePosX);
                         this->mIntroTalked = 1;
-                        KingBobOmb_SetState(&data_ov078_0212700c);
+                        KingBobOmb_SetState(&bkstate_ov078_0212700c);
                     }
                 }
             }
@@ -1422,7 +1461,7 @@ int daBombking_c::func_ov078_021259ec()
             dist = Vec3_Dist((struct Vector3 *)&this->mPosX, &ppos);
             if (dist < 0x258000) {
                 if (this->mArenaPosY - 0xa000 < ppos.y) {
-                    KingBobOmb_SetState(&data_ov078_0212701c);
+                    KingBobOmb_SetState(&bkstate_ov078_0212701c);
                 }
             }
         }
@@ -1545,7 +1584,7 @@ void daBombking_c::func_ov078_02125f8c(){
     int idx = 0;
     if (player == 0) return;
     if (player->param1 == 2) idx = 1;
-    Matrix4x3 *res = this->UpdateCarry(*player, data_ov078_0212711c[idx]);
+    Matrix4x3 *res = this->UpdateCarry(*player, bkvec_ov078_0212711c[idx]);
     *(struct M12 *)&this->mBlendModelAnim.mat4x3 = *(struct M12 *)res;
 }
 
@@ -1636,13 +1675,13 @@ int daBombking_c::Behavior()
     DecIfAbove0_Byte(&unk_505);
     DecIfAbove0_Byte(&unk_504);
 
-    if ((char *)mState != (char *)data_ov078_021270bc) {
+    if ((char *)mState != (char *)bkstate_ov078_021270bc) {
         UpdatePos(&mdCcAcPos_c);
     } else {
         UpdatePosWithOnlySpeed(&mdCcAcPos_c);
     }
 
-    if ((char *)mState != (char *)data_ov078_021270bc || mActionStep == 1) {
+    if ((char *)mState != (char *)bkstate_ov078_021270bc || mActionStep == 1) {
         UpdateWMClsn(mWithMeshClsn, 0);
     }
 
@@ -1650,7 +1689,7 @@ int daBombking_c::Behavior()
         if (mWithMeshClsn.IsOnWall() != 0
             || mWithMeshClsn.IsOnGround() == 0
             || (mArenaPosY - 0x28000) > mPosY) {
-            KingBobOmb_SetState(data_ov078_021270bc);
+            KingBobOmb_SetState(bkstate_ov078_021270bc);
         }
     }
 
