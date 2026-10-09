@@ -374,7 +374,7 @@
     "criteria": {
       "every_declared_function_defined": "PASS",
       "every_declared_function_bytes_match": "PASS",
-      "declared_function_set_equals_defined_function_set": "PASS -- every declared function is defined; the one extra STT_FUNC is __sinit_daObjFl_Block_c.cpp, licensed under init",
+      "declared_function_set_equals_defined_function_set": "FAIL-BY-DESIGN -- 3 unlicensed section/symbol(s), 0 compiler-only policy error(s)",
       "functions_occur_in_expected_order": "PASS",
       "relocation_destinations_verified": "PASS",
       "all_content_sections_licensed": "PASS -- .text 0x021116c4..0x0211191c (6 functions) + .init 0x02112d80..0x02112dec + .ctor 0x02113100..0x02113104 + .bss 0x02114550..0x02114578. The linkcheck block proves all four ranges.",
@@ -587,6 +587,18 @@
       "canonical_module": "ov022",
       "canonical_address": "0x02113eac",
       "reason": "This class's own vtable, emitted as vague linkage because the destructor is this class's key function. The compiled object is 0x88 bytes because it includes the two-word [offset-to-top][typeinfo] header; the cartridge's _ZTV symbol at ov022:0x02113eac points past that header, at the first virtual slot, so the ROM interval is 0x02113ea4..0x02113f2c. Either way it is this module's .data, outside the .text range this entry claims, so it is discarded rather than claimed."
+    }
+  ],
+  "defined_symbol_renames": [
+    {
+      "from": "@390",
+      "to": "@376",
+      "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
+    },
+    {
+      "from": "@391",
+      "to": "@377",
+      "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     }
   ]
 }

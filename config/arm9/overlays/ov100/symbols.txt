@@ -192,8 +192,8 @@ _ZTI8daDoor_c kind:data(any) addr:0x02148158
 g_profile_DOOR kind:data(any) addr:0x02148164
 _ZTV8daDoor_c kind:data(any) addr:0x02148188
 data_ov100_02148204 kind:data(any) addr:0x02148204
-@501 kind:data(any) addr:0x02148334
-@499 kind:data(any) addr:0x0214833c
+@26 kind:data(any) addr:0x02148334
+@25 kind:data(any) addr:0x0214833c
 @491 kind:data(any) addr:0x02148344
 @493 kind:data(any) addr:0x0214834c
 @497 kind:data(any) addr:0x02148354

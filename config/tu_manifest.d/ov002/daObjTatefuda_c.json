@@ -401,39 +401,64 @@
   ],
   "defined_symbol_renames": [
     {
-      "from": "@1139",
-      "to": "@2155",
-      "evidence": "mwcc numbers this descriptor @1139 per TU and ov090 already defines a global @1139, so the scratch link would multiply-define it"
-    },
-    {
-      "from": "@1137",
-      "to": "@2156",
-      "evidence": "mwcc numbers this descriptor @1137 per TU and ov090 already defines a global @1137, so the scratch link would multiply-define it"
-    },
-    {
-      "from": "@1149",
-      "to": "@2157",
-      "evidence": "mwcc numbers this descriptor @1149 per TU and ov090 already defines a global @1149, so the scratch link would multiply-define it"
+      "from": "@1142",
+      "to": "@1128",
+      "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     },
     {
       "from": "@1143",
-      "to": "@2158",
-      "evidence": "mwcc numbers this descriptor @1143 per TU and ov090 already defines a global @1143, so the scratch link would multiply-define it"
+      "to": "@1129",
+      "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     },
     {
       "from": "@1145",
-      "to": "@2159",
-      "evidence": "mwcc numbers this descriptor @1145 per TU and ov090 already defines a global @1145, so the scratch link would multiply-define it"
+      "to": "@1131",
+      "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     },
     {
       "from": "@1147",
-      "to": "@2160",
-      "evidence": "mwcc numbers this descriptor @1147 per TU and ov090 already defines a global @1147, so the scratch link would multiply-define it"
+      "to": "@1133",
+      "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     },
     {
-      "from": "@1141",
+      "from": "@1149",
+      "to": "@1135",
+      "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
+    },
+    {
+      "from": "@1153",
+      "to": "@2155",
+      "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
+    },
+    {
+      "from": "@1151",
+      "to": "@2156",
+      "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
+    },
+    {
+      "from": "@1163",
+      "to": "@2157",
+      "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
+    },
+    {
+      "from": "@1157",
+      "to": "@2158",
+      "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
+    },
+    {
+      "from": "@1159",
+      "to": "@2159",
+      "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
+    },
+    {
+      "from": "@1161",
+      "to": "@2160",
+      "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
+    },
+    {
+      "from": "@1155",
       "to": "@2161",
-      "evidence": "mwcc numbers this descriptor @1141 per TU and ov090 already defines a global @1141, so the scratch link would multiply-define it"
+      "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     }
   ],
   "symbol_binding_rewrites": [
@@ -593,7 +618,7 @@
     "criteria": {
       "every_declared_function_defined": "PASS",
       "every_declared_function_bytes_match": "PASS",
-      "declared_function_set_equals_defined_function_set": "FAIL-BY-DESIGN -- 1 unlicensed section/symbol(s), 0 compiler-only policy error(s)",
+      "declared_function_set_equals_defined_function_set": "FAIL-BY-DESIGN -- 13 unlicensed section/symbol(s), 0 compiler-only policy error(s)",
       "functions_occur_in_expected_order": "PASS",
       "relocation_destinations_verified": "PASS"
     },
