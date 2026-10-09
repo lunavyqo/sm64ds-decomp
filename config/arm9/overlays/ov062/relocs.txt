@@ -132,8 +132,8 @@ from:0x02116f44 kind:arm_call to:0x0203b14c module:main
 from:0x02116f68 kind:arm_call to:0x0203b14c module:main
 from:0x02116f7c kind:arm_call to:0x02010180 module:main
 from:0x02116fb0 kind:load to:0x0211df10 module:overlay(62)
-from:0x02116fb4 kind:load to:0x0211df14 module:overlay(62)
-from:0x02116fbc kind:load to:0x0211df18 module:overlay(62)
+from:0x02116fb4 kind:load to:0x0211df10 add:0x4 module:overlay(62)
+from:0x02116fbc kind:load to:0x0211df10 add:0x8 module:overlay(62)
 from:0x02116fcc kind:arm_call to:0x02017b64 module:main
 from:0x02116fd4 kind:arm_call to:0x02017b64 module:main
 from:0x02116fdc kind:arm_call to:0x02017b64 module:main

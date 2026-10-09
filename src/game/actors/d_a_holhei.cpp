@@ -43,14 +43,50 @@
 #include "SurfaceInfo.h"
 #include "Sound.h"
 
-/* Second word is the loaded file. SharedFilePtr.h has no fields.
-   The externs below keep the spellings already banked against
-   __sinit_ov062_0211cf30; this view is only a cast at the use. */
-struct HolheiFile { int id; void *file; };
+/* The six file handles are SharedFilePtr storage: word 0 is the file id, word 1
+   the loaded file. SharedFilePtr.h recovers no fields, so the subclasses carry
+   the two words. The model handle constructs through func_02017acc and destroys
+   through func_02017ab4, the animation handles through SharedFilePtr::Construct
+   and SharedFilePtr_Destruct_Anim; the manifest aliases the members onto the ROM
+   symbols. __sinit_d_a_holhei.cpp constructs all six at file end. */
+struct HolheiModelFilePtr : SharedFilePtr {
+    int id;
+    void *file;
+
+    HolheiModelFilePtr(u32 fileID);
+    ~HolheiModelFilePtr();
+};
+
+struct HolheiAnimationFilePtr : SharedFilePtr {
+    int id;
+    void *file;
+
+    HolheiAnimationFilePtr(u32 fileID);
+    ~HolheiAnimationFilePtr();
+};
+
+/* The two carry offsets are plain Vector3 objects, and `Vector3 v = {...}`
+   cannot produce their init: brace init is constant initialization, so nothing
+   runs in __sinit at all -- no stores, no destructor registration.  Retail
+   splits the two actions because the cartridge object was constructed: this
+   sentinel's constructor body supplies the stores, and the Vector3 defined
+   after it earns only the _ZN7Vector3D1Ev registration.  Each sentinel's own
+   one-byte bss has no cartridge counterpart and is deadstripped in the
+   manifest.  The second offset's stores go through an int* like the shard's
+   own initializer did. */
+struct HolheiVecReg {
+    HolheiVecReg(Vector3 &v, int x, int y, int z) { v.x = x; v.y = y; v.z = z; }
+};
+struct HolheiVecRegB {
+    HolheiVecRegB(Vector3 &v, int x, int y, int z) {
+        int *p = (int *)&v;
+        p[0] = x; p[1] = y; p[2] = z;
+    }
+};
 
 /* daHolhei_c_ChangeState stores a pointer to one of these and calls the
    PMF at offset 0. Behavior calls the PMF at offset 8. The records
-   themselves are filled by __sinit_ov062_0211cf30. */
+   themselves are filled by __sinit_d_a_holhei.cpp. */
 struct C;
 typedef int (C::*PMF)();
 struct C { char pad[0x364]; PMF *pp; };
@@ -96,28 +132,50 @@ extern signed char data_0209f2f8;
 extern int AngleDiff(int a, int b);
 extern unsigned int RandomIntInternal(void* s);
 
-extern int data_ov062_0211ddf0[]; /* model, file id 0x327 */
-extern int data_ov062_0211dde8[]; /* animation 0x328 */
-extern void *data_ov062_0211dde0; /* animation 0x329 */
-extern void *data_ov062_0211de00[]; /* animation 0x32a, grab */
-extern int *data_ov062_0211de08[]; /* animation 0x32b */
-extern void *data_ov062_0211ddf8; /* animation 0x32c, walk */
+extern HolheiModelFilePtr data_ov062_0211ddf0; /* model, file id 0x327 */
+extern HolheiAnimationFilePtr data_ov062_0211dde8; /* animation 0x328 */
+extern HolheiAnimationFilePtr data_ov062_0211dde0; /* animation 0x329 */
+extern HolheiAnimationFilePtr data_ov062_0211de00; /* animation 0x32a, grab */
+extern HolheiAnimationFilePtr data_ov062_0211de08; /* animation 0x32b */
+extern HolheiAnimationFilePtr data_ov062_0211ddf8; /* animation 0x32c, walk */
 
-extern int data_ov062_0211dea0[];
-extern int data_ov062_0211deb0[];
-extern char data_ov062_0211df00[];
-extern char data_ov062_0211de70[];
-extern char data_ov062_0211de90[];
-extern char data_ov062_0211dee0[];
-extern char data_ov062_0211dec0[];
-extern char data_ov062_0211ded0[];
-extern int data_ov062_0211de80[];
-extern int data_ov062_0211def0[];
+/* The ten state records are {enter, update} PMF pairs. The .data words they copy
+   are this class's method descriptors; symbols.txt keeps their data_ov062_*
+   spellings because the ROM has no name for them. */
+extern PMF data_ov062_0211dea0[2];
+extern PMF data_ov062_0211deb0[2];
+extern PMF data_ov062_0211df00[2];
+extern PMF data_ov062_0211de70[2];
+extern PMF data_ov062_0211de90[2];
+extern PMF data_ov062_0211dee0[2];
+extern PMF data_ov062_0211dec0[2];
+extern PMF data_ov062_0211ded0[2];
+extern PMF data_ov062_0211de80[2];
+extern PMF data_ov062_0211def0[2];
 
-/* x, y, z words of two Vector3s, stride 0xc. __sinit writes both triples. */
-extern int data_ov062_0211df10[];
-extern int data_ov062_0211df14[];
-extern int data_ov062_0211df18[];
+extern PMF data_ov062_0211d900;
+extern PMF data_ov062_0211d908;
+extern PMF data_ov062_0211d910;
+extern PMF data_ov062_0211d918;
+extern PMF data_ov062_0211d920;
+extern PMF data_ov062_0211d928;
+extern PMF data_ov062_0211d930;
+extern PMF data_ov062_0211d938;
+extern PMF data_ov062_0211d940;
+extern PMF data_ov062_0211d948;
+extern PMF data_ov062_0211d950;
+extern PMF data_ov062_0211d958;
+extern PMF data_ov062_0211d960;
+extern PMF data_ov062_0211d968;
+extern PMF data_ov062_0211d970;
+extern PMF data_ov062_0211d978;
+extern PMF data_ov062_0211d980;
+extern PMF data_ov062_0211d988;
+extern PMF data_ov062_0211d990;
+extern PMF data_ov062_0211d998;
+
+extern Vector3 data_ov062_0211df10;
+extern Vector3 data_ov062_0211df1c;
 
 extern int func_ov062_02115f84(char* c);
 void func_ov062_02116010(void* self);
@@ -144,12 +202,12 @@ s32 daHolhei_c::OnAimedAtWithEgg() {
    home and previous positions, then the starting state. */
 int daHolhei_c::InitResources()
 {
-    mModel.SetFile((BMD_File *)Model::LoadFile(*(SharedFilePtr *)data_ov062_0211ddf0), 1, -1);
+    mModel.SetFile((BMD_File *)Model::LoadFile(*(SharedFilePtr *)&data_ov062_0211ddf0), 1, -1);
     mShadowModel.InitCylinder();
-    dExtFrameCtrl_c::LoadFile(*(SharedFilePtr *)data_ov062_0211dde8);
+    dExtFrameCtrl_c::LoadFile(*(SharedFilePtr *)&data_ov062_0211dde8);
     dExtFrameCtrl_c::LoadFile(*(SharedFilePtr *)&data_ov062_0211dde0);
-    dExtFrameCtrl_c::LoadFile(*(SharedFilePtr *)data_ov062_0211de00);
-    dExtFrameCtrl_c::LoadFile(*(SharedFilePtr *)data_ov062_0211de08);
+    dExtFrameCtrl_c::LoadFile(*(SharedFilePtr *)&data_ov062_0211de00);
+    dExtFrameCtrl_c::LoadFile(*(SharedFilePtr *)&data_ov062_0211de08);
     dExtFrameCtrl_c::LoadFile(*(SharedFilePtr *)&data_ov062_0211ddf8);
     mVertAccel = -0x3000;
     mTerminalVelocity = -0x1e000;
@@ -283,11 +341,11 @@ void daHolhei_c::OnPendingDestroy()
 // @symbol _ZN10daHolhei_c16CleanupResourcesEv
 int daHolhei_c::CleanupResources()
 {
-    ((SharedFilePtr *)data_ov062_0211ddf0)->Release();
-    ((SharedFilePtr *)data_ov062_0211dde8)->Release();
+    ((SharedFilePtr *)&data_ov062_0211ddf0)->Release();
+    ((SharedFilePtr *)&data_ov062_0211dde8)->Release();
     ((SharedFilePtr *)&data_ov062_0211dde0)->Release();
-    ((SharedFilePtr *)data_ov062_0211de00)->Release();
-    ((SharedFilePtr *)data_ov062_0211de08)->Release();
+    ((SharedFilePtr *)&data_ov062_0211de00)->Release();
+    ((SharedFilePtr *)&data_ov062_0211de08)->Release();
     ((SharedFilePtr *)&data_ov062_0211ddf8)->Release();
     return 1;
 }
@@ -301,9 +359,9 @@ extern "C" void func_ov062_02116edc(void* c_){
     if (self->mHeld->param1 == 2)
         idx = 1;
     int k = idx * 0xc;
-    Math_Function_0203b14c(&self->mCarryOffsX, *(int*)((char*)data_ov062_0211df10 + k), 0x800, 0x3e8000, 4);
-    Math_Function_0203b14c(&self->mCarryOffsY, *(int*)((char*)data_ov062_0211df14 + k), 0x800, 0x3e8000, 4);
-    Math_Function_0203b14c(&self->mCarryOffsZ, *(int*)((char*)data_ov062_0211df18 + k), 0x800, 0x3e8000, 4);
+    Math_Function_0203b14c(&self->mCarryOffsX, *(int*)((char*)&data_ov062_0211df10 + k), 0x800, 0x3e8000, 4);
+    Math_Function_0203b14c(&self->mCarryOffsY, *(int*)((char*)&data_ov062_0211df10 + 4 + k), 0x800, 0x3e8000, 4);
+    Math_Function_0203b14c(&self->mCarryOffsZ, *(int*)((char*)&data_ov062_0211df10 + 8 + k), 0x800, 0x3e8000, 4);
     void* r = self->UpdateCarry(*(Player *)self->mHeld, *(Vector3 *)&self->mCarryOffsX);
     struct M12w { int w[12]; };
     *(M12w *)&self->mModel.mat4x3 = *(M12w *)r;
@@ -371,7 +429,7 @@ int daHolhei_c::func_ov062_02116c78(){
     mTurnWait = 0x3c;
     mChargeStep = 0;
     mModel.speed = 0x1000;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModel, ((HolheiFile *)&data_ov062_0211ddf8)->file, 0, 0x1000, 0);
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModel, data_ov062_0211ddf8.file, 0, 0x1000, 0);
     mTargetAngY = Vec3_HorzAngle(&mPosX, &mHomePosX);
     return 1;
 }
@@ -395,7 +453,7 @@ extern "C" int func_ov062_02116b80(char* c){
     self->mTargetAngY = (short)((RandomIntInternal(data_0209e650) >> 8) << 0xc);
     self->mStateTimer = (short)(((RandomIntInternal(data_0209e650) >> 8) & 0x3f) + 0x64);
     self->mModel.speed = 0x1000;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModel, ((HolheiFile *)&data_ov062_0211ddf8)->file, 0, 0x1000, 0);
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModel, data_ov062_0211ddf8.file, 0, 0x1000, 0);
     return 1;
 }
 
@@ -520,7 +578,7 @@ int daHolhei_c::func_ov062_021167c0(){
 extern "C" int func_ov062_02116784(char *c) {
     daHolhei_c *self = (daHolhei_c *)c;
     self->mChargeStep = 0;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModel, ((HolheiFile *)&data_ov062_0211ddf8)->file, 0, 0x1000, 0);
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModel, data_ov062_0211ddf8.file, 0, 0x1000, 0);
     return 1;
 }
 
@@ -597,7 +655,7 @@ int daHolhei_c::func_ov062_021164e8()
     if (mGrabAnim == 0) {
         t = (mFlags & 0x4000) != 0;
         if (t) {
-            _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModel, ((HolheiFile *)data_ov062_0211de00)->file, 0, 0x1000, 0);
+            _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModel, data_ov062_0211de00.file, 0, 0x1000, 0);
             mGrabAnim = 1;
         }
     }
@@ -667,7 +725,7 @@ extern "C" int func_ov062_021163b0(char* c)
 // @symbol func_ov062_02116368
 extern "C" int func_ov062_02116368(void* c) {
     daHolhei_c *self = (daHolhei_c *)c;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModel, ((HolheiFile *)data_ov062_0211dde8)->file, 0x40000000, 0x1000, 0);
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModel, data_ov062_0211dde8.file, 0x40000000, 0x1000, 0);
     self->mChargeStep = 0;
     return 1;
 }
@@ -687,7 +745,7 @@ extern "C" int func_ov062_0211632c(void* c){
 // @symbol func_ov062_021162b8
 extern "C" int func_ov062_021162b8(char* c){
     daHolhei_c *self = (daHolhei_c *)c;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModel, ((HolheiFile *)&data_ov062_0211dde0)->file, 0, 0x1000, 0);
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModel, data_ov062_0211dde0.file, 0, 0x1000, 0);
     self->mStateTimer = (short)(((RandomIntInternal(data_0209e650) >> 8) & 0x1f) + 0x14);
     self->mTargetAngY = (short)((RandomIntInternal(data_0209e650) >> 8) << 0xc);
     return 1;
@@ -711,7 +769,7 @@ extern "C" int func_ov062_02116274(unsigned char *c)
 // @symbol func_ov062_02116238
 extern "C" int func_ov062_02116238(char *c){
     daHolhei_c *self = (daHolhei_c *)c;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModel, ((HolheiFile *)data_ov062_0211de08)->file, 0x40000000, 0x1000, 0);
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&self->mModel, data_ov062_0211de08.file, 0x40000000, 0x1000, 0);
     return 1;
 }
 
@@ -816,3 +874,28 @@ int func_ov062_02115f84(char* c) {
 }
 }
 }
+
+/* Definition order is the retail initializer's: the model handle, the five
+   animation handles, the two carry-offset vectors, then the ten state records
+   each copied from its method-descriptor pair. mwcc emits __sinit_d_a_holhei.cpp
+   and the destructor-registration nodes from these. */
+HolheiModelFilePtr data_ov062_0211ddf0(0x327);
+HolheiAnimationFilePtr data_ov062_0211dde8(0x328);
+HolheiAnimationFilePtr data_ov062_0211dde0(0x329);
+HolheiAnimationFilePtr data_ov062_0211de00(0x32a);
+HolheiAnimationFilePtr data_ov062_0211de08(0x32b);
+HolheiAnimationFilePtr data_ov062_0211ddf8(0x32c);
+HolheiVecReg holheiVecReg10(data_ov062_0211df10, 0x2c000, -0x14000, -0x78000);
+Vector3 data_ov062_0211df10;
+HolheiVecRegB holheiVecReg1c(data_ov062_0211df1c, 0x44000, -0x14000, -0x78000);
+Vector3 data_ov062_0211df1c;
+PMF data_ov062_0211ded0[2] = {data_ov062_0211d940, data_ov062_0211d938};
+PMF data_ov062_0211dee0[2] = {data_ov062_0211d998, data_ov062_0211d950};
+PMF data_ov062_0211df00[2] = {data_ov062_0211d958, data_ov062_0211d960};
+PMF data_ov062_0211de70[2] = {data_ov062_0211d920, data_ov062_0211d908};
+PMF data_ov062_0211de90[2] = {data_ov062_0211d900, data_ov062_0211d918};
+PMF data_ov062_0211dea0[2] = {data_ov062_0211d980, data_ov062_0211d990};
+PMF data_ov062_0211dec0[2] = {data_ov062_0211d988, data_ov062_0211d930};
+PMF data_ov062_0211def0[2] = {data_ov062_0211d978, data_ov062_0211d910};
+PMF data_ov062_0211de80[2] = {data_ov062_0211d968, data_ov062_0211d928};
+PMF data_ov062_0211deb0[2] = {data_ov062_0211d948, data_ov062_0211d970};

@@ -7,6 +7,9 @@
 src/game/actors/d_a_holhei.cpp:
     complete
     .text start:0x02115ee0 end:0x021174cc
+    .init start:0x0211cf30 end:0x0211d2d8
+    .ctor start:0x0211d8cc end:0x0211d8d0
+    .bss start:0x0211dde0 end:0x0211df28
 
 src/game/actors/d_a_nknk.cpp:
     complete
@@ -23,10 +26,6 @@ src/actors/daRFlag_c.cpp:
 src/actors/daJango_c.cpp:
     complete
     .text start:0x0211b248 end:0x0211ced8
-
-src/unnamed/ov062/__sinit_ov062_0211cf30.c:
-    complete
-    .init start:0x0211cf30 end:0x0211d2d8
 
 src/unnamed/ov062/__sinit_ov062_0211d2d8.c:
     complete
