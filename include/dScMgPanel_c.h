@@ -85,6 +85,36 @@ struct dScMgPanel_c : dScMgBase_c {
     virtual s32 Render();                /* slot 9 */
     virtual void OnYoshiTryEat(int arg); /* slot 18 */
 
+    /* State-table handlers reached through the sinit PMF tables
+       data_ov006_021427bc/27ec/2820/2840/2860/2888. */
+    void func_ov006_02104920(int index);
+    void func_ov006_02104a10(int index);
+    void func_ov006_02104ac0(int index);
+    void func_ov006_02104bac();
+    void func_ov006_02104bb0();
+    void func_ov006_02104c08();
+    void func_ov006_02104ec8();
+    void func_ov006_02104ecc();
+    void func_ov006_02104fb4();
+    void func_ov006_0210500c();
+    void func_ov006_0210508c();
+    void func_ov006_021051dc();
+    void func_ov006_021053a8();
+    void func_ov006_02105670();
+    void func_ov006_02105730();
+    void func_ov006_02106910(int index);
+    void func_ov006_02106a08(int index);
+    void func_ov006_02106aa8(int index);
+    void func_ov006_02106bac(int index);
+    void func_ov006_02106bc0();
+    void func_ov006_02106ca4();
+    void func_ov006_02106eb8();
+    void func_ov006_02106f44();
+    void func_ov006_02106fdc();
+    void func_ov006_0210709c();
+    void func_ov006_0210713c();
+    void func_ov006_021071d4();
+
     /* Intro card slides in on mSlide, then holds. */
     s32 mSlide;              /* 0x4660 Fix12 */
     s32 mSlideY;             /* 0x4664 */
