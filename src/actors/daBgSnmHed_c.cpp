@@ -37,8 +37,27 @@ struct BMD_File;
 struct BTP_File;
 
 extern "C" daBgSnmHed_c::StateFunc data_ov072_02122c00[];
-extern int data_ov072_02122bcc[];
-extern int data_ov072_02122bd4[];
+
+/* Four file-scope objects. mwcc emits __sinit_daBgSnmHed_c.cpp from them.
+ * The model handle and the two texture-sequence handles each carry a
+ * file ID at +0 and the loaded file pointer at +4. */
+struct SnmHedModelFilePtr : SharedFilePtr {
+    u32 words[2];
+
+    SnmHedModelFilePtr(u32 fileID);
+    ~SnmHedModelFilePtr();
+};
+
+struct SnmHedTexSequenceFilePtr : SharedFilePtr {
+    u32 words[2];
+
+    SnmHedTexSequenceFilePtr(u32 fileID);
+    ~SnmHedTexSequenceFilePtr();
+};
+
+extern "C" SnmHedModelFilePtr data_ov072_02122bc4;
+extern "C" SnmHedTexSequenceFilePtr data_ov072_02122bcc;
+extern "C" SnmHedTexSequenceFilePtr data_ov072_02122bd4;
 
 extern "C" {
 void Matrix4x3_FromRotationY(void *matrix, int angle);
@@ -125,7 +144,8 @@ int daBgSnmHed_c::State3()
 int daBgSnmHed_c::InitState3()
 {
     _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(
-        &mTextureSequence, (void *)data_ov072_02122bcc[1], 0, 0x1000, 0);
+        &mTextureSequence, *(void **)((char *)&data_ov072_02122bcc + 4),
+        0, 0x1000, 0);
     mVertAccel = 0;
     mTerminalVelocity = 0;
     mSubstate = 0;
@@ -248,7 +268,8 @@ int daBgSnmHed_c::State0()
 int daBgSnmHed_c::InitState0()
 {
     _ZN15TextureSequence7SetFileER8BTP_Filei5Fix12IiEj(
-        &mTextureSequence, (void *)data_ov072_02122bd4[1], 0, 0x1000, 0);
+        &mTextureSequence, *(void **)((char *)&data_ov072_02122bd4 + 4),
+        0, 0x1000, 0);
     mVertAccel = 0;
     mTerminalVelocity = 0;
     mStateValue = 0;
@@ -279,7 +300,7 @@ void daBgSnmHed_c::SetState(int state)
 // @symbol _ZN12daBgSnmHed_c16CleanupResourcesEv
 int daBgSnmHed_c::CleanupResources()
 {
-    ((SharedFilePtr *)&data_ov072_02122bc4)->Release();
+    data_ov072_02122bc4.Release();
     int r5 = 0;
     do {
         ((SharedFilePtr **)&data_ov072_02121ffc)[r5]->Release();
@@ -317,15 +338,15 @@ int daBgSnmHed_c::InitResources()
     struct Vector3 pos;
     int i;
 
-    mModel.SetFile((BMD_File *)Model::LoadFile(
-                       *(SharedFilePtr *)&data_ov072_02122bc4),
+    mModel.SetFile((BMD_File *)Model::LoadFile(data_ov072_02122bc4),
                    1, -1);
 
     for (i = 0; i < 2; i++) {
         void *tex = ((void **)&data_ov072_02121ffc)[i];
         TextureSequence::LoadFile(*(SharedFilePtr *)tex);
-        TextureSequence::Prepare(*(BMD_File *)((void **)&data_ov072_02122bc4)[1],
-                                 *(BTP_File *)((void **)tex)[1]);
+        TextureSequence::Prepare(
+            **(BMD_File **)((char *)&data_ov072_02122bc4 + 4),
+            *(BTP_File *)((void **)tex)[1]);
     }
 
     _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(
@@ -357,3 +378,18 @@ extern "C" daBgSnmHed_c *daBgSnmHed_c_classInit()
 {
     return new daBgSnmHed_c();
 }
+
+SnmHedModelFilePtr data_ov072_02122bc4(0x2af);
+SnmHedTexSequenceFilePtr data_ov072_02122bd4(0x2ae);
+SnmHedTexSequenceFilePtr data_ov072_02122bcc(0x2b0);
+
+daBgSnmHed_c::StateFunc data_ov072_02122c00[8] = {
+    &daBgSnmHed_c::InitState0,
+    &daBgSnmHed_c::State0,
+    &daBgSnmHed_c::InitState1,
+    &daBgSnmHed_c::State1,
+    &daBgSnmHed_c::InitState2,
+    &daBgSnmHed_c::State2,
+    &daBgSnmHed_c::InitState3,
+    &daBgSnmHed_c::State3,
+};

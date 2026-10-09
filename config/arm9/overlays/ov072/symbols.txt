@@ -91,11 +91,11 @@ daPgBby_c_classInit kind:function(arm,size=0x50) addr:0x02121fac
 data_ov072_02121ffc kind:data(any) addr:0x02121ffc
 data_ov072_02122004 kind:data(any) addr:0x02122004
 __sinit_ov072_02122018 kind:function(arm,size=0x1e0) addr:0x02122018
-__sinit_ov072_021221f8 kind:function(arm,size=0x158) addr:0x021221f8
+__sinit_daBgSnmHed_c.cpp kind:function(arm,size=0x158) addr:0x021221f8
 __sinit_daBgSnwmn_c.cpp kind:function(arm,size=0xc4) addr:0x02122350
 __sinit_ov072_02122414 kind:function(arm,size=0x2f4) addr:0x02122414
 .p__sinit_ov072_02122018 kind:data(word) addr:0x02122708
-.p__sinit_ov072_021221f8 kind:data(word) addr:0x0212270c
+.p__sinit_daBgSnmHed_c.cpp kind:data(word) addr:0x0212270c
 .p__sinit_daBgSnwmn_c.cpp kind:data(word) addr:0x02122710
 .p__sinit_ov072_02122414 kind:data(word) addr:0x02122714
 data_ov072_02122720 kind:data(any) addr:0x02122720
@@ -114,14 +114,14 @@ _ZTI12daBgSnmBdy_c kind:data(any) addr:0x02122780
 _ZTS12daBgSnmBdy_c kind:data(any) addr:0x0212278c
 g_profile_BIG_SNOWMAN_BODY kind:data(any) addr:0x0212279c ambiguous
 _ZTV12daBgSnmBdy_c kind:data(any) addr:0x021227c0
-data_ov072_0212283c kind:data(any) addr:0x0212283c
-data_ov072_02122844 kind:data(any) addr:0x02122844
-data_ov072_0212284c kind:data(any) addr:0x0212284c
-data_ov072_02122854 kind:data(any) addr:0x02122854
-data_ov072_0212285c kind:data(any) addr:0x0212285c
-data_ov072_02122864 kind:data(any) addr:0x02122864
-data_ov072_0212286c kind:data(any) addr:0x0212286c
-data_ov072_02122874 kind:data(any) addr:0x02122874
+@762 kind:data(any) addr:0x0212283c
+@752 kind:data(any) addr:0x02122844
+@754 kind:data(any) addr:0x0212284c
+@761 kind:data(any) addr:0x02122854
+@750 kind:data(any) addr:0x0212285c
+@748 kind:data(any) addr:0x02122864
+@746 kind:data(any) addr:0x0212286c
+@760 kind:data(any) addr:0x02122874
 _ZTI12daBgSnmHed_c kind:data(any) addr:0x0212287c
 _ZTS12daBgSnmHed_c kind:data(any) addr:0x02122888
 g_profile_BIG_SNOWMAN_HEAD kind:data(any) addr:0x02122898 ambiguous
@@ -156,9 +156,9 @@ data_ov072_02122b64 kind:bss addr:0x02122b64
 data_ov072_02122bc4 kind:bss addr:0x02122bc4
 data_ov072_02122bcc kind:bss addr:0x02122bcc
 data_ov072_02122bd4 kind:bss addr:0x02122bd4
-data_ov072_02122bdc kind:bss addr:0x02122bdc
-data_ov072_02122be8 kind:bss addr:0x02122be8
-data_ov072_02122bf4 kind:bss addr:0x02122bf4
+@738 kind:bss addr:0x02122bdc
+@739 kind:bss addr:0x02122be8
+@740 kind:bss addr:0x02122bf4
 data_ov072_02122c00 kind:bss addr:0x02122c00
 data_ov072_02122c08 kind:bss addr:0x02122c08 ambiguous
 data_ov072_02122c40 kind:bss addr:0x02122c40

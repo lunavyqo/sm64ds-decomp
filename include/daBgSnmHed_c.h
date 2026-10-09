@@ -13,7 +13,7 @@
  * slots as dActor_c. The D1/D0 pair and factory independently pin the four
  * owned subobjects and the total allocation size.
  *
- * The four state pairs are recovered from __sinit_ov072_021221f8, which copies
+ * The four state pairs are recovered from __sinit_daBgSnmHed_c.cpp, which copies
  * eight ROM PMF constants into data_ov072_02122c00. SetState indexes that table
  * at state * 0x10 and invokes the first PMF; Behavior invokes the second.
  * Descriptive original names are absent, so the ROM-evidenced indices remain.
