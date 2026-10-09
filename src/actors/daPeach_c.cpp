@@ -74,19 +74,56 @@ extern void _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(
 /* model / animation */
 extern int _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(char *self, void *bca, int frame, int speed, unsigned int flags);
 
-/* ov085 statics. data_ov085_0212f280 and data_ov085_021304f4 keep
- * include/decl_common.h's spelling, so this file adds no new reading of
- * either symbol. */
-extern int data_ov085_0212f280[];      /* the seven animation files */
-extern char data_ov085_021304f4;       /* the model file */
-extern void *data_ov085_021304bc[];
-extern int data_ov085_021304c4[];
-extern void *data_ov085_021304d4[];
-extern int data_ov085_021304e4[];
-extern void *data_ov085_021304ec[];
-extern daPeach_c::StateFunc data_ov085_0213055c[];
+/* The seven animation files, reached by index through this table. */
+extern int data_ov085_0212f280[];
 
 }
+
+/* File handles the static initializer constructs. One model uses
+ * func_02017acc; seven animations use SharedFilePtr::Construct. */
+struct daPeachModelFilePtr : SharedFilePtr {
+    u32 words[2];
+    daPeachModelFilePtr(u32 fileID);
+    ~daPeachModelFilePtr();
+};
+struct daPeachAnimationFilePtr : SharedFilePtr {
+    u32 words[2];
+    daPeachAnimationFilePtr(u32 fileID);
+    ~daPeachAnimationFilePtr();
+};
+typedef char daPeachModelFilePtr_size_must_be_8[sizeof(daPeachModelFilePtr) == 8 ? 1 : -1];
+typedef char daPeachAnimationFilePtr_size_must_be_8[sizeof(daPeachAnimationFilePtr) == 8 ? 1 : -1];
+
+extern daPeachModelFilePtr data_ov085_021304f4;
+extern daPeachAnimationFilePtr data_ov085_021304d4;
+extern daPeachAnimationFilePtr data_ov085_021304c4;
+extern daPeachAnimationFilePtr data_ov085_021304e4;
+extern daPeachAnimationFilePtr data_ov085_021304ec;
+extern daPeachAnimationFilePtr data_ov085_021304cc;
+extern daPeachAnimationFilePtr data_ov085_021304dc;
+extern daPeachAnimationFilePtr data_ov085_021304bc;
+
+/* Ten pointer-to-member constants, five pairs. The constructor copies them
+ * in the retail initializer's order. funcs is at offset 0, so the object's
+ * address is the table SetState indexes. */
+struct PeachStateTable {
+    daPeach_c::StateFunc funcs[10];
+
+    PeachStateTable() {
+        funcs[0] = &daPeach_c::State4;
+        funcs[1] = &daPeach_c::InitState3;
+        funcs[2] = &daPeach_c::InitState1;
+        funcs[3] = &daPeach_c::State3;
+        funcs[4] = &daPeach_c::State1;
+        funcs[5] = &daPeach_c::InitState4;
+        funcs[6] = &daPeach_c::InitState2;
+        funcs[7] = &daPeach_c::State2;
+        funcs[8] = &daPeach_c::State0;
+        funcs[9] = &daPeach_c::InitState0;
+    }
+};
+typedef char PeachStateTable_size_must_be_0x50[sizeof(PeachStateTable) == 0x50 ? 1 : -1];
+extern PeachStateTable data_ov085_0213055c;
 
 #pragma defer_codegen off
 
@@ -229,7 +266,7 @@ int daPeach_c::InitState0()
 // @symbol _ZN9daPeach_c6State0Ev
 int daPeach_c::State0()
 {
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((char *)&mModelAnim, data_ov085_021304ec[1], 0, 0x1000, 0);
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((char *)&mModelAnim, (void *)data_ov085_021304ec.words[1], 0, 0x1000, 0);
     ((dExtFrameCtrl_c *)&mModelAnim)->SetFlags(0x40000000);
     mHorzSpeed = 0x4000;
     mVertSpeed = 0xa000;
@@ -246,7 +283,7 @@ int daPeach_c::State2()
 // @symbol _ZN9daPeach_c10InitState2Ev
 int daPeach_c::InitState2()
 {
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((char *)&mModelAnim, (void *)data_ov085_021304e4[1], 0, 0x1000, 0);
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((char *)&mModelAnim, (void *)data_ov085_021304e4.words[1], 0, 0x1000, 0);
     mHorzSpeed = 0x4000;
     mStateValue = 3;
     return 1;
@@ -266,7 +303,7 @@ int daPeach_c::InitState4()
 // @symbol _ZN9daPeach_c6State1Ev
 int daPeach_c::State1()
 {
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((char *)&mModelAnim, (void *)data_ov085_021304c4[1], 0, 0x1000, 0);
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((char *)&mModelAnim, (void *)data_ov085_021304c4.words[1], 0, 0x1000, 0);
     mHorzSpeed = 0x1800;
     mStateValue = 2;
     return 1;
@@ -308,7 +345,7 @@ int daPeach_c::State3()
 // @symbol _ZN9daPeach_c10InitState1Ev
 int daPeach_c::InitState1()
 {
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((char *)&mModelAnim, data_ov085_021304d4[1], 0, 0x1000, 0);
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((char *)&mModelAnim, (void *)data_ov085_021304d4.words[1], 0, 0x1000, 0);
     ((dExtFrameCtrl_c *)&mModelAnim)->currFrame = 0;
     ((dExtFrameCtrl_c *)&mModelAnim)->Advance();
     mTalkState = 1;
@@ -339,7 +376,7 @@ int daPeach_c::InitState3()
 // @symbol _ZN9daPeach_c6State4Ev
 int daPeach_c::State4()
 {
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((char *)&mModelAnim, (void *)data_ov085_021304bc[1], 0, 0x1000, 0);
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj((char *)&mModelAnim, (void *)data_ov085_021304bc.words[1], 0, 0x1000, 0);
     mStateValue = 0;
     return 1;
 }
@@ -363,7 +400,7 @@ void daPeach_c::CallStateInit()
 // @symbol _ZN9daPeach_c8SetStateEi
 void daPeach_c::SetState(int state)
 {
-    mStateFuncs = data_ov085_0213055c + state * 2;
+    mStateFuncs = data_ov085_0213055c.funcs + state * 2;
     CallStateInit();
 }
 
@@ -461,3 +498,14 @@ extern "C" daPeach_c *daPeach_c_classInit(void)
 {
     return new daPeach_c();
 }
+
+/* Construction order is the retail __sinit order. */
+daPeachModelFilePtr data_ov085_021304f4(0x3f3);
+daPeachAnimationFilePtr data_ov085_021304d4(0x3f7);
+daPeachAnimationFilePtr data_ov085_021304c4(0x3f9);
+daPeachAnimationFilePtr data_ov085_021304e4(0x3f6);
+daPeachAnimationFilePtr data_ov085_021304ec(0x3f0);
+daPeachAnimationFilePtr data_ov085_021304cc(0x3f1);
+daPeachAnimationFilePtr data_ov085_021304dc(0x3f2);
+daPeachAnimationFilePtr data_ov085_021304bc(0x3f4);
+PeachStateTable data_ov085_0213055c;
