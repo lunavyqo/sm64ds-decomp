@@ -65,7 +65,36 @@ struct DaJgmModelFile : SharedFilePtr {
     ~DaJgmModelFile();
 };
 
-extern SharedFilePtr data_ov077_02127c14;
+/* Two file-scope objects emit __sinit_daTgz_c.cpp: the BCA file handle and
+ * the twelve-record state table. The handle's declared-only ctor/dtor pair
+ * gives mwcc a construct + destructor-registration sequence. */
+struct TgzAnimationFileHandle : SharedFilePtr {
+    u32 words[2];
+
+    TgzAnimationFileHandle(u32 fileID);
+    ~TgzAnimationFileHandle();
+};
+
+typedef void (daTgz_c::*TgzState)();
+
+/* PMF record shape {fn, adjustor}: the state routines stayed extern "C"
+ * func_ov077_* free functions, so the records store plain pointers. */
+struct TgzStatePmf { void *fn; int adj; };
+
+extern "C" TgzAnimationFileHandle data_ov077_02127c14;
+extern "C" TgzStatePmf data_ov077_02127c28[12];
+extern "C" TgzStatePmf data_ov077_021278e8;
+extern "C" TgzStatePmf data_ov077_021278f0;
+extern "C" TgzStatePmf data_ov077_021278f8;
+extern "C" TgzStatePmf data_ov077_02127900;
+extern "C" TgzStatePmf data_ov077_02127908;
+extern "C" TgzStatePmf data_ov077_02127910;
+extern "C" TgzStatePmf data_ov077_02127918;
+extern "C" TgzStatePmf data_ov077_02127920;
+extern "C" TgzStatePmf data_ov077_02127928;
+extern "C" TgzStatePmf data_ov077_02127930;
+extern "C" TgzStatePmf data_ov077_02127938;
+extern "C" TgzStatePmf data_ov077_02127940;
 
 extern "C" {
 extern DaJgmModelFile data_ov077_02127b48;
@@ -750,8 +779,6 @@ extern "C" int func_ov077_02125dd4(daTgz_c *self)
     return 1;
 }
 
-typedef void (daTgz_c::*TgzState)();
-
 // @symbol func_ov077_02125e20
 extern "C" void func_ov077_02125e20(daTgz_c *self)
 {
@@ -769,8 +796,7 @@ extern "C" void func_ov077_02125e5c(daTgz_c *self)
 // @symbol func_ov077_02125e94
 extern "C" void func_ov077_02125e94(daTgz_c *self, int i)
 {
-    extern char data_ov077_02127c28[];
-    self->mStateDesc = data_ov077_02127c28 + (i << 4);
+    self->mStateDesc = data_ov077_02127c28 + i * 2;
     func_ov077_02125e5c(self);
 }
 
@@ -870,3 +896,29 @@ extern "C" int *daTgz_c_classInit(void)
 {
     return (int *)new daTgz_c;
 }
+
+/* File-scope objects, in __sinit_daTgz_c.cpp construction order: the BCA
+ * handle, then the six {enter, update} state pairs func_ov077_02125e94
+ * picks from. */
+TgzAnimationFileHandle data_ov077_02127c14(0x42b);
+
+/* The ROM keeps the state records as standalone .data literals whose order
+ * is not the table's; declared here in cartridge order. */
+TgzStatePmf data_ov077_021278e8 = { (void *)&func_ov077_021258dc, 0 };
+TgzStatePmf data_ov077_021278f0 = { (void *)&func_ov077_02125a54, 0 };
+TgzStatePmf data_ov077_021278f8 = { (void *)&func_ov077_02125908, 0 };
+TgzStatePmf data_ov077_02127900 = { (void *)&func_ov077_02125480, 0 };
+TgzStatePmf data_ov077_02127908 = { (void *)&func_ov077_02125b1c, 0 };
+TgzStatePmf data_ov077_02127910 = { (void *)&func_ov077_02125bb4, 0 };
+TgzStatePmf data_ov077_02127918 = { (void *)&func_ov077_02125a0c, 0 };
+TgzStatePmf data_ov077_02127920 = { (void *)&func_ov077_021253a4, 0 };
+TgzStatePmf data_ov077_02127928 = { (void *)&func_ov077_02125dd4, 0 };
+TgzStatePmf data_ov077_02127930 = { (void *)&func_ov077_02125550, 0 };
+TgzStatePmf data_ov077_02127938 = { (void *)&func_ov077_021256b4, 0 };
+TgzStatePmf data_ov077_02127940 = { (void *)&func_ov077_02125830, 0 };
+
+TgzStatePmf data_ov077_02127c28[12] = {
+    data_ov077_02127928, data_ov077_02127910, data_ov077_02127908, data_ov077_021278f0,
+    data_ov077_02127918, data_ov077_021278f8, data_ov077_021278e8, data_ov077_02127940,
+    data_ov077_02127938, data_ov077_02127930, data_ov077_02127900, data_ov077_02127920,
+};
