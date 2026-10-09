@@ -82,6 +82,20 @@ struct daMoray_c : dEnemyBase_c {
     virtual s32 Behavior();
     virtual s32 Render();
     void OnPendingDestroy();
+
+    /* The state handlers, bound through the State rows at 0x02114d7c..0x02114dbc. */
+    int  func_ov016_02111534();                       /* retreat execute */
+    int  BookSwitch_Spawn();                          /* retreat init */
+    int  func_ov016_021115c0();                       /* path swim execute */
+    int  func_ov016_02111718();                       /* path swim init */
+    int  func_ov016_02111758();                       /* lunge execute */
+    int  func_ov016_02111860();                       /* lunge init */
+    int  func_ov016_021118b4();                       /* swim out execute */
+    int  func_ov016_02111994();                       /* swim out init */
+    int  func_ov016_021119ec();                       /* den wait execute */
+    int  func_ov016_02111bac();                       /* den wait init */
+    int  func_ov016_02111bf0(const State *state);     /* install a state */
+    void func_ov016_02111c40();                       /* pose the body */
 };
 
 #ifndef SM64DS_PLATFORM_PC

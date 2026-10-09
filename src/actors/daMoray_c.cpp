@@ -109,20 +109,37 @@ enum {
 
 /* decl_common.h types the four file handles as char[] and the state tables
  * as char / void *. This TU repeats the names it uses. SharedFilePtr.h
- * declares no fields; __sinit_ov016_021136ec constructs each handle with a
+ * declares no fields; __sinit_daMoray_c.cpp constructs each handle with a
  * file id, and SetAnim reads the loaded file at +4. */
 struct MorayFile {
     s32 fileId;                 /* 0x00 */
     void *file;                 /* 0x04 -- the pointer SetAnim is handed */
 };
 
-extern SharedFilePtr data_ov016_02114d38;   /* model, file 0x3b5 */
-extern SharedFilePtr data_ov016_02114d20;   /* lunge anim, file 0x3b6 */
-extern SharedFilePtr data_ov016_02114d30;   /* path-swim anim, file 0x3b7 */
-extern SharedFilePtr data_ov016_02114d28;   /* den / swim-out anim, file 0x3b8 */
+/* The model handle's ctor/dtor are the cartridge's func_02017acc /
+ * func_02017ab4 pair; the manifest aliases these. */
+struct MorayModelFileHandle : SharedFilePtr {
+    s32 fileId;
+    void *file;
+    MorayModelFileHandle(u32 fileID);
+    ~MorayModelFileHandle();
+};
 
-extern "C" {
-/* State tables filled by __sinit_ov016_021136ec from the PMFs at 0x02114878.
+/* The three animation handles construct through SharedFilePtr::Construct
+ * and register SharedFilePtr_Destruct_Anim; the manifest aliases these. */
+struct MorayAnimResFileHandle : SharedFilePtr {
+    s32 fileId;
+    void *file;
+    MorayAnimResFileHandle(u32 fileID);
+    ~MorayAnimResFileHandle();
+};
+
+extern MorayModelFileHandle data_ov016_02114d38;   /* model, file 0x3b5 */
+extern MorayAnimResFileHandle data_ov016_02114d20; /* lunge anim, file 0x3b6 */
+extern MorayAnimResFileHandle data_ov016_02114d30; /* path-swim anim, file 0x3b7 */
+extern MorayAnimResFileHandle data_ov016_02114d28; /* den / swim-out anim, file 0x3b8 */
+
+/* State tables filled by __sinit_daMoray_c.cpp from the PMFs at 0x02114878.
  * 02114d7c retreat (BookSwitch_Spawn, then func_ov016_02111534),
  * 02114d8c den wait, 02114d9c lunge, 02114dac swim out, 02114dbc path swim. */
 extern daMoray_c::State data_ov016_02114d7c;
@@ -130,6 +147,8 @@ extern daMoray_c::State data_ov016_02114d8c;
 extern daMoray_c::State data_ov016_02114d9c;
 extern daMoray_c::State data_ov016_02114dac;
 extern daMoray_c::State data_ov016_02114dbc;
+
+extern "C" {
 extern Vector3 data_ov016_02114d4c;         /* cylinder offset, bss */
 
 extern unsigned char data_0209f220; /* entrance filter */
@@ -167,7 +186,6 @@ void MulVec3Mat4x3(Vector3 *v, Matrix4x3 *m, Vector3 *out);
 void MulMat4x3Mat4x3(void *m1, void *m0, void *mF);
 
 void func_ov016_02111284(void *actor);
-int func_ov016_02111bf0(daMoray_c *self, const daMoray_c::State *state);
 void _ZN6Player4HurtERK7Vector3j5Fix12IiEjjj(void *self, Vector3 *v, u32 a, int fix, u32 b, u32 d, u32 e);
 
 /* Header methods take Fix12<int> by value. Brace-init compiles and homes
@@ -355,18 +373,18 @@ extern "C" void func_ov016_02111284(void *actor)
 
 /* Retreat execute. When the timer set by the retreat init runs out, stops,
    turns back to the spawn angles and returns to den wait. */
-// @symbol func_ov016_02111534
-extern "C" int func_ov016_02111534(daMoray_c *self)
+// @symbol _ZN9daMoray_c19func_ov016_02111534Ev
+int daMoray_c::func_ov016_02111534()
 {
-    if (*(u16 *)&self->mStateTimer == 0) {
-        self->mHorzSpeed = 0;
-        self->mPrevAngleX = self->mInitAngleX;
-        self->mPrevAngleY = self->mInitAngleY;
-        self->mPrevAngleZ = self->mInitAngleZ;
-        self->mAngleX = self->mPrevAngleX;
-        self->mAngleY = self->mPrevAngleY;
-        self->mAngleZ = self->mPrevAngleZ;
-        func_ov016_02111bf0(self, &data_ov016_02114d8c);
+    if (*(u16 *)&this->mStateTimer == 0) {
+        this->mHorzSpeed = 0;
+        this->mPrevAngleX = this->mInitAngleX;
+        this->mPrevAngleY = this->mInitAngleY;
+        this->mPrevAngleZ = this->mInitAngleZ;
+        this->mAngleX = this->mPrevAngleX;
+        this->mAngleY = this->mPrevAngleY;
+        this->mAngleZ = this->mPrevAngleZ;
+        this->func_ov016_02111bf0(&data_ov016_02114d8c);
     }
     return 1;
 }
@@ -374,11 +392,11 @@ extern "C" int func_ov016_02111534(daMoray_c *self)
 /* Retreat init: mStateTimer = 100 frames, mHorzSpeed = 0x14000 (20 units).
    Behavior counts the timer down each frame; func_ov016_02111534 is the only
    state in this file that tests it for 0. */
-// @symbol BookSwitch_Spawn
-extern "C" int BookSwitch_Spawn(daMoray_c *self)
+// @symbol _ZN9daMoray_c16BookSwitch_SpawnEv
+int daMoray_c::BookSwitch_Spawn()
 {
-    self->mStateTimer = 100;
-    self->mHorzSpeed = 0x14000;
+    this->mStateTimer = 100;
+    this->mHorzSpeed = 0x14000;
     return 1;
 }
 
@@ -390,8 +408,8 @@ extern "C" int BookSwitch_Spawn(daMoray_c *self)
    node it plays sound 0xfa and steps to the next node, wrapping to 0 past
    mPathNodeCount. Variant 1 arriving at node 0 instead steps to node 1 and
    enters the retreat state, without the sound. */
-// @symbol func_ov016_021115c0
-extern "C" int func_ov016_021115c0(daMoray_c *self)
+// @symbol _ZN9daMoray_c19func_ov016_021115c0Ev
+int daMoray_c::func_ov016_021115c0()
 {
     PathPtr path;
     Vector3 node;
@@ -400,42 +418,42 @@ extern "C" int func_ov016_021115c0(daMoray_c *self)
     int len;
     short headingToNode;
 
-    path.FromID(self->mPathID);
-    path.GetNode(node, self->mPathNodeIndex);
+    path.FromID(this->mPathID);
+    path.GetNode(node, this->mPathNodeIndex);
 
-    headingToNode = Vec3_HorzAngle((Vector3 *)&self->mPosX, &node);
+    headingToNode = Vec3_HorzAngle((Vector3 *)&this->mPosX, &node);
     {
-        int turn = AngleDiff(headingToNode, self->mPrevAngleY);
-        self->mSegmentAngle[7] = turn / 2;
+        int turn = AngleDiff(headingToNode, this->mPrevAngleY);
+        this->mSegmentAngle[7] = turn / 2;
     }
-    ApproachLinear(self->mPrevAngleY, headingToNode, 0x80);
+    ApproachLinear(this->mPrevAngleY, headingToNode, 0x80);
 
-    ApproachLinear(self->mPrevAngleX, Vec3_VertAngle((Vector3 *)&self->mPosX, &node), 0x80);
+    ApproachLinear(this->mPrevAngleX, Vec3_VertAngle((Vector3 *)&this->mPosX, &node), 0x80);
 
-    Vec3_Sub(&diff, (Vector3 *)&self->mPosX, &node);
+    Vec3_Sub(&diff, (Vector3 *)&this->mPosX, &node);
     len = LenVec3(&diff);
     if (len == 0 || len <= 0xa000) {
-        if (self->mVariant == 1 && self->mPathNodeIndex == 0) {
-            self->mPathNodeIndex = 1;
-            func_ov016_02111bf0(self, &data_ov016_02114d7c);
+        if (this->mVariant == 1 && this->mPathNodeIndex == 0) {
+            this->mPathNodeIndex = 1;
+            this->func_ov016_02111bf0(&data_ov016_02114d7c);
             return 1;
         }
-        self->mPathNodeIndex++;
-        if (self->mPathNodeIndex >= self->mPathNodeCount)
-            self->mPathNodeIndex = 0;
-        func_02012694(0xfa, (const Vector3 *)&self->mCamSpacePosX);
+        this->mPathNodeIndex++;
+        if (this->mPathNodeIndex >= this->mPathNodeCount)
+            this->mPathNodeIndex = 0;
+        func_02012694(0xfa, (const Vector3 *)&this->mCamSpacePosX);
     } else {
         Vec3_MulScalar(&scaled, &diff, cstd::fdiv(0xa000, len));
-        SubVec3((Vector3 *)&self->mPosX, &scaled, (Vector3 *)&self->mPosX);
+        SubVec3((Vector3 *)&this->mPosX, &scaled, (Vector3 *)&this->mPosX);
     }
     return 1;
 }
 
 /* Path-swim init: the looping swim animation. */
-// @symbol func_ov016_02111718
-extern "C" int func_ov016_02111718(daMoray_c *self)
+// @symbol _ZN9daMoray_c19func_ov016_02111718Ev
+int daMoray_c::func_ov016_02111718()
 {
-    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&self->mBlendModelAnim, ((MorayFile *)&data_ov016_02114d30)->file, 8, 0, 0x1000, 0);
+    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&this->mBlendModelAnim, ((MorayFile *)&data_ov016_02114d30)->file, 8, 0, 0x1000, 0);
     return 1;
 }
 
@@ -444,76 +462,76 @@ extern "C" int func_ov016_02111718(daMoray_c *self)
    units) out, or 0x2bc000 (700 units) when the entrance filter is 1,
    at up to 0x14000 (20 units) per frame. When the animation finishes it
    stops and enters swim-out. */
-// @symbol func_ov016_02111758
-extern "C" int func_ov016_02111758(daMoray_c *self)
+// @symbol _ZN9daMoray_c19func_ov016_02111758Ev
+int daMoray_c::func_ov016_02111758()
 {
     Vector3 localOffset;
     Vector3 worldTarget;
     localOffset.x = 0; localOffset.y = 0; localOffset.z = 0;
     worldTarget.x = 0; worldTarget.y = 0; worldTarget.z = 0;
-    unsigned int frame = (unsigned int)self->mBlendModelAnim.currFrame << 4 >> 0x10;
+    unsigned int frame = (unsigned int)this->mBlendModelAnim.currFrame << 4 >> 0x10;
     if (frame >= 0x15 && frame <= 0x3c) {
         if (data_0209f220 == 1) {
             localOffset.z = 0x2bc000;
         } else {
             localOffset.z = 0x1f4000;
         }
-        Matrix4x3_FromRotationY(&data_020a0e68, self->mAngleY);
-        Matrix4x3_ApplyInPlaceToRotationX(&data_020a0e68, self->mAngleX);
+        Matrix4x3_FromRotationY(&data_020a0e68, this->mAngleY);
+        Matrix4x3_ApplyInPlaceToRotationX(&data_020a0e68, this->mAngleX);
         MulVec3Mat4x3(&localOffset, &data_020a0e68, &worldTarget);
-        worldTarget.x += self->mHomePosX;
-        worldTarget.y += self->mHomePosY;
-        worldTarget.z += self->mHomePosZ;
-        _Z14ApproachLinearR7Vector3RKS_5Fix12IiE(*(Vector3 *)&self->mPosX, worldTarget, 0x14000);
+        worldTarget.x += this->mHomePosX;
+        worldTarget.y += this->mHomePosY;
+        worldTarget.z += this->mHomePosZ;
+        _Z14ApproachLinearR7Vector3RKS_5Fix12IiE(*(Vector3 *)&this->mPosX, worldTarget, 0x14000);
     }
-    if (self->mBlendModelAnim.Finished()) {
-        self->mHorzSpeed = 0;
-        func_ov016_02111bf0(self, &data_ov016_02114dac);
+    if (this->mBlendModelAnim.Finished()) {
+        this->mHorzSpeed = 0;
+        this->func_ov016_02111bf0(&data_ov016_02114dac);
     }
     return 1;
 }
 
 /* Lunge init: bite animation with flag bit 30, and the lunge sound. */
-// @symbol func_ov016_02111860
-extern "C" int func_ov016_02111860(daMoray_c *self)
+// @symbol _ZN9daMoray_c19func_ov016_02111860Ev
+int daMoray_c::func_ov016_02111860()
 {
-    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&self->mBlendModelAnim, ((MorayFile *)&data_ov016_02114d20)->file, 8, 0x40000000, 0x1000, 0);
-    func_02012694(0xfa, (const Vector3 *)&self->mCamSpacePosX);
+    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&this->mBlendModelAnim, ((MorayFile *)&data_ov016_02114d20)->file, 8, 0x40000000, 0x1000, 0);
+    func_02012694(0xfa, (const Vector3 *)&this->mCamSpacePosX);
     return 1;
 }
 
 /* Swim-out execute. Moves toward a point 0x76c000 (1900 units) from the home
    point along its facing at up to 0x14000 (20 units) per frame, and enters
    path-swim, with the sound, once within 20 units of it. */
-// @symbol func_ov016_021118b4
-extern "C" int func_ov016_021118b4(daMoray_c *self)
+// @symbol _ZN9daMoray_c19func_ov016_021118b4Ev
+int daMoray_c::func_ov016_021118b4()
 {
     Vector3 localOffset;
     Vector3 worldTarget;
     localOffset.x = 0; localOffset.y = 0; localOffset.z = 0;
     worldTarget.x = 0; worldTarget.y = 0; worldTarget.z = 0;
     localOffset.z = 0x76c000;
-    Matrix4x3_FromRotationY(&data_020a0e68, self->mAngleY);
-    Matrix4x3_ApplyInPlaceToRotationX(&data_020a0e68, self->mAngleX);
+    Matrix4x3_FromRotationY(&data_020a0e68, this->mAngleY);
+    Matrix4x3_ApplyInPlaceToRotationX(&data_020a0e68, this->mAngleX);
     MulVec3Mat4x3(&localOffset, &data_020a0e68, &worldTarget);
-    worldTarget.x += self->mHomePosX;
-    worldTarget.y += self->mHomePosY;
-    worldTarget.z += self->mHomePosZ;
-    _Z14ApproachLinearR7Vector3RKS_5Fix12IiE(*(Vector3 *)&self->mPosX, worldTarget, 0x14000);
-    if (Vec3_Dist((Vector3 *)&self->mPosX, &worldTarget) < 0x14000) {
-        func_02012694(0xfa, (const Vector3 *)&self->mCamSpacePosX);
-        func_ov016_02111bf0(self, &data_ov016_02114dbc);
+    worldTarget.x += this->mHomePosX;
+    worldTarget.y += this->mHomePosY;
+    worldTarget.z += this->mHomePosZ;
+    _Z14ApproachLinearR7Vector3RKS_5Fix12IiE(*(Vector3 *)&this->mPosX, worldTarget, 0x14000);
+    if (Vec3_Dist((Vector3 *)&this->mPosX, &worldTarget) < 0x14000) {
+        func_02012694(0xfa, (const Vector3 *)&this->mCamSpacePosX);
+        this->func_ov016_02111bf0(&data_ov016_02114dbc);
     }
     return 1;
 }
 
 /* Swim-out init: idle animation and the same sound. */
-// @symbol func_ov016_02111994
-extern "C" int func_ov016_02111994(daMoray_c *self)
+// @symbol _ZN9daMoray_c19func_ov016_02111994Ev
+int daMoray_c::func_ov016_02111994()
 {
-    self->unk_400 = 0;
-    func_02012694(0xfa, (const Vector3 *)&self->mCamSpacePosX);
-    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&self->mBlendModelAnim, ((MorayFile *)&data_ov016_02114d28)->file, 8, 0, 0x1000, 0);
+    this->unk_400 = 0;
+    func_02012694(0xfa, (const Vector3 *)&this->mCamSpacePosX);
+    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&this->mBlendModelAnim, ((MorayFile *)&data_ov016_02114d28)->file, 8, 0, 0x1000, 0);
     return 1;
 }
 
@@ -529,8 +547,8 @@ extern "C" int func_ov016_02111994(daMoray_c *self)
    0x224000 (548 units) of a point 0x64000 (100 units) ahead of home. */
 #pragma push
 #pragma opt_propagation off
-// @symbol func_ov016_021119ec
-extern "C" int func_ov016_021119ec(daMoray_c *self)
+// @symbol _ZN9daMoray_c19func_ov016_021119ecEv
+int daMoray_c::func_ov016_021119ec()
 {
     Player *player;
     Vector3 playerPos;
@@ -543,16 +561,16 @@ extern "C" int func_ov016_021119ec(daMoray_c *self)
     int zero;
     int dy;
 
-    if (Vec3_Dist((const Vector3 *)&self->mPosX, (const Vector3 *)&self->mHomePosX) > 0xa000) {
-        _Z14ApproachLinearR7Vector3RKS_5Fix12IiE(*(Vector3 *)&self->mPosX, *(const Vector3 *)&self->mHomePosX, 0x5000);
+    if (Vec3_Dist((const Vector3 *)&this->mPosX, (const Vector3 *)&this->mHomePosX) > 0xa000) {
+        _Z14ApproachLinearR7Vector3RKS_5Fix12IiE(*(Vector3 *)&this->mPosX, *(const Vector3 *)&this->mHomePosX, 0x5000);
         return 1;
     }
 
-    self->mPosX = self->mHomePosX;
-    self->mPosY = self->mHomePosY;
-    self->mPosZ = self->mHomePosZ;
+    this->mPosX = this->mHomePosX;
+    this->mPosY = this->mHomePosY;
+    this->mPosZ = this->mHomePosZ;
 
-    player = self->ClosestPlayer();
+    player = this->ClosestPlayer();
     if (player != 0) {
         /* ACDB order: x,y,z then entrance -- colors y/z as r2 and entrance as r1 */
         const Vector3 *pos = (const Vector3 *)&player->mPosX;
@@ -577,23 +595,23 @@ extern "C" int func_ov016_021119ec(daMoray_c *self)
             world.z = zero;
             thrHorz = 0x495000;
             thrVert = 0x6ee000;
-            Matrix4x3_FromRotationY(&data_020a0e68, self->mAngleY);
-            Matrix4x3_ApplyInPlaceToRotationX(&data_020a0e68, self->mAngleX);
+            Matrix4x3_FromRotationY(&data_020a0e68, this->mAngleY);
+            Matrix4x3_ApplyInPlaceToRotationX(&data_020a0e68, this->mAngleX);
             MulVec3Mat4x3(&local, &data_020a0e68, &world);
-            world.x += self->mHomePosX;
-            world.y += self->mHomePosY;
-            world.z += self->mHomePosZ;
+            world.x += this->mHomePosX;
+            world.y += this->mHomePosY;
+            world.z += this->mHomePosZ;
             if (Vec3_Dist(&playerPos, &world) < 0x224000)
-                func_ov016_02111bf0(self, &data_ov016_02114d9c);
+                this->func_ov016_02111bf0(&data_ov016_02114d9c);
         }
 
-        if (AngleDiff(self->HorzAngleToCPlayer(), self->mAngleY) < thrAng) {
-            if (Vec3_HorzDist((Vector3 *)&self->mPosX, &playerPos) < thrHorz) {
-                dy = self->mPosY - playerPos.y;
+        if (AngleDiff(this->HorzAngleToCPlayer(), this->mAngleY) < thrAng) {
+            if (Vec3_HorzDist((Vector3 *)&this->mPosX, &playerPos) < thrHorz) {
+                dy = this->mPosY - playerPos.y;
                 if (dy < 0)
                     dy = -dy;
                 if (dy < thrVert)
-                    func_ov016_02111bf0(self, &data_ov016_02114d9c);
+                    this->func_ov016_02111bf0(&data_ov016_02114d9c);
             }
         }
     }
@@ -602,30 +620,30 @@ extern "C" int func_ov016_021119ec(daMoray_c *self)
 #pragma pop
 
 /* Den-wait init: the idle animation. */
-// @symbol func_ov016_02111bac
-extern "C" int func_ov016_02111bac(daMoray_c *self)
+// @symbol _ZN9daMoray_c19func_ov016_02111bacEv
+int daMoray_c::func_ov016_02111bac()
 {
-    self->unk_400 = 0;
-    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&self->mBlendModelAnim, ((MorayFile *)&data_ov016_02114d28)->file, 8, 0, 0x1000, 0);
+    this->unk_400 = 0;
+    _ZN14BlendModelAnim7SetAnimER8BCA_Fileii5Fix12IiEt(&this->mBlendModelAnim, ((MorayFile *)&data_ov016_02114d28)->file, 8, 0, 0x1000, 0);
     return 1;
 }
 
 /* Installs a state and runs its init. */
-// @symbol func_ov016_02111bf0
-extern "C" int func_ov016_02111bf0(daMoray_c *self, const daMoray_c::State *state)
+// @symbol _ZN9daMoray_c19func_ov016_02111bf0EPKNS_5StateE
+int daMoray_c::func_ov016_02111bf0(const State *state)
 {
-    self->mState = state;
-    const daMoray_c::State *installed = self->mState;
+    this->mState = state;
+    const daMoray_c::State *installed = this->mState;
     if (installed->init == 0)
         return 1;
-    return (self->*installed->init)();
+    return (this->*installed->init)();
 }
 
 /* Poses the body: the model matrix from position and angles, then each
    segment's world position out of its bone transform, and the carried
    star's matrix off the jaw bone. */
-// @symbol func_ov016_02111c40
-extern "C" void func_ov016_02111c40(daMoray_c *self)
+// @symbol _ZN9daMoray_c19func_ov016_02111c40Ev
+void daMoray_c::func_ov016_02111c40()
 {
     Vector3 localOffset;
     Vector3 worldTarget;
@@ -639,7 +657,7 @@ extern "C" void func_ov016_02111c40(daMoray_c *self)
     dActor_c *star;
     u32 starUniqueID;
 
-    Vec3_Asr(&asr, (Vector3 *)&self->mPosX, 3);
+    Vec3_Asr(&asr, (Vector3 *)&this->mPosX, 3);
     Matrix4x3_FromTranslation(&data_020a0e68, asr.x, asr.y, asr.z);
     localOffset.z = 0;
     localOffset.z = -0x190000;
@@ -648,23 +666,23 @@ extern "C" void func_ov016_02111c40(daMoray_c *self)
     worldTarget.x = 0;
     worldTarget.y = 0;
     worldTarget.z = 0;
-    Matrix4x3_FromRotationY(&data_020a0e68, self->mAngleY);
+    Matrix4x3_FromRotationY(&data_020a0e68, this->mAngleY);
     MulVec3Mat4x3(&localOffset, &data_020a0e68, &worldTarget);
-    Matrix4x3_FromTranslation(&data_020a0e68, (self->mPosX + worldTarget.x) >> 3, self->mPosY >> 3,
-                              (self->mPosZ + worldTarget.z) >> 3);
-    Matrix4x3_ApplyInPlaceToRotationZXYExt(&data_020a0e68, self->mAngleX, self->mAngleY, self->mAngleZ);
-    self->mBlendModelAnim.mat4x3 = data_020a0e68;
-    ApproachLinear(self->mSegmentAngle[6], self->mSegmentAngle[7], 0x40);
+    Matrix4x3_FromTranslation(&data_020a0e68, (this->mPosX + worldTarget.x) >> 3, this->mPosY >> 3,
+                              (this->mPosZ + worldTarget.z) >> 3);
+    Matrix4x3_ApplyInPlaceToRotationZXYExt(&data_020a0e68, this->mAngleX, this->mAngleY, this->mAngleZ);
+    this->mBlendModelAnim.mat4x3 = data_020a0e68;
+    ApproachLinear(this->mSegmentAngle[6], this->mSegmentAngle[7], 0x40);
     i = 0;
-    modelMtx = &self->mBlendModelAnim.mat4x3;
-    self->mSegmentAngle[5] = self->mSegmentAngle[6];
+    modelMtx = &this->mBlendModelAnim.mat4x3;
+    this->mSegmentAngle[5] = this->mSegmentAngle[6];
     /* mSegmentPos[i] / transforms[i] is 0x10 smaller than this walk
        (func_ov016_02111c40 0x2f8 -> 0x2e8). row steps one Vector3 at a time
        so the clear and the << 3 hit mSegmentPos[i] through the actor base;
        pos receives the bone translation before that shift. */
-    row = self;
+    row = this;
     transformOffset = i;
-    pos = self->mSegmentPos;
+    pos = this->mSegmentPos;
     zero[0] = i;
     do {
         Matrix4x3 *dst;
@@ -673,7 +691,7 @@ extern "C" void func_ov016_02111c40(daMoray_c *self)
         row->mSegmentPos[0].z = zero[0];
         dst = &data_020a0e68;
         *dst = *modelMtx;
-        MulMat4x3Mat4x3((char *)self->mBlendModelAnim.data.transforms + transformOffset, dst, dst);
+        MulMat4x3Mat4x3((char *)this->mBlendModelAnim.data.transforms + transformOffset, dst, dst);
         pos->x = dst->m[9];
         pos->y = dst->m[10];
         pos->z = dst->m[11];
@@ -685,7 +703,7 @@ extern "C" void func_ov016_02111c40(daMoray_c *self)
         pos++;
         i++;
     } while (i < 7);
-    starUniqueID = self->mStarUniqueID;
+    starUniqueID = this->mStarUniqueID;
     if (starUniqueID == 0) {
         return;
     }
@@ -693,21 +711,21 @@ extern "C" void func_ov016_02111c40(daMoray_c *self)
     if (star == 0) {
         return;
     }
-    self->mStarPos.x = 0;
-    self->mStarPos.y = 0;
-    self->mStarPos.z = 0;
-    MulMat4x3Mat4x3(&self->mBlendModelAnim.data.transforms[4], &self->mBlendModelAnim.mat4x3, &self->mStarMtx);
+    this->mStarPos.x = 0;
+    this->mStarPos.y = 0;
+    this->mStarPos.z = 0;
+    MulMat4x3Mat4x3(&this->mBlendModelAnim.data.transforms[4], &this->mBlendModelAnim.mat4x3, &this->mStarMtx);
     Matrix4x3_FromTranslation(&data_020a0e68, 0x28000, 0, 0);
-    Matrix4x3_ApplyInPlaceToRotationXYZExt(&data_020a0e68, 0x4000, -0x8000, self->mStarSpinAngle);
-    MulMat4x3Mat4x3(&data_020a0e68, &self->mStarMtx, &self->mStarMtx);
-    data_020a0e68 = self->mStarMtx;
-    self->mStarPos.x = data_020a0e68.m[9];
-    self->mStarPos.y = data_020a0e68.m[10];
-    self->mStarPos.z = data_020a0e68.m[11];
-    self->mStarPos.x <<= 3;
-    self->mStarPos.y <<= 3;
-    self->mStarPos.z <<= 3;
-    ((MorayStarCarrier *)star)->mtx = &self->mStarMtx;
+    Matrix4x3_ApplyInPlaceToRotationXYZExt(&data_020a0e68, 0x4000, -0x8000, this->mStarSpinAngle);
+    MulMat4x3Mat4x3(&data_020a0e68, &this->mStarMtx, &this->mStarMtx);
+    data_020a0e68 = this->mStarMtx;
+    this->mStarPos.x = data_020a0e68.m[9];
+    this->mStarPos.y = data_020a0e68.m[10];
+    this->mStarPos.z = data_020a0e68.m[11];
+    this->mStarPos.x <<= 3;
+    this->mStarPos.y <<= 3;
+    this->mStarPos.z <<= 3;
+    ((MorayStarCarrier *)star)->mtx = &this->mStarMtx;
 }
 
 // @symbol _ZN9daMoray_c16CleanupResourcesEv
@@ -763,7 +781,7 @@ s32 daMoray_c::Behavior()
     mAngleX = mPrevAngleX;
     mAngleY = mPrevAngleY;
     mAngleZ = mPrevAngleZ;
-    func_ov016_02111c40(this);
+    this->func_ov016_02111c40();
 
     starUniqueID = mStarUniqueID;
     if (starUniqueID != 0) {
@@ -868,7 +886,7 @@ check_param2:
     if (mPathNodeIndex >= mPathNodeCount)
         mPathNodeIndex = 4;
     mPosY = mHomePosY;
-    func_ov016_02111bf0(this, &data_ov016_02114d8c);
+    this->func_ov016_02111bf0(&data_ov016_02114d8c);
     goto tail;
 ret0_a:
     return 0;
@@ -890,7 +908,7 @@ check_param1:
         spawned->mFlags = 0;
         _ZN8dActor_c9SetRangesE5Fix12IiES1_S1_S1_(spawned, 0, 0x3e8000, 0x1f40000, 0x1f40000);
     }
-    func_ov016_02111bf0(this, &data_ov016_02114d8c);
+    this->func_ov016_02111bf0(&data_ov016_02114d8c);
     goto tail;
 ret0_b:
     return 0;
@@ -909,7 +927,7 @@ check_param0:
     }
     mPrevAngleY = Vec3_HorzAngle((Vector3 *)&mPosX, &node);
     mAngleY = mPrevAngleY;
-    func_ov016_02111bf0(this, &data_ov016_02114dbc);
+    this->func_ov016_02111bf0(&data_ov016_02114dbc);
     goto tail;
 ret0_c:
     return 0;
@@ -974,3 +992,29 @@ extern "C" daMoray_c *daMoray_c_classInit()
     }
     return p;
 }
+
+/* Construction order is source order: the four file handles first, then the
+ * five State rows in the order the initializer copies them. The registration
+ * nodes and the PMF literals are compiler temporaries. */
+MorayModelFileHandle data_ov016_02114d38(0x3b5);
+MorayAnimResFileHandle data_ov016_02114d20(0x3b6);
+MorayAnimResFileHandle data_ov016_02114d30(0x3b7);
+MorayAnimResFileHandle data_ov016_02114d28(0x3b8);
+
+daMoray_c::State data_ov016_02114d8c = { &daMoray_c::func_ov016_02111bac,
+                                       &daMoray_c::func_ov016_021119ec };
+daMoray_c::State data_ov016_02114d9c = { &daMoray_c::func_ov016_02111860,
+                                       &daMoray_c::func_ov016_02111758 };
+daMoray_c::State data_ov016_02114dac = { &daMoray_c::func_ov016_02111994,
+                                       &daMoray_c::func_ov016_021118b4 };
+daMoray_c::State data_ov016_02114dbc = { &daMoray_c::func_ov016_02111718,
+                                       &daMoray_c::func_ov016_021115c0 };
+daMoray_c::State data_ov016_02114d7c = { &daMoray_c::BookSwitch_Spawn,
+                                       &daMoray_c::func_ov016_02111534 };
+
+/* The cylinder offset is a plain three-int scratch object: the retail image
+ * has no destructor registration for it, so it is defined in C mode, where
+ * Vector3 is POD and no .init entry is emitted. */
+#pragma cplusplus off
+Vector3 data_ov016_02114d4c;
+#pragma cplusplus on
