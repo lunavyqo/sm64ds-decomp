@@ -32,6 +32,25 @@ struct daObjBk_Dossunbar_c : dBgActor_c {
     virtual void OnHitByMegaChar(Player &player);
     virtual void Kill();
 
+    void func_ov015_02111fb8(int idx);                /* install a state */
+
+    /* The 14 state handlers; the two .bss dispatch tables hold PMFs to
+       these. */
+    void func_ov015_02111ce0();                       /* state 6 body */
+    void func_ov015_02111d28();                       /* state 6 enter */
+    void func_ov015_02111d4c();                       /* state 5 body */
+    void func_ov015_02111d8c();                       /* state 5 enter */
+    void func_ov015_02111d98();                       /* state 4 body */
+    void func_ov015_02111dd4();                       /* state 4 enter */
+    void func_ov015_02111df4();                       /* state 3 body */
+    void func_ov015_02111e60();                       /* state 3 enter */
+    void func_ov015_02111e80();                       /* state 2 body */
+    void func_ov015_02111ee0();                       /* state 2 enter */
+    void func_ov015_02111eec();                       /* state 1 body */
+    void func_ov015_02111f4c();                       /* state 1 enter */
+    void func_ov015_02111f6c();                       /* state 0 body */
+    void func_ov015_02111fac();                       /* state 0 enter */
+
     static void *operator new(unsigned long size) {
         return _ZN7fBase_cnwEj(size);
     }

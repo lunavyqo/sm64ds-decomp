@@ -766,6 +766,14 @@
    "ref": "tools/deepen_rtti.py"
   },
   {
+   "file": "notes/sinit-dossunbar-interior-bss-labels.md",
+   "ref": "notes/sinit-bmb-interior-bss-labels.md"
+  },
+  {
+   "file": "notes/sinit-dossunbar-interior-bss-labels.md",
+   "ref": "src/unnamed/ov015/__sinit_ov015_02113048.c"
+  },
+  {
    "file": "notes/sinit-ownership-pilot-ov002.md",
    "ref": "src/unnamed/ov002/__sinit_ov002_02100938.c"
   },

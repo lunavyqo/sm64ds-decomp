@@ -1322,6 +1322,7 @@
     "src/game/actors/d_a_obj_bk_dossunbar.cpp#_ZN19daObjBk_Dossunbar_c6RenderEv": "tangosdev",
     "src/game/actors/d_a_obj_bk_dossunbar.cpp#_ZN19daObjBk_Dossunbar_c8BehaviorEv": "andrewboudreau",
     "src/game/actors/d_a_obj_bk_dossunbar.cpp#_ZN19daObjBk_Dossunbar_c13InitResourcesEv": "tangosdev",
+    "src/game/actors/d_a_obj_bk_dossunbar.cpp#__sinit_d_a_obj_bk_dossunbar.cpp": "andrewboudreau",
     "src/game/actors/d_a_obj_bk_dossunbar.cpp#daObjBk_Dossunbar_c_classInit_BK_DOSSUNBAR_L": "andrewboudreau",
     "src/game/actors/d_a_obj_bk_dossunbar.cpp#daObjBk_Dossunbar_c_classInit_BK_DOSSUNBAR_S": "andrewboudreau",
     "src/game/actors/d_a_obj_bk_dossunbar.cpp#d_a_obj_bk_dossunbar_bk_dossunbar_l": "andrewboudreau",
