@@ -127,6 +127,9 @@ src/game/actors/d_a_obj_waterfall.cpp:
 src/actors/daObjMarioCap_c.cpp:
     complete
     .text start:0x020b6f18 end:0x020b8bf0
+    .init start:0x02101064 end:0x02101478
+    .ctor start:0x021080f0 end:0x021080f4
+    .bss start:0x0210de00 end:0x0210df94
 
 src/game/actors/daObjPushblock_c.cpp:
     complete
@@ -1247,6 +1250,10 @@ src/d_a_ply.cpp:
 src/actors/daStar_c.cpp:
     complete
     .text start:0x020e6c40 end:0x020ebe5c
+    .init start:0x02106e40 end:0x02107118
+    .ctor start:0x02108114 end:0x02108118
+    .data start:0x0210a990 end:0x0210aa00
+    .bss start:0x02110924 end:0x02110a48
 
 src/actors/StarCamera_Spawn.cpp:
     complete
@@ -1278,43 +1285,7 @@ src/actors/daYegg_c.cpp:
 
 src/actors/dBgActor_c.cpp:
     complete
-    .text start:0x020ee42c end:0x020eea84
-
-src/unnamed/ov002/func_ov002_020eea84.c:
-    complete
-    .text start:0x020eea84 end:0x020eeca8
-
-src/unnamed/ov002/func_ov002_020eeca8.cpp:
-    complete
-    .text start:0x020eeca8 end:0x020eed24
-
-src/unnamed/ov002/func_ov002_020eed24.cpp:
-    complete
-    .text start:0x020eed24 end:0x020eedc0
-
-src/unnamed/ov002/func_ov002_020eedc0.cpp:
-    complete
-    .text start:0x020eedc0 end:0x020eee3c
-
-src/unnamed/ov002/func_ov002_020eee3c.cpp:
-    complete
-    .text start:0x020eee3c end:0x020eeeb8
-
-src/unnamed/ov002/func_ov002_020eeeb8.cpp:
-    complete
-    .text start:0x020eeeb8 end:0x020ef070
-
-src/unnamed/ov002/func_ov002_020ef070.cpp:
-    complete
-    .text start:0x020ef070 end:0x020ef228
-
-src/unnamed/ov002/func_ov002_020ef228.cpp:
-    complete
-    .text start:0x020ef228 end:0x020ef2a4
-
-src/unnamed/ov002/func_ov002_020ef2a4.cpp:
-    complete
-    .text start:0x020ef2a4 end:0x020ef320
+    .text start:0x020ee42c end:0x020ef320
 
 src/actors/dPathLiftActor_c.cpp:
     complete
@@ -1441,10 +1412,6 @@ src/unnamed/ov002/__sinit_ov002_02100f84.c:
     complete
     .init start:0x02100f84 end:0x02101064
 
-src/unnamed/ov002/__sinit_ov002_02101064.c:
-    complete
-    .init start:0x02101064 end:0x02101478
-
 src/unnamed/ov002/__sinit_ov002_021014e4.c:
     complete
     .init start:0x021014e4 end:0x02101588
@@ -1456,10 +1423,6 @@ src/unnamed/ov002/__sinit_ov002_02101894.c:
 src/unnamed/ov002/__sinit_ov002_021019d0.c:
     complete
     .init start:0x021019d0 end:0x02106e40
-
-src/unnamed/ov002/__sinit_ov002_02106e40.c:
-    complete
-    .init start:0x02106e40 end:0x02107118
 
 src/unnamed/ov002/__sinit_ov002_02107118.c:
     complete
