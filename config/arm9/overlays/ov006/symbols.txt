@@ -2192,7 +2192,7 @@ __sinit_ov006_021322bc kind:function(arm,size=0x5d8) addr:0x021322bc
 __sinit_ov006_02132894 kind:function(arm,size=0xdc) addr:0x02132894
 __sinit_ov006_02132970 kind:function(arm,size=0x5f8) addr:0x02132970
 __sinit_dScMgTeresa_c.cpp kind:function(arm,size=0x2c4) addr:0x02132f68
-__sinit_ov006_0213322c kind:function(arm,size=0x40) addr:0x0213322c
+__sinit_d_s_mg_trampoline2.cpp kind:function(arm,size=0x40) addr:0x0213322c
 __sinit_ov006_0213326c kind:function(arm,size=0x174) addr:0x0213326c
 __sinit_ov006_021333e0 kind:function(arm,size=0x18c) addr:0x021333e0
 .p__sinit_ov006_0212f4c4 kind:data(word) addr:0x0213356c
@@ -2223,7 +2223,7 @@ __sinit_ov006_021333e0 kind:function(arm,size=0x18c) addr:0x021333e0
 .p__sinit_ov006_02132894 kind:data(word) addr:0x021335d0
 .p__sinit_ov006_02132970 kind:data(word) addr:0x021335d4
 .p__sinit_dScMgTeresa_c.cpp kind:data(word) addr:0x021335d8
-.p__sinit_ov006_0213322c kind:data(word) addr:0x021335dc
+.p__sinit_d_s_mg_trampoline2.cpp kind:data(word) addr:0x021335dc
 .p__sinit_ov006_0213326c kind:data(word) addr:0x021335e0
 .p__sinit_ov006_021333e0 kind:data(word) addr:0x021335e4
 data_ov006_02133600 kind:data(any) addr:0x02133600
@@ -4856,7 +4856,7 @@ data_ov006_02142f74 kind:bss addr:0x02142f74
 data_ov006_02142f78 kind:bss addr:0x02142f78
 data_ov006_02142f7c kind:bss addr:0x02142f7c
 data_ov006_02142f80 kind:bss addr:0x02142f80
-data_ov006_02142f88 kind:bss addr:0x02142f88
+@1086 kind:bss addr:0x02142f88
 data_ov006_02142f94 kind:bss addr:0x02142f94
 data_ov006_02143004 kind:bss addr:0x02143004
 data_ov006_02143008 kind:bss addr:0x02143008

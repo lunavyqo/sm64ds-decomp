@@ -2810,6 +2810,7 @@
     "src/minigames/d_s_mg_trampoline2.cpp#_ZN18dScMgTrampoline2_c13OnYoshiTryEatEi": "github-actions[bot]",
     "src/minigames/d_s_mg_trampoline2.cpp#_ZN18dScMgTrampoline2_c13InitResourcesEv": "github-actions[bot]",
     "src/minigames/d_s_mg_trampoline2.cpp#MgTrampolineTerror": "andrewboudreau",
+    "src/minigames/d_s_mg_trampoline2.cpp#__sinit_d_s_mg_trampoline2.cpp": "tangosdev",
     "src/minigames/d_s_mg_trampoline2.cpp#dScMgTrampoline2_c_classInit": "lunavyqo",
     "src/minigames/d_s_mg_trampoline2.cpp#func_ov006_021248a8": "github-actions[bot]",
     "src/minigames/d_s_mg_trampoline.cpp#dScMgTrampoline_c_classInit": "lunavyqo",
