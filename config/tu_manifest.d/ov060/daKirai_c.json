@@ -371,7 +371,7 @@
       },
       "tuRange": {
         "start": "0x02118438",
-        "end": "0x02118cbc",
+        "end": "0x02118cfc",
         "differingBytes": 0,
         "firstDiff": null
       },
@@ -379,7 +379,7 @@
         {
           "section": ".text",
           "start": "0x02118438",
-          "end": "0x02118cbc",
+          "end": "0x02118cfc",
           "differingBytes": 0,
           "firstDiff": null
         },
@@ -411,13 +411,12 @@
           "comparison": "NOBITS -- symbol/module gates"
         }
       ],
-      "linkedStorageAliases": null,
       "objectAudit": {
         "counts": {
-          "LICENSED": 24
+          "LICENSED": 25
         },
-        "orderOk": true,
-        "nonLicensed": [],
+        "emittedTextOrderIsRomAscending": true,
+        "nonLicensedSymbols": [],
         "unlicensedSections": []
       },
       "nontextSectionOrder": {
@@ -425,38 +424,20 @@
           {
             "section": ".init",
             "original": [
-              64
+              66
             ],
             "desired": [
-              64
-            ],
-            "anchors": {
-              "64": [
-                {
-                  "symbol": "__sinit_daKirai_c.cpp",
-                  "address": 34710408,
-                  "sectionBase": 34710408
-                }
-              ]
-            }
+              66
+            ]
           },
           {
             "section": ".ctor",
             "original": [
-              62
+              64
             ],
             "desired": [
-              62
-            ],
-            "anchors": {
-              "62": [
-                {
-                  "symbol": ".p__sinit_daKirai_c.cpp",
-                  "address": 34710732,
-                  "sectionBase": 34710732
-                }
-              ]
-            }
+              64
+            ]
           },
           {
             "section": ".data",
@@ -471,37 +452,7 @@
               45,
               43,
               41
-            ],
-            "anchors": {
-              "39": [
-                {
-                  "symbol": "@707",
-                  "address": 34712112,
-                  "sectionBase": 34712112
-                }
-              ],
-              "41": [
-                {
-                  "symbol": "@709",
-                  "address": 34712136,
-                  "sectionBase": 34712136
-                }
-              ],
-              "43": [
-                {
-                  "symbol": "@711",
-                  "address": 34712128,
-                  "sectionBase": 34712128
-                }
-              ],
-              "45": [
-                {
-                  "symbol": "@713",
-                  "address": 34712120,
-                  "sectionBase": 34712120
-                }
-              ]
-            }
+            ]
           },
           {
             "section": ".bss",
@@ -514,30 +465,7 @@
               38,
               37,
               47
-            ],
-            "anchors": {
-              "37": [
-                {
-                  "symbol": "@705",
-                  "address": 34714060,
-                  "sectionBase": 34714060
-                }
-              ],
-              "38": [
-                {
-                  "symbol": "data_ov060_0211b1c4",
-                  "address": 34714052,
-                  "sectionBase": 34714052
-                }
-              ],
-              "47": [
-                {
-                  "symbol": "data_ov060_0211b1d8",
-                  "address": 34714072,
-                  "sectionBase": 34714072
-                }
-              ]
-            }
+            ]
           }
         ],
         "objisolate": {
@@ -586,8 +514,10 @@
           "sectionLinks": 0,
           "sectionInfos": 4,
           "error": null
-        }
+        },
+        "errors": null
       },
+      "linkedStorageAliases": null,
       "symbolCheckNewVsBaseline": [],
       "symbolCheckErrors": [
         "[ERROR] Symbol '_deq' in ITCM at 0x01ff9d40 not found in linked binary",

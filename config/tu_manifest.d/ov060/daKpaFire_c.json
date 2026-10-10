@@ -425,7 +425,7 @@
       },
       "tuRange": {
         "start": "0x02116484",
-        "end": "0x02117938",
+        "end": "0x02117980",
         "differingBytes": 0,
         "firstDiff": null
       },
@@ -433,7 +433,7 @@
         {
           "section": ".text",
           "start": "0x02116484",
-          "end": "0x02117938",
+          "end": "0x02117980",
           "differingBytes": 0,
           "firstDiff": null
         },
@@ -460,7 +460,7 @@
       ],
       "objectAudit": {
         "counts": {
-          "LICENSED": 30
+          "LICENSED": 31
         },
         "emittedTextOrderIsRomAscending": true,
         "nonLicensedSymbols": [],
@@ -471,19 +471,19 @@
           {
             "section": ".init",
             "original": [
-              76
+              78
             ],
             "desired": [
-              76
+              78
             ]
           },
           {
             "section": ".ctor",
             "original": [
-              74
+              76
             ],
             "desired": [
-              74
+              76
             ]
           },
           {

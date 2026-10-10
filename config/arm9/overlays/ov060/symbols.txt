@@ -238,7 +238,7 @@ _ZTI10daKpa2Bg_c kind:data(any) addr:0x0211a870
 _ZTS10daKpa2Bg_c kind:data(any) addr:0x0211a87c
 g_profile_KOOPA2BG kind:data(any) addr:0x0211a88c
 _ZTV10daKpa2Bg_c kind:data(any) addr:0x0211a8b0
-@481 kind:data(any) addr:0x0211a930
+@506 kind:data(any) addr:0x0211a930
 @477 kind:data(any) addr:0x0211a938
 @479 kind:data(any) addr:0x0211a940
 _ZTI10daKpa3Bg_c kind:data(any) addr:0x0211a948
