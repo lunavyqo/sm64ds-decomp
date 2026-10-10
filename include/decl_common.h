@@ -830,7 +830,6 @@ extern int data_ov006_02140830;
 extern int data_ov006_02140840;
 extern int data_ov006_02141a44;
 extern int data_ov006_021421b4;
-extern int data_ov006_021421c4;
 /* data_ov006_021424fc / _02142500 / _02142504 / _02142508 are the four
    globals of one intrusive doubly-linked Node list (two cursors, head,
    tail). The 19 one-function legacy files each declared them differently
