@@ -782,6 +782,10 @@
    "ref": "src/unnamed/ov002/__sinit_ov002_02100938.c"
   },
   {
+   "file": "notes/sinit-ownership-wave-edges.md",
+   "ref": "src/unnamed/ov002/__sinit_ov002_02107304.c"
+  },
+  {
    "file": "notes/sinit-ownership-wave-resource-handles.md",
    "ref": "src/unnamed/ov009/__sinit_ov009_02112458.c"
   },
@@ -803,11 +807,11 @@
   },
   {
    "file": "notes/src-domain-buckets.md",
-   "ref": "src/unnamed/ov063"
+   "ref": "src/ui/messages"
   },
   {
    "file": "notes/src-domain-buckets.md",
-   "ref": "src/ui/messages"
+   "ref": "src/unnamed/ov063"
   },
   {
    "file": "notes/tu-cpp-census-2026-08.md",
