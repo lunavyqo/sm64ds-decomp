@@ -3088,9 +3088,6 @@
       "src/unnamed/ov043/__sinit_ov043_021117fc.c": [
         "kind:data"
       ],
-      "src/unnamed/ov043/__sinit_ov043_02111868.c": [
-        "kind:data"
-      ],
       "src/unnamed/ov043/__sinit_ov043_021118d4.c": [
         "kind:data"
       ],
@@ -21937,9 +21934,6 @@
       "src/unnamed/ov043/__sinit_ov043_021117fc.c": [
         "kind:data"
       ],
-      "src/unnamed/ov043/__sinit_ov043_02111868.c": [
-        "kind:data"
-      ],
       "src/unnamed/ov043/__sinit_ov043_021118d4.c": [
         "kind:data"
       ],
@@ -22576,9 +22570,6 @@
       "src/unnamed/ov043/__sinit_ov043_021117fc.c": [
         "return:void"
       ],
-      "src/unnamed/ov043/__sinit_ov043_02111868.c": [
-        "return:void"
-      ],
       "src/unnamed/ov043/__sinit_ov043_021118d4.c": [
         "return:void"
       ],
@@ -23092,9 +23083,6 @@
         "return:void"
       ],
       "src/unnamed/ov043/__sinit_ov043_021117fc.c": [
-        "return:void"
-      ],
-      "src/unnamed/ov043/__sinit_ov043_02111868.c": [
         "return:void"
       ],
       "src/unnamed/ov043/__sinit_ov043_021118d4.c": [
