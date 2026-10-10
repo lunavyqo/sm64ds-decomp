@@ -130,14 +130,14 @@
       "evidence": "model resource handle constructed with file ID 1715; Model::LoadFile consumes it in InitResources"
     },
     {
-      "symbol": "@773",
+      "symbol": "@801",
       "address": "0x02113bd0",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the collision handle"
     },
     {
-      "symbol": "@772",
+      "symbol": "@800",
       "address": "0x02113bdc",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -434,7 +434,7 @@
             "anchors": {
               "23": [
                 {
-                  "symbol": "@772",
+                  "symbol": "@800",
                   "address": 34683868,
                   "sectionBase": 34683868
                 }
@@ -448,7 +448,7 @@
               ],
               "25": [
                 {
-                  "symbol": "@773",
+                  "symbol": "@801",
                   "address": 34683856,
                   "sectionBase": 34683856
                 }
@@ -691,13 +691,13 @@
       "evidence": "mwcc emits the ctor-table object local; DSD exposes owned symbols globally and cannot encode a local symbols.txt entry"
     },
     {
-      "symbol": "@772",
+      "symbol": "@800",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02113bdc"
     },
     {
-      "symbol": "@773",
+      "symbol": "@801",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02113bd0"
@@ -769,7 +769,7 @@
       "source": "0x02112c6c",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@772",
+      "symbol": "@800",
       "addend": 0,
       "target_module": "ov018",
       "target_address": "0x02113bdc"
@@ -799,7 +799,7 @@
       "source": "0x02112c7c",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@773",
+      "symbol": "@801",
       "addend": 0,
       "target_module": "ov018",
       "target_address": "0x02113bd0"
