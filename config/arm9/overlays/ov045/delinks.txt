@@ -23,6 +23,9 @@ src/actors/daObjKm2_Nobiru_c.cpp:
 src/game/actors/d_a_obj_km2_ukishima.cpp:
     complete
     .text start:0x02111b14 end:0x02111c30
+    .init start:0x021122ec end:0x02112358
+    .ctor start:0x02112438 end:0x0211243c
+    .bss start:0x021131f8 end:0x02113220
 
 src/game/actors/d_a_obj_km2_gura.cpp:
     complete
@@ -40,10 +43,6 @@ src/unnamed/ov045/__sinit_ov045_021121a8.c:
 src/unnamed/ov045/__sinit_ov045_02112280.c:
     complete
     .init start:0x02112280 end:0x021122ec
-
-src/unnamed/ov045/__sinit_ov045_021122ec.c:
-    complete
-    .init start:0x021122ec end:0x02112358
 
 src/unnamed/ov045/__sinit_ov045_02112358.c:
     complete
