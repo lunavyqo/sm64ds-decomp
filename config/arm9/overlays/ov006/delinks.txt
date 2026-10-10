@@ -66,6 +66,9 @@ src/d_s_mg_bomroom.cpp:
 src/minigames/d_s_mg_card.cpp:
     complete
     .text start:0x020d95a4 end:0x020dbe40
+    .init start:0x021300b0 end:0x0213014c
+    .ctor start:0x02133584 end:0x02133588
+    .bss start:0x02141774 end:0x021417b0
 
 src/actors/dScMgCoin_c.cpp:
     complete
@@ -269,10 +272,6 @@ src/unnamed/ov006/__sinit_ov006_0212fc7c.c:
 src/unnamed/ov006/__sinit_ov006_0212fd48.c:
     complete
     .init start:0x0212fd48 end:0x021300b0
-
-src/unnamed/ov006/__sinit_ov006_021300b0.c:
-    complete
-    .init start:0x021300b0 end:0x0213014c
 
 src/unnamed/ov006/__sinit_ov006_0213014c.c:
     complete
