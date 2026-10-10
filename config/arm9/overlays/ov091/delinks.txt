@@ -19,6 +19,9 @@ src/actors/daObjSimpleLift_c.cpp:
 src/actors/daDsn_c.cpp:
     complete
     .text start:0x02132938 end:0x02132d04
+    .init start:0x02134930 end:0x021349c4
+    .ctor start:0x02134b74 end:0x02134b78
+    .bss start:0x02135610 end:0x0213564c
 
 src/actors/daDsnBase_c.cpp:
     complete
@@ -49,7 +52,3 @@ src/unnamed/ov091/__sinit_ov091_021345dc.c:
 src/unnamed/ov091/__sinit_ov091_021346e8.c:
     complete
     .init start:0x021346e8 end:0x02134930
-
-src/unnamed/ov091/__sinit_ov091_02134930.c:
-    complete
-    .init start:0x02134930 end:0x021349c4
