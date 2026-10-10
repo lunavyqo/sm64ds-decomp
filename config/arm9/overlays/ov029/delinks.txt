@@ -7,6 +7,9 @@
 src/game/actors/d_a_obj_wc_obj01.cpp:
     complete
     .text start:0x021111a0 end:0x0211137c
+    .init start:0x02112b38 end:0x02112ba4
+    .ctor start:0x02112e68 end:0x02112e6c
+    .bss start:0x02114220 end:0x02114248
 
 src/game/actors/d_a_obj_wc_obj02.cpp:
     complete
@@ -50,10 +53,6 @@ src/game/actors/d_a_obj_wc_obj04.cpp:
     .init start:0x02112dfc end:0x02112e68
     .ctor start:0x02112e84 end:0x02112e88
     .bss start:0x02114324 end:0x0211434c
-
-src/unnamed/ov029/__sinit_ov029_02112b38.c:
-    complete
-    .init start:0x02112b38 end:0x02112ba4
 
 src/unnamed/ov029/__sinit_ov029_02112cb8.c:
     complete
