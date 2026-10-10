@@ -252,7 +252,7 @@
       "evidence": "compiler temporary pointer-to-member descriptor for the SWOOP enter slot; retail first word is 0x0211bc54"
     },
     {
-      "symbol": "@117",
+      "symbol": "@189",
       "address": "0x0211dd00",
       "size": "0x8",
       "binding": "STB_GLOBAL",
@@ -964,7 +964,7 @@
       "evidence": "compiler-local member descriptor is a configured initializer relocation destination at 0x0211dcf8"
     },
     {
-      "symbol": "@117",
+      "symbol": "@189",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local member descriptor is a configured initializer relocation destination at 0x0211dd00"
@@ -1308,7 +1308,7 @@
       "source": "0x0211d8bc",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@117",
+      "symbol": "@189",
       "addend": 0,
       "target_module": "ov062",
       "target_address": "0x0211dd00"
@@ -1507,7 +1507,7 @@
     },
     {
       "from": "@1144",
-      "to": "@117",
+      "to": "@189",
       "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     },
     {
