@@ -125,6 +125,9 @@ src/d_s_mg_jump.cpp:
 src/minigames/d_s_mg_jump2.cpp:
     complete
     .text start:0x020eebe8 end:0x020efc08
+    .init start:0x02130f00 end:0x02130f64
+    .ctor start:0x021335a8 end:0x021335ac
+    .bss start:0x021421c4 end:0x021421ec
 
 src/unnamed/ov006/func_ov006_020efc08.c:
     complete
@@ -283,10 +286,6 @@ src/unnamed/ov006/__sinit_ov006_02130a04.c:
 src/unnamed/ov006/__sinit_ov006_02130e9c.c:
     complete
     .init start:0x02130e9c end:0x02130f00
-
-src/unnamed/ov006/__sinit_ov006_02130f00.c:
-    complete
-    .init start:0x02130f00 end:0x02130f64
 
 src/unnamed/ov006/__sinit_ov006_02130f64.c:
     complete
