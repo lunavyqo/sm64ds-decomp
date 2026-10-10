@@ -231,6 +231,9 @@ src/minigames/d_s_mg_trampoline2.cpp:
 src/minigames/d_s_mg_bsc.cpp:
     complete
     .text start:0x02124908 end:0x0212568c
+    .init start:0x0213326c end:0x021333e0
+    .ctor start:0x021335e0 end:0x021335e4
+    .bss start:0x02142f94 end:0x02143004
 
 src/actors/dScMgSnowball_c.cpp:
     complete
@@ -323,10 +326,6 @@ src/unnamed/ov006/__sinit_ov006_02132970.c:
 src/unnamed/ov006/__sinit_ov006_0213322c.c:
     complete
     .init start:0x0213322c end:0x0213326c
-
-src/unnamed/ov006/__sinit_ov006_0213326c.c:
-    complete
-    .init start:0x0213326c end:0x021333e0
 
 src/unnamed/ov006/__sinit_ov006_021333e0.c:
     complete
