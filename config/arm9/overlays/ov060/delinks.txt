@@ -22,14 +22,10 @@ src/d_a_kpa.c:
 
 src/actors/daKpaFire_c.cpp:
     complete
-    .text start:0x02116484 end:0x02117938
+    .text start:0x02116484 end:0x02117980
     .init start:0x02119df0 end:0x02119f94
     .ctor start:0x0211a4c0 end:0x0211a4c4
     .bss start:0x0211af74 end:0x0211aff4
-
-src/d_a_kpa_fire.c:
-    complete
-    .text start:0x02117938 end:0x02117980
 
 src/actors/daKpa2Bg_c.cpp:
     complete
