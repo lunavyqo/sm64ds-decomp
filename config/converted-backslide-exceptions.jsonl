@@ -748,3 +748,4 @@
 {"path": "src/unnamed/ov098/__sinit_ov098_0213c214.c", "reason": "shard folded into its owning TU (batch sinit-1010-4)"}
 {"path": "src/unnamed/ov098/__sinit_ov098_0213c2b4.c", "reason": "shard folded into its owning TU (batch sinit-1010-4)"}
 {"path": "src/unnamed/ov100/__sinit_ov100_02147d7c.c", "reason": "shard folded into its owning TU (batch sinit-1010-4)"}
+{"path": "src/unnamed/ov064/__sinit_ov064_0211b078.c", "reason": "The handwritten static initializer is retired. d_a_obj_fl_gura.cpp defines the two resource handles (model 1523, collision file 1524) for real, and mwcc emits __sinit_d_a_obj_fl_gura.cpp with the same 0x6c bytes and the same ten relocations."}
