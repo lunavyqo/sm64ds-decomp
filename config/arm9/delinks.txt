@@ -705,29 +705,9 @@ src/unnamed/arm9/0201/func_02013944.c:
     complete
     .text start:0x02013944 end:0x02013984
 
-src/_ZN8SaveData22NumGlowingRabbitsFoundEv.cpp:
-    complete
-    .text start:0x02013984 end:0x020139b8
-
-src/unnamed/arm9/0201/func_020139b8.c:
-    complete
-    .text start:0x020139b8 end:0x02013a00
-
-src/unnamed/arm9/0201/func_02013a00.c:
-    complete
-    .text start:0x02013a00 end:0x02013a44
-
-src/unnamed/arm9/0201/func_02013a44.c:
-    complete
-    .text start:0x02013a44 end:0x02013a88
-
-src/unnamed/arm9/0201/func_02013a88.c:
-    complete
-    .text start:0x02013a88 end:0x02013ad4
-
 src/engine/save/SaveData.cpp:
     complete
-    .text start:0x02013ad4 end:0x02013e80
+    .text start:0x02013984 end:0x02013e80
 
 src/actors/ActorDerived.cpp:
     complete
