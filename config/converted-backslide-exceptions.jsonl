@@ -748,3 +748,4 @@
 {"path": "src/unnamed/ov098/__sinit_ov098_0213c214.c", "reason": "shard folded into its owning TU (batch sinit-1010-4)"}
 {"path": "src/unnamed/ov098/__sinit_ov098_0213c2b4.c", "reason": "shard folded into its owning TU (batch sinit-1010-4)"}
 {"path": "src/unnamed/ov100/__sinit_ov100_02147d7c.c", "reason": "shard folded into its owning TU (batch sinit-1010-4)"}
+{"path": "src/unnamed/ov102/__sinit_ov102_0214dfac.c", "reason": "The handwritten static initializer is retired. d_a_shl.cpp defines the four pointer-to-member state records, and mwcc emits __sinit_d_a_shl.cpp with the same 0xf4 bytes and the same twelve relocations."}
