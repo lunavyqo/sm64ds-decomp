@@ -1086,54 +1086,124 @@
   ],
   "defined_symbol_renames": [
     {
-      "from": "@1091",
+      "from": "@1107",
       "to": "@1045",
       "evidence": "mwcc emits this compiler temp as @1091; batch renumber to unused same-length name, batch-mates ov016/daMoray_c and ov075/dEntObj_c promote the same temp names globally"
     },
     {
-      "from": "@1093",
+      "from": "@1109",
       "to": "@1046",
       "evidence": "mwcc emits this compiler temp as @1093; batch renumber to unused same-length name, batch-mates ov016/daMoray_c and ov075/dEntObj_c promote the same temp names globally"
     },
     {
-      "from": "@1095",
+      "from": "@1111",
       "to": "@1047",
       "evidence": "mwcc emits this compiler temp as @1095; batch renumber to unused same-length name, batch-mates ov016/daMoray_c and ov075/dEntObj_c promote the same temp names globally"
     },
     {
-      "from": "@1097",
+      "from": "@1113",
       "to": "@1048",
       "evidence": "mwcc emits this compiler temp as @1097; batch renumber to unused same-length name, batch-mates ov016/daMoray_c and ov075/dEntObj_c promote the same temp names globally"
     },
     {
-      "from": "@1099",
+      "from": "@1115",
       "to": "@1049",
       "evidence": "mwcc emits this compiler temp as @1099; batch renumber to unused same-length name, batch-mates ov016/daMoray_c and ov075/dEntObj_c promote the same temp names globally"
     },
     {
-      "from": "@1101",
+      "from": "@1117",
       "to": "@1050",
       "evidence": "mwcc emits this compiler temp as @1101; batch renumber to unused same-length name, batch-mates ov016/daMoray_c and ov075/dEntObj_c promote the same temp names globally"
     },
     {
-      "from": "@1103",
+      "from": "@1119",
       "to": "@1051",
       "evidence": "mwcc emits this compiler temp as @1103; batch renumber to unused same-length name, batch-mates ov016/daMoray_c and ov075/dEntObj_c promote the same temp names globally"
     },
     {
-      "from": "@1105",
+      "from": "@1121",
       "to": "@1052",
       "evidence": "mwcc emits this compiler temp as @1105; batch renumber to unused same-length name, batch-mates ov016/daMoray_c and ov075/dEntObj_c promote the same temp names globally"
     },
     {
-      "from": "@1107",
+      "from": "@1123",
       "to": "@1053",
       "evidence": "mwcc emits this compiler temp as @1107; batch renumber to unused same-length name, batch-mates ov016/daMoray_c and ov075/dEntObj_c promote the same temp names globally"
     },
     {
-      "from": "@1109",
+      "from": "@1125",
       "to": "@1080",
       "evidence": "mwcc emits this compiler temp as @1109; batch renumber to unused same-length name, batch-mates ov016/daMoray_c and ov075/dEntObj_c promote the same temp names globally"
+    },
+    {
+      "from": "@1099",
+      "to": "@1083",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1099 now; licensed under the existing pin @1083"
+    },
+    {
+      "from": "@1095",
+      "to": "@1079",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1095 now; licensed under the existing pin @1079"
+    },
+    {
+      "from": "@1097",
+      "to": "@1081",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1097 now; licensed under the existing pin @1081"
+    },
+    {
+      "from": "@1092",
+      "to": "@1076",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1092 now; licensed under the existing pin @1076"
+    },
+    {
+      "from": "@1094",
+      "to": "@1078",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1094 now; licensed under the existing pin @1078"
+    },
+    {
+      "from": "@1105",
+      "to": "@1089",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1105 now; licensed under the existing pin @1089"
+    },
+    {
+      "from": "@1103",
+      "to": "@1087",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1103 now; licensed under the existing pin @1087"
+    },
+    {
+      "from": "@1101",
+      "to": "@1085",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1101 now; licensed under the existing pin @1085"
+    },
+    {
+      "from": "@1126",
+      "to": "@1110",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1126 now; licensed under the existing pin @1110"
+    },
+    {
+      "from": "@1086",
+      "to": "@1070",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1086 now; licensed under the existing pin @1070"
+    },
+    {
+      "from": "@1087",
+      "to": "@1071",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1087 now; licensed under the existing pin @1071"
+    },
+    {
+      "from": "@1088",
+      "to": "@1072",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1088 now; licensed under the existing pin @1072"
+    },
+    {
+      "from": "@1089",
+      "to": "@1073",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1089 now; licensed under the existing pin @1073"
+    },
+    {
+      "from": "@1090",
+      "to": "@1074",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1090 now; licensed under the existing pin @1074"
     }
   ],
   "symbol_binding_rewrites": [

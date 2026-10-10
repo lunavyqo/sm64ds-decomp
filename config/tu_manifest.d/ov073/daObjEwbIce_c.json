@@ -369,9 +369,34 @@
   ],
   "defined_symbol_renames": [
     {
-      "from": "@579",
+      "from": "@596",
       "to": "@572",
       "evidence": "mwcc numbers this registration node @579 per TU and ov016 already defines a global @579 at 0x02114e88, so the scratch link would multiply-define it"
+    },
+    {
+      "from": "@595",
+      "to": "@578",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @595 now; licensed under the existing pin @578"
+    },
+    {
+      "from": "@592",
+      "to": "@575",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @592 now; licensed under the existing pin @575"
+    },
+    {
+      "from": "@593",
+      "to": "@576",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @593 now; licensed under the existing pin @576"
+    },
+    {
+      "from": "@594",
+      "to": "@577",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @594 now; licensed under the existing pin @577"
+    },
+    {
+      "from": "@591",
+      "to": "@574",
+      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @591 now; licensed under the existing pin @574"
     }
   ],
   "relocations": [
