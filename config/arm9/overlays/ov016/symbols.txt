@@ -204,9 +204,9 @@ data_ov016_02114dcc kind:bss addr:0x02114dcc
 data_ov016_02114dd4 kind:bss addr:0x02114dd4
 data_ov016_02114ddc kind:bss addr:0x02114ddc
 data_ov016_02114de4 kind:bss addr:0x02114de4
-@134 kind:bss addr:0x02114dec
-@423 kind:bss addr:0x02114df8
-@424 kind:bss addr:0x02114e04
+@820 kind:bss addr:0x02114dec
+@605 kind:bss addr:0x02114df8
+@604 kind:bss addr:0x02114e04
 @425 kind:bss addr:0x02114e10
 RockPillar_ClsnFile kind:bss addr:0x02114e1c
 RockPillar_ModelFile kind:bss addr:0x02114e24
@@ -215,7 +215,7 @@ RockPillar_ModelFile kind:bss addr:0x02114e24
 data_ov016_02114e44 kind:bss addr:0x02114e44
 data_ov016_02114e4c kind:bss addr:0x02114e4c
 @356 kind:bss addr:0x02114e54
-@357 kind:bss addr:0x02114e60
+@612 kind:bss addr:0x02114e60
 data_ov016_02114e6c kind:bss addr:0x02114e6c
 data_ov016_02114e74 kind:bss addr:0x02114e74
 @580 kind:bss addr:0x02114e7c

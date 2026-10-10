@@ -1828,10 +1828,10 @@ _ZTV16daObjPushblock_c kind:data(any) addr:0x021096b0
 s_openName kind:data(any) addr:0x02109730
 s_closeName kind:data(any) addr:0x02109738
 @932 kind:data(any) addr:0x02109740
-@977 kind:data(any) addr:0x02109748
-@975 kind:data(any) addr:0x02109750
-@973 kind:data(any) addr:0x02109758
-@980 kind:data(any) addr:0x02109760
+@590 kind:data(any) addr:0x02109748
+@591 kind:data(any) addr:0x02109750
+@592 kind:data(any) addr:0x02109758
+@589 kind:data(any) addr:0x02109760
 @904 kind:data(any) addr:0x02109768
 s_openWaitName kind:data(any) addr:0x02109770
 _ZTI18daObjPowerUpItem_c kind:data(any) addr:0x0210977c

@@ -210,7 +210,7 @@ data_ov036_02114028 kind:bss addr:0x02114028
 @386 kind:bss addr:0x0211403c
 data_ov036_02114048 kind:bss addr:0x02114048
 data_ov036_02114050 kind:bss addr:0x02114050
-@161 kind:bss addr:0x02114058
+@624 kind:bss addr:0x02114058
 @162 kind:bss addr:0x02114064
 data_ov036_02114070 kind:bss addr:0x02114070
 @307 kind:bss addr:0x02114078

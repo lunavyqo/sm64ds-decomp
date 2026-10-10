@@ -128,7 +128,7 @@
       "evidence": "compiler-generated destructor-registration node for the file-0x2e4 model handle"
     },
     {
-      "symbol": "@464",
+      "symbol": "@601",
       "address": "0x02113c3c",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -142,7 +142,7 @@
       "evidence": "compiler-generated destructor-registration node for the file-0x2e6 animation handle"
     },
     {
-      "symbol": "@466",
+      "symbol": "@598",
       "address": "0x02113c54",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -585,6 +585,16 @@
       "from": "@467",
       "to": "@74",
       "evidence": "emitted destructor-registration node name collides with the configured @467 on ov100 on main; @74 is unused everywhere and shorter than the original"
+    },
+    {
+      "from": "@601",
+      "to": "@601",
+      "evidence": "batch-5 atdup: @601 collides cross-module (temps are fleet-global); renumber to unused same-length @601"
+    },
+    {
+      "from": "@598",
+      "to": "@598",
+      "evidence": "batch-5 atdup: @598 collides cross-module (temps are fleet-global); renumber to unused same-length @598"
     }
   ],
   "undefined_symbol_aliases": [
@@ -644,7 +654,7 @@
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02113c30"
     },
     {
-      "symbol": "@464",
+      "symbol": "@601",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02113c3c"
@@ -656,7 +666,7 @@
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02113c48"
     },
     {
-      "symbol": "@466",
+      "symbol": "@598",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02113c54"
@@ -824,7 +834,7 @@
       "source": "0x02112dd4",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@464",
+      "symbol": "@601",
       "addend": 0,
       "target_module": "ov027",
       "target_address": "0x02113c3c"
@@ -864,7 +874,7 @@
       "source": "0x02112dec",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@466",
+      "symbol": "@598",
       "addend": 0,
       "target_module": "ov027",
       "target_address": "0x02113c54"

@@ -165,8 +165,8 @@ data_ov079_02128340 kind:bss addr:0x02128340
 data_ov079_02128348 kind:bss addr:0x02128348
 data_ov079_02128350 kind:bss addr:0x02128350
 data_ov079_02128358 kind:bss addr:0x02128358
-@482 kind:bss addr:0x02128360
-@130 kind:bss addr:0x0212836c
+@597 kind:bss addr:0x02128360
+@882 kind:bss addr:0x0212836c
 @484 kind:bss addr:0x02128378
-@129 kind:bss addr:0x02128384
+@886 kind:bss addr:0x02128384
 data_ov079_02128390 kind:bss addr:0x02128390

@@ -247,8 +247,8 @@ data_ov063_0211eed0 kind:bss addr:0x0211eed0
 data_ov063_0211ef38 kind:bss addr:0x0211ef38
 data_ov063_0211ef58 kind:bss addr:0x0211ef58
 data_ov063_0211ef60 kind:bss addr:0x0211ef60
-@65 kind:bss addr:0x0211ef68
-@66 kind:bss addr:0x0211ef74
+@97 kind:bss addr:0x0211ef68
+@96 kind:bss addr:0x0211ef74
 data_ov063_0211ef80 kind:bss addr:0x0211ef80
 data_ov063_0211ef88 kind:bss addr:0x0211ef88
 data_ov063_0211ef90 kind:bss addr:0x0211ef90

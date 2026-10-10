@@ -109,21 +109,21 @@
       "evidence": "Thwomp texture-sequence SharedFilePtr (file 0x2f5), constructed by __sinit_daDsn_c.cpp; reached through the file table data_ov091_02135138"
     },
     {
-      "symbol": "@138",
+      "symbol": "@795",
       "address": "0x02135628",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x02135620"
     },
     {
-      "symbol": "@139",
+      "symbol": "@791",
       "address": "0x02135640",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x02135618"
     },
     {
-      "symbol": "@147",
+      "symbol": "@789",
       "address": "0x02135634",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -580,19 +580,19 @@
       "evidence": "mwcc emits the ctor-table object local; DSD exposes owned symbols globally and cannot encode a local symbols.txt entry"
     },
     {
-      "symbol": "@138",
+      "symbol": "@795",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x02135628"
     },
     {
-      "symbol": "@139",
+      "symbol": "@791",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x02135640"
     },
     {
-      "symbol": "@147",
+      "symbol": "@789",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x02135634"
@@ -601,17 +601,17 @@
   "defined_symbol_renames": [
     {
       "from": "@628",
-      "to": "@138",
+      "to": "@795",
       "evidence": "compiler-local __register_global_object node; renamed to an unused fleet temp of equal length"
     },
     {
       "from": "@629",
-      "to": "@139",
+      "to": "@791",
       "evidence": "compiler-local __register_global_object node; @629 is taken on main by ov064 data, renamed to an unused fleet temp of equal length"
     },
     {
       "from": "@630",
-      "to": "@147",
+      "to": "@789",
       "evidence": "compiler-local __register_global_object node; renamed to an unused fleet temp of equal length"
     }
   ],
@@ -701,7 +701,7 @@
       "source": "0x021349a0",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@138",
+      "symbol": "@795",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x02135628"
@@ -731,7 +731,7 @@
       "source": "0x021349b0",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@139",
+      "symbol": "@791",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x02135640"
@@ -761,7 +761,7 @@
       "source": "0x021349c0",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@147",
+      "symbol": "@789",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x02135634"

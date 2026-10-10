@@ -772,3 +772,40 @@
 {"path": "src/unnamed/ov102/__sinit_ov102_0214dfac.c", "reason": "The handwritten static initializer is retired. d_a_shl.cpp defines the four pointer-to-member state records, and mwcc emits __sinit_d_a_shl.cpp with the same 0xf4 bytes and the same twelve relocations."}
 {"path": "src/unnamed/ov064/__sinit_ov064_0211b1d4.c", "reason": "The handwritten static initializer is retired. daObjFl_Coin_c.cpp defines the fifteen resource handles (fourteen models 0x5ff/0x601-0x60d, collision 0x600) and the six-entry state table for real, and mwcc emits __sinit_daObjFl_Coin_c.cpp with the same 0x308 bytes and the same sixty-nine relocations."}
 {"path": "src/unnamed/ov016/__sinit_ov016_02113978.c", "reason": "shard folded into its owning TU (sinit/ov016-hasira)"}
+{"path": "src/unnamed/ov002/__sinit_ov002_02100d44.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov002/__sinit_ov002_021014e4.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov002/__sinit_ov002_02108094.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov006/__sinit_ov006_021300b0.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov006/__sinit_ov006_02130e9c.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov006/__sinit_ov006_021318a0.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov006/__sinit_ov006_0213195c.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov006/__sinit_ov006_0213322c.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov014/__sinit_ov014_021130ac.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov015/__sinit_ov015_0211333c.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov015/__sinit_ov015_021133a8.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov016/__sinit_ov016_021138bc.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov018/__sinit_ov018_02112e00.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov025/__sinit_ov025_021129dc.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov030/__sinit_ov030_021148b8.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov031/__sinit_ov031_02111434.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov036/__sinit_ov036_0211261c.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov043/__sinit_ov043_02111868.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov043/__sinit_ov043_021118d4.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov043/__sinit_ov043_02111940.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov045/__sinit_ov045_021122ec.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov045/__sinit_ov045_021123c0.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov047/__sinit_ov047_0211181c.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov052/__sinit_ov052_02111b64.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov052/__sinit_ov052_02111bd0.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov060/__sinit_ov060_02119f94.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov064/__sinit_ov064_0211b0e4.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov065/__sinit_ov065_0211c660.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov065/__sinit_ov065_0211c890.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov065/__sinit_ov065_0211c8fc.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov065/__sinit_ov065_0211c9b8.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov079/__sinit_ov079_02127acc.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov091/__sinit_ov091_02134524.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov091/__sinit_ov091_021346e8.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov091/__sinit_ov091_02134930.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov095/__sinit_ov095_02136fe0.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/unnamed/ov102/__sinit_ov102_0214d714.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}

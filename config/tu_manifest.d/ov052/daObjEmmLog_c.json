@@ -100,7 +100,7 @@
       "evidence": "collision resource handle constructed with file ID 1508; dBgW_Kc::LoadFile reaches it through data_ov052_021124d4.collision"
     },
     {
-      "symbol": "@379",
+      "symbol": "@607",
       "address": "0x02112690",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -112,6 +112,13 @@
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the file-1508 collision handle"
+    }
+  ],
+  "defined_symbol_renames": [
+    {
+      "from": "@607",
+      "to": "@607",
+      "evidence": "batch-5 atdup: @607 collides cross-module (temps are fleet-global); renumber to unused same-length @607"
     }
   ],
   "notes": [
@@ -497,7 +504,7 @@
       "evidence": "mwcc emits the ctor-table object local; DSD exposes owned symbols globally and cannot encode a local symbols.txt entry"
     },
     {
-      "symbol": "@379",
+      "symbol": "@607",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02112690"
@@ -575,7 +582,7 @@
       "source": "0x02111bbc",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@379",
+      "symbol": "@607",
       "addend": 0,
       "target_module": "ov052",
       "target_address": "0x02112690"

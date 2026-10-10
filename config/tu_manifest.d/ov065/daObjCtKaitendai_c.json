@@ -128,28 +128,28 @@
       "evidence": "model file handle constructed with file ID 0x5c4"
     },
     {
-      "symbol": "@131",
+      "symbol": "@878",
       "address": "0x0211d94c",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 0x5c4 model handle"
     },
     {
-      "symbol": "@134",
+      "symbol": "@818",
       "address": "0x0211d958",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 0x5c7 collision handle"
     },
     {
-      "symbol": "@133",
+      "symbol": "@863",
       "address": "0x0211d964",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 0x5c5 collision handle"
     },
     {
-      "symbol": "@132",
+      "symbol": "@867",
       "address": "0x0211d970",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -257,7 +257,7 @@
     "daObjCtKaitendai_c_classInit_CT_MECHA06 / CT_MECHA07 are reconstructed source-style names: ROM RTTI names the class, the CT_MECHA06/07 registry profiles select the factories, and later EAD lineage supplies classInit. Exact original SM64DS spellings are not preserved. Historical aliases were TtcRotatingGear_Spawn and TtcRotatingTriangle_Spawn.",
     "compiler_only_output is 13 rows: 2 x (4 ancestors + self) typeinfo/type-string rows + 1 vtable + 1 Vector3 D1 + 1 homeless dBgActor_c D2 from return new. Every canonical_module/canonical_address was read out of the ROM's own symbols.txt, not copied from a sibling without checking this class's homes.",
     "Cleanup folded the adjacent CT_MECHA06/CT_MECHA07 factories as return new daObjCtKaitendai_c(). Inherited fBase_c::operator new(unsigned long) forwards _ZN7fBase_cnwEj((unsigned)size).",
-    "Static initializer folded: the two KaitendaiModelFile handles (files 0x5c4/0x5c6), the two KaitendaiCollisionFilePtr handles (files 0x5c5/0x5c7) and their destructor-registration nodes move out of the handwritten src/unnamed shard into src/actors/daObjCtKaitendai_c.cpp. The emitted .init, .ctor and .bss are byte-identical to retail __sinit_ov065_0211c8fc with the same instruction sequence, literal pool order and relocation sites; the handwritten shard is retired. @455 clashed with the fleet and @456/@457/@458 with the in-flight ov060 kpa3bg fork range, so all four are renamed (@455->@131, @456->@132, @457->@133, @458->@134). The .bss claim 0x0211d92c..0x0211d97c ends exactly at the next symbol; no bound row is needed. The retired shard's converted-baseline row is dropped per the c62c3266 precedent."
+    "Static initializer folded: the two KaitendaiModelFile handles (files 0x5c4/0x5c6), the two KaitendaiCollisionFilePtr handles (files 0x5c5/0x5c7) and their destructor-registration nodes move out of the handwritten src/unnamed shard into src/actors/daObjCtKaitendai_c.cpp. The emitted .init, .ctor and .bss are byte-identical to retail __sinit_ov065_0211c8fc with the same instruction sequence, literal pool order and relocation sites; the handwritten shard is retired. @455 clashed with the fleet and @456/@457/@458 with the in-flight ov060 kpa3bg fork range, so all four are renamed (@455->@878, @456->@867, @457->@863, @458->@818). The .bss claim 0x0211d92c..0x0211d97c ends exactly at the next symbol; no bound row is needed. The retired shard's converted-baseline row is dropped per the c62c3266 precedent."
   ],
   "verification": {
     "round": "tools/tubuild.py verify -- text-only, whole shadow TU compiled once",
@@ -566,22 +566,22 @@
   "defined_symbol_renames": [
     {
       "from": "@455",
-      "to": "@131",
+      "to": "@878",
       "evidence": "mwcc numbers this registration node @455 per TU and the fleet already defines a global @455, so the scratch link would multiply-define it"
     },
     {
       "from": "@456",
-      "to": "@132",
+      "to": "@867",
       "evidence": "mwcc numbers this registration node @456 per TU and the in-flight ov060 kpa3bg fork branch already claims @456, so the batch merge would multiply-define it"
     },
     {
       "from": "@457",
-      "to": "@133",
+      "to": "@863",
       "evidence": "mwcc numbers this registration node @457 per TU and the in-flight ov060 kpa3bg fork branch already claims @457, so the batch merge would multiply-define it"
     },
     {
       "from": "@458",
-      "to": "@134",
+      "to": "@818",
       "evidence": "mwcc numbers this registration node @458 per TU and the in-flight ov060 kpa3bg fork branch already claims @458, so the batch merge would multiply-define it"
     }
   ],
@@ -599,25 +599,25 @@
       "evidence": "mwcc emits the ctor-table object local; DSD exposes owned symbols globally and cannot encode a local symbols.txt entry"
     },
     {
-      "symbol": "@131",
+      "symbol": "@878",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0211d94c"
     },
     {
-      "symbol": "@134",
+      "symbol": "@818",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0211d958"
     },
     {
-      "symbol": "@133",
+      "symbol": "@863",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0211d964"
     },
     {
-      "symbol": "@132",
+      "symbol": "@867",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0211d970"
@@ -739,7 +739,7 @@
       "source": "0x0211c98c",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@131",
+      "symbol": "@878",
       "addend": 0,
       "target_module": "ov065",
       "target_address": "0x0211d94c"
@@ -759,7 +759,7 @@
       "source": "0x0211c998",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@132",
+      "symbol": "@867",
       "addend": 0,
       "target_module": "ov065",
       "target_address": "0x0211d970"
@@ -789,7 +789,7 @@
       "source": "0x0211c9a8",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@133",
+      "symbol": "@863",
       "addend": 0,
       "target_module": "ov065",
       "target_address": "0x0211d964"
@@ -809,7 +809,7 @@
       "source": "0x0211c9b4",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@134",
+      "symbol": "@818",
       "addend": 0,
       "target_module": "ov065",
       "target_address": "0x0211d958"

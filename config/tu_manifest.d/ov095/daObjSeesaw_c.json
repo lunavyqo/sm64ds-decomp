@@ -269,98 +269,98 @@
       "evidence": "collision resource handle constructed with file ID 1670; dBgW_Kc::LoadFile reaches it through the data_ov095_021374a4 pointer table"
     },
     {
-      "symbol": "@155",
+      "symbol": "@650",
       "address": "0x021377f0",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 1710 collision handle"
     },
     {
-      "symbol": "@131",
+      "symbol": "@876",
       "address": "0x021377fc",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 1709 model handle"
     },
     {
-      "symbol": "@132",
+      "symbol": "@865",
       "address": "0x02137808",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 1163 collision handle"
     },
     {
-      "symbol": "@133",
+      "symbol": "@861",
       "address": "0x02137814",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 1446 collision handle"
     },
     {
-      "symbol": "@126",
+      "symbol": "@898",
       "address": "0x02137820",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 1445 model handle"
     },
     {
-      "symbol": "@134",
+      "symbol": "@814",
       "address": "0x0213782c",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 1624 collision handle"
     },
     {
-      "symbol": "@147",
+      "symbol": "@788",
       "address": "0x02137838",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 1646 collision handle"
     },
     {
-      "symbol": "@125",
+      "symbol": "@982",
       "address": "0x02137844",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 1162 model handle"
     },
     {
-      "symbol": "@130",
+      "symbol": "@880",
       "address": "0x02137850",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 1671 model handle"
     },
     {
-      "symbol": "@148",
+      "symbol": "@782",
       "address": "0x0213785c",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 1670 collision handle"
     },
     {
-      "symbol": "@127",
+      "symbol": "@893",
       "address": "0x02137868",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 1623 model handle"
     },
     {
-      "symbol": "@128",
+      "symbol": "@889",
       "address": "0x02137874",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 1645 model handle"
     },
     {
-      "symbol": "@149",
+      "symbol": "@780",
       "address": "0x02137880",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated destructor-registration node for the 1672 collision handle"
     },
     {
-      "symbol": "@129",
+      "symbol": "@884",
       "address": "0x0213788c",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -880,85 +880,85 @@
       "evidence": "mwcc emits the ctor-table object local; DSD exposes owned symbols globally and cannot encode a local symbols.txt entry"
     },
     {
-      "symbol": "@125",
+      "symbol": "@982",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02137844"
     },
     {
-      "symbol": "@126",
+      "symbol": "@898",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02137820"
     },
     {
-      "symbol": "@127",
+      "symbol": "@893",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02137868"
     },
     {
-      "symbol": "@128",
+      "symbol": "@889",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02137874"
     },
     {
-      "symbol": "@129",
+      "symbol": "@884",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0213788c"
     },
     {
-      "symbol": "@130",
+      "symbol": "@880",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02137850"
     },
     {
-      "symbol": "@131",
+      "symbol": "@876",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x021377fc"
     },
     {
-      "symbol": "@132",
+      "symbol": "@865",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02137808"
     },
     {
-      "symbol": "@133",
+      "symbol": "@861",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02137814"
     },
     {
-      "symbol": "@134",
+      "symbol": "@814",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0213782c"
     },
     {
-      "symbol": "@147",
+      "symbol": "@788",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02137838"
     },
     {
-      "symbol": "@148",
+      "symbol": "@782",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0213785c"
     },
     {
-      "symbol": "@149",
+      "symbol": "@780",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x02137880"
     },
     {
-      "symbol": "@155",
+      "symbol": "@650",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x021377f0"
@@ -967,72 +967,72 @@
   "defined_symbol_renames": [
     {
       "from": "@905",
-      "to": "@125",
+      "to": "@982",
       "evidence": "compiler-local destructor-registration node; mwcc numbers it @905 per TU and that name collides with global @NNN rows owned by other TUs on main"
     },
     {
       "from": "@906",
-      "to": "@126",
+      "to": "@898",
       "evidence": "compiler-local destructor-registration node; mwcc numbers it @906 per TU and that name collides with global @NNN rows owned by other TUs on main"
     },
     {
       "from": "@907",
-      "to": "@127",
+      "to": "@893",
       "evidence": "compiler-local destructor-registration node; mwcc numbers it @907 per TU and that name collides with global @NNN rows owned by other TUs on main"
     },
     {
       "from": "@908",
-      "to": "@128",
+      "to": "@889",
       "evidence": "compiler-local destructor-registration node; mwcc numbers it @908 per TU and that name collides with global @NNN rows owned by other TUs on main"
     },
     {
       "from": "@909",
-      "to": "@129",
+      "to": "@884",
       "evidence": "compiler-local destructor-registration node; mwcc numbers it @909 per TU and that name collides with global @NNN rows owned by other TUs on main"
     },
     {
       "from": "@910",
-      "to": "@130",
+      "to": "@880",
       "evidence": "compiler-local destructor-registration node; mwcc numbers it @910 per TU and that name collides with global @NNN rows owned by other TUs on main"
     },
     {
       "from": "@911",
-      "to": "@131",
+      "to": "@876",
       "evidence": "compiler-local destructor-registration node; mwcc numbers it @911 per TU and that name collides with global @NNN rows owned by other TUs on main"
     },
     {
       "from": "@912",
-      "to": "@132",
+      "to": "@865",
       "evidence": "compiler-local destructor-registration node; mwcc numbers it @912 per TU and that name collides with global @NNN rows owned by other TUs on main"
     },
     {
       "from": "@913",
-      "to": "@133",
+      "to": "@861",
       "evidence": "compiler-local destructor-registration node; mwcc numbers it @913 per TU and that name collides with global @NNN rows owned by other TUs on main"
     },
     {
       "from": "@914",
-      "to": "@134",
+      "to": "@814",
       "evidence": "compiler-local destructor-registration node; mwcc numbers it @914 per TU and that name collides with global @NNN rows owned by other TUs on main"
     },
     {
       "from": "@915",
-      "to": "@147",
+      "to": "@788",
       "evidence": "compiler-local destructor-registration node; mwcc numbers it @915 per TU and that name collides with global @NNN rows owned by other TUs on main"
     },
     {
       "from": "@916",
-      "to": "@148",
+      "to": "@782",
       "evidence": "compiler-local destructor-registration node; mwcc numbers it @916 per TU and that name collides with global @NNN rows owned by other TUs on main"
     },
     {
       "from": "@917",
-      "to": "@149",
+      "to": "@780",
       "evidence": "compiler-local destructor-registration node; mwcc numbers it @917 per TU and that name collides with global @NNN rows owned by other TUs on main"
     },
     {
       "from": "@918",
-      "to": "@155",
+      "to": "@650",
       "evidence": "compiler-local destructor-registration node; mwcc numbers it @918 per TU and that name collides with global @NNN rows owned by other TUs on main"
     }
   ],
@@ -1342,7 +1342,7 @@
       "source": "0x02137188",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@125",
+      "symbol": "@982",
       "addend": 0,
       "target_module": "ov095",
       "target_address": "0x02137844"
@@ -1362,7 +1362,7 @@
       "source": "0x02137194",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@126",
+      "symbol": "@898",
       "addend": 0,
       "target_module": "ov095",
       "target_address": "0x02137820"
@@ -1382,7 +1382,7 @@
       "source": "0x021371a0",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@127",
+      "symbol": "@893",
       "addend": 0,
       "target_module": "ov095",
       "target_address": "0x02137868"
@@ -1402,7 +1402,7 @@
       "source": "0x021371ac",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@128",
+      "symbol": "@889",
       "addend": 0,
       "target_module": "ov095",
       "target_address": "0x02137874"
@@ -1422,7 +1422,7 @@
       "source": "0x021371b8",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@129",
+      "symbol": "@884",
       "addend": 0,
       "target_module": "ov095",
       "target_address": "0x0213788c"
@@ -1442,7 +1442,7 @@
       "source": "0x021371c4",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@130",
+      "symbol": "@880",
       "addend": 0,
       "target_module": "ov095",
       "target_address": "0x02137850"
@@ -1462,7 +1462,7 @@
       "source": "0x021371d0",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@131",
+      "symbol": "@876",
       "addend": 0,
       "target_module": "ov095",
       "target_address": "0x021377fc"
@@ -1492,7 +1492,7 @@
       "source": "0x021371e0",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@132",
+      "symbol": "@865",
       "addend": 0,
       "target_module": "ov095",
       "target_address": "0x02137808"
@@ -1512,7 +1512,7 @@
       "source": "0x021371ec",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@133",
+      "symbol": "@861",
       "addend": 0,
       "target_module": "ov095",
       "target_address": "0x02137814"
@@ -1532,7 +1532,7 @@
       "source": "0x021371f8",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@134",
+      "symbol": "@814",
       "addend": 0,
       "target_module": "ov095",
       "target_address": "0x0213782c"
@@ -1552,7 +1552,7 @@
       "source": "0x02137204",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@147",
+      "symbol": "@788",
       "addend": 0,
       "target_module": "ov095",
       "target_address": "0x02137838"
@@ -1572,7 +1572,7 @@
       "source": "0x02137210",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@148",
+      "symbol": "@782",
       "addend": 0,
       "target_module": "ov095",
       "target_address": "0x0213785c"
@@ -1592,7 +1592,7 @@
       "source": "0x0213721c",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@149",
+      "symbol": "@780",
       "addend": 0,
       "target_module": "ov095",
       "target_address": "0x02137880"
@@ -1612,7 +1612,7 @@
       "source": "0x02137228",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@155",
+      "symbol": "@650",
       "addend": 0,
       "target_module": "ov095",
       "target_address": "0x021377f0"

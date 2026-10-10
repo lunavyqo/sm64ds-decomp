@@ -9,7 +9,7 @@
     "contiguous linker run: 0x21111a0..0x2111308, 6 function(s), from build/tu_map.json (tools/tu_map.py)",
     "class label(s): daObjBSwdoor_c",
     "module sinit corroboration: 3 sinit(s) / 3 .ctor entries, sinit_vs_tu=ok, corroborated=True (module-wide, NOT narrowed to this one TU -- see notes/tu-reconstruction-pilot-report.md sec 2 for the by-hand narrowing step)",
-    "sinit fold: home TU owns .init 0x021130ac..0x02113118, .ctor word 0x02113368 and .bss 0x02114940..0x02114968 (model handle 1443 at 0x02114948, collision handle 1444 at 0x02114940, dtor-reg nodes @158/@159); handwritten src/unnamed/ov014/__sinit_ov014_021130ac.c retired"
+    "sinit fold: home TU owns .init 0x021130ac..0x02113118, .ctor word 0x02113368 and .bss 0x02114940..0x02114968 (model handle 1443 at 0x02114948, collision handle 1444 at 0x02114940, dtor-reg nodes @636/@633); handwritten src/unnamed/ov014/__sinit_ov014_021130ac.c retired"
   ],
   "sections": [
     {
@@ -101,14 +101,14 @@
       "evidence": "model file handle constructed with file ID 1443"
     },
     {
-      "symbol": "@158",
+      "symbol": "@636",
       "address": "0x02114950",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-generated model destructor-registration node"
     },
     {
-      "symbol": "@159",
+      "symbol": "@633",
       "address": "0x0211495c",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -132,7 +132,7 @@
     "functions_declared": 7,
     "criteria": {
       "every_declared_function_defined": "PASS",
-      "every_declared_function_bytes_match": "PASS except the owned __sinit, whose 0 words differ but 2 pool-word reloc destinations read the compiler-local @369/@370 names: verify compiles the TU raw and does not apply the manifest defined_symbol_renames (@369->@158, @370->@159); the linkcheck round below applies them and the sinit is byte-IDENTICAL there",
+      "every_declared_function_bytes_match": "PASS except the owned __sinit, whose 0 words differ but 2 pool-word reloc destinations read the compiler-local @369/@370 names: verify compiles the TU raw and does not apply the manifest defined_symbol_renames (@369->@636, @370->@633); the linkcheck round below applies them and the sinit is byte-IDENTICAL there",
       "declared_function_set_equals_defined_function_set": "FAIL-BY-DESIGN -- 2 unlicensed section/symbol(s) (@369, @370 pre-rename), 0 compiler-only policy error(s)",
       "functions_occur_in_expected_order": "PASS",
       "relocation_destinations_verified": "PASS except the 2 renamed pool words above -- see linkcheck"
@@ -398,13 +398,13 @@
       "evidence": "mwcc emits the ctor-table object local; DSD exposes owned symbols globally and cannot encode a local symbols.txt entry"
     },
     {
-      "symbol": "@158",
+      "symbol": "@636",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local model registration node is a configured initializer relocation destination at 0x02114950"
     },
     {
-      "symbol": "@159",
+      "symbol": "@633",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local collision registration node is a configured initializer relocation destination at 0x0211495c"
@@ -413,12 +413,12 @@
   "defined_symbol_renames": [
     {
       "from": "@369",
-      "to": "@158",
+      "to": "@636",
       "evidence": "compiler temporary; mwcc numbers it @369 per TU and ov036 defines a global @369, so the scratch link collides"
     },
     {
       "from": "@370",
-      "to": "@159",
+      "to": "@633",
       "evidence": "compiler temporary; mwcc numbers it @370 per TU and ov036 defines a global @370, so the scratch link collides"
     }
   ],
@@ -488,7 +488,7 @@
       "source": "0x02113104",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@158",
+      "symbol": "@636",
       "addend": 0,
       "target_module": "ov014",
       "target_address": "0x02114950"
@@ -518,7 +518,7 @@
       "source": "0x02113114",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@159",
+      "symbol": "@633",
       "addend": 0,
       "target_module": "ov014",
       "target_address": "0x0211495c"

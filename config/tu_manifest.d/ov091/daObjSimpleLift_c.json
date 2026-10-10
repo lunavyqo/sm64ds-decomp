@@ -235,91 +235,91 @@
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x02135520"
     },
     {
-      "symbol": "@125",
+      "symbol": "@983",
       "address": "0x021355b0",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x02135538"
     },
     {
-      "symbol": "@126",
+      "symbol": "@949",
       "address": "0x021355c8",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x02135560"
     },
     {
-      "symbol": "@127",
+      "symbol": "@894",
       "address": "0x021355f8",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x021354f8"
     },
     {
-      "symbol": "@128",
+      "symbol": "@890",
       "address": "0x021355e0",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x02135528"
     },
     {
-      "symbol": "@129",
+      "symbol": "@885",
       "address": "0x021355ec",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x02135518"
     },
     {
-      "symbol": "@130",
+      "symbol": "@881",
       "address": "0x02135568",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x02135558"
     },
     {
-      "symbol": "@131",
+      "symbol": "@877",
       "address": "0x021355a4",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x02135550"
     },
     {
-      "symbol": "@132",
+      "symbol": "@866",
       "address": "0x02135574",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x02135510"
     },
     {
-      "symbol": "@133",
+      "symbol": "@862",
       "address": "0x02135580",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x02135540"
     },
     {
-      "symbol": "@134",
+      "symbol": "@816",
       "address": "0x0213558c",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x02135548"
     },
     {
-      "symbol": "@135",
+      "symbol": "@810",
       "address": "0x021355bc",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x02135500"
     },
     {
-      "symbol": "@136",
+      "symbol": "@806",
       "address": "0x021355d4",
       "size": "0xc",
       "binding": "STB_GLOBAL",
       "evidence": "compiler-emitted __register_global_object node for the handle at 0x02135508"
     },
     {
-      "symbol": "@137",
+      "symbol": "@799",
       "address": "0x02135604",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -832,67 +832,67 @@
   "defined_symbol_renames": [
     {
       "from": "@554",
-      "to": "@125",
+      "to": "@983",
       "evidence": "compiler-local __register_global_object node; @554 is taken on main after batch 3 merged (temps are fleet-global), renamed to an unused fleet temp of equal length"
     },
     {
       "from": "@555",
-      "to": "@126",
+      "to": "@949",
       "evidence": "compiler-local __register_global_object node; @555 is taken on main after batch 3 merged (temps are fleet-global), renamed to an unused fleet temp of equal length"
     },
     {
       "from": "@556",
-      "to": "@127",
+      "to": "@894",
       "evidence": "compiler-local __register_global_object node; @556 is taken on main after batch 3 merged (temps are fleet-global), renamed to an unused fleet temp of equal length"
     },
     {
       "from": "@557",
-      "to": "@128",
+      "to": "@890",
       "evidence": "compiler-local __register_global_object node; @557 is taken on main after batch 3 merged (temps are fleet-global), renamed to an unused fleet temp of equal length"
     },
     {
       "from": "@558",
-      "to": "@129",
+      "to": "@885",
       "evidence": "compiler-local __register_global_object node; @558 is taken on main after batch 3 merged (temps are fleet-global), renamed to an unused fleet temp of equal length"
     },
     {
       "from": "@559",
-      "to": "@130",
+      "to": "@881",
       "evidence": "compiler-local __register_global_object node; @559 is taken on main after batch 3 merged (temps are fleet-global), renamed to an unused fleet temp of equal length"
     },
     {
       "from": "@560",
-      "to": "@131",
+      "to": "@877",
       "evidence": "compiler-local __register_global_object node; @560 is taken on main after batch 3 merged (temps are fleet-global), renamed to an unused fleet temp of equal length"
     },
     {
       "from": "@561",
-      "to": "@132",
+      "to": "@866",
       "evidence": "compiler-local __register_global_object node; @561 is taken on main after batch 3 merged (temps are fleet-global), renamed to an unused fleet temp of equal length"
     },
     {
       "from": "@562",
-      "to": "@133",
+      "to": "@862",
       "evidence": "compiler-local __register_global_object node; @562 is taken on main after batch 3 merged (temps are fleet-global), renamed to an unused fleet temp of equal length"
     },
     {
       "from": "@563",
-      "to": "@134",
+      "to": "@816",
       "evidence": "compiler-local __register_global_object node; @563 is taken on main after batch 3 merged (temps are fleet-global), renamed to an unused fleet temp of equal length"
     },
     {
       "from": "@564",
-      "to": "@135",
+      "to": "@810",
       "evidence": "compiler-local __register_global_object node; @564 is taken on main after batch 3 merged (temps are fleet-global), renamed to an unused fleet temp of equal length"
     },
     {
       "from": "@565",
-      "to": "@136",
+      "to": "@806",
       "evidence": "compiler-local __register_global_object node; @565 is taken on main after batch 3 merged (temps are fleet-global), renamed to an unused fleet temp of equal length"
     },
     {
       "from": "@566",
-      "to": "@137",
+      "to": "@799",
       "evidence": "compiler-local __register_global_object node; @566 is taken on main after batch 3 merged (temps are fleet-global), renamed to an unused fleet temp of equal length"
     }
   ],
@@ -1242,7 +1242,7 @@
       "source": "0x021348a0",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@125",
+      "symbol": "@983",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x021355b0"
@@ -1262,7 +1262,7 @@
       "source": "0x021348ac",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@126",
+      "symbol": "@949",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x021355c8"
@@ -1282,7 +1282,7 @@
       "source": "0x021348b8",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@127",
+      "symbol": "@894",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x021355f8"
@@ -1302,7 +1302,7 @@
       "source": "0x021348c4",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@128",
+      "symbol": "@890",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x021355e0"
@@ -1322,7 +1322,7 @@
       "source": "0x021348d0",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@129",
+      "symbol": "@885",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x021355ec"
@@ -1342,7 +1342,7 @@
       "source": "0x021348dc",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@130",
+      "symbol": "@881",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x02135568"
@@ -1362,7 +1362,7 @@
       "source": "0x021348e8",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@131",
+      "symbol": "@877",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x021355a4"
@@ -1382,7 +1382,7 @@
       "source": "0x021348f4",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@132",
+      "symbol": "@866",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x02135574"
@@ -1402,7 +1402,7 @@
       "source": "0x02134900",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@133",
+      "symbol": "@862",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x02135580"
@@ -1422,7 +1422,7 @@
       "source": "0x0213490c",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@134",
+      "symbol": "@816",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x0213558c"
@@ -1442,7 +1442,7 @@
       "source": "0x02134918",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@135",
+      "symbol": "@810",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x021355bc"
@@ -1462,7 +1462,7 @@
       "source": "0x02134924",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@136",
+      "symbol": "@806",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x021355d4"
@@ -1482,7 +1482,7 @@
       "source": "0x0213492c",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@137",
+      "symbol": "@799",
       "addend": 0,
       "target_module": "ov091",
       "target_address": "0x02135604"
@@ -1502,25 +1502,25 @@
       "evidence": "mwcc emits the ctor-table object local; DSD exposes owned symbols globally and cannot encode a local symbols.txt entry"
     },
     {
-      "symbol": "@130",
+      "symbol": "@881",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x02135568"
     },
     {
-      "symbol": "@132",
+      "symbol": "@866",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x02135574"
     },
     {
-      "symbol": "@133",
+      "symbol": "@862",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x02135580"
     },
     {
-      "symbol": "@134",
+      "symbol": "@816",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x0213558c"
@@ -1532,55 +1532,55 @@
       "evidence": "compiler-local registration node is a configured relocation destination at 0x02135598"
     },
     {
-      "symbol": "@131",
+      "symbol": "@877",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x021355a4"
     },
     {
-      "symbol": "@125",
+      "symbol": "@983",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x021355b0"
     },
     {
-      "symbol": "@135",
+      "symbol": "@810",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x021355bc"
     },
     {
-      "symbol": "@126",
+      "symbol": "@949",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x021355c8"
     },
     {
-      "symbol": "@136",
+      "symbol": "@806",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x021355d4"
     },
     {
-      "symbol": "@128",
+      "symbol": "@890",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x021355e0"
     },
     {
-      "symbol": "@129",
+      "symbol": "@885",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x021355ec"
     },
     {
-      "symbol": "@127",
+      "symbol": "@894",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x021355f8"
     },
     {
-      "symbol": "@137",
+      "symbol": "@799",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x02135604"

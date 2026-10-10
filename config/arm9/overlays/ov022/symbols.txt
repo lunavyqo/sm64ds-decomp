@@ -254,11 +254,11 @@ _ZTV21daObj_volcanoCannon_c kind:data(any) addr:0x0211447c
 data_ov022_02114498 kind:data(any) addr:0x02114498 ambiguous
 data_ov022_02114500 kind:bss addr:0x02114500
 data_ov022_02114508 kind:bss addr:0x02114508
-@441 kind:bss addr:0x02114510
+@602 kind:bss addr:0x02114510
 @442 kind:bss addr:0x0211451c
 data_ov022_02114528 kind:bss addr:0x02114528
 data_ov022_02114530 kind:bss addr:0x02114530
-@391 kind:bss addr:0x02114538
+@606 kind:bss addr:0x02114538
 @392 kind:bss addr:0x02114544
 data_ov022_02114550 kind:bss addr:0x02114550
 data_ov022_02114558 kind:bss addr:0x02114558
@@ -276,10 +276,10 @@ data_ov022_021145c8 kind:bss addr:0x021145c8
 data_ov022_021145d0 kind:bss addr:0x021145d0
 data_ov022_021145d8 kind:bss addr:0x021145d8
 data_ov022_021145e0 kind:bss addr:0x021145e0
-@373 kind:bss addr:0x021145e8
-@374 kind:bss addr:0x021145f4
-@371 kind:bss addr:0x02114600
-@372 kind:bss addr:0x0211460c
+@609 kind:bss addr:0x021145e8
+@608 kind:bss addr:0x021145f4
+@611 kind:bss addr:0x02114600
+@610 kind:bss addr:0x0211460c
 data_ov022_02114618 kind:bss addr:0x02114618
 FloatingFloorLllBig_ClsnFile kind:bss addr:0x02114618
 data_ov022_02114620 kind:bss addr:0x02114620

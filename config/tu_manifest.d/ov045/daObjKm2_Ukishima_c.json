@@ -89,7 +89,7 @@
       "evidence": "collision resource handle constructed with file ID 1644; InitResources loads the KCL through it and CleanupResources releases it"
     },
     {
-      "symbol": "@425",
+      "symbol": "@603",
       "address": "0x02113208",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -533,7 +533,7 @@
       "evidence": "mwcc emits the ctor-table object local; DSD exposes owned symbols globally and cannot encode a local symbols.txt entry"
     },
     {
-      "symbol": "@425",
+      "symbol": "@603",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local model registration node is a configured initializer relocation destination at 0x02113208"
@@ -548,7 +548,7 @@
   "defined_symbol_renames": [
     {
       "from": "@364",
-      "to": "@425",
+      "to": "@603",
       "evidence": "compiler-local __register_global_object node; @364 is taken on main by ov036 bss, renamed to an unused fleet temp of equal length"
     },
     {
@@ -623,7 +623,7 @@
       "source": "0x02112344",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@425",
+      "symbol": "@603",
       "addend": 0,
       "target_module": "ov045",
       "target_address": "0x02113208"

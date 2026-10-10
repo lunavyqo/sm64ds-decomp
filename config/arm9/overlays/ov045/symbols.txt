@@ -168,7 +168,7 @@ PoleLift_ModelFile kind:bss addr:0x021131d8
 @408 kind:bss addr:0x021131ec
 data_ov045_021131f8 kind:bss addr:0x021131f8
 data_ov045_02113200 kind:bss addr:0x02113200
-@425 kind:bss addr:0x02113208
+@603 kind:bss addr:0x02113208
 @426 kind:bss addr:0x02113214
 data_ov045_02113220 kind:bss addr:0x02113220
 data_ov045_02113228 kind:bss addr:0x02113228
@@ -176,6 +176,6 @@ data_ov045_02113228 kind:bss addr:0x02113228
 @975 kind:bss addr:0x0211323c
 data_ov045_02113248 kind:bss addr:0x02113248
 data_ov045_02113250 kind:bss addr:0x02113250
-@161 kind:bss addr:0x02113258
-@162 kind:bss addr:0x02113264
+@617 kind:bss addr:0x02113258
+@616 kind:bss addr:0x02113264
 data_ov045_02113270 kind:bss addr:0x02113270
