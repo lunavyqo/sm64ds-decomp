@@ -881,6 +881,7 @@ s32 daWanwan2_c::OnAimedAtWithEgg()
 /* -------------------------------------------------------------------------- */
 /* ROM ordinal 16 -- daWanwan2_c_classInit, 0x021442dc, size 0x118 */
 /* -------------------------------------------------------------------------- */
+// @symbol daWanwan2_c_classInit
 /* local extern: the factory below spells the constructor chain by hand (see
  * its comment), so it names each constructor, destructor and array callback
  * by its mangled symbol rather than through the class headers. */
@@ -903,7 +904,6 @@ Vector3s *_ZN8Vector3sD1Ev(Vector3s *object);
 void func_0203d73c(void);
 }
 
-// @symbol daWanwan2_c_classInit
 /* Reconstructed source-style name: SM64DS proves daWanwan2_c through RTTI,
  * allocation size, vtable identity, and the WANWAN2 registry profile;
  * later EAD lineage supplies classInit. Exact original spelling is not
