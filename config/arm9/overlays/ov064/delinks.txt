@@ -68,6 +68,9 @@ src/actors/daObjTbox_c.cpp:
 src/actors/daObjShell_c.cpp:
     complete
     .text start:0x0211a930 end:0x0211adb0
+    .init start:0x0211b698 end:0x0211b72c
+    .ctor start:0x0211b754 end:0x0211b758
+    .bss start:0x0211c9bc end:0x0211c9f8
 
 src/unnamed/ov064/__sinit_ov064_0211ae00.c:
     complete
@@ -88,7 +91,3 @@ src/unnamed/ov064/__sinit_ov064_0211b0e4.c:
 src/unnamed/ov064/__sinit_ov064_0211b1d4.c:
     complete
     .init start:0x0211b1d4 end:0x0211b4dc
-
-src/unnamed/ov064/__sinit_ov064_0211b698.c:
-    complete
-    .init start:0x0211b698 end:0x0211b72c
