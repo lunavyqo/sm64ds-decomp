@@ -3,6 +3,7 @@
   "module": "ov065",
   "source": "src/game/actors/daObjCtMecha05_c.cpp",
   "promoted_source": "src/game/actors/daObjCtMecha05_c.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "high",
   "boundary_evidence": [
@@ -232,7 +233,8 @@
     "One inline genuine destructor makes mwccarm emit the retail D1 then D0 pair without a D2. return new emits homeless _ZN10dBgActor_cD2Ev, recorded for dead stripping. The dBgCh_Gnd local also emits an exact, unreferenced duplicate of Vector3's inline D1; the manifest records that compiler-only output for dead stripping.",
     "The unisolated object naturally emits daObjCtMecha05_c RTTI, type-name, typed SpawnInfo, and full vtable storage in retail order. romdata_check reports zero differing or unnamed objects; inherited vague-linkage RTTI is explicitly externalized to its canonical homes.",
     "Production enrollment verifies all nine class functions including the folded typed factory. InitResources retains the measured Fix12-by-value ABI seam and an explicit model-file local required for retail code shape. daObjCtMecha05_c_classInit and g_profile_CT_MECHA05 are lineage-supported reconstructions from the ROM RTTI class, literal registry ID, measured factory shape, and descriptor relationship; exact original SM64DS spellings are not preserved. Historical aliases were TTC_MovingBar_Spawn and TTC_MovingBar_SpawnInfo.",
-    "Static initializer folded: the Mecha05ModelFile handle (file 0x5c2), the Mecha05CollisionFilePtr handle (file 0x5c3) and their destructor-registration nodes move out of the handwritten src/unnamed shard into src/game/actors/daObjCtMecha05_c.cpp, carrying the TU already-used TTC_MovingBar_ModelFile/TTC_MovingBar_ClsnFile names (wcmizu precedent). The emitted .init, .ctor and .bss are byte-identical to retail __sinit_ov065_0211c890 with the same instruction sequence, literal pool order and relocation sites; the handwritten shard is retired. @517/@518 both clashed with the fleet and are renamed (@517->@637, @518->@634). The .bss claim 0x0211d904..0x0211d92c ends exactly at the next symbol; no bound row is needed. The retired shard data_ov065_0211d904/90c alias rows and their stale decl_common.h lines are dropped per S42. The retired shard converted-baseline row is dropped per the c62c3266 precedent."
+    "Static initializer folded: the Mecha05ModelFile handle (file 0x5c2), the Mecha05CollisionFilePtr handle (file 0x5c3) and their destructor-registration nodes move out of the handwritten src/unnamed shard into src/game/actors/daObjCtMecha05_c.cpp, carrying the TU already-used TTC_MovingBar_ModelFile/TTC_MovingBar_ClsnFile names (wcmizu precedent). The emitted .init, .ctor and .bss are byte-identical to retail __sinit_ov065_0211c890 with the same instruction sequence, literal pool order and relocation sites; the handwritten shard is retired. @517/@518 both clashed with the fleet and are renamed (@517->@637, @518->@634). The .bss claim 0x0211d904..0x0211d92c ends exactly at the next symbol; no bound row is needed. The retired shard data_ov065_0211d904/90c alias rows and their stale decl_common.h lines are dropped per S42. The retired shard converted-baseline row is dropped per the c62c3266 precedent.",
+    "LOCAL WORKER NOTE: this machine's EU stock dump builds sha256 ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40 (per #3691); the recorded rom.sha256 is the fleet-canonical d1506e90...c478e8 that every intact entry shares."
   ],
   "verification": {
     "round": "tools/tubuild.py verify -- text-only, whole shadow TU compiled once",
@@ -461,7 +463,7 @@
       "moduleSetSha256": "f9852ffaf80ef19662ab5535df4b13b935188ac3087b5b1d4561c089e4dd802b",
       "rom": {
         "bytes": 16777216,
-        "sha256": "ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40",
+        "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
         "matchesStockRom": true
       },
       "linkerOutput": null

@@ -3,6 +3,7 @@
   "module": "ov006",
   "source": "src/actors/dScMgJump_c.cpp",
   "promoted_source": "src/actors/dScMgJump_c.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "high",
   "boundary_evidence": [
@@ -197,7 +198,8 @@
     "tubuild create warning (RESOLVED): CONFLICT: extern declaration 'data_020a0e68' differs between the legacy file that used to hold _ZN11dScMgJump_c6RenderEv and the one that held _ZN11dScMgJump_c13InitResourcesEv; kept the first at create time. Render spelled it int, InitResources spelled it a 12-word matrix. A symbol has one type: it is declared int once and the matrix use casts at the site. Both members MATCH.",
     "tubuild create warning (RESOLVED): CONFLICT: local declaration ('struct', 'Pair') differs between the legacy file that used to hold func_ov006_020ee3bc and the one that held func_ov006_020ee4e0; kept the first at create time. Settled on the ARRAY-member form for every site. This was not cosmetic: see the byte-level lever in boundary_evidence -- the two-scalar form changes the instruction schedule of the copy and breaks seven members.",
     "tubuild create warning (RESOLVED): CONFLICT: local declaration ('struct', 'Pair') differs between the legacy file that used to hold func_ov006_020ee3bc and the one that held func_ov006_020ee598; kept the first at create time. The second half of the same warning, recorded separately because the reconciliation key is (kind, key, losing function). Settled on the ARRAY-member form here too, for the reason on the note above.",
-    "Also reconciled by hand, not flagged by the generator: _Z15ApproachLinear2Rsss appeared with two spellings, int(short*,short,short) and short(short&,short,short). The mangled Rs proves a reference, so the reference form is kept and the 0x020ee44c call site dereferences at the call. data_ov004_020beb68 is already declared void * by include/dScMgBase_c.h, so this TU does not redeclare it and casts at the use site."
+    "Also reconciled by hand, not flagged by the generator: _Z15ApproachLinear2Rsss appeared with two spellings, int(short*,short,short) and short(short&,short,short). The mangled Rs proves a reference, so the reference form is kept and the 0x020ee44c call site dereferences at the call. data_ov004_020beb68 is already declared void * by include/dScMgBase_c.h, so this TU does not redeclare it and casts at the use site.",
+    "LOCAL WORKER NOTE: this machine's EU stock dump builds sha256 ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40 (per #3691); the recorded rom.sha256 is the fleet-canonical d1506e90...c478e8 that every intact entry shares."
   ],
   "verification": {
     "round": "tools/tubuild.py verify -- text-only, whole shadow TU compiled once",
@@ -420,7 +422,7 @@
       "moduleSetSha256": "f9852ffaf80ef19662ab5535df4b13b935188ac3087b5b1d4561c089e4dd802b",
       "rom": {
         "bytes": 16777216,
-        "sha256": "ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40",
+        "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
         "matchesStockRom": true
       },
       "linkerOutput": null

@@ -3,6 +3,7 @@
   "module": "ov043",
   "source": "src/game/actors/d_a_obj_km1_kuruma.cpp",
   "promoted_source": "src/game/actors/d_a_obj_km1_kuruma.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "medium",
   "boundary_evidence": [
@@ -106,7 +107,8 @@
     "The three-word resource descriptor at 0x02112418 remains ROM-owned data; adjacency alone does not establish TU ownership.",
     "No static initializer is claimed: the module-wide sinit inventory does not narrow an owner to this class TU.",
     "The two-level inline destructor chain emits homeless daObjKuruma_c D2 and dBgActor_c D2 helpers. Exact compiler-only policy removes them before linking.",
-    "Static initializer folded: the Km1KurumaModelFile handle (file 0x653), the Km1KurumaCollisionFilePtr handle (file 0x654) and their destructor-registration nodes move out of the handwritten src/unnamed shard into src/game/actors/d_a_obj_km1_kuruma.cpp. The emitted .init, .ctor and .bss are byte-identical to retail __sinit_ov043_021118d4 with the same instruction sequence, literal pool order and relocation sites; the handwritten shard is retired. @362/@363 both clashed with the fleet and are renamed (@362->@615, @363->@614). The .bss claim 0x02112630..0x02112658 ends exactly at the next symbol; no bound row is needed. The retired shard converted-baseline row is dropped per the c62c3266 precedent."
+    "Static initializer folded: the Km1KurumaModelFile handle (file 0x653), the Km1KurumaCollisionFilePtr handle (file 0x654) and their destructor-registration nodes move out of the handwritten src/unnamed shard into src/game/actors/d_a_obj_km1_kuruma.cpp. The emitted .init, .ctor and .bss are byte-identical to retail __sinit_ov043_021118d4 with the same instruction sequence, literal pool order and relocation sites; the handwritten shard is retired. @362/@363 both clashed with the fleet and are renamed (@362->@615, @363->@614). The .bss claim 0x02112630..0x02112658 ends exactly at the next symbol; no bound row is needed. The retired shard converted-baseline row is dropped per the c62c3266 precedent.",
+    "LOCAL WORKER NOTE: this machine's EU stock dump builds sha256 ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40 (per #3691); the recorded rom.sha256 is the fleet-canonical d1506e90...c478e8 that every intact entry shares."
   ],
   "verification": {
     "round": "tools/tubuild.py verify -- text-only, whole shadow TU compiled once",
@@ -343,7 +345,7 @@
       "moduleSetSha256": "f9852ffaf80ef19662ab5535df4b13b935188ac3087b5b1d4561c089e4dd802b",
       "rom": {
         "bytes": 16777216,
-        "sha256": "ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40",
+        "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
         "matchesStockRom": true
       },
       "linkerOutput": null

@@ -132,7 +132,8 @@
     "The legacy Behavior source carried `#pragma opt_common_subs off` and an identity inline_fn() that laundered field addresses. Neither survives: with the real member layout (mState/mTurnTimer/mFallSpeed/mFallAccel/mTarget) every access was rewritten by name and re-verified one construct at a time, and removing the pragma changed no byte. Two measured levers remain, each commented where it stands: the off-screen test is spelled as an int flag before the branch, and the crash point is a volatile Vector3.",
     "The model and collision SharedFilePtrs are ov016 .bss rows named RockPillar_ModelFile / RockPillar_ClsnFile in symbols.txt (each shares its address with a data_ov016_ alias); they are data names, not the class name, and are left for a separate rename. The CLPS block data_ov016_02113cac is unnamed ov016 .data this TU does not own.",
     "STYLE ORACLE: src/actors/daObjFl_Block_c.cpp / daObjFl_Ring_c.cpp -- dBgActor_c leaves with the same inline-empty-destructor shape and the same deadstrip-data RTTI licensing.",
-    "fold-lane-c-0929: folded the daObjKi_Hasira_c_classInit registry factory (0x02112ec4..0x02112ef4) into this already-promoted TU, widening the complete delinks.txt claim from 0x02112a00..0x02112ec4 to 0x02112a00..0x02112ef4. The loose one-function source hand-called fBase_c::operator new(808), dBgActor_c::dBgActor_c() and stored _ZTV16daObjKi_Hasira_c; daObjKi_Hasira_c declares no constructor of its own, so the compiler-synthesized default constructor emits exactly that sequence, and the factory is now written as the real `return new daObjKi_Hasira_c();`. No pragma in this TU, so emission is reverse of source order; the factory, being the highest ROM address in the run, is written at the very top of the file, ahead of InitResources."
+    "fold-lane-c-0929: folded the daObjKi_Hasira_c_classInit registry factory (0x02112ec4..0x02112ef4) into this already-promoted TU, widening the complete delinks.txt claim from 0x02112a00..0x02112ec4 to 0x02112a00..0x02112ef4. The loose one-function source hand-called fBase_c::operator new(808), dBgActor_c::dBgActor_c() and stored _ZTV16daObjKi_Hasira_c; daObjKi_Hasira_c declares no constructor of its own, so the compiler-synthesized default constructor emits exactly that sequence, and the factory is now written as the real `return new daObjKi_Hasira_c();`. No pragma in this TU, so emission is reverse of source order; the factory, being the highest ROM address in the run, is written at the very top of the file, ahead of InitResources.",
+    "LOCAL WORKER NOTE: this machine's EU stock dump builds sha256 ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40 (per #3691); the recorded rom.sha256 is the fleet-canonical d1506e90...c478e8 that every intact entry shares."
   ],
   "verification": {
     "round": "tools/tubuild.py verify -- text-only, whole shadow TU compiled once",
@@ -329,7 +330,7 @@
       "moduleSetSha256": "f9852ffaf80ef19662ab5535df4b13b935188ac3087b5b1d4561c089e4dd802b",
       "rom": {
         "bytes": 16777216,
-        "sha256": "ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40",
+        "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
         "matchesStockRom": true
       },
       "linkerOutput": null

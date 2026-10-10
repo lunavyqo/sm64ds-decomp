@@ -3,6 +3,7 @@
   "module": "ov031",
   "source": "src/game/actors/d_a_obj_hs_billboard.cpp",
   "promoted_source": "src/game/actors/d_a_obj_hs_billboard.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "high",
   "boundary_evidence": [

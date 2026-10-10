@@ -3,6 +3,7 @@
   "module": "ov030",
   "source": "src/actors/daObjHmMaruta_c.cpp",
   "promoted_source": "src/actors/daObjHmMaruta_c.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "medium",
   "boundary_evidence": [

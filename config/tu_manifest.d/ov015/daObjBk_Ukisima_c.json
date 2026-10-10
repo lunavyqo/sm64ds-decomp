@@ -3,6 +3,7 @@
   "module": "ov015",
   "source": "src/game/actors/d_a_obj_bk_ukisima.cpp",
   "promoted_source": "src/game/actors/d_a_obj_bk_ukisima.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "medium",
   "boundary_evidence": [

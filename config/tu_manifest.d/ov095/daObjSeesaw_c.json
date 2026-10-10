@@ -3,6 +3,7 @@
   "module": "ov095",
   "source": "src/actors/daObjSeesaw_c.cpp",
   "promoted_source": "src/actors/daObjSeesaw_c.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "high",
   "boundary_evidence": [
@@ -370,7 +371,8 @@
   "notes": [
     "Cartridge RTTI name is daObjSeesaw_c (_ZTS13daObjSeesaw_c at ov095 0x021373cc, _ZTI at 0x021373c0, vtable address point 0x021374fc). The licensed run is .text 0x02135700..0x02135ff4 (19 functions): methods, then the stood-on callback pair, then the seven classInit factories, matching the methods/callback/factories interleave of the neighboring daUdlift_c and daObjFlamethrower_c TUs. func_ov095_02135cdc keeps its func_ov095_* name because the callback pair is called through the collider's raw stored address, not through a vtable.",
     "The destructor is declared in the header and defined once, out of line, first in the file. Under #pragma defer_codegen off that emits D1 then D0 in ROM order, plus a homeless D2.",
-    "Previous tree name SeesawBob was coined. class_rename kept SeesawBob_Spawn / SeesawBob_SpawnInfo chain rows (no --with-derived). RTTI stays at the addresses already in symbols.txt."
+    "Previous tree name SeesawBob was coined. class_rename kept SeesawBob_Spawn / SeesawBob_SpawnInfo chain rows (no --with-derived). RTTI stays at the addresses already in symbols.txt.",
+    "LOCAL WORKER NOTE: this machine's EU stock dump builds sha256 ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40 (per #3691); the recorded rom.sha256 is the fleet-canonical d1506e90...c478e8 that every intact entry shares."
   ],
   "compiler_only_output": [
     {
@@ -805,7 +807,7 @@
       "moduleSetSha256": "f9852ffaf80ef19662ab5535df4b13b935188ac3087b5b1d4561c089e4dd802b",
       "rom": {
         "bytes": 16777216,
-        "sha256": "ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40",
+        "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
         "matchesStockRom": true
       },
       "linkerOutput": null

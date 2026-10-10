@@ -3,6 +3,7 @@
   "module": "ov002",
   "source": "src/actors/daObjBlockL_c.cpp",
   "promoted_source": "src/actors/daObjBlockL_c.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "medium",
   "boundary_evidence": [

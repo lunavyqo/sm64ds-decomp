@@ -3,6 +3,7 @@
   "module": "ov025",
   "source": "src/actors/daDkk_c.cpp",
   "promoted_source": "src/actors/daDkk_c.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "medium",
   "boundary_evidence": [

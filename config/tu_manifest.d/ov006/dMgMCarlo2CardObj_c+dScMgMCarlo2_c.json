@@ -3,6 +3,7 @@
   "module": "ov006",
   "source": "src/minigames/d_s_mg_m_carlo2.cpp",
   "promoted_source": "src/minigames/d_s_mg_m_carlo2.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "high",
   "boundary_evidence": [

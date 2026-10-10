@@ -3,6 +3,7 @@
   "module": "ov043",
   "source": "src/game/actors/d_a_obj_km1_kurumajiku.cpp",
   "promoted_source": "src/game/actors/d_a_obj_km1_kurumajiku.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "high",
   "boundary_evidence": [
@@ -109,7 +110,8 @@
     "The three-word resource descriptor at 0x02112344 remains ROM-owned data, declared and not defined here: this entry claims .text only.",
     "No static initializer is claimed: ov043's four sinits are module-wide and do not narrow an owner to this class TU.",
     "Route is text-only. ov043's .data is unclaimed across 0x02112338..0x0211240c -- no delinks entry covers this class's RTTI, profile or vtable -- so an intact-object claim would have to carve that band out first, and the same band carries three vtable-interior phantom rows (data_ov043_021123e4/021123f4/02112404). Both landed ov043 siblings took text-only for the same reason.",
-    "The two-level inline constructor and destructor chain emits homeless _ZN17daObjKurumajiku_cD2Ev and _ZN10dBgActor_cD2Ev helpers. Exact compiler-only policy removes them before linking, the same disposition the adjacent ov043/daObjKm1_Kuruma_c entry records for its own pair."
+    "The two-level inline constructor and destructor chain emits homeless _ZN17daObjKurumajiku_cD2Ev and _ZN10dBgActor_cD2Ev helpers. Exact compiler-only policy removes them before linking, the same disposition the adjacent ov043/daObjKm1_Kuruma_c entry records for its own pair.",
+    "LOCAL WORKER NOTE: this machine's EU stock dump builds sha256 ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40 (per #3691); the recorded rom.sha256 is the fleet-canonical d1506e90...c478e8 that every intact entry shares."
   ],
   "compiler_only_output": [
     {
@@ -456,7 +458,7 @@
       "moduleSetSha256": "f9852ffaf80ef19662ab5535df4b13b935188ac3087b5b1d4561c089e4dd802b",
       "rom": {
         "bytes": 16777216,
-        "sha256": "ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40",
+        "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
         "matchesStockRom": true
       },
       "linkerOutput": null

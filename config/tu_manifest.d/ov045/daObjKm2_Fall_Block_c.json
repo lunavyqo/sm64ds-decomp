@@ -3,6 +3,7 @@
   "module": "ov045",
   "source": "src/game/actors/d_a_obj_km2_fall_block.cpp",
   "promoted_source": "src/game/actors/d_a_obj_km2_fall_block.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "high",
   "boundary_evidence": [

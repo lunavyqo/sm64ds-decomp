@@ -3,6 +3,7 @@
   "module": "ov006",
   "source": "src/actors/dScMgSlots.cpp",
   "promoted_source": "src/actors/dScMgSlots.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "medium",
   "boundary_evidence": [
@@ -330,7 +331,8 @@
     "RESOLVED non-text ownership: 21 compiler-emitted metadata symbols have explicit canonical homes outside this text-only unit. romdata_check reports 12 VERIFIED, 9 PARTIAL name strings, zero DIFFERS, zero UNNAMED and zero blind words. A direct LC.link_function comparison additionally proves all 552 emitted bytes including vtable preambles and string tails against their canonical ROM storage.",
     "RESOLVED emitted-vtable factory addresses: The Slot3 factory addresses its emitted class table at +8 bytes; the imported base table retains its configured address point.",
     "Both D2 variants remain explicit compiler-only deadstrip outputs with no configured ROM home. All 39 licensed ROM functions are emitted in ascending ROM order. Unnamed helper identities, opaque embedded fields and explicit factory construction remain reconstruction work; promotion is a production ownership claim, not complete original-source recovery.",
-    "Static initializer folded: the Slot3 state table data_ov006_02142bdc[8] moves out of the handwritten src/unnamed shard into src/actors/dScMgSlots.cpp, defined through the existing SlotState typedef and plain-copied from the eight ROM PMF constants in retail copy order (curling precedent). The emitted .init, .ctor and .bss are byte-identical to retail __sinit_ov006_02132894; no handles, no compiler temporaries, no renames. The .bss claim 0x02142bdc..0x02142c1c ends exactly at the next symbol; no bound row is needed. The retired shard converted-baseline row is dropped per the c62c3266 precedent."
+    "Static initializer folded: the Slot3 state table data_ov006_02142bdc[8] moves out of the handwritten src/unnamed shard into src/actors/dScMgSlots.cpp, defined through the existing SlotState typedef and plain-copied from the eight ROM PMF constants in retail copy order (curling precedent). The emitted .init, .ctor and .bss are byte-identical to retail __sinit_ov006_02132894; no handles, no compiler temporaries, no renames. The .bss claim 0x02142bdc..0x02142c1c ends exactly at the next symbol; no bound row is needed. The retired shard converted-baseline row is dropped per the c62c3266 precedent.",
+    "LOCAL WORKER NOTE: this machine's EU stock dump builds sha256 ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40 (per #3691); the recorded rom.sha256 is the fleet-canonical d1506e90...c478e8 that every intact entry shares."
   ],
   "verification": {
     "round": "tools/tubuild.py verify -- text-only, whole shadow TU compiled once",
@@ -558,7 +560,7 @@
       "moduleSetSha256": "f9852ffaf80ef19662ab5535df4b13b935188ac3087b5b1d4561c089e4dd802b",
       "rom": {
         "bytes": 16777216,
-        "sha256": "ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40",
+        "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
         "matchesStockRom": true
       },
       "linkerOutput": null

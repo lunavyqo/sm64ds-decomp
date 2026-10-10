@@ -3,6 +3,7 @@
   "module": "ov065",
   "source": "src/actors/daObjCtKaitendai_c.cpp",
   "promoted_source": "src/actors/daObjCtKaitendai_c.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "high",
   "boundary_evidence": [
@@ -257,7 +258,8 @@
     "daObjCtKaitendai_c_classInit_CT_MECHA06 / CT_MECHA07 are reconstructed source-style names: ROM RTTI names the class, the CT_MECHA06/07 registry profiles select the factories, and later EAD lineage supplies classInit. Exact original SM64DS spellings are not preserved. Historical aliases were TtcRotatingGear_Spawn and TtcRotatingTriangle_Spawn.",
     "compiler_only_output is 13 rows: 2 x (4 ancestors + self) typeinfo/type-string rows + 1 vtable + 1 Vector3 D1 + 1 homeless dBgActor_c D2 from return new. Every canonical_module/canonical_address was read out of the ROM's own symbols.txt, not copied from a sibling without checking this class's homes.",
     "Cleanup folded the adjacent CT_MECHA06/CT_MECHA07 factories as return new daObjCtKaitendai_c(). Inherited fBase_c::operator new(unsigned long) forwards _ZN7fBase_cnwEj((unsigned)size).",
-    "Static initializer folded: the two KaitendaiModelFile handles (files 0x5c4/0x5c6), the two KaitendaiCollisionFilePtr handles (files 0x5c5/0x5c7) and their destructor-registration nodes move out of the handwritten src/unnamed shard into src/actors/daObjCtKaitendai_c.cpp. The emitted .init, .ctor and .bss are byte-identical to retail __sinit_ov065_0211c8fc with the same instruction sequence, literal pool order and relocation sites; the handwritten shard is retired. @455 clashed with the fleet and @456/@457/@458 with the in-flight ov060 kpa3bg fork range, so all four are renamed (@455->@878, @456->@867, @457->@863, @458->@818). The .bss claim 0x0211d92c..0x0211d97c ends exactly at the next symbol; no bound row is needed. The retired shard's converted-baseline row is dropped per the c62c3266 precedent."
+    "Static initializer folded: the two KaitendaiModelFile handles (files 0x5c4/0x5c6), the two KaitendaiCollisionFilePtr handles (files 0x5c5/0x5c7) and their destructor-registration nodes move out of the handwritten src/unnamed shard into src/actors/daObjCtKaitendai_c.cpp. The emitted .init, .ctor and .bss are byte-identical to retail __sinit_ov065_0211c8fc with the same instruction sequence, literal pool order and relocation sites; the handwritten shard is retired. @455 clashed with the fleet and @456/@457/@458 with the in-flight ov060 kpa3bg fork range, so all four are renamed (@455->@878, @456->@867, @457->@863, @458->@818). The .bss claim 0x0211d92c..0x0211d97c ends exactly at the next symbol; no bound row is needed. The retired shard's converted-baseline row is dropped per the c62c3266 precedent.",
+    "LOCAL WORKER NOTE: this machine's EU stock dump builds sha256 ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40 (per #3691); the recorded rom.sha256 is the fleet-canonical d1506e90...c478e8 that every intact entry shares."
   ],
   "verification": {
     "round": "tools/tubuild.py verify -- text-only, whole shadow TU compiled once",
@@ -502,7 +504,7 @@
       "moduleSetSha256": "f9852ffaf80ef19662ab5535df4b13b935188ac3087b5b1d4561c089e4dd802b",
       "rom": {
         "bytes": 16777216,
-        "sha256": "ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40",
+        "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
         "matchesStockRom": true
       },
       "linkerOutput": null

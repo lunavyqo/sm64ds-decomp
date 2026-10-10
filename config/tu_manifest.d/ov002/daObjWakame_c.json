@@ -3,6 +3,7 @@
   "module": "ov002",
   "source": "src/game/actors/d_a_obj_wakame.cpp",
   "promoted_source": "src/game/actors/d_a_obj_wakame.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "high",
   "boundary_evidence": [

@@ -3,6 +3,7 @@
   "module": "ov047",
   "source": "src/game/actors/d_a_obj_km3_dorifu.cpp",
   "promoted_source": "src/game/actors/d_a_obj_km3_dorifu.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "high",
   "boundary_evidence": [

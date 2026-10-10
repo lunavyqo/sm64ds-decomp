@@ -3,6 +3,7 @@
   "module": "ov002",
   "source": "src/actors/daPropeller_Heyho_Fire_c.cpp",
   "promoted_source": "src/actors/daPropeller_Heyho_Fire_c.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "high",
   "boundary_evidence": [
