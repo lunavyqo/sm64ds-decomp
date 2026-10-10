@@ -36,11 +36,10 @@ def prepare_intact_object(raw, entry):
     if reasons:
         _raise(f"{entry.get('id', '<unknown>')} manifest section claims", reasons)
     text = [claim for claim in claims if claim["name"] == ".text"]
-    nontext = [claim for claim in claims if claim["name"] != ".text"]
-    if len(text) != 1 or not nontext:
+    if len(text) != 1:
         raise ProductionTuError(
             f"{entry.get('id', '<unknown>')}: intact production requires one .text "
-            "claim and at least one non-text claim")
+            "claim")
 
     post_policy, compiler_only, reasons = TB.apply_compiler_only_policy(raw, entry)
     if reasons:
