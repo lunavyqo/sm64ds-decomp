@@ -2248,8 +2248,6 @@ extern void*data_ov006_0214095c;
 extern void*data_ov006_02141a40;
 extern void*data_ov006_02141a4c;
 extern void*data_ov006_02142184;
-extern void*data_ov006_02142188;
-extern void*data_ov006_02142190;
 extern void*data_ov006_021428c8;
 extern void*data_ov007_0210342c;
 extern void*data_ov010_021122f8;
