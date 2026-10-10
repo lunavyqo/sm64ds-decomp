@@ -1649,7 +1649,7 @@ __sinit_ov002_02108094 kind:function(arm,size=0x3c) addr:0x02108094
 .p__sinit_ov002_0210804c kind:data(word) addr:0x02108130
 .p__sinit_ov002_02108094 kind:data(word) addr:0x02108134
 @989 kind:data(any) addr:0x02108140
-@985 kind:data(any) addr:0x02108148
+@986 kind:data(any) addr:0x02108148
 @979 kind:data(any) addr:0x02108150
 @985 kind:data(any) addr:0x02108158
 @983 kind:data(any) addr:0x02108160
