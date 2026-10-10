@@ -15,6 +15,9 @@ src/actors/daObjWlKoopaShutter_c.cpp:
 src/actors/daObjWlSubmarine_c.cpp:
     complete
     .text start:0x021118b8 end:0x02111aa0
+    .init start:0x02112c28 end:0x02112c94
+    .ctor start:0x02112dac end:0x02112db0
+    .bss start:0x02113edc end:0x02113f04
 
 src/actors/daWater_Tatumaki_c.cpp:
     complete
@@ -35,10 +38,6 @@ src/unnamed/ov026/__sinit_ov026_02112b7c.c:
 src/unnamed/ov026/__sinit_ov026_02112bbc.c:
     complete
     .init start:0x02112bbc end:0x02112c28
-
-src/unnamed/ov026/__sinit_ov026_02112c28.c:
-    complete
-    .init start:0x02112c28 end:0x02112c94
 
 src/unnamed/ov026/__sinit_ov026_02112d68.c:
     complete
