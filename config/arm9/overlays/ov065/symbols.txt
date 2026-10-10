@@ -327,9 +327,7 @@ data_ov065_0211d8cc kind:bss addr:0x0211d8cc
 @51 kind:bss addr:0x0211d8e0
 @52 kind:bss addr:0x0211d8ec
 @53 kind:bss addr:0x0211d8f8
-data_ov065_0211d904 kind:bss addr:0x0211d904
 TTC_MovingBar_ModelFile kind:bss addr:0x0211d904
-data_ov065_0211d90c kind:bss addr:0x0211d90c
 TTC_MovingBar_ClsnFile kind:bss addr:0x0211d90c
 @637 kind:bss addr:0x0211d914
 @634 kind:bss addr:0x0211d920

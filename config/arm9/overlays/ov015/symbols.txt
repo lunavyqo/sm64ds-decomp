@@ -295,4 +295,5 @@ data_ov015_02114ab4 kind:bss addr:0x02114ab4
 data_ov015_02114ad4 kind:bss addr:0x02114ad4
 data_ov015_02114adc kind:bss addr:0x02114adc
 @626 kind:bss addr:0x02114ae4
-data_ov015_02114af0 kind:bss addr:0x02114af0
+@173 kind:bss addr:0x02114af0
+data_ov015_02114afc kind:bss addr:0x02114afc
