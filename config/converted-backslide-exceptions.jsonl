@@ -748,3 +748,4 @@
 {"path": "src/unnamed/ov098/__sinit_ov098_0213c214.c", "reason": "shard folded into its owning TU (batch sinit-1010-4)"}
 {"path": "src/unnamed/ov098/__sinit_ov098_0213c2b4.c", "reason": "shard folded into its owning TU (batch sinit-1010-4)"}
 {"path": "src/unnamed/ov100/__sinit_ov100_02147d7c.c", "reason": "shard folded into its owning TU (batch sinit-1010-4)"}
+{"path": "src/unnamed/ov064/__sinit_ov064_0211b1d4.c", "reason": "The handwritten static initializer is retired. daObjFl_Coin_c.cpp defines the fifteen resource handles (fourteen models 0x5ff/0x601-0x60d, collision 0x600) and the six-entry state table for real, and mwcc emits __sinit_daObjFl_Coin_c.cpp with the same 0x308 bytes and the same sixty-nine relocations."}

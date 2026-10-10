@@ -7685,6 +7685,7 @@
     "src/actors/daObjFl_Coin_c.cpp#_ZN14daObjFl_Coin_c8BehaviorEv": "ruspecial",
     "src/actors/daObjFl_Coin_c.cpp#_ZN16daObjFl_Puzzle_c13InitResourcesEv": "tangosdev",
     "src/actors/daObjFl_Coin_c.cpp#_ZN14daObjFl_Coin_c13InitResourcesEv": "tangosdev",
+    "src/actors/daObjFl_Coin_c.cpp#__sinit_daObjFl_Coin_c.cpp": "tangosdev",
     "src/actors/dScene_c.cpp#_ZN8dScene_cD1Ev": "tangosdev",
     "src/actors/dScene_c.cpp#_ZN8dScene_cD0Ev": "andrewboudreau",
     "src/actors/dScene_c.cpp#_ZN8dScene_c20SetAndStopColorFaderEv": "tangosdev",

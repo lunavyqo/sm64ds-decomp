@@ -42,6 +42,9 @@ src/actors/daBbl_c.cpp:
 src/actors/daObjFl_Coin_c.cpp:
     complete
     .text start:0x02118b50 end:0x02119330
+    .init start:0x0211b1d4 end:0x0211b4dc
+    .ctor start:0x0211b744 end:0x0211b748
+    .bss start:0x0211c7d8 end:0x0211c934
 
 src/actors/daWater_Hakidasi_c.cpp:
     complete
@@ -84,10 +87,6 @@ src/unnamed/ov064/__sinit_ov064_0211b078.c:
 src/unnamed/ov064/__sinit_ov064_0211b0e4.c:
     complete
     .init start:0x0211b0e4 end:0x0211b150
-
-src/unnamed/ov064/__sinit_ov064_0211b1d4.c:
-    complete
-    .init start:0x0211b1d4 end:0x0211b4dc
 
 src/unnamed/ov064/__sinit_ov064_0211b698.c:
     complete
