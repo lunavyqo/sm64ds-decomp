@@ -43,6 +43,9 @@ src/actors/daObjFl_Seesaw_c.cpp:
 src/actors/daObjFl_Ukiyuka_c.cpp:
     complete
     .text start:0x02111f6c end:0x021120b8
+    .init start:0x02112ec0 end:0x02112f78
+    .ctor start:0x0211310c end:0x02113110
+    .bss start:0x021145c8 end:0x02114618
 
 src/d_a_obj_fl_ukiyuka_fl_ukiyuka_l.c:
     complete
@@ -69,10 +72,6 @@ src/game/actors/d_a_obj_fl_maruta.cpp:
     .init start:0x021130bc end:0x021130f8
     .ctor start:0x0211311c end:0x02113120
     .bss start:0x02114690 end:0x021146a0
-
-src/unnamed/ov022/__sinit_ov022_02112ec0.c:
-    complete
-    .init start:0x02112ec0 end:0x02112f78
 
 src/unnamed/ov022/__sinit_ov022_02112f78.c:
     complete
