@@ -104,6 +104,68 @@ extern unsigned char data_ov006_0212ee0c[];
 extern Pmf data_ov006_02142d38[];
 extern PmfEntry data_ov006_02142df8[];
 extern PmfEntry data_ov006_02142e20[];
+
+/* The .data {pmf, delta} descriptor records the initializer copies into
+   the tables below. They sit outside this TU's claim; each points back at
+   one of this class's methods. */
+extern Pmf data_ov006_0213f4fc;
+extern Pmf data_ov006_0213f504;
+extern Pmf data_ov006_0213f50c;
+extern Pmf data_ov006_0213f514;
+extern Pmf data_ov006_0213f51c;
+extern Pmf data_ov006_0213f524;
+extern Pmf data_ov006_0213f52c;
+extern Pmf data_ov006_0213f534;
+extern Pmf data_ov006_0213f53c;
+extern Pmf data_ov006_0213f554;
+extern Pmf data_ov006_0213f55c;
+extern Pmf data_ov006_0213f564;
+extern Pmf data_ov006_0213f56c;
+extern Pmf data_ov006_0213f574;
+extern Pmf data_ov006_0213f57c;
+extern Pmf data_ov006_0213f584;
+extern Pmf data_ov006_0213f58c;
+extern Pmf data_ov006_0213f594;
+extern Pmf data_ov006_0213f59c;
+extern Pmf data_ov006_0213f5a4;
+extern Pmf data_ov006_0213f5ac;
+extern Pmf data_ov006_0213f5b4;
+extern Pmf data_ov006_0213f5bc;
+extern Pmf data_ov006_0213f5c4;
+extern Pmf data_ov006_0213f5cc;
+extern Pmf data_ov006_0213f5d4;
+extern Pmf data_ov006_0213f5dc;
+extern Pmf data_ov006_0213f5e4;
+extern Pmf data_ov006_0213f5ec;
+extern Pmf data_ov006_0213f5f4;
+extern Pmf data_ov006_0213f5fc;
+extern Pmf data_ov006_0213f604;
+extern Pmf data_ov006_0213f60c;
+extern Pmf data_ov006_0213f614;
+extern Pmf data_ov006_0213f61c;
+extern Pmf data_ov006_0213f624;
+extern Pmf data_ov006_0213f62c;
+extern Pmf data_ov006_0213f634;
+extern Pmf data_ov006_0213f63c;
+extern Pmf data_ov006_0213f644;
+extern Pmf data_ov006_0213f64c;
+extern Pmf data_ov006_0213f654;
+extern Pmf data_ov006_0213f664;
+extern Pmf data_ov006_0213f66c;
+extern Pmf data_ov006_0213f674;
+extern Pmf data_ov006_0213f67c;
+extern Pmf data_ov006_0213f684;
+extern Pmf data_ov006_0213f68c;
+extern Pmf data_ov006_0213f694;
+extern Pmf data_ov006_0213f6a4;
+extern Pmf data_ov006_0213f6ac;
+extern Pmf data_ov006_0213f6b4;
+extern Pmf data_ov006_0213f6bc;
+extern Pmf data_ov006_0213f6c4;
+extern Pmf data_ov006_0213f6cc;
+extern Pmf data_ov006_0213f6d4;
+extern Pmf data_ov006_0213f6dc;
+
 extern u8 data_ov006_0212ee30[];
 extern void func_02012790(int);
 extern void func_ov006_020c271c(void *c);
@@ -1575,3 +1637,94 @@ void dScMgSound_c::func_ov006_021199c0(){
 // @symbol _ZN12dScMgSound_cD0Ev
 /* Both destructor variants come from the inline body in dScMgSound_c.h.
    Declared first in the class, so D1 is emitted before D0. */
+
+/* Static-init globals (was the handwritten __sinit_ov006_02132970 shard).
+ * The fifteen PMF state tables plain-copied from the ROM's .data
+ * descriptors, in retail copy order. */
+PmfEntry data_ov006_02142df8[5] = {
+    {data_ov006_0213f594},
+    {data_ov006_0213f694},
+    {data_ov006_0213f6a4},
+    {data_ov006_0213f634},
+    {data_ov006_0213f64c},
+};
+PmfEntry data_ov006_02142e20[13] = {
+    {data_ov006_0213f6c4},
+    {data_ov006_0213f5b4},
+    {data_ov006_0213f63c},
+    {data_ov006_0213f5c4},
+    {data_ov006_0213f5a4},
+    {data_ov006_0213f5ac},
+    {data_ov006_0213f62c},
+    {data_ov006_0213f554},
+    {data_ov006_0213f5e4},
+    {data_ov006_0213f55c},
+    {data_ov006_0213f53c},
+    {data_ov006_0213f564},
+    {data_ov006_0213f604},
+};
+Pmf data_ov006_02142d38[3] = {
+    data_ov006_0213f60c,
+    data_ov006_0213f56c,
+    data_ov006_0213f534,
+};
+PmfEntry data_ov006_02142d50[3] = {
+    {data_ov006_0213f584},
+    {data_ov006_0213f51c},
+    {data_ov006_0213f66c},
+};
+PmfEntry data_ov006_02142d80[3] = {
+    {data_ov006_0213f52c},
+    {data_ov006_0213f4fc},
+    {data_ov006_0213f504},
+};
+PmfEntry data_ov006_02142dc8[3] = {
+    {data_ov006_0213f6dc},
+    {data_ov006_0213f6d4},
+    {data_ov006_0213f6cc},
+};
+PmfEntry data_ov006_02142de0[3] = {
+    {data_ov006_0213f524},
+    {data_ov006_0213f6ac},
+    {data_ov006_0213f67c},
+};
+PmfEntry data_ov006_02142cd8[3] = {
+    {data_ov006_0213f5dc},
+    {data_ov006_0213f684},
+    {data_ov006_0213f674},
+};
+PmfEntry data_ov006_02142cf0[3] = {
+    {data_ov006_0213f664},
+    {data_ov006_0213f654},
+    {data_ov006_0213f6bc},
+};
+PmfEntry data_ov006_02142d20[3] = {
+    {data_ov006_0213f624},
+    {data_ov006_0213f61c},
+    {data_ov006_0213f614},
+};
+PmfEntry data_ov006_02142d68[3] = {
+    {data_ov006_0213f5fc},
+    {data_ov006_0213f57c},
+    {data_ov006_0213f5ec},
+};
+Pmf data_ov006_02142d98[3] = {
+    data_ov006_0213f5d4,
+    data_ov006_0213f50c,
+    data_ov006_0213f6b4,
+};
+Pmf data_ov006_02142cc0[3] = {
+    data_ov006_0213f5bc,
+    data_ov006_0213f68c,
+    data_ov006_0213f59c,
+};
+PmfEntry data_ov006_02142d08[3] = {
+    {data_ov006_0213f514},
+    {data_ov006_0213f644},
+    {data_ov006_0213f574},
+};
+PmfEntry data_ov006_02142db0[3] = {
+    {data_ov006_0213f5f4},
+    {data_ov006_0213f58c},
+    {data_ov006_0213f5cc},
+};
