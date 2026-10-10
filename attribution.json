@@ -1410,6 +1410,7 @@
     "src/game/actors/daTBasket_c/_ZN11daTBasket_cD1Ev.cpp": "tangosdev",
     "src/game/actors/daTBasket_c/_ZN11daTBasket_cD1Ev.cpp#_ZN7BooCageD1Ev": "tangosdev",
     "src/game/actors/daObjTh_Fall_Block_c/_ZN12FallBlockBbhD0Ev.cpp": "tangosdev",
+    "src/game/actors/d_a_obj_th_fall_block.cpp#__sinit_d_a_obj_th_fall_block.cpp": "tangosdev",
     "src/game/actors/daTrsTrap_c/_ZN11daTrsTrap_cD0Ev.cpp": "tangosdev",
     "src/game/actors/daTrsTrap_c/_ZN11daTrsTrap_cD0Ev.cpp#_ZN12MansionStepsD0Ev": "tangosdev",
     "src/game/actors/daTrsTrap_c/_ZN11daTrsTrap_cD1Ev.cpp": "tangosdev",
