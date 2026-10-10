@@ -34,6 +34,9 @@ src/d_a_kpa_fire.c:
 src/actors/daKpa2Bg_c.cpp:
     complete
     .text start:0x02117980 end:0x02117cdc
+    .init start:0x02119f94 end:0x0211a000
+    .ctor start:0x0211a4c4 end:0x0211a4c8
+    .bss start:0x0211aff4 end:0x0211b01c
 
 src/d_a_kpa2_bg.c:
     complete
@@ -81,8 +84,4 @@ src/actors/daFRing_c.cpp:
 src/d_a_f_ring.c:
     complete
     .text start:0x021191f4 end:0x02119264
-
-src/unnamed/ov060/__sinit_ov060_02119f94.c:
-    complete
-    .init start:0x02119f94 end:0x0211a000
 
