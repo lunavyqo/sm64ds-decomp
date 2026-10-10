@@ -97,7 +97,7 @@ data_ov022_02112c88 kind:data(any) addr:0x02112c88 ambiguous
 data_ov022_02112c98 kind:data(any) addr:0x02112c98
 data_ov022_02112c9c kind:data(any) addr:0x02112c9c
 __sinit_daObjFl_Ring_c.cpp kind:function(arm,size=0x6c) addr:0x02112ca8
-__sinit_ov022_02112d14 kind:function(arm,size=0x6c) addr:0x02112d14
+__sinit_daObjFl_Koma_D_c.cpp kind:function(arm,size=0x6c) addr:0x02112d14
 __sinit_daObjFl_Block_c.cpp kind:function(arm,size=0x6c) addr:0x02112d80
 __sinit_daObjFl_London_c.cpp kind:function(arm,size=0x6c) addr:0x02112dec
 __sinit_daObjFl_Seesaw_c.cpp kind:function(arm,size=0x68) addr:0x02112e58
@@ -107,7 +107,7 @@ __sinit_daObjFl_Fall_Block_c.cpp kind:function(arm,size=0x6c) addr:0x02112fe4
 __sinit_ov022_02113050 kind:function(arm,size=0x6c) addr:0x02113050
 __sinit_d_a_obj_fl_maruta.cpp kind:function(arm,size=0x3c) addr:0x021130bc
 .p__sinit_daObjFl_Ring_c.cpp kind:data(word) addr:0x021130f8
-.p__sinit_ov022_02112d14 kind:data(word) addr:0x021130fc
+.p__sinit_daObjFl_Koma_D_c.cpp kind:data(word) addr:0x021130fc
 .p__sinit_daObjFl_Block_c.cpp kind:data(word) addr:0x02113100
 .p__sinit_daObjFl_London_c.cpp kind:data(word) addr:0x02113104
 .p__sinit_daObjFl_Seesaw_c.cpp kind:data(word) addr:0x02113108
@@ -258,9 +258,8 @@ data_ov022_02114508 kind:bss addr:0x02114508
 @442 kind:bss addr:0x0211451c
 data_ov022_02114528 kind:bss addr:0x02114528
 data_ov022_02114530 kind:bss addr:0x02114530
-data_ov022_02114538 kind:bss addr:0x02114538
-data_ov022_02114544 kind:bss addr:0x02114544
-data_ov022_0211454c kind:bss addr:0x0211454c ambiguous
+@391 kind:bss addr:0x02114538
+@392 kind:bss addr:0x02114544
 data_ov022_02114550 kind:bss addr:0x02114550
 data_ov022_02114558 kind:bss addr:0x02114558
 @377 kind:bss addr:0x02114560
