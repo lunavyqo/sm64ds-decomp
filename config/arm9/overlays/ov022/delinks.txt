@@ -7,6 +7,9 @@
 src/actors/daObjFl_Ring_c.cpp:
     complete
     .text start:0x021111a0 end:0x021115a8
+    .init start:0x02112ca8 end:0x02112d14
+    .ctor start:0x021130f8 end:0x021130fc
+    .bss start:0x02114500 end:0x02114528
 
 src/actors/daObjFl_Koma_D_c.cpp:
     complete
@@ -63,10 +66,6 @@ src/game/actors/d_a_obj_fl_maruta.cpp:
     .init start:0x021130bc end:0x021130f8
     .ctor start:0x0211311c end:0x02113120
     .bss start:0x02114690 end:0x021146a0
-
-src/unnamed/ov022/__sinit_ov022_02112ca8.c:
-    complete
-    .init start:0x02112ca8 end:0x02112d14
 
 src/unnamed/ov022/__sinit_ov022_02112d14.c:
     complete
