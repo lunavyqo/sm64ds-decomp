@@ -251,6 +251,10 @@
   },
   {
    "file": "notes/agents/handoffs/promote-ov071-casket-0924.md",
+   "ref": "src/unnamed/ov071/__sinit_ov071_02122a64.c"
+  },
+  {
+   "file": "notes/agents/handoffs/promote-ov071-casket-0924.md",
    "ref": "tools/check_src_tu_compiles.py"
   },
   {
