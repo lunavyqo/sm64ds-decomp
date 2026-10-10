@@ -2193,7 +2193,7 @@ __sinit_dScMgSlots.cpp kind:function(arm,size=0xdc) addr:0x02132894
 __sinit_ov006_02132970 kind:function(arm,size=0x5f8) addr:0x02132970
 __sinit_dScMgTeresa_c.cpp kind:function(arm,size=0x2c4) addr:0x02132f68
 __sinit_ov006_0213322c kind:function(arm,size=0x40) addr:0x0213322c
-__sinit_ov006_0213326c kind:function(arm,size=0x174) addr:0x0213326c
+__sinit_d_s_mg_bsc.cpp kind:function(arm,size=0x174) addr:0x0213326c
 __sinit_ov006_021333e0 kind:function(arm,size=0x18c) addr:0x021333e0
 .p__sinit_ov006_0212f4c4 kind:data(word) addr:0x0213356c
 .p__sinit_dMgJump3DMario_c.cpp kind:data(word) addr:0x02133570
@@ -2224,7 +2224,7 @@ __sinit_ov006_021333e0 kind:function(arm,size=0x18c) addr:0x021333e0
 .p__sinit_ov006_02132970 kind:data(word) addr:0x021335d4
 .p__sinit_dScMgTeresa_c.cpp kind:data(word) addr:0x021335d8
 .p__sinit_ov006_0213322c kind:data(word) addr:0x021335dc
-.p__sinit_ov006_0213326c kind:data(word) addr:0x021335e0
+.p__sinit_d_s_mg_bsc.cpp kind:data(word) addr:0x021335e0
 .p__sinit_ov006_021333e0 kind:data(word) addr:0x021335e4
 data_ov006_02133600 kind:data(any) addr:0x02133600
 data_ov006_02133610 kind:data(any) addr:0x02133610
