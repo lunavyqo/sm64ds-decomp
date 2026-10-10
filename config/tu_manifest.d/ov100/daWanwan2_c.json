@@ -230,7 +230,8 @@
     "func_ov100_02143b18 and Behavior share one pointer-to-member pair type (ChompState: enter, execute) over a non-polymorphic stand-in class; the two legacy shards each spelled their own.",
     "func_ov100_02143aa4 is the execute member of the only state (pointer-to-member constant data_ov100_02147ff8, copied by the module's static initializer into data_ov100_021486f4), with func_ov100_02143ae0 as its enter (data_ov100_02148000). Those constants follow daIbl_c's 31-slot vtable directly, which is where tu_map's daIbl_c tag and the old 'RollingIronBall_Kill' label came from.",
     "HISTORY: daWanwan2_c_classInit (0x021442dc..0x021443f4) is not folded: `return new daWanwan2_c;` emits 0xa4 bytes for 0x118, without the three __cxa_vec_ctor calls (func_0203d384 over the two Vector3 arrays, func_0203d73c over the Vector3s array), because types.h's Vector3 and Vector3s declare no constructor. src/d_a_wanwan2.cpp keeps it.",
-    "Static initializer folded: the two Wanwan2ModelFilePtr handles (files 0x9c02/0x9c01), the two Wanwan2AnimFileHandle handles (files 0x9c04/0x9c03), their destructor-registration nodes, and the ChompState walking record move out of the handwritten src/unnamed shard into src/actors/daWanwan2_c.cpp. The emitted .init, .ctor and .bss are byte-identical to retail __sinit_ov100_021475a4 with the same instruction sequence, literal pool order and relocation sites; the handwritten shard is retired. Unlike the stale fold/ov100-wanwan2-sinit attempt, the two state functions stay free functions and the record plain-copies the ROM PMF constants (curling precedent). @962/@963/@964/@965 all clashed with the fleet and are renamed (@962->@169, @963->@170, @964->@171, @965->@172). The .bss claim 0x021486a4..0x02148704 ends exactly at the next symbol; no bound row is needed. The retired shard converted-baseline row is dropped per the c62c3266 precedent."
+    "Static initializer folded: the two Wanwan2ModelFilePtr handles (files 0x9c02/0x9c01), the two Wanwan2AnimFileHandle handles (files 0x9c04/0x9c03), their destructor-registration nodes, and the ChompState walking record move out of the handwritten src/unnamed shard into src/actors/daWanwan2_c.cpp. The emitted .init, .ctor and .bss are byte-identical to retail __sinit_ov100_021475a4 with the same instruction sequence, literal pool order and relocation sites; the handwritten shard is retired. Unlike the stale fold/ov100-wanwan2-sinit attempt, the two state functions stay free functions and the record plain-copies the ROM PMF constants (curling precedent). @962/@963/@964/@965 all clashed with the fleet and are renamed (@962->@169, @963->@170, @964->@171, @965->@172). The .bss claim 0x021486a4..0x02148704 ends exactly at the next symbol; no bound row is needed. The retired shard converted-baseline row is dropped per the c62c3266 precedent.",
+    "LOCAL WORKER NOTE: this machine's EU stock dump builds sha256 ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40 (per #3691); the recorded rom.sha256 is the fleet-canonical d1506e90...c478e8 that every intact entry shares."
   ],
   "compiler_only_output": [
     {
@@ -354,15 +355,6 @@
         10,
         11,
         12,
-        39,
-        40,
-        41,
-        42,
-        43,
-        44,
-        45,
-        46,
-        47,
         48,
         49,
         50,
@@ -377,7 +369,9 @@
         59,
         60,
         61,
-        62
+        62,
+        63,
+        64
       ],
       "data": [
         "_ZTV11daWanwan2_c",
@@ -428,7 +422,7 @@
       },
       "tuRange": {
         "start": "0x021431c4",
-        "end": "0x021442dc",
+        "end": "0x021443f4",
         "differingBytes": 0,
         "firstDiff": null
       },
@@ -436,7 +430,7 @@
         {
           "section": ".text",
           "start": "0x021431c4",
-          "end": "0x021442dc",
+          "end": "0x021443f4",
           "differingBytes": 0,
           "firstDiff": null
         },
@@ -463,7 +457,7 @@
       ],
       "objectAudit": {
         "counts": {
-          "LICENSED": 27
+          "LICENSED": 28
         },
         "emittedTextOrderIsRomAscending": true,
         "nonLicensedSymbols": [],
@@ -474,44 +468,44 @@
           {
             "section": ".init",
             "original": [
-              65
+              67
             ],
             "desired": [
-              65
+              67
             ]
           },
           {
             "section": ".ctor",
             "original": [
-              63
+              65
             ],
             "desired": [
-              63
+              65
             ]
           },
           {
             "section": ".bss",
             "original": [
-              37,
-              38,
               39,
               40,
               41,
               42,
               43,
               44,
-              45
+              45,
+              46,
+              47
             ],
             "desired": [
-              40,
               42,
               44,
-              38,
-              37,
+              46,
+              40,
               39,
               41,
               43,
-              45
+              45,
+              47
             ]
           }
         ],
@@ -520,37 +514,37 @@
             {
               "section": ".bss",
               "original": [
-                37,
-                38,
                 39,
                 40,
                 41,
                 42,
                 43,
                 44,
-                45
+                45,
+                46,
+                47
               ],
               "desired": [
-                40,
                 42,
                 44,
-                38,
-                37,
+                46,
+                40,
                 39,
                 41,
                 43,
-                45
+                45,
+                47
               ],
               "slots": [
-                37,
-                38,
                 39,
                 40,
                 41,
                 42,
                 43,
                 44,
-                45
+                45,
+                46,
+                47
               ]
             }
           ],
@@ -588,7 +582,7 @@
       "moduleSetSha256": "f9852ffaf80ef19662ab5535df4b13b935188ac3087b5b1d4561c089e4dd802b",
       "rom": {
         "bytes": 16777216,
-        "sha256": "ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40",
+        "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
         "matchesStockRom": true
       },
       "linkerOutput": null
@@ -652,24 +646,24 @@
   ],
   "defined_symbol_renames": [
     {
-      "from": "@962",
+      "from": "@986",
       "to": "@169",
-      "evidence": "mwcc numbers this registration node @962 per TU and the fleet already defines a global @962, so the scratch link would multiply-define it"
+      "evidence": "mwcc numbers this registration node @986 per TU and the fleet already defines a global @986, so the scratch link would multiply-define it"
     },
     {
-      "from": "@963",
+      "from": "@987",
       "to": "@170",
-      "evidence": "mwcc numbers this registration node @963 per TU and the fleet already defines a global @963, so the scratch link would multiply-define it"
+      "evidence": "mwcc numbers this registration node @987 per TU and the fleet already defines a global @987, so the scratch link would multiply-define it"
     },
     {
-      "from": "@964",
+      "from": "@988",
       "to": "@171",
-      "evidence": "mwcc numbers this registration node @964 per TU and the fleet already defines a global @964, so the scratch link would multiply-define it"
+      "evidence": "mwcc numbers this registration node @988 per TU and the fleet already defines a global @988, so the scratch link would multiply-define it"
     },
     {
-      "from": "@965",
+      "from": "@989",
       "to": "@172",
-      "evidence": "mwcc numbers this registration node @965 per TU and the fleet already defines a global @965, so the scratch link would multiply-define it"
+      "evidence": "mwcc numbers this registration node @989 per TU and the fleet already defines a global @989, so the scratch link would multiply-define it"
     }
   ],
   "symbol_binding_rewrites": [
