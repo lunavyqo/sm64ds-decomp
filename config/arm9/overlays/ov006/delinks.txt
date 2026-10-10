@@ -203,6 +203,9 @@ src/minigames/d_s_mg_single3_d_base.cpp:
 src/actors/dScMgSlots.cpp:
     complete
     .text start:0x0210a8c0 end:0x0210c9e0
+    .init start:0x02132894 end:0x02132970
+    .ctor start:0x021335d0 end:0x021335d4
+    .bss start:0x02142bdc end:0x02142c1c
 
 src/minigames/d_s_mg_slot1.cpp:
     complete
@@ -308,10 +311,6 @@ src/unnamed/ov006/__sinit_ov006_02131fa4.c:
 src/unnamed/ov006/__sinit_ov006_021322bc.c:
     complete
     .init start:0x021322bc end:0x02132894
-
-src/unnamed/ov006/__sinit_ov006_02132894.c:
-    complete
-    .init start:0x02132894 end:0x02132970
 
 src/unnamed/ov006/__sinit_ov006_02132970.c:
     complete
