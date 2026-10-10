@@ -3134,9 +3134,6 @@
       "src/unnamed/ov056/__sinit_ov056_02112b48.c": [
         "kind:data"
       ],
-      "src/unnamed/ov060/__sinit_ov060_02119f94.c": [
-        "kind:data"
-      ],
       "src/unnamed/ov060/__sinit_ov060_0211a000.c": [
         "arity:0",
         "return:void"
@@ -18563,16 +18560,6 @@
         "return:void *"
       ]
     },
-    "data_ov060_0211aff4": {
-      "src/unnamed/ov060/__sinit_ov060_02119f94.c": [
-        "return:int []"
-      ]
-    },
-    "data_ov060_0211affc": {
-      "src/unnamed/ov060/__sinit_ov060_02119f94.c": [
-        "return:int []"
-      ]
-    },
     "data_ov060_0211b1ac": {
       "src/unnamed/ov060/__sinit_ov060_0211a000.c": [
         "return:Pair []"
@@ -22093,9 +22080,6 @@
         "arity:0",
         "return:void"
       ],
-      "src/unnamed/ov060/__sinit_ov060_02119f94.c": [
-        "kind:data"
-      ],
       "src/unnamed/ov060/__sinit_ov060_0211a000.c": [
         "arity:0",
         "return:void"
@@ -22748,9 +22732,6 @@
         "param:#2 int",
         "return:int"
       ],
-      "src/unnamed/ov060/__sinit_ov060_02119f94.c": [
-        "return:void"
-      ],
       "src/unnamed/ov060/__sinit_ov060_0211a000.c": [
         "return:int"
       ],
@@ -23269,9 +23250,6 @@
         "return:void"
       ],
       "src/unnamed/ov056/__sinit_ov056_02112b48.c": [
-        "return:void"
-      ],
-      "src/unnamed/ov060/__sinit_ov060_02119f94.c": [
         "return:void"
       ],
       "src/unnamed/ov060/__sinit_ov060_0211a000.c": [
