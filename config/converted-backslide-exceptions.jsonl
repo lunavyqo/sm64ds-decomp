@@ -748,3 +748,4 @@
 {"path": "src/unnamed/ov098/__sinit_ov098_0213c214.c", "reason": "shard folded into its owning TU (batch sinit-1010-4)"}
 {"path": "src/unnamed/ov098/__sinit_ov098_0213c2b4.c", "reason": "shard folded into its owning TU (batch sinit-1010-4)"}
 {"path": "src/unnamed/ov100/__sinit_ov100_02147d7c.c", "reason": "shard folded into its owning TU (batch sinit-1010-4)"}
+{"path": "src/unnamed/ov006/__sinit_ov006_0212f4c4.c", "reason": "sinit fold: folded into src/actors/dMg3DHeyhoObjAdapter_c.cpp as HeyhoAdapterModelFilePtr/HeyhoAdapterAnimationFileHandle static handles; .init/.ctor/.bss preserved byte-identical (intact-object manifest, 11 recorded relocations)"}

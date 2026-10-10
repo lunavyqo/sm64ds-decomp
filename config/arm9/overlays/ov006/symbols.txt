@@ -2164,7 +2164,7 @@ data_ov006_0212f3ac kind:data(any) addr:0x0212f3ac
 data_ov006_0212f3b0 kind:data(any) addr:0x0212f3b0
 data_ov006_0212f3b4 kind:data(any) addr:0x0212f3b4
 data_ov006_0212f3bc kind:data(any) addr:0x0212f3bc
-__sinit_ov006_0212f4c4 kind:function(arm,size=0x68) addr:0x0212f4c4
+__sinit_dMg3DHeyhoObjAdapter_c.cpp kind:function(arm,size=0x68) addr:0x0212f4c4
 __sinit_dMgJump3DMario_c.cpp kind:function(arm,size=0x134) addr:0x0212f52c
 __sinit_ov006_0212f660 kind:function(arm,size=0x54) addr:0x0212f660
 __sinit_ov006_0212f6b4 kind:function(arm,size=0x5c8) addr:0x0212f6b4
@@ -2195,7 +2195,7 @@ __sinit_dScMgTeresa_c.cpp kind:function(arm,size=0x2c4) addr:0x02132f68
 __sinit_ov006_0213322c kind:function(arm,size=0x40) addr:0x0213322c
 __sinit_ov006_0213326c kind:function(arm,size=0x174) addr:0x0213326c
 __sinit_ov006_021333e0 kind:function(arm,size=0x18c) addr:0x021333e0
-.p__sinit_ov006_0212f4c4 kind:data(word) addr:0x0213356c
+.p__sinit_dMg3DHeyhoObjAdapter_c.cpp kind:data(word) addr:0x0213356c
 .p__sinit_dMgJump3DMario_c.cpp kind:data(word) addr:0x02133570
 .p__sinit_ov006_0212f660 kind:data(word) addr:0x02133574
 .p__sinit_ov006_0212f6b4 kind:data(word) addr:0x02133578
@@ -4394,8 +4394,8 @@ data_ov006_02140328 kind:bss addr:0x02140328
 data_ov006_0214032c kind:bss addr:0x0214032c
 data_ov006_02140330 kind:bss addr:0x02140330
 data_ov006_02140338 kind:bss addr:0x02140338
-data_ov006_02140340 kind:bss addr:0x02140340
-data_ov006_0214034c kind:bss addr:0x0214034c
+@1336 kind:bss addr:0x02140340
+@1337 kind:bss addr:0x0214034c
 data_ov006_02140358 kind:bss addr:0x02140358
 data_ov006_02140364 kind:bss addr:0x02140364
 data_ov006_02140370 kind:bss addr:0x02140370
