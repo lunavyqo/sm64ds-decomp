@@ -168,8 +168,6 @@ extern char data_ov002_02110484;
 extern char data_ov002_02110574;
 extern char data_ov002_02110804[];
 extern char data_ov002_0211093c;
-extern char data_ov002_02110ac4;
-extern char data_ov002_02110acc;
 extern char data_ov002_02110b50;
 extern char data_ov002_02110b70;
 extern char data_ov002_02110b78;
