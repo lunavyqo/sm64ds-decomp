@@ -48,6 +48,9 @@ src/actors/daObjCtMecha04_c.cpp:
 src/game/actors/daObjCtMecha05_c.cpp:
     complete
     .text start:0x0211ab60 end:0x0211b360
+    .init start:0x0211c890 end:0x0211c8fc
+    .ctor start:0x0211caf8 end:0x0211cafc
+    .bss start:0x0211d904 end:0x0211d92c
 
 src/actors/daObjCtKaitendai_c.cpp:
     complete
@@ -70,10 +73,6 @@ src/actors/daObjCtMecha09_c.cpp:
 src/unnamed/ov065/__sinit_ov065_0211c110.c:
     complete
     .init start:0x0211c110 end:0x0211c2a8
-
-src/unnamed/ov065/__sinit_ov065_0211c890.c:
-    complete
-    .init start:0x0211c890 end:0x0211c8fc
 
 src/unnamed/ov065/__sinit_ov065_0211c9b8.c:
     complete
