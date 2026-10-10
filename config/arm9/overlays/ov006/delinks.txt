@@ -152,6 +152,9 @@ src/minigames/d_s_mg_memory.cpp:
 src/actors/dScMgMemory2_c.cpp:
     complete
     .text start:0x020f5564 end:0x020f7634
+    .init start:0x021314e4 end:0x021318a0
+    .ctor start:0x021335b4 end:0x021335b8
+    .bss start:0x021423a8 end:0x021424ec
 
 src/minigames/d_s_mg_m_carlo.cpp:
     complete
@@ -309,10 +312,6 @@ src/unnamed/ov006/__sinit_ov006_02130f64.c:
 src/unnamed/ov006/__sinit_ov006_021311c8.c:
     complete
     .init start:0x021311c8 end:0x021314e4
-
-src/unnamed/ov006/__sinit_ov006_021314e4.c:
-    complete
-    .init start:0x021314e4 end:0x021318a0
 
 src/unnamed/ov006/__sinit_ov006_021318a0.c:
     complete
