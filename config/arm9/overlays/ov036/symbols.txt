@@ -54,14 +54,14 @@ __sinit_ov036_021125b0 kind:function(arm,size=0x6c) addr:0x021125b0
 __sinit_ov036_0211261c kind:function(arm,size=0x6c) addr:0x0211261c
 __sinit_ov036_02112688 kind:function(arm,size=0x40) addr:0x02112688
 __sinit_ov036_021126c8 kind:function(arm,size=0x68) addr:0x021126c8
-__sinit_ov036_02112730 kind:function(arm,size=0x6c) addr:0x02112730
+__sinit_d_a_obj_rc_guruguru.cpp kind:function(arm,size=0x6c) addr:0x02112730
 __sinit_d_a_obj_rc_dorifu.cpp kind:function(arm,size=0x1a8) addr:0x0211279c
 __sinit_d_a_obj_rc_carpet.cpp kind:function(arm,size=0x98) addr:0x02112944
 .p__sinit_ov036_021125b0 kind:data(word) addr:0x021129dc
 .p__sinit_ov036_0211261c kind:data(word) addr:0x021129e0
 .p__sinit_ov036_02112688 kind:data(word) addr:0x021129e4
 .p__sinit_ov036_021126c8 kind:data(word) addr:0x021129e8
-.p__sinit_ov036_02112730 kind:data(word) addr:0x021129ec
+.p__sinit_d_a_obj_rc_guruguru.cpp kind:data(word) addr:0x021129ec
 .p__sinit_d_a_obj_rc_dorifu.cpp kind:data(word) addr:0x021129f0
 .p__sinit_d_a_obj_rc_carpet.cpp kind:data(word) addr:0x021129f4
 data_ov036_02112a00 kind:data(any) addr:0x02112a00
@@ -220,9 +220,8 @@ data_ov036_02114094 kind:bss addr:0x02114094
 data_ov036_021140a0 kind:bss addr:0x021140a0
 data_ov036_021140ac kind:bss addr:0x021140ac
 data_ov036_021140b4 kind:bss addr:0x021140b4
-data_ov036_021140b8 kind:bss addr:0x021140b8 ambiguous
-data_ov036_021140bc kind:bss addr:0x021140bc
-data_ov036_021140c8 kind:bss addr:0x021140c8
+@67 kind:bss addr:0x021140bc
+@68 kind:bss addr:0x021140c8
 data_ov036_021140d4 kind:bss addr:0x021140d4
 data_ov036_021140dc kind:bss addr:0x021140dc
 data_ov036_021140e4 kind:bss addr:0x021140e4

@@ -22,6 +22,9 @@ src/actors/daObjRc_Tikuwa_c.cpp:
 src/game/actors/d_a_obj_rc_guruguru.cpp:
     complete
     .text start:0x02111d14 end:0x02111f8c
+    .init start:0x02112730 end:0x0211279c
+    .ctor start:0x021129ec end:0x021129f0
+    .bss start:0x021140ac end:0x021140d4
 
 src/game/actors/d_a_obj_rc_dorifu.cpp:
     complete
@@ -54,7 +57,3 @@ src/unnamed/ov036/__sinit_ov036_02112688.c:
 src/unnamed/ov036/__sinit_ov036_021126c8.c:
     complete
     .init start:0x021126c8 end:0x02112730
-
-src/unnamed/ov036/__sinit_ov036_02112730.c:
-    complete
-    .init start:0x02112730 end:0x0211279c
