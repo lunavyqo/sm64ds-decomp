@@ -34,6 +34,9 @@ src/game/actors/d_a_obj_fl_gura.cpp:
 src/actors/daObjFl_KomaU_c.cpp:
     complete
     .text start:0x02118138 end:0x021185c0
+    .init start:0x0211b0e4 end:0x0211b150
+    .ctor start:0x0211b73c end:0x0211b740
+    .bss start:0x0211c790 end:0x0211c7b8
 
 src/actors/daBbl_c.cpp:
     complete
@@ -79,10 +82,6 @@ src/unnamed/ov064/__sinit_ov064_0211ae00.c:
 src/unnamed/ov064/__sinit_ov064_0211b078.c:
     complete
     .init start:0x0211b078 end:0x0211b0e4
-
-src/unnamed/ov064/__sinit_ov064_0211b0e4.c:
-    complete
-    .init start:0x0211b0e4 end:0x0211b150
 
 src/unnamed/ov064/__sinit_ov064_0211b1d4.c:
     complete
