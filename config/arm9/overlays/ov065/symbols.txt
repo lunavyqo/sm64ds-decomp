@@ -149,7 +149,7 @@ data_ov065_0211c0d4 kind:data(any) addr:0x0211c0d4
 __sinit_ov065_0211c110 kind:function(arm,size=0x198) addr:0x0211c110
 __sinit_daBasabasa_c.cpp kind:function(arm,size=0x198) addr:0x0211c2a8
 __sinit_daDossy_c.cpp kind:function(arm,size=0x220) addr:0x0211c440
-__sinit_ov065_0211c660 kind:function(arm,size=0x10c) addr:0x0211c660
+__sinit_daObjCtRotateBlock_c.cpp kind:function(arm,size=0x10c) addr:0x0211c660
 __sinit_daObjCtMecha03_c.cpp kind:function(arm,size=0x6c) addr:0x0211c76c
 __sinit_daObjCtMecha04_c.cpp kind:function(arm,size=0xb8) addr:0x0211c7d8
 __sinit_ov065_0211c890 kind:function(arm,size=0x6c) addr:0x0211c890
@@ -159,7 +159,7 @@ __sinit_daObjCtMecha09_c.cpp kind:function(arm,size=0x6c) addr:0x0211ca74
 .p__sinit_ov065_0211c110 kind:data(word) addr:0x0211cae0
 .p__sinit_daBasabasa_c.cpp kind:data(word) addr:0x0211cae4
 .p__sinit_daDossy_c.cpp kind:data(word) addr:0x0211cae8
-.p__sinit_ov065_0211c660 kind:data(word) addr:0x0211caec
+.p__sinit_daObjCtRotateBlock_c.cpp kind:data(word) addr:0x0211caec
 .p__sinit_daObjCtMecha03_c.cpp kind:data(word) addr:0x0211caf0
 .p__sinit_daObjCtMecha04_c.cpp kind:data(word) addr:0x0211caf4
 .p__sinit_ov065_0211c890 kind:data(word) addr:0x0211caf8
@@ -309,12 +309,12 @@ data_ov065_0211d824 kind:bss addr:0x0211d824
 data_ov065_0211d82c kind:bss addr:0x0211d82c
 data_ov065_0211d834 kind:bss addr:0x0211d834
 data_ov065_0211d83c kind:bss addr:0x0211d83c
-data_ov065_0211d844 kind:bss addr:0x0211d844
-data_ov065_0211d850 kind:bss addr:0x0211d850
-data_ov065_0211d85c kind:bss addr:0x0211d85c
-data_ov065_0211d868 kind:bss addr:0x0211d868
-data_ov065_0211d874 kind:bss addr:0x0211d874
-data_ov065_0211d880 kind:bss addr:0x0211d880
+@126 kind:bss addr:0x0211d844
+@628 kind:bss addr:0x0211d850
+@630 kind:bss addr:0x0211d85c
+@128 kind:bss addr:0x0211d868
+@127 kind:bss addr:0x0211d874
+@632 kind:bss addr:0x0211d880
 data_ov065_0211d88c kind:bss addr:0x0211d88c
 data_ov065_0211d894 kind:bss addr:0x0211d894
 @504 kind:bss addr:0x0211d89c
