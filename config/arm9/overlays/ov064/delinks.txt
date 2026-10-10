@@ -33,6 +33,9 @@ src/actors/daObjFl_Amilift_c.cpp:
 src/game/actors/d_a_obj_fl_gura.cpp:
     complete
     .text start:0x02118020 end:0x02118138
+    .init start:0x0211b078 end:0x0211b0e4
+    .ctor start:0x0211b738 end:0x0211b73c
+    .bss start:0x0211c768 end:0x0211c790
 
 src/actors/daObjFl_KomaU_c.cpp:
     complete
@@ -77,10 +80,6 @@ src/actors/daObjTbox_c.cpp:
 src/actors/daObjShell_c.cpp:
     complete
     .text start:0x0211a930 end:0x0211adb0
-
-src/unnamed/ov064/__sinit_ov064_0211b078.c:
-    complete
-    .init start:0x0211b078 end:0x0211b0e4
 
 src/unnamed/ov064/__sinit_ov064_0211b1d4.c:
     complete
