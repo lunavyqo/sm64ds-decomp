@@ -2178,7 +2178,7 @@ __sinit_dScMgCurling2_c.cpp kind:function(arm,size=0x2ac) addr:0x02130758
 __sinit_ov006_02130a04 kind:function(arm,size=0x4) addr:0x02130a04
 __sinit_dMg3DEspAnimSet_c.cpp kind:function(arm,size=0x3f0) addr:0x02130a08
 __sinit_dScMgHanachan_c.cpp kind:function(arm,size=0xa4) addr:0x02130df8
-__sinit_ov006_02130e9c kind:function(arm,size=0x64) addr:0x02130e9c
+__sinit_dScMgJump_c.cpp kind:function(arm,size=0x64) addr:0x02130e9c
 __sinit_ov006_02130f00 kind:function(arm,size=0x64) addr:0x02130f00
 __sinit_ov006_02130f64 kind:function(arm,size=0x264) addr:0x02130f64
 __sinit_d_s_mg_memory.cpp kind:function(arm,size=0x31c) addr:0x021311c8
@@ -2209,7 +2209,7 @@ __sinit_ov006_021333e0 kind:function(arm,size=0x18c) addr:0x021333e0
 .p__sinit_ov006_02130a04 kind:data(word) addr:0x02133598
 .p__sinit_dMg3DEspAnimSet_c.cpp kind:data(word) addr:0x0213359c
 .p__sinit_dScMgHanachan_c.cpp kind:data(word) addr:0x021335a0
-.p__sinit_ov006_02130e9c kind:data(word) addr:0x021335a4
+.p__sinit_dScMgJump_c.cpp kind:data(word) addr:0x021335a4
 .p__sinit_ov006_02130f00 kind:data(word) addr:0x021335a8
 .p__sinit_ov006_02130f64 kind:data(word) addr:0x021335ac
 .p__sinit_d_s_mg_memory.cpp kind:data(word) addr:0x021335b0
@@ -4677,8 +4677,8 @@ data_ov006_02142054 kind:bss addr:0x02142054
 data_ov006_02142184 kind:bss addr:0x02142184
 data_ov006_02142188 kind:bss addr:0x02142188
 data_ov006_02142190 kind:bss addr:0x02142190
-data_ov006_02142198 kind:bss addr:0x02142198
-data_ov006_021421a4 kind:bss addr:0x021421a4
+@599 kind:bss addr:0x02142198
+@77 kind:bss addr:0x021421a4
 data_ov006_021421b0 kind:bss addr:0x021421b0
 data_ov006_021421b4 kind:bss addr:0x021421b4
 data_ov006_021421b8 kind:bss addr:0x021421b8
