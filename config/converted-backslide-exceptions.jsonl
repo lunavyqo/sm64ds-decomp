@@ -648,3 +648,4 @@
 {"path": "src/unnamed/ov002/__sinit_ov002_02107118.c", "reason": "shard folded into its owning TU (batch sinit-folds-f-1010)"}
 {"path": "src/unnamed/ov004/__sinit_ov004_020b955c.c", "reason": "shard folded into its owning TU (batch sinit-folds-f-1010)"}
 {"path": "src/unnamed/ov064/__sinit_ov064_0211afc0.c", "reason": "shard folded into its owning TU (batch sinit-folds-f-1010)"}
+{"path": "src/unnamed/ov021/__sinit_ov021_021136c8.c", "reason": "sinit fold: folded into src/game/actors/d_a_obj_cv_shutter.cpp as CvShutterModelFilePtr/CvShutterCollisionFilePtr static handles; .init/.ctor/.bss preserved byte-identical (intact-object manifest, 11 recorded relocations)"}
