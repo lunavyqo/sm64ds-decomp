@@ -267,7 +267,7 @@
   ],
   "data": [
     {
-      "symbol": "@989",
+      "symbol": "@956",
       "address": "0x02108140",
       "size": "0x8",
       "binding": "STB_GLOBAL",
@@ -281,7 +281,7 @@
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN11EnemyDeathC19func_ov002_020ae608ER10dBgCh_Actr"
     },
     {
-      "symbol": "@979",
+      "symbol": "@960",
       "address": "0x02108150",
       "size": "0x8",
       "binding": "STB_GLOBAL",
@@ -302,7 +302,7 @@
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN6Aea30C19func_ov002_020ae87cEP8dActor_cP10dBgCh_Actr"
     },
     {
-      "symbol": "@981",
+      "symbol": "@958",
       "address": "0x02108168",
       "size": "0x8",
       "binding": "STB_GLOBAL",
@@ -351,28 +351,28 @@
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN11EnemyDeathC19func_ov002_020ae4ccER10dBgCh_Actr"
     },
     {
-      "symbol": "@991",
+      "symbol": "@954",
       "address": "0x021081a0",
       "size": "0x8",
       "binding": "STB_GLOBAL",
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN6Aea30C19func_ov002_020aea2cEP8dActor_cP10dBgCh_Actr"
     },
     {
-      "symbol": "@995",
+      "symbol": "@950",
       "address": "0x021081a8",
       "size": "0x8",
       "binding": "STB_GLOBAL",
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN11EnemyDeathC19func_ov002_020ae608ER10dBgCh_Actr"
     },
     {
-      "symbol": "@993",
+      "symbol": "@952",
       "address": "0x021081b0",
       "size": "0x8",
       "binding": "STB_GLOBAL",
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN11EnemyDeathC19func_ov002_020ae64cER10dBgCh_Actr"
     },
     {
-      "symbol": "@977",
+      "symbol": "@962",
       "address": "0x021081b8",
       "size": "0x8",
       "binding": "STB_GLOBAL",
