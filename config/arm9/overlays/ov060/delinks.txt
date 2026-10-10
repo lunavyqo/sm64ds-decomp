@@ -6,19 +6,11 @@
     .bss        start:0x0211abe0 end:0x0211b240 kind:bss align:32
 src/actors/daKpa_c.cpp:
     complete
-    .text start:0x02111900 end:0x021163f0
+    .text start:0x02111900 end:0x02116484
     .init start:0x021195dc end:0x02119df0
     .ctor start:0x0211a4bc end:0x0211a4c0
     .data start:0x0211a4e8 end:0x0211a5c0
     .bss start:0x0211abe0 end:0x0211af74
-
-src/d_a_kpa_tail.c:
-    complete
-    .text start:0x021163f0 end:0x02116428
-
-src/d_a_kpa.c:
-    complete
-    .text start:0x02116428 end:0x02116484
 
 src/actors/daKpaFire_c.cpp:
     complete
