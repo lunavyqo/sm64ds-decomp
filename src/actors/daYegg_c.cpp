@@ -244,9 +244,9 @@ extern void Matrix4x3_FromTranslation(M48 *m, int x, int y, int z);
 extern void Matrix4x3_ApplyInPlaceToTranslation(M48 *m, int x, int y, int z);
 extern void Matrix4x3_ApplyInPlaceToRotationZXYExt(M48 *m, int x, int y, int z);
 extern void Matrix4x3_ApplyInPlaceToRotationXYZExt(M48 *m, int x, int y, int z);
-/* local extern: Player members declared in Player.h; keeping the two extern-C
-   mangled declarations preserves this TU's @NNN temp numbering. */
+/* local extern: Player member declared in Player.h; keeping the extern-C mangled declaration preserves this TU's @NNN temp numbering. */
 extern int _ZN6Player19func_ov002_020cf700Ev(void *g);
+/* local extern: same reason -- declaration parity preserves @NNN temp numbering. */
 extern int _ZN6Player19func_ov002_020d0d2cEv(void *g);
 extern void _ZN8dActor_c19DropShadowRadHeightER17dExtShadowModel_cR9Matrix4x35Fix12IiES5_j(void *self, void *shadow, void *mtx, int fix, int t, unsigned int n);
 extern void _ZN8dActor_c18DropShadowScaleXYZER17dExtShadowModel_cR9Matrix4x35Fix12IiES5_S5_j(void *self, void *shadow, void *mtx, int fix, int t1, int t2, unsigned int n);

@@ -218,8 +218,7 @@ void func_02012790(int a);
 int func_02012694(int a, void *b);
 unsigned char DecIfAbove0_Byte(void *p);
 int DecIfAbove0_Short(void *p);
-/* local extern: Player member declared in Player.h; keeping the extern-C
-   mangled declaration preserves this TU's @NNN temp numbering. */
+/* local extern: Player member declared in Player.h; keeping the extern-C mangled declaration preserves this TU's @NNN temp numbering. */
 int _ZN6Player19func_ov002_020ca78cEv(void *p);
 /* arm9:0x020731dc -- mwcc's runtime name for the atexit-style static-object
    destructor registrar. The synthesized static initializer calls it under

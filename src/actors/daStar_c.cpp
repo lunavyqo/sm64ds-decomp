@@ -1408,8 +1408,7 @@ int daStar_c::func_ov002_020ea3a4() {
  * (GiveVsStars -1, when the count is not zero) and bounces away. */
 extern "C" {
 extern int _ZN6Player12Unk_020c9e5cEh(void *thisPtr, int state);
-/* local extern: Player member declared in Player.h; keeping the extern-C
-   mangled declaration preserves this TU's @NNN temp numbering. */
+/* local extern: Player member declared in Player.h; keeping the extern-C mangled declaration preserves this TU's @NNN temp numbering. */
 extern int _ZN6Player19func_ov002_020ca0f4Ev(void *player);
 
 
