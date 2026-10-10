@@ -7,7 +7,7 @@
     "no_codegen_trick",
     "no_mangled_refs"
   ],
-  "count": 3635,
+  "count": 3634,
   "converted": [
     "src/ARMMathLoadState.c",
     "src/ARMMathSaveState.c",
@@ -3604,7 +3604,6 @@
     "src/unnamed/ov047/__sinit_ov047_02111748.c",
     "src/unnamed/ov047/__sinit_ov047_021117b4.c",
     "src/unnamed/ov047/__sinit_ov047_0211181c.c",
-    "src/unnamed/ov052/__sinit_ov052_02111b64.c",
     "src/unnamed/ov052/__sinit_ov052_02111bd0.c",
     "src/unnamed/ov056/__sinit_ov056_02112b48.c",
     "src/unnamed/ov060/__sinit_ov060_02119f94.c",

@@ -3125,9 +3125,6 @@
       "src/unnamed/ov047/__sinit_ov047_021117b4.c": [
         "kind:data"
       ],
-      "src/unnamed/ov052/__sinit_ov052_02111b64.c": [
-        "kind:data"
-      ],
       "src/unnamed/ov052/__sinit_ov052_02111bd0.c": [
         "kind:data"
       ],
@@ -22080,9 +22077,6 @@
       "src/unnamed/ov047/__sinit_ov047_021117b4.c": [
         "kind:data"
       ],
-      "src/unnamed/ov052/__sinit_ov052_02111b64.c": [
-        "kind:data"
-      ],
       "src/unnamed/ov052/__sinit_ov052_02111bd0.c": [
         "kind:data"
       ],
@@ -22735,9 +22729,6 @@
       "src/unnamed/ov047/__sinit_ov047_0211181c.c": [
         "return:void"
       ],
-      "src/unnamed/ov052/__sinit_ov052_02111b64.c": [
-        "return:void"
-      ],
       "src/unnamed/ov052/__sinit_ov052_02111bd0.c": [
         "return:void"
       ],
@@ -23260,9 +23251,6 @@
         "return:void"
       ],
       "src/unnamed/ov047/__sinit_ov047_0211181c.c": [
-        "return:void"
-      ],
-      "src/unnamed/ov052/__sinit_ov052_02111b64.c": [
         "return:void"
       ],
       "src/unnamed/ov052/__sinit_ov052_02111bd0.c": [
