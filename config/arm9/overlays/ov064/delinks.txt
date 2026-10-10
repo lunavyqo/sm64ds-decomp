@@ -15,6 +15,9 @@ src/actors/daDonketu_c.cpp:
 src/actors/daBDonketu_c.cpp:
     complete
     .text start:0x021174a0 end:0x02117978
+    .init start:0x0211aee0 end:0x0211afc0
+    .ctor start:0x0211b730 end:0x0211b734
+    .bss start:0x0211c6c4 end:0x0211c728
 
 src/actors/daObjFl_Amilift_c.cpp:
     complete
@@ -63,10 +66,6 @@ src/actors/daObjShell_c.cpp:
 src/unnamed/ov064/__sinit_ov064_0211ae00.c:
     complete
     .init start:0x0211ae00 end:0x0211aee0
-
-src/unnamed/ov064/__sinit_ov064_0211aee0.c:
-    complete
-    .init start:0x0211aee0 end:0x0211afc0
 
 src/unnamed/ov064/__sinit_ov064_0211b078.c:
     complete
