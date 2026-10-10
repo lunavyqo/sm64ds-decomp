@@ -106,10 +106,35 @@
     "functions_declared": 10,
     "compilerOnlyOutput": {
       "requested": [
+        "_ZN10daKpa2Bg_cD2Ev",
+        "_ZN10dBgActor_cD2Ev"
+      ],
+      "deadstripped": [
+        "_ZN10dBgActor_cD2Ev",
         "_ZN10daKpa2Bg_cD2Ev"
       ],
-      "unhandled": [
-        "_ZN10dBgActor_cD2Ev"
+      "droppedSections": [
+        9,
+        10,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44
       ],
       "data": [
         "_ZTI7fBase_c",
@@ -123,12 +148,25 @@
         "_ZTI10daKpa2Bg_c",
         "_ZTS10daKpa2Bg_c",
         "_ZTV10daKpa2Bg_c"
+      ],
+      "dataExternalized": [
+        "_ZTI10dBgActor_c",
+        "_ZTI10daKpa2Bg_c",
+        "_ZTI7dBase_c",
+        "_ZTI7fBase_c",
+        "_ZTI8dActor_c",
+        "_ZTS10dBgActor_c",
+        "_ZTS10daKpa2Bg_c",
+        "_ZTS7dBase_c",
+        "_ZTS7fBase_c",
+        "_ZTS8dActor_c",
+        "_ZTV10daKpa2Bg_c"
       ]
     },
     "criteria": {
       "every_declared_function_defined": "PASS",
       "every_declared_function_bytes_match": "PASS",
-      "declared_function_set_equals_defined_function_set": "FAIL-BY-DESIGN -- 13 unlicensed section/symbol(s), 1 compiler-only policy error(s)",
+      "declared_function_set_equals_defined_function_set": "PASS",
       "functions_occur_in_expected_order": "PASS",
       "relocation_destinations_verified": "PASS"
     }
@@ -215,6 +253,11 @@
       "canonical_module": "ov060",
       "canonical_address": "0x0211a8b0",
       "reason": "This class's own vtable. The out-of-line destructor is the key function, so this TU emits it. The cartridge address point is ov060:0x0211a8b0; both it and the storage eight bytes earlier lie outside this entry's .text claim."
+    },
+    {
+      "symbol": "_ZN10dBgActor_cD2Ev",
+      "disposition": "deadstrip",
+      "reason": "classInit tail fold (2026-10-09): the folded factory's `return new daKpa2Bg_c;` instantiates the class, so mwccarm emits dBgActor_c's vague-linkage base-object destructor helper (the same byproduct licensed for ov002 daObjBlockL_c and ov025 daDgr_c). No configured ROM symbol and no inbound relocation after the licensed leaf D1/D0 pair is retained."
     }
   ]
 }
