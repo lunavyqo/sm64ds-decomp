@@ -3057,11 +3057,7 @@ src/unnamed/arm9/0203/func_02037f44.c:
 
 src/engine/collision/dBgPi.cpp:
     complete
-    .text start:0x02037f4c end:0x020381cc
-
-src/func_020381cc.c:
-    complete
-    .text start:0x020381cc end:0x0203821c
+    .text start:0x02037f4c end:0x0203821c
 
 src/engine/collision/CLPS_BlockRef.cpp:
     complete
