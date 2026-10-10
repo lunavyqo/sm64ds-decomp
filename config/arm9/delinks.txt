@@ -5802,23 +5802,7 @@ src/unnamed/arm9/0205/func_02058b9c.c:
 
 src/engine/cp15/CP15.cpp:
     complete
-    .text start:0x02058bb0 end:0x02058c84
-
-src/unnamed/arm9/0205/func_02058c84.c:
-    complete
-    .text start:0x02058c84 end:0x02058cd0
-
-src/unnamed/arm9/0205/func_02058cd0.c:
-    complete
-    .text start:0x02058cd0 end:0x02058d58
-
-src/unnamed/arm9/0205/func_02058d58.c:
-    complete
-    .text start:0x02058d58 end:0x02058d6c
-
-src/unnamed/arm9/0205/func_02058d6c.c:
-    complete
-    .text start:0x02058d6c end:0x02058d80
+    .text start:0x02058bb0 end:0x02058d80
 
 src/OS_GetInitArenaLo.c:
     complete
