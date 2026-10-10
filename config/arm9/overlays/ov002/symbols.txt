@@ -1609,7 +1609,7 @@ __sinit_daObjPushblock_c.cpp kind:function(arm,size=0x6c) addr:0x02101478
 __sinit_ov002_021014e4 kind:function(arm,size=0xa4) addr:0x021014e4
 __sinit_daObjSwitch_c.cpp kind:function(arm,size=0x1b0) addr:0x02101588
 __sinit_daObjTatefuda_c.cpp kind:function(arm,size=0x15c) addr:0x02101738
-__sinit_ov002_02101894 kind:function(arm,size=0x6c) addr:0x02101894
+__sinit_d_a_obj_wakame.cpp kind:function(arm,size=0x6c) addr:0x02101894
 __sinit_daObjHeart_c.cpp kind:function(arm,size=0x68) addr:0x02101900
 __sinit_d_a_obj_cannon_shutter.cpp kind:function(arm,size=0x68) addr:0x02101968
 __sinit_ov002_021019d0 kind:function(arm,size=0x5470) addr:0x021019d0
@@ -1635,7 +1635,7 @@ __sinit_ov002_02108094 kind:function(arm,size=0x3c) addr:0x02108094
 .p__sinit_ov002_021014e4 kind:data(word) addr:0x021080f8
 .p__sinit_daObjSwitch_c.cpp kind:data(word) addr:0x021080fc
 .p__sinit_daObjTatefuda_c.cpp kind:data(word) addr:0x02108100
-.p__sinit_ov002_02101894 kind:data(word) addr:0x02108104
+.p__sinit_d_a_obj_wakame.cpp kind:data(word) addr:0x02108104
 .p__sinit_daObjHeart_c.cpp kind:data(word) addr:0x02108108
 .p__sinit_d_a_obj_cannon_shutter.cpp kind:data(word) addr:0x0210810c
 .p__sinit_ov002_021019d0 kind:data(word) addr:0x02108110
@@ -2793,8 +2793,8 @@ SignPost_ModelFile kind:bss addr:0x0210e064
 data_ov002_0210e084 kind:bss addr:0x0210e084
 data_ov002_0210e0d4 kind:bss addr:0x0210e0d4
 data_ov002_0210e0dc kind:bss addr:0x0210e0dc
-data_ov002_0210e0e4 kind:bss addr:0x0210e0e4
-data_ov002_0210e0f0 kind:bss addr:0x0210e0f0
+@295 kind:bss addr:0x0210e0e4
+@296 kind:bss addr:0x0210e0f0
 data_ov002_0210e0fc kind:bss addr:0x0210e0fc
 data_ov002_0210e104 kind:bss addr:0x0210e104
 @560 kind:bss addr:0x0210e10c
