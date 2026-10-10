@@ -648,3 +648,4 @@
 {"path": "src/unnamed/ov002/__sinit_ov002_02107118.c", "reason": "shard folded into its owning TU (batch sinit-folds-f-1010)"}
 {"path": "src/unnamed/ov004/__sinit_ov004_020b955c.c", "reason": "shard folded into its owning TU (batch sinit-folds-f-1010)"}
 {"path": "src/unnamed/ov064/__sinit_ov064_0211afc0.c", "reason": "shard folded into its owning TU (batch sinit-folds-f-1010)"}
+{"path": "src/unnamed/ov022/__sinit_ov022_02112ec0.c", "reason": "The handwritten static initializer is retired. daObjFl_Ukiyuka_c.cpp defines the two model handles (0x614, 0x610) and the two collision handles (0x615, 0x611), and mwcc emits __sinit_daObjFl_Ukiyuka_c.cpp with the same 0xb8 bytes and the same eighteen relocations."}

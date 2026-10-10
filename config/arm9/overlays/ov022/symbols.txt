@@ -101,7 +101,7 @@ __sinit_ov022_02112d14 kind:function(arm,size=0x6c) addr:0x02112d14
 __sinit_daObjFl_Block_c.cpp kind:function(arm,size=0x6c) addr:0x02112d80
 __sinit_ov022_02112dec kind:function(arm,size=0x6c) addr:0x02112dec
 __sinit_ov022_02112e58 kind:function(arm,size=0x68) addr:0x02112e58
-__sinit_ov022_02112ec0 kind:function(arm,size=0xb8) addr:0x02112ec0
+__sinit_daObjFl_Ukiyuka_c.cpp kind:function(arm,size=0xb8) addr:0x02112ec0
 __sinit_ov022_02112f78 kind:function(arm,size=0x6c) addr:0x02112f78
 __sinit_ov022_02112fe4 kind:function(arm,size=0x6c) addr:0x02112fe4
 __sinit_ov022_02113050 kind:function(arm,size=0x6c) addr:0x02113050
@@ -111,7 +111,7 @@ __sinit_ov022_021130bc kind:function(arm,size=0x3c) addr:0x021130bc
 .p__sinit_daObjFl_Block_c.cpp kind:data(word) addr:0x02113100
 .p__sinit_ov022_02112dec kind:data(word) addr:0x02113104
 .p__sinit_ov022_02112e58 kind:data(word) addr:0x02113108
-.p__sinit_ov022_02112ec0 kind:data(word) addr:0x0211310c
+.p__sinit_daObjFl_Ukiyuka_c.cpp kind:data(word) addr:0x0211310c
 .p__sinit_ov022_02112f78 kind:data(word) addr:0x02113110
 .p__sinit_ov022_02112fe4 kind:data(word) addr:0x02113114
 .p__sinit_ov022_02113050 kind:data(word) addr:0x02113118
@@ -278,11 +278,10 @@ data_ov022_021145c8 kind:bss addr:0x021145c8
 data_ov022_021145d0 kind:bss addr:0x021145d0
 data_ov022_021145d8 kind:bss addr:0x021145d8
 data_ov022_021145e0 kind:bss addr:0x021145e0
-data_ov022_021145e4 kind:bss addr:0x021145e4 ambiguous
-data_ov022_021145e8 kind:bss addr:0x021145e8
-data_ov022_021145f4 kind:bss addr:0x021145f4
-data_ov022_02114600 kind:bss addr:0x02114600
-data_ov022_0211460c kind:bss addr:0x0211460c
+@373 kind:bss addr:0x021145e8
+@374 kind:bss addr:0x021145f4
+@371 kind:bss addr:0x02114600
+@372 kind:bss addr:0x0211460c
 data_ov022_02114618 kind:bss addr:0x02114618
 FloatingFloorLllBig_ClsnFile kind:bss addr:0x02114618
 data_ov022_02114620 kind:bss addr:0x02114620
