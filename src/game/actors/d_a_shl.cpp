@@ -81,7 +81,9 @@ extern SharedFilePtr *data_ov102_0214d70c[];
 
 /* -- other modules -- */
 int  func_ov002_020ad660(char *self, char *clsn, char *model, int kind);
-int  func_ov002_020cc16c(void *player, void *actor);
+/* Player.h declares this member; this TU uses only opaque player pointers.
+   local extern: the C++ class header is not included here. */
+extern int _ZN6Player19func_ov002_020cc16cEPv(void *player, void *actor);
 void func_020105cc(void *self, u32 flags);
 u8   DecIfAbove0_Byte(u8 *counter);
 u16  DecIfAbove0_Short(u16 *counter);
@@ -531,7 +533,7 @@ void daShl_c::func_ov102_0214cbec()
         return;
     if (hit & 0x26fe0)
         return;
-    if (func_ov002_020cc16c(player, this) != 1)
+    if (_ZN6Player19func_ov002_020cc16cEPv(player, this) != 1)
         return;
     func_ov102_0214cf98((dActor_c *)player);
 }

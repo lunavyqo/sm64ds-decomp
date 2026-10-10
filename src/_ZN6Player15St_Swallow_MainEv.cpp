@@ -8,7 +8,6 @@
 extern "C" {
 extern unsigned int _ZNK6Player14GetBodyModelIDEjb(void* c, unsigned int a, int b);
 extern void _ZN5Sound13PlayCharVoiceEjjRK7Vector3(unsigned int a, unsigned int b, void* v);
-extern int func_ov002_020ceaf4(char* c);
 extern int _ZN6Player12FinishedAnimEv(char* c);
 extern void _ZN6Player11ChangeStateERNS_5StateE(char* c, void* st);
 extern void Player_AdvanceAnims(char* c);
@@ -65,7 +64,7 @@ L65e4:
     *(void**)((char*)&mObjInMouth) = 0;
 L65ec:
     if (mIsUnderwater != 0) {
-        *(int*)((char*)&mVertSpeed) += func_ov002_020ceaf4(((char*)this));
+        *(int*)((char*)&mVertSpeed) += func_ov002_020ceaf4();
     }
     if (_ZN6Player12FinishedAnimEv(((char*)this))) {
         if (mIsUnderwater != 0) {

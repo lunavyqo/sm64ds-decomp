@@ -244,8 +244,10 @@ extern void Matrix4x3_FromTranslation(M48 *m, int x, int y, int z);
 extern void Matrix4x3_ApplyInPlaceToTranslation(M48 *m, int x, int y, int z);
 extern void Matrix4x3_ApplyInPlaceToRotationZXYExt(M48 *m, int x, int y, int z);
 extern void Matrix4x3_ApplyInPlaceToRotationXYZExt(M48 *m, int x, int y, int z);
-extern int func_ov002_020cf700(void *g);
-extern int func_ov002_020d0d2c(void *g);
+/* local extern: Player members declared in Player.h; keeping the two extern-C
+   mangled declarations preserves this TU's @NNN temp numbering. */
+extern int _ZN6Player19func_ov002_020cf700Ev(void *g);
+extern int _ZN6Player19func_ov002_020d0d2cEv(void *g);
 extern void _ZN8dActor_c19DropShadowRadHeightER17dExtShadowModel_cR9Matrix4x35Fix12IiES5_j(void *self, void *shadow, void *mtx, int fix, int t, unsigned int n);
 extern void _ZN8dActor_c18DropShadowScaleXYZER17dExtShadowModel_cR9Matrix4x35Fix12IiES5_S5_j(void *self, void *shadow, void *mtx, int fix, int t1, int t2, unsigned int n);
 extern void _ZN8dActor_c11UntrackStarERa(void *self, signed char *r);
@@ -857,8 +859,8 @@ void daYegg_c::func_ov002_020ed0d4()
         MulVec3Mat4x3(&in, &data_020a0e68, &out);
 
         if (*(int*)&mPlayer->unk_37c != 0
-            || func_ov002_020cf700(mPlayer) != 0
-            || func_ov002_020d0d2c(mPlayer) != 0) {
+            || _ZN6Player19func_ov002_020cf700Ev(mPlayer) != 0
+            || _ZN6Player19func_ov002_020d0d2cEv(mPlayer) != 0) {
             if (_ZNK10dBgCh_Actr10IsOnGroundEv(&mWithMeshClsn) != 0) {
                 mGoalAngleX = mPlayer->mAngleX;
                 mGoalAngleZ = mPlayer->mAngleZ;
@@ -1127,8 +1129,8 @@ void daYegg_c::func_ov002_020ed7f8()
     b = (mFlags & 0x40000) ? 1 : 0;
     if (b == 0
         && *(int*)&mPlayer->unk_37c == 0
-        && !func_ov002_020cf700(mPlayer)
-        && !func_ov002_020d0d2c(mPlayer))
+        && !_ZN6Player19func_ov002_020cf700Ev(mPlayer)
+        && !_ZN6Player19func_ov002_020d0d2cEv(mPlayer))
     {
         if (func_ov002_020ec654() == 0) {
             _ZN8dActor_c19DropShadowRadHeightER17dExtShadowModel_cR9Matrix4x35Fix12IiES5_j(

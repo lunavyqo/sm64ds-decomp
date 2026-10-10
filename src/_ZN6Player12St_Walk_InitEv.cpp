@@ -11,7 +11,6 @@ extern void _ZN6Player11ChangeStateERNS_5StateE(void *c, void *state);
 extern int Player_ScaleByCharFactor(void *c, int a);
 extern void _ZN6Player7SetAnimEji5Fix12IiEj(void *c, unsigned int a, int b, int f, unsigned int d);
 extern void func_ov002_020d4540(void *p);
-extern void func_ov002_020caf68(void *self);
 extern int func_ov002_020e3078(void *self, void *s);
 extern int RandomIntInternal(int *seed);
 extern void _ZN5Sound13PlayCharVoiceEjjRK7Vector3(unsigned int a, unsigned int b, void *v);
@@ -75,7 +74,7 @@ merge:
     mIsUnderwater = 0;
     func_ov002_020d4540(((char *)this));
 
-    func_ov002_020caf68(((char *)this));
+    func_ov002_020caf68();
 
     mRidingShell = 0;
     mHeldObj = 0;

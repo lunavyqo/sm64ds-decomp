@@ -4,7 +4,9 @@ enum { false, true };
 typedef struct Vec3 { int x, y, z; } Vec3;
 typedef struct dBgCh_Lin { char pad[0x14]; char surf[0x64]; } dBgCh_Lin;
 
-extern int func_ov002_020ca270(char* p);
+/* local extern: a Player member declared in Player.h; a C TU cannot use the
+   C++ class header, so the mangled symbol is declared here. */
+extern int _ZN6Player19func_ov002_020ca270Ev(char* p);
 extern void Vec3_Sub(Vec3* out, Vec3* a, Vec3* b);
 extern int LenVec3(Vec3* v);
 extern int _ZN4cstd4fdivEii(int a, int b);
@@ -50,7 +52,7 @@ int func_02008cb4(char* c)
         int b = *(u16*)(p + 0xc);
         b = b == 0xbf;
         if (b != false) {
-            if (func_ov002_020ca270(p) != 0)
+            if (_ZN6Player19func_ov002_020ca270Ev(p) != 0)
                 return 0;
         }
     }

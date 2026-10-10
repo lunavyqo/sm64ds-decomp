@@ -2,7 +2,9 @@ extern int _ZN6Player7IsStateERNS_5StateE(void *p, void *st);
 extern int _ZN6Player11ChangeStateERNS_5StateE(void *p, void *st);
 extern int _ZNK6Player14GetBodyModelIDEjb(void *p, unsigned int a, unsigned char b);
 extern int _ZN10ModelAnim213Func_020162C4Eji5Fix12IiEt(void *self, unsigned int a, int b, int c, unsigned short d);
-extern int func_ov002_020cd28c(void *c);
+/* local extern: a Player member declared in Player.h; a C TU cannot use the
+   C++ class header, so the mangled symbol is declared here. */
+extern int _ZN6Player19func_ov002_020cd28cEv(void *c);
 
 extern char data_ov002_021105ec;
 extern char data_ov002_021105bc;
@@ -23,7 +25,7 @@ int func_ov002_020dacb4(char *p, char *actor)
     *(int *)(p + 0x98) = 0;
 
     if (*(unsigned char *)(p + 0x706) != 0) {
-        func_ov002_020cd28c(p);
+        _ZN6Player19func_ov002_020cd28cEv(p);
     } else {
         t = 0;
         if (*(unsigned short *)(*(char **)(p + 0x358) + 0xc) == 0x116) t = 1;

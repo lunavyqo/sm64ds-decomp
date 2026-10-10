@@ -28,7 +28,6 @@ extern int _ZN6Player7IsStateERNS_5StateE(void *self, Player::State *s);
 extern void _ZN15dExtFrameCtrl_c7AdvanceEv(void *self);
 extern void func_02035684(void *p, s32 v);
 extern void func_0203568c(void *p, s32 v);
-extern void func_ov002_020ce8bc(void *self, s32 arg);
 extern void func_ov002_020d6790(void *self);
 extern void func_ov002_020d80d0(void *self);
 
@@ -176,7 +175,7 @@ after_player_slot:
     }
 
     func_ov002_020c2e78();
-    func_ov002_020ca940(((char *)this));
+    func_ov002_020ca940();
     func_ov002_020d8158(((char *)this));
 
     {
@@ -213,7 +212,7 @@ after_player_slot:
     }
 
     if (mIsInShallowWater != 0 && mIsUnderwater == 0 && mIsAirborne == 0)
-        func_ov002_020ce8bc(((char *)this), mHorzSpeed);
+        func_ov002_020ce8bc(mHorzSpeed);
 
     mPreClsnAngleY = mAngleY;
     *(u16 *)LAU((char *)&mStateFlags) &= ~0x440;

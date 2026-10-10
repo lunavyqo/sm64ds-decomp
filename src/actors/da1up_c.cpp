@@ -190,7 +190,6 @@ struct Vec3;
 extern "C" {
 int Vec3_HorzLen(const Vector3*);
 short Vec3_HorzAngle(const Vector3*, const Vector3*);
-int func_ov002_020d0d2c(void*);
 void Vec3_Asr(struct Vec3*, struct Vec3*, int);
 void Matrix4x3_FromRotationY(void*, int);
 void Matrix4x3_FromTranslation(void*, int, int, int);
@@ -338,7 +337,7 @@ void da1up_c::func_ov002_020af0c0() {
         ppos.y = s[1];
         ppos.z = s[2];
         diff.x = ppos.x - mPosX;
-        if(func_ov002_020d0d2c(p) != 0)
+        if(p->func_ov002_020d0d2c() != 0)
             diff.y = ppos.y - mPosY - 0x50000;
         else
             diff.y = ppos.y - mPosY + 0x78000;

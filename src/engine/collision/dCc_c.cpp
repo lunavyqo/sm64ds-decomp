@@ -28,11 +28,12 @@ extern Fix12i Vec3_HorzLen(const Vector3 *v);
 /* local extern: file-static pair below -- the head-link helpers only this
    TU calls. */
 void func_02014f44(u32 id, dCc_c *clsn);
-/* local extern: no header declares it; the definition lives in Player.cpp
-   (extern "C", takes its collider param as its file-local `Arg` scaffold --
-   arg->m2() is vtable slot 2, our GetPos, and it tests the flags word at
-   +0x18). */
-int func_ov002_020caf98(struct Player *player, struct Arg *clsn);
+/* The definition lives in Player.cpp and reads its file-local `Arg` scaffold
+   -- arg->m2() is vtable slot 2, our GetPos, and it tests the flags word at
+   +0x18. */
+/* This TU keeps Player and the collider as opaque tags, no class header;
+   local extern: Player.h declares the member as `int f(void*)`. */
+extern int _ZN6Player19func_ov002_020caf98EPv(void *player, void *clsn);
 }
 
 namespace cstd { int fdiv(int a, int b); }
@@ -135,7 +136,7 @@ void func_02014f5c(struct dCc_c* self, u32 id) {
     isPlayer = (player->actorID == PLAYER_ACTOR_ID) ? 1 : 0;
     if (!isPlayer) return;
 
-    func_ov002_020caf98((struct Player*)player, (struct Arg*)self);
+    _ZN6Player19func_ov002_020caf98EPv((struct Player*)player, (struct Arg*)self);
 }
 
 // @symbol func_02014f44

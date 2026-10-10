@@ -133,7 +133,9 @@ void  _ZN8dActor_c19DropShadowRadHeightER17dExtShadowModel_cR9Matrix4x35Fix12IiE
 void  func_ov002_020c3e8c(void *player);
 void  func_ov002_020c3f18(void *p);
 void  func_ov002_020c3f2c(void *p);
-void  func_ov002_020d228c(void *p);
+/* local extern: Player member declared in Player.h; keeping the extern-C
+   mangled declaration preserves this TU's @NNN temp numbering. */
+void  _ZN6Player19func_ov002_020d228cEv(void *p);
 void  func_ov002_020e4374(void *p, int *a, int *b);
 void  func_0201f32c(int a);
 void  func_02012790(int a);
@@ -556,7 +558,7 @@ int daC_Jugem_c::StateArriveInit()
     player = ClosestPlayer();
     if (player) {
         mSavedAngleY = player->mAngleY;
-        func_ov002_020d228c(player);
+        _ZN6Player19func_ov002_020d228cEv(player);
     }
     cam = (dCamera_c *)data_0209f318;
     cam->SetFlag_3();

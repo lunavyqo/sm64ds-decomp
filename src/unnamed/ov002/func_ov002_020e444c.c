@@ -12,7 +12,9 @@ extern void Matrix4x3_ApplyInPlaceToRotationX(struct Matrix4x3 *mF, s16 angX);
 extern void Matrix4x3_ApplyInPlaceToRotationZ(struct Matrix4x3 *mF, s16 angZ);
 extern int _ZNK6Player14GetBodyModelIDEjb(void *self, u32 unk, int b);
 extern int func_ov002_020becf4(void *self, u32 v, int arg2);
-extern int func_ov002_020d225c(void *o);
+/* local extern: a Player member declared in Player.h; a C TU cannot use the
+   C++ class header, so the mangled symbol is declared here. */
+extern int _ZN6Player19func_ov002_020d225cEv(void *o);
 extern void Matrix4x3_ApplyInPlaceToTranslation(struct Matrix4x3 *mF, Fix12i x, Fix12i y, Fix12i z);
 extern void func_ov002_020e4374(void *c, int *p1, int *p2);
 extern int _ZNK10dBgCh_Actr10IsOnGroundEv(void *self);
@@ -68,7 +70,7 @@ void func_ov002_020e444c(char *c)
             }
         }
 
-        if (func_ov002_020d225c(c) != 0) {
+        if (_ZN6Player19func_ov002_020d225cEv(c) != 0) {
             int z = (int)(((long long)(*(int *)(c + 0x574)) * 0x2400 + 0x800) >> 12) + 0xc000;
             Matrix4x3_ApplyInPlaceToTranslation(&data_020a0e68, 0, 0x7000, z);
             char *p = *(char **)(c + 0x1d8);

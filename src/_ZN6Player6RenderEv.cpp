@@ -32,7 +32,6 @@ extern void _ZN15TextureSequence6UpdateER15ModelComponents(void* self, void* mc)
 extern void Matrix4x3_FromTranslation(void* m, int x, int y, int z);
 extern void Matrix4x3_ApplyInPlaceToRotationZ(void* m, int ang);
 extern void MulMat4x3Mat4x3(void* a, void* b, void* c);
-extern int func_ov002_020d225c(char* self);
 extern u8 data_0209f2d8;
 extern u8 data_0209fc5c[];
 extern int data_ov002_021100c4;
@@ -134,7 +133,7 @@ int Player::Render()
                     _ZN15TextureSequence6UpdateER15ModelComponents(((char*)this) + 0x1dc + mBodyModelId * 0x14, (char*)unk_154[i] + 8);
                 }
                 func_ov002_020e3e00((char*)unk_154[i], ((char*)this) + 0x80, mOpacity);
-                if (func_ov002_020d225c(((char*)this))) {
+                if (func_ov002_020d225c()) {
                     ((VObj*)*(char**)((char*)&unk_1d8))->m14((char*)&unk_56c);
                 }
             }

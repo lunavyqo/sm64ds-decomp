@@ -218,7 +218,9 @@ void func_02012790(int a);
 int func_02012694(int a, void *b);
 unsigned char DecIfAbove0_Byte(void *p);
 int DecIfAbove0_Short(void *p);
-int func_ov002_020ca78c(void *p);
+/* local extern: Player member declared in Player.h; keeping the extern-C
+   mangled declaration preserves this TU's @NNN temp numbering. */
+int _ZN6Player19func_ov002_020ca78cEv(void *p);
 /* arm9:0x020731dc -- mwcc's runtime name for the atexit-style static-object
    destructor registrar. The synthesized static initializer calls it under
    this name too, so spelling it here keeps one shared undefined symbol. */
@@ -915,7 +917,7 @@ int daDoor_c::func_ov100_02145080(Player *arg1)
 {
     if (param1 != DOOR_LAST_KEY_MODEL) {
         if (mTimer == 0) {
-            if (func_ov002_020ca78c(arg1) == 0)
+            if (_ZN6Player19func_ov002_020ca78cEv(arg1) == 0)
                 goto ret1;
             _ZN5Sound7PlaySubEjjj5Fix12IiEb(0x2b, 0, 0x7f, 0x15666, 0);
             mTimer = 0x78;
