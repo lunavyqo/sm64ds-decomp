@@ -62,6 +62,9 @@ src/actors/daObjCtKaitendai_c.cpp:
 src/actors/daObjCtMecha08_c.cpp:
     complete
     .text start:0x0211b7f0 end:0x0211bbdc
+    .init start:0x0211c9b8 end:0x0211ca74
+    .ctor start:0x0211cb00 end:0x0211cb04
+    .bss start:0x0211d97c end:0x0211d9cc
 
 src/actors/daObjCtMecha09_c.cpp:
     complete
@@ -74,6 +77,3 @@ src/unnamed/ov065/__sinit_ov065_0211c110.c:
     complete
     .init start:0x0211c110 end:0x0211c2a8
 
-src/unnamed/ov065/__sinit_ov065_0211c9b8.c:
-    complete
-    .init start:0x0211c9b8 end:0x0211ca74
