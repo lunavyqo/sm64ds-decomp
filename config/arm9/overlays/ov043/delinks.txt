@@ -10,6 +10,9 @@ src/game/actors/d_a_obj_km1_ukishima.cpp:
 src/game/actors/d_a_obj_km1_kurumajiku.cpp:
     complete
     .text start:0x021113fc end:0x02111518
+    .init start:0x02111868 end:0x021118d4
+    .ctor start:0x02111aec end:0x02111af0
+    .bss start:0x02112608 end:0x02112630
 
 src/game/actors/d_a_obj_km1_kuruma.cpp:
     complete
@@ -23,10 +26,6 @@ src/game/actors/d_a_obj_km1_dorifu.cpp:
 src/unnamed/ov043/__sinit_ov043_021117fc.c:
     complete
     .init start:0x021117fc end:0x02111868
-
-src/unnamed/ov043/__sinit_ov043_02111868.c:
-    complete
-    .init start:0x02111868 end:0x021118d4
 
 src/unnamed/ov043/__sinit_ov043_021118d4.c:
     complete
