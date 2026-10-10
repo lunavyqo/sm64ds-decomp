@@ -1621,7 +1621,7 @@ __sinit_d_a_obj_bc_switch.cpp kind:function(arm,size=0x6c) addr:0x02107304
 __sinit_ov002_02107370 kind:function(arm,size=0xc18) addr:0x02107370
 __sinit_ov002_02107f88 kind:function(arm,size=0xc4) addr:0x02107f88
 __sinit_ov002_0210804c kind:function(arm,size=0x48) addr:0x0210804c
-__sinit_ov002_02108094 kind:function(arm,size=0x3c) addr:0x02108094
+__sinit_daPropeller_Heyho_Fire_c.cpp kind:function(arm,size=0x3c) addr:0x02108094
 .p__sinit_ov002_02100560 kind:data(word) addr:0x021080d0
 .p__sinit_dEnemyBase_c.cpp kind:data(word) addr:0x021080d4
 .p__sinit_da1up_c.cpp kind:data(word) addr:0x021080d8
@@ -1647,7 +1647,7 @@ __sinit_ov002_02108094 kind:function(arm,size=0x3c) addr:0x02108094
 .p__sinit_ov002_02107370 kind:data(word) addr:0x02108128
 .p__sinit_ov002_02107f88 kind:data(word) addr:0x0210812c
 .p__sinit_ov002_0210804c kind:data(word) addr:0x02108130
-.p__sinit_ov002_02108094 kind:data(word) addr:0x02108134
+.p__sinit_daPropeller_Heyho_Fire_c.cpp kind:data(word) addr:0x02108134
 @952 kind:data(any) addr:0x02108140
 @960 kind:data(any) addr:0x02108148
 @942 kind:data(any) addr:0x02108150
