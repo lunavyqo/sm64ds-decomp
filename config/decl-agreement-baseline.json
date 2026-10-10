@@ -16627,11 +16627,6 @@
         "return:int []"
       ]
     },
-    "data_ov006_02141774": {
-      "src/unnamed/ov006/__sinit_ov006_021300b0.c": [
-        "return:int []"
-      ]
-    },
     "data_ov006_021417b0": {
       "src/unnamed/ov006/__sinit_ov006_0213014c.c": [
         "return:Pair []"
