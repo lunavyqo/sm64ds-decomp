@@ -1655,8 +1655,8 @@ __sinit_ov002_02108094 kind:function(arm,size=0x3c) addr:0x02108094
 @983 kind:data(any) addr:0x02108160
 @958 kind:data(any) addr:0x02108168
 @987 kind:data(any) addr:0x02108170
-@978 kind:data(any) addr:0x02108178
-@980 kind:data(any) addr:0x02108180
+@946 kind:data(any) addr:0x02108178
+@948 kind:data(any) addr:0x02108180
 @1010 kind:data(any) addr:0x02108188
 @1011 kind:data(any) addr:0x02108190
 @984 kind:data(any) addr:0x02108198
