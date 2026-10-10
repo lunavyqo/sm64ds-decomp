@@ -235,6 +235,10 @@ src/minigames/d_s_mg_bsc.cpp:
 src/actors/dScMgSnowball_c.cpp:
     complete
     .text start:0x0212568c end:0x0212a520
+    .init start:0x021333e0 end:0x0213356c
+    .ctor start:0x021335e4 end:0x021335e8
+    .data start:0x0213ff58 end:0x0213ffd0
+    .bss start:0x02143020 end:0x021430a0
 
 src/d_s_mg_snowball.cpp:
     complete
@@ -328,6 +332,3 @@ src/unnamed/ov006/__sinit_ov006_0213326c.c:
     complete
     .init start:0x0213326c end:0x021333e0
 
-src/unnamed/ov006/__sinit_ov006_021333e0.c:
-    complete
-    .init start:0x021333e0 end:0x0213356c
