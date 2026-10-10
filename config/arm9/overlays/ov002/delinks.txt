@@ -64,6 +64,9 @@ src/game/actors/d_a_obj_abuku.cpp:
 src/actors/daObjBlockL_c.cpp:
     complete
     .text start:0x020b35a0 end:0x020b415c
+    .init start:0x02100d44 end:0x02100e50
+    .ctor start:0x021080e0 end:0x021080e4
+    .bss start:0x0210dcb8 end:0x0210dd30
 
 src/actors/daObjBlockItemTag_c.cpp:
     complete
@@ -1402,9 +1405,6 @@ src/unnamed/ov002/__sinit_ov002_02100560.c:
     complete
     .init start:0x02100560 end:0x02100938
 
-src/unnamed/ov002/__sinit_ov002_02100d44.c:
-    complete
-    .init start:0x02100d44 end:0x02100e50
 
 src/unnamed/ov002/__sinit_ov002_02100f84.c:
     complete
