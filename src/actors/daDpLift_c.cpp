@@ -4,7 +4,8 @@
  * settles at Y 0x80000 with a second short shake. Render draws mModel
  * and one mModel2 copy per marker not yet passed.
  *
- * Six methods, ov025 .text 0x021120e4..0x021125bc. The RTTI string at
+ * Six methods plus func_ov025_021125bc, ov025 .text 0x021120e4..0x021125dc.
+ * The RTTI string at
  * ov025 0x021139a0 is "10daDpLift_c". mHadClsn is written by
  * func_ov025_021125dc, defined in its own TU and installed here as the
  * mesh callback. The factory daDpLift_c_classInit stays in
@@ -215,6 +216,14 @@ s32 daDpLift_c::InitResources()
     return 1;
 }
 #pragma pop
+
+/* Called by func_ov025_021125dc, which stays in its own TU. */
+extern "C" {
+void func_ov025_021125bc(char* a, char* b){
+  long eq = (*(unsigned short*)(b+0xc)==0xbf);
+  eq ? (*(bool*)(a+0x3f7)=true) : false;
+}
+}
 
 /* Source order is construction order: model file 1505, collision file 1506.
  * __sinit_daDpLift_c.cpp emits both constructions and registers the
