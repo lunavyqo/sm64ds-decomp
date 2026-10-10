@@ -9446,6 +9446,7 @@
     "src/actors/daObjPowerUpItem_c.cpp#_ZN18daObjPowerUpItem_c11CheckPickupEv": "andrewboudreau",
     "src/actors/daObjPowerUpItem_c.cpp#_ZN18daObjPowerUpItem_c10DropShadowEv": "tangosdev",
     "src/actors/daObjPowerUpItem_c.cpp#_ZN18daObjPowerUpItem_c14UpdateMatricesEv": "tangosdev",
+    "src/actors/daObjPowerUpItem_c.cpp#__sinit_daObjPowerUpItem_c.cpp": "tangosdev",
     "src/actors/Player.cpp#func_ov002_020cfea4": "tangosdev",
     "src/actors/Player.cpp#func_ov002_020d0178": "ruspecial",
     "src/actors/Player.cpp#func_ov002_020d0580": "tangosdev",
