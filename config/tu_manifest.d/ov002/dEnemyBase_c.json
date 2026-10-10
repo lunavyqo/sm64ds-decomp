@@ -274,7 +274,7 @@
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN6Aea30C19func_ov002_020ae73cEP8dActor_cP10dBgCh_Actr"
     },
     {
-      "symbol": "@997",
+      "symbol": "@985",
       "address": "0x02108148",
       "size": "0x8",
       "binding": "STB_GLOBAL",
@@ -344,7 +344,7 @@
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN11EnemyDeathC19func_ov002_020ae608ER10dBgCh_Actr"
     },
     {
-      "symbol": "@999",
+      "symbol": "@984",
       "address": "0x02108198",
       "size": "0x8",
       "binding": "STB_GLOBAL",
@@ -415,6 +415,16 @@
       "from": "@1007",
       "to": "@1008",
       "evidence": "mwcc numbers this descriptor @1007 per TU (was @970 before func_ov002_020ad660 joined this TU) and ov092 already defines a global @970, so the scratch link would multiply-define it"
+    },
+    {
+      "from": "@997",
+      "to": "@985",
+      "evidence": "mwcc numbers this descriptor @997 per TU and dPathLiftActor_c already defines a global @997 (its own rename destination @837->@997), so the scratch link would multiply-define it"
+    },
+    {
+      "from": "@999",
+      "to": "@984",
+      "evidence": "mwcc numbers this descriptor @999 per TU and dPathLiftActor_c already defines a global @999 (its own rename destination @835->@999), so the scratch link would multiply-define it"
     }
   ],
   "notes": [
@@ -571,65 +581,22 @@
     },
     "linkcheck": {
       "round": "tools/tubuild.py linkcheck -- scratch dsd delink+lcf, whole-tree mwccarm, mwldarm link, linked-range and module byte comparison, dsd check symbols --fail, full ROM build",
-      "result": "scratch-data-verified",
+      "result": "link-failed",
       "scratch": "build/tu/ov002-dEnemyBase_c/link (gitignored)",
       "phases": {
         "delink": true,
         "lcf": true,
         "compile": true,
-        "link": true,
-        "checkModules": true,
-        "checkSymbols": false,
-        "rom": true
+        "link": false
       },
-      "tuRange": {
-        "start": "0x020ad838",
-        "end": "0x020aedbc",
-        "differingBytes": 0,
-        "firstDiff": null
-      },
-      "tuRanges": [
-        {
-          "section": ".text",
-          "start": "0x020ad838",
-          "end": "0x020aedbc",
-          "differingBytes": 0,
-          "firstDiff": null
-        },
-        {
-          "section": ".init",
-          "start": "0x02100938",
-          "end": "0x02100adc",
-          "differingBytes": 0,
-          "firstDiff": null
-        },
-        {
-          "section": ".ctor",
-          "start": "0x021080d4",
-          "end": "0x021080d8",
-          "differingBytes": 0,
-          "firstDiff": null
-        },
-        {
-          "section": ".data",
-          "start": "0x02108140",
-          "end": "0x021081c0",
-          "differingBytes": 0,
-          "firstDiff": null
-        },
-        {
-          "section": ".bss",
-          "start": "0x0210db80",
-          "end": "0x0210dc00",
-          "comparison": "NOBITS -- symbol/module gates"
-        }
-      ],
+      "tuRange": null,
+      "tuRanges": null,
       "objectAudit": {
         "counts": {
-          "LICENSED": 51
+          "LICENSED": 52
         },
-        "orderOk": true,
-        "nonLicensed": [],
+        "emittedTextOrderIsRomAscending": true,
+        "nonLicensedSymbols": [],
         "unlicensedSections": []
       },
       "nontextSectionOrder": {
@@ -637,38 +604,20 @@
           {
             "section": ".init",
             "original": [
-              117
+              119
             ],
             "desired": [
-              117
-            ],
-            "anchors": {
-              "117": [
-                {
-                  "symbol": "__sinit_dEnemyBase_c.cpp",
-                  "address": 34605368,
-                  "sectionBase": 34605368
-                }
-              ]
-            }
+              119
+            ]
           },
           {
             "section": ".ctor",
             "original": [
-              115
+              117
             ],
             "desired": [
-              115
-            ],
-            "anchors": {
-              "115": [
-                {
-                  "symbol": ".p__sinit_dEnemyBase_c.cpp",
-                  "address": 34635988,
-                  "sectionBase": 34635988
-                }
-              ]
-            }
+              117
+            ]
           },
           {
             "section": ".data",
@@ -707,121 +656,7 @@
               35,
               37,
               21
-            ],
-            "anchors": {
-              "5": [
-                {
-                  "symbol": "@942",
-                  "address": 34636112,
-                  "sectionBase": 34636112
-                }
-              ],
-              "7": [
-                {
-                  "symbol": "@952",
-                  "address": 34636096,
-                  "sectionBase": 34636096
-                }
-              ],
-              "9": [
-                {
-                  "symbol": "@954",
-                  "address": 34636192,
-                  "sectionBase": 34636192
-                }
-              ],
-              "11": [
-                {
-                  "symbol": "@944",
-                  "address": 34636136,
-                  "sectionBase": 34636136
-                }
-              ],
-              "13": [
-                {
-                  "symbol": "@950",
-                  "address": 34636144,
-                  "sectionBase": 34636144
-                }
-              ],
-              "15": [
-                {
-                  "symbol": "@948",
-                  "address": 34636120,
-                  "sectionBase": 34636120
-                }
-              ],
-              "19": [
-                {
-                  "symbol": "@946",
-                  "address": 34636128,
-                  "sectionBase": 34636128
-                }
-              ],
-              "21": [
-                {
-                  "symbol": "@940",
-                  "address": 34636216,
-                  "sectionBase": 34636216
-                }
-              ],
-              "23": [
-                {
-                  "symbol": "@984",
-                  "address": 34636152,
-                  "sectionBase": 34636152
-                }
-              ],
-              "25": [
-                {
-                  "symbol": "@985",
-                  "address": 34636160,
-                  "sectionBase": 34636160
-                }
-              ],
-              "27": [
-                {
-                  "symbol": "@986",
-                  "address": 34636168,
-                  "sectionBase": 34636168
-                }
-              ],
-              "29": [
-                {
-                  "symbol": "@987",
-                  "address": 34636176,
-                  "sectionBase": 34636176
-                }
-              ],
-              "31": [
-                {
-                  "symbol": "@962",
-                  "address": 34636184,
-                  "sectionBase": 34636184
-                }
-              ],
-              "33": [
-                {
-                  "symbol": "@960",
-                  "address": 34636104,
-                  "sectionBase": 34636104
-                }
-              ],
-              "35": [
-                {
-                  "symbol": "@958",
-                  "address": 34636200,
-                  "sectionBase": 34636200
-                }
-              ],
-              "37": [
-                {
-                  "symbol": "@956",
-                  "address": 34636208,
-                  "sectionBase": 34636208
-                }
-              ]
-            }
+            ]
           },
           {
             "section": ".bss",
@@ -832,23 +667,7 @@
             "desired": [
               50,
               49
-            ],
-            "anchors": {
-              "49": [
-                {
-                  "symbol": "data_ov002_0210dbc0",
-                  "address": 34659264,
-                  "sectionBase": 34659264
-                }
-              ],
-              "50": [
-                {
-                  "symbol": "data_ov002_0210db80",
-                  "address": 34659200,
-                  "sectionBase": 34659200
-                }
-              ]
-            }
+            ]
           }
         ],
         "objisolate": {
@@ -930,39 +749,16 @@
           "sectionLinks": 0,
           "sectionInfos": 16,
           "error": null
-        }
+        },
+        "errors": null
       },
       "linkedStorageAliases": null,
-      "symbolCheckNewVsBaseline": [],
-      "symbolCheckErrors": [
-        "[ERROR] Symbol '_deq' in ITCM at 0x01ff9d40 not found in linked binary",
-        "[ERROR] Symbol 'data_020ad524' in ARM9 main at 0x020ad524 not found in linked binary",
-        "[ERROR] Symbol 'data_020ad560' in ARM9 main at 0x020ad560 not found in linked binary",
-        "[ERROR] Symbol 'func_01ff98f4' in ITCM at 0x01ff98f4 not found in linked binary",
-        "[ERROR] Symbol 'func_01ff99a4' in ITCM at 0x01ff99a4 not found in linked binary",
-        "[ERROR] Symbol 'func_01ff9d40' in ITCM at 0x01ff9d40 not found in linked binary",
-        "[ERROR] Symbol 'func_01ff9e2c' in ITCM at 0x01ff9e2c not found in linked binary",
-        "[ERROR] Symbol 'overlay_100' in ARM9 main at 0x00000064 not found in linked binary",
-        "[ERROR] Symbol 'overlay_102' in ARM9 main at 0x00000066 not found in linked binary"
-      ],
-      "symbolCheckBaselineErrors": [
-        "[ERROR] Symbol '_deq' in ITCM at 0x01ff9d40 not found in linked binary",
-        "[ERROR] Symbol 'data_020ad524' in ARM9 main at 0x020ad524 not found in linked binary",
-        "[ERROR] Symbol 'data_020ad560' in ARM9 main at 0x020ad560 not found in linked binary",
-        "[ERROR] Symbol 'func_01ff98f4' in ITCM at 0x01ff98f4 not found in linked binary",
-        "[ERROR] Symbol 'func_01ff99a4' in ITCM at 0x01ff99a4 not found in linked binary",
-        "[ERROR] Symbol 'func_01ff9d40' in ITCM at 0x01ff9d40 not found in linked binary",
-        "[ERROR] Symbol 'func_01ff9e2c' in ITCM at 0x01ff9e2c not found in linked binary",
-        "[ERROR] Symbol 'overlay_100' in ARM9 main at 0x00000064 not found in linked binary",
-        "[ERROR] Symbol 'overlay_102' in ARM9 main at 0x00000066 not found in linked binary"
-      ],
-      "moduleSetSha256": "f9852ffaf80ef19662ab5535df4b13b935188ac3087b5b1d4561c089e4dd802b",
-      "rom": {
-        "bytes": 16777216,
-        "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
-        "matchesStockRom": true
-      },
-      "linkerOutput": null
+      "symbolCheckNewVsBaseline": null,
+      "symbolCheckErrors": null,
+      "symbolCheckBaselineErrors": null,
+      "moduleSetSha256": null,
+      "rom": null,
+      "linkerOutput": "mwldarm.exe: Multiply-defined: \"@999\" in dPathLiftActor_c.o\nmwldarm.exe: Previously defined in dEnemyBase_c.o\nmwldarm.exe: Multiply-defined: \"@997\" in dPathLiftActor_c.o\nmwldarm.exe: Previously defined in dEnemyBase_c.o\n\nErrors caused tool to abort."
     }
   },
   "init": [
@@ -1003,7 +799,7 @@
       "evidence": "compiler-local PMF descriptor is a configured initializer relocation destination at 0x02108140"
     },
     {
-      "symbol": "@997",
+      "symbol": "@985",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local PMF descriptor is a configured initializer relocation destination at 0x02108148"
@@ -1063,7 +859,7 @@
       "evidence": "compiler-local PMF descriptor is a configured initializer relocation destination at 0x02108190"
     },
     {
-      "symbol": "@999",
+      "symbol": "@984",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local PMF descriptor is a configured initializer relocation destination at 0x02108198"
@@ -1209,7 +1005,7 @@
       "source": "0x02100ac0",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@997",
+      "symbol": "@985",
       "addend": 0,
       "target_module": "ov002",
       "target_address": "0x02108148"
@@ -1269,7 +1065,7 @@
       "source": "0x02100ad8",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@999",
+      "symbol": "@984",
       "addend": 0,
       "target_module": "ov002",
       "target_address": "0x02108198"
