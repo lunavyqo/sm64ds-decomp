@@ -19,7 +19,8 @@ extern void func_ov002_020d94cc(void *self);
 extern void func_ov002_020d98b4(void* self);
 extern void _ZN6Player11ChangeStateERNS_5StateE(void* c, void* s);
 extern void Player_AdvanceAnims(void* c);
-extern int func_ov002_020e2c84(void *self);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e2c84Ev(void *self);
 
 extern int data_ov002_0211067c;   /* the swim state */
 extern int data_ov002_0211013c;   /* the walk state */
@@ -101,7 +102,7 @@ int Player::St_Hurt_Main()
     }
     mPrevVertSpeed = mVertSpeed;
     if (mIsAirborne == 0) {
-        func_ov002_020e2c84(this);
+        _ZN6Player19func_ov002_020e2c84Ev(this);
     }
     return 1;
 }

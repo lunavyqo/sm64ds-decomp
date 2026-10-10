@@ -11,9 +11,12 @@ extern "C" void _ZN6Player7SetAnimEji5Fix12IiEj(void *, unsigned int animID, int
 
 extern "C" {
     void func_ov002_020c2f64(void* c);
-    int func_ov002_020e0a64(char* c);
-    void func_ov002_020e25d4(char* c);
-    int func_ov002_020e2c84(char* c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+    int _ZN6Player19func_ov002_020e0a64Ev(char* c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+    void _ZN6Player19func_ov002_020e25d4Ev(char* c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+    int _ZN6Player19func_ov002_020e2c84Ev(char* c);
     void func_ov002_020bf9d4(char* c);
 }
 
@@ -48,7 +51,7 @@ int Player::St_Land_Init()
 
     int r1;
     if (r4 == (int)&data_ov002_0211019c) {
-        r1 = func_ov002_020e0a64(c);
+        r1 = _ZN6Player19func_ov002_020e0a64Ev(c);
     } else if (r4 == (int)&data_ov002_021101b4) {
         r1 = 0x55;
     } else if (r4 == (int)&data_ov002_021101e4) {
@@ -72,7 +75,7 @@ int Player::St_Land_Init()
     int idx = gActivePlayerSlot;
     short sval = *(short*)((char*)&data_0209f4a0 + idx * 0x18);
     if (sval == 0 && (IsAnim(0x2b) || IsAnim(0x4c))) {
-        func_ov002_020e25d4(c);
+        _ZN6Player19func_ov002_020e25d4Ev(c);
     }
     mStateStep = 0;
     if (r4 == (int)&data_ov002_0211019c && mJumpComboStage == 2) {
@@ -80,7 +83,7 @@ int Player::St_Land_Init()
     }
 
     *(short*)(c + 0x6a4) = 2;
-    if (func_ov002_020e2c84(c) != 2 && mIsInShallowWater == 0) {
+    if (_ZN6Player19func_ov002_020e2c84Ev(c) != 2 && mIsInShallowWater == 0) {
         ((Player *)(c))->func_ov002_020bf9d4();
     }
 

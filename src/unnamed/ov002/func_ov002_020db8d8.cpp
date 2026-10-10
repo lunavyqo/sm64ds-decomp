@@ -1,17 +1,21 @@
 //cpp
-// @symbol func_ov002_020db8d8
+// @symbol _ZN6Player19func_ov002_020db8d8Ev
 /* recovered: shared common types */
 #include "common.h"
+#include "Player.h"
 extern "C" {
 
 extern unsigned char data_0209f2d8;
 extern int _ZNK6Player14GetBodyModelIDEjb(void *c, unsigned int a, bool b);
 extern void MulVec3Mat4x3(void *out, void *mtx, void *vec);
 extern void Vec3_MulScalar(void *out, void *vec, int s);
-extern void func_ov002_020dc174(char *c, void *r1, int r2, int r3, unsigned int a5, unsigned int a6);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020dc174EPviijj(char *c, void *r1, int r2, int r3, unsigned int a5, unsigned int a6);
+}
 
-void func_ov002_020db8d8(char *self)
+void Player::func_ov002_020db8d8()
 {
+    char *self = (char *)this;
     volatile Vector3 backup;
     Vector3 tmp;
     Vector3 dir;
@@ -36,12 +40,11 @@ void func_ov002_020db8d8(char *self)
     dir.y = -0x32000;
     cond = (data_0209f2d8 == 1);
     if (cond != 0) {
-        func_ov002_020dc174(self, &dir, 0x46000, 0x96000, 0x8000, 0);
+        _ZN6Player19func_ov002_020dc174EPviijj(self, &dir, 0x46000, 0x96000, 0x8000, 0);
     } else {
-        func_ov002_020dc174(self, &dir, 0x32000, 0x64000, 0x8000, 0);
+        _ZN6Player19func_ov002_020dc174EPviijj(self, &dir, 0x32000, 0x64000, 0x8000, 0);
     }
     *(int *)(self + 0x5c) = backup.x;
     *(int *)(self + 0x60) = backup.y;
     *(int *)(self + 0x64) = backup.z;
-}
 }

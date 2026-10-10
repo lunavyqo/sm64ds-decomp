@@ -2,7 +2,8 @@
 extern "C" {
 extern unsigned int _ZNK6Player14GetBodyModelIDEjb(void* self, unsigned int idx, int flag);
 extern void func_020167a4(void* p);
-extern void func_ov002_020e640c(void* self);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020e640cEv(void* self);
 extern void _ZN15ModelComponents21UpdateVertsUsingBonesEv(void* self);
 extern int func_ov002_020becf4(void* self, unsigned int idx, int flag);
 extern void MulMat4x3Mat4x3(void* dst, void* a, void* b);
@@ -29,7 +30,7 @@ extern "C" void func_ov002_020e4768(char* self)
     comp = *(void**)(self + mid*4 + 0xdc);
     func_020167a4(comp);
 
-    func_ov002_020e640c(self);
+    _ZN6Player19func_ov002_020e640cEv(self);
 
     mid = _ZNK6Player14GetBodyModelIDEjb(self, *(unsigned int*)(self+8) & 0xff, 0);
     comp = *(void**)(self + mid*4 + 0xdc);

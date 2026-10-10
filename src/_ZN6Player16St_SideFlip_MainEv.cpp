@@ -9,7 +9,8 @@
 extern "C" {
 extern void func_ov002_020eeca8(void* a, void* b);
 extern int _ZN6Player7IsStateERNS_5StateE(void* c, void* s);
-extern void func_ov002_020e28d4(void* c, u32 a, u32 b);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020e28d4Eii(void* c, u32 a, u32 b);
 extern void _ZN6Player11ChangeStateERNS_5StateE(void* c, void* s);
 extern int _ZN6Player12FinishedAnimEv(void* c);
 extern void _ZN6Player7SetAnimEji5Fix12IiEj(void* c, u32 anim, int a, Fix12i b, u32 d);
@@ -32,9 +33,9 @@ int Player::St_SideFlip_Main()
         if (mVertSpeed < 0) {
             mHorzSpeed = 0x12000;
         }
-        func_ov002_020e28d4(((char*)this), 0, 0x800);
+        _ZN6Player19func_ov002_020e28d4Eii(((char*)this), 0, 0x800);
     } else {
-        func_ov002_020e28d4(((char*)this), 0x1800, 0x800);
+        _ZN6Player19func_ov002_020e28d4Eii(((char*)this), 0x1800, 0x800);
     }
 
     if (mIsAirborne == 0) {
@@ -47,7 +48,7 @@ int Player::St_SideFlip_Main()
                     mPrevAngleY = mAngleY;
                 }
             }
-            if (func_ov002_020e2664(((char*)this))) {
+            if (_ZN6Player19func_ov002_020e2664Ev(((char*)this))) {
                 return 1;
             }
         } else {

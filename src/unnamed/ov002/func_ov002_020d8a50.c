@@ -9,7 +9,7 @@ struct dBgCh_Lin { int head[5]; int surf; int rest[25]; };
 
 extern int _ZNK6Player14GetBodyModelIDEjb(char* p, unsigned int j, int b);
 extern void _ZN5dCc_c5ClearEv(void* c);
-extern void func_ov002_020dbf4c(char* c);
+extern void _ZN6Player19func_ov002_020dbf4cEv(char* c);
 extern void _ZN5dCc_c6UpdateEv(void* c);
 extern void _ZN5Sound9PlayBank0EjRK7Vector3(unsigned int id, struct Vector3* v);
 extern void *_ZN9dBgCh_LinC1Ev(struct dBgCh_Lin* r);
@@ -41,10 +41,10 @@ void func_ov002_020d8a50(char* self, int which)
         return;
 
     switch (which) {
-    case 0: func_ov002_020dbf4c(self); break;
-    case 1: func_ov002_020dbe70(self); break;
-    case 2: func_ov002_020dbd94(self); break;
-    case 3: func_ov002_020dbbc0(self); break;
+    case 0: _ZN6Player19func_ov002_020dbf4cEv(self); break;
+    case 1: _ZN6Player19func_ov002_020dbe70Ev(self); break;
+    case 2: _ZN6Player19func_ov002_020dbd94Ev(self); break;
+    case 3: _ZN6Player19func_ov002_020dbbc0Ev(self); break;
     }
 
     if (*(int*)(self + 0x338) != 0) {

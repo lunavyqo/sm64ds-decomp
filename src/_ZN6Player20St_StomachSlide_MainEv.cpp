@@ -10,18 +10,21 @@ extern "C" {
 extern int _ZN6Player7IsStateERNS_5StateE(void* c, void* s);
 extern void _ZN6Player11ChangeStateERNS_5StateE(void* c, void* s);
 extern void func_ov002_020c06fc(void* c, u32 arg);
-extern int func_ov002_020dd2f4(void* c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020dd2f4Ev(void* c);
 extern void func_ov002_020c0364(void* c, u32 arg);
 extern int func_ov002_020e2ea0(void* c);
 extern int _ZN6Player6IsAnimEj(void* c, u32 anim);
 extern int _ZN6Player12FinishedAnimEv(void* c);
 extern void _ZN6Player7SetAnimEji5Fix12IiEj(void* c, u32 anim, int a, Fix12i b, u32 d);
 extern void func_ov002_020c18b0(void* c, u32 a);
-extern void func_ov002_020e25f0(void* c, int a);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020e25f0Ei(void* c, int a);
 extern void _ZN5dCc_c5ClearEv(void* c);
 extern void _ZN5dCc_c6UpdateEv(void* c);
 extern void func_ov002_020dc560(void* c);
-extern int func_ov002_020e0ccc(void* c, short* st);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e0cccEPs(void* c, short* st);
 extern Fix12i _ZN4cstd5atan2E5Fix12IiES1_(Fix12i a, Fix12i b);
 extern void _Z15ApproachLinear2Rsss(short* cur, short target, short step);
 extern void Player_AdvanceAnims(void* c);
@@ -58,7 +61,7 @@ int Player::St_StomachSlide_Main()
                 if (mSlideType == 0) arg = 0x8000;
                 func_ov002_020c06fc(((char*)this), arg);
             }
-            func_ov002_020dd2f4(((char*)this));
+            _ZN6Player19func_ov002_020dd2f4Ev(((char*)this));
             if (_ZN6Player7IsStateERNS_5StateE(((char*)this), data_ov002_021105bc) &&
                 (u16)(mStateFlags & 1)) {
                 func_ov002_020c0364(((char*)this), 2);
@@ -109,17 +112,17 @@ int Player::St_StomachSlide_Main()
                         mVertSpeed = 0x15000;
                     }
                 }
-                func_ov002_020e25f0(((char*)this), 0);
+                _ZN6Player19func_ov002_020e25f0Ei(((char*)this), 0);
                 _ZN6Player7SetAnimEji5Fix12IiEj(((char*)this), 0x54, 0x40000000, 0x1000, 0);
             }
         }
-        func_ov002_020dba0c(((char*)this));
+        _ZN6Player19func_ov002_020dba0cEv(((char*)this));
         _ZN5dCc_c5ClearEv((char*)&mAttackClsn);
         _ZN5dCc_c6UpdateEv((char*)&mAttackClsn);
         goto end;
 
     case 1:
-        func_ov002_020dba0c(((char*)this));
+        _ZN6Player19func_ov002_020dba0cEv(((char*)this));
         _ZN5dCc_c5ClearEv((char*)&mAttackClsn);
         _ZN5dCc_c6UpdateEv((char*)&mAttackClsn);
         if (mIsAirborne == 0) {
@@ -169,7 +172,7 @@ int Player::St_StomachSlide_Main()
             goto end;
         }
         if (_ZN6Player12FinishedAnimEv(((char*)this))) {
-            if (func_ov002_020e0ccc(((char*)this), *(short**)((char*)&mHeldObj))) {
+            if (_ZN6Player19func_ov002_020e0cccEPs(((char*)this), *(short**)((char*)&mHeldObj))) {
                 return 1;
             }
             _ZN6Player11ChangeStateERNS_5StateE(((char*)this), data_ov002_0211013c);

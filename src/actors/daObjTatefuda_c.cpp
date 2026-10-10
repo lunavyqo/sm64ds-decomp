@@ -42,7 +42,7 @@
  *   spellings size-DIFF under 2004/b56.
  * - Still raw: the holder's word at +0xc8 (Behavior, Render; inside
  *   dActor_c's unnamed 0xc5..0xcb padding), and the offsets into the holder's
- *   body Model (the func_ov002_020e496c result) in AttachToHolder: +0x14
+ *   body Model (the _ZN6Player19func_ov002_020e496cEv result) in AttachToHolder: +0x14
  *   (ModelBase.h's data.transforms), +0x1c (mat4x3), +0x58 (the animation's
  *   current frame, per Player.h) and +0x2a0 (the matrix of bone 14).
  * - Unrecovered meanings: mFlags bits 0x100, 0x400, 0x2000, 0x4000 and
@@ -149,7 +149,8 @@ extern void Matrix4x3_FromTranslation(struct Matrix4x3* m, Fix12i x, Fix12i y, F
 extern void Matrix4x3_ApplyInPlaceToTranslation(struct Matrix4x3* m, Fix12i x, Fix12i y, Fix12i z);
 extern void Matrix4x3_ApplyInPlaceToRotationZXYExt(struct Matrix4x3* m, int x, int y, int z);
 extern struct Matrix4x3 data_020a0e68;
-extern char *func_ov002_020e496c(void *p);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern char *_ZN6Player19func_ov002_020e496cEv(void *p);
 extern int _ZN6Player14IsFrontSlidingEv(void *p);
 extern int _ZN6Player17LostGrabbedObjectEv(void *p);
 extern int _Z14ApproachLinearRsss(short *value, short target, short step);
@@ -1131,7 +1132,7 @@ int daObjTatefuda_c::OnAttacked1(dActor_c &other)
 // @symbol AttachToHolder
 /* Put the sign on its holder (Behavior's step 2 and Render both call this).
  * `result` is the holder's current body model, from the shared helper
- * func_ov002_020e496c; m2 is the pointer stored at +0x14 of it, and the
+ * _ZN6Player19func_ov002_020e496cEv; m2 is the pointer stored at +0x14 of it, and the
  * Matrix4x3 at m2 + 0x2a0 is multiplied in. r4 picks a pose, 0 or 1: 1 when
  * the holder is front-sliding, or has lost its grabbed object while the body
  * model's word at +0x58 (the dExtFrameCtrl_c base's current frame, per Player.h)
@@ -1147,7 +1148,7 @@ void AttachToHolder(struct daObjTatefuda_c *self)
 {
     struct Vec3 v;
     struct Vec3 lo;
-    char *result = func_ov002_020e496c(self->mHoldingPlayer);
+    char *result = _ZN6Player19func_ov002_020e496cEv(self->mHoldingPlayer);
     char *m2 = *(char **)(result + 0x14);
     int r4 = 0;
 

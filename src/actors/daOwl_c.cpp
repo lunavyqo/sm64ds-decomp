@@ -149,12 +149,15 @@ extern short data_02082214[];
 extern int data_0209e650[];
 extern Matrix4x3 data_020a0e68;
 
-int func_ov002_020df840(void *a, void *b, void *d);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+int _ZN6Player19func_ov002_020df840EPvP7Vector3(void *a, void *b, void *d);
 void _Z14ApproachLinearR7Vector3RKS_5Fix12IiE(Vector3 *a, const Vector3 *b, Fix12i f);
 int _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(void *self, void *bca, int a, int fix, unsigned int b);
 int _ZN5Sound8PlayLongEjjjRK7Vector3s(unsigned int a, unsigned int b, unsigned int cc, void *pos, unsigned int d);
-int func_ov002_020df7f4(void *c);
-int func_ov002_020df7ac(void *thiz);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+int _ZN6Player19func_ov002_020df7f4Ev(void *c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+int _ZN6Player19func_ov002_020df7acEv(void *thiz);
 void _ZN10dBgCh_Actr12Unk_0203589cEv(void *self);
 int func_02012694(int a, void *pos);
 int ApproachAngle(short *p, int target, int a, int b, int c);
@@ -225,7 +228,7 @@ void daOwl_c::func_ov094_021357a4()
     unk_0a4 = 0;
     mVertSpeed = 0;
     unk_0ac = 0;
-    if (func_ov002_020df840(mRider, this, st) != 1) {
+    if (_ZN6Player19func_ov002_020df840EPvP7Vector3(mRider, this, st) != 1) {
         mRider = 0;
         return;
     }
@@ -306,7 +309,7 @@ int daOwl_c::func_ov094_021359d8()
     }
 
     rider = mRider;
-    if (rider != 0 && func_ov002_020df7f4(rider) == 1) {
+    if (rider != 0 && _ZN6Player19func_ov002_020df7f4Ev(rider) == 1) {
         OWL_TIMER(this) = 0xa;
         _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModelAnim, (void *)data_ov094_02136af8.words[1], 0, 0x1000, 0);
     }
@@ -315,7 +318,7 @@ int daOwl_c::func_ov094_021359d8()
 
     if (mWithMeshClsn.IsOnWall() != 0 || func_02035638((u8 *)&mWithMeshClsn) != 0) {
         rider = mRider;
-        if (rider != 0 && func_ov002_020df7ac(rider) != 0) {
+        if (rider != 0 && _ZN6Player19func_ov002_020df7acEv(rider) != 0) {
             _ZN10dBgCh_Actr12Unk_0203589cEv(&mWithMeshClsn);
             mRider = 0;
             unk_3e8 = 0;
@@ -332,7 +335,7 @@ int daOwl_c::func_ov094_021359d8()
     if (rider == 0) {
         goto end;
     }
-    if (func_ov002_020df7f4(rider) < 0) {
+    if (_ZN6Player19func_ov002_020df7f4Ev(rider) < 0) {
 cleanup:
         mRider = 0;
         unk_3e8 = 0;

@@ -106,7 +106,7 @@ int Player::ChangeState(State &state) {
     mIsTakingDamage = 0;
     func_ov002_020c9e18();
 
-    func_ov002_020e6780((char *)this);
+    _ZN6Player19func_ov002_020e6780Ev((char *)this);
 
     if (data_0209f318 != 0) {
         func_0200d81c(data_0209f318, mPlayerNo);

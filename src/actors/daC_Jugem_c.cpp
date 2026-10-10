@@ -134,7 +134,8 @@ void  func_ov002_020c3e8c(void *player);
 void  func_ov002_020c3f18(void *p);
 void  func_ov002_020c3f2c(void *p);
 void  func_ov002_020d228c(void *p);
-void  func_ov002_020e4374(void *p, int *a, int *b);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+void  _ZN6Player19func_ov002_020e4374EPiS0_(void *p, int *a, int *b);
 void  func_0201f32c(int a);
 void  func_02012790(int a);
 
@@ -902,7 +903,7 @@ void daC_Jugem_c::UpdateShadowPlayer()
     p.z = p.z + off.z;
     Matrix4x3_FromTranslation(&data_020a0e68, p.x >> 3, p.y >> 3, p.z >> 3);
 
-    func_ov002_020e4374(pl, &p1, &p2);
+    _ZN6Player19func_ov002_020e4374EPiS0_(pl, &p1, &p2);
 
     *(M48 *)&mShadowMat2 = *(M48 *)&data_020a0e68;
     _ZN8dActor_c19DropShadowRadHeightER17dExtShadowModel_cR9Matrix4x35Fix12IiES5_j(

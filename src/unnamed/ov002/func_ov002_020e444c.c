@@ -14,7 +14,7 @@ extern int _ZNK6Player14GetBodyModelIDEjb(void *self, u32 unk, int b);
 extern int func_ov002_020becf4(void *self, u32 v, int arg2);
 extern int func_ov002_020d225c(void *o);
 extern void Matrix4x3_ApplyInPlaceToTranslation(struct Matrix4x3 *mF, Fix12i x, Fix12i y, Fix12i z);
-extern void func_ov002_020e4374(void *c, int *p1, int *p2);
+extern void _ZN6Player19func_ov002_020e4374EPiS0_(void *c, int *p1, int *p2);
 extern int _ZNK10dBgCh_Actr10IsOnGroundEv(void *self);
 extern void *_ZNK10dBgCh_Actr14GetFloorResultEv(void *self);
 extern void *_ZN8dActor_c10FindWithIDEj(u32 id);
@@ -27,7 +27,7 @@ void func_ov002_020e444c(char *c)
     int sp8, spC;
     int b;
 
-    if (func_ov002_020e3f90(c) == 0) {
+    if (_ZN6Player19func_ov002_020e3f90Ev(c) == 0) {
         int y = *(int *)(c + 0x690) + (*(int *)(c + 0x60) - *(int *)(c + 0x68c)) + 0xf000;
         if (*(u8 *)(c + 0x6fd) != 0)
             y -= 0x70000;
@@ -76,7 +76,7 @@ void func_ov002_020e444c(char *c)
         }
     }
 
-    func_ov002_020e4374(c, &sp8, &spC);
+    _ZN6Player19func_ov002_020e4374EPiS0_(c, &sp8, &spC);
 
     if ((*(u8 *)(c + 0x6f5) | *(u8 *)(c + 0x6fb)) == 0)
         *(u8 *)(c + 0x717) = 1;

@@ -8,10 +8,12 @@
 #include "PlayerInput.h"
 extern "C" {
 extern void func_ov002_020c06fc(char* c, u32 a);
-extern int func_ov002_020dd2f4(char* c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020dd2f4Ev(char* c);
 extern void _ZN6Player11ChangeStateERNS_5StateE(char* c, void* s);
 extern int func_0201226c(int a0, int a1, int a2, char* a3, int a4, int a5);
-extern void func_ov002_020e25f0(char* c, int a);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020e25f0Ei(char* c, int a);
 extern void func_ov002_020c18b0(char* c, int a);
 extern void _ZN5Sound9PlayBank0EjRK7Vector3(u32 a, char* v);
 extern void func_ov002_020dc560(char* c);
@@ -32,7 +34,7 @@ int Player::St_ButtSlide_Main()
         if (mIsAirborne == 0) {
             mIsSlidingOnGround = 1;
             func_ov002_020c06fc(((char*)this), 0x4000);
-            func_ov002_020dd2f4(((char*)this));
+            _ZN6Player19func_ov002_020dd2f4Ev(((char*)this));
         }
         if (mHorzSpeed == 0) {
             if (mSlideType == 0) {
@@ -63,13 +65,13 @@ int Player::St_ButtSlide_Main()
             mStateWork = 0;
             if ((mStateArg | mSlideType) != 0)
                 mVertSpeed = 0x15000;
-            func_ov002_020e25f0(((char*)this), 0);
+            _ZN6Player19func_ov002_020e25f0Ei(((char*)this), 0);
             mIsAirborne = 1;
             mLandSoundPlayed = 0;
             break;
         }
         func_ov002_020c18b0(((char*)this), 0);
-        func_ov002_020dcafc(((char*)this));
+        _ZN6Player19func_ov002_020dcafcEv(((char*)this));
         break;
     case 1:
         mAngleZ = 0;

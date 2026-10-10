@@ -50,7 +50,7 @@ int Player::CleanupResources()
     func_ov002_020bdd2c(((char *)this));
     func_ov002_020bdef0();
     func_ov002_020bdd9c();
-    func_ov002_020e032c(((char *)this));
+    _ZN6Player19func_ov002_020e032cEv(((char *)this));
     for (i = 0; i < 4; i++) {
         int j;
         VB *p = (VB *)mBodyModels[i];

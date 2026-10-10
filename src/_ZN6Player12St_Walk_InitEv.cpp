@@ -12,7 +12,8 @@ extern int Player_ScaleByCharFactor(void *c, int a);
 extern void _ZN6Player7SetAnimEji5Fix12IiEj(void *c, unsigned int a, int b, int f, unsigned int d);
 extern void func_ov002_020d4540(void *p);
 extern void func_ov002_020caf68(void *self);
-extern int func_ov002_020e3078(void *self, void *s);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e3078EPv(void *self, void *s);
 extern int RandomIntInternal(int *seed);
 extern void _ZN5Sound13PlayCharVoiceEjjRK7Vector3(unsigned int a, unsigned int b, void *v);
 extern void _ZN6Player17SetNoControlStateEhih(void *c, unsigned char a, int b, unsigned char d);
@@ -82,7 +83,7 @@ merge:
     mGrabbedByActor = 0;
     mStateStep = 0;
     mEatingPlayer = 0;
-    if (func_ov002_020e3078(((char *)this), data_ov002_02110154) != 0) {
+    if (_ZN6Player19func_ov002_020e3078EPv(((char *)this), data_ov002_02110154) != 0) {
         mWalkTimer = 0x10;
         if (*(short *)((char *)&data_0209f4a0 + gActivePlayerSlot * 0x18) != 0) {
             mPrevAngleY = mDesiredAngleY;

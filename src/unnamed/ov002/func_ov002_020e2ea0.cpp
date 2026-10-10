@@ -9,7 +9,8 @@ struct Player {
     void ChangeState(State &s);
 };
 
-int func_ov002_020e3078(Player *self, Player::State *s);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+int _ZN6Player19func_ov002_020e3078EPv(Player *self, Player::State *s);
 dBgPi *_ZNK10dBgCh_Actr14GetFloorResultEv(const dBgCh_Actr *self);
 }
 
@@ -59,7 +60,7 @@ extern "C" int func_ov002_020e2ea0(Player *self) {
     } else if (self->IsState(data_ov002_021105a4)) {
         *(unsigned char *)(base + 0x6e3) = 2;
     } else {
-        if (func_ov002_020e3078(self, &data_ov002_021101e4)) {
+        if (_ZN6Player19func_ov002_020e3078EPv(self, &data_ov002_021101e4)) {
             *(short *)(base + 0x8e) = *(short *)(base + 0x94);
         }
     }

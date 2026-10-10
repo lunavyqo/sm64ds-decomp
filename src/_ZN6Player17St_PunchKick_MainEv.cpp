@@ -28,7 +28,7 @@ int Player::St_PunchKick_Main()
 
     if (st != 0) {
         if (st == 1) {
-            func_ov002_020dd5ec(((char*)this));
+            _ZN6Player19func_ov002_020dd5ecEv(((char*)this));
         }
     } else {
         if (mPunchKickCooldown == 0) {
@@ -49,7 +49,7 @@ int Player::St_PunchKick_Main()
 
         if (mPunchKickStep == 2 && mStatePhase == 0) {
             mStatePhase = 1;
-            if (func_ov002_020e2c84(((char*)this)) != 0)
+            if (_ZN6Player19func_ov002_020e2c84Ev(((char*)this)) != 0)
                 return 1;
         }
 

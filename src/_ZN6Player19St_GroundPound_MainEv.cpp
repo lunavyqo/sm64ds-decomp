@@ -17,11 +17,14 @@ void _ZN6Player7SetAnimEji5Fix12IiEj(void* self, unsigned int anim, int a, int b
 void func_ov002_020ef2a4(void* c, void* arg);
 void func_ov002_020c2f64(void* c);
 void func_ov002_020c0364(void* c, u32 arg);
-int func_ov002_020e2c84(void* self);
-void func_ov002_020dd908(void* sb);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+int _ZN6Player19func_ov002_020e2c84Ev(void* self);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+void _ZN6Player19func_ov002_020dd908Ev(void* sb);
 void _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_(unsigned int id, int x, int y, int z);
 void func_0200d8c8(void* cam, const void* v, int strength);
-void func_ov002_020dbc94(void* c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+void _ZN6Player19func_ov002_020dbc94Ev(void* c);
 void _ZN5dCc_c5ClearEv(void* self);
 void _ZN5dCc_c6UpdateEv(void* self);
 void _ZN6Player11ChangeStateERNS_5StateE(void* self, void* state);
@@ -78,9 +81,9 @@ int Player::St_GroundPound_Main()
             }
         } else {
             if (mIsAirborne == 0) {
-                if (func_ov002_020e2c84(this) == 2)
+                if (_ZN6Player19func_ov002_020e2c84Ev(this) == 2)
                     return 1;
-                func_ov002_020dd908(this);
+                _ZN6Player19func_ov002_020dd908Ev(this);
                 if (mIsMega != 0) {
                     Sound::PlayBank0(0xd3, *(const Vector3 *)&mCamSpacePosX);
                 } else {
@@ -136,7 +139,7 @@ int Player::St_GroundPound_Main()
                 func_0200d8c8(data_0209f318, &mPosX, 0x578000);
                 mStateTimer = 6;
             } else {
-                func_ov002_020dbc94(this);
+                _ZN6Player19func_ov002_020dbc94Ev(this);
                 _ZN5dCc_c5ClearEv(&mAttackClsn);
                 _ZN5dCc_c6UpdateEv(&mAttackClsn);
             }

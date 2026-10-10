@@ -11,7 +11,8 @@ extern "C" int _ZN6Player7SetAnimEji5Fix12IiEj(void *, unsigned int a, int b, Fi
 
 
 extern "C" void func_ov002_020c2f64(void* c);
-extern "C" void func_ov002_020e28d4(void* c, int a, int b);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern "C" void _ZN6Player19func_ov002_020e28d4Eii(void* c, int a, int b);
 extern "C" void Player_AdvanceAnims(char* self);
 extern "C" int __aeabi_idiv(int a, int b);
 
@@ -29,7 +30,7 @@ int Player::St_WindCarry_Main()
         return 1;
     }
 
-    func_ov002_020e28d4(c, 0x1800, 0x800);
+    _ZN6Player19func_ov002_020e28d4Eii(c, 0x1800, 0x800);
     {
         int val = mPosY + 0x514000;
         if (mSurfaceType == 0x13 && val > (int)0xfdecc000 && val < 0x898000) {

@@ -14,10 +14,12 @@ extern "C" void _ZN6Player7SetAnimEji5Fix12IiEj(void *, unsigned int, int, int, 
 
 extern "C" int func_ov002_020d674c(char *c);
 extern "C" void func_ov002_020c2f64(void *c);
-extern "C" void func_ov002_020df8f0(void *c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern "C" void _ZN6Player19func_ov002_020df8f0Ev(void *c);
 extern "C" int _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(u32, u32, s32, s32, s32, void *, void *);
 extern "C" void _ZN5Sound9PlayBank0EjRK7Vector3(u32, void *);
-extern "C" void func_ov002_020e25f0(char *c, int a);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern "C" void _ZN6Player19func_ov002_020e25f0Ei(char *c, int a);
 extern "C" void MulVec3Mat4x3(void *dst, void *src, void *out);
 extern "C" void Vec3_MulScalarInPlace(s32 *v, s32 s);
 extern "C" int func_02012194(char *c, int a1, int a2, int a3, int s0, void *s1, int s2);
@@ -82,10 +84,10 @@ skip:
         } else {
             mVertAccel = 0;
             mTerminalVelocity = -0x4b000;
-            func_ov002_020df8f0(c);
+            _ZN6Player19func_ov002_020df8f0Ev(c);
         }
     } else {
-        func_ov002_020df8f0(c);
+        _ZN6Player19func_ov002_020df8f0Ev(c);
     }
 
     Vec16 vec16;
@@ -115,7 +117,7 @@ skip:
         if (mPrevAngleX > 0x800) {
             if (mStateArg == 0) {
                 _ZN5Sound9PlayBank0EjRK7Vector3(0xb9, c + 0x74);
-                func_ov002_020e25f0(c, 2);
+                _ZN6Player19func_ov002_020e25f0Ei(c, 2);
                 *(u8 *)(((int)c + 0x70c)) = *(u8 *)(((int)c + 0x70c)) + 1;
             }
             {

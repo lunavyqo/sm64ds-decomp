@@ -39,7 +39,8 @@ extern void _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8Callbac
 extern int func_ov002_020d7030(char* self, void* other);
 extern void Player_DisableInteraction(char* self);
 extern void _ZN5Sound13PlayCharVoiceEjjRK7Vector3(u32 a, u32 b, const struct Vector3* pos);
-extern void func_ov002_020db8d8(char* self);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020db8d8Ev(char* self);
 extern void _ZN5dCc_c5ClearEv(char* c);
 extern void _ZN5dCc_c6UpdateEv(char* c);
 
@@ -131,7 +132,7 @@ react:
     return 1;
 
 fail:
-    func_ov002_020db8d8(self);
+    _ZN6Player19func_ov002_020db8d8Ev(self);
     _ZN5dCc_c5ClearEv(self + 0x314);
     _ZN5dCc_c6UpdateEv(self + 0x314);
     return 0;

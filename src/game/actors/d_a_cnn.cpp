@@ -49,7 +49,7 @@
  * Leftover: the model file handles (data_ov098_0213c8e8, data_ov098_0213c91c,
  *   data_ov002_0210da38), the state table (data_ov098_0213c8fc, .bss) and the
  *   particle rotation (data_ov098_0213c63c) are unnamed rows this TU does not
- *   own; func_ov002_020df300 / func_ov002_020df34c and func_ov102_0214ae1c
+ *   own; _ZN6Player19func_ov002_020df300Ev / _ZN6Player19func_ov002_020df34cEv and func_ov102_0214ae1c
  *   are unnamed Player / Bob-omb helpers.
  */
 
@@ -80,8 +80,10 @@ int AngleDiff(int a, int b);
 int Vec3_Dist(const Vector3 *a, const Vector3 *b);
 short GetAngleToCamera(int playerNo);
 
-int func_ov002_020df300(Player *player);
-int func_ov002_020df34c(Player *player);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+int _ZN6Player19func_ov002_020df300Ev(Player *player);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+int _ZN6Player19func_ov002_020df34cEv(Player *player);
 void func_ov102_0214ae1c(dActor_c *bomb);
 
 void _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(dCcAc_c *self, dActor_c *actor,
@@ -398,7 +400,7 @@ void daCnn_c::func_ov098_0213ad08()
                 return;
             }
         }
-        if (func_ov002_020df34c(player) == 0) return;
+        if (_ZN6Player19func_ov002_020df34cEv(player) == 0) return;
         mState = 3;
         mLoadStep = 0;
         mPlayer = player;
@@ -413,7 +415,7 @@ void daCnn_c::func_ov098_0213ad08()
    (and turned with it until step 3) while the cannon
      0  rises out of the ground to its spawn height and shakes the camera,
      1  turns to mTargetAngleY,
-     2  tilts its barrel up and hands the rider over to func_ov002_020df300,
+     2  tilts its barrel up and hands the rider over to _ZN6Player19func_ov002_020df300Ev,
      3  follows the camera until the rider has been shot out,
      4  sinks back into the ground and returns to waiting. */
 void daCnn_c::func_ov098_0213aa28()
@@ -481,7 +483,7 @@ void daCnn_c::func_ov098_0213aa28()
             break;
         if (!ApproachLinear(mAngleX, 0x2000, 0x200))
             break;
-        if (!func_ov002_020df300(mPlayer))
+        if (!_ZN6Player19func_ov002_020df300Ev(mPlayer))
             break;
         Sound::PlayBank3(0x14e, *(const Vector3 *)&mCamSpacePosX);
         mTimer = 0;

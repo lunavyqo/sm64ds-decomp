@@ -9,7 +9,8 @@
 extern "C" {
 extern void func_ov002_020c0364(void* c, u32 arg);
 extern void func_ov002_020c06fc(void* c, u32 arg);
-extern int func_ov002_020e3078(void* c, void* s);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e3078EPv(void* c, void* s);
 extern void _ZN6Player11ChangeStateERNS_5StateE(void* c, void* s);
 extern int _ZN6Player6IsAnimEj(void* c, u32 a);
 extern int Player_ScaleByCharFactor(void* c, int a);
@@ -35,14 +36,14 @@ int Player::St_Land_Main()
         return 1;
     }
 
-    func_ov002_020e04a4(((char*)this));
+    _ZN6Player19func_ov002_020e04a4Ev(((char*)this));
     u16 temp_r3 = mStateFlags;
 
     if ((u16)(temp_r3 & 0x40) == 0) {
         if ((*(u16*)((char*)data_0209f49e + gActivePlayerSlot * 0x18) & 2)
             || (u16)(temp_r3 & 0x100) != 0) {
             *(u16*)((char*)&mStateFlags) &= ~0x100;
-            if (func_ov002_020e3078(((char*)this), data_ov002_0211055c) != 0
+            if (_ZN6Player19func_ov002_020e3078EPv(((char*)this), data_ov002_0211055c) != 0
                 && (*(u16*)((char*)data_0209f49c + gActivePlayerSlot * 0x18) & 0x400)
                 && mHorzSpeed >= 0) {
                 _ZN6Player11ChangeStateERNS_5StateE(((char*)this), data_ov002_0211055c);
@@ -62,7 +63,7 @@ int Player::St_Land_Main()
             return 1;
         }
         if (*(u16*)((char*)data_0209f49e + gActivePlayerSlot * 0x18) & 1) {
-            return func_ov002_020dde74(((char*)this));
+            return _ZN6Player19func_ov002_020dde74Ev(((char*)this));
         }
     } else {
         *(u16*)((char*)&mStateFlags) &= ~0x100;
@@ -72,7 +73,7 @@ int Player::St_Land_Main()
         func_ov002_020bf224(((char*)this), Player_ScaleByCharFactor(((char*)this), 0x20000), 0),
         0x4000);
 
-    if (func_ov002_020e3078(((char*)this), data_ov002_0211052c) != 0) {
+    if (_ZN6Player19func_ov002_020e3078EPv(((char*)this), data_ov002_0211052c) != 0) {
         mHorzSpeed = 0;
     }
 
@@ -107,7 +108,7 @@ int Player::St_Land_Main()
         return 1;
     }
 
-    if (func_ov002_020e3078(((char*)this), data_ov002_0211019c) == 0) {
+    if (_ZN6Player19func_ov002_020e3078EPv(((char*)this), data_ov002_0211019c) == 0) {
         mHorzSpeed = 0;
     }
 

@@ -11,14 +11,15 @@
 extern u16 data_0209f49c[];
 extern char data_ov002_02110424;
 extern "C" {
-extern void func_ov002_020e28d4(void *thiz, int a, int b);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020e28d4Eii(void *thiz, int a, int b);
 extern void Player_AdvanceAnims(void *thiz);
 extern void _ZN6Player11ChangeStateERNS_5StateE(void *thiz, void *st);
 }
 
 int Player::St_Spin_Main()
 {
-    func_ov002_020e28d4(this, 0x1000, 0x1000);
+    _ZN6Player19func_ov002_020e28d4Eii(this, 0x1000, 0x1000);
     if (mIsAirborne == 0) {
         mAngleY = mPrevAngleY;
         _ZN6Player11ChangeStateERNS_5StateE(this, &data_ov002_02110424);

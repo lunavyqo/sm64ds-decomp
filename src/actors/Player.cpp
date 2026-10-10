@@ -908,19 +908,19 @@ void func_ov002_020bd9ec(char* c, unsigned int r4){
 extern "C" {
 void Player::func_ov002_020bda48()
 {
-    extern void func_ov002_020e032c(void*);
+    extern void _ZN6Player19func_ov002_020e032cEv(void*);
     extern void func_ov002_020d80d0(void*);
     extern void func_ov002_020bdd2c(void*);
     extern void func_ov002_020cc1f4(void*);
-    extern void func_ov002_020de968(void*);
+    extern void _ZN6Player19func_ov002_020de968Ev(void*);
     mPowerupTimer = 0;
-    func_ov002_020e032c(this);
+    _ZN6Player19func_ov002_020e032cEv(this);
     func_ov002_020bdef0();
     func_ov002_020bdd9c();
     func_ov002_020d80d0(this);
     func_ov002_020bdd2c(this);
     func_ov002_020cc1f4(this);
-    func_ov002_020de968(this);
+    _ZN6Player19func_ov002_020de968Ev(this);
 }
 }
 
@@ -1231,13 +1231,13 @@ void func_ov002_020be008(char* self){
     extern unsigned char data_0209f2d8;
     extern int data_ov002_021104b4;
     extern signed char data_02092114;
-    extern int func_ov002_020e3078(void*, void*);
+    extern int _ZN6Player19func_ov002_020e3078EPv(void*, void*);
     extern void _ZN6Player18SetNewHatCharacterEjjb(void*, unsigned int a, unsigned int b, int c);
     extern void _ZN6Player17SetNoControlStateEhih(void*, unsigned char a, int b, unsigned char c);
     extern void* _ZN8dActor_c5SpawnEjjRK7Vector3PK10Vector3_16as(unsigned int id, unsigned int a2, void*, void*, int a5, int a6);
   int b = (int)(data_0209f2d8 == 1);
   if (b != 0) return;
-  if (func_ov002_020e3078(self, &data_ov002_021104b4) == 0) return;
+  if (_ZN6Player19func_ov002_020e3078EPv(self, &data_ov002_021104b4) == 0) return;
   {
     int r5 = data_02092114;
     if (r5 < 0) return;
@@ -1267,7 +1267,7 @@ void Player::SetNewHatCharacter(unsigned int p1, unsigned int p2, bool p3)
     extern void func_ov002_020da95c(void*);
     extern void _ZN6Player11ChangeStateERNS_5StateE(void*, State& s);
     extern void func_02012790(int n);
-    extern void func_ov002_020e6350(void*);
+    extern void _ZN6Player19func_ov002_020e6350Ev(void*);
   unsigned int old = param1;
   if (p1 == old) return;
   mPrevCharacter = (unsigned char)old;
@@ -1288,7 +1288,7 @@ void Player::SetNewHatCharacter(unsigned int p1, unsigned int p2, bool p3)
     else func_02012790(0xc);
   }
   param1 = mHatCharacter;
-  func_ov002_020e6350(((char*)this));
+  _ZN6Player19func_ov002_020e6350Ev(((char*)this));
   param1 = mPrevCharacter;
 }
 }
@@ -1309,7 +1309,7 @@ void Player::SetRealCharacter(unsigned int chr_)
     extern SharedFilePtr *data_ov002_020ff480[];
     extern u8 data_02092128[];
     extern u8 data_0209caa0[];
-    extern void func_ov002_020e6330(void*);
+    extern void _ZN6Player19func_ov002_020e6330Ev(void*);
     extern void _ZN10ModelAnim24CopyERKS_Pcj(void*, void*, void*, u32);
     extern void _ZN10ModelAnim213Func_020162C4Eji5Fix12IiEt(void*, u32, int, int, unsigned short);
     u32 chr = (u32)chr_;
@@ -1325,7 +1325,7 @@ void Player::SetRealCharacter(unsigned int chr_)
     data_02092128[mPlayerNo] = (u8)param1;
     data_0209caa0[0x41] = (u8)param1;
     _ZN15dExtFrameCtrl_c8LoadFileER13SharedFilePtr(*data_ov002_020ff480[mCharFileBase + (param1 & 3)]);
-    func_ov002_020e6330(((char *)this));
+    _ZN6Player19func_ov002_020e6330Ev(((char *)this));
     _ZN6Player4HealEi(((char *)this), 0x880);
     mCapFlags = 0;
 
@@ -2364,7 +2364,7 @@ int Player::func_ov002_020bfa74()
     extern s16 _ZN4cstd5atan2E5Fix12IiES1_(s32 y, s32 x);
     extern u32 _ZN5Sound8PlayLongEjjjRK7Vector3s(u32 handle, u32 bank, u32 id, const void *pos, s16 e);
     extern void func_ov002_020bf800(void*, Vector3_16f v);
-    extern int func_ov002_020e0478(void*);
+    extern int _ZN6Player19func_ov002_020e0478Ev(void*);
     extern s16 data_02082214[];
     extern s32 data_ov002_020ff210[];
     extern int data_ov002_0211013c[];
@@ -2404,7 +2404,7 @@ int Player::func_ov002_020bfa74()
         dir.z = FX_MUL(COS(vert), COS(horz));
         func_ov002_020bf800(this, dir);
         mSurfaceSoundHandle = _ZN5Sound8PlayLongEjjjRK7Vector3s(mSurfaceSoundHandle, 3, 0x90, &mCamSpacePosX, 0);
-        if (mIsMetal != 0 || mIsNoControl != 0 || func_ov002_020e0478(this) != 0) return 0;
+        if (mIsMetal != 0 || mIsNoControl != 0 || _ZN6Player19func_ov002_020e0478Ev(this) != 0) return 0;
         if (mIsAirborne == 0) {
             if (_ZN6Player7IsStateERNS_5StateE(this, data_ov002_0211013c) || _ZN6Player7IsStateERNS_5StateE(this, &Player::ST_WAIT) || _ZN6Player7IsStateERNS_5StateE(this, data_ov002_02110574) || _ZN6Player7IsStateERNS_5StateE(this, data_ov002_02110184) || _ZN6Player7IsStateERNS_5StateE(this, data_ov002_02110514) || _ZN6Player7IsStateERNS_5StateE(this, data_ov002_021104e4) || _ZN6Player7IsStateERNS_5StateE(this, data_ov002_02110364) || _ZN6Player7IsStateERNS_5StateE(this, data_ov002_0211064c)) {
                 if (mHorzSpeed <= 0) {
@@ -2443,7 +2443,7 @@ int Player::func_ov002_020bfec0()
 {
     extern int _ZN6Player7IsStateERNS_5StateE(void*, void*);
     extern int _ZN6Player7IsInAirEv(void*);
-    extern int func_ov002_020e3078(void*, void*);
+    extern int _ZN6Player19func_ov002_020e3078EPv(void*, void*);
     extern int func_ov002_020c5dec(void*, int arg1);
     extern char data_ov002_02110124;
     extern char data_ov002_02110154;
@@ -2488,7 +2488,7 @@ int Player::func_ov002_020bfec0()
     }
 
     if (_ZN6Player7IsStateERNS_5StateE(this, &data_ov002_02110424)) {
-        if (func_ov002_020e3078(this, &data_ov002_021104cc) == 0) {
+        if (_ZN6Player19func_ov002_020e3078EPv(this, &data_ov002_021104cc) == 0) {
             unk_6c4 = 2;
         }
     }
@@ -3600,7 +3600,7 @@ extern "C" {
 int func_ov002_020c1c84(char* self, int arg)
 {
     extern int func_ov002_020cf700(void*);
-    extern int func_ov002_020e0478(void*);
+    extern int _ZN6Player19func_ov002_020e0478Ev(void*);
     extern int AngleDiff(int a, int b);
     extern int _ZN6Player7IsStateERNS_5StateE(void*, void*);
     extern void _ZN6Player11ChangeStateERNS_5StateE(void*, void*);
@@ -3611,7 +3611,7 @@ int func_ov002_020c1c84(char* self, int arg)
     int a;
     int p;
 
-    if ((u16)(*(u16*)(self + 0x6ce) & 0x200) || !*(u8*)(self + 0x6de) || func_ov002_020cf700(self) || *(u8*)(self + 0x703) || func_ov002_020e0478(self) || *(s32*)(self + 0xd0) || *(u8*)(self + 0x706))
+    if ((u16)(*(u16*)(self + 0x6ce) & 0x200) || !*(u8*)(self + 0x6de) || func_ov002_020cf700(self) || *(u8*)(self + 0x703) || _ZN6Player19func_ov002_020e0478Ev(self) || *(s32*)(self + 0xd0) || *(u8*)(self + 0x706))
         return 0;
 
     if (AngleDiff(arg, *(s16*)(self + 0x94)) < 0x6000)
@@ -6411,7 +6411,7 @@ extern "C" {
 int Player::func_ov002_020c61ac() {
     extern int _ZN6Player7IsStateERNS_5StateE(void*, void*);
     extern void _ZN6Player11ChangeStateERNS_5StateE(void*, void*);
-    extern void func_ov002_020de968(void*);
+    extern void _ZN6Player19func_ov002_020de968Ev(void*);
     extern void func_ov002_020bdd2c(void*);
     extern int func_ov002_020c607c(void*, int a, int b, void*);
     extern void *_ZN9dBgCh_GndC1Ev(void*);
@@ -6459,7 +6459,7 @@ int Player::func_ov002_020c61ac() {
                 *(int *)((char *)this + 0x60) = mGroundY;
             }
             if (mIsBalloon != 0) {
-                func_ov002_020de968(this);
+                _ZN6Player19func_ov002_020de968Ev(this);
                 _ZN6Player11ChangeStateERNS_5StateE(this, &data_ov002_021101b4);
             } else {
                 func_ov002_020bdd2c(this);
@@ -8948,7 +8948,7 @@ void func_ov002_020c9b7c(void* c) {
     typedef int Fix12i;
     extern int _ZN6Player7SetAnimEji5Fix12IiEj(void*, unsigned int, int, Fix12i, unsigned int);
     extern int _ZN5Sound9PlayBank0EjRK7Vector3(unsigned int, void*);
-    extern int func_ov002_020e25f0(void*, int);
+    extern int _ZN6Player19func_ov002_020e25f0Ei(void*, int);
   *(char*)((char*)c+0x6e3)=0xb;
   *(char*)((char*)c+0x713)=0;
   if (*(unsigned char*)((char*)c+0x6de)) {
@@ -8956,7 +8956,7 @@ void func_ov002_020c9b7c(void* c) {
     _ZN5Sound9PlayBank0EjRK7Vector3(6, (char*)c+0x74);
   } else {
     _ZN6Player7SetAnimEji5Fix12IiEj(c, 0x4f, 0x40000000, 0x1000, 0);
-    func_ov002_020e25f0(c, 0);
+    _ZN6Player19func_ov002_020e25f0Ei(c, 0);
   }
   *(int*)((char*)c+0x9c)=0;
   *(int*)((char*)c+0x98)=0;
@@ -9931,11 +9931,11 @@ int Player::St_CameraZoom_Init()
 // @symbol func_ov002_020caf68
 extern "C" {
 void func_ov002_020caf68(void *self) {
-    extern void func_ov002_020e63a4(void*);
+    extern void _ZN6Player19func_ov002_020e63a4Ev(void*);
     *(unsigned int *)((char *)self + 0x37c) = 0;
     *(unsigned int *)((char *)self + 0x2ec) &= ~4u;
     *(unsigned int *)((char *)self + 0x2ec) |= 8u;
-    func_ov002_020e63a4(self);
+    _ZN6Player19func_ov002_020e63a4Ev(self);
 }
 }
 
@@ -9951,8 +9951,8 @@ int func_ov002_020caf98(Player *self, Arg *arg)
     extern Player::State data_ov002_0211031c;
     extern Player::State data_ov002_021101b4;
     extern Player::State data_ov002_021106dc;
-    extern int func_ov002_020e0478(void*);
-    extern int func_ov002_020e3078(void*, void*);
+    extern int _ZN6Player19func_ov002_020e0478Ev(void*);
+    extern int _ZN6Player19func_ov002_020e3078EPv(void*, void*);
     char *p = (char *)self;
     int b354, b358;
 
@@ -9976,11 +9976,11 @@ cont:
     if (self->IsState(data_ov002_021105bc) != 0) goto state_check;
     if (self->IsState(data_ov002_0211031c) != 0) goto state_check;
 
-    if (func_ov002_020e0478(self) == 0) goto ret0a;
+    if (_ZN6Player19func_ov002_020e0478Ev(self) == 0) goto ret0a;
 
 state_check:
     if (self->IsState(data_ov002_021101b4) != 0) {
-        if (func_ov002_020e3078(self, &data_ov002_021106dc) != 0) return 0;
+        if (_ZN6Player19func_ov002_020e3078EPv(self, &data_ov002_021106dc) != 0) return 0;
     }
 
     if (*(int *)((char *)arg + 0x18) & 0x400000) return 0;
@@ -10461,7 +10461,7 @@ int Player::St_Climb_Init() {
     extern int Player_ReleaseHeldActor(void*);
     extern void _ZN6Player7SetAnimEji5Fix12IiEj(void*, unsigned int, int, Fix12i, unsigned int);
     extern void _ZN5Sound13PlayCharVoiceEjjRK7Vector3(unsigned int, unsigned int, const Vector3&);
-    extern int func_ov002_020e3078(void*, void*);
+    extern int _ZN6Player19func_ov002_020e3078EPv(void*, void*);
     extern char data_ov002_021106f4[];
     char* self = (char*)this;
     Player_ReleaseHeldActor(self);
@@ -10506,7 +10506,7 @@ int Player::St_Climb_Init() {
         char* b = *(char**)(self + 0x37c);
         if (*(int*)(b + 0x18) & 0x1000000) {
             if ((*(int*)(b + 8) >> 2) <= *(int*)(self + 0x688)) {
-                if (func_ov002_020e3078(self, data_ov002_021106f4) == 0) {
+                if (_ZN6Player19func_ov002_020e3078EPv(self, data_ov002_021106f4) == 0) {
                     *(short*)(self + 0x6a8) = 0xf;
                 }
             }
@@ -10705,9 +10705,9 @@ int Player::St_Shell_Main()
     extern int func_02037e58(void*);
     extern void ApproachAngle(void*, short target, int divisor, int band, int maxStep);
     extern void _Z14ApproachLinearRiii(void*, int b, int c);
-    extern void func_ov002_020e25f0(void*, int a);
+    extern void _ZN6Player19func_ov002_020e25f0Ei(void*, int a);
     extern void _ZN6Player11ChangeStateERNS_5StateE(void*, void*);
-    extern void func_ov002_020e28d4(void*, int a, int b);
+    extern void _ZN6Player19func_ov002_020e28d4Eii(void*, int a, int b);
     extern int _ZN6Player12FinishedAnimEv(void*);
     extern int _ZN6Player6IsAnimEj(void*, u32 anim);
     extern void _ZN6Player7SetAnimEji5Fix12IiEj(void*, u32 anim, int a, Fix12i b, u32 d);
@@ -10790,7 +10790,7 @@ int Player::St_Shell_Main()
                 mVertSpeed = (mHorzSpeed >> 2) + 0x2a000;
                 mIsAirborne = 1;
                 mLandSoundPlayed = 0;
-                func_ov002_020e25f0(((char*)this), 0);
+                _ZN6Player19func_ov002_020e25f0Ei(((char*)this), 0);
                 return 1;
             } else if (*(u16*)((char*)data_0209f49c + off) & 0x400) {
                 if (func_ov002_020d674c(((char*)this))) {
@@ -10810,7 +10810,7 @@ int Player::St_Shell_Main()
         } else {
             unk_766 = 0;
             unk_760 = unk_766;
-            func_ov002_020e28d4(((char*)this), 0x1800, 0x800);
+            _ZN6Player19func_ov002_020e28d4Eii(((char*)this), 0x1800, 0x800);
             mVertAccel = -0x4000;
             mTerminalVelocity = -0x4b000;
             if (mVertSpeed >= 0) {
@@ -11320,11 +11320,11 @@ void func_ov002_020cd308(char* c){
 extern "C" {
 void func_ov002_020cd364(char *c) {
     Player *self = (Player *)c;
-    extern void func_ov002_020dc020(void*);
+    extern void _ZN6Player19func_ov002_020dc020Ev(void*);
     extern void _ZN5dCc_c5ClearEv(void*);
     extern void _ZN5dCc_c6UpdateEv(void*);
     extern void func_ov002_020cd364(void*);
-    func_ov002_020dc020(c);
+    _ZN6Player19func_ov002_020dc020Ev(c);
     _ZN5dCc_c5ClearEv(c + 0x314);
     _ZN5dCc_c6UpdateEv(c + 0x314);
     self->mStateTimer = 2;
@@ -11555,7 +11555,7 @@ int Player::St_Swim_Main()
     extern void _ZN5Sound9PlayBank0EjRK7Vector3(unsigned int, void*);
     extern void func_ov002_020cd2c4(void*);
     extern void func_ov002_020cd308(void*);
-    extern void func_ov002_020dbf4c(void*);
+    extern void _ZN6Player19func_ov002_020dbf4cEv(void*);
     extern void _ZN5dCc_c5ClearEv(void*);
     extern void _ZN5dCc_c6UpdateEv(void*);
     extern void func_ov002_020bd928(void*, unsigned int);
@@ -11737,7 +11737,7 @@ int Player::St_Swim_Main()
         }
         break;
     case 6:
-        func_ov002_020dbf4c(this);
+        _ZN6Player19func_ov002_020dbf4cEv(this);
         var_r1 = func_ov002_020cedb0(this, 0x10000);
         a4 = mStateTimer;
         if (a4 >= 5) var_r2 = 0x1000;
@@ -13418,9 +13418,9 @@ int Player::St_LedgeGrab_Init()
 extern "C" {
 int Player::St_LedgeHang_Cleanup()
 {
-    extern void func_ov002_020e63a4(void*);
+    extern void _ZN6Player19func_ov002_020e63a4Ev(void*);
 
-    func_ov002_020e63a4(((void *)this));
+    _ZN6Player19func_ov002_020e63a4Ev(((void *)this));
     return 1;
 }
 }
@@ -13878,7 +13878,7 @@ int Player::St_Crouch_Main()
     extern int _ZN6Player12FinishedAnimEv(void* c);
     extern void _ZN6Player7SetAnimEji5Fix12IiEj(void* c, u32 anim, int a, Fix12i b, u32 d);
     extern void func_ov002_020c06fc(void* c, u32 a);
-    extern int func_ov002_020dd2f4(void* c);
+    extern int _ZN6Player19func_ov002_020dd2f4Ev(void* c);
     extern void func_ov002_020c0364(void* c, u32 a);
     extern void Player_AdvanceAnims(void* c);
     extern u16 data_0209f49c[];
@@ -13913,7 +13913,7 @@ int Player::St_Crouch_Main()
             || func_ov002_020d1164(((char*)this)) != 0) {
             if (mHorzSpeed != 0) {
                 func_ov002_020c06fc(((char*)this), 0x4000);
-                func_ov002_020dd2f4(((char*)this));
+                _ZN6Player19func_ov002_020dd2f4Ev(((char*)this));
             } else {
                 if (mIsMega == 0) {
                     if (*(s16*)((char*)data_0209f4a0 + gActivePlayerSlot * 0x18) >= 0x200) {
@@ -14154,7 +14154,7 @@ int Player::St_HoldLight_Main()
     extern void _Z14ApproachLinearRiii(int* a, int b, int c);
     extern int _ZN6Player6IsAnimEj(void* c, u32 anim);
     extern int _ZN6Player12FinishedAnimEv(void* c);
-    extern int func_ov002_020e0ccc(void* c, short* st);
+    extern int _ZN6Player19func_ov002_020e0cccEPs(void* c, short* st);
     extern int _ZNK6Player14GetBodyModelIDEjb(void* c, u32 a, int b);
     extern int func_ov002_020c5244(void* c);
     extern int Player_ReleaseHeldActor(void* c);
@@ -14184,7 +14184,7 @@ int Player::St_HoldLight_Main()
         _Z14ApproachLinearRiii((int*)((char*)&mHorzSpeed), 0, 0x800);
         if (_ZN6Player6IsAnimEj(((char*)this), 0x2f) || _ZN6Player6IsAnimEj(((char*)this), 0x86)) {
             if (_ZN6Player12FinishedAnimEv(((char*)this))) {
-                if (func_ov002_020e0ccc(((char*)this), *(short**)((char*)&mHeldObj))) {
+                if (_ZN6Player19func_ov002_020e0cccEPs(((char*)this), *(short**)((char*)&mHeldObj))) {
                     return 1;
                 }
                 mPrevAngleY = mAngleY;
@@ -15257,9 +15257,9 @@ int func_ov002_020d36d8(char* c, int arg)
 {
     extern int _ZN6Player19func_ov002_020c0434Ev(char* c);
     extern void func_ov002_020c0364(char* c, unsigned int arg);
-    extern int func_ov002_020dd824(char* c);
+    extern int _ZN6Player19func_ov002_020dd824Ev(char* c);
     extern int func_ov002_020d5c6c(char* c);
-    extern int func_ov002_020dde74(char* c);
+    extern int _ZN6Player19func_ov002_020dde74Ev(char* c);
     extern int func_ov002_020d674c(char* c);
     extern void _ZN6Player11ChangeStateERNS_5StateE(char* c, void* st);
     extern int func_ov002_020d1204(char* c);
@@ -15276,14 +15276,14 @@ int func_ov002_020d36d8(char* c, int arg)
         func_ov002_020c0364(c, 3);
         return 1;
     }
-    if (func_ov002_020dd824(c) != 0) return 1;
+    if (_ZN6Player19func_ov002_020dd824Ev(c) != 0) return 1;
     if (func_ov002_020d5c6c(c) != 0) return 1;
 
     {
         int idx = gActivePlayerSlot * 0x18;
         unsigned short f49e = *(unsigned short*)(data_0209f49e + idx);
         if (f49e & 1) {
-            return func_ov002_020dde74(c) != 0;
+            return _ZN6Player19func_ov002_020dde74Ev(c) != 0;
         }
         if ((*(unsigned short*)(data_0209f49c + idx) & 0x400) && (arg & 1) == 0) {
             if (func_ov002_020d674c(c) != 0) {

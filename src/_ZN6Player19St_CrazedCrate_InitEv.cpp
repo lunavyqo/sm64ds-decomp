@@ -21,7 +21,7 @@ int Player::St_CrazedCrate_Init()
   mIsAirborne = 1;
   mLandSoundPlayed = 0;
   _ZN6Player7SetAnimEji5Fix12IiEj(((char*)this), 0x43, 0x40000000, 0x1000, 0);
-  func_ov002_020e0f38(((char*)this), mJumpComboStage);
+  _ZN6Player19func_ov002_020e0f38Ei(((char*)this), mJumpComboStage);
   mPrevAngleY = mAngleY;
   *(int*)((char*)&mdCcAcPos_c.flags) |= 0x20;
   return 1;

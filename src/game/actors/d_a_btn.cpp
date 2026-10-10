@@ -106,7 +106,8 @@ void func_02012694(int a, void *p);
 void func_020393c4(void *p, int v);
 void func_020393d4(void *p, void *v);
 void func_020396d0(int *, int);
-int func_ov002_020dd8b8(void *c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+int _ZN6Player19func_ov002_020dd8b8Ev(void *c);
 
 void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(
     void *self, void *actor, int a, int b, void *c, void *d);
@@ -997,7 +998,7 @@ extern "C" void func_ov079_0212522c(void *a, void *b, void *c)
 
 // @symbol _ZN7daBtn_c19func_ov079_02125058EP8dActor_c
 /* Contact from the lying body's back. Only players count. A contact that
-   func_ov002_020dd8b8 accepts is a hit: it arms mPounded and remembers the
+   _ZN6Player19func_ov002_020dd8b8Ev accepts is a hit: it arms mPounded and remembers the
    player (the king ignores it while a resumed state 0 is pending). Any
    other touch pays out one coin per contact while mCoinsLeft lasts -- for
    the king only when the player stands at least 0x2bc000 above it in
@@ -1009,7 +1010,7 @@ void daBtn_c::func_ov079_02125058(dActor_c *other)
     int eq = (int)(other->actorID == 0xbf);
     if (!eq) return;
     mTouched = 1;
-    if (func_ov002_020dd8b8(other) != 0) {
+    if (_ZN6Player19func_ov002_020dd8b8Ev(other) != 0) {
         if (mResumePending != 0 && mIsKing != 0) {
             if (mResumeState == 0) return;
         }

@@ -144,7 +144,7 @@ after_player_slot:
         if (DecIfAbove0_Short(&unk_6be) == 0)
             func_ov002_020d80d0(((char *)this));
         if (DecIfAbove0_Short(&mPowerupTimer) == 0) {
-            func_ov002_020e032c(((char *)this));
+            _ZN6Player19func_ov002_020e032cEv(((char *)this));
             func_ov002_020bdef0();
             func_ov002_020bdd9c();
         }
@@ -286,7 +286,7 @@ after_player_slot:
     else
         gActivePlayerSlot = data_0209f250;
 
-    func_ov002_020e4bb8(((char *)this));
+    _ZN6Player19func_ov002_020e4bb8Ev(((char *)this));
 
     {
         s32 r2 = unk_654;

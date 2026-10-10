@@ -18,7 +18,7 @@ int Player::St_PunchKick_Init()
   *(char*)((char*)&mStatePhase)=0;
   if(*(unsigned char*)((char*)&mPunchKickStep)==2 || _ZN6Player15IsCollectingCapEv(((void*)this))) return 1;
   if(*(unsigned char*)((char*)&mIsMega)==0){
-    func_ov002_020dc020(((void*)this));
+    _ZN6Player19func_ov002_020dc020Ev(((void*)this));
     _ZN5dCc_c5ClearEv((char*)&mAttackClsn);
     _ZN5dCc_c6UpdateEv((char*)&mAttackClsn);
   } else {

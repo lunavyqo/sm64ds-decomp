@@ -11,7 +11,8 @@ extern "C" {
 void func_ov002_020bf800(char *c, Vector3_16f v);
 u32 _ZN5Sound8PlayLongEjjjRK7Vector3s(u32 a, u32 b, u32 c, Vector3 *v, u32 d);
 int _ZN6Player7IsStateERNS_5StateE(char *c, void *st);
-int func_ov002_020e0478(void *c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+int _ZN6Player19func_ov002_020e0478Ev(void *c);
 void _ZN6Player11ChangeStateERNS_5StateE(char *c, void *st);
 }
 extern char data_ov002_02110274;
@@ -37,7 +38,7 @@ extern "C" int func_ov002_020dec70(char *c)
         || *(u8 *)(c + 0x703)
         || *(u8 *)(c + 0x709)
         || *(u8 *)(c + 0x6de) == 0) return 0;
-    if (func_ov002_020e0478(c) != 0 || *(u8 *)(c + 0x6fd) != 0) {
+    if (_ZN6Player19func_ov002_020e0478Ev(c) != 0 || *(u8 *)(c + 0x6fd) != 0) {
         if (t < 0x898000) *(int *)(c + 0x60) += 0x8000;
         return 0;
     }

@@ -20,7 +20,8 @@ extern void KillPlayer(void);
    with scalars in those slots. */
 extern int _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(int, unsigned int, int, int, int, s16 *, void *);
 extern int _ZN5Sound8PlayLongEjjjRK7Vector3s(int, unsigned int, unsigned int, void *, unsigned int);
-extern void func_ov002_020e28d4(void *, int, int);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020e28d4Eii(void *, int, int);
 extern void _ZN6Player7SetAnimEji5Fix12IiEj(void *, unsigned int, int, int, unsigned int);
 extern void func_ov002_020c5dec(void *, int);
 extern void _ZN6Player11ChangeStateERNS_5StateE(void *, char *);
@@ -68,7 +69,7 @@ int Player::St_BurnLava_Main()
     }
 
     if (mStateStep == 0) {
-        func_ov002_020e28d4(this, 0x1000, 0x1000);
+        _ZN6Player19func_ov002_020e28d4Eii(this, 0x1000, 0x1000);
         if (mIsAirborne == 0) {
             mStateWork++;
             if (mStateWork >= 3) {

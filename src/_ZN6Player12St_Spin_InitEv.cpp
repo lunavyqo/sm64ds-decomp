@@ -7,7 +7,8 @@ typedef int Fix12i;
 struct dCamera_c;
 extern int* data_0209f318;
 extern void _ZN6Player7SetAnimEji5Fix12IiEj(void* c, unsigned int a, int b, Fix12i d, unsigned int e);
-extern void func_ov002_020e25f0(void* c, int i);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020e25f0Ei(void* c, int i);
 extern void func_0200d678(dCamera_c* thiz, unsigned char pid);
 }
 
@@ -23,7 +24,7 @@ int Player::St_Spin_Init()
   mTerminalVelocity = -0x10000;
   if (mStatePhase) {
     mVertSpeed = 0x50000;
-    func_ov002_020e25f0(((char*)this), 2);
+    _ZN6Player19func_ov002_020e25f0Ei(((char*)this), 2);
   }
   int* p = (int*)((int)((char*)this) + 0x2ec);
   int old = *p;

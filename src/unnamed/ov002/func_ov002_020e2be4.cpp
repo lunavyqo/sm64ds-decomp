@@ -5,7 +5,8 @@ extern "C" void _ZN6Player11ChangeStateERNS_5StateE(void* self, void* state);
 
 extern char data_ov002_021103f4;
 
-extern "C" int func_ov002_020e2be4(char* self){
+int Player::func_ov002_020e2be4(){
+    char* self = (char*)this;
     int thr;
     if (((Player *)(self))->func_ov002_020c04ac())
         return 0;

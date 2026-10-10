@@ -177,7 +177,7 @@ void daTor_c::State1()
         mAngleToPlayer = angle;
         ApproachLinear(mPrevAngleY, mAngleToPlayer, 0x200);
         /* ov002 helper wraps Player::IsState(tornado): still being carried. */
-        if (mCaughtActor != 0 && func_ov002_020de328(mCaughtActor) != 0)
+        if (mCaughtActor != 0 && _ZN6Player19func_ov002_020de328Ev(mCaughtActor) != 0)
             ++mTriggerCount;
     } else {
         ApproachLinear(mPrevAngleY, mAngleToHome, 0x200);
@@ -279,7 +279,7 @@ int daTor_c::Behavior()
             if (closest == 0 || Vec3_Dist((const Vector3 *)&o->mPosX, (const Vector3 *)&closest->mPosX) > 0x118000) {
                 /* ov002 player-state helper: stores `this` into the player's
                    tornado slot and switches it into the tornado state. */
-                if (func_ov002_020de33c((char *)o, (int)this) != 0)
+                if (_ZN6Player19func_ov002_020de33cEi((char *)o, (int)this) != 0)
                     mCaughtActor = o;
             }
         }

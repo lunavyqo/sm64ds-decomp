@@ -102,7 +102,8 @@ extern "C" OnmsCollisionFilePtr data_ov092_02132548;
 extern "C" daOnms_cStateEntry data_ov092_02132568[9];
 
 extern "C" {
-int func_ov002_020de328(void *player);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+int _ZN6Player19func_ov002_020de328Ev(void *player);
 void dBgCh_Actr_UpdateContinuous_Veneer(void *self);
 void *_ZNK10dBgCh_Actr14GetFloorResultEv(void *self);
 void _ZN8dActor_c10EarthquakeERK7Vector35Fix12IiE(void *v, int f);
@@ -166,7 +167,7 @@ int daOnms_c::StateBounce()
 
     Player *player = ClosestPlayer();
     if (player != 0) {
-        if (func_ov002_020de328(player) != 0) {
+        if (_ZN6Player19func_ov002_020de328Ev(player) != 0) {
             mdCcAcPos_c.vulnFlags |= 0x400000;
             mdCcAcPos_c.flags |= 4;
         } else {

@@ -8,7 +8,8 @@
 #include "Player.h"
 extern "C" {
 extern int func_ov002_020eeca8(void*, void*);
-extern int func_ov002_020e28d4(void*, int, int);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e28d4Eii(void*, int, int);
 extern int _ZN6Player11ChangeStateERNS_5StateE(void*, void*);
 extern u32 _ZNK6Player14GetBodyModelIDEjb(void*, u32, int);
 extern void _ZN5Sound9PlayBank0EjRK7Vector3(u32, void*);
@@ -21,7 +22,7 @@ extern u16 data_0209f49e[];
 int Player::St_Jump_Main()
 {
   func_ov002_020eeca8((char*)((void*)this) + 0x380, ((void*)this));
-  func_ov002_020e28d4(((void*)this), 0xd00, 0x800);
+  _ZN6Player19func_ov002_020e28d4Eii(((void*)this), 0xd00, 0x800);
 
   if (*(u8*)((char*)&mIsAirborne) == 0) {
     if (*(u16*)((char*)&mStateTimer) != 0) {
@@ -41,7 +42,7 @@ int Player::St_Jump_Main()
       }
     }
 
-    if (func_ov002_020e2664(((void*)this))) return 1;
+    if (_ZN6Player19func_ov002_020e2664Ev(((void*)this))) return 1;
 
     if (*(u8*)((char*)&mJumpComboStage) == 2) {
       *(s32*)((char*)&mVertAccel) = -0x4000;

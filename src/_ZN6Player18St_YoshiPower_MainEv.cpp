@@ -39,13 +39,15 @@ extern int func_ov002_020d5ed0(void*);
 extern void func_ov002_020d718c(char*);
 extern void func_ov002_020d8118(char*);
 extern void _ZN6Player11ChangeStateERNS_5StateE(char*, void*);
-extern int func_ov002_020e0ccc(char*, void*);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e0cccEPs(char*, void*);
 extern void func_ov002_020d7430(Player& player);
 extern void _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(void*, void*, int, int, unsigned int);
 extern void func_ov002_020d5cec(void*);
 extern void _ZN5Sound13PlayCharVoiceEjjRK7Vector3(unsigned int, unsigned int, void*);
 extern void* _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(void*, unsigned int, int, int, int, void*, void*);
-extern void func_ov002_020dc09c(char*);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020dc09cEv(char*);
 extern void _ZN5dCc_c5ClearEv(void*);
 extern void _ZN5dCc_c6UpdateEv(void*);
 extern void ApproachAngle(void*, short, int, int, int);
@@ -168,7 +170,7 @@ int Player::St_YoshiPower_Main()
                     _ZN6Player11ChangeStateERNS_5StateE(c, &data_ov002_02110034);
                     return 1;
                 }
-                if (func_ov002_020e0ccc(c, *(void**)(&mObjInMouth)) != 0) {
+                if (_ZN6Player19func_ov002_020e0cccEPs(c, *(void**)(&mObjInMouth)) != 0) {
                     return 1;
                 }
                 mMouthHoldTimer = 0x5a;
@@ -269,7 +271,7 @@ int Player::St_YoshiPower_Main()
                 dir.z = data_02082214[(*(unsigned short*)&mAngleY >> 4) * 2 + 1];
                 *(void**)(&mParticle1) = _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(*(void**)(&mParticle1), 0x13c, pos.x, pos.y, pos.z, (Vec3s*)((int)&dir), 0);
                 *(void**)(&mParticle2) = _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(*(void**)(&mParticle2), 0x13d, pos.x, pos.y, pos.z, &dir, 0);
-                func_ov002_020dc09c(c);
+                _ZN6Player19func_ov002_020dc09cEv(c);
                 _ZN5dCc_c5ClearEv(&mAttackClsn);
                 _ZN5dCc_c6UpdateEv(&mAttackClsn);
                 if (mStateTimer == 1 && unk_6f4 == 0) {

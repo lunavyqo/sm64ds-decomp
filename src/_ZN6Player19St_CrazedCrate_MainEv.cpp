@@ -8,10 +8,12 @@ typedef long long s64;
 
 extern short data_02082214[];
 extern "C" {
-extern void func_ov002_020e28d4(void*, int, int);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020e28d4Eii(void*, int, int);
 extern int _ZN4cstd5atan2E5Fix12IiES1_(int, int);
 extern int AngleDiff(int, int);
-extern void func_ov002_020e0f38(void*, int);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020e0f38Ei(void*, int);
 extern void _ZN7fBase_c18MarkForDestructionEv(void*);
 extern void _ZN8dActor_c10SpawnCoinsERK7Vector3j5Fix12IiEs(void*, const Vector3&, unsigned int, int, short);
 extern void func_ov002_020d718c(void*);
@@ -24,7 +26,7 @@ extern char data_ov002_0211031c;
 
 int Player::St_CrazedCrate_Main() {
     char* self = (char*)this;
-    func_ov002_020e28d4(self, 0x1000, 0x1800);
+    _ZN6Player19func_ov002_020e28d4Eii(self, 0x1000, 0x1800);
 
     if (mClsnFlags & 2) {
         int atan = _ZN4cstd5atan2E5Fix12IiES1_(mWallNormalX, *(int*)(self + 0x568));
@@ -50,7 +52,7 @@ int Player::St_CrazedCrate_Main() {
     if (mIsAirborne == 0) {
         if (mJumpComboStage < 2) {
             (*(u8*)(int)(self + 0x6e1))++;
-            func_ov002_020e0f38(self, *(u8*)(self + 0x6e1));
+            _ZN6Player19func_ov002_020e0f38Ei(self, *(u8*)(self + 0x6e1));
         } else {
             if (*(int*)(self + 8) == 3) {
                 if (*(void**)(self + 0x360) != 0) {

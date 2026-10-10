@@ -12,12 +12,14 @@
 #include "PlayerInput.h"
 extern "C" {
 extern void _Z14ApproachLinearRiii(s32 &, s32, s32);
-extern void func_ov002_020de968(void *);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020de968Ev(void *);
 extern void _ZN6Player11ChangeStateERNS_5StateE(void *, Player::State &);
 extern void _ZN5Sound9PlayBank0EjRK7Vector3(u32, const Vector3 &);
 extern s16 _ZN4cstd5atan2E5Fix12IiES1_(s32, s32);
 extern int AngleDiff(s32, s16);
-extern void func_ov002_020de428(void *);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020de428Ev(void *);
 extern void ApproachAngle(void *, s16, s16, s16, s32);
 extern s32 func_ov002_020bf224(void *, s32, s32);
 extern void _Z15ApproachLinear2Rsss(s16 &, s16, s16);
@@ -43,14 +45,14 @@ s32 Player::St_Balloon_Main()
     _Z14ApproachLinearRiii(mVertSpeed, -0x6000, 0x800);
 
     if (mBalloonTimer == 0) {
-        func_ov002_020de968(this);
+        _ZN6Player19func_ov002_020de968Ev(this);
         _ZN6Player11ChangeStateERNS_5StateE(this, data_ov002_021101b4);
         return 1;
     }
 
     u16 flags = *(u16 *)((char *)&data_0209f49e + gActivePlayerSlot * 0x18);
     if (flags & 0x400) {
-        func_ov002_020de968(this);
+        _ZN6Player19func_ov002_020de968Ev(this);
         _ZN6Player11ChangeStateERNS_5StateE(this, data_ov002_021105a4);
         return 1;
     }
@@ -77,7 +79,7 @@ s32 Player::St_Balloon_Main()
         s16 ang = _ZN4cstd5atan2E5Fix12IiES1_(mWallNormalX, mWallNormalZ);
         s16 diff = AngleDiff(ang, mPrevAngleY);
         if ((s32)diff > 0x4000) {
-            func_ov002_020de428(this);
+            _ZN6Player19func_ov002_020de428Ev(this);
             mPrevAngleY = (s16)((ang * 2 + 0x8000) - mPrevAngleY);
             mHorzSpeed = (s32)(((long long)mHorzSpeed * 0x1400 + 0x800) >> 12);
             if (mHorzSpeed > 0x14000)
@@ -99,14 +101,14 @@ s32 Player::St_Balloon_Main()
         s32 g = mPrevVertSpeed;
         if (g < 0) {
             mVertSpeed = -(s32)(((long long)g * 0x2800 + 0x800) >> 12);
-            func_ov002_020de428(this);
+            _ZN6Player19func_ov002_020de428Ev(this);
         }
     } else if (mode & 4) {
         s32 g = mPrevVertSpeed;
         if (g > 0) {
             mVertSpeed = -(s32)((((long long)g << 14) + 0x800) >> 12);
             mStateWaitTimer = 0x1e;
-            func_ov002_020de428(this);
+            _ZN6Player19func_ov002_020de428Ev(this);
         }
     }
 

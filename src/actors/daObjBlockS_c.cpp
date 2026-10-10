@@ -50,7 +50,7 @@
  *   not turned into a method. Call sites stay Crate_SetState(this, state).
  * Leftover: no member conversion was reverted. Each of the 25 helpers
  *   matched at its original size.
- * Leftover: func_ov002_020e496c, func_ov002_020ef228, func_ov002_020f02c8,
+ * Leftover: _ZN6Player19func_ov002_020e496cEv, func_ov002_020ef228, func_ov002_020f02c8,
  *   func_ov002_020f030c and func_ov002_020f035c stay calls into ov002.
  * Leftover: the word at 0x0d0 (mEatingPlayer) lives in dBgActor_c's pad and is
  *   reached by the BLOCKS_EATING_PLAYER macro below.
@@ -60,7 +60,7 @@
  * Leftover: sound banks 0x41 / 0x51, the PlayLong id 0x93 and the particle ids
  *   0xe / 0x13a / 0x13b have no names in the tree.
  * Leftover: what func_02035638 tests beyond being a sibling of IsOnWall, what
- *   func_ov002_020ef228 / func_ov002_020e496c compute, the result of
+ *   func_ov002_020ef228 / _ZN6Player19func_ov002_020e496cEv compute, the result of
  *   func_ov002_020f030c (Player.h names it a slide loss factor; the value
  *   is discarded here), the player word at
  *   0xc8, the extra arguments of Math_Function_0203b14c and
@@ -169,7 +169,8 @@ extern int func_02037e58(u32 *p);
 extern void _ZNK11SurfaceInfo12CopyNormalToER7Vector3(void *self, Vector3 *out);
 extern int func_ov002_020ef228(void *c, int arg);
 extern int func_ov002_020f030c(int x);
-extern int func_ov002_020e496c(char *c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e496cEv(char *c);
 extern s16 func_02010844(void *unused, Vector3 *v, s16 angle);
 extern int _ZNK5dBgPi9GetClsnIDEv(int self);
 extern dBgPi *_ZNK10dBgCh_Actr13GetWallResultEv(const dBgCh_Actr *self);
@@ -1183,7 +1184,7 @@ void daObjBlockS_c::func_ov098_021397c8()
  * table (data_ov098_0213bf60 / 64 / 68 are its x / y / z columns, stride 12
  * bytes) -- 0 normally, 1 if the player is front-sliding, or if it has lost its grabbed
  * object and ((w << 4) >> 16) < 14 for the word w at +0x58 of what
- * func_ov002_020e496c returns (unrecovered), plus 2 if the player's param1 is 2 -- eases
+ * _ZN6Player19func_ov002_020e496cEv returns (unrecovered), plus 2 if the player's param1 is 2 -- eases
  * mCarryOffset toward that row, takes the matrix UpdateCarry returns as the
  * model matrix, and sets mFlags bit 0x4000000. The rows, in units, are
  * (40, 0, 45), (40, 0, 70), (48, 16, 0) and (48, 0, 60).
@@ -1202,7 +1203,7 @@ void daObjBlockS_c::func_ov098_02139850()
     if (*(int *)((char *)obj + 0xc8) == 0) goto other;
 
     {
-        char *r4 = (char *)func_ov002_020e496c((char *)obj);
+        char *r4 = (char *)_ZN6Player19func_ov002_020e496cEv((char *)obj);
         int r5 = 0;
         if (_ZN6Player14IsFrontSlidingEv((char *)mHoldingPlayer) != 0) r5 = 1;
         if (_ZN6Player17LostGrabbedObjectEv((char *)mHoldingPlayer) != 0) {

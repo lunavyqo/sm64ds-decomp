@@ -12,18 +12,22 @@
  */
 #include "Player.h"
 extern "C" {
-extern int func_ov002_020e2be4(void *c);
-extern int func_ov002_020e2b6c(void *c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e2be4Ev(void *c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e2b6cEv(void *c);
 extern int Player_ScaleByCharFactor(void *c, int a);
 extern void _ZN6Player11ChangeStateERNS_5StateE(void *c, void *s);
 extern void func_ov002_020bf2d8(void *c, int a);
-extern void func_ov002_020e2ad0(void *c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020e2ad0Ev(void *c);
 /* SetAnim takes a Fix12<int> by value -- the mwccarm 6az wall, runbook
    section 7 -- so it stays extern "C" with a scalar in that slot. */
 extern void _ZN6Player7SetAnimEji5Fix12IiEj(void *c, u32 a, int b, int fx, u32 d);
 extern int AngleDiff(int a, int b);
 extern int func_ov002_020c19d0(void *c, int a, int b);
-extern void func_ov002_020e25f0(void *c, int a);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020e25f0Ei(void *c, int a);
 extern int data_ov002_0210a59c[];   /* launch speed, by combo stage */
 extern int data_ov002_0210a5a8[];   /* jump animation, by combo stage */
 extern char data_ov002_02110214;    /* the winged-jump state */
@@ -34,9 +38,9 @@ int Player::St_Jump_Init()
     int t;
 
     mJumpedFromQuicksand = 0;
-    if (func_ov002_020e2be4(this) != 0)
+    if (_ZN6Player19func_ov002_020e2be4Ev(this) != 0)
         return 1;
-    if (func_ov002_020e2b6c(this) != 0)
+    if (_ZN6Player19func_ov002_020e2b6cEv(this) != 0)
         return 1;
 
     mIsInAirState = 1;
@@ -76,7 +80,7 @@ skipclear:
         } else {
             func_ov002_020bf2d8(this, v);
         }
-        func_ov002_020e2ad0(this);
+        _ZN6Player19func_ov002_020e2ad0Ev(this);
         if (mIsMega == 0) {
             _ZN6Player7SetAnimEji5Fix12IiEj(this, data_ov002_0210a5a8[mJumpComboStage], 0x40000000, 0x1000, 0);
         } else {
@@ -96,7 +100,7 @@ skipclear:
     mStateStep = 0;
     mStateArg = 0;
     unk_6cc = 0;
-    func_ov002_020e25f0(this, mJumpComboStage);
+    _ZN6Player19func_ov002_020e25f0Ei(this, mJumpComboStage);
 
     mHorzSpeed = (int)(((long long)mHorzSpeed * 0xccc + 0x800) >> 12);
 

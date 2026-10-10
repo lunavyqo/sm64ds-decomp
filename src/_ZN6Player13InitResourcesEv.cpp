@@ -18,13 +18,17 @@ struct CAA0 { char pad[8]; int unk8; };
 
 extern "C" {
     int SublevelToLevel(int s);
-    void func_ov002_020e6330(void* p);
-    void func_ov002_020e6350(void* p);
-    void func_ov002_020e5948(void* p);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+    void _ZN6Player19func_ov002_020e6330Ev(void* p);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+    void _ZN6Player19func_ov002_020e6350Ev(void* p);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+    void _ZN6Player19func_ov002_020e5948Ev(void* p);
     void func_ov002_020beabc(void* p);
     void* func_02073470(int a, int b, int c, void* d, void* e);
     void* _ZN6Memory13operator_new2Ej(unsigned int sz);
-    void func_ov002_020e63a4(void* p);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+    void _ZN6Player19func_ov002_020e63a4Ev(void* p);
     void _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(void* thiz, void* actor, int a, int b, void* v1, void* v2);
     void func_02035644(void* p, int a);
     void func_ov002_020d6368(void* p);
@@ -111,11 +115,11 @@ s32 Player::InitResources()
     if (t == 0) goto Ld0;
 Lac:
     if (mPlayerNo == data_0209f250) {
-        func_ov002_020e6330(c);
-        func_ov002_020e6350(c);
+        _ZN6Player19func_ov002_020e6330Ev(c);
+        _ZN6Player19func_ov002_020e6350Ev(c);
     }
 Ld0:
-    func_ov002_020e5948(c);
+    _ZN6Player19func_ov002_020e5948Ev(c);
     if (changed != 0) ((Player *)(c))->func_ov002_020beabc();
     *(void**)(&unk_578) = func_02073470(0x32, 0xc, 8, (void*)func_0203d384, (void*)_ZN7Vector3D1Ev);
     *(void**)(&unk_57c) = _ZN6Memory13operator_new2Ej(0x32);
@@ -135,7 +139,7 @@ Ld0:
     mScaleX = 0x1000;
     mScaleY = 0x1000;
     mScaleZ = 0x1000;
-    func_ov002_020e63a4(c);
+    _ZN6Player19func_ov002_020e63a4Ev(c);
     _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(c + 0x380, c, 0x32000, 0x32000, c + 0x92, c + 0x8c);
     func_02035644(c + 0x380, 0x28000);
     mTerminalVelocity = -0x4b000;

@@ -7,6 +7,6 @@
 
 int Player::St_Balloon_Cleanup()
 {
-    func_ov002_020de968(((void *)this));
+    _ZN6Player19func_ov002_020de968Ev(((void *)this));
     return 1;
 }

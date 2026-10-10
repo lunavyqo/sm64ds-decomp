@@ -5,7 +5,8 @@
 extern "C" {
 extern int _ZN6Player7SetAnimEji5Fix12IiEj(void*,unsigned int,int,int,unsigned int);
 extern int _ZN5Sound9PlayBank0EjRK7Vector3(unsigned int,void*);
-extern int func_ov002_020e25f0(void*,int);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e25f0Ei(void*,int);
 }
 
 int Player::St_WaterJump_Init()
@@ -20,6 +21,6 @@ int Player::St_WaterJump_Init()
   mVertSpeed=0x2a000;
   mHorzSpeed=0x12000;
   _ZN5Sound9PlayBank0EjRK7Vector3(0x18,(char*)((char*)this)+0x74);
-  func_ov002_020e25f0(((char*)this),0);
+  _ZN6Player19func_ov002_020e25f0Ei(((char*)this),0);
   return 1;
 }

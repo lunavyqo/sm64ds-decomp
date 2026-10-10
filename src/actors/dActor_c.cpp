@@ -942,7 +942,8 @@ extern "C" void _ZN8dActor_c13SpawnFireballERK7Vector3PK10Vector3_165Fix12IiES7_
 /* ROM ordinal 47 -- _ZN8dActor_c11UpdateCarryER6PlayerRK7Vector3
  * 0x02010180  size 0x130 */
 extern "C" {
-void *func_ov002_020e496c(Player *p);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+void *_ZN6Player19func_ov002_020e496cEv(Player *p);
 void MulMat4x3Mat4x3(Matrix4x3 *m1, Matrix4x3 *m0, Matrix4x3 *mF);
 void Matrix4x3_FromTranslation(Matrix4x3 *mF, Fix12i x, Fix12i y, Fix12i z);
 void Matrix4x3_ApplyInPlaceToRotationXYZExt(Matrix4x3 *mF, short x, short y, short z);
@@ -959,7 +960,7 @@ Matrix4x3 *dActor_c::UpdateCarry(Player &player, const Vector3 &vec)
     *(int *)((char *)&t + 0) = 0;
     *(int *)((char *)&t + 4) = 0;
     *(int *)((char *)&t + 8) = 0;
-    void *o = func_ov002_020e496c(p);
+    void *o = _ZN6Player19func_ov002_020e496cEv(p);
     char *base = *(char**)((char*)o + 0x14);
     data_020a0e68 = *(Matrix4x3*)((char*)o + 0x1c);
     MulMat4x3Mat4x3((Matrix4x3*)(base + 0x2a0), &data_020a0e68, &data_020a0e68);

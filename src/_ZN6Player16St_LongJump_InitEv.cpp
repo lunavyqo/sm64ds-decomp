@@ -10,10 +10,14 @@
  */
 #include "Player.h"
 extern "C" {
-extern int func_ov002_020e2be4(void* self);
-extern int func_ov002_020e2ba8(void* c);
-extern int func_ov002_020e2b6c(void* c);
-extern void func_ov002_020e2ad0(void* c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e2be4Ev(void* self);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e2ba8Ev(void* c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e2b6cEv(void* c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020e2ad0Ev(void* c);
 /* SetAnim takes a Fix12<int> by value -- the mwccarm 6az wall, runbook
    section 7 -- so it stays extern "C" with a scalar in that slot. */
 extern void _ZN6Player7SetAnimEji5Fix12IiEj(void* self, unsigned int a, int b, int c, unsigned int d);
@@ -22,13 +26,13 @@ extern void _ZN6Player7SetAnimEji5Fix12IiEj(void* self, unsigned int a, int b, i
 int Player::St_LongJump_Init()
 {
     mJumpedFromQuicksand = 0;
-    if (func_ov002_020e2be4(this)) {
+    if (_ZN6Player19func_ov002_020e2be4Ev(this)) {
         return 1;
     }
-    if (func_ov002_020e2ba8(this)) {
+    if (_ZN6Player19func_ov002_020e2ba8Ev(this)) {
         return 1;
     }
-    if (func_ov002_020e2b6c(this)) {
+    if (_ZN6Player19func_ov002_020e2b6cEv(this)) {
         return 1;
     }
     mIsInAirState = 1;
@@ -38,7 +42,7 @@ int Player::St_LongJump_Init()
     mLandSoundPlayed = 0;
     _ZN6Player7SetAnimEji5Fix12IiEj(this, 0x1a, 0x40000000, 0x1000, 0);
     mVertSpeed = 0x1e000;
-    func_ov002_020e2ad0(this);
+    _ZN6Player19func_ov002_020e2ad0Ev(this);
     mVertAccel = -0x2000;
     mHorzSpeed = (int)(((s64)mHorzSpeed * 0x1800 + 0x800) >> 12);
     if (mHorzSpeed >= 0x3c000) {

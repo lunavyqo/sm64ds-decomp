@@ -123,7 +123,8 @@ void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
     dBgW_KcMbg *self, KCL_File *file, Matrix4x3 *mat, int scale,
     short angY, void *clps);
 extern "C" void func_020393c4(void* p, void* v);
-extern int func_ov002_020dd8b8(void* c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020dd8b8Ev(void* c);
 extern void func_ov002_020f1578(daObjBC_Switch_c *c, char *arg);
 }
 
@@ -162,7 +163,7 @@ void func_ov002_020f1578(daObjBC_Switch_c *c, char *arg){
        colliding actor's actorID (PLAYER is 0xbf); Player.h is out of scope. */
     int b = (int)(*(unsigned short*)(arg + 0xc) == 0xbf);
     if (b == 0) return;
-    if (func_ov002_020dd8b8(arg) != 0)
+    if (_ZN6Player19func_ov002_020dd8b8Ev(arg) != 0)
         c->mPressed = 1;
 }
 }

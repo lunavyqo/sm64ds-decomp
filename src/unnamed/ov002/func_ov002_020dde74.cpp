@@ -1,8 +1,8 @@
 //cpp
 #include "types.h"
 #include "PlayerInput.h"
+#include "Player.h"
 struct State;
-struct Player;
 extern "C" int _ZN6Player11ChangeStateERNS_5StateE(Player* thiz, State* s);
 extern "C" int _ZN6Player7IsStateERNS_5StateE(Player* thiz, State* s);
 extern "C" int Player_ScaleByCharFactor(Player* c, int a);
@@ -14,7 +14,8 @@ extern State data_ov002_021105bc;
 extern State data_ov002_02110574;
 extern char data_0209f49c[];
 
-extern "C" int func_ov002_020dde74(char* thiz){
+int Player::func_ov002_020dde74(){
+  char* thiz = (char*)this;
   int b = (*(int*)(thiz + 0x358) != 0);
   if (b) {
     _ZN6Player11ChangeStateERNS_5StateE((Player*)thiz, &data_ov002_021105d4);

@@ -7,7 +7,8 @@ typedef int Fix12i;
 extern "C" {
 extern int Player_ReleaseHeldActor(void*);
 extern int _ZN6Player7SetAnimEji5Fix12IiEj(void*, unsigned int, int, Fix12i, unsigned int);
-extern int func_ov002_020e25f0(void*, int);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e25f0Ei(void*, int);
 }
 
 int Player::St_SlideKickRecover_Init()
@@ -21,7 +22,7 @@ int Player::St_SlideKickRecover_Init()
   *(char*)((char*)&mLandSoundPlayed)=0;
   *(int*)((char*)&mVertSpeed)=0x20000;
   _ZN6Player7SetAnimEji5Fix12IiEj(((void*)this), 0x56, 0x40000000, 0x1000, 0);
-  func_ov002_020e25f0(((void*)this), 0);
+  _ZN6Player19func_ov002_020e25f0Ei(((void*)this), 0);
   Sound::PlayBank0(0xf, *(const Vector3 *)((char*)((void*)this)+0x74));
   return 1;
 }

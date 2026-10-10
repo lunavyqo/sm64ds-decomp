@@ -30,7 +30,8 @@ extern int _Z15ApproachLinear2Rsss(s16* ref, s16 target, s16 step);
 extern int _ZN8Particle6System3NewEjj5Fix12IiES2_S2_PK11Vector3_16fPNS_8CallbackE(u32 h, u32 id, s32 x, s32 y, s32 z, void* v, void* cb);
 extern u32 _ZN5Sound8PlayLongEjjjRK7Vector3s(u32 h, u32 a, u32 b, void* v, u32 d);
 extern void _ZN5Sound9PlayBank0EjRK7Vector3(u32 a, void* v);
-extern void func_ov002_020dc174(char* c, void* p, int a, int b, u32 e, u32 f);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern void _ZN6Player19func_ov002_020dc174EPviijj(char* c, void* p, int a, int b, u32 e, u32 f);
 extern void _ZN5dCc_c5ClearEv(char* c);
 extern void _ZN5dCc_c6UpdateEv(char* c);
 extern void _ZN6Player11ChangeStateERNS_5StateE(char* c, void* s);
@@ -119,7 +120,7 @@ extern "C" int _ZN6Player19St_SwingPlayer_MainEv(char* c)
         arr[0] = 0;
         arr[1] = 0x32000;
         arr[2] = 0x64000;
-        func_ov002_020dc174(c, arr, 0x32000, 0x32000, 0x80, 0);
+        _ZN6Player19func_ov002_020dc174EPviijj(c, arr, 0x32000, 0x32000, 0x80, 0);
         _ZN5dCc_c5ClearEv(c + 0x314);
         _ZN5dCc_c6UpdateEv(c + 0x314);
         break;

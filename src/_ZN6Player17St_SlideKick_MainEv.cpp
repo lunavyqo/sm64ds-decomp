@@ -8,7 +8,8 @@
 #include "PlayerInput.h"
 extern "C" {
 extern void func_ov002_020c06fc(void* c, u32 flag);
-extern int func_ov002_020dd2f4(void* c);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020dd2f4Ev(void* c);
 extern int _ZN6Player12FinishedAnimEv(void* c);
 extern int _ZN6Player6IsAnimEj(void* c, u32 id);
 extern void _ZN6Player7SetAnimEji5Fix12IiEj(void* c, u32 anim, int a, Fix12i b, u32 d);
@@ -29,7 +30,7 @@ int Player::St_SlideKick_Main()
     if (mIsAirborne == 0) {
         mIsSlidingOnGround = 1;
         func_ov002_020c06fc(((char*)this), 0x4000);
-        func_ov002_020dd2f4(((char*)this));
+        _ZN6Player19func_ov002_020dd2f4Ev(((char*)this));
     }
 
     if (mHorzSpeed != 0)
@@ -93,7 +94,7 @@ L18c:
         u32 w = *(u32*)((char*)(((long long)(int)((char*)anim + 0x50))) + 8);
         if ((u16)(w >> 12) < 4)
             goto L1d8;
-        func_ov002_020dbaec(((char*)this));
+        _ZN6Player19func_ov002_020dbaecEv(((char*)this));
         _ZN5dCc_c5ClearEv((char*)&mAttackClsn);
         _ZN5dCc_c6UpdateEv((char*)&mAttackClsn);
     }

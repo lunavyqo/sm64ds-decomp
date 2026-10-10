@@ -33,7 +33,7 @@
  *   relocation destination wrong).
  * - Render: inlining mBodyModels[GetBodyModelID(mBodyModelId, 1)] differs
  *   (size stays 0x1b0, 2 relocation destinations wrong). The ROM calls
- *   func_ov002_020e496c.
+ *   _ZN6Player19func_ov002_020e496cEv.
  * - ExecuteMirror: direct mPosX, mPosZ, mPosY reads differ (size stays
  *   0x034). One pointer, x then z then y, stays.
  * - func_ov055_02111264: Sound::Play2D(3, 0x179) differs (size stays 0x024,
@@ -113,9 +113,11 @@ extern void *data_0209f318;
 
 /* Depth from unk_690, mPosY, mSinkDepth and mGroundY; radius from that,
  * mIsBalloon, mIsMega and mScaleY. The definition takes char *. */
-void func_ov002_020e4374(char *player, int *depth, int *radius);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+void _ZN6Player19func_ov002_020e4374EPiS0_(char *player, int *depth, int *radius);
 /* Returns mBodyModels[GetBodyModelID(mBodyModelId, 1)] as int. */
-int func_ov002_020e496c(char *player);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+int _ZN6Player19func_ov002_020e496cEv(char *player);
 
 void func_0203c178(Matrix4x3 *m, int sx, int sy, int sz);
 void MulMat3x3Mat3x3(const int *a, const int *b, int *dst);
@@ -198,7 +200,7 @@ int daLuigi_c::Behavior()
     if (mState->execute)
         (this->*mState->execute)(player);
     Matrix4x3_FromTranslation(&mShadowMatrix, mPosX >> 3, mPosY >> 3, mPosZ >> 3);
-    func_ov002_020e4374((char *)player, &depth, &radius);
+    _ZN6Player19func_ov002_020e4374EPiS0_((char *)player, &depth, &radius);
     _ZN8dActor_c19DropShadowRadHeightER17dExtShadowModel_cR9Matrix4x35Fix12IiES5_j(
         this, &mShadowModel, &mShadowMatrix, radius, depth, kShadowOpacity);
     /* dCamera_c::pad_114. No named field; the store is the actor pointer. */
@@ -221,7 +223,7 @@ int daLuigi_c::Render()
     if (data_ov055_02111b6c == 0) return 1;
 
     player = CurrentPlayer();
-    body = (Model *)func_ov002_020e496c((char *)player);
+    body = (Model *)_ZN6Player19func_ov002_020e496cEv((char *)player);
 
     comps = &mModelAnim.data;
     file = comps->modelFile;

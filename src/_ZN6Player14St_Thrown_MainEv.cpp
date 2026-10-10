@@ -38,7 +38,7 @@ int Player::St_Thrown_Main()
                 mStateArg = 1;
                 _ZN5Sound13PlayCharVoiceEjjRK7Vector3(mCharacter, 6, *(Vector3*)((char*)&mCamSpacePosX));
             }
-            int r5 = func_ov002_020e2c84(((char*)this));
+            int r5 = _ZN6Player19func_ov002_020e2c84Ev(((char*)this));
             if (r5 != 2 && mIsInShallowWater == 0) {
                 func_ov002_020bf9d4();
             }
@@ -82,7 +82,7 @@ int Player::St_Thrown_Main()
 
 L1f8:
     if (mIsAirborne == 0) {
-        func_ov002_020e2c84(((char*)this));
+        _ZN6Player19func_ov002_020e2c84Ev(((char*)this));
     }
     return 1;
 }

@@ -66,7 +66,8 @@ extern HuwaAnimationFileHandle data_ov081_02128d68;
 
 extern "C" {
 extern struct Matrix4x3 data_020a0e68;
-extern int func_ov002_020e10a8(void *);
+/* local extern: caller passes the player pointer explicitly; Player.h is C++-only */
+extern int _ZN6Player19func_ov002_020e10a8Ev(void *);
 extern void func_0201267c(unsigned int id, const Vector3 *pos);
 
 void Matrix4x3_FromTranslation(struct Matrix4x3 *m, int x, int y, int z);
@@ -219,7 +220,7 @@ extern "C" void func_ov081_02123910(daHuwa_c *self)
 
 cont:
     if ((flags & kHitAttack) != 0) {
-        if (func_ov002_020e10a8(player) == 0) {
+        if (_ZN6Player19func_ov002_020e10a8Ev(player) == 0) {
             func_ov081_021237ec(self);
             return;
         }
