@@ -231,7 +231,7 @@
       "evidence": "compiler temporary pointer-to-member descriptor for the CIRCLE update slot; retail first word is 0x0211bd10"
     },
     {
-      "symbol": "@118",
+      "symbol": "@197",
       "address": "0x0211dce8",
       "size": "0x8",
       "binding": "STB_GLOBAL",
@@ -259,7 +259,7 @@
       "evidence": "compiler temporary pointer-to-member descriptor for the HURT update slot; retail first word is 0x0211b8d8"
     },
     {
-      "symbol": "@119",
+      "symbol": "@198",
       "address": "0x0211dd08",
       "size": "0x8",
       "binding": "STB_GLOBAL",
@@ -946,7 +946,7 @@
       "evidence": "compiler-local member descriptor is a configured initializer relocation destination at 0x0211dce0"
     },
     {
-      "symbol": "@118",
+      "symbol": "@197",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local member descriptor is a configured initializer relocation destination at 0x0211dce8"
@@ -970,7 +970,7 @@
       "evidence": "compiler-local member descriptor is a configured initializer relocation destination at 0x0211dd00"
     },
     {
-      "symbol": "@119",
+      "symbol": "@198",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local member descriptor is a configured initializer relocation destination at 0x0211dd08"
@@ -1328,7 +1328,7 @@
       "source": "0x0211d8c4",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@118",
+      "symbol": "@197",
       "addend": 0,
       "target_module": "ov062",
       "target_address": "0x0211dce8"
@@ -1338,7 +1338,7 @@
       "source": "0x0211d8c8",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@119",
+      "symbol": "@198",
       "addend": 0,
       "target_module": "ov062",
       "target_address": "0x0211dd08"
@@ -1512,12 +1512,12 @@
     },
     {
       "from": "@1146",
-      "to": "@118",
+      "to": "@197",
       "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     },
     {
       "from": "@1148",
-      "to": "@119",
+      "to": "@198",
       "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     }
   ]
