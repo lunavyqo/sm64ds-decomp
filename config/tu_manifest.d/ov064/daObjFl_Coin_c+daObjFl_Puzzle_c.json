@@ -3,6 +3,7 @@
   "module": "ov064",
   "source": "src/actors/daObjFl_Coin_c.cpp",
   "promoted_source": "src/actors/daObjFl_Coin_c.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "medium",
   "boundary_evidence": [
