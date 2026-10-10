@@ -245,3 +245,27 @@ void daObjYajirusi_c::func_ov098_02137c8c()
  * this class adds no member with a destructor of its own; D0 additionally
  * destroys through the base and returns the object to its heap via an inline
  * operator delete. */
+
+/* File-scope resource handles: the ctor/dtor are the ROM's SharedFilePtr
+ * veneer pairs (func_02017acc / func_02017ab4 for the models, func_02017b4c /
+ * SharedFilePtr_Destruct_Clsn for the collisions), spelled through
+ * declared-only subclasses so the static initializer names the real entry
+ * points. */
+struct YajirusiModelFilePtr : SharedFilePtr {
+    u32 words[2];
+    YajirusiModelFilePtr(u32 fileID);
+    ~YajirusiModelFilePtr();
+};
+struct YajirusiCollisionFilePtr : SharedFilePtr {
+    u32 words[2];
+    YajirusiCollisionFilePtr(u32 fileID);
+    ~YajirusiCollisionFilePtr();
+};
+
+// @symbol __sinit_daObjYajirusi_c.cpp
+/* The retail initializer constructs the two models first, then the two
+ * collision files. */
+YajirusiModelFilePtr data_ov098_0213c810(0x497);      /* model */
+YajirusiModelFilePtr data_ov098_0213c808(0x499);      /* model */
+YajirusiCollisionFilePtr data_ov098_0213c800(0x498);  /* collision */
+YajirusiCollisionFilePtr data_ov098_0213c818(0x49a);  /* collision */

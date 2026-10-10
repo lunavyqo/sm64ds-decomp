@@ -4529,6 +4529,7 @@
     "src/actors/daObjYajirusi_c.cpp#_ZN15daObjYajirusi_c6RenderEv": "tangosdev",
     "src/actors/daObjYajirusi_c.cpp#_ZN15daObjYajirusi_c8BehaviorEv": "tangosdev",
     "src/actors/daObjYajirusi_c.cpp#_ZN15daObjYajirusi_c13InitResourcesEv": "tangosdev",
+    "src/actors/daObjYajirusi_c.cpp#__sinit_daObjYajirusi_c.cpp": "tangosdev",
     "src/actors/daPukupuku_c.cpp#_ZN12daPukupuku_cD1Ev": "tangosdev",
     "src/actors/daPukupuku_c.cpp#_ZN12daPukupuku_cD0Ev": "tangosdev",
     "src/actors/daPukupuku_c.cpp#func_ov090_021330c8": "tangosdev",
