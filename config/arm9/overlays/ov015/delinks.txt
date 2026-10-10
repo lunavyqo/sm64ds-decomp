@@ -53,4 +53,3 @@ src/game/actors/d_a_obj_bk_fall_block.cpp:
 src/unnamed/ov015/__sinit_ov015_02113048.c:
     complete
     .init start:0x02113048 end:0x02113264
-

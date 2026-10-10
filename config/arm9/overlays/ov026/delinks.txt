@@ -39,4 +39,3 @@ src/actors/daWater_Suikomi_c.cpp:
     .init start:0x02112d68 end:0x02112da4
     .ctor start:0x02112db4 end:0x02112db8
     .bss start:0x02113f58 end:0x02113f80
-

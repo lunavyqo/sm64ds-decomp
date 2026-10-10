@@ -53,4 +53,3 @@ src/game/actors/d_a_obj_rc_carpet.cpp:
     .ctor start:0x021129f4 end:0x021129f8
     .data start:0x02113f4c end:0x02114020
     .bss start:0x0211419c end:0x021141d8
-

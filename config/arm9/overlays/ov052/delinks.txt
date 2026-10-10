@@ -17,4 +17,3 @@ src/actors/daObjEmmYuka_c.cpp:
     .init start:0x02111bd0 end:0x02111c3c
     .ctor start:0x02111c40 end:0x02111c44
     .bss start:0x021126a8 end:0x021126d0
-

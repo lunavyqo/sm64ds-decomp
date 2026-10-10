@@ -33,4 +33,3 @@ src/game/actors/d_a_obj_km3_dorifu.cpp:
     .init start:0x0211181c end:0x021119c4
     .ctor start:0x021119d0 end:0x021119d4
     .bss start:0x02112658 end:0x02112720
-

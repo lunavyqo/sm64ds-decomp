@@ -49,4 +49,3 @@ src/game/actors/d_a_hyuhyu.cpp:
     .init start:0x02134a30 end:0x02134b68
     .ctor start:0x02134b7c end:0x02134b80
     .bss start:0x02135674 end:0x021356e0
-
