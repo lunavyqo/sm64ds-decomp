@@ -26,6 +26,9 @@ src/actors/daObjKi_Hasira_c.cpp:
 src/game/actors/d_a_obj_ki_ita.cpp:
     complete
     .text start:0x02112ef4 end:0x02112ff8
+    .init start:0x021139e4 end:0x02113a50
+    .ctor start:0x02113ac8 end:0x02113acc
+    .bss start:0x02114e44 end:0x02114e6c
 
 src/actors/daSlide_Box_c.cpp:
     complete
@@ -37,7 +40,3 @@ src/actors/daSlide_Box_c.cpp:
 src/unnamed/ov016/__sinit_ov016_02113978.c:
     complete
     .init start:0x02113978 end:0x021139e4
-
-src/unnamed/ov016/__sinit_ov016_021139e4.c:
-    complete
-    .init start:0x021139e4 end:0x02113a50
