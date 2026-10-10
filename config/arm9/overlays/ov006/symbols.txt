@@ -2184,7 +2184,7 @@ __sinit_ov006_02130f64 kind:function(arm,size=0x264) addr:0x02130f64
 __sinit_d_s_mg_memory.cpp kind:function(arm,size=0x31c) addr:0x021311c8
 __sinit_dScMgMemory2_c.cpp kind:function(arm,size=0x3bc) addr:0x021314e4
 __sinit_d_s_mg_m_carlo.cpp kind:function(arm,size=0xbc) addr:0x021318a0
-__sinit_ov006_0213195c kind:function(arm,size=0xdc) addr:0x0213195c
+__sinit_d_s_mg_m_carlo2.cpp kind:function(arm,size=0xdc) addr:0x0213195c
 __sinit_dScMgPachinko_c.cpp kind:function(arm,size=0x298) addr:0x02131a38
 __sinit_dScMgPachinko2_c.cpp kind:function(arm,size=0x2d4) addr:0x02131cd0
 __sinit_ov006_02131fa4 kind:function(arm,size=0x318) addr:0x02131fa4
@@ -2215,7 +2215,7 @@ __sinit_dScMgSnowball_c.cpp kind:function(arm,size=0x18c) addr:0x021333e0
 .p__sinit_d_s_mg_memory.cpp kind:data(word) addr:0x021335b0
 .p__sinit_dScMgMemory2_c.cpp kind:data(word) addr:0x021335b4
 .p__sinit_d_s_mg_m_carlo.cpp kind:data(word) addr:0x021335b8
-.p__sinit_ov006_0213195c kind:data(word) addr:0x021335bc
+.p__sinit_d_s_mg_m_carlo2.cpp kind:data(word) addr:0x021335bc
 .p__sinit_dScMgPachinko_c.cpp kind:data(word) addr:0x021335c0
 .p__sinit_dScMgPachinko2_c.cpp kind:data(word) addr:0x021335c4
 .p__sinit_ov006_02131fa4 kind:data(word) addr:0x021335c8
