@@ -4990,6 +4990,7 @@
     "src/actors/daObjShell_c.cpp#_ZN12daObjShell_c6RenderEv": "tangosdev",
     "src/actors/daObjShell_c.cpp#_ZN12daObjShell_c8BehaviorEv": "ruspecial",
     "src/actors/daObjShell_c.cpp#_ZN12daObjShell_c13InitResourcesEv": "tangosdev",
+    "src/actors/daObjShell_c.cpp#__sinit_daObjShell_c.cpp": "tangosdev",
     "src/actors/daObjShell_c.cpp#daObjShell_c_classInit": "tangosdev",
     "src/actors/daMenbo_c.cpp#_ZN9daMenbo_cD1Ev": "tangosdev",
     "src/actors/daMenbo_c.cpp#_ZN9daMenbo_cD0Ev": "tangosdev",
