@@ -22,11 +22,11 @@ _ZN17daObjKm1_Dorifu_c13InitResourcesEv kind:function(arm,size=0x14) addr:0x0211
 daObjKm1_Dorifu_c_classInit kind:function(arm,size=0x90) addr:0x0211176c
 __sinit_d_a_obj_km1_ukishima.cpp kind:function(arm,size=0x6c) addr:0x021117fc
 __sinit_d_a_obj_km1_kurumajiku.cpp kind:function(arm,size=0x6c) addr:0x02111868
-__sinit_ov043_021118d4 kind:function(arm,size=0x6c) addr:0x021118d4
+__sinit_d_a_obj_km1_kuruma.cpp kind:function(arm,size=0x6c) addr:0x021118d4
 __sinit_ov043_02111940 kind:function(arm,size=0x1a8) addr:0x02111940
 .p__sinit_d_a_obj_km1_ukishima.cpp kind:data(word) addr:0x02111ae8
 .p__sinit_d_a_obj_km1_kurumajiku.cpp kind:data(word) addr:0x02111aec
-.p__sinit_ov043_021118d4 kind:data(word) addr:0x02111af0
+.p__sinit_d_a_obj_km1_kuruma.cpp kind:data(word) addr:0x02111af0
 .p__sinit_ov043_02111940 kind:data(word) addr:0x02111af4
 data_ov043_02111b00 kind:data(any) addr:0x02111b00
 data_ov043_02111b04 kind:data(any) addr:0x02111b04
@@ -122,8 +122,8 @@ data_ov043_02112610 kind:bss addr:0x02112610
 @64 kind:bss addr:0x02112624
 data_ov043_02112630 kind:bss addr:0x02112630
 data_ov043_02112638 kind:bss addr:0x02112638
-data_ov043_02112640 kind:bss addr:0x02112640
-data_ov043_0211264c kind:bss addr:0x0211264c
+@163 kind:bss addr:0x02112640
+@164 kind:bss addr:0x0211264c
 data_ov043_02112658 kind:bss addr:0x02112658
 data_ov043_02112660 kind:bss addr:0x02112660
 data_ov043_02112668 kind:bss addr:0x02112668
