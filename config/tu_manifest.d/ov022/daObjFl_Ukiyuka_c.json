@@ -775,14 +775,14 @@
       "evidence": "mwcc numbers the 0x615 collision-handle destructor-registration node @370. ov036 already defines @370, and objisolate cannot grow a name, so this row maps the compiled name to the unused same-length @608."
     },
     {
-      "from": "@611",
+      "from": "@371",
       "to": "@611",
-      "evidence": "batch-5 atdup: @611 collides cross-module (temps are fleet-global); renumber to unused same-length @611"
+      "evidence": "batch-5 atdup: @371 collides cross-module (temps are fleet-global); renumber to unused same-length @611"
     },
     {
-      "from": "@610",
+      "from": "@372",
       "to": "@610",
-      "evidence": "batch-5 atdup: @610 collides cross-module (temps are fleet-global); renumber to unused same-length @610"
+      "evidence": "batch-5 atdup: @372 collides cross-module (temps are fleet-global); renumber to unused same-length @610"
     }
   ]
 }

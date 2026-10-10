@@ -560,14 +560,14 @@
       "evidence": "mwcc numbers this registration node @422 per TU and another module already defines @422"
     },
     {
-      "from": "@605",
+      "from": "@423",
       "to": "@605",
-      "evidence": "batch-5 atdup: @605 collides cross-module (temps are fleet-global); renumber to unused same-length @605"
+      "evidence": "batch-5 atdup: @423 collides cross-module (temps are fleet-global); renumber to unused same-length @605"
     },
     {
-      "from": "@604",
+      "from": "@424",
       "to": "@604",
-      "evidence": "batch-5 atdup: @604 collides cross-module (temps are fleet-global); renumber to unused same-length @604"
+      "evidence": "batch-5 atdup: @424 collides cross-module (temps are fleet-global); renumber to unused same-length @604"
     }
   ],
   "symbol_binding_rewrites": [

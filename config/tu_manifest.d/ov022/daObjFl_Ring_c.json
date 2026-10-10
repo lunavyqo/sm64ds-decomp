@@ -647,9 +647,9 @@
   ],
   "defined_symbol_renames": [
     {
-      "from": "@602",
+      "from": "@441",
       "to": "@602",
-      "evidence": "batch-5 atdup: @602 collides cross-module (temps are fleet-global); renumber to unused same-length @602"
+      "evidence": "batch-5 atdup: @441 collides cross-module (temps are fleet-global); renumber to unused same-length @602"
     }
   ]
 }

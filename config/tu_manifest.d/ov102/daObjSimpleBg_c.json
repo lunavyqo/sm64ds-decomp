@@ -3,6 +3,7 @@
   "module": "ov102",
   "source": "src/actors/daObjSimpleBg_c.cpp",
   "promoted_source": "src/actors/daObjSimpleBg_c.cpp",
+  "production_mode": "intact-object",
   "status": "promoted",
   "boundary_confidence": "medium",
   "boundary_evidence": [
@@ -818,14 +819,14 @@
       "evidence": "mwcc numbers this registration node @556 per TU and another module already defines @556"
     },
     {
-      "from": "@596",
+      "from": "@553",
       "to": "@596",
-      "evidence": "batch-5 atdup: @596 collides cross-module (temps are fleet-global); renumber to unused same-length @596"
+      "evidence": "batch-5 atdup: @553 collides cross-module (temps are fleet-global); renumber to unused same-length @596"
     },
     {
-      "from": "@595",
+      "from": "@555",
       "to": "@595",
-      "evidence": "batch-5 atdup: @595 collides cross-module (temps are fleet-global); renumber to unused same-length @595"
+      "evidence": "batch-5 atdup: @555 collides cross-module (temps are fleet-global); renumber to unused same-length @595"
     }
   ],
   "symbol_binding_rewrites": [
