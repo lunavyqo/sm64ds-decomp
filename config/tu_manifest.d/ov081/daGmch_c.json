@@ -408,14 +408,14 @@
       "evidence": "compiler PMF record for daGmch_c::EnterState4"
     },
     {
-      "symbol": "@1089",
+      "symbol": "@1073",
       "address": "0x02128bb0",
       "size": "0x8",
       "binding": "STB_GLOBAL",
       "evidence": "compiler PMF record for daGmch_c::UpdateState3"
     },
     {
-      "symbol": "@1087",
+      "symbol": "@1071",
       "address": "0x02128bb8",
       "size": "0x8",
       "binding": "STB_GLOBAL",
@@ -487,7 +487,7 @@
       "evidence": "compiler-local destructor-registration node for data_ov081_02128ed4"
     },
     {
-      "symbol": "@1071",
+      "symbol": "@1087",
       "address": "0x02128f10",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -501,7 +501,7 @@
       "evidence": "compiler-local destructor-registration node for data_ov081_02128ee4"
     },
     {
-      "symbol": "@1073",
+      "symbol": "@1089",
       "address": "0x02128f28",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -1162,12 +1162,12 @@
     },
     {
       "from": "@1105",
-      "to": "@1089",
+      "to": "@1073",
       "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1105 now; licensed under the existing pin @1089"
     },
     {
       "from": "@1103",
-      "to": "@1087",
+      "to": "@1071",
       "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1103 now; licensed under the existing pin @1087"
     },
     {
@@ -1186,19 +1186,9 @@
       "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1086 now; licensed under the existing pin @1070"
     },
     {
-      "from": "@1087",
-      "to": "@1071",
-      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1087 now; licensed under the existing pin @1071"
-    },
-    {
       "from": "@1088",
       "to": "@1072",
       "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1088 now; licensed under the existing pin @1072"
-    },
-    {
-      "from": "@1089",
-      "to": "@1073",
-      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1089 now; licensed under the existing pin @1073"
     },
     {
       "from": "@1090",
@@ -1310,13 +1300,13 @@
       "evidence": "compiler-local PMF record is a configured relocation destination at 0x02128ba8"
     },
     {
-      "symbol": "@1089",
+      "symbol": "@1073",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local PMF record is a configured relocation destination at 0x02128bb0"
     },
     {
-      "symbol": "@1087",
+      "symbol": "@1071",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local PMF record is a configured relocation destination at 0x02128bb8"
@@ -1340,7 +1330,7 @@
       "evidence": "compiler-local registration node is a configured relocation destination at 0x02128f04"
     },
     {
-      "symbol": "@1071",
+      "symbol": "@1087",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x02128f10"
@@ -1352,7 +1342,7 @@
       "evidence": "compiler-local registration node is a configured relocation destination at 0x02128f1c"
     },
     {
-      "symbol": "@1073",
+      "symbol": "@1089",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local registration node is a configured relocation destination at 0x02128f28"
@@ -1721,7 +1711,7 @@
       "source": "0x02128738",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@1071",
+      "symbol": "@1087",
       "addend": 0,
       "target_module": "ov081",
       "target_address": "0x02128f10"
@@ -1761,7 +1751,7 @@
       "source": "0x02128750",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@1073",
+      "symbol": "@1089",
       "addend": 0,
       "target_module": "ov081",
       "target_address": "0x02128f28"
@@ -1861,7 +1851,7 @@
       "source": "0x0212877c",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@1087",
+      "symbol": "@1071",
       "addend": 0,
       "target_module": "ov081",
       "target_address": "0x02128bb8"
@@ -1871,7 +1861,7 @@
       "source": "0x02128780",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@1089",
+      "symbol": "@1073",
       "addend": 0,
       "target_module": "ov081",
       "target_address": "0x02128bb0"

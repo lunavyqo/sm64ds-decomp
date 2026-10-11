@@ -385,49 +385,49 @@
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN11daSnowman_c19func_ov081_02124d14Ev"
     },
     {
-      "symbol": "@158",
+      "symbol": "@202",
       "address": "0x02128990",
       "size": "0x8",
       "binding": "STB_GLOBAL",
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN11daSnowman_c19func_ov081_02124b98Ev"
     },
     {
-      "symbol": "@159",
+      "symbol": "@204",
       "address": "0x02128978",
       "size": "0x8",
       "binding": "STB_GLOBAL",
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN11daSnowman_c19func_ov081_02124b08Ev"
     },
     {
-      "symbol": "@160",
+      "symbol": "@205",
       "address": "0x02128970",
       "size": "0x8",
       "binding": "STB_GLOBAL",
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN11daSnowman_c19func_ov081_021249f4Ev"
     },
     {
-      "symbol": "@161",
+      "symbol": "@206",
       "address": "0x02128988",
       "size": "0x8",
       "binding": "STB_GLOBAL",
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN11daSnowman_c19func_ov081_0212498cEv"
     },
     {
-      "symbol": "@162",
+      "symbol": "@207",
       "address": "0x02128968",
       "size": "0x8",
       "binding": "STB_GLOBAL",
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN11daSnowman_c19func_ov081_02124894Ev"
     },
     {
-      "symbol": "@163",
+      "symbol": "@208",
       "address": "0x02128908",
       "size": "0x8",
       "binding": "STB_GLOBAL",
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN11daSnowman_c19func_ov081_0212479cEv"
     },
     {
-      "symbol": "@164",
+      "symbol": "@209",
       "address": "0x02128950",
       "size": "0x8",
       "binding": "STB_GLOBAL",
@@ -1344,43 +1344,43 @@
       "evidence": "mwcc emits this local; DSD needs a global symbol at the retail address"
     },
     {
-      "symbol": "@158",
+      "symbol": "@202",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "mwcc emits this local; DSD needs a global symbol at the retail address"
     },
     {
-      "symbol": "@159",
+      "symbol": "@204",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "mwcc emits this local; DSD needs a global symbol at the retail address"
     },
     {
-      "symbol": "@160",
+      "symbol": "@205",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "mwcc emits this local; DSD needs a global symbol at the retail address"
     },
     {
-      "symbol": "@161",
+      "symbol": "@206",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "mwcc emits this local; DSD needs a global symbol at the retail address"
     },
     {
-      "symbol": "@162",
+      "symbol": "@207",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "mwcc emits this local; DSD needs a global symbol at the retail address"
     },
     {
-      "symbol": "@163",
+      "symbol": "@208",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "mwcc emits this local; DSD needs a global symbol at the retail address"
     },
     {
-      "symbol": "@164",
+      "symbol": "@209",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "mwcc emits this local; DSD needs a global symbol at the retail address"
@@ -1892,7 +1892,7 @@
       "source": "0x0212848c",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@158",
+      "symbol": "@202",
       "addend": 0,
       "target_module": "ov081",
       "target_address": "0x02128990"
@@ -1912,7 +1912,7 @@
       "source": "0x02128494",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@159",
+      "symbol": "@204",
       "addend": 0,
       "target_module": "ov081",
       "target_address": "0x02128978"
@@ -1922,7 +1922,7 @@
       "source": "0x02128498",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@160",
+      "symbol": "@205",
       "addend": 0,
       "target_module": "ov081",
       "target_address": "0x02128970"
@@ -1942,7 +1942,7 @@
       "source": "0x021284a0",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@161",
+      "symbol": "@206",
       "addend": 0,
       "target_module": "ov081",
       "target_address": "0x02128988"
@@ -1952,7 +1952,7 @@
       "source": "0x021284a4",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@162",
+      "symbol": "@207",
       "addend": 0,
       "target_module": "ov081",
       "target_address": "0x02128968"
@@ -1972,7 +1972,7 @@
       "source": "0x021284ac",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@163",
+      "symbol": "@208",
       "addend": 0,
       "target_module": "ov081",
       "target_address": "0x02128908"
@@ -1982,7 +1982,7 @@
       "source": "0x021284b0",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@164",
+      "symbol": "@209",
       "addend": 0,
       "target_module": "ov081",
       "target_address": "0x02128950"
@@ -2301,37 +2301,37 @@
     },
     {
       "from": "@1441",
-      "to": "@158",
+      "to": "@202",
       "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     },
     {
       "from": "@1445",
-      "to": "@159",
+      "to": "@204",
       "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     },
     {
       "from": "@1447",
-      "to": "@160",
+      "to": "@205",
       "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     },
     {
       "from": "@1451",
-      "to": "@161",
+      "to": "@206",
       "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     },
     {
       "from": "@1453",
-      "to": "@162",
+      "to": "@207",
       "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     },
     {
       "from": "@1457",
-      "to": "@163",
+      "to": "@208",
       "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     },
     {
       "from": "@1459",
-      "to": "@164",
+      "to": "@209",
       "evidence": "compiler temp; the types.h Vector3 ctors shift this TU's per-TU @NNN uniquifier, so mwcc emits it under this name now; licensed under the existing pin"
     }
   ]

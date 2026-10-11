@@ -384,7 +384,7 @@
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN15UnknownVsPlayer19func_ov075_02114890Ev"
     },
     {
-      "symbol": "@1100",
+      "symbol": "@1026",
       "address": "0x0211c5f0",
       "size": "0x8",
       "binding": "STB_GLOBAL",
@@ -398,7 +398,7 @@
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN15UnknownVsPlayer19func_ov075_02114218Ev"
     },
     {
-      "symbol": "@1098",
+      "symbol": "@1068",
       "address": "0x0211c600",
       "size": "0x8",
       "binding": "STB_GLOBAL",
@@ -433,7 +433,7 @@
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN15UnknownVsPlayer19func_ov075_02114560Ev"
     },
     {
-      "symbol": "@1104",
+      "symbol": "@1031",
       "address": "0x0211c628",
       "size": "0x8",
       "binding": "STB_GLOBAL",
@@ -447,7 +447,7 @@
       "evidence": "compiler temporary pointer-to-member descriptor; its first word relocates to _ZN15UnknownVsPlayer19func_ov075_02114890Ev"
     },
     {
-      "symbol": "@1102",
+      "symbol": "@1029",
       "address": "0x0211c638",
       "size": "0x8",
       "binding": "STB_GLOBAL",
@@ -638,7 +638,7 @@
       "evidence": "compiler-generated destructor-registration node for data_ov075_0211d3b4"
     },
     {
-      "symbol": "@1068",
+      "symbol": "@1098",
       "address": "0x0211d458",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -652,7 +652,7 @@
       "evidence": "compiler-generated destructor-registration node for data_ov075_0211d38c"
     },
     {
-      "symbol": "@1026",
+      "symbol": "@1100",
       "address": "0x0211d470",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -666,7 +666,7 @@
       "evidence": "compiler-generated destructor-registration node for data_ov075_0211d424"
     },
     {
-      "symbol": "@1029",
+      "symbol": "@1102",
       "address": "0x0211d488",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -701,7 +701,7 @@
       "evidence": "compiler-generated destructor-registration node for data_ov075_0211d3d4"
     },
     {
-      "symbol": "@1031",
+      "symbol": "@1104",
       "address": "0x0211d4c4",
       "size": "0xc",
       "binding": "STB_GLOBAL",
@@ -1533,29 +1533,14 @@
       "evidence": "mwcc emits this compiler temp as @1067; batch renumber to unused same-length name, batch-mates ov085/daC_Jugem_c and ov081/daGmch_c promote the same temp names globally"
     },
     {
-      "from": "@1100",
-      "to": "@1026",
-      "evidence": "mwcc emits this compiler temp as @1070; batch renumber to unused same-length name, batch-mates ov085/daC_Jugem_c and ov081/daGmch_c promote the same temp names globally"
-    },
-    {
       "from": "@1101",
       "to": "@1028",
       "evidence": "mwcc emits this compiler temp as @1071; batch renumber to unused same-length name, batch-mates ov085/daC_Jugem_c and ov081/daGmch_c promote the same temp names globally"
     },
     {
-      "from": "@1102",
-      "to": "@1029",
-      "evidence": "mwcc emits this compiler temp as @1072; batch renumber to unused same-length name, batch-mates ov085/daC_Jugem_c and ov081/daGmch_c promote the same temp names globally"
-    },
-    {
       "from": "@1103",
       "to": "@1030",
       "evidence": "mwcc emits this compiler temp as @1073; batch renumber to unused same-length name, batch-mates ov085/daC_Jugem_c and ov081/daGmch_c promote the same temp names globally"
-    },
-    {
-      "from": "@1104",
-      "to": "@1031",
-      "evidence": "mwcc emits this compiler temp as @1074; batch renumber to unused same-length name, batch-mates ov085/daC_Jugem_c and ov081/daGmch_c promote the same temp names globally"
     },
     {
       "from": "@1109",
@@ -1619,28 +1604,23 @@
     },
     {
       "from": "@1130",
-      "to": "@1100",
+      "to": "@1026",
       "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1130 now; licensed under the existing pin @1100"
     },
     {
       "from": "@1128",
-      "to": "@1098",
+      "to": "@1068",
       "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1128 now; licensed under the existing pin @1098"
     },
     {
       "from": "@1134",
-      "to": "@1104",
+      "to": "@1031",
       "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1134 now; licensed under the existing pin @1104"
     },
     {
       "from": "@1132",
-      "to": "@1102",
+      "to": "@1029",
       "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1132 now; licensed under the existing pin @1102"
-    },
-    {
-      "from": "@1098",
-      "to": "@1068",
-      "evidence": "compiler temp; the types.h Vector3 ctors and main's sinit folds shift this TU's per-TU @NNN uniquifier, so mwcc emits it as @1098 now; licensed under the existing pin @1068"
     },
     {
       "from": "@1099",
@@ -1748,7 +1728,7 @@
       "evidence": "compiler-local PMF descriptor is a configured initializer relocation destination at 0x0211c5e8"
     },
     {
-      "symbol": "@1100",
+      "symbol": "@1026",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local PMF descriptor is a configured initializer relocation destination at 0x0211c5f0"
@@ -1760,7 +1740,7 @@
       "evidence": "compiler-local PMF descriptor is a configured initializer relocation destination at 0x0211c5f8"
     },
     {
-      "symbol": "@1098",
+      "symbol": "@1068",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local PMF descriptor is a configured initializer relocation destination at 0x0211c600"
@@ -1784,7 +1764,7 @@
       "evidence": "compiler-local PMF descriptor is a configured initializer relocation destination at 0x0211c620"
     },
     {
-      "symbol": "@1104",
+      "symbol": "@1031",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local PMF descriptor is a configured initializer relocation destination at 0x0211c628"
@@ -1796,7 +1776,7 @@
       "evidence": "compiler-local PMF descriptor is a configured initializer relocation destination at 0x0211c630"
     },
     {
-      "symbol": "@1102",
+      "symbol": "@1029",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local PMF descriptor is a configured initializer relocation destination at 0x0211c638"
@@ -1826,7 +1806,7 @@
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0211d44c"
     },
     {
-      "symbol": "@1068",
+      "symbol": "@1098",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0211d458"
@@ -1838,7 +1818,7 @@
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0211d464"
     },
     {
-      "symbol": "@1026",
+      "symbol": "@1100",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0211d470"
@@ -1850,7 +1830,7 @@
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0211d47c"
     },
     {
-      "symbol": "@1029",
+      "symbol": "@1102",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0211d488"
@@ -1880,7 +1860,7 @@
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0211d4b8"
     },
     {
-      "symbol": "@1031",
+      "symbol": "@1104",
       "from": "STB_LOCAL",
       "to": "STB_GLOBAL",
       "evidence": "compiler-local destructor-registration node is a configured initializer relocation destination at 0x0211d4c4"
@@ -2696,7 +2676,7 @@
       "source": "0x0211ba5c",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@1068",
+      "symbol": "@1098",
       "addend": 0,
       "target_module": "ov075",
       "target_address": "0x0211d458"
@@ -2736,7 +2716,7 @@
       "source": "0x0211ba74",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@1026",
+      "symbol": "@1100",
       "addend": 0,
       "target_module": "ov075",
       "target_address": "0x0211d470"
@@ -2776,7 +2756,7 @@
       "source": "0x0211ba8c",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@1029",
+      "symbol": "@1102",
       "addend": 0,
       "target_module": "ov075",
       "target_address": "0x0211d488"
@@ -2826,7 +2806,7 @@
       "source": "0x0211baa8",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@1031",
+      "symbol": "@1104",
       "addend": 0,
       "target_module": "ov075",
       "target_address": "0x0211d4c4"
@@ -2986,7 +2966,7 @@
       "source": "0x0211baec",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@1098",
+      "symbol": "@1068",
       "addend": 0,
       "target_module": "ov075",
       "target_address": "0x0211c600"
@@ -3006,7 +2986,7 @@
       "source": "0x0211baf4",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@1100",
+      "symbol": "@1026",
       "addend": 0,
       "target_module": "ov075",
       "target_address": "0x0211c5f0"
@@ -3016,7 +2996,7 @@
       "source": "0x0211baf8",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@1102",
+      "symbol": "@1029",
       "addend": 0,
       "target_module": "ov075",
       "target_address": "0x0211c638"
@@ -3026,7 +3006,7 @@
       "source": "0x0211bafc",
       "type": "R_ARM_ABS32",
       "kind": "load",
-      "symbol": "@1104",
+      "symbol": "@1031",
       "addend": 0,
       "target_module": "ov075",
       "target_address": "0x0211c628"
