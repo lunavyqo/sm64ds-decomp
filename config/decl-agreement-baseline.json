@@ -1,4 +1,5 @@
 {
+  "_comment": "Declaration/definition disagreements present when this gate was built. tools/check_decl_agreement.py fails on any disagreement NOT listed here. Keyed symbol -> declaring file -> \"<kind>:<what differs>\". These are NOT text edits: changing a declaration can change instruction selection at every call site, so each one is matching work that needs a rebuild and byte proof (tools/match.py) before it moves. Regenerate with --update only from a clean checkout, and read the diff: a new entry is usually an extern copied from the wrong sibling.",
   "known": {
     "ARMMathLoadState": {
       "src/unnamed/arm9/01ff/func_01ffd9d4.c": [
@@ -1309,10 +1310,6 @@
       ]
     },
     "LoadFile": {
-      "src/LoadFont3D.c": [
-        "param:#1 unsigned int",
-        "return:void *"
-      ],
       "src/_ZN12dScStarSel_c13InitResourcesEv.cpp": [
         "return:void *"
       ],
@@ -1962,9 +1959,6 @@
       ]
     },
     "MultiCopy_Int": {
-      "src/LoadFont3D.c": [
-        "param:#3 unsigned int"
-      ],
       "src/_ZN2GX11LoadBG0CharEPKvjj.cpp": [
         "param:#1 const void *",
         "param:#3 unsigned int"
@@ -2041,14 +2035,6 @@
         "param:#1 int",
         "param:#2 int"
       ],
-      "src/_ZN7Message17DisplayVsExitTextEt.cpp": [
-        "param:#1 int",
-        "param:#2 int"
-      ],
-      "src/_ZN7Message18DisplayPauseTextVSEt.cpp": [
-        "param:#1 int",
-        "param:#2 int"
-      ],
       "src/_ZN7Message19DisplayDontSaveTextEt.cpp": [
         "param:#1 int",
         "param:#2 int"
@@ -2092,18 +2078,6 @@
         "param:#1 int",
         "param:#2 int"
       ],
-      "src/unnamed/arm9/0203/func_020338b0.cpp": [
-        "param:#1 int",
-        "param:#2 int"
-      ],
-      "src/unnamed/arm9/0203/func_02033ae0.c": [
-        "param:#1 int",
-        "param:#2 int"
-      ],
-      "src/unnamed/arm9/0203/func_02034414.cpp": [
-        "param:#1 int",
-        "param:#2 int"
-      ],
       "src/unnamed/arm9/0204/func_02049c48.c": [
         "param:#3 unsigned int"
       ],
@@ -2140,12 +2114,6 @@
         "param:#2 int"
       ],
       "src/_ZN7Message16DisplayPauseTextEth.cpp": [
-        "param:#2 int"
-      ],
-      "src/_ZN7Message17DisplayVsExitTextEt.cpp": [
-        "param:#2 int"
-      ],
-      "src/_ZN7Message18DisplayPauseTextVSEt.cpp": [
         "param:#2 int"
       ],
       "src/_ZN7Message19DisplayDontSaveTextEt.cpp": [
@@ -2186,24 +2154,6 @@
         "param:#2 int"
       ],
       "src/unnamed/arm9/0201/func_0201f138.cpp": [
-        "param:#2 int"
-      ],
-      "src/unnamed/arm9/0203/func_020331fc.c": [
-        "param:#2 int"
-      ],
-      "src/unnamed/arm9/0203/func_020338b0.cpp": [
-        "param:#2 int"
-      ],
-      "src/unnamed/arm9/0203/func_02033ae0.c": [
-        "param:#2 int"
-      ],
-      "src/unnamed/arm9/0203/func_02034098.cpp": [
-        "param:#2 int"
-      ],
-      "src/unnamed/arm9/0203/func_020341a8.cpp": [
-        "param:#2 int"
-      ],
-      "src/unnamed/arm9/0203/func_02034414.cpp": [
         "param:#2 int"
       ]
     },
@@ -6616,15 +6566,6 @@
       ],
       "src/unnamed/arm9/0201/func_0201f138.cpp": [
         "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_02033390.cpp": [
-        "return:char *"
-      ],
-      "src/unnamed/arm9/0203/func_02033464.c": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_020345b0.c": [
-        "return:int"
       ]
     },
     "_ZN2G213GetBG2CharPtrEv": {
@@ -6648,9 +6589,6 @@
         "return:unsigned int"
       ],
       "src/unnamed/arm9/0201/func_0201d590.cpp": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_02034098.cpp": [
         "return:int"
       ]
     },
@@ -6707,12 +6645,6 @@
       "src/_ZN7Message16DisplayPauseTextEth.cpp": [
         "return:int"
       ],
-      "src/_ZN7Message17DisplayVsExitTextEt.cpp": [
-        "return:int"
-      ],
-      "src/_ZN7Message18DisplayPauseTextVSEt.cpp": [
-        "return:int"
-      ],
       "src/_ZN7Message19DisplayDontSaveTextEt.cpp": [
         "return:int"
       ],
@@ -6755,31 +6687,10 @@
       "src/unnamed/arm9/0201/func_0201f108.c": [
         "return:unsigned short *"
       ],
-      "src/unnamed/arm9/0203/func_020331fc.c": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_02033464.c": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_020337ec.c": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_020338b0.cpp": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_02033ae0.c": [
-        "return:int"
-      ],
       "src/unnamed/arm9/0203/func_02033bb8.c": [
         "return:int"
       ],
       "src/unnamed/arm9/0203/func_02033e50.c": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_020341a8.cpp": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_02034414.cpp": [
         "return:int"
       ],
       "src/unnamed/arm9/0205/func_020564f4.c": [
@@ -6905,12 +6816,6 @@
       "src/_ZN7Message16DisplayPauseTextEth.cpp": [
         "return:int"
       ],
-      "src/_ZN7Message17DisplayVsExitTextEt.cpp": [
-        "return:int"
-      ],
-      "src/_ZN7Message18DisplayPauseTextVSEt.cpp": [
-        "return:int"
-      ],
       "src/_ZN7Message19DisplayDontSaveTextEt.cpp": [
         "return:int"
       ],
@@ -6957,31 +6862,10 @@
       "src/unnamed/arm9/0203/func_020319fc.c": [
         "return:char *"
       ],
-      "src/unnamed/arm9/0203/func_020331fc.c": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_02033464.c": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_020337ec.c": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_020338b0.cpp": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_02033ae0.c": [
-        "return:int"
-      ],
       "src/unnamed/arm9/0203/func_02033bb8.c": [
         "return:int"
       ],
       "src/unnamed/arm9/0203/func_02033e50.c": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_020341a8.cpp": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_02034414.cpp": [
         "return:int"
       ]
     },
@@ -7096,6 +6980,10 @@
       ]
     },
     "_ZN3G2x18SetBlendBrightnessEPVtts": {
+      "src/Message3.cpp": [
+        "param:#2 int",
+        "param:#3 int"
+      ],
       "src/_ZN10dScStage_c7PS_InitEv.cpp": [
         "param:#2 int",
         "param:#3 int"
@@ -7114,10 +7002,6 @@
         "param:#3 int"
       ],
       "src/unnamed/arm9/0201/func_0201f32c.c": [
-        "param:#2 int",
-        "param:#3 int"
-      ],
-      "src/unnamed/arm9/0203/func_020345b0.c": [
         "param:#2 int",
         "param:#3 int"
       ],
@@ -7673,9 +7557,6 @@
       ],
       "src/unnamed/arm9/0202/func_0202048c.cpp": [
         "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_020326ac.c": [
-        "return:void *"
       ],
       "src/unnamed/ov075/func_ov075_02116f40.cpp": [
         "param:#1 bool",
@@ -12099,14 +11980,14 @@
       ]
     },
     "data_0208ee14": {
+      "src/actors/dScDSMT_c.cpp": [
+        "return:int []"
+      ],
       "src/unnamed/arm9/0207/__sinit_02074e84.cpp": [
         "return:char"
       ],
       "src/unnamed/arm9/0207/__sinit_02074fb8.c": [
         "return:int"
-      ],
-      "src/actors/dScDSMT_c.cpp": [
-        "return:int []"
       ]
     },
     "data_0208ee3c": {
@@ -12193,11 +12074,6 @@
     "data_02092778": {
       "src/unnamed/ov075/func_ov075_02116c8c.c": [
         "return:unsigned char []"
-      ]
-    },
-    "data_02092818": {
-      "src/unnamed/arm9/0203/func_02033464.c": [
-        "return:unsigned char"
       ]
     },
     "data_02099368": {
@@ -13525,9 +13401,6 @@
       ],
       "src/unnamed/arm9/0200/func_02008abc.c": [
         "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_020326ac.c": [
-        "return:unsigned char"
       ]
     },
     "data_0209f4a4": {
@@ -13536,9 +13409,6 @@
       ],
       "src/unnamed/arm9/0200/func_02008a70.c": [
         "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_020326ac.c": [
-        "return:unsigned char"
       ]
     },
     "data_0209f4a6": {
@@ -13723,9 +13593,6 @@
     "data_0209fc78": {
       "src/unnamed/arm9/0203/func_020316d8.c": [
         "return:unsigned char []"
-      ],
-      "src/unnamed/arm9/0203/func_02033464.c": [
-        "return:volatile unsigned char"
       ]
     },
     "data_0209fc88": {
@@ -13743,74 +13610,12 @@
         "return:unsigned char []"
       ]
     },
-    "data_0209fce8": {
-      "src/_ZN7Message17DisplayVsExitTextEt.cpp": [
-        "return:unsigned short"
-      ],
-      "src/unnamed/arm9/0203/func_02033a80.c": [
-        "return:unsigned short"
-      ]
-    },
-    "data_0209fcf8": {
-      "src/_ZN7Message16SetTextGlobalsVSEv.cpp": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_020345b0.c": [
-        "return:void *"
-      ]
-    },
-    "data_0209fd00": {
-      "src/unnamed/arm9/0203/func_02031e00.c": [
-        "return:unsigned char *"
-      ],
-      "src/unnamed/arm9/0203/func_02032f9c.c": [
-        "return:StarEntry *"
-      ],
-      "src/unnamed/arm9/0203/func_020345b0.c": [
-        "return:void *"
-      ]
-    },
-    "data_0209fd08": {
-      "src/unnamed/arm9/0203/func_02032f9c.c": [
-        "return:StarEntry *"
-      ],
-      "src/unnamed/arm9/0203/func_020345b0.c": [
-        "return:void *"
-      ]
-    },
     "data_0209fd0c": {
       "src/unnamed/arm9/0203/func_0203128c.c": [
         "return:unsigned char *"
       ],
       "src/unnamed/arm9/0203/func_020318a4.c": [
         "return:unsigned char *"
-      ],
-      "src/unnamed/arm9/0203/func_02031cd4.c": [
-        "return:unsigned char *"
-      ],
-      "src/unnamed/arm9/0203/func_02031e00.c": [
-        "return:unsigned char *"
-      ]
-    },
-    "data_0209fd14": {
-      "src/_ZN7Message10LoadTextVSEv.cpp": [
-        "return:int *"
-      ]
-    },
-    "data_0209fd18": {
-      "src/unnamed/arm9/0203/func_02031cd4.c": [
-        "return:unsigned int"
-      ]
-    },
-    "data_0209fd5c": {
-      "src/unnamed/arm9/0203/func_02031b84.c": [
-        "return:int []"
-      ],
-      "src/unnamed/arm9/0203/func_02031e00.c": [
-        "return:int"
-      ],
-      "src/unnamed/arm9/0203/func_02033464.c": [
-        "return:int"
       ]
     },
     "data_020a0c68": {
@@ -13917,9 +13722,6 @@
       ],
       "src/actors/dScStarSel_c.cpp": [
         "return:unsigned short [][]"
-      ],
-      "src/unnamed/arm9/0203/func_020326ac.c": [
-        "return:unsigned char"
       ]
     },
     "data_020a0e68": {
@@ -15078,10 +14880,6 @@
         "return:S16"
       ]
     },
-    "data_ov002_0210df94": {
-    },
-    "data_ov002_0210df9c": {
-    },
     "data_ov002_0210e05c": {
       "src/unnamed/ov002/__sinit_ov002_02101738.c": [
         "return:int []"
@@ -15101,12 +14899,6 @@
       "src/game/actors/d_a_obj_wakame.cpp": [
         "return:SharedFilePtr"
       ]
-    },
-    "data_ov002_0210e0fc": {},
-    "data_ov002_0210e104": {},
-    "data_ov002_0210e124": {
-    },
-    "data_ov002_0210e12c": {
     },
     "data_ov002_0210e160": {
       "src/_ZN6Player12St_Walk_InitEv.cpp": [
@@ -20422,10 +20214,6 @@
         "return:State []"
       ]
     },
-    "data_ov100_02148600": {
-    },
-    "data_ov100_02148608": {
-    },
     "data_ov100_02148668": {
       "src/actors/daBtfly_c.cpp": [
         "return:SharedFilePtr"
@@ -23707,17 +23495,8 @@
         "param:#1 int"
       ]
     },
-    "func_02031028": {
-      "src/unnamed/arm9/0203/func_02031cd4.c": [
-        "param:#1 void *"
-      ]
-    },
     "func_020316d8": {
       "src/unnamed/arm9/0203/func_020318a4.c": [
-        "param:#3 int",
-        "param:#4 int"
-      ],
-      "src/unnamed/arm9/0203/func_020331fc.c": [
         "param:#3 int",
         "param:#4 int"
       ]
@@ -23727,20 +23506,6 @@
         "param:#1 int"
       ],
       "src/unnamed/arm9/0203/func_0203128c.c": [
-        "param:#1 int"
-      ],
-      "src/unnamed/arm9/0203/func_02031e00.c": [
-        "param:#1 int"
-      ],
-      "src/unnamed/arm9/0203/func_02033464.c": [
-        "param:#1 unsigned char"
-      ]
-    },
-    "func_02031cd4": {
-      "src/unnamed/arm9/0203/func_02034098.cpp": [
-        "param:#1 int"
-      ],
-      "src/unnamed/arm9/0203/func_020341a8.cpp": [
         "param:#1 int"
       ]
     },
@@ -23783,11 +23548,6 @@
         "return:int"
       ],
       "src/unnamed/ov075/func_ov075_021173a8.c": [
-        "return:int"
-      ]
-    },
-    "func_02034504": {
-      "src/unnamed/arm9/0203/func_02034414.cpp": [
         "return:int"
       ]
     },
@@ -25383,9 +25143,6 @@
       ]
     },
     "func_02054d88": {
-      "src/LoadFont3D.c": [
-        "return:void *"
-      ],
       "src/minigames/d_s_mg_base.cpp": [
         "return:int *"
       ],
@@ -30832,12 +30589,6 @@
         "return:void *"
       ]
     },
-    "gPianoAttackAnimationFile": {
-    },
-    "gPianoCollisionFile": {
-    },
-    "gPianoModelFile": {
-    },
     "gTouchEdge": {
       "src/actors/dMgJump3DMario_c.cpp": [
         "return:unsigned char [][]"
@@ -30907,6 +30658,5 @@
         "param:#3 unsigned int"
       ]
     }
-  },
-  "_comment": "Declaration/definition disagreements present when this gate was built. tools/check_decl_agreement.py fails on any disagreement NOT listed here. Keyed symbol -> declaring file -> \"<kind>:<what differs>\". These are NOT text edits: changing a declaration can change instruction selection at every call site, so each one is matching work that needs a rebuild and byte proof (tools/match.py) before it moves. Regenerate with --update only from a clean checkout, and read the diff: a new entry is usually an extern copied from the wrong sibling."
+  }
 }
