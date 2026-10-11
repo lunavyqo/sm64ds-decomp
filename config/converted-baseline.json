@@ -11,7 +11,7 @@
  "converted": [
   "src/ARMMathLoadState.c",
   "src/ARMMathSaveState.c",
-  "src/ARMProcessorMode.c",
+  "src/IRQ3.cpp#ARMProcessorMode",
   "src/ARMRestoreContext.c",
   "src/ARMSaveContext.c",
   "src/AddSpikeBomb.c",
@@ -350,7 +350,7 @@
   "src/_ZN4CP1511SystemSetupEv.cpp",
   "src/_ZN4CP1514MPUDataRegion1Ej.cpp",
   "src/_ZN4CP1514MPUDataRegion7Ej.cpp",
-  "src/_ZN4CP1516WaitForInterruptEv.cpp",
+  "src/IRQ3.cpp#_ZN4CP1516WaitForInterruptEv",
   "src/_ZN4CP1517MPUGetDataRegion7Ev.cpp",
   "src/_ZN4CP1518GetDTCMBaseAddressEv.cpp",
   "src/_ZN4CP159EnableMPUEv.cpp",

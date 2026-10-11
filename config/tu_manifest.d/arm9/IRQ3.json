@@ -6,15 +6,15 @@
   "status": "promoted",
   "boundary_confidence": "high",
   "boundary_evidence": [
-    "contiguous linker run: 0x02059cb4..0x02059d74, 6 function(s), gapless in config/arm9/delinks.txt (each entry's end is the next entry's start, all marked `complete`).",
-    "TOP EDGE: func_02059c18 (0x02059c18..0x02059cb4) ends exactly where the run begins -- an unattributed helper outside the IRQ CPSR family. BOTTOM EDGE: ARMProcessorMode (0x02059d74..0x02059d80) begins exactly where the run ends -- processor-mode setup, not an IRQ primitive.",
-    "NAMESPACE-LOCAL COMPLETE: the run is every IRQ CPSR primitive (Enable/Disable/Restore/DisableAll/RestoreAll) plus the IRQ-state init helper below them; the other `_ZN3IRQ*` functions live in separate runs (e.g. src/IRQ.cpp at 0x02056c40) -- a TU claims one contiguous .text span, so they cannot fold here."
+    "contiguous linker run: 0x02059cb4..0x02059d8c, 8 function(s), gapless in config/arm9/delinks.txt (each entry's end is the next entry's start, all marked `complete`).",
+    "TOP EDGE: func_02059c18 (0x02059c18..0x02059cb4) ends exactly where the run begins -- an unattributed helper outside the IRQ CPSR family. BOTTOM EDGE: a 0x48-byte gap 0x02059d8c..0x02059dd4, then func_02059dd4 (0x02059dd4..0x02059e04) -- not contiguous with this run, so the run stops at 0x02059d8c.",
+    "NAMESPACE-LOCAL COMPLETE: the run is every IRQ CPSR primitive (Enable/Disable/Restore/DisableAll/RestoreAll) plus the IRQ-state init helper below them, grown upward (G02) with the CPSR mode-bit reader ARMProcessorMode and the CP15 wait-for-interrupt op the ROM places here; the other `_ZN3IRQ*` functions live in separate runs (e.g. src/IRQ.cpp at 0x02056c40) -- a TU claims one contiguous .text span, so they cannot fold here."
   ],
   "sections": [
     {
       "name": ".text",
       "start": "0x02059cb4",
-      "end": "0x02059d74"
+      "end": "0x02059d8c"
     }
   ],
   "functions": [
@@ -59,6 +59,20 @@
       "size": "0x00000018",
       "legacy_source": "src/_ZN3IRQ10RestoreAllEj.cpp",
       "ordinal": 5
+    },
+    {
+      "symbol": "ARMProcessorMode",
+      "address": "0x02059d74",
+      "size": "0x0000000c",
+      "legacy_source": "src/ARMProcessorMode.c",
+      "ordinal": 6
+    },
+    {
+      "symbol": "_ZN4CP1516WaitForInterruptEv",
+      "address": "0x02059d80",
+      "size": "0x0000000c",
+      "legacy_source": "src/_ZN4CP1516WaitForInterruptEv.cpp",
+      "ordinal": 7
     }
   ],
   "data": [],
@@ -68,6 +82,7 @@
     "HAND-BUILT manifest entry, not tools/tubuild.py create output -- the `main` module is unsegmentable, so there is no create candidate id.",
     "IRQ CPSR primitives plus the IRQ-state init helper. The file name is the tree class name plus the numeric suffix style already used in the tree, per Juan 2026-10-11 (night-queue new-file job E13).",
     "`#pragma defer_codegen off` makes mwccarm emit .text in source order: without it the hand-asm primitives emit eagerly while the C helper flushes at the end of the TU, so no source order reproduces the ROM order. The definitions run ROM-ascending and the address-named helper keeps C linkage under its existing name at its address position.",
+    "G02 grow: ARMProcessorMode (CPSR mode-bit reader, hand-asm, C linkage) and CP15::WaitForInterrupt (a CP15 method the ROM places in this run) absorbed upward to 0x02059d8c. Both appended at the end: with `#pragma defer_codegen off` the TU emits in source order, so ROM-ascending source is what isolates (the job text's descending/top-of-file convention does not apply to this TU -- measured in E13).",
     "The address-named helper keeps C linkage under its existing name at its address position. The combined TU verifies under the default 2004/b56 pin, like the shards did."
   ],
   "verification": {
@@ -76,8 +91,8 @@
     "flags": "-O4,p -enum int -lang c++ -char signed -interworking -proc arm946e -gccext,on -msgstyle gcc -Cpp_exceptions off",
     "object": "build/tu/arm9-IRQ3/IRQ3.o (gitignored)",
     "comparison": "tools/match.py extract_func+compare (bytes/relocs) AND tools/objisolate.py plan() (relocation type/addend) AND tools/reloc_audit.py check_destinations() (relocation target identity)",
-    "functions_matched": 6,
-    "functions_declared": 6,
+    "functions_matched": 8,
+    "functions_declared": 8,
     "compilerOnlyOutput": {
       "requested": [],
       "deadstripped": [],
@@ -106,7 +121,7 @@
       },
       "tuRange": {
         "start": "0x02059cb4",
-        "end": "0x02059d74",
+        "end": "0x02059d8c",
         "differingBytes": 0,
         "firstDiff": null
       },
@@ -114,14 +129,14 @@
         {
           "section": ".text",
           "start": "0x02059cb4",
-          "end": "0x02059d74",
+          "end": "0x02059d8c",
           "differingBytes": 0,
           "firstDiff": null
         }
       ],
       "objectAudit": {
         "counts": {
-          "LICENSED": 6
+          "LICENSED": 8
         },
         "emittedTextOrderIsRomAscending": true,
         "nonLicensedSymbols": [],

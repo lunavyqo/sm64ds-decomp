@@ -5990,15 +5990,7 @@ src/unnamed/arm9/0205/func_02059c18.c:
 
 src/IRQ3.cpp:
     complete
-    .text start:0x02059cb4 end:0x02059d74
-
-src/ARMProcessorMode.c:
-    complete
-    .text start:0x02059d74 end:0x02059d80
-
-src/_ZN4CP1516WaitForInterruptEv.cpp:
-    complete
-    .text start:0x02059d80 end:0x02059d8c
+    .text start:0x02059cb4 end:0x02059d8c
 
 src/unnamed/arm9/0205/func_02059dd4.c:
     complete

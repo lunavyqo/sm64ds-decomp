@@ -1,6 +1,8 @@
 //cpp
-/* IRQ CPSR primitives and the IRQ-state init helper (arm9
- * .text 0x02059cb4..0x02059d74).
+/* IRQ CPSR primitives, the IRQ-state init helper, and the two followers
+ * (arm9 .text 0x02059cb4..0x02059d8c): ARMProcessorMode (CPSR mode-bit
+ * reader, hand-asm, C linkage under its name) and CP15::WaitForInterrupt
+ * (wait-for-interrupt op, a CP15 method the ROM places in this run).
  *
  * IRQ::RestoreAll/DisableAll/Restore/Disable/Enable are hand-asm
  * primitives: `mrs`/`msr` read and write the CPSR and no C construct
@@ -92,6 +94,32 @@ asm unsigned int RestoreAll(unsigned int state)
     msr cpsr_c, r2
     and r0, r1, #0xc0
     bx lr
+}
+
+}
+
+// @symbol ARMProcessorMode
+// HAND-ASM PRIMITIVE: byte-faithful asm-block match. This function was
+// assembly in the original (CPSR read), so there is no C to decompile
+// it to -- the asm block is the faithful source. Probed as C++
+// (extern "C") byte-identical, so it folds here under its name.
+extern "C" {
+asm void ARMProcessorMode(void) { mrs r0, cpsr; and r0, r0, #0x1f; bx lr }
+}
+
+namespace CP15 {
+
+// @symbol _ZN4CP1516WaitForInterruptEv
+/* Halt the core until an interrupt arrives (c7,c0,4 is the
+ * wait-for-interrupt op). The value written is ignored by the hardware
+ * but the register still has to be materialized. HAND-ASM PRIMITIVE:
+ * `mcr p15` is a coprocessor access and no C construct compiles to it.
+ * A CP15 method living in another system's source file: the ROM puts
+ * it here, so this TU holds it under its existing mangled name. */
+void WaitForInterrupt(void)
+{
+    unsigned int v = 0;
+    asm { mcr p15,0,v,c7,c0,4 }
 }
 
 }
