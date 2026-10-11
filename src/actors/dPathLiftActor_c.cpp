@@ -65,8 +65,6 @@ void func_02012694(int a, void *p);
    collider callback after BaseInitResources, which stores its address.
    func_ov002_020effb8 follows it in the ROM and is defined below. */
 void func_ov002_020eff90(int unused, dPathLiftActor_c *lift, int x);
-/* local extern: Vec3_Equal.c defines this with a file-local struct; no header declares it. */
-extern s32 Vec3_Equal(struct Vector3 *a, struct Vector3 *b);
 }
 
 extern PathLiftState data_ov002_0210af2c[];
@@ -529,10 +527,36 @@ extern "C" void func_ov002_020eff90(int unused, dPathLiftActor_c* lift, int x) {
   lift->AfterClsn(x);
 }
 
+/* The path-follow scale applied to the path models. Spelled as three s32s:
+ * the repo's Vector3 declares an empty destructor, and a real Vector3 global
+ * would make __sinit register it with __register_global_object, growing the
+ * initializer past its retail 0xa4. */
+s32 data_ov002_0210af00[3] = { 0x2000, 0x2000, 0x2000 };
+
+/* The state names sit in 8-byte slots ahead of the pointer-to-member
+ * descriptors. */
+static char s_waitName[8] = "WAIT";
+static char s_pathName[8] = "PATH";
+static char s_fallName[8] = "FALL";
+
+/* The state table SetState and BaseBehavior index by mState. Its six
+ * pointer-to-member descriptors are anonymous compiler objects; this
+ * definition is what makes mwcc emit __sinit_dPathLiftActor_c.cpp. */
+PathLiftState data_ov002_0210af2c[3] = {
+    { &dPathLiftActor_c::StateWaitInit, &dPathLiftActor_c::StateWait, s_waitName },
+    { &dPathLiftActor_c::StatePathInit, &dPathLiftActor_c::StatePath, s_pathName },
+    { &dPathLiftActor_c::StateFallInit, &dPathLiftActor_c::StateFall, s_fallName },
+};
+
+/* After the state table on purpose. defer_codegen off still emits this last in
+ * .text, and parsing it first consumed the @ numbers __sinit uses for the six
+ * pointer-to-member descriptors. */
 // 0x020effb8 (0x310)
 // @symbol func_ov002_020effb8
 #define FXMUL(a, b) ((s32)(u32)(((((long long)(a)) * (b)) + 0x800) >> 12))
 #define TERM(v, w) ((FXMUL(v, w) + 8) >> 4)
+/* local extern: Vec3_Equal.c defines this with a file-local struct; no header declares it. */
+extern "C" s32 Vec3_Equal(struct Vector3 *a, struct Vector3 *b);
 extern "C" void func_ov002_020effb8(struct Vector3 *out, s32 t, struct Vector3 *a, struct Vector3 *b,
                          struct Vector3 *c, struct Vector3 *d)
 {
@@ -569,24 +593,3 @@ extern "C" void func_ov002_020effb8(struct Vector3 *out, s32 t, struct Vector3 *
 }
 #undef TERM
 #undef FXMUL
-
-/* The path-follow scale applied to the path models. Spelled as three s32s:
- * the repo's Vector3 declares an empty destructor, and a real Vector3 global
- * would make __sinit register it with __register_global_object, growing the
- * initializer past its retail 0xa4. */
-s32 data_ov002_0210af00[3] = { 0x2000, 0x2000, 0x2000 };
-
-/* The state names sit in 8-byte slots ahead of the pointer-to-member
- * descriptors. */
-static char s_waitName[8] = "WAIT";
-static char s_pathName[8] = "PATH";
-static char s_fallName[8] = "FALL";
-
-/* The state table SetState and BaseBehavior index by mState. Its six
- * pointer-to-member descriptors are anonymous compiler objects; this
- * definition is what makes mwcc emit __sinit_dPathLiftActor_c.cpp. */
-PathLiftState data_ov002_0210af2c[3] = {
-    { &dPathLiftActor_c::StateWaitInit, &dPathLiftActor_c::StateWait, s_waitName },
-    { &dPathLiftActor_c::StatePathInit, &dPathLiftActor_c::StatePath, s_pathName },
-    { &dPathLiftActor_c::StateFallInit, &dPathLiftActor_c::StateFall, s_fallName },
-};
