@@ -9593,6 +9593,7 @@
     "src/cstd.cpp#func_020531a4": "tangosdev",
     "src/cstd.cpp#func_02053200": "tangosdev",
     "src/cstd.cpp#_ZN4cstd4ldivEii": "tangosdev",
-    "src/cstd.cpp#_ZN4cstd4fdivEii": "tangosdev"
+    "src/cstd.cpp#_ZN4cstd4fdivEii": "tangosdev",
+    "src/cstd.cpp#func_02053274": "tangosdev"
   }
 }
