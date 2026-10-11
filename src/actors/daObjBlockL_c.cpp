@@ -57,6 +57,24 @@ struct RawVector3 {
     int x, y, z;
 };
 
+/* Model handles construct through func_02017acc and destroy through
+ * func_02017ab4. Collision handles construct through func_02017b4c and
+ * destroy through SharedFilePtr_Destruct_Clsn. The manifest aliases those
+ * undefined members onto the ROM symbols. */
+struct BlockModelFile : SharedFilePtr {
+    u32 words[2];
+
+    BlockModelFile(u32 fileID);
+    ~BlockModelFile();
+};
+
+struct daObjBlockLClsnFile : SharedFilePtr {
+    u32 words[2];
+
+    daObjBlockLClsnFile(u32 fileID);
+    ~daObjBlockLClsnFile();
+};
+
 extern "C" {
 extern "C" void _ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_( u32 id, Fix12i x, Fix12i y, Fix12i z);
 extern "C" void _ZN8dActor_c10SpawnCoinsERK7Vector3j5Fix12IiEs( void *self, const Vector3 &pos, u32 count, s32 speed, s16 delay);
@@ -412,8 +430,8 @@ int daObjBlockL_c::Render()
   }
   int b2 = (actorID == 0x10);
   if (b2 != 0) {
-    RawVector3 v = *(RawVector3 *)&data_ov002_021089e0;
-    mModel.Render((Vector3 *)&v);
+    Vector3 v = data_ov002_021089e0;
+    mModel.Render(&v);
   } else {
     mModel.Render(0);
   }
@@ -611,3 +629,12 @@ extern "C" daObjBlockL_c *daObjBlockL_c_classInit_BLOCK_L()
 {
     return new daObjBlockL_c();
 }
+
+/* Retail initializer order. The handles themselves land in address order
+ * because their names sort that way; these definitions are the call order. */
+extern "C" BlockModelFile data_ov002_0210dcc0(1108);
+extern "C" daObjBlockLClsnFile data_ov002_0210dcb8(1109);
+extern "C" BlockModelFile data_ov002_0210dce0(1110);
+extern "C" daObjBlockLClsnFile data_ov002_0210dcc8(1111);
+extern "C" BlockModelFile data_ov002_0210dcd0(1425);
+extern "C" daObjBlockLClsnFile data_ov002_0210dcd8(1426);
