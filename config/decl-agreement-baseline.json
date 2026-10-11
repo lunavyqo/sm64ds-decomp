@@ -2985,9 +2985,6 @@
       "src/unnamed/ov022/__sinit_ov022_02112ec0.c": [
         "kind:data"
       ],
-      "src/unnamed/ov022/__sinit_ov022_02112f78.c": [
-        "kind:data"
-      ],
       "src/unnamed/ov022/__sinit_ov022_02112fe4.c": [
         "kind:data"
       ],
@@ -17793,16 +17790,6 @@
         "return:int []"
       ]
     },
-    "data_ov022_02114618": {
-      "src/unnamed/ov022/__sinit_ov022_02112f78.c": [
-        "return:int []"
-      ]
-    },
-    "data_ov022_02114620": {
-      "src/unnamed/ov022/__sinit_ov022_02112f78.c": [
-        "return:int []"
-      ]
-    },
     "data_ov023_02112080": {
       "src/unnamed/ov023/__sinit_ov023_02111aa8.c": [
         "return:int []"
@@ -21764,9 +21751,6 @@
       "src/unnamed/ov022/__sinit_ov022_02112ec0.c": [
         "kind:data"
       ],
-      "src/unnamed/ov022/__sinit_ov022_02112f78.c": [
-        "kind:data"
-      ],
       "src/unnamed/ov022/__sinit_ov022_02112fe4.c": [
         "kind:data"
       ],
@@ -22389,9 +22373,6 @@
       "src/unnamed/ov022/__sinit_ov022_02112ec0.c": [
         "return:int"
       ],
-      "src/unnamed/ov022/__sinit_ov022_02112f78.c": [
-        "return:void"
-      ],
       "src/unnamed/ov022/__sinit_ov022_02112fe4.c": [
         "return:void"
       ],
@@ -22930,9 +22911,6 @@
       ],
       "src/unnamed/ov022/__sinit_ov022_02112ec0.c": [
         "return:int"
-      ],
-      "src/unnamed/ov022/__sinit_ov022_02112f78.c": [
-        "return:void"
       ],
       "src/unnamed/ov022/__sinit_ov022_02112fe4.c": [
         "return:void"

@@ -54,12 +54,27 @@
 struct KCL_File;
 struct CLPS_Block;
 
+/* 8-byte file handles. The model uses func_02017acc / func_02017ab4 and the
+ * collision file func_02017b4c / SharedFilePtr_Destruct_Clsn. The spellings
+ * are local; the manifest aliases the generated names to those ROM symbols. */
+struct UkiKiModelFilePtr : SharedFilePtr {
+    u32 words[2];
+
+    UkiKiModelFilePtr(u32 fileID);
+    ~UkiKiModelFilePtr();
+};
+
+struct UkiKiCollisionFilePtr : SharedFilePtr {
+    u32 words[2];
+
+    UkiKiCollisionFilePtr(u32 fileID);
+    ~UkiKiCollisionFilePtr();
+};
+
+extern UkiKiModelFilePtr FloatingFloorLllBig_ModelFile;
+extern UkiKiCollisionFilePtr FloatingFloorLllBig_ClsnFile;
+
 extern "C" {
-/* This overlay's two file handles, constructed by the ov022 sinit as file IDs
- * 1554 (model) and 1555 (collision). Named rows in ov022/symbols.txt at
- * 0x02114620 and 0x02114618. */
-extern SharedFilePtr FloatingFloorLllBig_ModelFile;   /* the BMD */
-extern SharedFilePtr FloatingFloorLllBig_ClsnFile;    /* the KCL */
 extern CLPS_Block    data_ov064_0211ba6c;   /* the CLPS block SetFile is handed */
 extern s16           data_02082214[];   /* shared sin/cos table, sin at [i*2] */
 
@@ -139,3 +154,8 @@ s32 daObjFl_UkiKi_c::CleanupResources()
     FloatingFloorLllBig_ClsnFile.Release();
     return 1;
 }
+
+/* Construction order is the retail initializer: model file 1554, then
+ * collision file 1555. __sinit_daObjFl_UkiKi_c.cpp registers both destructors. */
+UkiKiModelFilePtr FloatingFloorLllBig_ModelFile(1554);
+UkiKiCollisionFilePtr FloatingFloorLllBig_ClsnFile(1555);
