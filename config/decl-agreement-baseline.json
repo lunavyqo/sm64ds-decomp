@@ -3959,6 +3959,10 @@
         "param:#1 const Vector3 *",
         "param:#2 const Vector3 *"
       ],
+      "src/actors/dPathLiftActor_c.cpp": [
+        "param:#1 Vector3 *",
+        "param:#2 Vector3 *"
+      ],
       "src/unnamed/ov002/func_ov002_020effb8.c": [
         "param:#1 Vector3 *",
         "param:#2 Vector3 *"

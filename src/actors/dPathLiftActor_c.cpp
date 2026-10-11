@@ -3,8 +3,9 @@
  * dPathLiftActor_c -- the path-following lift base.
  *
  * Production consolidation: the two destructors (D0 0x020ef320, D1 0x020ef390),
- * 19 class methods and the existing C bridge occupy ov002:0x020ef320..0x020effb8.
- * This contiguous range is packaging evidence, not proof of the original TU.
+ * 19 class methods, the existing C bridge and func_ov002_020effb8 occupy
+ * ov002:0x020ef320..0x020f02c8. This contiguous range is packaging evidence,
+ * not proof of the original TU.
  *
  * The state table at 0x0210af2c is the file-scope PathLiftState array defined
  * at the bottom of this file; mwcc emits __sinit_dPathLiftActor_c.cpp to copy
@@ -60,9 +61,12 @@ extern void Vec3_MulScalar(void *out, void *v, int s);
 extern void SubVec3(void *a, void *b, void *c);
 void func_02012694(int a, void *p);
 
-/* Defined last: the ROM-ascending order puts the collider callback after
-   BaseInitResources, which stores its address. */
+/* Defined last among the class methods: the ROM-ascending order puts the
+   collider callback after BaseInitResources, which stores its address.
+   func_ov002_020effb8 follows it in the ROM and is defined below. */
 void func_ov002_020eff90(int unused, dPathLiftActor_c *lift, int x);
+/* local extern: Vec3_Equal.c defines this with a file-local struct; no header declares it. */
+extern s32 Vec3_Equal(struct Vector3 *a, struct Vector3 *b);
 }
 
 extern PathLiftState data_ov002_0210af2c[];
@@ -524,6 +528,47 @@ void dPathLiftActor_c::AfterClsn(int)
 extern "C" void func_ov002_020eff90(int unused, dPathLiftActor_c* lift, int x) {
   lift->AfterClsn(x);
 }
+
+// 0x020effb8 (0x310)
+// @symbol func_ov002_020effb8
+#define FXMUL(a, b) ((s32)(u32)(((((long long)(a)) * (b)) + 0x800) >> 12))
+#define TERM(v, w) ((FXMUL(v, w) + 8) >> 4)
+extern "C" void func_ov002_020effb8(struct Vector3 *out, s32 t, struct Vector3 *a, struct Vector3 *b,
+                         struct Vector3 *c, struct Vector3 *d)
+{
+    s32 s0, s1;
+    s32 t4, u, u4;
+    s32 t2, t3, u2, u3;
+    s32 w0, w1, w2, w3;
+
+    if (Vec3_Equal(a, b) != 0 && Vec3_Equal(b, c) != 0 && Vec3_Equal(c, d) != 0) {
+        out->x = a->x;
+        out->y = a->y;
+        out->z = a->z;
+        return;
+    }
+    if (t > 0x1000)
+        t = 0x1000;
+    t4 = t << 4;
+    t2 = FXMUL(t4, t);
+    u = 0x1000 - t;
+    t3 = FXMUL(t2, t);
+    u4 = u << 4;
+    u2 = FXMUL(u4, u);
+    u3 = FXMUL(u2, u);
+    s0 = (t3 + 1) >> 1;
+    w0 = _ZN4cstd4fdivEii(u3, 0x6000);
+    w3 = _ZN4cstd4fdivEii(t3, 0x6000);
+    s1 = ((t2 + 1) >> 1) - s0;
+    w2 = (s1 + ((t4 + 1) >> 1)) + 0x2aab;
+    w1 = (s0 - t2) + 0xaaab;
+
+    out->x = TERM(a->x, w0) + TERM(b->x, w1) + TERM(c->x, w2) + TERM(d->x, w3);
+    out->y = TERM(a->y, w0) + TERM(b->y, w1) + TERM(c->y, w2) + TERM(d->y, w3);
+    out->z = TERM(a->z, w0) + TERM(b->z, w1) + TERM(c->z, w2) + TERM(d->z, w3);
+}
+#undef TERM
+#undef FXMUL
 
 /* The path-follow scale applied to the path models. Spelled as three s32s:
  * the repo's Vector3 declares an empty destructor, and a real Vector3 global
