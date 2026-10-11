@@ -1,0 +1,337 @@
+{
+  "id": "arm9/cstd4",
+  "module": "arm9",
+  "source": "src/cstd4.cpp",
+  "promoted_source": "src/cstd4.cpp",
+  "status": "promoted",
+  "boundary_confidence": "medium",
+  "boundary_evidence": [
+    "contiguous linker run: 0x0206da64..0x0206e330, 30 function(s), gapless in config/arm9/delinks.txt (each entry's end is the next entry's start, all marked `complete`).",
+    "TOP EDGE: func_0206e330 starts at 0x0206e330 and is incomplete, so it is not part of this file. BOTTOM EDGE: func_0206ce20 ends at 0x0206ce90; 0x0206ce90..0x0206da64 is not an enrolled entry, and the next enrolled function is func_0206da64.",
+    "Not the cstd3 run (func_0206ce20) and not src/engine/cp15/CP15.cpp (0x02058bb0..0x02058c84). CP15::MPUGetDataRegion7 and CP15::MPUDataRegion7 stay CP15 methods defined in this file because the ROM places them in this run."
+  ],
+  "sections": [
+    {
+      "name": ".text",
+      "start": "0x0206da64",
+      "end": "0x0206e330"
+    }
+  ],
+  "functions": [
+    {
+      "symbol": "func_0206da64",
+      "address": "0x0206da64",
+      "size": "0x00000030",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206da64.c",
+      "ordinal": 0
+    },
+    {
+      "symbol": "func_0206da94",
+      "address": "0x0206da94",
+      "size": "0x00000008",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206da94.c",
+      "ordinal": 1
+    },
+    {
+      "symbol": "func_0206da9c",
+      "address": "0x0206da9c",
+      "size": "0x00000008",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206da9c.c",
+      "ordinal": 2
+    },
+    {
+      "symbol": "_ZN4CP1517MPUGetDataRegion7Ev",
+      "address": "0x0206daa4",
+      "size": "0x00000008",
+      "legacy_source": "src/_ZN4CP1517MPUGetDataRegion7Ev.cpp",
+      "ordinal": 3
+    },
+    {
+      "symbol": "_ZN4CP1514MPUDataRegion7Ej",
+      "address": "0x0206daac",
+      "size": "0x00000008",
+      "legacy_source": "src/_ZN4CP1514MPUDataRegion7Ej.cpp",
+      "ordinal": 4
+    },
+    {
+      "symbol": "func_0206dab4",
+      "address": "0x0206dab4",
+      "size": "0x00000008",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206dab4.c",
+      "ordinal": 5
+    },
+    {
+      "symbol": "_ZN4cstd14__builtin_trapEv",
+      "address": "0x0206dabc",
+      "size": "0x00000008",
+      "legacy_source": "src/_ZN4cstd14__builtin_trapEv.cpp",
+      "ordinal": 6
+    },
+    {
+      "symbol": "func_0206dac4",
+      "address": "0x0206dac4",
+      "size": "0x00000134",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206dac4.c",
+      "ordinal": 7
+    },
+    {
+      "symbol": "func_0206dbf8",
+      "address": "0x0206dbf8",
+      "size": "0x00000054",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206dbf8.c",
+      "ordinal": 8
+    },
+    {
+      "symbol": "func_0206dc4c",
+      "address": "0x0206dc4c",
+      "size": "0x00000030",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206dc4c.c",
+      "ordinal": 9
+    },
+    {
+      "symbol": "func_0206dc7c",
+      "address": "0x0206dc7c",
+      "size": "0x00000058",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206dc7c.c",
+      "ordinal": 10
+    },
+    {
+      "symbol": "func_0206dcd4",
+      "address": "0x0206dcd4",
+      "size": "0x0000005c",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206dcd4.c",
+      "ordinal": 11
+    },
+    {
+      "symbol": "func_0206dd30",
+      "address": "0x0206dd30",
+      "size": "0x0000004c",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206dd30.c",
+      "ordinal": 12
+    },
+    {
+      "symbol": "func_0206dd7c",
+      "address": "0x0206dd7c",
+      "size": "0x00000050",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206dd7c.c",
+      "ordinal": 13
+    },
+    {
+      "symbol": "func_0206ddcc",
+      "address": "0x0206ddcc",
+      "size": "0x00000048",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206ddcc.c",
+      "ordinal": 14
+    },
+    {
+      "symbol": "func_0206de14",
+      "address": "0x0206de14",
+      "size": "0x00000100",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206de14.c",
+      "ordinal": 15
+    },
+    {
+      "symbol": "func_0206df14",
+      "address": "0x0206df14",
+      "size": "0x00000070",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206df14.c",
+      "ordinal": 16
+    },
+    {
+      "symbol": "_ZN4cstd3absEi",
+      "address": "0x0206df84",
+      "size": "0x0000000c",
+      "legacy_source": "src/_ZN4cstd3absEi.cpp",
+      "ordinal": 17
+    },
+    {
+      "symbol": "func_0206df90",
+      "address": "0x0206df90",
+      "size": "0x000000a0",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206df90.c",
+      "ordinal": 18
+    },
+    {
+      "symbol": "func_0206e030",
+      "address": "0x0206e030",
+      "size": "0x00000038",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206e030.c",
+      "ordinal": 19
+    },
+    {
+      "symbol": "func_0206e068",
+      "address": "0x0206e068",
+      "size": "0x00000004",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206e068.c",
+      "ordinal": 20
+    },
+    {
+      "symbol": "func_0206e06c",
+      "address": "0x0206e06c",
+      "size": "0x00000118",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206e06c.c",
+      "ordinal": 21
+    },
+    {
+      "symbol": "func_0206e184",
+      "address": "0x0206e184",
+      "size": "0x00000094",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206e184.c",
+      "ordinal": 22
+    },
+    {
+      "symbol": "func_0206e218",
+      "address": "0x0206e218",
+      "size": "0x00000028",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206e218.c",
+      "ordinal": 23
+    },
+    {
+      "symbol": "func_0206e240",
+      "address": "0x0206e240",
+      "size": "0x00000014",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206e240.c",
+      "ordinal": 24
+    },
+    {
+      "symbol": "func_0206e254",
+      "address": "0x0206e254",
+      "size": "0x00000038",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206e254.c",
+      "ordinal": 25
+    },
+    {
+      "symbol": "func_0206e28c",
+      "address": "0x0206e28c",
+      "size": "0x00000040",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206e28c.c",
+      "ordinal": 26
+    },
+    {
+      "symbol": "func_0206e2cc",
+      "address": "0x0206e2cc",
+      "size": "0x0000002c",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206e2cc.c",
+      "ordinal": 27
+    },
+    {
+      "symbol": "func_0206e2f8",
+      "address": "0x0206e2f8",
+      "size": "0x00000018",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206e2f8.c",
+      "ordinal": 28
+    },
+    {
+      "symbol": "func_0206e310",
+      "address": "0x0206e310",
+      "size": "0x00000020",
+      "legacy_source": "src/unnamed/arm9/0206/func_0206e310.c",
+      "ordinal": 29
+    }
+  ],
+  "data": [],
+  "bss": [],
+  "compiler_only_output": [],
+  "notes": [
+    "HAND-BUILT manifest entry, not tools/tubuild.py create output -- the `main` module is unsegmentable, so there is no create candidate id.",
+    "The name is the tree's class name plus the numeric suffix already used in the tree (cstd4.cpp beside the other cstd runs, the same shape as d_s_mg_jump2.cpp beside d_s_mg_jump.cpp). Juan 2026-10-11.",
+    "The file is written ROM-ascending. Whole-function asm emits in source order, and each compiled body sits under a per-function defer_codegen off so it emits there too.",
+    "CP15::MPUDataRegion7 and CP15::MPUGetDataRegion7 are defined here under their existing mangled names. Juan 2026-10-11 05:18: a class method may live in another system's source file when the ROM puts it there."
+  ],
+  "relocations": [],
+  "verification": {
+    "round": "tools/tubuild.py verify -- text-only, whole shadow TU compiled once",
+    "toolchain": "tools/mwccarm/2004/b56/mwccarm.exe",
+    "flags": "-O4,p -enum int -lang c++ -char signed -interworking -proc arm946e -gccext,on -msgstyle gcc -Cpp_exceptions off",
+    "object": "build/tu/arm9-cstd4/cstd4.o (gitignored)",
+    "comparison": "tools/match.py extract_func+compare (bytes/relocs) AND tools/objisolate.py plan() (relocation type/addend) AND tools/reloc_audit.py check_destinations() (relocation target identity)",
+    "functions_matched": 30,
+    "functions_declared": 30,
+    "compilerOnlyOutput": {
+      "requested": [],
+      "deadstripped": [],
+      "data": [],
+      "dataExternalized": []
+    },
+    "criteria": {
+      "every_declared_function_defined": "PASS",
+      "every_declared_function_bytes_match": "PASS",
+      "declared_function_set_equals_defined_function_set": "PASS",
+      "functions_occur_in_expected_order": "PASS",
+      "relocation_destinations_verified": "PASS"
+    },
+    "linkcheck": {
+      "round": "tools/tubuild.py linkcheck -- scratch dsd delink+lcf, whole-tree mwccarm, mwldarm link, linked-range and module byte comparison, dsd check symbols --fail, full ROM build",
+      "result": "link-verified",
+      "scratch": "build/tu/arm9-cstd4/link (gitignored)",
+      "phases": {
+        "delink": true,
+        "lcf": true,
+        "compile": true,
+        "link": true,
+        "checkModules": true,
+        "checkSymbols": false,
+        "rom": true
+      },
+      "tuRange": {
+        "start": "0x0206da64",
+        "end": "0x0206e330",
+        "differingBytes": 0,
+        "firstDiff": null
+      },
+      "tuRanges": [
+        {
+          "section": ".text",
+          "start": "0x0206da64",
+          "end": "0x0206e330",
+          "differingBytes": 0,
+          "firstDiff": null
+        }
+      ],
+      "objectAudit": {
+        "counts": {
+          "LICENSED": 30
+        },
+        "emittedTextOrderIsRomAscending": true,
+        "nonLicensedSymbols": [],
+        "unlicensedSections": []
+      },
+      "nontextSectionOrder": {
+        "groups": [],
+        "objisolate": null,
+        "errors": null
+      },
+      "linkedStorageAliases": null,
+      "symbolCheckNewVsBaseline": [],
+      "symbolCheckErrors": [
+        "[ERROR] Symbol '_deq' in ITCM at 0x01ff9d40 not found in linked binary",
+        "[ERROR] Symbol 'data_020ad524' in ARM9 main at 0x020ad524 not found in linked binary",
+        "[ERROR] Symbol 'data_020ad560' in ARM9 main at 0x020ad560 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff98f4' in ITCM at 0x01ff98f4 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff99a4' in ITCM at 0x01ff99a4 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff9d40' in ITCM at 0x01ff9d40 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff9e2c' in ITCM at 0x01ff9e2c not found in linked binary",
+        "[ERROR] Symbol 'overlay_100' in ARM9 main at 0x00000064 not found in linked binary",
+        "[ERROR] Symbol 'overlay_102' in ARM9 main at 0x00000066 not found in linked binary"
+      ],
+      "symbolCheckBaselineErrors": [
+        "[ERROR] Symbol '_deq' in ITCM at 0x01ff9d40 not found in linked binary",
+        "[ERROR] Symbol 'data_020ad524' in ARM9 main at 0x020ad524 not found in linked binary",
+        "[ERROR] Symbol 'data_020ad560' in ARM9 main at 0x020ad560 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff98f4' in ITCM at 0x01ff98f4 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff99a4' in ITCM at 0x01ff99a4 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff9d40' in ITCM at 0x01ff9d40 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff9e2c' in ITCM at 0x01ff9e2c not found in linked binary",
+        "[ERROR] Symbol 'overlay_100' in ARM9 main at 0x00000064 not found in linked binary",
+        "[ERROR] Symbol 'overlay_102' in ARM9 main at 0x00000066 not found in linked binary"
+      ],
+      "moduleSetSha256": "f9852ffaf80ef19662ab5535df4b13b935188ac3087b5b1d4561c089e4dd802b",
+      "rom": {
+        "bytes": 16777216,
+        "sha256": "ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40",
+        "matchesStockRom": true
+      },
+      "linkerOutput": null
+    }
+  }
+}
