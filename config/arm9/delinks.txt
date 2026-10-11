@@ -4450,17 +4450,9 @@ src/func_020458a8.c:
     complete
     .text start:0x020458a8 end:0x020458e0
 
-src/_ZN5Model13LoadTexAndPalER8BMD_File.cpp:
+src/engine/model/Model4.cpp:
     complete
-    .text start:0x020458e0 end:0x02045a50
-
-src/unnamed/arm9/0204/func_02045a50.c:
-    complete
-    .text start:0x02045a50 end:0x02045ad8
-
-src/unnamed/arm9/0204/func_02045ad8.c:
-    complete
-    .text start:0x02045ad8 end:0x02045b58
+    .text start:0x020458e0 end:0x02045b58
 
 src/_ZN5Model17LoadTextureToVramEPcj.cpp:
     complete

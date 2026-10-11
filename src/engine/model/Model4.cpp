@@ -1,10 +1,24 @@
 //cpp
-// @symbol _ZN5Model13LoadTexAndPalER8BMD_File
+/* Model4 -- LoadTexAndPal and the two palette-VRAM helpers that follow it.
+ *
+ * Not part of src/engine/model/Model.cpp: func_020458a8 sits between that TU
+ * and this run, and LoadCompressedTextureToVram begins where this run ends.
+ * The name is the tree's Model class plus the numeric suffix already used
+ * for a second translation unit (Juan 2026-10-11).
+ *
+ * mwccarm's default deferred codegen emits .text in reverse source order, so
+ * the definitions are highest address first. Do not reorder.
+ */
+
 #include "Model.h"
+
 extern "C" {
 extern u32 data_020a4bcc;
 extern u32 data_020a4bd8;
 void Crash();
+void _ZN2GX16BeginLoadTexPlttEv(void);
+void _ZN2GX11LoadTexPlttEPKvjj(const void *src, u32 slot, u32 size);
+void _ZN2GX14EndLoadTexPlttEv(void);
 }
 
 struct GX {
@@ -13,6 +27,53 @@ struct GX {
     static void EndLoadTexPltt();
 };
 
+// 0x02045ad8 (0x80)
+// @symbol func_02045ad8
+extern "C" u32 func_02045ad8(const void *src, u32 size)
+{
+    u32 slot;
+    u32 end;
+
+    slot = data_020a4bcc;
+    end  = data_020a4bd8;
+
+    if (slot + size > end)
+        Crash();
+
+    _ZN2GX16BeginLoadTexPlttEv();
+    _ZN2GX11LoadTexPlttEPKvjj(src, data_020a4bcc, size);
+    _ZN2GX14EndLoadTexPlttEv();
+
+    slot = data_020a4bcc;
+    data_020a4bcc = slot + ((size + 0xf) & 0xfff0);
+
+    return slot;
+}
+
+// 0x02045a50 (0x88)
+// @symbol func_02045a50
+extern "C" u32 func_02045a50(const void *src, u32 size)
+{
+    u32 slot;
+    u32 end;
+
+    slot = data_020a4bcc;
+    end  = data_020a4bd8;
+
+    if (slot + size > end)
+        Crash();
+
+    data_020a4bd8 -= (size + 0xf) & 0xfff0;
+
+    _ZN2GX16BeginLoadTexPlttEv();
+    _ZN2GX11LoadTexPlttEPKvjj(src, data_020a4bd8, size);
+    _ZN2GX14EndLoadTexPlttEv();
+
+    return data_020a4bd8;
+}
+
+// 0x020458e0 (0x170)
+// @symbol _ZN5Model13LoadTexAndPalER8BMD_File
 void Model::LoadTexAndPal(BMD_File &file)
 {
     u32 i;
