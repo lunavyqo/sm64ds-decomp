@@ -4680,25 +4680,9 @@ src/unnamed/arm9/0204/func_02048e74.c:
     complete
     .text start:0x02048e74 end:0x02048e94
 
-src/unnamed/arm9/0204/func_02048e94.c:
+src/engine/sound/Sound2.cpp:
     complete
-    .text start:0x02048e94 end:0x02048eb4
-
-src/_ZN5Sound13Func_02048eb4Ev.cpp:
-    complete
-    .text start:0x02048eb4 end:0x02048ec4
-
-src/_ZN5Sound13Func_02048ec4Ev.cpp:
-    complete
-    .text start:0x02048ec4 end:0x02048ed4
-
-src/unnamed/arm9/0204/func_02048ed4.c:
-    complete
-    .text start:0x02048ed4 end:0x02048ee4
-
-src/_ZN5Sound13Func_02048ee4Ev.cpp:
-    complete
-    .text start:0x02048ee4 end:0x02048ef4
+    .text start:0x02048e94 end:0x02048ef4
 
 src/unnamed/arm9/0204/func_02048ef4.c:
     complete

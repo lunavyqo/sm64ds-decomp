@@ -1,0 +1,163 @@
+{
+  "id": "arm9/Sound2",
+  "module": "arm9",
+  "source": "src/engine/sound/Sound2.cpp",
+  "promoted_source": "src/engine/sound/Sound2.cpp",
+  "status": "promoted",
+  "boundary_confidence": "high",
+  "boundary_evidence": [
+    "contiguous linker run: 0x02048e94..0x02048ef4, 5 function(s), gapless in config/arm9/delinks.txt (each entry's end is the next entry's start, all marked `complete`).",
+    "TOP EDGE: func_02048e74 (0x02048e74..0x02048e94) ends exactly where the run begins -- an unnamed helper, not a Sound member. BOTTOM EDGE: func_02048ef4 (0x02048ef4..0x02048f04) begins exactly where the run ends -- an unnamed helper, not a Sound member.",
+    "CLASS-LOCAL COMPLETE: the run is three Sound static wrappers around the shared func_02048fd4 worker plus the two address-named helpers that call it; the home TU src/engine/sound/Sound.cpp is not contiguous with this run, so this is its own original file -- a TU claims one contiguous .text span."
+  ],
+  "sections": [
+    {
+      "name": ".text",
+      "start": "0x02048e94",
+      "end": "0x02048ef4"
+    }
+  ],
+  "functions": [
+    {
+      "symbol": "func_02048e94",
+      "address": "0x02048e94",
+      "size": "0x00000020",
+      "legacy_source": "src/unnamed/arm9/0204/func_02048e94.c",
+      "ordinal": 0
+    },
+    {
+      "symbol": "_ZN5Sound13Func_02048eb4Ev",
+      "address": "0x02048eb4",
+      "size": "0x00000010",
+      "legacy_source": "src/_ZN5Sound13Func_02048eb4Ev.cpp",
+      "ordinal": 1
+    },
+    {
+      "symbol": "_ZN5Sound13Func_02048ec4Ev",
+      "address": "0x02048ec4",
+      "size": "0x00000010",
+      "legacy_source": "src/_ZN5Sound13Func_02048ec4Ev.cpp",
+      "ordinal": 2
+    },
+    {
+      "symbol": "func_02048ed4",
+      "address": "0x02048ed4",
+      "size": "0x00000010",
+      "legacy_source": "src/unnamed/arm9/0204/func_02048ed4.c",
+      "ordinal": 3
+    },
+    {
+      "symbol": "_ZN5Sound13Func_02048ee4Ev",
+      "address": "0x02048ee4",
+      "size": "0x00000010",
+      "legacy_source": "src/_ZN5Sound13Func_02048ee4Ev.cpp",
+      "ordinal": 4
+    }
+  ],
+  "data": [],
+  "bss": [],
+  "compiler_only_output": [],
+  "notes": [
+    "HAND-BUILT manifest entry, not tools/tubuild.py create output -- the `main` module is unsegmentable, so there is no create candidate id.",
+    "Sound2 is the tree class name plus the numeric suffix for a second Sound run per Juan 2026-10-11 (E01 night-queue new-file fold): the Func_02048eb4/ec4/ee4 names are the tree's existing address-style Sound spellings, and the func_02048e94/ed4 helpers keep their existing address names.",
+    "mwccarm emits .text in reverse source order, so the file runs ROM-descending (Func_02048ee4 first, func_02048e94 last). No pragma: the shards carried none.",
+    "All five compile byte-identical as C++ (match.py 2004/b56); the three Func_ wrappers keep their literal mangled names under extern \"C\", the spelling src/engine/sound/Sound.cpp already declares them with.",
+    "func_02048e94 keeps the shard's int-returning SetPlayableSeqCount spelling: the ROM body returns the call result, so the header's void spelling cannot express it.",
+    "Text-only. The TU emits no data of its own."
+  ],
+  "verification": {
+    "round": "tools/tubuild.py verify -- text-only, whole shadow TU compiled once",
+    "toolchain": "tools/mwccarm/2004/b56/mwccarm.exe",
+    "flags": "-O4,p -enum int -lang c++ -char signed -interworking -proc arm946e -gccext,on -msgstyle gcc -Cpp_exceptions off",
+    "object": "build/tu/arm9-Sound2/Sound2.o (gitignored)",
+    "comparison": "tools/match.py extract_func+compare (bytes/relocs) AND tools/objisolate.py plan() (relocation type/addend) AND tools/reloc_audit.py check_destinations() (relocation target identity)",
+    "functions_matched": 5,
+    "functions_declared": 5,
+    "compilerOnlyOutput": {
+      "requested": [],
+      "deadstripped": [],
+      "data": [],
+      "dataExternalized": []
+    },
+    "criteria": {
+      "every_declared_function_defined": "PASS",
+      "every_declared_function_bytes_match": "PASS",
+      "declared_function_set_equals_defined_function_set": "PASS",
+      "functions_occur_in_expected_order": "PASS",
+      "relocation_destinations_verified": "PASS"
+    },
+    "linkcheck": {
+      "round": "tools/tubuild.py linkcheck -- scratch dsd delink+lcf, whole-tree mwccarm, mwldarm link, linked-range and module byte comparison, dsd check symbols --fail, full ROM build",
+      "result": "link-verified",
+      "scratch": "build/tu/arm9-Sound2/link (gitignored)",
+      "phases": {
+        "delink": true,
+        "lcf": true,
+        "compile": true,
+        "link": true,
+        "checkModules": true,
+        "checkSymbols": false,
+        "rom": true
+      },
+      "tuRange": {
+        "start": "0x02048e94",
+        "end": "0x02048ef4",
+        "differingBytes": 0,
+        "firstDiff": null
+      },
+      "tuRanges": [
+        {
+          "section": ".text",
+          "start": "0x02048e94",
+          "end": "0x02048ef4",
+          "differingBytes": 0,
+          "firstDiff": null
+        }
+      ],
+      "objectAudit": {
+        "counts": {
+          "LICENSED": 5
+        },
+        "emittedTextOrderIsRomAscending": true,
+        "nonLicensedSymbols": [],
+        "unlicensedSections": []
+      },
+      "nontextSectionOrder": {
+        "groups": [],
+        "objisolate": null,
+        "errors": null
+      },
+      "linkedStorageAliases": null,
+      "symbolCheckNewVsBaseline": [],
+      "symbolCheckErrors": [
+        "[ERROR] Symbol '_deq' in ITCM at 0x01ff9d40 not found in linked binary",
+        "[ERROR] Symbol 'data_020ad524' in ARM9 main at 0x020ad524 not found in linked binary",
+        "[ERROR] Symbol 'data_020ad560' in ARM9 main at 0x020ad560 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff98f4' in ITCM at 0x01ff98f4 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff99a4' in ITCM at 0x01ff99a4 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff9d40' in ITCM at 0x01ff9d40 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff9e2c' in ITCM at 0x01ff9e2c not found in linked binary",
+        "[ERROR] Symbol 'overlay_100' in ARM9 main at 0x00000064 not found in linked binary",
+        "[ERROR] Symbol 'overlay_102' in ARM9 main at 0x00000066 not found in linked binary"
+      ],
+      "symbolCheckBaselineErrors": [
+        "[ERROR] Symbol '_deq' in ITCM at 0x01ff9d40 not found in linked binary",
+        "[ERROR] Symbol 'data_020ad524' in ARM9 main at 0x020ad524 not found in linked binary",
+        "[ERROR] Symbol 'data_020ad560' in ARM9 main at 0x020ad560 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff98f4' in ITCM at 0x01ff98f4 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff99a4' in ITCM at 0x01ff99a4 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff9d40' in ITCM at 0x01ff9d40 not found in linked binary",
+        "[ERROR] Symbol 'func_01ff9e2c' in ITCM at 0x01ff9e2c not found in linked binary",
+        "[ERROR] Symbol 'overlay_100' in ARM9 main at 0x00000064 not found in linked binary",
+        "[ERROR] Symbol 'overlay_102' in ARM9 main at 0x00000066 not found in linked binary"
+      ],
+      "moduleSetSha256": "f9852ffaf80ef19662ab5535df4b13b935188ac3087b5b1d4561c089e4dd802b",
+      "rom": {
+        "bytes": 16777216,
+        "sha256": "ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40",
+        "matchesStockRom": true
+      },
+      "linkerOutput": null
+    }
+  }
+}
