@@ -809,3 +809,10 @@
 {"path": "src/unnamed/ov091/__sinit_ov091_02134930.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
 {"path": "src/unnamed/ov095/__sinit_ov095_02136fe0.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
 {"path": "src/unnamed/ov102/__sinit_ov102_0214d714.c", "reason": "shard folded into its owning TU (batch sinit-1010-5)"}
+{"path": "src/engine/particle/Particle.cpp#_ZN8Particle10SysTracker6UpdateEv", "reason": "arm9/Particle fold: TU must spell vague-linkage symbols directly and keep raw offset access where byte-match requires it"}
+{"path": "src/engine/particle/Particle.cpp#_ZN8Particle10SysTrackerC1Ev", "reason": "arm9/Particle fold: TU must spell vague-linkage symbols directly and keep raw offset access where byte-match requires it"}
+{"path": "src/engine/particle/Particle.cpp#_ZN8Particle19SetSelfDestructFlagEj", "reason": "arm9/Particle fold: TU must spell vague-linkage symbols directly and keep raw offset access where byte-match requires it"}
+{"path": "src/engine/particle/Particle.cpp#_ZN8Particle6System12FromUniqueIDEj", "reason": "arm9/Particle fold: TU must spell vague-linkage symbols directly and keep raw offset access where byte-match requires it"}
+{"path": "src/engine/particle/Particle.cpp#_ZN8Particle7Texture12AllocPalVramEjb", "reason": "arm9/Particle fold: TU must spell vague-linkage symbols directly and keep raw offset access where byte-match requires it"}
+{"path": "src/engine/particle/Particle.cpp#_ZN8Particle7Texture12AllocTexVramEjb", "reason": "arm9/Particle fold: TU must spell vague-linkage symbols directly and keep raw offset access where byte-match requires it"}
+{"path": "src/engine/particle/Particle.cpp#_ZN8Particle9RenderAllEv", "reason": "arm9/Particle fold: TU must spell vague-linkage symbols directly and keep raw offset access where byte-match requires it"}
