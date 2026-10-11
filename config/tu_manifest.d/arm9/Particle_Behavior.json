@@ -5,55 +5,97 @@
   "promoted_source": "src/engine/particle/Particle_Behavior.cpp",
   "status": "promoted",
   "boundary_confidence": "high",
-  "boundary_evidence": "Contiguous .text span 0x0204d4d0..0x0204d8e8: six functions tile the span exactly with no hole and no tail (recomputed from config/arm9/symbols.txt), and every one carries the _ZN8Particle<Name>4FuncERNS_10EffectDataEPcR7Vector3 label -- the static Func of each POD behavior struct declared in include/Particle__Behavior.h (RadiusConverge, LimitPlane, Turn, Converge, Jitter, Acceleration). Both neighbours are unlabeled free functions: func_0204d440 ends at 0x0204d4d0 below and func_0204d8e8 begins at 0x0204d8e8 above, so the boundary is a class change on both edges. The other Particle::System/SysTracker/Texture members live in the 0x02022d80..0x02023178 band and are deliberately out of scope -- the linker places one object's .text contiguously, so the behavior-Func run is its own TU.",
+  "boundary_evidence": "Contiguous .text span 0x0204d0b8..0x0204d8e8: twelve functions tile the span exactly with no hole and no tail (recomputed from config/arm9/symbols.txt). The top six carry the _ZN8Particle<Name>4FuncERNS_10EffectDataEPcR7Vector3 label -- the static Func of each POD behavior struct declared in include/Particle__Behavior.h (RadiusConverge, LimitPlane, Turn, Converge, Jitter, Acceleration). The span grew backward over six contiguous free Particle helpers (func_0204d440, func_0204d294, func_0204d1b4, func_0204d150, func_0204d104, func_0204d0b8): the callback-table builder func_0204a730 inside the Particle::Manager run loads exactly these six as consecutive Cb2 table entries at 0x0204ae14..0x0204ae28, and func_0204d1b4 shares the LCG state data_020a4d30 with Jitter::Func. They stay extern \"C\" free functions under their address names -- none takes a this receiver. The lower boundary is now the C-only func_0204cebc (struct-copy/fixed-point codegen differs as C++, probe sizes 508 vs 464 -- not respellable); func_0204d8e8 remains the upper neighbour, so the boundary is a class change on the top edge and a real-C shard on the bottom edge. The other Particle::System/SysTracker/Texture members live in the 0x02022d80..0x02023178 band and are deliberately out of scope -- the linker places one object's .text contiguously, so the behavior run is its own TU.",
   "sections": [
     {
       "name": ".text",
-      "start": "0x0204d4d0",
+      "start": "0x0204d0b8",
       "end": "0x0204d8e8"
     }
   ],
   "functions": [
     {
+      "symbol": "func_0204d0b8",
+      "address": "0x0204d0b8",
+      "size": "0x4c",
+      "ordinal": 0,
+      "legacy_source": "src/unnamed/arm9/0204/func_0204d0b8.c"
+    },
+    {
+      "symbol": "func_0204d104",
+      "address": "0x0204d104",
+      "size": "0x4c",
+      "ordinal": 1,
+      "legacy_source": "src/unnamed/arm9/0204/func_0204d104.c"
+    },
+    {
+      "symbol": "func_0204d150",
+      "address": "0x0204d150",
+      "size": "0x64",
+      "ordinal": 2,
+      "legacy_source": "src/unnamed/arm9/0204/func_0204d150.c"
+    },
+    {
+      "symbol": "func_0204d1b4",
+      "address": "0x0204d1b4",
+      "size": "0xe0",
+      "ordinal": 3,
+      "legacy_source": "src/unnamed/arm9/0204/func_0204d1b4.c"
+    },
+    {
+      "symbol": "func_0204d294",
+      "address": "0x0204d294",
+      "size": "0x1ac",
+      "ordinal": 4,
+      "legacy_source": "src/unnamed/arm9/0204/func_0204d294.c"
+    },
+    {
+      "symbol": "func_0204d440",
+      "address": "0x0204d440",
+      "size": "0x90",
+      "ordinal": 5,
+      "legacy_source": "src/unnamed/arm9/0204/func_0204d440.c"
+    },
+    {
       "symbol": "_ZN8Particle14RadiusConverge4FuncERNS_10EffectDataEPcR7Vector3",
       "address": "0x0204d4d0",
       "size": "0xac",
-      "ordinal": 0,
+      "ordinal": 6,
       "legacy_source": "src/_ZN8Particle14RadiusConverge4FuncERNS_10EffectDataEPcR7Vector3.cpp"
     },
     {
       "symbol": "_ZN8Particle10LimitPlane4FuncERNS_10EffectDataEPcR7Vector3",
       "address": "0x0204d57c",
       "size": "0x104",
-      "ordinal": 1,
+      "ordinal": 7,
       "legacy_source": "src/_ZN8Particle10LimitPlane4FuncERNS_10EffectDataEPcR7Vector3.cpp"
     },
     {
       "symbol": "_ZN8Particle4Turn4FuncERNS_10EffectDataEPcR7Vector3",
       "address": "0x0204d680",
       "size": "0xd8",
-      "ordinal": 2,
+      "ordinal": 8,
       "legacy_source": "src/_ZN8Particle4Turn4FuncERNS_10EffectDataEPcR7Vector3.cpp"
     },
     {
       "symbol": "_ZN8Particle8Converge4FuncERNS_10EffectDataEPcR7Vector3",
       "address": "0x0204d758",
       "size": "0x94",
-      "ordinal": 3,
+      "ordinal": 9,
       "legacy_source": "src/_ZN8Particle8Converge4FuncERNS_10EffectDataEPcR7Vector3.cpp"
     },
     {
       "symbol": "_ZN8Particle6Jitter4FuncERNS_10EffectDataEPcR7Vector3",
       "address": "0x0204d7ec",
       "size": "0xc4",
-      "ordinal": 4,
+      "ordinal": 10,
       "legacy_source": "src/_ZN8Particle6Jitter4FuncERNS_10EffectDataEPcR7Vector3.cpp"
     },
     {
       "symbol": "_ZN8Particle12Acceleration4FuncERNS_10EffectDataEPcR7Vector3",
       "address": "0x0204d8b0",
       "size": "0x38",
-      "ordinal": 5,
+      "ordinal": 11,
       "legacy_source": "src/_ZN8Particle12Acceleration4FuncERNS_10EffectDataEPcR7Vector3.cpp"
     }
   ],
@@ -63,8 +105,8 @@
     "flags": "-O4,p -enum int -lang c++ -char signed -interworking -proc arm946e -gccext,on -msgstyle gcc -Cpp_exceptions off",
     "object": "build/tu/arm9-Particle_Behavior/Particle_Behavior.o (gitignored)",
     "comparison": "tools/match.py extract_func+compare (bytes/relocs) AND tools/objisolate.py plan() (relocation type/addend) AND tools/reloc_audit.py check_destinations() (relocation target identity)",
-    "functions_matched": 6,
-    "functions_declared": 6,
+    "functions_matched": 12,
+    "functions_declared": 12,
     "compilerOnlyOutput": {
       "requested": [],
       "deadstripped": [],
