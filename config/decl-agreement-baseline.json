@@ -24742,7 +24742,7 @@
       ]
     },
     "func_02046234": {
-      "src/_ZN5Model14SetPolygonModeEi.cpp": [
+      "src/engine/model/Model2.cpp": [
         "param:#2 int"
       ]
     },
