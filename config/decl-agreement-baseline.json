@@ -1807,10 +1807,6 @@
       ]
     },
     "MulVec3Mat4x3": {
-      "src/_ZN5dPa_c7level_c14clipCallback_c8OnUpdateERN8Particle6SystemEb.cpp": [
-        "param:#1 const Vector3 *",
-        "param:#2 const Matrix4x3 *"
-      ],
       "src/actors/daBasabasa_c.cpp": [
         "param:#1 const void *",
         "param:#2 const void *"
@@ -10115,11 +10111,6 @@
         "return:void *"
       ]
     },
-    "_ZN8Particle6System9NewRippleE5Fix12IiES2_S2_": {
-      "src/_ZN5dPa_c7level_c26checkWaterRippleCallback_c8OnUpdateERN8Particle6SystemEb.cpp": [
-        "return:void"
-      ]
-    },
     "_ZN8Particle6System9NewSimpleEj5Fix12IiES2_S2_": {
       "src/_ZN6Player16InitBalloonMarioEv.cpp": [
         "return:void"
@@ -13431,7 +13422,7 @@
       ]
     },
     "data_0209f43c": {
-      "src/_ZN5dPa_c7level_c14clipCallback_c8OnUpdateERN8Particle6SystemEb.cpp": [
+      "src/engine/particle/dPa_c.cpp": [
         "return:dClipper"
       ],
       "src/actors/dActor_c.cpp": [
@@ -23615,9 +23606,6 @@
     },
     "func_02022260": {
       "include/decl_common.h": [
-        "arity:0"
-      ],
-      "src/_ZN5dPa_c7level_c20edStarKiraCallback_c8OnUpdateERN8Particle6SystemEb.cpp": [
         "arity:0"
       ]
     },
