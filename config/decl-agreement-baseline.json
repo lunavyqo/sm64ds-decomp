@@ -2321,6 +2321,9 @@
       ]
     },
     "OS_WakeupThread": {
+      "src/IRQ2.cpp": [
+        "param:#1 int *"
+      ],
       "src/_ZN3IRQ13VBlankHandlerEv.cpp": [
         "param:#1 int *"
       ],
@@ -7281,6 +7284,9 @@
       ]
     },
     "_ZN3IRQ13SetIRQHandlerEjPFvvE": {
+      "src/IRQ2.cpp": [
+        "param:#2 void (*)(void)"
+      ],
       "src/unnamed/arm9/0201/func_0201a4e4.c": [
         "param:#2 void (*)(void)"
       ],
@@ -14832,6 +14838,9 @@
       ]
     },
     "data_023c0000": {
+      "src/IRQ2.cpp": [
+        "return:char []"
+      ],
       "src/_ZN3IRQ13DmaTimHandlerEj.cpp": [
         "return:unsigned int []"
       ],
