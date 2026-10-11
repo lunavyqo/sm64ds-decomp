@@ -776,12 +776,12 @@
   ],
   "defined_symbol_renames": [
     {
-      "from": "@731",
+      "from": "@745",
       "to": "@158",
       "evidence": "emitted destructor-registration node collides with ov018 @731; renumber to fleet-free name of the same length"
     },
     {
-      "from": "@732",
+      "from": "@746",
       "to": "@159",
       "evidence": "emitted destructor-registration node collides with ov018 @732; renumber to fleet-free name of the same length"
     }

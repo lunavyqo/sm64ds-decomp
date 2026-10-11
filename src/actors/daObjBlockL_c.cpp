@@ -430,8 +430,8 @@ int daObjBlockL_c::Render()
   }
   int b2 = (actorID == 0x10);
   if (b2 != 0) {
-    Vector3 v = data_ov002_021089e0;
-    mModel.Render(&v);
+    RawVector3 v = *(RawVector3 *)&data_ov002_021089e0;
+    mModel.Render((Vector3 *)&v);
   } else {
     mModel.Render(0);
   }
