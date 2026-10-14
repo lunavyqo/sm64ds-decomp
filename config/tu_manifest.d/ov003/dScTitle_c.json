@@ -17,6 +17,11 @@
       "name": ".text",
       "start": "0x020ad660",
       "end": "0x020addfc"
+    },
+    {
+      "name": ".rodata",
+      "start": "0x020b117c",
+      "end": "0x020b1180"
     }
   ],
   "functions": [
@@ -96,6 +101,27 @@
       "size": "0x00000140",
       "legacy_source": "src/unnamed/ov003/func_ov003_020adcbc.cpp",
       "ordinal": 10
+    }
+  ],
+  "rodata": [
+    {
+      "symbol": "data_ov003_020b117c",
+      "address": "0x020b117c",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "The one word symbols.txt names here. It is the pointer data_ov003_020b13a8, the first level name. The next symbol starts four bytes later, so the object is this word and the grid still steps eight bytes from its address."
+    }
+  ],
+  "relocations": [
+    {
+      "section": ".rodata",
+      "source": "0x020b117c",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "data_ov003_020b13a8",
+      "addend": 0,
+      "target_module": "ov003",
+      "target_address": "0x020b13a8"
     }
   ],
   "data": [],
@@ -178,7 +204,7 @@
     },
     "linkcheck": {
       "round": "tools/tubuild.py linkcheck -- scratch dsd delink+lcf, whole-tree mwccarm, mwldarm link, linked-range and module byte comparison, dsd check symbols --fail, full ROM build",
-      "result": "scratch-link-verified",
+      "result": "scratch-data-verified",
       "scratch": "build/tu/ov003-dScTitle_c/link (gitignored)",
       "phases": {
         "delink": true,
@@ -191,7 +217,7 @@
       },
       "tuRange": {
         "start": "0x020ad660",
-        "end": "0x020adc74",
+        "end": "0x020addfc",
         "differingBytes": 0,
         "firstDiff": null
       },
@@ -199,21 +225,38 @@
         {
           "section": ".text",
           "start": "0x020ad660",
-          "end": "0x020adc74",
+          "end": "0x020addfc",
+          "differingBytes": 0,
+          "firstDiff": null
+        },
+        {
+          "section": ".rodata",
+          "start": "0x020b117c",
+          "end": "0x020b1180",
           "differingBytes": 0,
           "firstDiff": null
         }
       ],
       "objectAudit": {
         "counts": {
-          "LICENSED": 9
+          "LICENSED": 12
         },
         "emittedTextOrderIsRomAscending": true,
         "nonLicensedSymbols": [],
         "unlicensedSections": []
       },
       "nontextSectionOrder": {
-        "groups": [],
+        "groups": [
+          {
+            "section": ".rodata",
+            "original": [
+              5
+            ],
+            "desired": [
+              5
+            ]
+          }
+        ],
         "objisolate": null,
         "errors": null
       },
