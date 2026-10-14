@@ -1,0 +1,311 @@
+{
+  "task": "arm7-average-native1014",
+  "status": "Producer verified checkpoint; independent acceptance pending",
+  "base": "2a9e3d0ccd4d38adaa8fdbe087991feabcce767d",
+  "initial_probe_base": "8080bc51e2fe17a8983cdca2de513ccf32388550",
+  "author": {
+    "agent": "/root/cpp_frontier_astra1014",
+    "uuid": "01a13996-b2f1-7d93-8bdd-510e5c78a79e",
+    "session": "codex-arm7-average-astra1014",
+    "role": "Actual new genuine C matching author; prior assembly and symbol discovery credit unchanged"
+  },
+  "scope": {
+    "write_files": [
+      "arm7/src/0238E0E4.c",
+      "arm7/README.md",
+      "notes/experiments/arm7-average-native1014.json"
+    ],
+    "ranges": [
+      "range:arm7:0x0238E0E4:0x0238E120",
+      "range:arm7:0x027C005C:0x027C0098"
+    ],
+    "build_flags_syms_swap_unchanged": true,
+    "header_changes": false
+  },
+  "source_form": "Genuine C loop sums16 unsigned byte samples, shifts unsigned sum right4 and calls existing int classifier. Index declaration precedes sum declaration; sum initialization precedes index initialization. Split pointer expression preserves retail address arithmetic without assembly, pragmas, aliases or fake arguments.",
+  "target_proof": {
+    "base": "8080bc51e2fe17a8983cdca2de513ccf32388550",
+    "source": "arm7/src/0238E0E4.c",
+    "candidate_source_sha256": "1cf13304e3ea40c80250823433b8b6f6834789d952eedcf6156ce2bf53d77d69",
+    "compiler_flags": [
+      "-O4,s",
+      "-proc",
+      "arm7tdmi",
+      "-interworking",
+      "-fp",
+      "soft",
+      "-enum",
+      "int",
+      "-lang",
+      "c99",
+      "-char",
+      "signed"
+    ],
+    "raw_text_and_pool_literal_equal": true,
+    "raw_typed_relocations_literal_equal": true,
+    "relocations": [
+      {
+        "offset": 52,
+        "type": 2,
+        "symbol": "dat_27D6A84",
+        "addend": 0,
+        "actual_destination": "0x27d6a84"
+      },
+      {
+        "offset": 56,
+        "type": 2,
+        "symbol": "fn_0238E0BC",
+        "addend": 0,
+        "actual_destination": "0x27c0034"
+      }
+    ],
+    "full_function_relocated_retail_equal": true,
+    "bytes": 60,
+    "blind": 0
+  },
+  "full_image_proof": {
+    "base": "2a9e3d0ccd4d38adaa8fdbe087991feabcce767d",
+    "candidate_sha256": "1cf13304e3ea40c80250823433b8b6f6834789d952eedcf6156ce2bf53d77d69",
+    "base_target_source_identical_to_8080": true,
+    "build_script_unchanged": true,
+    "swap_unchanged": true,
+    "rows": 823,
+    "elapsed_seconds": 15.436999999976251,
+    "whole_image_size": 150308,
+    "sha1": "0efbc2d43d0a7ae4a087472fd0ec7ca2875ec865",
+    "literal_retail_equal": true,
+    "exit": 0
+  },
+  "prior_8080_replays": [
+    {
+      "tag": "baseline",
+      "exit": 0,
+      "elapsed_seconds": 19.25,
+      "image_sha1": "0efbc2d43d0a7ae4a087472fd0ec7ca2875ec865",
+      "literal_retail_equal": true,
+      "rows": 822
+    },
+    {
+      "tag": "candidate",
+      "exit": 0,
+      "elapsed_seconds": 17.68700000003446,
+      "image_sha1": "0efbc2d43d0a7ae4a087472fd0ec7ca2875ec865",
+      "literal_retail_equal": true,
+      "rows": 822
+    }
+  ],
+  "object_storage": {
+    "candidate_allocated_sections": [
+      {
+        "name": ".exceptix",
+        "bytes": 12,
+        "flags": 2,
+        "sha256": "07af31fe385d5afd17f239b770b34a7debc0a5aadd9cb72972b5c4c8f5a1027a"
+      },
+      {
+        "name": ".text",
+        "bytes": 60,
+        "flags": 6,
+        "sha256": "c7cab00652485008ab5d999d0c1acd6546aeb6700b62e5e895a217699f5634bf"
+      }
+    ],
+    "baseline_only_allocated_section": ".text:60 bytes",
+    "new_exceptix": "Native C compiler adds12-byte .exceptix with one ABS32 self-reference. Existing ARM7 LCF selects only .text; .exceptix is absent from linked ELF and all four binary regions match retail. No policy or build change.",
+    "no_new_data_BSS_init_or_ctor": true,
+    "whole_raw_ELF_literal_equal": false,
+    "linked_text_and_pool_literal_equal": true
+  },
+  "declaration_population": {
+    "target_definition": "int fn_0238E0E4(void)",
+    "target_caller_files": [
+      "arm7/src/0238EC40.c",
+      "arm7/src/02392CF0.c"
+    ],
+    "both_target_declarations": "int fn_0238E0E4(void)",
+    "callee_definition_file": "arm7/src/0238E0BC.c",
+    "callee_definition": "int fn_0238E0BC(unsigned int)",
+    "agreement": "Actual complete target/callee population inspected. Both target callers consume integer result; classifier returns0,1,2,3. Global src/include declaration ratchet does not cover this standalone arm7 tree, so no global ratchet claim."
+  },
+  "toolchain": {
+    "compiler": "2004/b56/mwccarm.exe",
+    "compiler_sha256": "c6aafc210c78e91b123e8e949b8e26faa76849225b9f639780fcc9db6cdff0b7",
+    "assembler": "1.2/sp2p3/mwasmarm.exe",
+    "linker": "1.2/sp2p3/mwldarm.exe",
+    "flags": [
+      "-O4,s",
+      "-proc",
+      "arm7tdmi",
+      "-interworking",
+      "-fp",
+      "soft",
+      "-enum",
+      "int",
+      "-lang",
+      "c99",
+      "-char",
+      "signed"
+    ],
+    "canary": "func_ov006_020cb030 verified 2004/b56"
+  },
+  "coverage": {
+    "enrolled_rows": 823,
+    "pure_C_sources_before": 761,
+    "pure_C_sources_after": 762,
+    "listed_C_entries_after": 764,
+    "tagged_ASM_primitives": 26,
+    "ASM_standins_after": 33,
+    "privileged_standins": 3,
+    "other_standins_after": 30,
+    "unenrolled_C_drafts": 5,
+    "ordinary_C_like_upper_bound_remaining": 35,
+    "qualification": "Complete hybrid ARM7 image equality does not imply all ARM7 functions are genuine C. Two listed entries are IDA tails, not extra functions."
+  },
+  "findings": [
+    {
+      "id": "ARM7-AVERAGE-DATA-LAYOUT",
+      "status": "partial",
+      "reason": "Original data-block structure and field spelling are not recovered; byte offset0x1614 retained. Address identity and runtime destination proven."
+    },
+    {
+      "id": "ARM7-AVERAGE-ORIGINAL-TYPES",
+      "status": "partial",
+      "reason": "Unsigned sum and signed index reproduce observed LSR and BLT. Original source spelling and typedefs are not uniquely recovered."
+    },
+    {
+      "id": "ARM7-WRAPPER-NONTAIL",
+      "status": "deferred separate scope",
+      "reason": "Plain genuine C wrappers0238208C/02382558 still tail-call under unchanged compiler flags; no compiler impossibility asserted, no assembly substituted as new C match."
+    },
+    {
+      "id": "ARM7-REMAINING-ASSEMBLY",
+      "status": "partial separate scope",
+      "reason": "Other stand-ins and primitive provenance retain predecessor qualifications; only this60-byte target is reconstructed here."
+    }
+  ],
+  "ownership_read": {
+    "queue": "853b9d9240c929610a854bb8b9a8b71fbbb0c1a3",
+    "arm7_task_observed": "arm7-existing-match1014 phase done; no active ARM7 writer observed",
+    "qualification": "Own producer claim accepted for exact2a9 input; evidence is not independent acceptance.",
+    "claimed_queue": "fa82dd1ae6bc99a263b382c0aa833435f6be8a74"
+  },
+  "validation_qualification": "Actual local producer gates recorded here; final report-only commit binds the same compiler inputs. Independent Source/byte acceptance and publication remain separate. No private CI pass, public push or merge claim.",
+  "production_proof": {
+    "checkpoint": "63e4d1691a5d55999a6247ac18d27b82441b6a3b",
+    "source_sha256": "1cf13304e3ea40c80250823433b8b6f6834789d952eedcf6156ce2bf53d77d69",
+    "object_sha256": "3a5d0b7c27d94b4b7aa58a7fc62e33a130c5df0029d7ccf8e51b8270a971acf7",
+    "whole_RAW_equal_private_candidate": true,
+    "text_plus_pool_bytes": 60,
+    "instruction_bytes": 52,
+    "literal_pool_bytes": 8,
+    "raw_text_and_typed_refs_equal_private_candidate": true,
+    "all_raw_relocations": [
+      {
+        "section": ".rela.exceptix",
+        "offset": 0,
+        "type": 2,
+        "symbol": "fn_0238E0E4",
+        "addend": 0
+      },
+      {
+        "section": ".rela.text",
+        "offset": 52,
+        "type": 2,
+        "symbol": "dat_27D6A84",
+        "addend": 0
+      },
+      {
+        "section": ".rela.text",
+        "offset": 56,
+        "type": 2,
+        "symbol": "fn_0238E0BC",
+        "addend": 0
+      }
+    ],
+    "complete_runtime_extent": [
+      "0x027C005C",
+      "0x027C0098"
+    ],
+    "complete_storage_extent": [
+      "0x0238E0E4",
+      "0x0238E120"
+    ],
+    "retail_function_sha256": "255b49842776cbe59da4bea73f1dcd0501309bd825c2d8c39e63e265d380897a",
+    "full_image_literal_retail_equal": true,
+    "full_image_bytes": 150308,
+    "full_image_sha1": "0efbc2d43d0a7ae4a087472fd0ec7ca2875ec865",
+    "enrolled_rows": 823,
+    "actual_enrolled_file_classification": {
+      "asm_primitive": 26,
+      "asm_standin": 33,
+      "pure_C": 762,
+      "assembler_packs": 2
+    }
+  },
+  "gates": {
+    "arm7": {
+      "command": [
+        "python",
+        "arm7/build.py"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 21.68800000002375,
+      "log_sha256": "2f99da28f317d01fe2656ae0187d6ec7cdd4746bb30dfbc9ddb3eb304547f977"
+    },
+    "prepush": {
+      "command": [
+        "python",
+        "tools/prepush_linkcheck.py",
+        "--range",
+        "2a9e3d0ccd4d38adaa8fdbe087991feabcce767d..HEAD"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 16.10899999999674,
+      "log_sha256": "9c4499ed23edc10341f91fb94547e25639aca8e7dd03134ae29ab3535ed95567"
+    },
+    "declaration": {
+      "command": [
+        "python",
+        "tools/check_decl_agreement.py",
+        "--changed",
+        "2a9e3d0ccd4d38adaa8fdbe087991feabcce767d"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.25,
+      "log_sha256": "f8441419e65c68b60bb8c9b8288fe5b9cb03b8221d501e5ad78934a5304b7579"
+    },
+    "port": {
+      "command": [
+        "python",
+        "tools/port_refcheck.py"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 1.8130000000237487,
+      "log_sha256": "b010cd028d86799a0ca3fef6d8a50d00786d7610b9d12dc8e7eee993a7c1b86e"
+    },
+    "diff": {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "2a9e3d0ccd4d38adaa8fdbe087991feabcce767d..HEAD"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.0470000000204891,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "gate_coverage": {
+    "ARM7_build": "Actual normal python arm7/build.py terminal0 on Source checkpoint; exact complete retail image, no replay override.",
+    "prepush_linkcheck": "Terminal0 but no matched src files: standalone ARM7 is outside this gate.",
+    "declaration_ratchet": "Terminal0 but no src/include/config change: standalone ARM7 is outside this gate. Direct complete target/callee declaration population inspected separately.",
+    "port_refcheck": "267 references resolve. No path/symbol rename.",
+    "ARM9_rombuild": "Not rerun: this scope changes no ARM9 Source/header/config/build input; ARM7 normal image build is the relevant production byte gate."
+  },
+  "historical_provenance": {
+    "prior_attempt_label": "AR59, as recorded by the replaced source comment",
+    "prior_state": "Whole-function assembly stand-in; initial index/sum register difference was unresolved. New C matching was performed by this report author.",
+    "original_PR_author": "lunavyqo",
+    "prior_private_session_identity": "Not established; no attribution inferred from PR account or attempt label.",
+    "accepted_predecessor": "AH21 existing C548-byte enrollment preserved at2a9e3d0ccd4d38adaa8fdbe087991feabcce767d."
+  }
+}

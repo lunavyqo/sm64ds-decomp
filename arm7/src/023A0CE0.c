@@ -1,6 +1,10 @@
-// NONMATCHING: best C 134/158 words match the ROM.
-// @ 0x023A0CE0 size 0x26C (runtime 0x027D2C58, main). Residue class: register allocation / frame shape.
-// Closest C attempt from AH54 (tried, closed); not enrolled, so the build keeps the original bytes for this range.
+/* storage 0x023A0CE0, runtime 0x027D2C58; 0x26C bytes of code and
+ * 0x0C bytes of literal pool. The low four bits of the 16-bit sequence
+ * word wrap independently of the upper twelve bits.
+ * Earlier AH54 draft retained below apart from the bitfield update and
+ * removal of an unused third parameter; broader layouts remain partial.
+ */
+struct SequenceWord { unsigned short low : 4; unsigned short high : 12; };
 extern void fn_02382C98(void *a1, void *a2, int a3) /* =0x037FAB30 */;
 extern int fn_0238D594(int a1, int a2) /* =0x0380542C */;
 extern int fn_02394D84(void *a1, void *a2, unsigned short *node) /* =0x027C6CFC */;
@@ -9,7 +13,7 @@ extern int fn_02394DF8(void *list, unsigned short *node) /* =0x027C6D70 */;
 
 #pragma opt_propagation off
 #pragma opt_common_subs off
-void fn_023A0CE0(unsigned short *a1, unsigned short *a2, int a3) {
+void fn_023A0CE0(unsigned short *a1, unsigned short *a2) {
     int off;
     unsigned int i;
     char *base;
@@ -51,12 +55,9 @@ void fn_023A0CE0(unsigned short *a1, unsigned short *a2, int a3) {
     }
     if (i != 3) {
         char *slot16;
-        unsigned short cur;
         int r;
         char *slot;
-        unsigned int sh;
         unsigned int nib;
-        unsigned int bic;
         off2 = i * 0x18;
         slot = base + off2;
         v12 = (unsigned short *)(*(int *)(slot + 20) + 16);
@@ -71,10 +72,7 @@ void fn_023A0CE0(unsigned short *a1, unsigned short *a2, int a3) {
             r = fn_0238D594(*a1 & 0xF0, 16);
             slot = base + off2;
             slot16 = slot + 16;
-            cur = *(unsigned short *)slot16;
-            bic = cur & ~0xF;
-            sh = (unsigned int)cur << 28;
-            *(unsigned short *)slot16 = (unsigned short)(bic | ((unsigned short)(r - d2 + (sh >> 28)) & 0xF));
+            ((struct SequenceWord *)slot16)->low = (unsigned short)(r - d2 + ((struct SequenceWord *)slot16)->low);
             *(int *)((char *)*(char **)0x0380FFF4 + 0x518) += r;
             if ((*a1 & 0x100) == 0) {
                 *(unsigned short *)slot = 0;

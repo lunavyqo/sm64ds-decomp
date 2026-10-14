@@ -1,0 +1,458 @@
+{
+  "task_id": "arm7-existing-match1014",
+  "scope": "Enroll one existing matching ARM7 C source at its complete extent; no executable source rewrite.",
+  "base_commit": "8080bc51e2fe17a8983cdca2de513ccf32388550",
+  "tested_source_commit": "bf33c7472b49d9e617f14e3087b8bd640a5c6f3a",
+  "final_commit_binding": "This commit adds only this report after the documentation checkpoint. All actual build inputs are literal tested_source_commit objects; README/report-only changes transfer existing actual build evidence without claiming a new compiler run.",
+  "parent_pr": {
+    "number": 3758,
+    "url": "https://github.com/tangosdev/sm64ds-decomp/pull/3758",
+    "branch": "batch/arm7-1012-8",
+    "author": "lunavyqo",
+    "head": "8080bc51e2fe17a8983cdca2de513ccf32388550",
+    "state_at_final_read": "OPEN",
+    "writer_session": "Unknown; no abandonment or permission to rewrite the foreign branch inferred."
+  },
+  "authorship": {
+    "existing_C": "Original PR header attributes this exact C body to AH21. Existing body and attribution retained; no new match-authorship claim.",
+    "recovery_session": "codex-arm7-existing-match-producer1014",
+    "same_actual_agent_alias": "codex-scene-report-recovery1014",
+    "role": "Extent/enrollment recovery, coverage documentation and evidence binding; Source producer for this scoped change, not independent verifier.",
+    "independent_review": "Pending distinct Root verifier on exact final output."
+  },
+  "changes": [
+    "Correct the first three source comment lines: complete0x224 extent and now-enrolled existing AH21 C.",
+    "Add exactly one swap row; preserve existing real symbol definitions and all C tokens.",
+    "Document actual C/ASM/gap coverage; preserve uncertainty for original source forms.",
+    "Add this recovery report."
+  ],
+  "function": {
+    "storage": "0x02388798",
+    "runtime": "0x03800630",
+    "size": 548,
+    "code_size": 520,
+    "literal_pool_size": 28,
+    "next_storage": "0x023889BC",
+    "next_runtime": "0x03800854",
+    "literal_equal": true,
+    "sha256": "8f8194bd2e10386bb7befa20608662654cfe6b833e352b9cf000059477a48c46"
+  },
+  "why_old_nonmatching_was_stale": {
+    "banked_code_size": 520,
+    "banked_candidate_size": 548,
+    "banked_divergences": 25,
+    "fresh_code_prefix_different_words": 0,
+    "fresh_complete_window_different_bytes": 0,
+    "reason": "The banked target omitted the28-byte literal pool. The preserved draft comment already recorded linked0x224. Fresh exact full-image linking now includes the complete source object through the next function boundary. Historical divergence count is retained as historical, not treated as a current failure."
+  },
+  "source_identity": {
+    "base_source_git_blob": "80a7723dd900634bac3e7b15b85868ae6fff1d16",
+    "tested_source_git_blob": "ff132e9aef41f9c71905f099002cb83aecf53348",
+    "C_body_after_three_comment_lines_literal_equal": true,
+    "body_sha256_normalized_LF": "0d0220357bac01265ffd5fdb24116a72355d186654b8ffccda3e643e9c0bfa59",
+    "build_and_symbol_files_literal_unchanged": {
+      "arm7/build.py": true,
+      "arm7/syms.txt": true
+    },
+    "no_headers_or_new_aliases": true
+  },
+  "toolchain": {
+    "compiler": "2004/b56/mwccarm.exe",
+    "CFLAGS": [
+      "-O4,s",
+      "-proc",
+      "arm7tdmi",
+      "-interworking",
+      "-fp",
+      "soft",
+      "-enum",
+      "int",
+      "-lang",
+      "c99",
+      "-char",
+      "signed"
+    ],
+    "assembler_linker": "1.2/sp2p3",
+    "link_flags": [
+      "-proc",
+      "v4t",
+      "-nostdlib",
+      "-interworking",
+      "-m",
+      "_start",
+      "-nodead"
+    ],
+    "actual_canary": "Actual B.verify(dMgTrmpln2Mario_c.cpp,func_ov006_020cb030,020cb030,104,ov006)=(True,2004/b56)."
+  },
+  "actual_full_ARM7_build": {
+    "command": "python arm7/build.py",
+    "process_handle": 74827,
+    "terminal_returncode": 0,
+    "rows": 823,
+    "C_object_rows": 821,
+    "assembly_pack_rows": 2,
+    "image_bytes": 150308,
+    "source_and_assembly_enrolled_bytes": 142636,
+    "source_and_assembly_enrolled_bytes_hex": "0x22D2C",
+    "retail_gap_bytes": 7672,
+    "retail_gap_bytes_hex": "0x1DF8",
+    "literal_retail_equal": true,
+    "sha1": "0efbc2d43d0a7ae4a087472fd0ec7ca2875ec865",
+    "sha256": "f2c6cf5ee7648834dd39945ee8d06ec3960ee5e9a316fd67b449042653fe8f10",
+    "control": "Immutable8080 build and private one-row replay also terminal0/literal-equal. Private replay20.609s is a separate actual run, not claimed as production timing.",
+    "qualification": "This is a hybrid whole-image build, not proof that every function is native C or that the standard ARM9 ROM build consumes these files."
+  },
+  "typed_relocation_proof": {
+    "text_reference_count": 21,
+    "R_ARM_PC24": 18,
+    "R_ARM_ABS32": 3,
+    "blind": 0,
+    "wrong_destinations": 0,
+    "method": "Decode all actual linked branch/literal words from the complete passing image and compare each destination with the unchanged absolute-symbol plus actual enrolled-definition runtime map. No wildcarded relocated words or invented aliases.",
+    "references": [
+      {
+        "offset": "0x4c",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02382AC4",
+        "resolved_destination": "0x37fa95c",
+        "linked_word": "0xebffe8b6",
+        "actual_destination": "0x37fa95c",
+        "equal": true
+      },
+      {
+        "offset": "0x58",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_023883E0",
+        "resolved_destination": "0x3800278",
+        "linked_word": "0xebfffefa",
+        "actual_destination": "0x3800278",
+        "equal": true
+      },
+      {
+        "offset": "0x68",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02382AD8",
+        "resolved_destination": "0x37fa970",
+        "linked_word": "0xebffe8b4",
+        "actual_destination": "0x37fa970",
+        "equal": true
+      },
+      {
+        "offset": "0x7c",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_023883FC",
+        "resolved_destination": "0x3800294",
+        "linked_word": "0xebfffef8",
+        "actual_destination": "0x3800294",
+        "equal": true
+      },
+      {
+        "offset": "0x88",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_023883C8",
+        "resolved_destination": "0x3800260",
+        "linked_word": "0xebfffee8",
+        "actual_destination": "0x3800260",
+        "equal": true
+      },
+      {
+        "offset": "0x90",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02382AD8",
+        "resolved_destination": "0x37fa970",
+        "linked_word": "0xebffe8aa",
+        "actual_destination": "0x37fa970",
+        "equal": true
+      },
+      {
+        "offset": "0xa4",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02388CE8",
+        "resolved_destination": "0x3800b80",
+        "linked_word": "0xeb000129",
+        "actual_destination": "0x3800b80",
+        "equal": true
+      },
+      {
+        "offset": "0xd8",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_023883FC",
+        "resolved_destination": "0x3800294",
+        "linked_word": "0xebfffee1",
+        "actual_destination": "0x3800294",
+        "equal": true
+      },
+      {
+        "offset": "0xf8",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_023883FC",
+        "resolved_destination": "0x3800294",
+        "linked_word": "0xebfffed9",
+        "actual_destination": "0x3800294",
+        "equal": true
+      },
+      {
+        "offset": "0x100",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02388384",
+        "resolved_destination": "0x380021c",
+        "linked_word": "0xebfffeb9",
+        "actual_destination": "0x380021c",
+        "equal": true
+      },
+      {
+        "offset": "0x134",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_0238D7A0",
+        "resolved_destination": "0x3805638",
+        "linked_word": "0xeb0013b3",
+        "actual_destination": "0x3805638",
+        "equal": true
+      },
+      {
+        "offset": "0x144",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_0238D7A0",
+        "resolved_destination": "0x3805638",
+        "linked_word": "0xeb0013af",
+        "actual_destination": "0x3805638",
+        "equal": true
+      },
+      {
+        "offset": "0x164",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_023827AC",
+        "resolved_destination": "0x37fa644",
+        "linked_word": "0xebffe7aa",
+        "actual_destination": "0x37fa644",
+        "equal": true
+      },
+      {
+        "offset": "0x188",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_023883FC",
+        "resolved_destination": "0x3800294",
+        "linked_word": "0xebfffeb5",
+        "actual_destination": "0x3800294",
+        "equal": true
+      },
+      {
+        "offset": "0x1a8",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_023883FC",
+        "resolved_destination": "0x3800294",
+        "linked_word": "0xebfffead",
+        "actual_destination": "0x3800294",
+        "equal": true
+      },
+      {
+        "offset": "0x1c4",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02382568",
+        "resolved_destination": "0x37fa400",
+        "linked_word": "0xebffe701",
+        "actual_destination": "0x37fa400",
+        "equal": true
+      },
+      {
+        "offset": "0x1d8",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_023883FC",
+        "resolved_destination": "0x3800294",
+        "linked_word": "0xebfffea1",
+        "actual_destination": "0x3800294",
+        "equal": true
+      },
+      {
+        "offset": "0x1f8",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_023883FC",
+        "resolved_destination": "0x3800294",
+        "linked_word": "0xebfffe99",
+        "actual_destination": "0x3800294",
+        "equal": true
+      },
+      {
+        "offset": "0x208",
+        "type": "R_ARM_ABS32",
+        "symbol": "word_3809424",
+        "resolved_destination": "0x3809424",
+        "linked_word": "0x3809424",
+        "actual_destination": "0x3809424",
+        "equal": true
+      },
+      {
+        "offset": "0x218",
+        "type": "R_ARM_ABS32",
+        "symbol": "unk_3809450",
+        "resolved_destination": "0x3809450",
+        "linked_word": "0x3809450",
+        "actual_destination": "0x3809450",
+        "equal": true
+      },
+      {
+        "offset": "0x21c",
+        "type": "R_ARM_ABS32",
+        "symbol": "fn_02388720",
+        "resolved_destination": "0x38005b8",
+        "linked_word": "0x38005b8",
+        "actual_destination": "0x38005b8",
+        "equal": true
+      }
+    ]
+  },
+  "object_storage": {
+    "text": 548,
+    "exceptix": 12,
+    "unused_reference": [
+      {
+        "offset": "0x0",
+        "type": "R_ARM_ABS32",
+        "symbol": "fn_02388798",
+        "resolved_destination": "0x3800630",
+        "section": ".exceptix"
+      }
+    ],
+    "data_bytes": 0,
+    "bss_bytes": 0,
+    "qualification": "Unchanged dedicated ARM7 build script selects only .text from each object. The12-byte compiler .exceptix and its self ABS32 reference are not linked into this image, exactly as for existing ARM7 C objects. No new metadata-discard policy or alias added; this does not claim complete original TU metadata recovery."
+  },
+  "actual_source_inventory": {
+    "counts": {
+      "C": 761,
+      "asm_primitive": 26,
+      "asm_standin": 34,
+      "draft": 5
+    },
+    "untagged_C_containing_assembly": [],
+    "listed_denominator": 828,
+    "listed_C_entries_before": 762,
+    "listed_C_entries_after": 763,
+    "real_C_files_after": 761,
+    "IDA_tail_qualification": "Two counted entries are internal tails of02387C98.c and0238F9BC.c, not additional C definitions.",
+    "remaining_by_existing_tags": {
+      "ASM_PRIMITIVE": 26,
+      "ASM_STANDIN": 34,
+      "unenrolled_C": 5
+    },
+    "extra_privileged_standins": [
+      "02381484",
+      "023814B8",
+      "0238BB20"
+    ],
+    "other_standins": 31,
+    "uncertain_origin": "0238B11C explicit stack manipulation/bit-bang may be assembly; no original source type proved.",
+    "C_like_upper_bound_after_recovery": 36,
+    "qualification": "Tagged primitives and stand-ins are not all independently proven original assembly/C. Do not call all34 stand-ins compiler walls or all26 primitive tags newly accepted original assembly."
+  },
+  "repository_checks": {
+    "whitespace": {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "8080bc51e2fe17a8983cdca2de513ccf32388550..bf33c7472b49d9e617f14e3087b8bd640a5c6f3a"
+      ],
+      "returncode": 0,
+      "result": ""
+    },
+    "port-reference": {
+      "command": [
+        "C:\\Users\\andre\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "tools/port_refcheck.py"
+      ],
+      "returncode": 0,
+      "result": "[OK  ] manifests      91 reference(s) checked, 0 stale\n  [OK  ] cmake-symbols  21 reference(s) checked, 0 stale\n  [OK  ] hal-links      155 reference(s) checked, 0 stale\nport-refcheck: 267 checked - all references resolve"
+    },
+    "declaration": {
+      "command": [
+        "C:\\Users\\andre\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "tools/check_decl_agreement.py",
+        "--changed",
+        "8080bc51e2fe17a8983cdca2de513ccf32388550"
+      ],
+      "returncode": 0,
+      "result": "check_decl_agreement: 3 file(s) added or modified vs 8080bc51e2fe17a8983cdca2de513ccf32388550, 0 of them a src/ or include/ source and no changed row in 0 config symbols.txt file(s) -- nothing for this gate to check."
+    },
+    "standard-arm9-prepush": {
+      "command": [
+        "C:\\Users\\andre\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+        "tools/prepush_linkcheck.py",
+        "--range",
+        "8080bc51e2fe17a8983cdca2de513ccf32388550..bf33c7472b49d9e617f14e3087b8bd640a5c6f3a"
+      ],
+      "returncode": 0,
+      "result": "prepush-linkcheck: no matched src/ files in this push - nothing to verify"
+    }
+  },
+  "gate_limits": [
+    "Declaration gate sees zero changed ARM9 src/include files and no symbols rows; return0 is no ARM7 declaration-agreement claim.",
+    "Standard prepush sees no matched src files in this scope; its return0 is no ARM7 relocation proof. Dedicated proof above covers all21 text references.",
+    "Standard ARM9 rombuild.py was not rerun for this isolated ARM7 change; its enrollment/tools/src/include/config/port inputs remain literal parent bytes. No106-module result or private CI result is fabricated.",
+    "No header, policy, symbols, function-authors, normal src enrollment or foreign branch changes.",
+    "No unique original C source form, recovered original name, or universal compiler limitation claimed. Remaining matching and source-quality work stays partial."
+  ],
+  "tested_tree_binding": {
+    "src": "932302ebc72d38c713ec7c24c3eb65177f60fdce",
+    "include": "8f78ffefa083dc979fac4cfc30e05a58203eab25",
+    "config": "3da73792638cbc6ac2162f6f4945bd277c76c160",
+    "tools": "8c5bf0d53f662f5160534ad6e99f6ce9b7411009",
+    "port": "7f94d11db1302e785eb3cdff9d5f7d8416f4ee33",
+    "arm7": "9ae03e64544a77b3aee82a1337ab175247968ebd"
+  },
+  "durable_private_evidence": {
+    "production_proof": "C:/tmp/sm64ds-arm7-existing-match1014/build/arm7-existing-match1014/production-proof.json",
+    "gate_results": "C:/tmp/sm64ds-arm7-existing-match1014/build/arm7-existing-match1014/gate-results.json",
+    "audit_packet": "C:/tmp/sm64ds-menbo-retire1014/build/arm7-audit1014/actionable-arm7-audit-packet.json",
+    "audit_packet_sha256": "6f24aea6156cb9f825da5c845f9e99aea58dd98a15768ccd056a4293ba37f573",
+    "qualification": "Private paths aid local review; portable byte/type/destination facts are included in this report. No ROM/compiler inputs, operational receipt identifiers or tokens are committed."
+  },
+  "documentation_checkpoint": "d6beb0d7c095c6c2dcf3be8e7111fcb32f9c1927",
+  "documentation_review_repairs": {
+    "category_provenance": "Both Kinds of file definitions now qualify assembly/C origin consistently with measured inventory.",
+    "operational_identifier": "Public report uses actual session and role only; unnecessary lease identifier removed from all newly publishable branch history.",
+    "independent_recheck": "Pending distinct Root review of exact revised final commit."
+  },
+  "tested_build_input_transfer": {
+    "arm7/src": {
+      "tested": "d2d5546823c0a74cca7c223cd0001b4dd99280b1",
+      "documentation_checkpoint": "d2d5546823c0a74cca7c223cd0001b4dd99280b1"
+    },
+    "arm7/swap.txt": {
+      "tested": "78730ca1af8a9b26241bcea36f25b42ceb3ff627",
+      "documentation_checkpoint": "78730ca1af8a9b26241bcea36f25b42ceb3ff627"
+    },
+    "arm7/build.py": {
+      "tested": "0e102c2bee810d70aeb0f199a55855fa302cd554",
+      "documentation_checkpoint": "0e102c2bee810d70aeb0f199a55855fa302cd554"
+    },
+    "arm7/syms.txt": {
+      "tested": "2d961963075ba50dba6c527074d83b459aea7471",
+      "documentation_checkpoint": "2d961963075ba50dba6c527074d83b459aea7471"
+    },
+    "arm7/arm7.sha1": {
+      "tested": "f017a3326e66a6582a62cacf10d71720254ae3d0",
+      "documentation_checkpoint": "f017a3326e66a6582a62cacf10d71720254ae3d0"
+    },
+    "src": {
+      "tested": "932302ebc72d38c713ec7c24c3eb65177f60fdce",
+      "documentation_checkpoint": "932302ebc72d38c713ec7c24c3eb65177f60fdce"
+    },
+    "include": {
+      "tested": "8f78ffefa083dc979fac4cfc30e05a58203eab25",
+      "documentation_checkpoint": "8f78ffefa083dc979fac4cfc30e05a58203eab25"
+    },
+    "config": {
+      "tested": "3da73792638cbc6ac2162f6f4945bd277c76c160",
+      "documentation_checkpoint": "3da73792638cbc6ac2162f6f4945bd277c76c160"
+    },
+    "tools": {
+      "tested": "8c5bf0d53f662f5160534ad6e99f6ce9b7411009",
+      "documentation_checkpoint": "8c5bf0d53f662f5160534ad6e99f6ce9b7411009"
+    },
+    "port": {
+      "tested": "7f94d11db1302e785eb3cdff9d5f7d8416f4ee33",
+      "documentation_checkpoint": "7f94d11db1302e785eb3cdff9d5f7d8416f4ee33"
+    }
+  }
+}
