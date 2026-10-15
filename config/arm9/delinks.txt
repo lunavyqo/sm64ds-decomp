@@ -2218,6 +2218,7 @@ src/unnamed/arm9/0203/func_02030838.c:
 src/unnamed/arm9/0203/func_0203083c.c:
     complete
     .text start:0x0203083c end:0x020308a8
+    .data start:0x02092780 end:0x020927b0
 
 src/unnamed/arm9/0203/func_020308a8.c:
     complete
