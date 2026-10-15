@@ -132,7 +132,10 @@ struct TitleLevelName {
     volatile signed char *name;
     int pad;
 };
-extern signed char data_ov003_020b13a8[];
+/* "Test Map" plus the three zero bytes that fill this 12-byte symbol. */
+signed char data_ov003_020b13a8[12] = {
+    'T', 'e', 's', 't', ' ', 'M', 'a', 'p', 0, 0, 0, 0,
+};
 extern "C" volatile signed char *const data_ov003_020b117c =
     (volatile signed char *)data_ov003_020b13a8;
 /* `void *` is the tree's plurality spelling for this one (it is declared
