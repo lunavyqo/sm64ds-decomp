@@ -3,36 +3,30 @@
  * d_a_holhei.cpp
  * Object - Chuckya (HOLHEI 190)
  *
- * ov062/daHolhei_c. Source order is the reverse of the ROM: mwccarm emits
- * one .text section per function backwards. The destructor stays inline in
- * include/daHolhei_c.h so the cartridge gets D1 then D0 and no D2.
+ * ov062/daHolhei_c, 36 functions in ROM order 0x02115ee0..0x021174cc.
+ * _ZTS10daHolhei_c 0x0211d9ac, _ZTI10daHolhei_c 0x0211d9a0,
+ * _ZTV10daHolhei_c 0x0211d9e0. Key function is the inline destructor in
+ * include/daHolhei_c.h: D1 at 0x02115ee0, D0 at 0x02115f28, no D2.
  * common.h is first so Matrix4x3 is the flat s32 m[12]; the nested
  * math/Matrix.h spelling scalarizes a twelve-word copy.
  *
- * Known limits, measured in this TU:
+ * leftovers:
  * - dCcAc_c::Init, dBgCh_Actr::Init, ModelAnim::SetAnim,
- *   dActor_c::DropShadowRadHeight, dActor_c::SpawnCoins and
- *   dEnemyBase_c::KillByInvincibleChar stay mangled. Each carries
- *   Fix12<int> by value (notes/mwccarm-codegen.md, wall 6az).
- * - The six file handles and the ten state records keep data_ov062_*
- *   names; symbols.txt has no other. de90, dec0 and def0 keep the
- *   char[]/int[] types decl_common.h declares (another type is a new
- *   check_decl_agreement disagreement); the other seven keep their
- *   existing spellings, so each use casts to HolheiState *.
- *   __sinit_ov062_0211cf30 constructs the file handles and copies each
- *   record's two PMFs in. The second word of each file handle is the
- *   loaded BMD or BCA.
+ *   dActor_c::DropShadowRadHeight/SpawnCoins and
+ *   dEnemyBase_c::KillByInvincibleChar stay mangled (Fix12<int> by value,
+ *   wall 6az; this TU's InitResources/Behavior/Render calls).
+ * - File handles and the ten state records keep data_ov062_* names with the
+ *   banked int[]/char[] spellings; __sinit_ov062_0211cf30 constructs the
+ *   handles and copies each record's two PMFs in.
  * - g_profile_HOLHEI stays outside this text-only TU.
- * - func_ov062_02116d28 reloads mHeld before each pos word.
+ * - Helpers keep func_ov062_* address labels and daHolhei_c_ChangeState stays
+ *   free and coined: a method pass re-keys symbols.txt, the manifest and the
+ *   decl/converted baselines, and is its own slice.
+ * - func_ov062_02116d28 reloads mHeld before each pos word;
  *   func_ov062_02116a08 copies the player's position through one int
- *   pointer; three separate pl->mPos loads change the code.
- * - The grabbed actor's +0xc8 and this object's +0xc8 are the unnamed gap
- *   before dActor_c::mAreaId. func_ov062_02116e80 stores &mHoldMtx there.
+ *   pointer; three separate mPos loads change the code.
  * - func_ov062_021165e8 keeps a volatile Vector3 so the player's position
  *   occupies that stack slot.
- *
- * Naming: helpers keep func_ov062_* names; daHolhei_c_ChangeState is
- * coined. The extern "C" helpers take the actor as daHolhei_c *self.
  */
 
 #include "common.h"
@@ -76,14 +70,14 @@ extern int _ZN8dActor_c10SpawnCoinsERK7Vector3j5Fix12IiEs(void* a, Vector3* v, u
 extern void _ZN12dEnemyBase_c20KillByInvincibleCharERK10Vector3_16R6Player5Fix12IiE(void *c, void *v, void *a, int flag);
 
 extern short func_02010844(void* unused, Vector3* v, short angle);
-extern void func_02012694(int a, void *p);
+extern void func_02012694(unsigned int id, void *p);
 extern int daHolhei_c_ChangeState(daHolhei_c *self, HolheiState *p);
 extern int func_ov002_020db5f4(void *c, void *arg);
-extern int func_ov002_020db54c(int p, int a, int b, int s);
+extern void func_ov002_020db54c(void *held, int a, int b, int angle);
 extern void func_0200d8c8(void* cam, void* v, int strength);
 extern int data_02092138;
 extern void* data_0209f318;
-extern int ApproachAngle(void* angle, int target, int a, int b, int c);
+extern int ApproachAngle(void* angle, short target, int a, int b, int c);
 extern int data_0209e650[];
 extern s16 Vec3_HorzAngle(const void* v0, const void* v1);
 extern int Vec3_Dist(const void* a, const void* b);
@@ -122,9 +116,9 @@ extern int data_ov062_0211df14[];
 extern int data_ov062_0211df18[];
 
 extern int func_ov062_02115f84(daHolhei_c *self);
-void func_ov062_02116010(daHolhei_c *self);
-void func_ov062_02116e80(daHolhei_c *self);
-void func_ov062_02116dbc(daHolhei_c *self);
+extern void func_ov062_02116010(daHolhei_c *self);
+extern void func_ov062_02116e80(daHolhei_c *self);
+extern void func_ov062_02116dbc(daHolhei_c *self);
 extern void func_ov062_02116edc(daHolhei_c *self);
 }
 
@@ -246,7 +240,7 @@ int daHolhei_c::Behavior()
     mModel.UpdateVerts();
 
     dActor_c *held = mHeld;
-    if (held != 0 && IsFlagSet(this, 0x4000) && *(int *)((char *)held + 0xc8) != 0) {
+    if (held != 0 && IsFlagSet(this, 0x4000) && held->mCarryMatrix != 0) {
         func_ov062_02116d28();
     } else {
         mdCc_c.Update();
@@ -263,7 +257,7 @@ int daHolhei_c::Behavior()
 int daHolhei_c::Render()
 {
     dActor_c *held = mHeld;
-    if (held != 0 && IsFlagSet(this, 0x4000) && *(int *)((char *)held + 0xc8) != 0)
+    if (held != 0 && IsFlagSet(this, 0x4000) && held->mCarryMatrix != 0)
         func_ov062_02116edc(this);
     /* ModelAnim overrides Render; the ROM calls Model::Render on this member. */
     mModel.Model::Render((const Vector3 *)0);
@@ -313,7 +307,7 @@ extern "C" void func_ov062_02116e80(daHolhei_c *self) {
     MulMat4x3Mat4x3(&self->mModel.data.transforms[3],
                     &self->mModel.mat4x3,
                     &self->mHoldMtx);
-    *(int *)((char *)self + 0xc8) = (int)&self->mHoldMtx;
+    self->mCarryMatrix = &self->mHoldMtx;
 }
 
 /* Shadow under this actor. Off the ground the radius grows. */
@@ -421,7 +415,7 @@ extern "C" int func_ov062_02116a08(daHolhei_c *self)
     self->mHorzSpeed = 0xa000;
     pl = self->ClosestPlayer();
 
-    self->mMoveSound = Sound::PlayLong(self->mMoveSound, 3, 0x18a, *(const Vector3 *)&self->mCamSpacePosX, 0);
+    self->mMoveSound = Sound::PlayLong(self->mMoveSound, 3, 0x18a, *(Vector3 *)&self->mCamSpacePosX, 0);
 
     if (pl != 0 && self->mChaseCooldown == 0) {
         int *pos = &pl->mPosX;
@@ -553,7 +547,7 @@ int daHolhei_c::func_ov062_021165e8()
         }
     }
 
-    mMoveSound = Sound::PlayLong(mMoveSound, 3, 0x18a, *(const Vector3 *)&mCamSpacePosX, 0);
+    mMoveSound = Sound::PlayLong(mMoveSound, 3, 0x18a, *(Vector3 *)&mCamSpacePosX, 0);
 
     {
         int s = mChargeStep;
@@ -686,7 +680,7 @@ extern "C" int func_ov062_02116238(daHolhei_c *self){
 extern "C" int func_ov062_021161a8(daHolhei_c *self)
 {
     if (self->mHeld != 0 && self->mModel.WillHitFrame(0x14)) {
-        func_ov002_020db54c((int)self->mHeld, 0x28000, 0x50000, self->mAngleY);
+        func_ov002_020db54c(self->mHeld, 0x28000, 0x50000, self->mAngleY);
         self->mHeld = 0;
         func_02012694(0x126, &self->mCamSpacePosX);
     }

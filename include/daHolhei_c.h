@@ -58,11 +58,11 @@ struct daHolhei_c : dEnemyBase_c {
     s32         mChargeStep;   /* 0x3f0 */
     s16         mTargetAngY;   /* 0x3f4 */
     u8          pad_3f6[2];    /* 0x3f6 */
-    /* Actor being held, or the player holding this. +0xc8 on that actor is
-       still an unnamed dActor_c gap; Behavior and Render read it raw. */
+    /* Actor being held, or the player holding this. Behavior and Render test
+       that actor's mCarryMatrix (dActor_c +0xc8). */
     dActor_c   *mHeld;         /* 0x3f8 */
-    /* func_ov062_02116e80 builds this from bone 3 and stores its address at
-       this+0xc8, the same unnamed gap. */
+    /* func_ov062_02116e80 builds this from bone 3 and publishes it as this
+       actor's mCarryMatrix, where a holder looks. */
     Matrix4x3   mHoldMtx;      /* 0x3fc */
     /* Behavior zeroes these. func_ov062_02116edc homes them toward the two
        Vector3s at data_ov062_0211df10 and hands them to UpdateCarry. */

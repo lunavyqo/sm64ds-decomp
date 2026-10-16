@@ -189,9 +189,6 @@
       "src/game/actors/d_a_demo.cpp": [
         "return:void"
       ],
-      "src/game/actors/d_a_holhei.cpp": [
-        "param:#2 int"
-      ],
       "src/game/actors/d_a_iwante.cpp": [
         "param:#2 int"
       ],
@@ -20166,9 +20163,6 @@
       "src/game/actors/d_a_grock.cpp": [
         "param:#1 int"
       ],
-      "src/game/actors/d_a_holhei.cpp": [
-        "param:#1 int"
-      ],
       "src/game/actors/d_a_ibl.cpp": [
         "param:#1 int",
         "return:int"
@@ -26662,9 +26656,7 @@
         "param:#4 int"
       ],
       "src/game/actors/d_a_holhei.cpp": [
-        "param:#1 int",
-        "param:#4 int",
-        "return:int"
+        "param:#4 int"
       ],
       "src/unnamed/ov002/func_ov002_020da9d4.cpp": [
         "param:#4 int"
