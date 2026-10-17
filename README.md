@@ -31,7 +31,7 @@ Code size  ███████████████████████
 ```
 MATCHED    ██████████████████████████████  100.0%   11,389 / 11,389 functions
            of which 108 are byte-exact assembly (hand-written in the original, not C)
-LINKED     ████████████████████████████░░  93.5%   10,595 / 11,328 matched TUs
+LINKED     █████████████████████████████░  96.2%   10,957 / 11,389 functions
 ```
 <!-- tiers:end -->
 
@@ -46,8 +46,8 @@ The two bars measure different things:
 
 - **MATCHED** means the source compiles to the cartridge's exact bytes. This is the
   classic decomp number.
-- **LINKED** means the matched file is compiled straight into the PC port, replacing the
-  stand-in the port used before.
+- **LINKED** means the function's matched file is compiled straight into the PC port,
+  replacing the stand-in the port used before. Both bars count functions.
 
 ## Where things stand
 

@@ -6,15 +6,16 @@ different things and they move independently:
 
   MATCHED    the C compiles to the ROM's exact bytes. Provably the original
              logic. This is the number the README bar and the treemap show.
-  LINKED     the matched translation unit actually reaches the PC port's
+  LINKED     the function's translation unit actually reaches the PC port's
              binary, replacing the host stand-in that was there before.
 
 They are deliberately not a funnel: a function can be MATCHED and LINKED while
 still being unreadable, and readability work never changes the matched bytes.
 
-Denominators differ and that is not a bug. MATCHED counts functions against the
-dsd config's function universe. LINKED counts matched translation units, not
-all functions.
+Both bars count functions. MATCHED counts against the dsd function universe.
+LINKED counts functions whose translation unit the port build links, read from
+config/port_linked_functions.txt. A stamp without that list falls back to
+matched translation units and labels the count accordingly.
 
 Usage:
     python tools/tiers.py                 # human-readable table
@@ -38,6 +39,7 @@ README = REPO / "README.md"
 README_START = "<!-- tiers:start -->"
 README_END = "<!-- tiers:end -->"
 LINKED_STAMP = REPO / "config" / "port_linkage.json"
+LINKED_FUNCTIONS = REPO / "config" / "port_linked_functions.txt"
 
 
 # ------------------------------------------------------------------ markers
@@ -80,8 +82,41 @@ def _marked_member_fragment(text, symbol):
 # branch/commit/date is treated as absent.
 
 
-def linked(stamp_path=None):
-    """The stamped LINKED measurement, or None if there is no usable stamp."""
+def linked_functions(stamp=None, list_path=None):
+    """``(keys, commit)`` from the per-function list, or ``(None, reason)``.
+
+    config/port_linked_functions.txt is written by tools/port_linked_functions.py
+    from a port build. It is believed only while its ``# commit:`` line equals the
+    commit of the usable stamp: two port builds must never be mixed, and a list
+    without the stamp's provenance is a number nobody can trace. ``keys`` is the
+    set of ``module:0xaddr`` strings; ``commit`` is the list's commit on success.
+    """
+    p = pathlib.Path(list_path or LINKED_FUNCTIONS)
+    if not p.is_file():
+        return None, "no per-function list"
+    if stamp is None:
+        stamp = linked_stamp()
+    if not stamp:
+        return None, "no usable stamp"
+    keys, commit, universe = set(), None, None
+    for line in p.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line.startswith("# commit:"):
+            commit = line.split(":", 1)[1].strip()
+        elif line.startswith("# universe:"):
+            try:
+                universe = int(line.split(":", 1)[1])
+            except ValueError:
+                universe = None
+        elif line and not line.startswith("#"):
+            keys.add(line)
+    if not commit or commit != stamp["commit"]:
+        return None, f"list commit {commit!r}, stamp commit {stamp['commit']!r}"
+    return keys, universe
+
+
+def linked_stamp(stamp_path=None):
+    """The stamped LINKED measurement (translation units), or None if unusable."""
     p = pathlib.Path(stamp_path or LINKED_STAMP)
     if not p.is_file():
         return None
@@ -104,6 +139,30 @@ def linked(stamp_path=None):
         "commit": d["commit"],
         "stale": bool(d.get("stale", False)),
     }
+
+
+def linked(stamp_path=None, list_path=None):
+    """LINKED, per function when the stamped build has a per-function list.
+
+    Returns ``linked`` / ``of`` / ``pct`` / ``unit`` (``"functions"`` or, for a
+    stamp with no usable list, ``"units"``) plus the stamp's translation-unit
+    figures as extra detail: ``linkedTus`` and ``matchedTus``. ``of`` for the
+    function count is the list's own ``# universe:`` line, the function universe
+    of the measured tree; chaos_db_ci overrides it with the published record
+    count so both bars share one denominator. None when there is no usable
+    stamp at all.
+    """
+    stamp = linked_stamp(stamp_path)
+    if not stamp:
+        return None
+    out = dict(stamp, linkedTus=stamp["linked"], unit="units", of=stamp["matchedTus"])
+    keys, universe = linked_functions(
+        stamp, list_path or (pathlib.Path(stamp_path).with_name("port_linked_functions.txt")
+                             if stamp_path else None))
+    if keys is not None and universe:
+        out.update(linked=len(keys), of=universe, unit="functions",
+                   pct=round(100.0 * len(keys) / universe, 2))
+    return out
 
 
 # ------------------------------------------------------------------ MATCHED
@@ -178,6 +237,11 @@ def matched_caption(m):
             f"(hand-written in the original, not C)")
 
 
+def _linked_noun(k):
+    """What LINKED counted: functions, or (an older stamp) matched translation units."""
+    return "functions" if k.get("unit") == "functions" else "matched TUs"
+
+
 def bar_block(t, preserved_matched=None):
     """The fenced block shown under the README "## Progress" heading.
 
@@ -201,8 +265,8 @@ def bar_block(t, preserved_matched=None):
         # silently erase the last independently generated MATCHED measurement.
         rows.append(preserved_matched)
     if k:
-        rows.append(f"LINKED     {bar(k['linked'], k['matchedTus'])}  "
-                    f"{k['pct']:4.1f}%   {k['linked']:,} / {k['matchedTus']:,} matched TUs")
+        rows.append(f"LINKED     {bar(k['linked'], k['of'])}  "
+                    f"{k['pct']:4.1f}%   {k['linked']:,} / {k['of']:,} {_linked_noun(k)}")
     return "```\n" + "\n".join(rows) + "\n```"
 
 
@@ -244,7 +308,7 @@ def report(t):
         out.append("MATCHED    (no chaos-db.json; run tools/chaos_db_ci.py first)")
     if k:
         flag = "  STALE" if k["stale"] else ""
-        out.append(f"LINKED     {k['linked']:,} / {k['matchedTus']:,} matched TUs  "
+        out.append(f"LINKED     {k['linked']:,} / {k['of']:,} {_linked_noun(k)}  "
                    f"{k['pct']:.1f}%   (stamped {k['measuredAt']} from {k['branch']}"
                    f" @ {k['commit']}){flag}")
     else:
