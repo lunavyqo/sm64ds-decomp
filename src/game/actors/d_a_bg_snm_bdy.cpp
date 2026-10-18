@@ -71,6 +71,13 @@
 #include "Sound.h"
 #include "dClipper.h"
 
+/* The model handle's constructor is the ROM file-id entry. Its destructor is
+ * registered by the static initializer; this TU does not emit either body. */
+struct SnmBdyModelFilePtr : SharedFilePtr {
+    SnmBdyModelFilePtr(u32 fileID);
+    ~SnmBdyModelFilePtr();
+};
+
 /* Real C++ names. Declared here, not via decl_common.h: that header's
  * other spellings of these symbols collide with this TU. */
 void UpdateAngle(short &angle, short target, int shift, short maxStep);
@@ -119,11 +126,24 @@ void  _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(void *self, void *actor,
 
 void _ZN8Particle20RunningSlidingDustAtE5Fix12IiES1_S1_(int x, int y, int z);
 
-/* ov072 and arm9 statics this TU reads but does not own. */
-extern SharedFilePtr data_ov072_02122b20;
-extern Vector3       data_ov072_02122b40;
-extern Vector3       data_ov072_02122b58;
+/* The four objects are defined at the bottom of this file. The twelve
+ * member pointers they copy from stay ROM .data. */
+extern SnmBdyModelFilePtr data_ov072_02122b20;
+extern Vector3 data_ov072_02122b40;
+extern Vector3 data_ov072_02122b58;
 extern daBgSnmBdy_c::StateEntry data_ov072_02122b64[];
+extern daBgSnmBdy_c::StateFunc data_ov072_02122750;
+extern daBgSnmBdy_c::StateFunc data_ov072_02122728;
+extern daBgSnmBdy_c::StateFunc data_ov072_02122720;
+extern daBgSnmBdy_c::StateFunc data_ov072_02122730;
+extern daBgSnmBdy_c::StateFunc data_ov072_02122748;
+extern daBgSnmBdy_c::StateFunc data_ov072_02122738;
+extern daBgSnmBdy_c::StateFunc data_ov072_02122740;
+extern daBgSnmBdy_c::StateFunc data_ov072_02122778;
+extern daBgSnmBdy_c::StateFunc data_ov072_02122770;
+extern daBgSnmBdy_c::StateFunc data_ov072_02122758;
+extern daBgSnmBdy_c::StateFunc data_ov072_02122768;
+extern daBgSnmBdy_c::StateFunc data_ov072_02122760;
 extern dClipper data_0209f43c;
 extern Matrix4x3 data_0209b3ec;
 }
@@ -616,3 +636,15 @@ int daBgSnmBdy_c::IsPlayerNearCenter()
         return 1;
     return 0;
 }
+
+/* Static-init order is the retail initializer's order: the model handle,
+ * then the twelve-entry state table copied from the ROM member pointers,
+ * then the reach point, then the landing point. */
+SnmBdyModelFilePtr data_ov072_02122b20(0x2ad);
+daBgSnmBdy_c::StateEntry data_ov072_02122b64[6] = {
+    {data_ov072_02122750, data_ov072_02122728}, {data_ov072_02122720, data_ov072_02122730},
+    {data_ov072_02122748, data_ov072_02122738}, {data_ov072_02122740, data_ov072_02122778},
+    {data_ov072_02122770, data_ov072_02122758}, {data_ov072_02122768, data_ov072_02122760},
+};
+Vector3 data_ov072_02122b40(-0xad0000, 0x290000, -0x9d0000);
+Vector3 data_ov072_02122b58(0xfeffc000, 0xffa6f000, 0x6fe000);

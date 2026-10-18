@@ -19,7 +19,7 @@
     },
     {
       "name": ".data",
-      "start": "0x0212323c",
+      "start": "0x021231e4",
       "end": "0x021232f4"
     },
     {
@@ -174,6 +174,12 @@
     }
   ],
   "data": [
+    {
+      "symbol": "data_ov070_021231e4",
+      "address": "0x021231e4",
+      "size": "0x10",
+      "evidence": "material name mat_bilikyu2, 16 bytes, no relocations"
+    },
     {
       "symbol": "_ZTS7daBrq_c",
       "address": "0x0212323c",

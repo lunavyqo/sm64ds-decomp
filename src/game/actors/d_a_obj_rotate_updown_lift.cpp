@@ -124,10 +124,11 @@ struct RotateUpdownLiftCollisionFilePtr : SharedFilePtr {
 extern UpdownPath data_ov091_02134cdc[3];
 extern UpdownTopY data_ov091_02134d1c[3];
 extern s32 data_ov091_021344e8[];
-extern VariantWords data_ov091_02134bac;
-extern VariantWords data_ov091_02134bd0;
-extern VariantWords data_ov091_02134bb8;
-extern VariantWords data_ov091_02134ba0;
+/* Per-variant word triples InitResources copies onto the stack. */
+VariantWords data_ov091_02134ba0 = {{0x200000, 0x200000, 0x500000}};
+VariantWords data_ov091_02134bac = {{0x3c000, 0x3c000, 0x78000}};
+VariantWords data_ov091_02134bb8 = {{0x32000, 0x32000, 0x78000}};
+VariantWords data_ov091_02134bd0 = {{0xd2000, 0xd2000, 0x190000}};
 extern UpdownFileSlot data_ov091_02134c30[];
 extern UpdownFileSlot data_ov091_02134c34[];
 extern UpdownClpsSlot data_ov091_02134c38[];

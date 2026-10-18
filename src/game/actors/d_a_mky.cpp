@@ -1469,10 +1469,9 @@ int   _ZN8dActor_c22IsTooFarAwayFromPlayerE5Fix12IiE(void *self, int d);
 extern SharedFilePtr  data_ov002_0210da40;
 extern SharedFilePtr  data_ov002_0210d9a0;
 extern SharedFilePtr  data_ov002_0210d9c0;
-extern SharedFilePtr  data_ov030_02115d00;
-extern SharedFilePtr *data_ov030_02114824[10];
-extern void          *data_ov030_02115cf0[];
-
+extern int data_ov030_02115d00[2];
+extern SharedFilePtr *const data_ov030_02114824[10];
+extern int data_ov030_02115cf0[2];
 }
 
 // @symbol _ZN7daMky_c16CleanupResourcesEv
@@ -1485,7 +1484,7 @@ s32 daMky_c::CleanupResources()
     data_ov002_0210da40.Release();
     data_ov002_0210d9a0.Release();
     data_ov002_0210d9c0.Release();
-    data_ov030_02115d00.Release();
+    ((SharedFilePtr *)&data_ov030_02115d00)->Release();
     for (i = 0; i < 10; i++)
         data_ov030_02114824[i]->Release();
     return 1;
@@ -1544,12 +1543,12 @@ s32 daMky_c::InitResources()
     Model::LoadFile(data_ov002_0210da40);
     Model::LoadFile(data_ov002_0210d9a0);
     Model::LoadFile(data_ov002_0210d9c0);
-    mModelAnim.SetFile((BMD_File *)Model::LoadFile(data_ov030_02115d00), 1, 1);
+    mModelAnim.SetFile((BMD_File *)Model::LoadFile(*(SharedFilePtr *)&data_ov030_02115d00), 1, 1);
     for (i = 0; i < 10; i++)
         dExtFrameCtrl_c::LoadFile(*data_ov030_02114824[i]);
     if (mShadowModel.InitCylinder() == 0)
         return 0;
-    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModelAnim, data_ov030_02115cf0[1], 0, 0x1000, 0);
+    _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModelAnim, (void *)data_ov030_02115cf0[1], 0, 0x1000, 0);
     mModelAnim.speed = 0x1000;
     _ZN7dCcAc_c4InitEP8dActor_c5Fix12IiES3_jj(&mdCcAc_c, this, 0x28000, 0x64000, 0x800004, 0x49000);
     _ZN10dBgCh_Actr4InitEP8dActor_c5Fix12IiES3_P10Vector3_16S5_(&mWithMeshClsn, this, 0x32000, 0x32000, 0, 0);
@@ -1621,3 +1620,48 @@ extern "C" daMky_c *daMky_c_classInit_MONKEY_THIEF()
     return new daMky_c();
 }
 
+/* The static initializer writes the file ids, the destructor nodes, the
+ * carry offsets and the state rows. The linked image stays zero. */
+#pragma cplusplus off
+int gMonkeyWait2AnimationFile[2];
+int gMonkeyWait4AnimationFile[2];
+int gMonkeyHoldAnimationFile[2];
+int gMonkeyRunStAnimationFile[2];
+int data_ov030_02115cf0[2];
+int gMonkeyWait3AnimationFile[2];
+int data_ov030_02115d00[2];
+int gMonkeyJumpStAnimationFile[2];
+int gMonkeyJumpEdAnimationFile[2];
+int gMonkeyRunAnimationFile[2];
+int gMonkeyRunEdAnimationFile[2];
+u32 data_ov030_02115d28[3];
+u32 data_ov030_02115d34[3];
+u32 data_ov030_02115d40[3];
+u32 data_ov030_02115d4c[3];
+u32 data_ov030_02115d58[3];
+u32 data_ov030_02115d64[3];
+u32 data_ov030_02115d70[3];
+u32 data_ov030_02115d7c[3];
+u32 data_ov030_02115d88[3];
+u32 data_ov030_02115d94[3];
+u32 data_ov030_02115da0[3];
+u32 data_ov030_02115dac[3];
+u32 data_ov030_02115db8[3];
+u32 data_ov030_02115dc4[3];
+u32 data_ov030_02115dd0[3];
+char data_ov030_02115ddc[12];
+char data_ov030_02115de8[12];
+char data_ov030_02115df4[12];
+char data_ov030_02115e00[12];
+char data_ov030_02115e0c[0xb4];
+#pragma cplusplus on
+
+extern "C" {
+SharedFilePtr *const data_ov030_02114824[10] = {
+    (SharedFilePtr *)&gMonkeyHoldAnimationFile,   (SharedFilePtr *)&gMonkeyJumpStAnimationFile,
+    (SharedFilePtr *)&gMonkeyJumpEdAnimationFile, (SharedFilePtr *)&gMonkeyRunStAnimationFile,
+    (SharedFilePtr *)&gMonkeyRunAnimationFile,    (SharedFilePtr *)&gMonkeyRunEdAnimationFile,
+    (SharedFilePtr *)&data_ov030_02115cf0,        (SharedFilePtr *)&gMonkeyWait2AnimationFile,
+    (SharedFilePtr *)&gMonkeyWait3AnimationFile,  (SharedFilePtr *)&gMonkeyWait4AnimationFile,
+};
+}
