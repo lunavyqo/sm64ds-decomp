@@ -34,15 +34,6 @@ src/game/actors/d_a_ey_bm.cpp:
     .ctor start:0x02122b38 end:0x02122b3c
     .bss start:0x021230b8 end:0x021230d0
 
-src/data/ov071/data_02122b60.c:
-    complete
-    .data start:0x02122b60 end:0x02122bf0
-src/data/ov071/data_02122ca8.c:
-    complete
-    .data start:0x02122ca8 end:0x02122cd8
-src/data/ov071/data_02122e64.c:
-    complete
-    .data start:0x02122e64 end:0x02122e94
 src/game/actors/d_a_obj_casket.cpp:
     complete
     .text start:0x02121fe4 end:0x021226a0
@@ -50,9 +41,3 @@ src/game/actors/d_a_obj_casket.cpp:
     .ctor start:0x02122b3c end:0x02122b40
     .data start:0x02122ecc end:0x02122ef4
     .bss start:0x021230d0 end:0x021230f8
-src/data/ov071/data_02122ef4.c:
-    complete
-    .data start:0x02122ef4 end:0x02122efc
-src/data/ov071/bss_021230f8.c:
-    complete
-    .bss start:0x021230f8 end:0x02123100

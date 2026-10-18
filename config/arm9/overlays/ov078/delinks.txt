@@ -3,12 +3,6 @@
     .ctor       start:0x02126cd4 end:0x02126cd8 kind:rodata align:4
     .data       start:0x02126ce0 end:0x02126ee0 kind:data align:32
     .bss        start:0x02126ee0 end:0x02127140 kind:bss align:32
-src/data/ov078/data_02126ce0.c:
-    complete
-    .data start:0x02126ce0 end:0x02126e00
-src/data/ov078/data_02126e00.c:
-    complete
-    .data start:0x02126e00 end:0x02126e0c
 src/game/actors/d_a_bombking.cpp:
     complete
     .text start:0x02123740 end:0x02126660
@@ -18,18 +12,3 @@ src/game/actors/d_a_bombking.cpp:
 src/unnamed/ov078/__sinit_ov078_02126660.c:
     complete
     .init start:0x02126660 end:0x02126cd4
-src/data/ov078/data_02126ec8.c:
-    complete
-    .data start:0x02126ec8 end:0x02126ee0
-src/data/ov078/bss_02126f48.c:
-    complete
-    .bss start:0x02126f48 end:0x02126ffc
-src/data/ov078/bss_02126ffc.c:
-    complete
-    .bss start:0x02126ffc end:0x0212711c
-src/data/ov078/bss_0212711c.c:
-    complete
-    .bss start:0x0212711c end:0x02127128
-src/data/ov078/bss_02127128.c:
-    complete
-    .bss start:0x02127128 end:0x02127140

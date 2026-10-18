@@ -1,5 +1,0 @@
-/* rodata 0x021111fc..0x02111264 */
-#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
-#pragma section forcerodata begin
-unsigned int data_ov048_021111fc[26] = { 0x1f1f001f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1f1f1f1f, 0x1c1e1f1f, 0x1618191b, 0x10121315, 0x0a0c0d0f, 0x04060709, 0x00000203 };
-#pragma section forcerodata end

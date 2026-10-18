@@ -3,33 +3,6 @@
     .ctor       start:0x021129dc end:0x021129f8 kind:rodata align:4
     .data       start:0x02112a00 end:0x02114020 kind:data align:32
     .bss        start:0x02114020 end:0x021141e0 kind:bss align:32
-src/data/ov036/data_02112a00.c:
-    complete
-    .data start:0x02112a00 end:0x02112a08
-src/data/ov036/data_02112a08.c:
-    complete
-    .data start:0x02112a08 end:0x02112a18
-src/data/ov036/data_02112a18.c:
-    complete
-    .data start:0x02112a18 end:0x02112a24
-src/data/ov036/data_02112a24.c:
-    complete
-    .data start:0x02112a24 end:0x02112a54
-src/data/ov036/data_02112a54.c:
-    complete
-    .data start:0x02112a54 end:0x02112a88
-src/data/ov036/data_02112a88.c:
-    complete
-    .data start:0x02112a88 end:0x02112ac8
-src/data/ov036/data_02112ac8.c:
-    complete
-    .data start:0x02112ac8 end:0x02112ae8
-src/data/ov036/data_02112ae8.c:
-    complete
-    .data start:0x02112ae8 end:0x02112b28
-src/data/ov036/data_02112b28.c:
-    complete
-    .data start:0x02112b28 end:0x02112b68
 src/game/actors/d_a_obj_rc_buranko.cpp:
     complete
     .text start:0x021111a0 end:0x02111444
@@ -38,36 +11,6 @@ src/game/actors/d_a_obj_rc_buranko.cpp:
     .data start:0x02112b68 end:0x02112b88
     .bss start:0x02114020 end:0x02114048
 
-src/data/ov036/data_02112b88.c:
-    complete
-    .data start:0x02112b88 end:0x02112bc8
-src/data/ov036/data_02112bc8.c:
-    complete
-    .data start:0x02112bc8 end:0x02112c28
-src/data/ov036/data_02112c28.c:
-    complete
-    .data start:0x02112c28 end:0x02112c54
-src/data/ov036/data_02112c54.c:
-    complete
-    .data start:0x02112c54 end:0x02112cd4
-src/data/ov036/data_02112cd4.c:
-    complete
-    .data start:0x02112cd4 end:0x02112d1c
-src/data/ov036/data_02112d1c.c:
-    complete
-    .data start:0x02112d1c end:0x02112dfc
-src/data/ov036/data_02112dfc.c:
-    complete
-    .data start:0x02112dfc end:0x0211306c
-src/data/ov036/data_0211306c.c:
-    complete
-    .data start:0x0211306c end:0x02113384
-src/data/ov036/data_02113384.c:
-    complete
-    .data start:0x02113384 end:0x02113a54
-src/data/ov036/data_02113b18.c:
-    complete
-    .data start:0x02113b18 end:0x02113b20
 src/game/actors/d_a_obj_rc_kaitendai.cpp:
     complete
     .text start:0x02111444 end:0x02111580
@@ -97,9 +40,6 @@ src/game/actors/d_a_obj_rc_guruguru.cpp:
     .ctor start:0x021129ec end:0x021129f0
     .bss start:0x021140ac end:0x021140d4
 
-src/data/ov036/data_02113d78.c:
-    complete
-    .data start:0x02113d78 end:0x02113d84
 src/game/actors/d_a_obj_rc_dorifu.cpp:
     complete
     .text start:0x02111f8c end:0x02112158
@@ -115,6 +55,3 @@ src/game/actors/d_a_obj_rc_carpet.cpp:
     .ctor start:0x021129f4 end:0x021129f8
     .data start:0x02113f4c end:0x02114020
     .bss start:0x0211419c end:0x021141d8
-src/data/ov036/bss_021141d8.c:
-    complete
-    .bss start:0x021141d8 end:0x021141e0

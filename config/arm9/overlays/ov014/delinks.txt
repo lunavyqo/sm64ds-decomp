@@ -3,69 +3,6 @@
     .ctor       start:0x02113368 end:0x02113374 kind:rodata align:4
     .data       start:0x02113380 end:0x02114940 kind:data align:32
     .bss        start:0x02114940 end:0x021149e0 kind:bss align:32
-src/data/ov014/data_02113380.c:
-    complete
-    .data start:0x02113380 end:0x02113388
-src/data/ov014/data_02113388.c:
-    complete
-    .data start:0x02113388 end:0x021133b0
-src/data/ov014/data_021133b0.c:
-    complete
-    .data start:0x021133b0 end:0x021133bc
-src/data/ov014/data_021133bc.c:
-    complete
-    .data start:0x021133bc end:0x021133ec
-src/data/ov014/data_021133ec.c:
-    complete
-    .data start:0x021133ec end:0x0211341c
-src/data/ov014/data_0211341c.c:
-    complete
-    .data start:0x0211341c end:0x02113450
-src/data/ov014/data_02113450.c:
-    complete
-    .data start:0x02113450 end:0x02113490
-src/data/ov014/data_02113490.c:
-    complete
-    .data start:0x02113490 end:0x021134c8
-src/data/ov014/data_021134c8.c:
-    complete
-    .data start:0x021134c8 end:0x02113508
-src/data/ov014/data_02113508.c:
-    complete
-    .data start:0x02113508 end:0x02113550
-src/data/ov014/data_02113550.c:
-    complete
-    .data start:0x02113550 end:0x021135d0
-src/data/ov014/data_021135d0.c:
-    complete
-    .data start:0x021135d0 end:0x021137b0
-src/data/ov014/data_021137b0.c:
-    complete
-    .data start:0x021137b0 end:0x02113910
-src/data/ov014/data_02113910.c:
-    complete
-    .data start:0x02113910 end:0x021139d0
-src/data/ov014/data_021139d0.c:
-    complete
-    .data start:0x021139d0 end:0x02113ab0
-src/data/ov014/data_02113ab0.c:
-    complete
-    .data start:0x02113ab0 end:0x02113bd8
-src/data/ov014/data_02113bd8.c:
-    complete
-    .data start:0x02113bd8 end:0x02113d08
-src/data/ov014/data_02113d08.c:
-    complete
-    .data start:0x02113d08 end:0x02113fc8
-src/data/ov014/data_02113fc8.c:
-    complete
-    .data start:0x02113fc8 end:0x02114558
-src/data/ov014/data_02114558.c:
-    complete
-    .data start:0x02114558 end:0x02114578
-src/data/ov014/data_02114578.c:
-    complete
-    .data start:0x02114578 end:0x021145b8
 src/game/actors/d_a_obj_b_swdoor.cpp:
     complete
     .text start:0x021111a0 end:0x02111308
@@ -74,18 +11,6 @@ src/game/actors/d_a_obj_b_swdoor.cpp:
     .data start:0x021145c4 end:0x021145d0
     .bss start:0x02114940 end:0x02114968
 
-src/data/ov014/data_02114688.c:
-    complete
-    .data start:0x02114688 end:0x02114700
-src/data/ov014/data_02114700.c:
-    complete
-    .data start:0x02114700 end:0x02114718
-src/data/ov014/data_02114724.c:
-    complete
-    .data start:0x02114724 end:0x02114730
-src/data/ov014/data_02114730.c:
-    complete
-    .data start:0x02114730 end:0x02114740
 src/game/actors/d_a_wanwan.cpp:
     complete
     .text start:0x02111308 end:0x02112e0c

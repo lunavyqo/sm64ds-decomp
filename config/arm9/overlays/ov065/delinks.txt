@@ -9,15 +9,6 @@ src/game/actors/d_a_yurei_mucho.cpp:
     .text start:0x02115ee0 end:0x02116f98
     .bss start:0x0211d600 end:0x0211d620
 
-src/data/ov065/data_0211cb20.c:
-    complete
-    .data start:0x0211cb20 end:0x0211cb60
-src/data/ov065/bss_0211d620.c:
-    complete
-    .bss start:0x0211d620 end:0x0211d650
-src/data/ov065/bss_0211d650.c:
-    complete
-    .bss start:0x0211d650 end:0x0211d690
 src/game/actors/d_a_basabasa.cpp:
     complete
     .text start:0x02116f98 end:0x02117f40
@@ -26,9 +17,6 @@ src/game/actors/d_a_basabasa.cpp:
     .data start:0x0211cc20 end:0x0211cc60
     .bss start:0x0211d690 end:0x0211d720
 
-src/data/ov065/rodata_0211c078.c:
-    complete
-    .rodata start:0x0211c078 end:0x0211c080
 src/game/actors/d_a_dossy.cpp:
     complete
     .text start:0x02117f40 end:0x021196d8
@@ -52,21 +40,6 @@ src/game/actors/d_a_obj_ct_mecha03.cpp:
     .ctor start:0x0211caf0 end:0x0211caf4
     .bss start:0x0211d88c end:0x0211d8b4
 
-src/data/ov065/data_0211cd68.c:
-    complete
-    .data start:0x0211cd68 end:0x0211cdc4
-src/data/ov065/data_0211cec4.c:
-    complete
-    .data start:0x0211cec4 end:0x0211cfa4
-src/data/ov065/data_0211cfa4.c:
-    complete
-    .data start:0x0211cfa4 end:0x0211cfac
-src/data/ov065/data_0211cfd0.c:
-    complete
-    .data start:0x0211cfd0 end:0x0211cfd8
-src/data/ov065/data_0211cfd8.c:
-    complete
-    .data start:0x0211cfd8 end:0x0211d028
 src/game/actors/d_a_obj_ct_mecha04.cpp:
     complete
     .text start:0x0211a494 end:0x0211ab60
@@ -82,12 +55,6 @@ src/game/actors/d_a_obj_ct_mecha05.cpp:
     .ctor start:0x0211caf8 end:0x0211cafc
     .bss start:0x0211d904 end:0x0211d92c
 
-src/data/ov065/data_0211d26c.c:
-    complete
-    .data start:0x0211d26c end:0x0211d270
-src/data/ov065/data_0211d334.c:
-    complete
-    .data start:0x0211d334 end:0x0211d338
 src/game/actors/d_a_obj_ct_kaitendai.cpp:
     complete
     .text start:0x0211b360 end:0x0211b7f0
@@ -113,30 +80,3 @@ src/game/actors/d_a_obj_ct_mecha09.cpp:
 src/unnamed/ov065/__sinit_ov065_0211c110.c:
     complete
     .init start:0x0211c110 end:0x0211c2a8
-src/data/ov065/rodata_0211c0a8.c:
-    complete
-    .rodata start:0x0211c0a8 end:0x0211c0b8
-src/data/ov065/rodata_0211c0b8.c:
-    complete
-    .rodata start:0x0211c0b8 end:0x0211c0c8
-src/data/ov065/rodata_0211c0c8.c:
-    complete
-    .rodata start:0x0211c0c8 end:0x0211c0d0
-src/data/ov065/rodata_0211c0d0.c:
-    complete
-    .rodata start:0x0211c0d0 end:0x0211c0d4
-src/data/ov065/rodata_0211c0d4.c:
-    complete
-    .rodata start:0x0211c0d4 end:0x0211c110
-src/data/ov065/data_0211d360.c:
-    complete
-    .data start:0x0211d360 end:0x0211d364
-src/data/ov065/data_0211d364.c:
-    complete
-    .data start:0x0211d364 end:0x0211d3b4
-src/data/ov065/data_0211d520.c:
-    complete
-    .data start:0x0211d520 end:0x0211d530
-src/data/ov065/bss_0211d9f4.c:
-    complete
-    .bss start:0x0211d9f4 end:0x0211da00

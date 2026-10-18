@@ -8,27 +8,3 @@ src/minigames/d_s_mini_gm.cpp:
     .text start:0x020bfec0 end:0x020c2250
     .rodata start:0x020c2280 end:0x020c2310
     .data start:0x020c2448 end:0x020c24d8
-src/data/ov005/data_020c24dc.c:
-    complete
-    .data start:0x020c24dc end:0x020c2c28
-src/data/ov005/data_020c2c48.c:
-    complete
-    .data start:0x020c2c48 end:0x020c2e88
-src/data/ov005/data_020c2e8c.c:
-    complete
-    .data start:0x020c2e8c end:0x020c2ea4
-src/data/ov005/data_020c2eac.c:
-    complete
-    .data start:0x020c2eac end:0x020c2efc
-src/data/ov005/data_020c2f24.c:
-    complete
-    .data start:0x020c2f24 end:0x020c2f4c
-src/data/ov005/data_020c2f68.c:
-    complete
-    .data start:0x020c2f68 end:0x020c2f88
-src/data/ov005/data_020c2f8c.c:
-    complete
-    .data start:0x020c2f8c end:0x020c2fcc
-src/data/ov005/data_020c2fd0.c:
-    complete
-    .data start:0x020c2fd0 end:0x020c3020

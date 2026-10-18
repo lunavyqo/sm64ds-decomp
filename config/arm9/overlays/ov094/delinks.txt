@@ -10,6 +10,3 @@ src/game/actors/d_a_owl.cpp:
     .ctor start:0x021369b8 end:0x021369bc
     .data start:0x021369c0 end:0x02136a10
     .bss start:0x02136ae0 end:0x02136b80
-src/data/ov094/data_02136a1c.c:
-    complete
-    .data start:0x02136a1c end:0x02136a28

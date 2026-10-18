@@ -19,12 +19,6 @@ src/game/actors/d_a_manta.cpp:
     .data start:0x021341e4 end:0x021341f4
     .bss start:0x02134524 end:0x0213455c
 
-src/data/ov090/data_02134200.c:
-    complete
-    .data start:0x02134200 end:0x0213420c
-src/data/ov090/data_021342b8.c:
-    complete
-    .data start:0x021342b8 end:0x021342d8
 src/game/actors/d_a_pukupuku.cpp:
     complete
     .text start:0x02133034 end:0x0213367c

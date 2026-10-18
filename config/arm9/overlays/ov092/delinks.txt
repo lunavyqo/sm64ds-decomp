@@ -4,9 +4,6 @@
     .ctor       start:0x02132210 end:0x02132214 kind:rodata align:4
     .data       start:0x02132220 end:0x02132540 kind:data align:32
     .bss        start:0x02132540 end:0x021325c0 kind:bss align:32
-src/data/ov092/data_02132220.c:
-    complete
-    .data start:0x02132220 end:0x02132240
 src/game/actors/d_a_onms.cpp:
     complete
     .text start:0x02130f00 end:0x02132074
@@ -14,18 +11,3 @@ src/game/actors/d_a_onms.cpp:
     .ctor start:0x02132210 end:0x02132214
     .data start:0x02132240 end:0x02132288
     .bss start:0x02132540 end:0x021325b0
-src/data/ov092/data_02132294.c:
-    complete
-    .data start:0x02132294 end:0x021322a0
-src/data/ov092/data_02132350.c:
-    complete
-    .data start:0x02132350 end:0x021323dc
-src/data/ov092/data_021323dc.c:
-    complete
-    .data start:0x021323dc end:0x0213246c
-src/data/ov092/data_0213246c.c:
-    complete
-    .data start:0x0213246c end:0x02132540
-src/data/ov092/bss_021325b0.c:
-    complete
-    .bss start:0x021325b0 end:0x021325c0

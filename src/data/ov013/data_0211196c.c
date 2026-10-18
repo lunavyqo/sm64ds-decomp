@@ -1,5 +1,0 @@
-/* data 0x0211196c..0x021119cc */
-#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
-#pragma section forcedata begin
-unsigned int data_ov013_0211196c[24] = { 0x01f4fcae, 0x8000fbe6, 0x00070000, 0x01f4fb82, 0x0000fbe6, 0x00070000, 0x0497fbe6, 0x0000f4de, 0x000f0100, 0x0497f5b7, 0x4000f7a4, 0x00021200, 0x0497065e, 0xc000f70e, 0x00021300, 0x0898ff3b, 0x8000028a, 0x000b1400, 0x0c1cff39, 0x0000fecd, 0x000c4500, 0x04971aae, 0x4000f7a4, 0x00016300 };
-#pragma section forcedata end

@@ -3,54 +3,6 @@
     .ctor       start:0x0211219c end:0x021121a8 kind:rodata align:4
     .data       start:0x021121c0 end:0x02112d00 kind:data align:32
     .bss        start:0x02112d00 end:0x02112d80 kind:bss align:32
-src/data/ov010/data_021121c0.c:
-    complete
-    .data start:0x021121c0 end:0x021121c4
-src/data/ov010/data_021121c4.c:
-    complete
-    .data start:0x021121c4 end:0x0211223c
-src/data/ov010/data_0211223c.c:
-    complete
-    .data start:0x0211223c end:0x02112248
-src/data/ov010/data_02112248.c:
-    complete
-    .data start:0x02112248 end:0x02112288
-src/data/ov010/data_02112288.c:
-    complete
-    .data start:0x02112288 end:0x021122b8
-src/data/ov010/data_021122b8.c:
-    complete
-    .data start:0x021122b8 end:0x02112358
-src/data/ov010/data_02112358.c:
-    complete
-    .data start:0x02112358 end:0x021123d8
-src/data/ov010/data_021123d8.c:
-    complete
-    .data start:0x021123d8 end:0x02112420
-src/data/ov010/data_02112420.c:
-    complete
-    .data start:0x02112420 end:0x021124c0
-src/data/ov010/data_021124c0.c:
-    complete
-    .data start:0x021124c0 end:0x02112580
-src/data/ov010/data_02112580.c:
-    complete
-    .data start:0x02112580 end:0x0211261c
-src/data/ov010/data_0211261c.c:
-    complete
-    .data start:0x0211261c end:0x021126d0
-src/data/ov010/data_021126d0.c:
-    complete
-    .data start:0x021126d0 end:0x02112790
-src/data/ov010/data_02112790.c:
-    complete
-    .data start:0x02112790 end:0x02112864
-src/data/ov010/data_02112864.c:
-    complete
-    .data start:0x02112864 end:0x02112948
-src/data/ov010/data_02112948.c:
-    complete
-    .data start:0x02112948 end:0x02112a78
 src/game/actors/d_a_obj_c1_trap.cpp:
     complete
     .text start:0x021111a0 end:0x021119d0
@@ -73,6 +25,3 @@ src/game/actors/d_a_obj_c1_peach.cpp:
     .ctor start:0x021121a4 end:0x021121a8
     .bss start:0x02112d64 end:0x02112d78
 
-src/data/ov010/bss_02112d78.c:
-    complete
-    .bss start:0x02112d78 end:0x02112d80

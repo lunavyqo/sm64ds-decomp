@@ -12,60 +12,6 @@ src/unnamed/ov009/func_ov009_0211145c.cpp:
     complete
     .text start:0x0211145c end:0x021115d8
 
-src/data/ov009/data_02112b60.c:
-    complete
-    .data start:0x02112b60 end:0x02112b6c
-src/data/ov009/data_02112b6c.c:
-    complete
-    .data start:0x02112b6c end:0x02112b7c
-src/data/ov009/data_02112b7c.c:
-    complete
-    .data start:0x02112b7c end:0x02112b94
-src/data/ov009/data_02112b94.c:
-    complete
-    .data start:0x02112b94 end:0x02112bc4
-src/data/ov009/data_02112bc4.c:
-    complete
-    .data start:0x02112bc4 end:0x02112bf8
-src/data/ov009/data_02112bf8.c:
-    complete
-    .data start:0x02112bf8 end:0x02112c78
-src/data/ov009/data_02112c78.c:
-    complete
-    .data start:0x02112c78 end:0x02112c9c
-src/data/ov009/data_02112c9c.c:
-    complete
-    .data start:0x02112c9c end:0x02112ccc
-src/data/ov009/data_02112ccc.c:
-    complete
-    .data start:0x02112ccc end:0x02112d04
-src/data/ov009/data_02112d04.c:
-    complete
-    .data start:0x02112d04 end:0x02112d84
-src/data/ov009/data_02112d84.c:
-    complete
-    .data start:0x02112d84 end:0x02112e14
-src/data/ov009/data_02112e14.c:
-    complete
-    .data start:0x02112e14 end:0x02112e7c
-src/data/ov009/data_02112e7c.c:
-    complete
-    .data start:0x02112e7c end:0x02112f3c
-src/data/ov009/data_02112f3c.c:
-    complete
-    .data start:0x02112f3c end:0x0211301c
-src/data/ov009/data_0211301c.c:
-    complete
-    .data start:0x0211301c end:0x02113104
-src/data/ov009/data_02113104.c:
-    complete
-    .data start:0x02113104 end:0x02113214
-src/data/ov009/data_02113214.c:
-    complete
-    .data start:0x02113214 end:0x021133d4
-src/data/ov009/data_021133d4.c:
-    complete
-    .data start:0x021133d4 end:0x021138fc
 src/game/actors/d_a_s_bird.cpp:
     complete
     .text start:0x021115d8 end:0x02111a70
@@ -78,12 +24,6 @@ src/game/actors/d_a_obj_mc_water.cpp:
     complete
     .text start:0x02111a70 end:0x02111dc4
 
-src/data/ov009/bss_02113c68.c:
-    complete
-    .bss start:0x02113c68 end:0x02113c78
-src/data/ov009/bss_02113c78.c:
-    complete
-    .bss start:0x02113c78 end:0x02113e88
 src/game/actors/d_a_obj_mc_metalnet.cpp:
     complete
     .text start:0x02111dc4 end:0x02112078
@@ -102,18 +42,3 @@ src/unnamed/ov009/__sinit_ov009_02112524.c:
     complete
     .init start:0x02112524 end:0x02112a5c
 
-src/data/ov009/rodata_02112228.c:
-    complete
-    .rodata start:0x02112228 end:0x02112238
-src/data/ov009/rodata_02112238.c:
-    complete
-    .rodata start:0x02112238 end:0x02112270
-src/data/ov009/rodata_02112270.c:
-    complete
-    .rodata start:0x02112270 end:0x021122ec
-src/data/ov009/rodata_021122ec.c:
-    complete
-    .rodata start:0x021122ec end:0x02112458
-src/data/ov009/bss_02113ed8.c:
-    complete
-    .bss start:0x02113ed8 end:0x02113ee0

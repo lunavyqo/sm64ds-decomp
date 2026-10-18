@@ -3,36 +3,6 @@
     .ctor       start:0x02111910 end:0x02111914 kind:rodata align:4
     .data       start:0x02111920 end:0x02111b60 kind:data align:32
     .bss        start:0x02111b60 end:0x02111b80 kind:bss align:32
-src/data/ov055/data_02111920.c:
-    complete
-    .data start:0x02111920 end:0x02111928
-src/data/ov055/data_02111928.c:
-    complete
-    .data start:0x02111928 end:0x02111940
-src/data/ov055/data_02111940.c:
-    complete
-    .data start:0x02111940 end:0x02111958
-src/data/ov055/data_02111958.c:
-    complete
-    .data start:0x02111958 end:0x02111978
-src/data/ov055/data_02111978.c:
-    complete
-    .data start:0x02111978 end:0x021119b0
-src/data/ov055/data_021119b0.c:
-    complete
-    .data start:0x021119b0 end:0x021119d0
-src/data/ov055/data_021119d0.c:
-    complete
-    .data start:0x021119d0 end:0x02111a30
-src/data/ov055/data_02111a30.c:
-    complete
-    .data start:0x02111a30 end:0x02111a90
-src/data/ov055/data_02111a90.c:
-    complete
-    .data start:0x02111a90 end:0x02111a94
-src/data/ov055/bss_02111b60.c:
-    complete
-    .bss start:0x02111b60 end:0x02111b70
 src/game/actors/d_a_luigi.cpp:
     complete
     .text start:0x021111a0 end:0x021118d4

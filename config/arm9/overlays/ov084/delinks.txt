@@ -4,27 +4,6 @@
     .ctor       start:0x02130860 end:0x0213086c kind:rodata align:4
     .data       start:0x02130880 end:0x02130cc0 kind:data align:32
     .bss        start:0x02130cc0 end:0x02130ee0 kind:bss align:32
-src/data/ov084/rodata_02130174.c:
-    complete
-    .rodata start:0x02130174 end:0x02130178
-src/data/ov084/rodata_02130178.c:
-    complete
-    .rodata start:0x02130178 end:0x0213018c
-src/data/ov084/rodata_0213018c.c:
-    complete
-    .rodata start:0x0213018c end:0x02130204
-src/data/ov084/rodata_02130204.c:
-    complete
-    .rodata start:0x02130204 end:0x02130208
-src/data/ov084/rodata_02130208.c:
-    complete
-    .rodata start:0x02130208 end:0x02130278
-src/data/ov084/data_02130880.c:
-    complete
-    .data start:0x02130880 end:0x0213088c
-src/data/ov084/data_0213088c.c:
-    complete
-    .data start:0x0213088c end:0x021308ac
 src/game/actors/d_a_krb.cpp:
     complete
     .text start:0x02129020 end:0x0212c10c
@@ -39,20 +18,11 @@ src/game/actors/d_a_red_bombhei.cpp:
     .text start:0x0212c10c end:0x0212d248
     .bss start:0x02130d9c end:0x02130df4
 
-src/data/ov084/bss_02130df4.c:
-    complete
-    .bss start:0x02130df4 end:0x02130e04
 src/game/actors/d_a_f_pkn.cpp:
     complete
     .text start:0x0212d248 end:0x0212eaf0
     .bss start:0x02130e04 end:0x02130e0c
 
-src/data/ov084/bss_02130e0c.c:
-    complete
-    .bss start:0x02130e0c end:0x02130e2c
-src/data/ov084/bss_02130e2c.c:
-    complete
-    .bss start:0x02130e2c end:0x02130e80
 src/game/actors/d_a_pkn.cpp:
     complete
     .text start:0x0212eaf0 end:0x02130174
@@ -65,24 +35,3 @@ src/unnamed/ov084/__sinit_ov084_02130558.c:
 src/unnamed/ov084/__sinit_ov084_02130654.c:
     complete
     .init start:0x02130654 end:0x02130860
-src/data/ov084/rodata_02130294.c:
-    complete
-    .rodata start:0x02130294 end:0x0213029c
-src/data/ov084/rodata_0213029c.c:
-    complete
-    .rodata start:0x0213029c end:0x021302ec
-src/data/ov084/rodata_021302ec.c:
-    complete
-    .rodata start:0x021302ec end:0x021302f4
-src/data/ov084/rodata_021302f4.c:
-    complete
-    .rodata start:0x021302f4 end:0x0213030c
-src/data/ov084/rodata_0213030c.c:
-    complete
-    .rodata start:0x0213030c end:0x0213035c
-src/data/ov084/data_021309c4.c:
-    complete
-    .data start:0x021309c4 end:0x021309f4
-src/data/ov084/data_02130ba4.c:
-    complete
-    .data start:0x02130ba4 end:0x02130bec

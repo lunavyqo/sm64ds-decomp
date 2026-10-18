@@ -1,5 +1,0 @@
-/* data 0x02087094..0x020870e4 */
-#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
-#pragma section forcedata begin
-unsigned int data_02087094[20] = { 0x01100110, 0x00000000, 0x00000000, 0x01000010, 0x01000110, 0x01101100, 0x01111000, 0x00111000, 0x00011100, 0x00000000, 0x00000000, 0x01111110, 0x01110000, 0x00111000, 0x00011100, 0x00001110, 0x01111110, 0x00000000, 0x00011000, 0x00001100 };
-#pragma section forcedata end

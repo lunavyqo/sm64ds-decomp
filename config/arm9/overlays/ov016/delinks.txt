@@ -4,45 +4,6 @@
     .ctor       start:0x02113abc end:0x02113ad0 kind:rodata align:4
     .data       start:0x02113ae0 end:0x02114d20 kind:data align:32
     .bss        start:0x02114d20 end:0x02114ea0 kind:bss align:32
-src/data/ov016/data_02113ae0.c:
-    complete
-    .data start:0x02113ae0 end:0x02113ae8
-src/data/ov016/data_02113ae8.c:
-    complete
-    .data start:0x02113ae8 end:0x02113b00
-src/data/ov016/data_02113b00.c:
-    complete
-    .data start:0x02113b00 end:0x02113b18
-src/data/ov016/data_02113b18.c:
-    complete
-    .data start:0x02113b18 end:0x02113b78
-src/data/ov016/data_02113b78.c:
-    complete
-    .data start:0x02113b78 end:0x02113bac
-src/data/ov016/data_02113bac.c:
-    complete
-    .data start:0x02113bac end:0x02113cac
-src/data/ov016/data_02113cac.c:
-    complete
-    .data start:0x02113cac end:0x02113d0c
-src/data/ov016/data_02113d0c.c:
-    complete
-    .data start:0x02113d0c end:0x02113d8c
-src/data/ov016/data_02113d8c.c:
-    complete
-    .data start:0x02113d8c end:0x02113dd4
-src/data/ov016/data_02113dd4.c:
-    complete
-    .data start:0x02113dd4 end:0x02113e54
-src/data/ov016/data_02113e54.c:
-    complete
-    .data start:0x02113e54 end:0x02113ed8
-src/data/ov016/data_02113ed8.c:
-    complete
-    .data start:0x02113ed8 end:0x021141b8
-src/data/ov016/data_021141b8.c:
-    complete
-    .data start:0x021141b8 end:0x02114878
 src/game/actors/d_a_moray.cpp:
     complete
     .text start:0x021111a0 end:0x0211260c
@@ -65,12 +26,6 @@ src/game/actors/d_a_obj_ki_hasira.cpp:
     .ctor start:0x02113ac4 end:0x02113ac8
     .bss start:0x02114e1c end:0x02114e44
 
-src/data/ov016/data_02114908.c:
-    complete
-    .data start:0x02114908 end:0x02114958
-src/data/ov016/data_021149d4.c:
-    complete
-    .data start:0x021149d4 end:0x021149dc
 src/game/actors/d_a_obj_ki_ita.cpp:
     complete
     .text start:0x02112ef4 end:0x02112ff8
@@ -85,18 +40,3 @@ src/game/actors/d_a_slide_box.cpp:
     .init start:0x02113a50 end:0x02113abc
     .ctor start:0x02113acc end:0x02113ad0
     .bss start:0x02114e6c end:0x02114e94
-src/data/ov016/rodata_0211354c.c:
-    complete
-    .rodata start:0x0211354c end:0x02113554
-src/data/ov016/rodata_02113554.c:
-    complete
-    .rodata start:0x02113554 end:0x02113570
-src/data/ov016/rodata_02113570.c:
-    complete
-    .rodata start:0x02113570 end:0x021136dc
-src/data/ov016/rodata_021136dc.c:
-    complete
-    .rodata start:0x021136dc end:0x021136ec
-src/data/ov016/bss_02114e94.c:
-    complete
-    .bss start:0x02114e94 end:0x02114ea0

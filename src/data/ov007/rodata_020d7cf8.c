@@ -1,5 +1,0 @@
-/* rodata 0x020d7cf8..0x020d7d60 */
-#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
-#pragma section forcerodata begin
-unsigned int data_ov007_020d7cf8[26] = { 0x00000000, 0x00000000, 0x00000000, 0x000a0000, 0x000a0000, 0x00001000, 0x00001000, 0x00000000, 0x00000000, 0x0000001f, 0x00007fff, 0x00000002, 0x00000020, 0x00000000, 0x00000000, 0x00000000, 0x0012c000, 0x0012c000, 0x00001000, 0x00001000, 0x00000000, 0x00000000, 0x0000000f, 0x00007fff, 0x00000000, 0x0000001f };
-#pragma section forcerodata end

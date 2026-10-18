@@ -11,21 +11,6 @@ src/game/actors/d_a_obj_bk_billboard.cpp:
     .ctor start:0x02113410 end:0x02113414
     .bss start:0x02114960 end:0x02114974
 
-src/data/ov015/data_02113440.c:
-    complete
-    .data start:0x02113440 end:0x02113448
-src/data/ov015/data_02113448.c:
-    complete
-    .data start:0x02113448 end:0x02113458
-src/data/ov015/data_02113458.c:
-    complete
-    .data start:0x02113458 end:0x02113470
-src/data/ov015/data_02113470.c:
-    complete
-    .data start:0x02113470 end:0x02113500
-src/data/ov015/data_02113500.c:
-    complete
-    .data start:0x02113500 end:0x02113574
 src/game/actors/d_a_obj_bk_botaosi.cpp:
     complete
     .text start:0x02111314 end:0x02111ba0
@@ -34,42 +19,6 @@ src/game/actors/d_a_obj_bk_botaosi.cpp:
     .data start:0x02113574 end:0x02113594
     .bss start:0x02114974 end:0x0211499c
 
-src/data/ov015/data_02113594.c:
-    complete
-    .data start:0x02113594 end:0x021135b4
-src/data/ov015/data_021135b4.c:
-    complete
-    .data start:0x021135b4 end:0x02113614
-src/data/ov015/data_02113614.c:
-    complete
-    .data start:0x02113614 end:0x021136b4
-src/data/ov015/data_021136b4.c:
-    complete
-    .data start:0x021136b4 end:0x02113714
-src/data/ov015/data_02113714.c:
-    complete
-    .data start:0x02113714 end:0x02113804
-src/data/ov015/data_02113804.c:
-    complete
-    .data start:0x02113804 end:0x02113884
-src/data/ov015/data_02113884.c:
-    complete
-    .data start:0x02113884 end:0x021138e8
-src/data/ov015/data_021138e8.c:
-    complete
-    .data start:0x021138e8 end:0x02113968
-src/data/ov015/data_02113968.c:
-    complete
-    .data start:0x02113968 end:0x02113aa8
-src/data/ov015/data_02113aa8.c:
-    complete
-    .data start:0x02113aa8 end:0x02113d58
-src/data/ov015/data_02113d58.c:
-    complete
-    .data start:0x02113d58 end:0x02114318
-src/data/ov015/data_021144a0.c:
-    complete
-    .data start:0x021144a0 end:0x02114510
 src/game/actors/d_a_obj_bk_dossunbar.cpp:
     complete
     .text start:0x02111ba0 end:0x02112290
@@ -92,9 +41,6 @@ src/game/actors/d_a_obj_bk_rotebar.cpp:
     .ctor start:0x02113420 end:0x02113424
     .bss start:0x02114a84 end:0x02114aac
 
-src/data/ov015/data_02114794.c:
-    complete
-    .data start:0x02114794 end:0x02114798
 src/game/actors/d_a_obj_bk_ukisima.cpp:
     complete
     .text start:0x02112bd0 end:0x02112cf4
@@ -110,15 +56,3 @@ src/game/actors/d_a_obj_bk_fall_block.cpp:
     .ctor start:0x02113428 end:0x0211342c
     .data start:0x02114880 end:0x0211488c
     .bss start:0x02114ad4 end:0x02114afc
-src/data/ov015/rodata_02112e0c.c:
-    complete
-    .rodata start:0x02112e0c end:0x02112e14
-src/data/ov015/rodata_02112e14.c:
-    complete
-    .rodata start:0x02112e14 end:0x02112e30
-src/data/ov015/rodata_02112e30.c:
-    complete
-    .rodata start:0x02112e30 end:0x02112f9c
-src/data/ov015/bss_02114afc.c:
-    complete
-    .bss start:0x02114afc end:0x02114b00

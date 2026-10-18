@@ -12,6 +12,3 @@ src/game/actors/d_a_obj_key.cpp:
     .ctor start:0x02132af4 end:0x02132af8
     .data start:0x02132b00 end:0x02132b4c
     .bss start:0x02132c40 end:0x02132d40
-src/data/ov089/rodata_02132894.c:
-    complete
-    .rodata start:0x02132894 end:0x021328d4

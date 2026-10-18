@@ -21,18 +21,6 @@ src/game/actors/d_a_btt_bk.cpp:
     .data start:0x0212812c end:0x0212815c
     .bss start:0x02128468 end:0x021284ac
 
-src/data/ov080/rodata_0212767c.c:
-    complete
-    .rodata start:0x0212767c end:0x021276c4
-src/data/ov080/rodata_021276c4.c:
-    complete
-    .rodata start:0x021276c4 end:0x02127714
-src/data/ov080/rodata_02127714.c:
-    complete
-    .rodata start:0x02127714 end:0x0212771c
-src/data/ov080/rodata_0212771c.c:
-    complete
-    .rodata start:0x0212771c end:0x0212775c
 src/game/actors/d_a_pic_gate.cpp:
     complete
     .text start:0x02125404 end:0x021264ec
@@ -49,12 +37,3 @@ src/game/actors/d_a_pic_gate_methods.cpp:
 src/game/actors/d_a_obj_maruta.cpp:
     complete
     .text start:0x02126fbc end:0x0212766c
-src/data/ov080/rodata_021277a8.c:
-    complete
-    .rodata start:0x021277a8 end:0x021278c0
-src/data/ov080/bss_02128688.c:
-    complete
-    .bss start:0x02128688 end:0x0212869c
-src/data/ov080/bss_0212869c.c:
-    complete
-    .bss start:0x0212869c end:0x02128860

@@ -1,5 +1,0 @@
-/* rodata 0x020753f8..0x0207545c */
-#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
-#pragma section forcerodata begin
-unsigned int data_020753f8[25] = { 0x19010001, 0x00000005, 0x0001b541, 0x00000599, 0x00005000, 0x10000000, 0x7f900000, 0x00000000, 0x00000000, 0x0001750e, 0x73691000, 0x016d0079, 0x001e0000, 0x0000002f, 0x28800503, 0x00000001, 0x128f0cd9, 0x8e660cd9, 0x615f726c, 0x000003e0, 0x0909af3f, 0x00000060, 0x00010000, 0x4fff2b00, 0x19010001 };
-#pragma section forcerodata end

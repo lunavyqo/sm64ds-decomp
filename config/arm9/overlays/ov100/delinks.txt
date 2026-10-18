@@ -12,20 +12,11 @@ src/game/actors/d_a_btfly.cpp:
     .data start:0x02147e20 end:0x02147e60
     .bss start:0x02148600 end:0x02148668
 
-src/data/ov100/bss_02148668.c:
-    complete
-    .bss start:0x02148668 end:0x02148670
-src/data/ov100/bss_02148670.c:
-    complete
-    .bss start:0x02148670 end:0x0214867c
 src/game/actors/d_a_ibl.cpp:
     complete
     .text start:0x02141f04 end:0x021431c4
     .bss start:0x0214867c end:0x021486a4
 
-src/data/ov100/data_02147f18.c:
-    complete
-    .data start:0x02147f18 end:0x02147f40
 src/game/actors/d_a_wanwan2.cpp:
     complete
     .text start:0x021431c4 end:0x021443f4
@@ -34,15 +25,6 @@ src/game/actors/d_a_wanwan2.cpp:
     .data start:0x02147ff8 end:0x02148014
     .bss start:0x021486a4 end:0x02148704
 
-src/data/ov100/data_021480d0.c:
-    complete
-    .data start:0x021480d0 end:0x021480d4
-src/data/ov100/data_021480d4.c:
-    complete
-    .data start:0x021480d4 end:0x0214814c
-src/data/ov100/bss_02148704.c:
-    complete
-    .bss start:0x02148704 end:0x02148724
 src/game/actors/d_a_door.cpp:
     complete
     .text start:0x021443f4 end:0x021458d4
@@ -78,12 +60,3 @@ src/unnamed/ov100/__sinit_ov100_021474e8.c:
     complete
     .init start:0x021474e8 end:0x021475a4
 
-src/data/ov100/data_02148448.c:
-    complete
-    .data start:0x02148448 end:0x02148480
-src/data/ov100/data_0214857c.c:
-    complete
-    .data start:0x0214857c end:0x02148600
-src/data/ov100/bss_02148a7c.c:
-    complete
-    .bss start:0x02148a7c end:0x02148a80

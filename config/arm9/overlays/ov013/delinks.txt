@@ -11,63 +11,6 @@ src/game/actors/d_a_obj_clock_huriko.cpp:
     .ctor start:0x02111760 end:0x02111764
     .bss start:0x02112280 end:0x02112294
 
-src/data/ov013/rodata_021116ac.c:
-    complete
-    .rodata start:0x021116ac end:0x021116b0
-src/data/ov013/data_02111780.c:
-    complete
-    .data start:0x02111780 end:0x02111784
-src/data/ov013/data_02111784.c:
-    complete
-    .data start:0x02111784 end:0x021117ec
-src/data/ov013/data_021117ec.c:
-    complete
-    .data start:0x021117ec end:0x02111804
-src/data/ov013/data_02111804.c:
-    complete
-    .data start:0x02111804 end:0x02111834
-src/data/ov013/data_02111834.c:
-    complete
-    .data start:0x02111834 end:0x02111860
-src/data/ov013/data_02111860.c:
-    complete
-    .data start:0x02111860 end:0x02111890
-src/data/ov013/data_02111890.c:
-    complete
-    .data start:0x02111890 end:0x021118d0
-src/data/ov013/data_021118d0.c:
-    complete
-    .data start:0x021118d0 end:0x02111918
-src/data/ov013/data_02111918.c:
-    complete
-    .data start:0x02111918 end:0x0211196c
-src/data/ov013/data_0211196c.c:
-    complete
-    .data start:0x0211196c end:0x021119cc
-src/data/ov013/data_021119cc.c:
-    complete
-    .data start:0x021119cc end:0x02111a3c
-src/data/ov013/data_02111a3c.c:
-    complete
-    .data start:0x02111a3c end:0x02111ae4
-src/data/ov013/data_02111ae4.c:
-    complete
-    .data start:0x02111ae4 end:0x02111b94
-src/data/ov013/data_02111b94.c:
-    complete
-    .data start:0x02111b94 end:0x02111c54
-src/data/ov013/data_02111c54.c:
-    complete
-    .data start:0x02111c54 end:0x02111d28
-src/data/ov013/data_02111d28.c:
-    complete
-    .data start:0x02111d28 end:0x02111e18
-src/data/ov013/data_02111e18.c:
-    complete
-    .data start:0x02111e18 end:0x02111f18
-src/data/ov013/data_02111f18.c:
-    complete
-    .data start:0x02111f18 end:0x021120e0
 src/game/actors/d_a_obj_clock.cpp:
     complete
     .text start:0x021113bc end:0x021116ac
@@ -76,6 +19,3 @@ src/game/actors/d_a_obj_clock.cpp:
     .init start:0x021116f8 end:0x02111760
     .ctor start:0x02111764 end:0x02111768
     .bss start:0x02112294 end:0x021122bc
-src/data/ov013/bss_021122bc.c:
-    complete
-    .bss start:0x021122bc end:0x021122c0

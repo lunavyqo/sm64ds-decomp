@@ -3,18 +3,6 @@
     .ctor       start:0x020b1350 end:0x020b1350 kind:rodata align:4
     .data       start:0x020b1360 end:0x020b18a0 kind:data align:32
     .bss        start:0x020b18a0 end:0x020b18a0 kind:bss align:32
-src/data/ov003/data_020b1360.c:
-    complete
-    .data start:0x020b1360 end:0x020b1378
-src/data/ov003/data_020b1378.c:
-    complete
-    .data start:0x020b1378 end:0x020b1388
-src/data/ov003/data_020b1388.c:
-    complete
-    .data start:0x020b1388 end:0x020b1390
-src/data/ov003/data_020b1390.c:
-    complete
-    .data start:0x020b1390 end:0x020b13a8
 src/game/stages/d_s_title.cpp:
     complete
     .text start:0x020ad660 end:0x020addfc
@@ -25,55 +13,7 @@ src/game/stages/d_s_star_sel_methods.cpp:
     complete
     .text start:0x020addfc end:0x020b0580
 
-src/data/ov003/data_020b13b4.c:
-    complete
-    .data start:0x020b13b4 end:0x020b1498
-src/data/ov003/data_020b14a4.c:
-    complete
-    .data start:0x020b14a4 end:0x020b1510
-src/data/ov003/data_020b1510.c:
-    complete
-    .data start:0x020b1510 end:0x020b1590
-src/data/ov003/data_020b15a0.c:
-    complete
-    .data start:0x020b15a0 end:0x020b1620
-src/data/ov003/data_020b1620.c:
-    complete
-    .data start:0x020b1620 end:0x020b1634
-src/data/ov003/data_020b1634.c:
-    complete
-    .data start:0x020b1634 end:0x020b1650
-src/data/ov003/data_020b1650.c:
-    complete
-    .data start:0x020b1650 end:0x020b1698
-src/data/ov003/data_020b1698.c:
-    complete
-    .data start:0x020b1698 end:0x020b16ac
-src/data/ov003/data_020b16ac.c:
-    complete
-    .data start:0x020b16ac end:0x020b16bc
-src/data/ov003/data_020b16c8.c:
-    complete
-    .data start:0x020b16c8 end:0x020b16d4
-src/data/ov003/data_020b16e4.c:
-    complete
-    .data start:0x020b16e4 end:0x020b1704
-src/data/ov003/data_020b1704.c:
-    complete
-    .data start:0x020b1704 end:0x020b174c
-src/data/ov003/data_020b174c.c:
-    complete
-    .data start:0x020b174c end:0x020b1758
-src/data/ov003/data_020b1764.c:
-    complete
-    .data start:0x020b1764 end:0x020b1784
-src/data/ov003/data_020b179c.c:
-    complete
-    .data start:0x020b179c end:0x020b17e4
 src/game/stages/d_s_game_over.cpp:
     complete
     .text start:0x020b0580 end:0x020b117c
     .data start:0x020b17e4 end:0x020b18a0
-src/data/ov003/rodata_020b132c.c:
-    complete
-    .rodata start:0x020b132c end:0x020b1350

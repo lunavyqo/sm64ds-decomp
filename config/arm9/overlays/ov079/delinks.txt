@@ -12,15 +12,6 @@ src/game/actors/d_a_btn.cpp:
     .data start:0x02127ba0 end:0x02127bc0
     .bss start:0x02128140 end:0x021282e0
 
-src/data/ov079/data_02127bc0.c:
-    complete
-    .data start:0x02127bc0 end:0x02127c28
-src/data/ov079/data_02127cfc.c:
-    complete
-    .data start:0x02127cfc end:0x02127e7c
-src/data/ov079/data_02127e7c.c:
-    complete
-    .data start:0x02127e7c end:0x02127e9c
 src/game/actors/d_a_klr.cpp:
     complete
     .text start:0x02126648 end:0x02126dbc
@@ -33,18 +24,6 @@ src/game/actors/d_a_obj_bk_killerdai.cpp:
     complete
     .text start:0x02126dbc end:0x021271e4
 
-src/data/ov079/data_02127f64.c:
-    complete
-    .data start:0x02127f64 end:0x02127f70
-src/data/ov079/bss_021282f0.c:
-    complete
-    .bss start:0x021282f0 end:0x021282f8
-src/data/ov079/bss_02128300.c:
-    complete
-    .bss start:0x02128300 end:0x02128308
-src/data/ov079/bss_02128310.c:
-    complete
-    .bss start:0x02128310 end:0x02128340
 src/game/actors/d_a_obj_bk_kabe.cpp:
     complete
     .text start:0x021271e4 end:0x021275dc
@@ -56,21 +35,3 @@ src/game/actors/d_a_obj_bk_kabe.cpp:
 src/unnamed/ov079/__sinit_ov079_02127a10.c:
     complete
     .init start:0x02127a10 end:0x02127acc
-src/data/ov079/rodata_021275dc.c:
-    complete
-    .rodata start:0x021275dc end:0x021275ec
-src/data/ov079/rodata_021275ec.c:
-    complete
-    .rodata start:0x021275ec end:0x02127600
-src/data/ov079/rodata_02127600.c:
-    complete
-    .rodata start:0x02127600 end:0x02127618
-src/data/ov079/data_0212805c.c:
-    complete
-    .data start:0x0212805c end:0x02128060
-src/data/ov079/data_02128060.c:
-    complete
-    .data start:0x02128060 end:0x021280b0
-src/data/ov079/bss_02128390.c:
-    complete
-    .bss start:0x02128390 end:0x021283a0

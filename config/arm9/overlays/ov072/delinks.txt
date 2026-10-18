@@ -4,9 +4,6 @@
     .ctor       start:0x02122708 end:0x02122718 kind:rodata align:4
     .data       start:0x02122720 end:0x02122b20 kind:data align:32
     .bss        start:0x02122b20 end:0x02122de0 kind:bss align:32
-src/data/ov072/data_02122720.c:
-    complete
-    .data start:0x02122720 end:0x02122780
 src/game/actors/d_a_bg_snm_bdy.cpp:
     complete
     .text start:0x0211f000 end:0x0211ff34
@@ -15,20 +12,11 @@ src/game/actors/d_a_bg_snm_bdy.cpp:
     .data start:0x02122780 end:0x0212283c
     .bss start:0x02122b20 end:0x02122bc4
 
-src/data/ov072/bss_02122bc4.c:
-    complete
-    .bss start:0x02122bc4 end:0x02122bcc
-src/data/ov072/bss_02122bdc.c:
-    complete
-    .bss start:0x02122bdc end:0x02122c00
 src/game/actors/d_a_bg_snm_hed.cpp:
     complete
     .text start:0x0211ff34 end:0x02120824
     .bss start:0x02122c00 end:0x02122c08
 
-src/data/ov072/data_0212283c.c:
-    complete
-    .data start:0x0212283c end:0x0212287c
 src/game/actors/d_a_bg_snwmn.cpp:
     complete
     .text start:0x02120824 end:0x02120c58
@@ -37,15 +25,6 @@ src/game/actors/d_a_bg_snwmn.cpp:
     .data start:0x02122938 end:0x021229f4
     .bss start:0x02122c40 end:0x02122c94
 
-src/data/ov072/rodata_02121ffc.c:
-    complete
-    .rodata start:0x02121ffc end:0x02122004
-src/data/ov072/bss_02122c94.c:
-    complete
-    .bss start:0x02122c94 end:0x02122cc4
-src/data/ov072/bss_02122cc4.c:
-    complete
-    .bss start:0x02122cc4 end:0x02122cf4
 src/game/actors/d_a_pg_bby.cpp:
     complete
     .text start:0x02120c58 end:0x02121ffc
@@ -59,6 +38,3 @@ src/unnamed/ov072/__sinit_ov072_021221f8.c:
 src/unnamed/ov072/__sinit_ov072_02122414.c:
     complete
     .init start:0x02122414 end:0x02122708
-src/data/ov072/data_021229f4.c:
-    complete
-    .data start:0x021229f4 end:0x02122a54

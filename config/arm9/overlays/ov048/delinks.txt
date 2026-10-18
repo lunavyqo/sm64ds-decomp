@@ -2,39 +2,3 @@
     .ctor       start:0x0211158c end:0x0211158c kind:rodata align:4
     .data       start:0x021115a0 end:0x02111900 kind:data align:32
     .bss        start:0x02111900 end:0x02111900 kind:bss align:32
-src/data/ov048/rodata_021111a0.c:
-    complete
-    .rodata start:0x021111a0 end:0x021111a4
-src/data/ov048/rodata_021111a4.c:
-    complete
-    .rodata start:0x021111a4 end:0x021111c0
-src/data/ov048/rodata_021111c0.c:
-    complete
-    .rodata start:0x021111c0 end:0x021111fc
-src/data/ov048/rodata_021111fc.c:
-    complete
-    .rodata start:0x021111fc end:0x02111264
-src/data/ov048/rodata_02111264.c:
-    complete
-    .rodata start:0x02111264 end:0x0211158c
-src/data/ov048/data_021115a0.c:
-    complete
-    .data start:0x021115a0 end:0x021115a4
-src/data/ov048/data_021115a4.c:
-    complete
-    .data start:0x021115a4 end:0x021115bc
-src/data/ov048/data_021115bc.c:
-    complete
-    .data start:0x021115bc end:0x021115d4
-src/data/ov048/data_021115d4.c:
-    complete
-    .data start:0x021115d4 end:0x0211160c
-src/data/ov048/data_0211160c.c:
-    complete
-    .data start:0x0211160c end:0x02111780
-src/data/ov048/data_02111780.c:
-    complete
-    .data start:0x02111780 end:0x02111800
-src/data/ov048/data_02111800.c:
-    complete
-    .data start:0x02111800 end:0x02111900

@@ -4,51 +4,6 @@
     .ctor       start:0x020b9de4 end:0x020b9df4 kind:rodata align:4
     .data       start:0x020b9e00 end:0x020beb60 kind:data align:32
     .bss        start:0x020beb60 end:0x020bfec0 kind:bss align:32
-src/data/ov004/data_020b9e00.c:
-    complete
-    .data start:0x020b9e00 end:0x020ba034
-src/data/ov004/data_020ba034.c:
-    complete
-    .data start:0x020ba034 end:0x020ba414
-src/data/ov004/data_020ba414.c:
-    complete
-    .data start:0x020ba414 end:0x020ba644
-src/data/ov004/data_020ba644.c:
-    complete
-    .data start:0x020ba644 end:0x020baa64
-src/data/ov004/data_020baa64.c:
-    complete
-    .data start:0x020baa64 end:0x020baf6c
-src/data/ov004/data_020baf6c.c:
-    complete
-    .data start:0x020baf6c end:0x020bb3ec
-src/data/ov004/data_020bb3ec.c:
-    complete
-    .data start:0x020bb3ec end:0x020bb6bc
-src/data/ov004/data_020bb6bc.c:
-    complete
-    .data start:0x020bb6bc end:0x020bb7ac
-src/data/ov004/data_020bb7ac.c:
-    complete
-    .data start:0x020bb7ac end:0x020bbb1c
-src/data/ov004/data_020bbb1c.c:
-    complete
-    .data start:0x020bbb1c end:0x020bbbdc
-src/data/ov004/data_020bbbdc.c:
-    complete
-    .data start:0x020bbbdc end:0x020bbd7c
-src/data/ov004/data_020bbd7c.c:
-    complete
-    .data start:0x020bbd7c end:0x020bbecc
-src/data/ov004/data_020bbecc.c:
-    complete
-    .data start:0x020bbecc end:0x020bbf4c
-src/data/ov004/bss_020beb64.c:
-    complete
-    .bss start:0x020beb64 end:0x020beb68
-src/data/ov004/bss_020beb70.c:
-    complete
-    .bss start:0x020beb70 end:0x020beb74
 src/minigames/d_s_mg_base.cpp:
     complete
     .text start:0x020ad660 end:0x020b2c84
@@ -57,39 +12,6 @@ src/minigames/d_s_mg_base.cpp:
     .data start:0x020bbf4c end:0x020bbf6c
     .bss start:0x020beb74 end:0x020bf3e8
 
-src/data/ov004/data_020bbf94.c:
-    complete
-    .data start:0x020bbf94 end:0x020bbfa8
-src/data/ov004/data_020bbfbc.c:
-    complete
-    .data start:0x020bbfbc end:0x020bc020
-src/data/ov004/data_020bc020.c:
-    complete
-    .data start:0x020bc020 end:0x020bc03c
-src/data/ov004/data_020bc03c.c:
-    complete
-    .data start:0x020bc03c end:0x020bc04c
-src/data/ov004/data_020bc070.c:
-    complete
-    .data start:0x020bc070 end:0x020bc0c0
-src/data/ov004/data_020bc0c0.c:
-    complete
-    .data start:0x020bc0c0 end:0x020bc150
-src/data/ov004/data_020bc27c.c:
-    complete
-    .data start:0x020bc27c end:0x020bc288
-src/data/ov004/data_020bc288.c:
-    complete
-    .data start:0x020bc288 end:0x020bc6e8
-src/data/ov004/bss_020bf3ec.c:
-    complete
-    .bss start:0x020bf3ec end:0x020bf3f4
-src/data/ov004/bss_020bf3f4.c:
-    complete
-    .bss start:0x020bf3f4 end:0x020bf404
-src/data/ov004/bss_020bf404.c:
-    complete
-    .bss start:0x020bf404 end:0x020bf41c
 src/minigames/unit020b2c84.cpp:
     complete
     .text start:0x020b2c84 end:0x020b4aa4
@@ -102,26 +24,11 @@ src/minigames/unit020b4aa4.cpp:
     complete
     .text start:0x020b4aa4 end:0x020b67e8
 
-src/data/ov004/bss_020bfa28.c:
-    complete
-    .bss start:0x020bfa28 end:0x020bfa34
 src/minigames/d_mg_state.cpp:
     complete
     .text start:0x020b67e8 end:0x020b8c18
     .bss start:0x020bfd04 end:0x020bfda8
 
-src/data/ov004/data_020bc850.c:
-    complete
-    .data start:0x020bc850 end:0x020bc8a0
-src/data/ov004/data_020bc8a4.c:
-    complete
-    .data start:0x020bc8a4 end:0x020bc8bc
-src/data/ov004/data_020bca44.c:
-    complete
-    .data start:0x020bca44 end:0x020bca58
-src/data/ov004/data_020bca58.c:
-    complete
-    .data start:0x020bca58 end:0x020bca68
 src/minigames/d_mg_ps_opt.cpp:
     complete
     .text start:0x020b8c18 end:0x020b944c
@@ -134,60 +41,3 @@ src/unnamed/ov004/__sinit_ov004_020b9ad0.c:
 src/unnamed/ov004/__sinit_ov004_020b9b24.c:
     complete
     .init start:0x020b9b24 end:0x020b9de4
-src/data/ov004/rodata_020b944c.c:
-    complete
-    .rodata start:0x020b944c end:0x020b9468
-src/data/ov004/rodata_020b9468.c:
-    complete
-    .rodata start:0x020b9468 end:0x020b9488
-src/data/ov004/data_020bcaa0.c:
-    complete
-    .data start:0x020bcaa0 end:0x020bd074
-src/data/ov004/data_020bd074.c:
-    complete
-    .data start:0x020bd074 end:0x020bd698
-src/data/ov004/data_020bd698.c:
-    complete
-    .data start:0x020bd698 end:0x020bdccc
-src/data/ov004/data_020bdccc.c:
-    complete
-    .data start:0x020bdccc end:0x020be34c
-src/data/ov004/data_020be34c.c:
-    complete
-    .data start:0x020be34c end:0x020be9ec
-src/data/ov004/data_020be9ec.c:
-    complete
-    .data start:0x020be9ec end:0x020bea14
-src/data/ov004/data_020bea14.c:
-    complete
-    .data start:0x020bea14 end:0x020bea28
-src/data/ov004/data_020bea28.c:
-    complete
-    .data start:0x020bea28 end:0x020beac8
-src/data/ov004/data_020beac8.c:
-    complete
-    .data start:0x020beac8 end:0x020beb60
-src/data/ov004/bss_020bfda8.c:
-    complete
-    .bss start:0x020bfda8 end:0x020bfe74
-src/data/ov004/bss_020bfe74.c:
-    complete
-    .bss start:0x020bfe74 end:0x020bfe78
-src/data/ov004/bss_020bfe78.c:
-    complete
-    .bss start:0x020bfe78 end:0x020bfe88
-src/data/ov004/bss_020bfe88.c:
-    complete
-    .bss start:0x020bfe88 end:0x020bfe8c
-src/data/ov004/bss_020bfe8c.c:
-    complete
-    .bss start:0x020bfe8c end:0x020bfe9c
-src/data/ov004/bss_020bfe9c.c:
-    complete
-    .bss start:0x020bfe9c end:0x020bfea0
-src/data/ov004/bss_020bfea0.c:
-    complete
-    .bss start:0x020bfea0 end:0x020bfeb4
-src/data/ov004/bss_020bfeb4.c:
-    complete
-    .bss start:0x020bfeb4 end:0x020bfec0

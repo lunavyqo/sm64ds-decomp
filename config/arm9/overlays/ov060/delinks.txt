@@ -4,24 +4,6 @@
     .ctor       start:0x0211a4bc end:0x0211a4d4 kind:rodata align:4
     .data       start:0x0211a4e0 end:0x0211abe0 kind:data align:32
     .bss        start:0x0211abe0 end:0x0211b240 kind:bss align:32
-src/data/ov060/rodata_02119264.c:
-    complete
-    .rodata start:0x02119264 end:0x02119268
-src/data/ov060/rodata_02119268.c:
-    complete
-    .rodata start:0x02119268 end:0x0211927c
-src/data/ov060/rodata_0211927c.c:
-    complete
-    .rodata start:0x0211927c end:0x02119294
-src/data/ov060/rodata_02119294.c:
-    complete
-    .rodata start:0x02119294 end:0x02119298
-src/data/ov060/rodata_02119298.c:
-    complete
-    .rodata start:0x02119298 end:0x021192dc
-src/data/ov060/data_0211a4e0.c:
-    complete
-    .data start:0x0211a4e0 end:0x0211a4e8
 src/game/actors/d_a_kpa.cpp:
     complete
     .text start:0x02111900 end:0x02116484
@@ -45,15 +27,6 @@ src/game/actors/d_a_kpa2_bg.cpp:
     .ctor start:0x0211a4c4 end:0x0211a4c8
     .bss start:0x0211aff4 end:0x0211b01c
 
-src/data/ov060/rodata_0211934c.c:
-    complete
-    .rodata start:0x0211934c end:0x02119364
-src/data/ov060/rodata_02119364.c:
-    complete
-    .rodata start:0x02119364 end:0x02119514
-src/data/ov060/data_0211a734.c:
-    complete
-    .data start:0x0211a734 end:0x0211a7b4
 src/game/actors/d_a_kpa3_bg.cpp:
     complete
     .text start:0x02117d1c end:0x02118438
@@ -79,12 +52,3 @@ src/game/actors/d_a_f_ring.cpp:
     .data start:0x0211ab20 end:0x0211ab30
     .bss start:0x0211b1f8 end:0x0211b234
 
-src/data/ov060/rodata_02119564.c:
-    complete
-    .rodata start:0x02119564 end:0x0211956c
-src/data/ov060/rodata_0211956c.c:
-    complete
-    .rodata start:0x0211956c end:0x021195dc
-src/data/ov060/bss_0211b234.c:
-    complete
-    .bss start:0x0211b234 end:0x0211b240

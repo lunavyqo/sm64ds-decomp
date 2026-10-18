@@ -4,9 +4,6 @@
     .ctor       start:0x021230a4 end:0x021230b4 kind:rodata align:4
     .data       start:0x021230c0 end:0x02123500 kind:data align:32
     .bss        start:0x02123500 end:0x02123720 kind:bss align:32
-src/data/ov070/data_021230c0.c:
-    complete
-    .data start:0x021230c0 end:0x02123120
 src/game/actors/d_a_propeller_heyho.cpp:
     complete
     .text start:0x0211f000 end:0x02120570
@@ -39,39 +36,3 @@ src/game/actors/d_a_kp_fr.cpp:
     .init start:0x02123030 end:0x021230a4
     .ctor start:0x021230b0 end:0x021230b4
     .bss start:0x021236ec end:0x0212370c
-src/data/ov070/rodata_021222e8.c:
-    complete
-    .rodata start:0x021222e8 end:0x02122404
-src/data/ov070/rodata_02122404.c:
-    complete
-    .rodata start:0x02122404 end:0x02122594
-src/data/ov070/rodata_02122594.c:
-    complete
-    .rodata start:0x02122594 end:0x0212259c
-src/data/ov070/rodata_0212259c.c:
-    complete
-    .rodata start:0x0212259c end:0x0212262c
-src/data/ov070/rodata_0212262c.c:
-    complete
-    .rodata start:0x0212262c end:0x021226bc
-src/data/ov070/rodata_021226bc.c:
-    complete
-    .rodata start:0x021226bc end:0x021227d8
-src/data/ov070/rodata_021227d8.c:
-    complete
-    .rodata start:0x021227d8 end:0x02122968
-src/data/ov070/rodata_02122968.c:
-    complete
-    .rodata start:0x02122968 end:0x02122afc
-src/data/ov070/data_021233ec.c:
-    complete
-    .data start:0x021233ec end:0x0212340c
-src/data/ov070/data_021234c4.c:
-    complete
-    .data start:0x021234c4 end:0x021234dc
-src/data/ov070/data_021234dc.c:
-    complete
-    .data start:0x021234dc end:0x02123500
-src/data/ov070/bss_0212370c.c:
-    complete
-    .bss start:0x0212370c end:0x02123720

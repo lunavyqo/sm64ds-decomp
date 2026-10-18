@@ -4,18 +4,6 @@
     .ctor       start:0x02112028 end:0x02112030 kind:rodata align:4
     .data       start:0x02112040 end:0x02112c60 kind:data align:32
     .bss        start:0x02112c60 end:0x02112ce0 kind:bss align:32
-src/data/ov035/data_02112040.c:
-    complete
-    .data start:0x02112040 end:0x0211204c
-src/data/ov035/data_0211204c.c:
-    complete
-    .data start:0x0211204c end:0x02112064
-src/data/ov035/data_02112064.c:
-    complete
-    .data start:0x02112064 end:0x0211207c
-src/data/ov035/data_0211207c.c:
-    complete
-    .data start:0x0211207c end:0x021121d8
 src/game/actors/d_a_obj_ct_mecha10.cpp:
     complete
     .text start:0x021111a0 end:0x021116ec
@@ -30,48 +18,3 @@ src/game/actors/d_a_obj_ct_mecha11.cpp:
     .init start:0x02111fc0 end:0x02112028
     .ctor start:0x0211202c end:0x02112030
     .bss start:0x02112cb0 end:0x02112cd8
-src/data/ov035/rodata_02111bd0.c:
-    complete
-    .rodata start:0x02111bd0 end:0x02111be0
-src/data/ov035/rodata_02111be0.c:
-    complete
-    .rodata start:0x02111be0 end:0x02111c18
-src/data/ov035/rodata_02111c18.c:
-    complete
-    .rodata start:0x02111c18 end:0x02111ef0
-src/data/ov035/rodata_02111ef0.c:
-    complete
-    .rodata start:0x02111ef0 end:0x02111ef4
-src/data/ov035/rodata_02111ef4.c:
-    complete
-    .rodata start:0x02111ef4 end:0x02111f04
-src/data/ov035/data_02112218.c:
-    complete
-    .data start:0x02112218 end:0x02112238
-src/data/ov035/data_02112238.c:
-    complete
-    .data start:0x02112238 end:0x02112278
-src/data/ov035/data_02112278.c:
-    complete
-    .data start:0x02112278 end:0x021122d8
-src/data/ov035/data_021122d8.c:
-    complete
-    .data start:0x021122d8 end:0x02112318
-src/data/ov035/data_02112318.c:
-    complete
-    .data start:0x02112318 end:0x0211236c
-src/data/ov035/data_0211236c.c:
-    complete
-    .data start:0x0211236c end:0x021123ec
-src/data/ov035/data_021123ec.c:
-    complete
-    .data start:0x021123ec end:0x021124e4
-src/data/ov035/data_021124e4.c:
-    complete
-    .data start:0x021124e4 end:0x02112a84
-src/data/ov035/data_02112b80.c:
-    complete
-    .data start:0x02112b80 end:0x02112b88
-src/data/ov035/bss_02112cd8.c:
-    complete
-    .bss start:0x02112cd8 end:0x02112ce0

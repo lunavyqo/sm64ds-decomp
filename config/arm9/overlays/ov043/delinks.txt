@@ -3,27 +3,6 @@
     .ctor       start:0x02111ae8 end:0x02111af8 kind:rodata align:4
     .data       start:0x02111b00 end:0x021125e0 kind:data align:32
     .bss        start:0x021125e0 end:0x02112720 kind:bss align:32
-src/data/ov043/data_02111b00.c:
-    complete
-    .data start:0x02111b00 end:0x02111b08
-src/data/ov043/data_02111b08.c:
-    complete
-    .data start:0x02111b08 end:0x02111b18
-src/data/ov043/data_02111b18.c:
-    complete
-    .data start:0x02111b18 end:0x02111b24
-src/data/ov043/data_02111b24.c:
-    complete
-    .data start:0x02111b24 end:0x02111b34
-src/data/ov043/data_02111b34.c:
-    complete
-    .data start:0x02111b34 end:0x02111b60
-src/data/ov043/data_02111b60.c:
-    complete
-    .data start:0x02111b60 end:0x02111bc0
-src/data/ov043/data_02111bc0.c:
-    complete
-    .data start:0x02111bc0 end:0x02111c00
 src/game/actors/d_a_obj_km1_ukishima.cpp:
     complete
     .text start:0x021111a0 end:0x021113fc
@@ -32,27 +11,6 @@ src/game/actors/d_a_obj_km1_ukishima.cpp:
     .data start:0x02111c00 end:0x02111c40
     .bss start:0x021125e0 end:0x02112608
 
-src/data/ov043/data_02111c40.c:
-    complete
-    .data start:0x02111c40 end:0x02111ca0
-src/data/ov043/data_02111ca0.c:
-    complete
-    .data start:0x02111ca0 end:0x02111cc8
-src/data/ov043/data_02111cc8.c:
-    complete
-    .data start:0x02111cc8 end:0x02111d10
-src/data/ov043/data_02111d10.c:
-    complete
-    .data start:0x02111d10 end:0x02111d60
-src/data/ov043/data_02111d60.c:
-    complete
-    .data start:0x02111d60 end:0x02111dc0
-src/data/ov043/data_02111dc0.c:
-    complete
-    .data start:0x02111dc0 end:0x02111fd0
-src/data/ov043/data_02111fd0.c:
-    complete
-    .data start:0x02111fd0 end:0x02112270
 src/game/actors/d_a_obj_km1_kurumajiku.cpp:
     complete
     .text start:0x021113fc end:0x02111518

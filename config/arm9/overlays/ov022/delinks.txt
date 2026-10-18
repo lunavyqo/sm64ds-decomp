@@ -4,42 +4,6 @@
     .ctor       start:0x021130f8 end:0x02113120 kind:rodata align:4
     .data       start:0x02113140 end:0x02114500 kind:data align:32
     .bss        start:0x02114500 end:0x021146a0 kind:bss align:32
-src/data/ov022/data_02113140.c:
-    complete
-    .data start:0x02113140 end:0x02113148
-src/data/ov022/data_02113148.c:
-    complete
-    .data start:0x02113148 end:0x02113170
-src/data/ov022/data_02113170.c:
-    complete
-    .data start:0x02113170 end:0x02113188
-src/data/ov022/data_02113188.c:
-    complete
-    .data start:0x02113188 end:0x021131f8
-src/data/ov022/data_021131f8.c:
-    complete
-    .data start:0x021131f8 end:0x02113210
-src/data/ov022/data_02113210.c:
-    complete
-    .data start:0x02113210 end:0x02113244
-src/data/ov022/data_02113244.c:
-    complete
-    .data start:0x02113244 end:0x02113260
-src/data/ov022/data_02113260.c:
-    complete
-    .data start:0x02113260 end:0x02113298
-src/data/ov022/data_02113298.c:
-    complete
-    .data start:0x02113298 end:0x02113318
-src/data/ov022/data_02113318.c:
-    complete
-    .data start:0x02113318 end:0x021133a8
-src/data/ov022/data_021133a8.c:
-    complete
-    .data start:0x021133a8 end:0x021136f8
-src/data/ov022/data_021136f8.c:
-    complete
-    .data start:0x021136f8 end:0x02113cc8
 src/game/actors/d_a_obj_fl_ring.cpp:
     complete
     .text start:0x021111a0 end:0x021115a8
@@ -90,12 +54,6 @@ src/game/actors/d_a_obj_fl_uki_ki.cpp:
     complete
     .text start:0x02112130 end:0x02112380
 
-src/data/ov022/bss_02114618.c:
-    complete
-    .bss start:0x02114618 end:0x02114628
-src/data/ov022/bss_02114628.c:
-    complete
-    .bss start:0x02114628 end:0x02114640
 src/game/actors/d_a_obj_fl_fall_block.cpp:
     complete
     .text start:0x02112380 end:0x02112498
@@ -104,9 +62,6 @@ src/game/actors/d_a_obj_fl_fall_block.cpp:
     .data start:0x0211427c end:0x02114288
     .bss start:0x02114640 end:0x02114668
 
-src/data/ov022/bss_02114678.c:
-    complete
-    .bss start:0x02114678 end:0x02114690
 src/game/actors/d_a_obj_fl_maruta.cpp:
     complete
     .text start:0x02112498 end:0x02112950
@@ -121,21 +76,3 @@ src/unnamed/ov022/__sinit_ov022_02112f78.c:
 src/unnamed/ov022/__sinit_ov022_02113050.c:
     complete
     .init start:0x02113050 end:0x021130bc
-src/data/ov022/rodata_02112950.c:
-    complete
-    .rodata start:0x02112950 end:0x02112958
-src/data/ov022/rodata_02112958.c:
-    complete
-    .rodata start:0x02112958 end:0x02112974
-src/data/ov022/rodata_02112974.c:
-    complete
-    .rodata start:0x02112974 end:0x02112c98
-src/data/ov022/rodata_02112c98.c:
-    complete
-    .rodata start:0x02112c98 end:0x02112c9c
-src/data/ov022/rodata_02112c9c.c:
-    complete
-    .rodata start:0x02112c9c end:0x02112ca8
-src/data/ov022/data_02114424.c:
-    complete
-    .data start:0x02114424 end:0x02114434

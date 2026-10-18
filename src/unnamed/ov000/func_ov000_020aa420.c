@@ -24,20 +24,3 @@ void func_ov000_020aa420(void){
   func_0201a9fc(&data_0209d574);
   func_0201a96c(&data_0209d574,sb);
 }
-
-/* data 0x020aa4e0..0x020aa5a0 */
-#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
-#pragma section forcedata begin
-unsigned int data_ov000_020aa580[4] = { 0x722f474d, 0x656c756f, 0x2e657474, 0x00646d62 };
-unsigned int data_ov000_020aa570[4] = { 0x662f474d, 0x5f656361, 0x2e6e6977, 0x00616362 };
-unsigned int data_ov000_020aa560[4] = { 0x652f474d, 0x635f7073, 0x2e647261, 0x00707462 };
-unsigned int data_ov000_020aa550[4] = { 0x652f474d, 0x695f7073, 0x2e656972, 0x00646d62 };
-unsigned int data_ov000_020aa540[4] = { 0x652f474d, 0x635f7073, 0x2e647261, 0x00646d62 };
-unsigned int data_ov000_020aa530[4] = { 0x662f474d, 0x7261705f, 0x622e7374, 0x0000646d };
-unsigned int data_ov000_020aa520[4] = { 0x6c2f474d, 0x69676975, 0x622e645f, 0x0000646d };
-unsigned int data_ov000_020aa510[4] = { 0x6b2f474d, 0x5f6f6e69, 0x6d622e64, 0x00000064 };
-unsigned int data_ov000_020aa500[4] = { 0x722f474d, 0x41676e69, 0x646d622e, 0x00000000 };
-unsigned int data_ov000_020aa4f0[4] = { 0x722f474d, 0x43676e69, 0x646d622e, 0x00000000 };
-unsigned int data_ov000_020aa4e0[4] = { 0x722f474d, 0x42676e69, 0x646d622e, 0x00000000 };
-unsigned int data_ov000_020aa590[4] = { 0x662f474d, 0x5f656361, 0x2e6e6977, 0x00707462 };
-#pragma section forcedata end

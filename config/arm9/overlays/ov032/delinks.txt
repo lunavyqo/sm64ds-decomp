@@ -4,51 +4,6 @@
     .ctor       start:0x02112e94 end:0x02112ea0 kind:rodata align:4
     .data       start:0x02112ec0 end:0x02113a40 kind:data align:32
     .bss        start:0x02113a40 end:0x02113b20 kind:bss align:32
-src/data/ov032/data_02112ec0.c:
-    complete
-    .data start:0x02112ec0 end:0x02112ecc
-src/data/ov032/data_02112ecc.c:
-    complete
-    .data start:0x02112ecc end:0x02112edc
-src/data/ov032/data_02112edc.c:
-    complete
-    .data start:0x02112edc end:0x02112ef4
-src/data/ov032/data_02112ef4.c:
-    complete
-    .data start:0x02112ef4 end:0x02112f34
-src/data/ov032/data_02112f34.c:
-    complete
-    .data start:0x02112f34 end:0x02112f64
-src/data/ov032/data_02112f64.c:
-    complete
-    .data start:0x02112f64 end:0x02112f98
-src/data/ov032/data_02112f98.c:
-    complete
-    .data start:0x02112f98 end:0x02112fd8
-src/data/ov032/data_02112fd8.c:
-    complete
-    .data start:0x02112fd8 end:0x02113008
-src/data/ov032/data_02113008.c:
-    complete
-    .data start:0x02113008 end:0x02113040
-src/data/ov032/data_02113040.c:
-    complete
-    .data start:0x02113040 end:0x02113080
-src/data/ov032/data_02113080.c:
-    complete
-    .data start:0x02113080 end:0x021130c8
-src/data/ov032/data_021130c8.c:
-    complete
-    .data start:0x021130c8 end:0x021131c8
-src/data/ov032/data_021131c8.c:
-    complete
-    .data start:0x021131c8 end:0x0211326c
-src/data/ov032/data_0211326c.c:
-    complete
-    .data start:0x0211326c end:0x0211346c
-src/data/ov032/data_0211346c.c:
-    complete
-    .data start:0x0211346c end:0x0211377c
 src/game/actors/d_a_bakubaku.cpp:
     complete
     .text start:0x021111a0 end:0x021124a8
@@ -71,15 +26,3 @@ src/game/actors/d_a_obj_td_water.cpp:
     .ctor start:0x02112e9c end:0x02112ea0
     .bss start:0x02113af4 end:0x02113b1c
 
-src/data/ov032/rodata_021128f0.c:
-    complete
-    .rodata start:0x021128f0 end:0x02112900
-src/data/ov032/rodata_02112900.c:
-    complete
-    .rodata start:0x02112900 end:0x02112938
-src/data/ov032/rodata_02112938.c:
-    complete
-    .rodata start:0x02112938 end:0x02112c10
-src/data/ov032/bss_02113b1c.c:
-    complete
-    .bss start:0x02113b1c end:0x02113b20

@@ -19,12 +19,6 @@ src/game/actors/d_a_snowman.cpp:
     .data start:0x021288f8 end:0x021289a4
     .bss start:0x02128d88 end:0x02128eb4
 
-src/data/ov081/data_021289a4.c:
-    complete
-    .data start:0x021289a4 end:0x021289a8
-src/data/ov081/data_021289a8.c:
-    complete
-    .data start:0x021289a8 end:0x021289b0
 src/game/actors/d_a_snowball.cpp:
     complete
     .text start:0x02125f14 end:0x02126504
@@ -48,9 +42,3 @@ src/game/actors/d_a_obj_ice_block.cpp:
     .ctor start:0x02128834 end:0x02128838
     .bss start:0x02128fd0 end:0x02128ff8
 
-src/data/ov081/rodata_021280d8.c:
-    complete
-    .rodata start:0x021280d8 end:0x021280e8
-src/data/ov081/bss_02128ff8.c:
-    complete
-    .bss start:0x02128ff8 end:0x02129000

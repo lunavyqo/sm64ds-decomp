@@ -22,24 +22,6 @@ src/game/actors/d_a_b_donketu.cpp:
     .ctor start:0x0211b730 end:0x0211b734
     .bss start:0x0211c6c4 end:0x0211c728
 
-src/data/ov064/data_0211b768.c:
-    complete
-    .data start:0x0211b768 end:0x0211b7fc
-src/data/ov064/data_0211b834.c:
-    complete
-    .data start:0x0211b834 end:0x0211b870
-src/data/ov064/data_0211b93c.c:
-    complete
-    .data start:0x0211b93c end:0x0211b978
-src/data/ov064/data_0211ba0c.c:
-    complete
-    .data start:0x0211ba0c end:0x0211bb8c
-src/data/ov064/data_0211bb8c.c:
-    complete
-    .data start:0x0211bb8c end:0x0211bbcc
-src/data/ov064/data_0211bbcc.c:
-    complete
-    .data start:0x0211bbcc end:0x0211bc0c
 src/game/actors/d_a_obj_fl_amilift.cpp:
     complete
     .text start:0x02117978 end:0x02118020
@@ -87,24 +69,6 @@ src/game/actors/d_a_water_hakidasi.cpp:
     .ctor start:0x0211b748 end:0x0211b74c
     .bss start:0x0211c934 end:0x0211c944
 
-src/data/ov064/data_0211be90.c:
-    complete
-    .data start:0x0211be90 end:0x0211beb0
-src/data/ov064/data_0211bf68.c:
-    complete
-    .data start:0x0211bf68 end:0x0211bf98
-src/data/ov064/data_0211bfd8.c:
-    complete
-    .data start:0x0211bfd8 end:0x0211c160
-src/data/ov064/data_0211c198.c:
-    complete
-    .data start:0x0211c198 end:0x0211c1d8
-src/data/ov064/data_0211c2dc.c:
-    complete
-    .data start:0x0211c2dc end:0x0211c2ec
-src/data/ov064/data_0211c3b0.c:
-    complete
-    .data start:0x0211c3b0 end:0x0211c3d0
 src/game/actors/d_a_water_ring.cpp:
     complete
     .text start:0x02119a58 end:0x0211a200
@@ -127,9 +91,3 @@ src/game/actors/d_a_obj_shell.cpp:
     .init start:0x0211b698 end:0x0211b72c
     .ctor start:0x0211b754 end:0x0211b758
     .bss start:0x0211c9bc end:0x0211c9f8
-src/data/ov064/rodata_0211adc8.c:
-    complete
-    .rodata start:0x0211adc8 end:0x0211ae00
-src/data/ov064/bss_0211c9f8.c:
-    complete
-    .bss start:0x0211c9f8 end:0x0211ca00

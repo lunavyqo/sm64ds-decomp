@@ -4,9 +4,6 @@
     .ctor       start:0x0211c5a4 end:0x0211c5b0 kind:rodata align:4
     .data       start:0x0211c5c0 end:0x0211d380 kind:data align:32
     .bss        start:0x0211d380 end:0x0211d9c0 kind:bss align:32
-src/data/ov075/bss_0211d380.c:
-    complete
-    .bss start:0x0211d380 end:0x0211d384
 src/game/stages/d_ent_obj.cpp:
     complete
     .text start:0x02113ee0 end:0x02115ab8
@@ -135,42 +132,6 @@ src/unnamed/ov075/func_ov075_02118378.c:
     complete
     .text start:0x02118378 end:0x021184b0
 
-src/data/ov075/data_0211c654.c:
-    complete
-    .data start:0x0211c654 end:0x0211c66c
-src/data/ov075/data_0211c678.c:
-    complete
-    .data start:0x0211c678 end:0x0211c688
-src/data/ov075/data_0211c688.c:
-    complete
-    .data start:0x0211c688 end:0x0211c6a0
-src/data/ov075/data_0211c6e8.c:
-    complete
-    .data start:0x0211c6e8 end:0x0211c6f0
-src/data/ov075/data_0211c6f0.c:
-    complete
-    .data start:0x0211c6f0 end:0x0211c780
-src/data/ov075/data_0211c780.c:
-    complete
-    .data start:0x0211c780 end:0x0211c790
-src/data/ov075/data_0211c790.c:
-    complete
-    .data start:0x0211c790 end:0x0211c878
-src/data/ov075/data_0211c878.c:
-    complete
-    .data start:0x0211c878 end:0x0211c888
-src/data/ov075/data_0211c888.c:
-    complete
-    .data start:0x0211c888 end:0x0211c8e0
-src/data/ov075/data_0211c914.c:
-    complete
-    .data start:0x0211c914 end:0x0211c934
-src/data/ov075/data_0211c934.c:
-    complete
-    .data start:0x0211c934 end:0x0211c94c
-src/data/ov075/data_0211c954.c:
-    complete
-    .data start:0x0211c954 end:0x0211c9e0
 src/unnamed/ov075/func_ov075_021184b0.cpp:
     complete
     .text start:0x021184b0 end:0x0211867c
@@ -200,24 +161,6 @@ src/unnamed/ov075/func_ov075_02118c80.cpp:
     complete
     .text start:0x02118c80 end:0x02118cd0
 
-src/data/ov075/data_0211ca08.c:
-    complete
-    .data start:0x0211ca08 end:0x0211ca1c
-src/data/ov075/data_0211ca4c.c:
-    complete
-    .data start:0x0211ca4c end:0x0211ca64
-src/data/ov075/data_0211ca64.c:
-    complete
-    .data start:0x0211ca64 end:0x0211ca7c
-src/data/ov075/data_0211ca7c.c:
-    complete
-    .data start:0x0211ca7c end:0x0211cac4
-src/data/ov075/data_0211cac4.c:
-    complete
-    .data start:0x0211cac4 end:0x0211cb44
-src/data/ov075/data_0211cb64.c:
-    complete
-    .data start:0x0211cb64 end:0x0211cba4
 src/unnamed/ov075/func_ov075_02118cd0.c:
     complete
     .text start:0x02118cd0 end:0x02118d1c
@@ -391,57 +334,6 @@ src/unnamed/ov075/func_ov075_0211b418.cpp:
     complete
     .text start:0x0211b418 end:0x0211b458
 
-src/data/ov075/bss_0211d5bc.c:
-    complete
-    .bss start:0x0211d5bc end:0x0211d5c0
-src/data/ov075/bss_0211d5c0.c:
-    complete
-    .bss start:0x0211d5c0 end:0x0211d71c
-src/data/ov075/bss_0211d71c.c:
-    complete
-    .bss start:0x0211d71c end:0x0211d72c
-src/data/ov075/bss_0211d72c.c:
-    complete
-    .bss start:0x0211d72c end:0x0211d730
-src/data/ov075/bss_0211d730.c:
-    complete
-    .bss start:0x0211d730 end:0x0211d740
-src/data/ov075/bss_0211d740.c:
-    complete
-    .bss start:0x0211d740 end:0x0211d744
-src/data/ov075/bss_0211d744.c:
-    complete
-    .bss start:0x0211d744 end:0x0211d754
-src/data/ov075/bss_0211d754.c:
-    complete
-    .bss start:0x0211d754 end:0x0211d758
-src/data/ov075/bss_0211d758.c:
-    complete
-    .bss start:0x0211d758 end:0x0211d768
-src/data/ov075/bss_0211d768.c:
-    complete
-    .bss start:0x0211d768 end:0x0211d918
-src/data/ov075/bss_0211d918.c:
-    complete
-    .bss start:0x0211d918 end:0x0211d920
-src/data/ov075/bss_0211d920.c:
-    complete
-    .bss start:0x0211d920 end:0x0211d930
-src/data/ov075/bss_0211d930.c:
-    complete
-    .bss start:0x0211d930 end:0x0211d948
-src/data/ov075/bss_0211d948.c:
-    complete
-    .bss start:0x0211d948 end:0x0211d94c
-src/data/ov075/bss_0211d94c.c:
-    complete
-    .bss start:0x0211d94c end:0x0211d980
-src/data/ov075/bss_0211d980.c:
-    complete
-    .bss start:0x0211d980 end:0x0211d988
-src/data/ov075/bss_0211d988.c:
-    complete
-    .bss start:0x0211d988 end:0x0211d994
 src/unnamed/ov075/func_ov075_0211b458.cpp:
     complete
     .text start:0x0211b458 end:0x0211b524
@@ -454,48 +346,3 @@ src/unnamed/ov075/__sinit_ov075_0211bb00.c:
 src/unnamed/ov075/__sinit_ov075_0211c51c.c:
     complete
     .init start:0x0211c51c end:0x0211c5a4
-src/data/ov075/rodata_0211b524.c:
-    complete
-    .rodata start:0x0211b524 end:0x0211b534
-src/data/ov075/rodata_0211b534.c:
-    complete
-    .rodata start:0x0211b534 end:0x0211b554
-src/data/ov075/rodata_0211b554.c:
-    complete
-    .rodata start:0x0211b554 end:0x0211b5d4
-src/data/ov075/rodata_0211b5d4.c:
-    complete
-    .rodata start:0x0211b5d4 end:0x0211b5e0
-src/data/ov075/data_0211cbc4.c:
-    complete
-    .data start:0x0211cbc4 end:0x0211cc44
-src/data/ov075/data_0211cc44.c:
-    complete
-    .data start:0x0211cc44 end:0x0211cc64
-src/data/ov075/data_0211cc64.c:
-    complete
-    .data start:0x0211cc64 end:0x0211cda4
-src/data/ov075/data_0211cda4.c:
-    complete
-    .data start:0x0211cda4 end:0x0211d014
-src/data/ov075/data_0211d014.c:
-    complete
-    .data start:0x0211d014 end:0x0211d084
-src/data/ov075/data_0211d084.c:
-    complete
-    .data start:0x0211d084 end:0x0211d144
-src/data/ov075/data_0211d144.c:
-    complete
-    .data start:0x0211d144 end:0x0211d2ac
-src/data/ov075/data_0211d2ac.c:
-    complete
-    .data start:0x0211d2ac end:0x0211d304
-src/data/ov075/data_0211d304.c:
-    complete
-    .data start:0x0211d304 end:0x0211d34c
-src/data/ov075/data_0211d34c.c:
-    complete
-    .data start:0x0211d34c end:0x0211d35c
-src/data/ov075/data_0211d35c.c:
-    complete
-    .data start:0x0211d35c end:0x0211d380

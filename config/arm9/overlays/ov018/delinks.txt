@@ -4,24 +4,6 @@
     .ctor       start:0x02112e6c end:0x02112e78 kind:rodata align:4
     .data       start:0x02112e80 end:0x02113bc0 kind:data align:32
     .bss        start:0x02113bc0 end:0x02113cc0 kind:bss align:32
-src/data/ov018/data_02112e80.c:
-    complete
-    .data start:0x02112e80 end:0x02112e88
-src/data/ov018/data_02112e88.c:
-    complete
-    .data start:0x02112e88 end:0x02112ea8
-src/data/ov018/data_02112ea8.c:
-    complete
-    .data start:0x02112ea8 end:0x02112ecc
-src/data/ov018/data_02112ecc.c:
-    complete
-    .data start:0x02112ecc end:0x02112efc
-src/data/ov018/data_02112efc.c:
-    complete
-    .data start:0x02112efc end:0x02112f14
-src/data/ov018/data_02112f14.c:
-    complete
-    .data start:0x02112f14 end:0x02112f48
 src/game/actors/d_a_obj_sm_lift.cpp:
     complete
     .text start:0x021111a0 end:0x02111848
@@ -30,45 +12,6 @@ src/game/actors/d_a_obj_sm_lift.cpp:
     .data start:0x02112f48 end:0x02112f68
     .bss start:0x02113bc0 end:0x02113be8
 
-src/data/ov018/rodata_02112a74.c:
-    complete
-    .rodata start:0x02112a74 end:0x02112a7c
-src/data/ov018/rodata_02112a7c.c:
-    complete
-    .rodata start:0x02112a7c end:0x02112a98
-src/data/ov018/rodata_02112a98.c:
-    complete
-    .rodata start:0x02112a98 end:0x02112c04
-src/data/ov018/data_02112f68.c:
-    complete
-    .data start:0x02112f68 end:0x02112fc8
-src/data/ov018/data_02112fc8.c:
-    complete
-    .data start:0x02112fc8 end:0x02113058
-src/data/ov018/data_02113058.c:
-    complete
-    .data start:0x02113058 end:0x02113090
-src/data/ov018/data_02113090.c:
-    complete
-    .data start:0x02113090 end:0x021130d0
-src/data/ov018/data_021130d0.c:
-    complete
-    .data start:0x021130d0 end:0x02113170
-src/data/ov018/data_02113170.c:
-    complete
-    .data start:0x02113170 end:0x021131c8
-src/data/ov018/data_021131c8.c:
-    complete
-    .data start:0x021131c8 end:0x02113270
-src/data/ov018/data_02113270.c:
-    complete
-    .data start:0x02113270 end:0x02113390
-src/data/ov018/data_02113390.c:
-    complete
-    .data start:0x02113390 end:0x02113588
-src/data/ov018/data_02113588.c:
-    complete
-    .data start:0x02113588 end:0x02113888
 src/game/actors/d_a_pg_mthr.cpp:
     complete
     .text start:0x02111848 end:0x021126d4
@@ -88,9 +31,3 @@ src/game/actors/d_a_obj_ice_board.cpp:
     .init start:0x02112e00 end:0x02112e6c
     .ctor start:0x02112e74 end:0x02112e78
     .bss start:0x02113c7c end:0x02113ca4
-src/data/ov018/rodata_02112c0c.c:
-    complete
-    .rodata start:0x02112c0c end:0x02112c14
-src/data/ov018/bss_02113ca4.c:
-    complete
-    .bss start:0x02113ca4 end:0x02113cc0

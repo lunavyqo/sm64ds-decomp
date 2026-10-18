@@ -3,24 +3,9 @@
     .ctor       start:0x0211abc0 end:0x0211abc4 kind:rodata align:4
     .data       start:0x0211abe0 end:0x0211ae00 kind:data align:32
     .bss        start:0x0211ae00 end:0x0211b100 kind:bss align:32
-src/data/ov066/bss_0211ae00.c:
-    complete
-    .bss start:0x0211ae00 end:0x0211ae14
 src/game/actors/d_a_iwante.cpp:
     complete
     .text start:0x02115ee0 end:0x0211a418
     .init start:0x0211a418 end:0x0211abc0
     .ctor start:0x0211abc0 end:0x0211abc4
     .bss start:0x0211ae14 end:0x0211b0fc
-src/data/ov066/data_0211abe0.c:
-    complete
-    .data start:0x0211abe0 end:0x0211abe8
-src/data/ov066/data_0211abe8.c:
-    complete
-    .data start:0x0211abe8 end:0x0211ad18
-src/data/ov066/data_0211ad18.c:
-    complete
-    .data start:0x0211ad18 end:0x0211ad24
-src/data/ov066/bss_0211b0fc.c:
-    complete
-    .bss start:0x0211b0fc end:0x0211b100

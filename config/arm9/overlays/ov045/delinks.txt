@@ -4,30 +4,6 @@
     .ctor       start:0x0211242c end:0x02112444 kind:rodata align:4
     .data       start:0x02112460 end:0x02113180 kind:data align:32
     .bss        start:0x02113180 end:0x02113280 kind:bss align:32
-src/data/ov045/data_02112460.c:
-    complete
-    .data start:0x02112460 end:0x02112490
-src/data/ov045/data_02112490.c:
-    complete
-    .data start:0x02112490 end:0x0211249c
-src/data/ov045/data_0211249c.c:
-    complete
-    .data start:0x0211249c end:0x021124bc
-src/data/ov045/data_021124bc.c:
-    complete
-    .data start:0x021124bc end:0x021124f0
-src/data/ov045/data_021124f0.c:
-    complete
-    .data start:0x021124f0 end:0x02112510
-src/data/ov045/data_02112510.c:
-    complete
-    .data start:0x02112510 end:0x02112550
-src/data/ov045/data_02112550.c:
-    complete
-    .data start:0x02112550 end:0x021125b0
-src/data/ov045/data_021125b0.c:
-    complete
-    .data start:0x021125b0 end:0x021125d0
 src/game/actors/d_a_obj_km2_agaru.cpp:
     complete
     .text start:0x021111a0 end:0x0211150c
@@ -36,30 +12,6 @@ src/game/actors/d_a_obj_km2_agaru.cpp:
     .data start:0x021125d0 end:0x021125f0
     .bss start:0x02113180 end:0x021131a8
 
-src/data/ov045/data_021125f0.c:
-    complete
-    .data start:0x021125f0 end:0x02112630
-src/data/ov045/data_02112630.c:
-    complete
-    .data start:0x02112630 end:0x0211265c
-src/data/ov045/data_0211265c.c:
-    complete
-    .data start:0x0211265c end:0x02112694
-src/data/ov045/data_02112694.c:
-    complete
-    .data start:0x02112694 end:0x021126d0
-src/data/ov045/data_021126d0.c:
-    complete
-    .data start:0x021126d0 end:0x02112720
-src/data/ov045/data_02112720.c:
-    complete
-    .data start:0x02112720 end:0x02112780
-src/data/ov045/data_02112780.c:
-    complete
-    .data start:0x02112780 end:0x02112940
-src/data/ov045/data_02112940.c:
-    complete
-    .data start:0x02112940 end:0x02112cb0
 src/game/actors/d_a_obj_km2_ami_bou.cpp:
     complete
     .text start:0x0211150c end:0x02111840
@@ -98,15 +50,3 @@ src/game/actors/d_a_obj_km2_fall_block.cpp:
     .ctor start:0x02112440 end:0x02112444
     .data start:0x021130ac end:0x021130b8
     .bss start:0x02113248 end:0x02113270
-src/data/ov045/rodata_02111e60.c:
-    complete
-    .rodata start:0x02111e60 end:0x02111e68
-src/data/ov045/rodata_02111e68.c:
-    complete
-    .rodata start:0x02111e68 end:0x02111e84
-src/data/ov045/rodata_02111e84.c:
-    complete
-    .rodata start:0x02111e84 end:0x021121a8
-src/data/ov045/bss_02113270.c:
-    complete
-    .bss start:0x02113270 end:0x02113280

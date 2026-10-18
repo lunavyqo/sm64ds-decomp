@@ -46,18 +46,6 @@ src/game/actors/d_a_obj_wc_obj07.cpp:
     .ctor start:0x02112e7c end:0x02112e80
     .bss start:0x021142d4 end:0x021142fc
 
-src/data/ov029/data_02112ea0.c:
-    complete
-    .data start:0x02112ea0 end:0x02112ea8
-src/data/ov029/data_02112ea8.c:
-    complete
-    .data start:0x02112ea8 end:0x02112ec0
-src/data/ov029/data_02112ec0.c:
-    complete
-    .data start:0x02112ec0 end:0x02112ed8
-src/data/ov029/data_02112ed8.c:
-    complete
-    .data start:0x02112ed8 end:0x02112f88
 src/game/actors/d_a_obj_wc_mizu.cpp:
     complete
     .text start:0x021121a4 end:0x02112630
@@ -67,9 +55,6 @@ src/game/actors/d_a_obj_wc_mizu.cpp:
     .data start:0x02112f88 end:0x0211300c
     .bss start:0x021142fc end:0x02114324
 
-src/data/ov029/data_0211300c.c:
-    complete
-    .data start:0x0211300c end:0x0211304c
 src/game/actors/d_a_obj_wc_obj04.cpp:
     complete
     .text start:0x02112630 end:0x0211299c
@@ -78,51 +63,3 @@ src/game/actors/d_a_obj_wc_obj04.cpp:
     .data start:0x0211304c end:0x0211306c
     .bss start:0x02114324 end:0x0211434c
 
-src/data/ov029/rodata_021129c0.c:
-    complete
-    .rodata start:0x021129c0 end:0x02112b2c
-src/data/ov029/rodata_02112b2c.c:
-    complete
-    .rodata start:0x02112b2c end:0x02112b38
-src/data/ov029/data_0211306c.c:
-    complete
-    .data start:0x0211306c end:0x021130cc
-src/data/ov029/data_021130cc.c:
-    complete
-    .data start:0x021130cc end:0x021130fc
-src/data/ov029/data_021130fc.c:
-    complete
-    .data start:0x021130fc end:0x02113134
-src/data/ov029/data_02113134.c:
-    complete
-    .data start:0x02113134 end:0x021131b4
-src/data/ov029/data_021131b4.c:
-    complete
-    .data start:0x021131b4 end:0x02113204
-src/data/ov029/data_02113204.c:
-    complete
-    .data start:0x02113204 end:0x021132c4
-src/data/ov029/data_021132c4.c:
-    complete
-    .data start:0x021132c4 end:0x021133d4
-src/data/ov029/data_021133d4.c:
-    complete
-    .data start:0x021133d4 end:0x021134ec
-src/data/ov029/data_021134ec.c:
-    complete
-    .data start:0x021134ec end:0x021136cc
-src/data/ov029/data_021136cc.c:
-    complete
-    .data start:0x021136cc end:0x02113bdc
-src/data/ov029/data_02113be8.c:
-    complete
-    .data start:0x02113be8 end:0x02113bf4
-src/data/ov029/data_02113f00.c:
-    complete
-    .data start:0x02113f00 end:0x02113f0c
-src/data/ov029/data_02113fc4.c:
-    complete
-    .data start:0x02113fc4 end:0x02113fc8
-src/data/ov029/data_02113fd4.c:
-    complete
-    .data start:0x02113fd4 end:0x02113fe0

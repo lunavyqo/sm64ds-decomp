@@ -3,45 +3,6 @@
     .ctor       start:0x021119c4 end:0x021119d4 kind:rodata align:4
     .data       start:0x021119e0 end:0x021125e0 kind:data align:32
     .bss        start:0x021125e0 end:0x02112720 kind:bss align:32
-src/data/ov047/data_021119e0.c:
-    complete
-    .data start:0x021119e0 end:0x021119f0
-src/data/ov047/data_021119f0.c:
-    complete
-    .data start:0x021119f0 end:0x02111a20
-src/data/ov047/data_02111a20.c:
-    complete
-    .data start:0x02111a20 end:0x02111a40
-src/data/ov047/data_02111a40.c:
-    complete
-    .data start:0x02111a40 end:0x02111a74
-src/data/ov047/data_02111a74.c:
-    complete
-    .data start:0x02111a74 end:0x02111ab4
-src/data/ov047/data_02111ab4.c:
-    complete
-    .data start:0x02111ab4 end:0x02111b54
-src/data/ov047/data_02111b54.c:
-    complete
-    .data start:0x02111b54 end:0x02111b94
-src/data/ov047/data_02111b94.c:
-    complete
-    .data start:0x02111b94 end:0x02111c14
-src/data/ov047/data_02111c14.c:
-    complete
-    .data start:0x02111c14 end:0x02111c84
-src/data/ov047/data_02111c84.c:
-    complete
-    .data start:0x02111c84 end:0x02111cd4
-src/data/ov047/data_02111cd4.c:
-    complete
-    .data start:0x02111cd4 end:0x02111d54
-src/data/ov047/data_02111d54.c:
-    complete
-    .data start:0x02111d54 end:0x02111ecc
-src/data/ov047/data_02111ecc.c:
-    complete
-    .data start:0x02111ecc end:0x0211224c
 src/game/actors/d_a_obj_km3_kurumajiku.cpp:
     complete
     .text start:0x021111a0 end:0x021112bc
@@ -50,9 +11,6 @@ src/game/actors/d_a_obj_km3_kurumajiku.cpp:
     .data start:0x02112258 end:0x02112320
     .bss start:0x021125e0 end:0x02112608
 
-src/data/ov047/data_02112320.c:
-    complete
-    .data start:0x02112320 end:0x02112328
 src/game/actors/d_a_obj_km3_kaitendai.cpp:
     complete
     .text start:0x021112bc end:0x021113f8
@@ -76,6 +34,3 @@ src/game/actors/d_a_obj_km3_dorifu.cpp:
     .ctor start:0x021119d0 end:0x021119d4
     .data start:0x02112508 end:0x02112544
     .bss start:0x02112658 end:0x02112720
-src/data/ov047/data_02112544.c:
-    complete
-    .data start:0x02112544 end:0x0211254c

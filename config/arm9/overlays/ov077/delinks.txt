@@ -16,21 +16,6 @@ src/game/actors/d_a_tgz.cpp:
     complete
     .text start:0x02124b64 end:0x0212624c
 
-src/data/ov077/data_021277e0.c:
-    complete
-    .data start:0x021277e0 end:0x02127830
-src/data/ov077/data_021278e8.c:
-    complete
-    .data start:0x021278e8 end:0x02127948
-src/data/ov077/bss_02127c14.c:
-    complete
-    .bss start:0x02127c14 end:0x02127c1c
-src/data/ov077/bss_02127c1c.c:
-    complete
-    .bss start:0x02127c1c end:0x02127c28
-src/data/ov077/bss_02127c28.c:
-    complete
-    .bss start:0x02127c28 end:0x02127c88
 src/game/actors/d_a_popoi.cpp:
     complete
     .text start:0x0212624c end:0x02127230
