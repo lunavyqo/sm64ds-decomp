@@ -80,7 +80,7 @@ extern int data_0209b3ec;
 extern SharedFilePtr *const data_ov060_02119514[10];
 extern SharedFilePtr *const data_ov060_0211953c[10];
 extern CLPS_Block *data_ov060_0211a980[10];
-extern int data_0208e738;
+extern int data_0208e738[];
 
 void _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
     void *self, KCL_File *f, const Matrix4x3 &m, int fix, short sh, CLPS_Block &b);
@@ -149,12 +149,12 @@ extern "C" void func_ov060_021183cc(daKpa3Bg_c *self, dActor_c *other)
 s32 daKpa3Bg_c::InitResources()
 {
     mVariant = (u8)(param1 & 0xf);
-    data_0208e738 = 0;
+    data_0208e738[0] = 0;
     /* bmd is named for the @NNN count (see the banner). */
     BMD_File *bmd = (BMD_File *)Model::LoadFile(*data_ov060_02119514[mVariant]);
     mModel.SetFile(bmd, 1, -1);
     CopyTexPalFromLevelModel(&mModel.data);
-    data_0208e738 = 1;
+    data_0208e738[0] = 1;
     UpdateClsnPosAndRot();
     _ZN10dBgW_KcMbg7SetFileEP8KCL_FileRK9Matrix4x35Fix12IiEsR10CLPS_Block(
         &mMeshCollider,
