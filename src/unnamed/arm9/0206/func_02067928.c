@@ -80,3 +80,5 @@ int func_02067928(void *a, void *b)
     _ZN3IRQ7RestoreEj(state);
     return 1;
 }
+
+u8 data_020a9d28[4];

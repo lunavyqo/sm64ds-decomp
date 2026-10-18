@@ -419,3 +419,9 @@ void dScene_c::SetAndStopColorFader()
     SetFaders(&data_0209f5e8);
     data_0209f5e8.speed = 0;
 }
+
+#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
+#pragma section forcedata begin
+extern "C" u8 data_02092660[4] = { 0xf0, 0x30, 0xc0, 0x01 };
+extern "C" u16 data_02092664[2] = { 0x0011, 0x0012 };
+#pragma section forcedata end

@@ -797,3 +797,14 @@ extern "C" int func_ov062_02115f84(daHolhei_c *self) {
         return 2;
     return 0;
 }
+
+extern "C" int data_ov062_0211def0[4];
+extern "C" char data_ov062_0211dee0[16];
+extern "C" char data_ov062_0211ded0[16];
+extern "C" char data_ov062_0211dec0[16];
+extern "C" int data_ov062_0211deb0[4];
+extern "C" int data_ov062_0211dea0[4];
+extern "C" char data_ov062_0211de90[16];
+extern "C" int data_ov062_0211de80[4];
+extern "C" char data_ov062_0211de70[16];
+extern "C" char data_ov062_0211df00[16];

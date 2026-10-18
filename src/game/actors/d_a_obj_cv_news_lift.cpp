@@ -522,3 +522,8 @@ void daObjCvNewsLift_c::UpdateClsnTransforms()
         platformCollider++;
     }
 }
+
+#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
+#pragma section forcedata begin
+extern "C" const u16 data_ov021_02114740[4] = { 0x0000, 0x8000, 0x4000, 0xc000 };
+#pragma section forcedata end

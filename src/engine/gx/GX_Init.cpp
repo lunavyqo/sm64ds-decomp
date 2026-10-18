@@ -190,3 +190,5 @@ void func_02053a90(u16 *reg, int brightness) {
 }
 
 } // extern "C"
+
+extern "C" u16 data_020a6084[2];

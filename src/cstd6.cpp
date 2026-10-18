@@ -254,3 +254,5 @@ unsigned int func_02070348(void)
     return (s >> 16) & 0x7fff;
 }
 }
+
+extern "C" int data_020aa0ac[10];

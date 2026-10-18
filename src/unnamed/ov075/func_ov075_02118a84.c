@@ -48,3 +48,5 @@ void func_ov075_02118a84(char *r4)
     func_ov075_02116c8c(r4);
     *(struct P2 *)(r4 + 0x5c) = data_02086b58;
 }
+
+unsigned char data_ov075_0211d5bc[4];

@@ -5455,3 +5455,13 @@ void LoadOrUnloadObjectOverlays(void (*fn)(int), int idx) {
 extern "C" dScStage_c *dScStage_c_classInit() {
     return new dScStage_c();
 }
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+extern "C" u16 data_020755cc[4] = { 0x0000, 0x0000, 0x3f04, 0x0000 };
+#pragma section forcerodata end
+#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
+#pragma section forcedata begin
+extern "C" s16 data_02092144[4] = { 21501, 20767, 5972, -241 };
+#pragma section forcedata end
+extern "C" s8 data_0209f30c[1];

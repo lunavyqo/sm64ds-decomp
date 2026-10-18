@@ -9,6 +9,8 @@ src/minigames/unit020bfec0.cpp:
     .text start:0x020bfec0 end:0x020c4048
     .data start:0x0213ac48 end:0x0213acc0
 
+    .rodata start:0x0212b89c end:0x0212b8ac
+    .bss start:0x021402e0 end:0x021402e4
 src/minigames/d_mg3d_heyho_obj_adapter.cpp:
     complete
     .text start:0x020c4048 end:0x020c6f8c
@@ -30,16 +32,21 @@ src/minigames/unit020c8a30.cpp:
     complete
     .text start:0x020c8a30 end:0x020c8dd4
 
+    .bss start:0x02140518 end:0x02140538
 src/minigames/d_mg_trmpln2_mario.cpp:
     complete
     .text start:0x020c8dd4 end:0x020cd744
     .data start:0x0213b11c end:0x0213b13c
     .bss start:0x021405d0 end:0x02140620
 
+    .rodata start:0x0212e02c end:0x0212e044
 src/minigames/unit020cd744.cpp:
     complete
     .text start:0x020cd744 end:0x020d1018
 
+    .rodata start:0x0212e060 end:0x0212e070
+    .data start:0x0213b2f4 end:0x0213b314
+    .bss start:0x02140848 end:0x02140860
 src/minigames/d_s_mg_amida.cpp:
     complete
     .text start:0x020d1018 end:0x020d5a54
@@ -50,6 +57,7 @@ src/minigames/d_s_mg_bomroom.cpp:
     .text start:0x020d5a54 end:0x020d95a4
     .bss start:0x02141660 end:0x02141768
 
+    .rodata start:0x0212e2c0 end:0x0212e2e8
 src/minigames/d_s_mg_card.cpp:
     complete
     .text start:0x020d95a4 end:0x020dbe40
@@ -91,6 +99,7 @@ src/minigames/d_s_mg_d3d_base.cpp:
     .text start:0x020e6c28 end:0x020e7660
     .bss start:0x02141a54 end:0x02141e54
 
+    .rodata start:0x0212e574 end:0x0212e57c
 src/minigames/d_mg3d_esp_anim_set.cpp:
     complete
     .text start:0x020e7660 end:0x020ea280
@@ -111,6 +120,7 @@ src/minigames/d_s_mg_hanachan.cpp:
     complete
     .text start:0x020ede18 end:0x020edec0
 
+    .data start:0x0213cab8 end:0x0213cb48
 src/minigames/d_s_mg_jump_methods.cpp:
     complete
     .text start:0x020edec0 end:0x020eeafc
@@ -195,6 +205,8 @@ src/minigames/d_s_mg_roulette_methods.cpp:
     .text start:0x0210788c end:0x0210a400
     .data start:0x0213e2e8 end:0x0213e2f0
 
+    .rodata start:0x0212ed14 end:0x0212ed34
+    .bss start:0x021428d4 end:0x021428dc
 src/minigames/d_s_mg_roulette.cpp:
     complete
     .text start:0x0210a400 end:0x0210a4b0
@@ -203,6 +215,7 @@ src/minigames/d_s_mg_single3d_base.cpp:
     complete
     .text start:0x0210a4b0 end:0x0210a8c0
 
+    .data start:0x0213e42c end:0x0213e448
 src/minigames/d_s_mg_slots.cpp:
     complete
     .text start:0x0210a8c0 end:0x0210d740
@@ -214,6 +227,9 @@ src/minigames/d_s_mg_smartball.cpp:
     complete
     .text start:0x0210d740 end:0x02119904
 
+    .rodata start:0x0212edfc end:0x0212ee0c
+    .data start:0x0213eccc end:0x0213ece8
+    .bss start:0x02142c40 end:0x02142cc0
 src/minigames/d_s_mg_sound.cpp:
     complete
     .text start:0x02119904 end:0x0211cbd0

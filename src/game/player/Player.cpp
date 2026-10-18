@@ -28343,3 +28343,10 @@ void func_ov002_020e6780(char *p)
  *   [610] 0x020e640c  func_ov002_020e640c
  *   [611] 0x020e6780  func_ov002_020e6780
  */
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+extern "C" unsigned char data_ov002_020ff0f0[4] = { 0x30, 0x31, 0x32, 0x33 };
+extern "C" u8 data_ov002_020ff0ec[4] = { 0x28, 0x1e, 0x24, 0x00 };
+extern "C" unsigned char data_ov002_020ff0f4[4] = { 0x34, 0x35, 0x36, 0x37 };
+#pragma section forcerodata end

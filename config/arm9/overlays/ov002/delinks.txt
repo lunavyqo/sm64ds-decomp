@@ -201,6 +201,7 @@ src/game/player/Player.cpp:
     .data start:0x0210a720 end:0x0210a7e8
     .bss start:0x0210e7b8 end:0x0210e7c0
 
+    .rodata start:0x020ff0ec end:0x020ff0f8
 src/_ZN6PlayerD0Ev.cpp:
     complete
     .text start:0x020e67a8 end:0x020e6858
@@ -213,6 +214,7 @@ src/_ZN6PlayerC1Ev.cpp:
     complete
     .text start:0x020e68f4 end:0x020e69b8
 
+    .data start:0x0210a83c end:0x0210a8b8
 src/_ZN6Player13OnYoshiTryEatEv.cpp:
     complete
     .text start:0x020e69b8 end:0x020e69c0
@@ -278,6 +280,7 @@ src/game/actors/d_a_tree.cpp:
     .text start:0x020ebf8c end:0x020ec388
     .bss start:0x02110a48 end:0x02110a5c
 
+    .data start:0x0210abb8 end:0x0210abc4
 src/game/actors/d_a_warpkun.cpp:
     complete
     .text start:0x020ec388 end:0x020ec56c
@@ -348,6 +351,7 @@ src/game/actors/d_a_set_se.cpp:
     complete
     .text start:0x020f198c end:0x020f1bc4
 
+    .data start:0x0210b498 end:0x0210b4c8
 src/game/actors/d_a_mugen_bgm.cpp:
     complete
     .text start:0x020f1bc4 end:0x020f1f70
@@ -370,6 +374,7 @@ src/game/actors/d_a_f_pkn_ball.cpp:
     complete
     .text start:0x020f8858 end:0x020f934c
 
+    .rodata start:0x02100320 end:0x0210035c
 src/game/actors/d_a_sound_obj.cpp:
     complete
     .text start:0x020f934c end:0x020f975c

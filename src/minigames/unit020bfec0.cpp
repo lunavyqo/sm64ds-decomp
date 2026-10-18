@@ -2751,3 +2751,9 @@ int pmf_Dealer_StateIdle[2] = {(int)Dealer_StateIdle, 0};
 int pmf_Dealer_StateCollect[2] = {(int)Dealer_StateCollect, 0};
 int pmf_Dealer_StateReveal_2[2] = {(int)Dealer_StateReveal, 0};
 }
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+extern "C" short data_ov006_0212b89c[8] = { 0x0078, 0x001e, 0x001e, 0x0078, 0x001e, 0x001e, 0x00b4, 0x0078 };
+#pragma section forcerodata end
+extern "C" int data_ov006_021402e0;

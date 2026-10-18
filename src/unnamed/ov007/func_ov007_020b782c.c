@@ -24,3 +24,8 @@ void func_ov007_020b782c(void)
     } while (i < 2);
     func_0204a17c((int)data_ov007_0210344c, func_ov007_020b3f20(0x17));
 }
+
+#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
+#pragma section forcedata begin
+char data_ov007_02102dd0[8] = { 0x45, 0x66, 0x66, 0x65, 0x63, 0x74, 0x00, 0x00 };
+#pragma section forcedata end

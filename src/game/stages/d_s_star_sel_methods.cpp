@@ -1371,3 +1371,8 @@ void *dScStarSel_c_classInit(void) {
     return p;
 }
 }
+
+#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
+#pragma section forcedata begin
+extern "C" unsigned short data_ov003_020b16ac[8] = { 0x0064, 0x000a, 0x0001, 0x0000, 0x04f0, 0x020b, 0x0004, 0x0007 };
+#pragma section forcedata end

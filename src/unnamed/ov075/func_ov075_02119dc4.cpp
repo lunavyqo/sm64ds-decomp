@@ -128,3 +128,5 @@ extern "C" void func_ov075_02119dc4(char *self, int arg)
     data_0209d454 = data_0209d454 | 5;
     *(u8 *)(self + 0x280) = 0;
 }
+
+extern "C" int data_ov075_0211d920[4];

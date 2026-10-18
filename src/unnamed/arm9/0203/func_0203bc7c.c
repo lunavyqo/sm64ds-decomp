@@ -39,3 +39,5 @@ void func_0203bc7c(void)
         p++;
     }
 }
+
+unsigned char data_020a0e44[4];

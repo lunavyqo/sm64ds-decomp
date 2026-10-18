@@ -233,3 +233,8 @@ int daTree_c::CleanupResources()
     }
     return 1;
 }
+
+#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
+#pragma section forcedata begin
+extern "C" u16 data_ov002_0210abb8[6] = { 0x04a2, 0x04a3, 0x04a5, 0x04a4, 0x9c10, 0x0000 };
+#pragma section forcedata end

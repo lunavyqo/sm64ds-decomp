@@ -19,3 +19,5 @@ int func_02063648(int a0, int *src, int len, int a3, u16 arg5, u16 arg6, u8 arg7
     if (ret == 0) ret = 2;
     return ret;
 }
+
+int data_020a9440[32];

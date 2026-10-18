@@ -464,3 +464,8 @@ void dScMgD3DBase_c::RestoreScreenFromMenu()
 }
 
 /* The destructor is inline in the header (see the banner). */
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+extern "C" unsigned char data_ov006_0212e574[8] = { 0x00, 0x40, 0x80, 0xc0, 0xc0, 0x00, 0x00, 0x00 };
+#pragma section forcerodata end

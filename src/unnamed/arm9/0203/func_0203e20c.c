@@ -331,3 +331,5 @@ void func_0203e20c(void)
         } while (i < 0x11);
     }
 }
+
+u8 data_020a0f9d[3];

@@ -60,3 +60,10 @@ void func_ov075_021188b4(char *c)
 
     *(int *)(c + 0x274) = 0;
 }
+
+#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
+#pragma section forcedata begin
+int data_ov075_0211ca6c[2] = { 0x0211ca4c, 0x00000003 };
+int data_ov075_0211ca64[2] = { 0x0211cd54, 0x00000005 };
+int data_ov075_0211ca74[2] = { 0x0211cd7c, 0x00000005 };
+#pragma section forcedata end

@@ -869,3 +869,5 @@ extern "C" int *daTgz_c_classInit(void)
 {
     return (int *)new daTgz_c;
 }
+
+extern "C" char data_ov077_02127c28[96];

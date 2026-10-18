@@ -16,6 +16,7 @@ src/game/actors/d_a_tgz.cpp:
     complete
     .text start:0x02124b64 end:0x0212624c
 
+    .bss start:0x02127c28 end:0x02127c88
 src/game/actors/d_a_popoi.cpp:
     complete
     .text start:0x0212624c end:0x02127230

@@ -22,3 +22,5 @@ void func_ov075_02119640(char* r4){
   func_02030aa4(1);
   func_ov075_0211a194(r4, &data_ov075_0211d918);
 }
+
+int data_ov075_0211d918[2];

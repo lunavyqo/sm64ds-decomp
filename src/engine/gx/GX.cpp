@@ -145,3 +145,8 @@ void LoadBGPltt(const void* src, unsigned int offset, unsigned int size){
 }
 
 }
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+extern "C" u16 data_02086314[8] = { 0x0000, 0x0000, 0x1111, 0x0001, 0x0111, 0x0011, 0x0111, 0x0110 };
+#pragma section forcerodata end

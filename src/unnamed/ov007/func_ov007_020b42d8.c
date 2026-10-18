@@ -62,3 +62,9 @@ Obj *func_ov007_020b42d8(int index) {
     func_ov007_020c41dc((char *)tmp, (char *)obj, data_ov007_0210342c->f34);
     return obj;
 }
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+u8 data_ov007_020d75e0[4] = { 0x00, 0x00, 0x10, 0x00 };
+u8 data_ov007_020d75e4[4] = { 0xe8, 0xd0, 0xb8, 0x00 };
+#pragma section forcerodata end

@@ -1621,3 +1621,10 @@ void Roulette_Nothing(void)
 
 /* Function address, then zero. g_profile_MG_ROULETTE at 0x0213e2f0 is next. */
 struct Pair2W pmf_RouletteBoard_StateSpin = {(int)&RouletteBoard_StateSpin, 0};
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+extern "C" int data_ov006_0212ed14[4] = { 0x0000000c, 0x00000006, 0x00000003, 0x00000002 };
+extern "C" s32 data_ov006_0212ed24[4] = { 0x00000000, 0x00000002, 0x00000006, 0x00000008 };
+#pragma section forcerodata end
+extern "C" int data_ov006_021428d4[2];

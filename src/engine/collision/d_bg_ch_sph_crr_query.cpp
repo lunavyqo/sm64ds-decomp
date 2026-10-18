@@ -807,3 +807,5 @@ int func_02037dc4(int p)
     return p + 8;
 }
 }
+
+extern "C" char data_020a0c78[8];

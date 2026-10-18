@@ -63,3 +63,12 @@ void func_ov007_020b6d40(void)
             func_ov007_020adc08(i, *(char **)(*(char **)(c + 0x34) + i * 4));
     }
 }
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+u8 data_ov007_020d7a24[16] = { 0x01, 0x01, 0x03, 0x01, 0x03, 0x00, 0x02, 0x03, 0x02, 0x02, 0x00, 0x01, 0x01, 0x01, 0x01, 0x00 };
+#pragma section forcerodata end
+#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
+#pragma section forcedata begin
+int data_ov007_020d7e28[4] = { 0x020ea6ec, 0x020e2204, 0x020e6478, 0x020f295c };
+#pragma section forcedata end

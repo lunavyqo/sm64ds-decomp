@@ -25,3 +25,5 @@ void func_0205fde8(void)
     func_02058b9c(&data_020a8124);
     data_020a8110 = *(int *)0x27ffc3c;
 }
+
+char data_020a8124[20];

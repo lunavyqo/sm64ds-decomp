@@ -894,3 +894,8 @@ extern "C" daFPkn_c *daFPkn_c_classInit_FIREPAKUN()
 {
     return new daFPkn_c();
 }
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+extern "C" u8 data_ov084_02130294[8] = { 0x00, 0x03, 0x04, 0x05, 0x06, 0x00, 0x00, 0x00 };
+#pragma section forcerodata end
