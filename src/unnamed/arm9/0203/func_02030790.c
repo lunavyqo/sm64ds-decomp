@@ -6,7 +6,7 @@ extern void _ZN5Sound22StopLoadedMusic_Layer1Ej(unsigned int v);
 extern void func_020132d8(void);
 extern void func_0201ffcc(void);
 extern void func_020199a4(void);
-extern unsigned char data_02092778;
+extern unsigned char data_02092778[4];
 extern int data_0209fc68;
 extern int data_0209277c;
 extern unsigned char data_0209e64c;
@@ -15,7 +15,7 @@ extern unsigned char data_0209b480;
 void func_02030790(void)
 {
     data_0209fc68 = 6;
-    if (data_02092778 == 0)
+    if (data_02092778[0] == 0)
         return;
     func_0203da2c(0);
     func_02030500();

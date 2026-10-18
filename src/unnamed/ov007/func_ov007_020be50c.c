@@ -8,7 +8,7 @@ extern void func_ov007_020be8b8(void);
 extern int* data_ov007_0210342c;
 extern int* data_ov007_02104bc0;
 
-extern int data_ov007_020d7c6c;
+extern int data_ov007_020d7c6c[11];
 extern int data_ov007_02103234;
 
 void func_ov007_020be50c(void)
@@ -29,9 +29,9 @@ void func_ov007_020be50c(void)
     t = *(int**)(r4v + 0x3c);
 
     data_ov007_02104bc0 = (int*)func_ov007_020c3df4(0, (void*)0x108);
-    data_ov007_02104bc0[0] = (int)func_ov007_020c3f00(&data_ov007_020d7c6c, (void*)2);
+    data_ov007_02104bc0[0] = (int)func_ov007_020c3f00(data_ov007_020d7c6c, (void*)2);
 
-    data_ov007_02104bc0[1] = func_ov007_020c3df4((int)&data_ov007_02103234, (void*)(data_ov007_020d7c6c * 0xc));
+    data_ov007_02104bc0[1] = func_ov007_020c3df4((int)&data_ov007_02103234, (void*)(data_ov007_020d7c6c[0] * 0xc));
 
     func_ov007_020c3ee8(data_ov007_02104bc0[0], *(int*)(data_ov007_0210342c[0x74/4] + 4));
 

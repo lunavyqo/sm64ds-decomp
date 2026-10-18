@@ -7,7 +7,7 @@ typedef struct InputPair
     u16 pressed;
 } InputPair;
 
-extern unsigned char data_020a0e44;
+extern unsigned char data_020a0e44[4];
 extern u16 data_020a0e48[4];
 extern u16 data_020a0e50[4];
 extern InputPair data_020a0e58[4];
@@ -18,7 +18,7 @@ void func_0203bc7c(void)
 {
     InputPair *p = data_020a0e58;
     int i;
-    data_020a0e44 = 0;
+    data_020a0e44[0] = 0;
     for (i = 0; i < 4; i++)
     {
         u16 keys = func_0203dae4(i);
@@ -29,7 +29,7 @@ void func_0203bc7c(void)
         if ((keys & 0xc0) == 0xc0)
             keys &= ~0xc0;
         if (keys == 0x30c)
-            data_020a0e44 = 1;
+            data_020a0e44[0] = 1;
         old = data_020a0e50[i];
         changed = keys ^ old;
         p->pressed = keys & changed;
