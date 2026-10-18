@@ -17,7 +17,7 @@ extern void *data_020a612c;
 extern char data_023c0000;
 extern char data_020a6188[];
 extern void func_02057e34(void);
-extern char data_020a6378[];
+extern unsigned int data_020a6378;
 extern u32 func_02057e48(u32 newVal);
 extern void func_02058200(char *self, int a1, int a2, int end, int arg4, int arg5);
 
@@ -71,7 +71,7 @@ void func_02058308(void)
 
     func_02057e48(0);
 
-    func_02058200(data_020a6188, (int)&func_02057e34, 0, (int)data_020a6378, 0xc8, 0x1f);
+    func_02058200(data_020a6188, (int)&func_02057e34, 0, (int)&data_020a6378, 0xc8, 0x1f);
 
     *(int *)(data_020a6188 + 0x70) = 0x20;
     *(int *)(data_020a6188 + 0x64) = 1;
