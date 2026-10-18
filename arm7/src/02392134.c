@@ -9,7 +9,8 @@
  * plain), which is also where the failed retry falls through. */
 
 extern void *fn_0238E688(void); /* =0x027C0600 */
-extern unsigned short *fn_0238FA8C(unsigned short *a1, unsigned short a2, unsigned short a3, int a4, int a5); /* =0x027C1A04 */
+extern unsigned short *fn_0238FA8C(unsigned short *a1, unsigned short a2, unsigned short a3,
+                                 unsigned short a4, unsigned short a5); /* =0x027C1A04 */
 extern unsigned short *fn_0238FDBC(unsigned short *a1, short a2); /* =0x027C1D34 */
 extern int fn_023920F8(unsigned short a1, unsigned short a2); /* =0x027C4070 */
 extern unsigned short *fn_0238DE4C(void); /* =0x03805CE4 */
@@ -27,7 +28,12 @@ void fn_02392134(arg_02392134_t *a) {
     char *base = (char *)fn_0238E688();
     char *hi = base + 0x1000;
     int *outer = *(int **)(hi + 0x610);
-    unsigned short *r = fn_0238FA8C(buf, 1, a->s04, (a->s06 == 1) ? 10 : 20, a->s08);
+    unsigned short mode;
+    if (a->s06 == 1)
+        mode = 10;
+    else
+        mode = 20;
+    unsigned short *r = fn_0238FA8C(buf, 1, a->s04, mode, a->s08);
     if (r[2] != 0) {
         fn_023920F8(0x309, r[2]);
     } else {
