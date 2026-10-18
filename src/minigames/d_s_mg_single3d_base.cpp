@@ -200,3 +200,8 @@ extern "C" void LoadCard2SubBg3(void)
 /* The inline destructor plus AfterInitResources as key function emit D1
  * and D0 in cartridge order. Children inline this base teardown, so there
  * is no standalone D2. */
+
+#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
+#pragma section forcedata begin
+extern "C" int data_ov006_0213e42c[7] = { 0x000000c2, 0x000000c4, 0x000000bf, 0x000000c0, 0x000000c1, 0x00000000, 0x0213bc64 };
+#pragma section forcedata end

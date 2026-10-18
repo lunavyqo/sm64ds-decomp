@@ -29,8 +29,13 @@
       "end": "0x02133574"
     },
     {
+      "name": ".data",
+      "start": "0x0213b020",
+      "end": "0x0213b0a4"
+    },
+    {
       "name": ".bss",
-      "start": "0x02140438",
+      "start": "0x02140408",
       "end": "0x021404c4"
     }
   ],
@@ -323,8 +328,205 @@
       "ordinal": 40
     }
   ],
-  "data": [],
+  "data": [
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateMove",
+      "address": "0x0213b020",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateHold",
+      "address": "0x0213b028",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateDamp",
+      "address": "0x0213b030",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateRespawn",
+      "address": "0x0213b038",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateIdle",
+      "address": "0x0213b040",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateIdle_2",
+      "address": "0x0213b048",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateWindUp",
+      "address": "0x0213b050",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateIdle_3",
+      "address": "0x0213b058",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateBounce",
+      "address": "0x0213b060",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateWindUp_2",
+      "address": "0x0213b068",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateWindUp_3",
+      "address": "0x0213b070",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateBounce_2",
+      "address": "0x0213b078",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateRiseOut",
+      "address": "0x0213b080",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateRespawn_2",
+      "address": "0x0213b088",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "pmf_dMgJump3DMario_c_StateFallOut",
+      "address": "0x0213b090",
+      "size": "0x8",
+      "binding": "STB_GLOBAL",
+      "evidence": "8-byte state record: member address, then a zero adjustment word"
+    },
+    {
+      "symbol": "sJump3DAnimTable",
+      "address": "0x0213b098",
+      "size": "0xc",
+      "binding": "STB_GLOBAL",
+      "evidence": "three pointers to the loaded anim files sJump3DAnimJump, sJump3DAnimDoubleJump1 and sJump3DAnimWallJump"
+    }
+  ],
   "bss": [
+    {
+      "symbol": "sJump3DAnimSdown",
+      "address": "0x02140408",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "loaded anim file; zero until LoadFile"
+    },
+    {
+      "symbol": "sJump3DAnimDoubleJump1",
+      "address": "0x0214040c",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "loaded anim file; zero until LoadFile"
+    },
+    {
+      "symbol": "sJump3DArrangeLevel",
+      "address": "0x02140410",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "zero word written by func_ov006_020c712c"
+    },
+    {
+      "symbol": "sJump3DLayout",
+      "address": "0x02140414",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "zero word read by func_ov006_020c7490"
+    },
+    {
+      "symbol": "sJump3DMarioCount",
+      "address": "0x02140418",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "player count; zero until func_ov006_020c7574"
+    },
+    {
+      "symbol": "sJump3DAnimRollJump",
+      "address": "0x0214041c",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "loaded anim file; zero until LoadFile"
+    },
+    {
+      "symbol": "sJump3DMarioPool",
+      "address": "0x02140420",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "player-object base pointer; zero until func_ov006_020c7574"
+    },
+    {
+      "symbol": "sJump3DAnimWallJump",
+      "address": "0x02140424",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "loaded anim file; zero until LoadFile"
+    },
+    {
+      "symbol": "sJump3DMariosLeft",
+      "address": "0x02140428",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "zero word counted down by ApproachLinear"
+    },
+    {
+      "symbol": "sJump3DAnimStruggle",
+      "address": "0x0214042c",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "loaded anim file; zero until LoadFile"
+    },
+    {
+      "symbol": "sJump3DAnimJump",
+      "address": "0x02140430",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "loaded anim file; zero until LoadFile"
+    },
+    {
+      "symbol": "sJump3DRisenOutCount",
+      "address": "0x02140434",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "zero word incremented by StateRiseOut"
+    },
     {
       "symbol": "sJump3DMarioWallJumpAnimFile",
       "address": "0x02140438",
@@ -1227,6 +1429,186 @@
       "addend": 0,
       "target_module": "ov006",
       "target_address": "0x0212f52c"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b020",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c9StateMoveEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c7c68"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b028",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c9StateHoldEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c7a30"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b030",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c9StateDampEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c78ec"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b038",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c12StateRespawnEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c8680"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b040",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c9StateIdleEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c864c"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b048",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c9StateIdleEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c864c"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b050",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c11StateWindUpEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c85bc"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b058",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c9StateIdleEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c864c"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b060",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c11StateBounceEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c833c"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b068",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c11StateWindUpEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c85bc"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b070",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c11StateWindUpEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c85bc"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b078",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c11StateBounceEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c833c"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b080",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c12StateRiseOutEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c814c"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b088",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c12StateRespawnEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c8680"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b090",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "_ZN16dMgJump3DMario_c12StateFallOutEv",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x020c8048"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b098",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "sJump3DAnimJump",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x02140430"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b09c",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "sJump3DAnimDoubleJump1",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x0214040c"
+    },
+    {
+      "section": ".data",
+      "source": "0x0213b0a0",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "sJump3DAnimWallJump",
+      "addend": 0,
+      "target_module": "ov006",
+      "target_address": "0x02140424"
     }
   ],
   "defined_symbol_renames": [

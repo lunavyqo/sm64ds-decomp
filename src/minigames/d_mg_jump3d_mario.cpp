@@ -85,24 +85,31 @@ void Puff_DrawAll(void);
 void Puff_UpdateAll(void);
 void Puff_ClearAll(int a, int b);
 
-/* The mState records this file installs or compares. */
-extern Jump3DState pmf_dMgJump3DMario_c_StateMove;
-extern Jump3DState pmf_dMgJump3DMario_c_StateHold;
-extern Jump3DState pmf_dMgJump3DMario_c_StateDamp;
-extern Jump3DState pmf_dMgJump3DMario_c_StateRespawn;
-extern Jump3DState pmf_dMgJump3DMario_c_StateIdle_2;
-extern Jump3DState pmf_dMgJump3DMario_c_StateWindUp;
-extern Jump3DState pmf_dMgJump3DMario_c_StateIdle_3;
-extern Jump3DState pmf_dMgJump3DMario_c_StateBounce;
-extern Jump3DState pmf_dMgJump3DMario_c_StateWindUp_2;
-extern Jump3DState pmf_dMgJump3DMario_c_StateWindUp_3;
-extern Jump3DState pmf_dMgJump3DMario_c_StateBounce_2;
-extern Jump3DState pmf_dMgJump3DMario_c_StateRiseOut;
-extern Jump3DState pmf_dMgJump3DMario_c_StateRespawn_2;
-extern Jump3DState pmf_dMgJump3DMario_c_StateFallOut;
+/* The mState records this file installs or compares.
+ * The unsigned arm is the static image; .pmf is the same bytes read as a
+ * pointer-to-member so equality keeps the null short-circuit. */
+union Jump3DRec {
+    Jump3DState pmf;
+    unsigned w[2];
+};
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateMove;
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateHold;
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateDamp;
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateRespawn;
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateIdle;
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateIdle_2;
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateWindUp;
+extern "C" Jump3DRec pmf_dMgJump3DMario_c_StateIdle_3;
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateBounce;
+extern "C" Jump3DRec pmf_dMgJump3DMario_c_StateWindUp_2;
+extern "C" Jump3DRec pmf_dMgJump3DMario_c_StateWindUp_3;
+extern "C" Jump3DRec pmf_dMgJump3DMario_c_StateBounce_2;
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateRiseOut;
+extern "C" Jump3DRec pmf_dMgJump3DMario_c_StateRespawn_2;
+extern "C" Jump3DRec pmf_dMgJump3DMario_c_StateFallOut;
 
 /* Slots the current mAnimIdx (0/1/2) picks the anim file from. */
-extern BCA_File **sJump3DAnimTable[];
+extern "C" BCA_File **sJump3DAnimTable[];
 
 /* Tuning words, read as plain ints. */
 extern int sJump3DBounceVy;
@@ -111,17 +118,17 @@ extern int sJump3DStartVx;
 extern int sJump3DFallSpeed;
 extern int sJump3DGravityStep;
 extern int sJump3DMoveSpeed;
-extern int sJump3DMariosLeft;
-extern int sJump3DRisenOutCount;
+extern "C" int sJump3DMariosLeft;
+extern "C" int sJump3DRisenOutCount;
 
 /* The six anim files LoadResources loads. The destructor clears only
  * five of them; 0214041c survives in the ROM too. */
-extern BCA_File *sJump3DAnimSdown;
-extern BCA_File *sJump3DAnimDoubleJump1;
-extern BCA_File *sJump3DAnimRollJump;
-extern BCA_File *sJump3DAnimWallJump;
-extern BCA_File *sJump3DAnimStruggle;
-extern BCA_File *sJump3DAnimJump;
+extern "C" BCA_File *sJump3DAnimSdown;
+extern "C" BCA_File *sJump3DAnimDoubleJump1;
+extern "C" BCA_File *sJump3DAnimRollJump;
+extern "C" BCA_File *sJump3DAnimWallJump;
+extern "C" BCA_File *sJump3DAnimStruggle;
+extern "C" BCA_File *sJump3DAnimJump;
 
 /* Six anim handles call SharedFilePtr::Construct. The model handle calls
    func_02017a24. The second word is the loaded file. */
@@ -148,12 +155,11 @@ extern Jump3DMarioAnimFilePtr sJump3DMarioDoubleJump1AnimFile;
 
 /* The pool the minigame scenes hand in: count, base pointer, level, round
  * and the three player slots. */
-extern int sJump3DArrangeLevel;
-extern int sJump3DLayout;
-extern int sJump3DMarioCount;
-extern char *sJump3DMarioPool;
+extern "C" int sJump3DArrangeLevel;
+extern "C" int sJump3DLayout;
+extern "C" int sJump3DMarioCount;
+extern "C" char *sJump3DMarioPool;
 extern char *sJumpAdapters[];
-extern int pmf_dMgJump3DMario_c_StateIdle[2];
 
 extern u8  data_ov006_02140400;
 extern u16 sJump3DSpinAngle;
@@ -271,9 +277,9 @@ extern "C" int Jump3D_AllIdle(void)
     int i;
     for (i = 0; i < sJump3DMarioCount; i++) {
         int *v = (int *)(&((Jump3DEnt *)sJump3DMarioPool)[i].x);
-        volatile int *q = (volatile int *)pmf_dMgJump3DMario_c_StateIdle;
-        if (v[0] != pmf_dMgJump3DMario_c_StateIdle[0] ||
-            (v[1] != q[1] && ((Jump3DEnt *)sJump3DMarioPool)[i].x != 0))
+        int *p = (int *)&pmf_dMgJump3DMario_c_StateIdle;
+        volatile int *q = (volatile int *)&pmf_dMgJump3DMario_c_StateIdle;
+        if (v[0] != p[0] || (v[1] != q[1] && ((Jump3DEnt *)sJump3DMarioPool)[i].x != 0))
             return 0;
     }
     return 1;
@@ -385,11 +391,11 @@ int dMgJump3DMario_c::IsLaunched() {
     int r = 0;
     int m = 1;
 
-    if (mState == pmf_dMgJump3DMario_c_StateIdle_3)
+    if (mState == pmf_dMgJump3DMario_c_StateIdle_3.pmf)
         m = 0;
     if (m != 0) {
         m = 1;
-        if (mState == pmf_dMgJump3DMario_c_StateWindUp_3)
+        if (mState == pmf_dMgJump3DMario_c_StateWindUp_3.pmf)
             m = 0;
         if (m != 0)
             r = 1;
@@ -497,7 +503,7 @@ void dMgJump3DMario_c::EnterDamp()
         Sound::PlayBank2_2D(0x1c9);
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModelAnim, sJump3DAnimStruggle, 0, kAnimSpeed, 0);
     mTimer = 0x28;
-    mState = pmf_dMgJump3DMario_c_StateDamp;
+    mState = *(Jump3DState *)&pmf_dMgJump3DMario_c_StateDamp;
 }
 
 
@@ -585,7 +591,7 @@ void dMgJump3DMario_c::EnterHold()
     mModelAnim.dExtFrameCtrl_c::currFrame = 0;
     Sound_PlayBank1Panned(0, 6, mPos.x);
     mTimer = 0x20;
-    mState = pmf_dMgJump3DMario_c_StateHold;
+    mState = *(Jump3DState *)&pmf_dMgJump3DMario_c_StateHold;
 }
 
 
@@ -697,7 +703,7 @@ void dMgJump3DMario_c::StateMove()
 // @symbol _ZN16dMgJump3DMario_c9EnterMoveEv
 void dMgJump3DMario_c::EnterMove()
 {
-    mState = pmf_dMgJump3DMario_c_StateMove;
+    mState = *(Jump3DState *)&pmf_dMgJump3DMario_c_StateMove;
 }
 
 
@@ -714,7 +720,7 @@ void dMgJump3DMario_c::StateFallOut()
 // @symbol _ZN16dMgJump3DMario_c12StartFallOutEv
 void dMgJump3DMario_c::StartFallOut()
 {
-    if (mState == pmf_dMgJump3DMario_c_StateRespawn_2) {
+    if (mState == pmf_dMgJump3DMario_c_StateRespawn_2.pmf) {
         mVel.y = 0;
         HideAndIdle();
     } else {
@@ -724,7 +730,7 @@ void dMgJump3DMario_c::StartFallOut()
         _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModelAnim, sJump3DAnimStruggle, 0, kAnimSpeed,
                                                     0);
         mModelAnim.dExtFrameCtrl_c::currFrame = 0;
-        mState = pmf_dMgJump3DMario_c_StateFallOut;
+        mState = pmf_dMgJump3DMario_c_StateFallOut.pmf;
     }
 }
 
@@ -754,7 +760,7 @@ void dMgJump3DMario_c::StartRiseOut()
     mModelAnim.dExtFrameCtrl_c::currFrame = 0;
     Sound::PlayBank2_2D(0x10f);
     func_02012718(0x1b5, mScreenX << 12);
-    mState = pmf_dMgJump3DMario_c_StateRiseOut;
+    mState = *(Jump3DState *)&pmf_dMgJump3DMario_c_StateRiseOut;
 }
 
 // @symbol _ZN16dMgJump3DMario_c8EnterHitEv
@@ -763,13 +769,13 @@ void dMgJump3DMario_c::EnterHit()
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModelAnim, sJump3DAnimRollJump, 0x40000000,
                                                 kAnimSpeed, 0);
     mModelAnim.dExtFrameCtrl_c::currFrame = 0;
-    if (mState == pmf_dMgJump3DMario_c_StateWindUp_2) {
+    if (mState == pmf_dMgJump3DMario_c_StateWindUp_2.pmf) {
         func_02012718(0x110, mScreenX << 12);
     } else {
         Sound_PlayBank1Panned(0, 4, mPos.x);
     }
     func_02012718(0x1b5, mScreenX << 12);
-    mState = pmf_dMgJump3DMario_c_StateBounce_2;
+    mState = pmf_dMgJump3DMario_c_StateBounce_2.pmf;
 }
 
 
@@ -831,7 +837,7 @@ void dMgJump3DMario_c::StateBounce()
 // @symbol _ZN16dMgJump3DMario_c11EnterBounceEv
 void dMgJump3DMario_c::EnterBounce()
 {
-    mState = pmf_dMgJump3DMario_c_StateBounce;
+    mState = *(Jump3DState *)&pmf_dMgJump3DMario_c_StateBounce;
 }
 
 
@@ -855,7 +861,7 @@ void dMgJump3DMario_c::StateWindUp()
 void dMgJump3DMario_c::StartWindUp(int timer)
 {
     mTimer = (s16)timer;
-    mState = pmf_dMgJump3DMario_c_StateWindUp;
+    mState = *(Jump3DState *)&pmf_dMgJump3DMario_c_StateWindUp;
 }
 
 // @symbol _ZN16dMgJump3DMario_c9StateIdleEv
@@ -870,7 +876,7 @@ void dMgJump3DMario_c::HideAndIdle()
 {
     mVisible = 0;
     mPos.y = 0;
-    mState = pmf_dMgJump3DMario_c_StateIdle_2;
+    mState = *(Jump3DState *)&pmf_dMgJump3DMario_c_StateIdle_2;
 }
 
 // @symbol _ZN16dMgJump3DMario_c12StateRespawnEv
@@ -906,7 +912,7 @@ void dMgJump3DMario_c::EnterRespawn()
     mVel.y = 0;
     _ZN9ModelAnim7SetAnimEP8BCA_Filei5Fix12IiEj(&mModelAnim, sJump3DAnimWallJump, 0x40000000,
                                                 kAnimSpeed, 0);
-    mState = pmf_dMgJump3DMario_c_StateRespawn;
+    mState = *(Jump3DState *)&pmf_dMgJump3DMario_c_StateRespawn;
 }
 
 
@@ -977,3 +983,41 @@ Jump3DMarioAnimFilePtr sJump3DMarioWallJumpAnimFile(32958);
 Jump3DMarioAnimFilePtr sJump3DMarioSdownAnimFile(32914);
 Jump3DMarioAnimFilePtr sJump3DMarioStruggleAnimFile(32932);
 Jump3DModelFilePtr gMarioModelMgModelFile(534);
+
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateMove = &dMgJump3DMario_c::StateMove;
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateHold = &dMgJump3DMario_c::StateHold;
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateDamp = &dMgJump3DMario_c::StateDamp;
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateRespawn = &dMgJump3DMario_c::StateRespawn;
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateIdle = &dMgJump3DMario_c::StateIdle;
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateIdle_2 = &dMgJump3DMario_c::StateIdle;
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateWindUp = &dMgJump3DMario_c::StateWindUp;
+extern "C" Jump3DRec pmf_dMgJump3DMario_c_StateIdle_3 = {&dMgJump3DMario_c::StateIdle};
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateBounce = &dMgJump3DMario_c::StateBounce;
+extern "C" Jump3DRec pmf_dMgJump3DMario_c_StateWindUp_2 = {&dMgJump3DMario_c::StateWindUp};
+extern "C" Jump3DRec pmf_dMgJump3DMario_c_StateWindUp_3 = {&dMgJump3DMario_c::StateWindUp};
+extern "C" Jump3DRec pmf_dMgJump3DMario_c_StateBounce_2 = {&dMgJump3DMario_c::StateBounce};
+extern "C" Jump3DState pmf_dMgJump3DMario_c_StateRiseOut = &dMgJump3DMario_c::StateRiseOut;
+extern "C" Jump3DRec pmf_dMgJump3DMario_c_StateRespawn_2 = {&dMgJump3DMario_c::StateRespawn};
+extern "C" Jump3DRec pmf_dMgJump3DMario_c_StateFallOut = {&dMgJump3DMario_c::StateFallOut};
+extern "C" BCA_File **sJump3DAnimTable[3] = {
+    &sJump3DAnimJump,
+    &sJump3DAnimDoubleJump1,
+    &sJump3DAnimWallJump,
+};
+
+/* Zero image. These sit in front of the file-handle constructors, so the
+ * .bss claim starts here and the constructors stay at 0x02140438. */
+extern "C" {
+BCA_File *sJump3DAnimSdown;
+BCA_File *sJump3DAnimDoubleJump1;
+int sJump3DArrangeLevel;
+int sJump3DLayout;
+int sJump3DMarioCount;
+BCA_File *sJump3DAnimRollJump;
+char *sJump3DMarioPool;
+BCA_File *sJump3DAnimWallJump;
+int sJump3DMariosLeft;
+BCA_File *sJump3DAnimStruggle;
+BCA_File *sJump3DAnimJump;
+int sJump3DRisenOutCount;
+}

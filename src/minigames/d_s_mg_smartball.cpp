@@ -6729,3 +6729,13 @@ extern "C" void *dScMgSmartball_c_classInit(void) {
 
 // @symbol SmartballObj_ElemCtor
 extern "C" void SmartballObj_ElemCtor(void) {}
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+extern "C" int data_ov006_0212edfc[4] = { 0x000001f4, 0x000007d0, 0x00000fa0, 0x00001f40 };
+#pragma section forcerodata end
+#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
+#pragma section forcedata begin
+extern "C" int data_ov006_0213eccc[7] = { 0x000000de, 0x000000df, 0x000000db, 0x000000dc, 0x000000dd, 0x00000000, 0x0213ec34 };
+#pragma section forcedata end
+extern "C" int data_ov006_02142c40[32];

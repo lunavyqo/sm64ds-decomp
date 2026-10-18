@@ -2396,3 +2396,24 @@ extern "C" void *dScMgBomroom_c_classInit()
 {
     return new dScMgBomroom_c;
 }
+
+/* Pointer-to-member state tables, zeroed here and populated by the
+ * module sinit __sinit_ov006_0212fd48 at load. */
+extern "C" {
+PMFEntry sBomroomTopDoorStateTable[4] = {};
+PMF sBomroomHatchPanelStateTable[4] = {};
+int sBomroomRoundEndTable[8] = {};
+PMF sBomroomPenGateStateTable[4] = {};
+PMFv sBomroomRoundStateTable[5] = {};
+PMFEntry sBomroomBombMarchTable[5] = {};
+}
+PMF sBomroomBombStateTable[7] = {};
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+extern "C" int sBomroomHatchPanelX[2] = { 0x00000080, 0x00000080 };
+extern "C" int sBomroomHatchPanelY[2] = { 0x00000008, 0x000000b8 };
+extern "C" int sBomroomPenGateX[2] = { 0x00000000, 0x00000100 };
+extern "C" int sBomroomMarkerY[2] = { 0x00000010, 0x000000b4 };
+extern "C" int sBomroomPenGateY[2] = { 0x00000050, 0x00000050 };
+#pragma section forcerodata end
