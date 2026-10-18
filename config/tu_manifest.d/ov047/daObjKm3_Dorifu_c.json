@@ -28,6 +28,11 @@
       "end": "0x021119d4"
     },
     {
+      "name": ".data",
+      "start": "0x02112508",
+      "end": "0x02112544"
+    },
+    {
       "name": ".bss",
       "start": "0x02112658",
       "end": "0x02112720"
@@ -70,7 +75,20 @@
       "ordinal": 4
     }
   ],
-  "data": [],
+  "data": [
+    {
+      "symbol": "data_ov047_02112508",
+      "address": "0x02112508",
+      "size": "0x28",
+      "evidence": "first ten pointer words of the five-entry daObjDorifuResources file table (planks 0-2 complete plus plank 3's BMD handle); the configured interior name data_ov047_02112530 cuts plank 3's row between fields, so the emit splits into word runs and InitResources/CleanupResources read a daObjDorifuResources view; all ten relocations match the configured ov047 destinations"
+    },
+    {
+      "symbol": "data_ov047_02112530",
+      "address": "0x02112530",
+      "size": "0x14",
+      "evidence": "remaining five pointer words of the same table (plank 3's KCL handle and CLPS block plus plank 4 complete); all five relocations match the configured ov047 destinations"
+    }
+  ],
   "bss": [
     {
       "symbol": "gKm3Dan1CollisionFile",
@@ -1250,6 +1268,156 @@
       "addend": 0,
       "target_module": "ov047",
       "target_address": "0x0211181c"
+    },
+    {
+      "section": ".data",
+      "source": "0x02112508",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "gKm3Dan0ModelFile",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x021126a0"
+    },
+    {
+      "section": ".data",
+      "source": "0x0211250c",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "gKm3Dan0CollisionFile",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x02112678"
+    },
+    {
+      "section": ".data",
+      "source": "0x02112510",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "data_ov047_02111bb4",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x02111bb4"
+    },
+    {
+      "section": ".data",
+      "source": "0x02112514",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "gKm3Dan1ModelFile",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x02112680"
+    },
+    {
+      "section": ".data",
+      "source": "0x02112518",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "gKm3Dan1CollisionFile",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x02112658"
+    },
+    {
+      "section": ".data",
+      "source": "0x0211251c",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "data_ov047_02111a74",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x02111a74"
+    },
+    {
+      "section": ".data",
+      "source": "0x02112520",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "gKm3Dan2ModelFile",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x02112668"
+    },
+    {
+      "section": ".data",
+      "source": "0x02112524",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "gKm3Dan2CollisionFile",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x02112670"
+    },
+    {
+      "section": ".data",
+      "source": "0x02112528",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "data_ov047_02111a94",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x02111a94"
+    },
+    {
+      "section": ".data",
+      "source": "0x0211252c",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "gKm3Dan3ModelFile",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x02112688"
+    },
+    {
+      "section": ".data",
+      "source": "0x02112530",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "gKm3Dan3CollisionFile",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x02112698"
+    },
+    {
+      "section": ".data",
+      "source": "0x02112534",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "data_ov047_02111b94",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x02111b94"
+    },
+    {
+      "section": ".data",
+      "source": "0x02112538",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "gKm3Dan4ModelFile",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x02112690"
+    },
+    {
+      "section": ".data",
+      "source": "0x0211253c",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "gKm3Dan4CollisionFile",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x02112660"
+    },
+    {
+      "section": ".data",
+      "source": "0x02112540",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "data_ov047_02111bd4",
+      "addend": 0,
+      "target_module": "ov047",
+      "target_address": "0x02111bd4"
     }
   ]
 }

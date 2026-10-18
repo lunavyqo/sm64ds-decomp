@@ -71,6 +71,9 @@ BrqAnimationFileResource data_ov070_021235f4(0x02b2);   // BIRIKYU_ELEC_BCA
 BrqAnimationFileResource data_ov070_0212360c(0x02b5);   // BIRIKYU_ELEC_STOP_BCA
 BrqTextureSequenceResource data_ov070_021235ec(0x02b4); // BIRIKYU_ELEC_BTP
 
+/* .data ahead of the typeinfo: the material name. */
+extern "C" char data_ov070_021231e4[16] = "mat_bilikyu2";
+
 /* The six ROM PMF descriptors stay ROM-owned; their native copies initialize
  * the cooldown, active and defeated rows in BSS. */
 extern daBrq_c::StateFn data_ov070_0212320c;
