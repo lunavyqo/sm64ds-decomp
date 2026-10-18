@@ -41,3 +41,9 @@ void func_ov007_020b3d30(char* thiz, int idx){
     func_ov007_020c43bc(thiz, *(int *)((char *)data_ov007_0210342c + 0x34));
 }
 }
+
+#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
+#pragma section forcedata begin
+extern "C" unsigned char data_ov007_020d7dc0[8] = { 0x16, 0x16, 0x14, 0x20, 0x20, 0x1d, 0x00, 0x00 };
+extern "C" unsigned char data_ov007_020d7dc8[8] = { 0x06, 0x06, 0x06, 0x02, 0x02, 0x02, 0x00, 0x00 };
+#pragma section forcedata end

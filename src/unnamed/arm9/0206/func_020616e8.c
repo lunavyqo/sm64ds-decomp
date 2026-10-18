@@ -72,3 +72,5 @@ int func_020616e8(void *buf, int ch)
     func_0205ba64(0xa, (void *)func_02061188);
     return 0;
 }
+
+char data_020a8a40[2560];

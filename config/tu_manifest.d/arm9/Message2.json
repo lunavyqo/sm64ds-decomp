@@ -15,6 +15,16 @@
       "name": ".text",
       "start": "0x0201ab04",
       "end": "0x0201cb2c"
+    },
+    {
+      "name": ".data",
+      "start": "0x0208ee64",
+      "end": "0x0208ee74"
+    },
+    {
+      "name": ".bss",
+      "start": "0x0209d710",
+      "end": "0x0209d74c"
     }
   ],
   "functions": [
@@ -110,8 +120,28 @@
       "ordinal": 12
     }
   ],
-  "data": [],
-  "bss": [],
+  "data": [
+    {
+      "symbol": "data_0208ee64",
+      "address": "0x0208ee64",
+      "size": "0x8",
+      "evidence": "4-entry digit table for Message2 quotient/modulo"
+    },
+    {
+      "symbol": "data_0208ee6c",
+      "address": "0x0208ee6c",
+      "size": "0x8",
+      "evidence": "8-byte Message2 table beside the digit table"
+    }
+  ],
+  "bss": [
+    {
+      "symbol": "data_0209d710",
+      "address": "0x0209d710",
+      "size": "0x3c",
+      "evidence": "60-byte Message2 work area"
+    }
+  ],
   "compiler_only_output": [],
   "notes": [
     "Message2 is the name the talk-window job reserved (tree Name2 style). It is not the menu-text TU src/Message.cpp.",
@@ -212,5 +242,6 @@
       },
       "linkerOutput": null
     }
-  }
+  },
+  "production_mode": "intact-object"
 }

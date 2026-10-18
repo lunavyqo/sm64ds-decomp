@@ -58,3 +58,8 @@ void func_ov007_020b1390(int mode)
   }
 
 }
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+u8 data_ov007_020ccc44[4] = { 0x03, 0x04, 0x00, 0x00 };
+#pragma section forcerodata end

@@ -15,9 +15,21 @@
       "name": ".text",
       "start": "0x02031b84",
       "end": "0x02034a78"
+    },
+    {
+      "name": ".data",
+      "start": "0x0209289c",
+      "end": "0x02092d3c"
     }
   ],
-  "data": [],
+  "data": [
+    {
+      "symbol": "data_0209289c",
+      "address": "0x0209289c",
+      "size": "0x2a0",
+      "evidence": "296-word Message3 digit/face parameter table"
+    }
+  ],
   "bss": [],
   "compiler_only_output": [],
   "notes": [
@@ -308,5 +320,6 @@
       "legacy_source": "src/_ZN7Message10LoadTextVSEv.cpp",
       "ordinal": 25
     }
-  ]
+  ],
+  "production_mode": "intact-object"
 }

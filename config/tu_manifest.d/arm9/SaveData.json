@@ -11,6 +11,11 @@
       "name": ".text",
       "start": "0x02013650",
       "end": "0x02013e80"
+    },
+    {
+      "name": ".bss",
+      "start": "0x0209cab4",
+      "end": "0x0209cad2"
     }
   ],
   "functions": [
@@ -302,5 +307,14 @@
       "functions_occur_in_expected_order": "PASS",
       "relocation_destinations_verified": "PASS"
     }
-  }
+  },
+  "bss": [
+    {
+      "symbol": "data_0209cab4",
+      "address": "0x0209cab4",
+      "size": "0x1e",
+      "evidence": "30-byte star-bit table"
+    }
+  ],
+  "production_mode": "intact-object"
 }

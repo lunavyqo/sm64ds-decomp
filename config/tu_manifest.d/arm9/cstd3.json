@@ -15,6 +15,11 @@
       "name": ".text",
       "start": "0x0206ccd8",
       "end": "0x0206ce90"
+    },
+    {
+      "name": ".rodata",
+      "start": "0x020868a0",
+      "end": "0x020868d4"
     }
   ],
   "functions": [
@@ -153,5 +158,14 @@
       },
       "linkerOutput": null
     }
-  }
+  },
+  "rodata": [
+    {
+      "symbol": "data_020868a0",
+      "address": "0x020868a0",
+      "size": "0x34",
+      "evidence": "52-byte cstd format/trap table"
+    }
+  ],
+  "production_mode": "intact-object"
 }

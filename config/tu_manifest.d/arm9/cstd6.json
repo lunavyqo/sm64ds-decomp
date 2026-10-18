@@ -15,6 +15,11 @@
       "name": ".text",
       "start": "0x02070348",
       "end": "0x020707a4"
+    },
+    {
+      "name": ".bss",
+      "start": "0x020aa0ac",
+      "end": "0x020aa0d4"
     }
   ],
   "functions": [
@@ -69,7 +74,14 @@
     }
   ],
   "data": [],
-  "bss": [],
+  "bss": [
+    {
+      "symbol": "data_020aa0ac",
+      "address": "0x020aa0ac",
+      "size": "0x28",
+      "evidence": "10-word cstd6 state"
+    }
+  ],
   "compiler_only_output": [],
   "notes": [
     "HAND-BUILT manifest entry, not tools/tubuild.py create output -- the `main` module is unsegmentable, so there is no create candidate id.",
@@ -171,5 +183,6 @@
       },
       "linkerOutput": null
     }
-  }
+  },
+  "production_mode": "intact-object"
 }

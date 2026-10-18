@@ -15,3 +15,5 @@ void func_02059cb4(void) {
     IRQ::DisableIRQs(4);
 }
 }
+
+extern "C" volatile u16 data_020a644c[2];

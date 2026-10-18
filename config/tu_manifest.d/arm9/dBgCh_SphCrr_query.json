@@ -4,7 +4,7 @@
   "source": "src/engine/collision/d_bg_ch_sph_crr_query.cpp",
   "promoted_source": "src/engine/collision/d_bg_ch_sph_crr_query.cpp",
   "status": "promoted",
-  "production_mode": "text-only",
+  "production_mode": "intact-object",
   "boundary_confidence": "high",
   "boundary_evidence": [
     "contiguous run 0x02037dc4..0x02039140: 57 functions, no hole. This is the thunk-free middle of the collision checkers.",
@@ -17,6 +17,11 @@
       "name": ".text",
       "start": "0x02037dc4",
       "end": "0x02039140"
+    },
+    {
+      "name": ".bss",
+      "start": "0x020a0c78",
+      "end": "0x020a0c80"
     }
   ],
   "functions": [
@@ -421,7 +426,14 @@
     }
   ],
   "data": [],
-  "bss": [],
+  "bss": [
+    {
+      "symbol": "data_020a0c78",
+      "address": "0x020a0c78",
+      "size": "0x8",
+      "evidence": "8-byte dBgCh sphere-query scratch"
+    }
+  ],
   "notes": [
     "The middle collision run is one file. The line and sphere lifecycle files stay separate because their thunks anchor at the end of those objects."
   ],

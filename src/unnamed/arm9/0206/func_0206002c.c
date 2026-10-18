@@ -45,3 +45,5 @@ void func_0206002c(void)
     func_02058048(&data_020a81bc);
     func_0205ba64(0xb, (void *)func_02060310);
 }
+
+int data_020a8160[8];
