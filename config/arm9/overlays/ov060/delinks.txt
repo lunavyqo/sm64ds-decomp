@@ -32,7 +32,6 @@ src/game/actors/d_a_kpa3_bg.cpp:
     .rodata start:0x02119514 end:0x02119564
     .init start:0x0211a000 end:0x0211a388
     .ctor start:0x0211a4c8 end:0x0211a4cc
-    .data start:0x0211a930 end:0x0211a9a8
     .bss start:0x0211b01c end:0x0211b1c4
 
 src/game/actors/d_a_kirai.cpp:

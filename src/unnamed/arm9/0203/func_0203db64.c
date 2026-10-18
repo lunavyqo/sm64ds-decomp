@@ -23,7 +23,7 @@ extern u8 data_020a0ef0;
 extern u8 data_020a1064[];
 extern u8 data_020a0fec[];
 extern u16 data_020a1040[];
-extern u8 data_020a0fb8[];
+extern char data_020a0fb8[];
 extern u8 data_020a0fa0[];
 extern NetCfg data_020a10fc;
 extern NetCfg data_020a10a4;

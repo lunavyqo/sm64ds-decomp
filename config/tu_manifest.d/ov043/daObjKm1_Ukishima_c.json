@@ -28,7 +28,8 @@
       "end": "0x02111aec"
     },
     {
-      "name": ".data",
+      "name": ".data.gap2",
+      "input_section": ".data",
       "start": "0x02111c00",
       "end": "0x02111c40"
     },

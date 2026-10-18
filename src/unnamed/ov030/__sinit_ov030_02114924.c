@@ -20,28 +20,28 @@ extern void func_02017ab4(void);
 extern void SharedFilePtr_Destruct_Anim(void);
 extern void *_ZN7Vector3D1Ev(void *object);
 
-extern void* data_ov030_02115d00;
-extern void* data_ov030_02115d28;
-extern void* gMonkeyHoldAnimationFile;
-extern void* data_ov030_02115d34;
-extern void* gMonkeyJumpStAnimationFile;
-extern void* data_ov030_02115d40;
-extern void* gMonkeyJumpEdAnimationFile;
-extern void* data_ov030_02115d64;
-extern void* gMonkeyRunStAnimationFile;
-extern void* data_ov030_02115d70;
-extern void* gMonkeyRunAnimationFile;
-extern void* data_ov030_02115d88;
-extern void* gMonkeyRunEdAnimationFile;
-extern void* data_ov030_02115d94;
-extern void* data_ov030_02115cf0;
-extern void* data_ov030_02115dac;
-extern void* gMonkeyWait2AnimationFile;
-extern void* data_ov030_02115db8;
-extern void* gMonkeyWait3AnimationFile;
-extern void* data_ov030_02115dc4;
-extern void* gMonkeyWait4AnimationFile;
-extern void* data_ov030_02115dd0;
+extern int data_ov030_02115d00[];
+extern unsigned int data_ov030_02115d28[];
+extern int gMonkeyHoldAnimationFile[];
+extern unsigned int data_ov030_02115d34[];
+extern int gMonkeyJumpStAnimationFile[];
+extern unsigned int data_ov030_02115d40[];
+extern int gMonkeyJumpEdAnimationFile[];
+extern unsigned int data_ov030_02115d64[];
+extern int gMonkeyRunStAnimationFile[];
+extern unsigned int data_ov030_02115d70[];
+extern int gMonkeyRunAnimationFile[];
+extern unsigned int data_ov030_02115d88[];
+extern int gMonkeyRunEdAnimationFile[];
+extern unsigned int data_ov030_02115d94[];
+extern int data_ov030_02115cf0[];
+extern unsigned int data_ov030_02115dac[];
+extern int gMonkeyWait2AnimationFile[];
+extern unsigned int data_ov030_02115db8[];
+extern int gMonkeyWait3AnimationFile[];
+extern unsigned int data_ov030_02115dc4[];
+extern int gMonkeyWait4AnimationFile[];
+extern unsigned int data_ov030_02115dd0[];
 
 typedef struct { int a, b; } S8;
 typedef struct { S8 lo, hi; } S16;
@@ -71,14 +71,14 @@ extern S8 data_ov030_02115b38;
 
 extern S16 data_ov030_02115e0c[11];
 
-extern void* data_ov030_02115ddc;
-extern void* data_ov030_02115d58;
-extern void* data_ov030_02115de8;
-extern void* data_ov030_02115d4c;
-extern void* data_ov030_02115df4;
-extern void* data_ov030_02115d7c;
-extern void* data_ov030_02115e00;
-extern void* data_ov030_02115da0;
+extern char data_ov030_02115ddc[];
+extern unsigned int data_ov030_02115d58[];
+extern char data_ov030_02115de8[];
+extern unsigned int data_ov030_02115d4c[];
+extern char data_ov030_02115df4[];
+extern unsigned int data_ov030_02115d7c[];
+extern char data_ov030_02115e00[];
+extern unsigned int data_ov030_02115da0[];
 
 void __sinit_ov030_02114924(void)
 {

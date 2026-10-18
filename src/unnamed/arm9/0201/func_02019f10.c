@@ -1,4 +1,5 @@
-extern char data_02086214[];
+#include "types.h"
+extern s16 data_02086214[];
 extern void func_02019f64(void);
 extern void func_02058200(void *a, void *fn, int c, void *d, int e, int f);
 extern void func_02058048(void *a);

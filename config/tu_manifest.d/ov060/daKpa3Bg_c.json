@@ -33,11 +33,6 @@
       "end": "0x0211a4cc"
     },
     {
-      "name": ".data",
-      "start": "0x0211a930",
-      "end": "0x0211a9a8"
-    },
-    {
       "name": ".bss",
       "start": "0x0211b01c",
       "end": "0x0211b1c4"
