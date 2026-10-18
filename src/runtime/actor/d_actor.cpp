@@ -1648,3 +1648,8 @@ bool dActor_c::DetectRaycastClsn(Vector3 &start, Vector3 &end, bool storeHitPos)
     }
     return false;
 }
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+extern "C" u16 data_02075230[4] = { 0x1800, 0x1000, 0x0000, 0x0900 };
+#pragma section forcerodata end

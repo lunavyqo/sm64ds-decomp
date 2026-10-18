@@ -19,6 +19,11 @@
       "name": ".text",
       "start": "0x0200f658",
       "end": "0x020112c8"
+    },
+    {
+      "name": ".rodata",
+      "start": "0x02075230",
+      "end": "0x02075238"
     }
   ],
   "functions": [
@@ -714,5 +719,14 @@
       "data": [],
       "dataExternalized": []
     }
-  }
+  },
+  "rodata": [
+    {
+      "symbol": "data_02075230",
+      "address": "0x02075230",
+      "size": "0x8",
+      "evidence": "4-entry coin value table"
+    }
+  ],
+  "production_mode": "intact-object"
 }

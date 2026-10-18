@@ -125,3 +125,8 @@ int func_ov007_020be0dc(void)
         return r0;
     }
 }
+
+#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
+#pragma section forcedata begin
+int data_ov007_02103230 = 0xffffffff;
+#pragma section forcedata end

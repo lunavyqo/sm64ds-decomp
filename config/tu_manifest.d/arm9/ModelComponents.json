@@ -15,6 +15,11 @@
       "name": ".text",
       "start": "0x020443c8",
       "end": "0x0204547c"
+    },
+    {
+      "name": ".rodata",
+      "start": "0x02082190",
+      "end": "0x020821c0"
     }
   ],
   "functions": [
@@ -220,5 +225,14 @@
       },
       "linkerOutput": null
     }
-  }
+  },
+  "rodata": [
+    {
+      "symbol": "data_02082190",
+      "address": "0x02082190",
+      "size": "0x30",
+      "evidence": "12-word ModelComponents table"
+    }
+  ],
+  "production_mode": "intact-object"
 }

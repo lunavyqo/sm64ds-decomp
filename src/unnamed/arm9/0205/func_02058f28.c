@@ -29,3 +29,5 @@ void func_02058f28(void)
     func_02058d6c(6, func_02058df4(6));
     func_02058d58(6, OS_GetInitArenaLo(6));
 }
+
+unsigned int data_020a6378;

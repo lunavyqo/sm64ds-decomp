@@ -16,6 +16,16 @@
       "name": ".text",
       "start": "0x0201cb7c",
       "end": "0x0201fcd4"
+    },
+    {
+      "name": ".data",
+      "start": "0x0208ee74",
+      "end": "0x0208ee80"
+    },
+    {
+      "name": ".bss",
+      "start": "0x0209d74c",
+      "end": "0x0209e64c"
     }
   ],
   "functions": [
@@ -244,8 +254,22 @@
       "ordinal": 31
     }
   ],
-  "data": [],
-  "bss": [],
+  "data": [
+    {
+      "symbol": "data_0208ee74",
+      "address": "0x0208ee74",
+      "size": "0xc",
+      "evidence": "12-byte face-digit table indexed by Message::AddChar"
+    }
+  ],
+  "bss": [
+    {
+      "symbol": "data_0209d74c",
+      "address": "0x0209d74c",
+      "size": "0xf00",
+      "evidence": "960-word message work buffer; the consumer clears 0xf00 bytes through it"
+    }
+  ],
   "compiler_only_output": [],
   "notes": [
     "HAND-BUILT manifest entry, not tools/tubuild.py create output -- the `main` module is unsegmentable, so there is no create candidate id.",
@@ -351,5 +375,6 @@
       },
       "linkerOutput": null
     }
-  }
+  },
+  "production_mode": "intact-object"
 }

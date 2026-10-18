@@ -17,7 +17,7 @@ extern int data_020a6488;
 extern void *data_020a7f48;
 extern void *data_020a6494;
 extern int data_020a64a4;
-extern int data_020a64e0;
+extern int data_020a64e0[];
 extern void *data_020a7fc0;
 
 void func_0205ae64(void);
@@ -59,3 +59,5 @@ void func_0205b358(void)
     func_0205b1a4((struct Node5b1a4 *)p);
     func_0205b070(1);
 }
+
+int data_020a64e0[160];

@@ -233,3 +233,8 @@ void Tim3OverflowHandler() {
 } // namespace IRQ
 
 #endif
+
+#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
+#pragma section forcedata begin
+extern "C" u16 data_02099fd4[8] = { 0x4000, 0xe92d, 0xe093, 0xeb01, 0x1000, 0xe3a0, 0x1000, 0xe580 };
+#pragma section forcedata end

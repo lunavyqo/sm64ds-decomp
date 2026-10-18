@@ -16,6 +16,11 @@
       "name": ".text",
       "start": "0x02056c40",
       "end": "0x02057014"
+    },
+    {
+      "name": ".data",
+      "start": "0x02099fd4",
+      "end": "0x02099fe4"
     }
   ],
   "functions": [
@@ -153,7 +158,14 @@
       "ordinal": 18
     }
   ],
-  "data": [],
+  "data": [
+    {
+      "symbol": "data_02099fd4",
+      "address": "0x02099fd4",
+      "size": "0x00000010",
+      "evidence": "the IE-bit index table: 8 halfword entries read by the IRQ Tim/DMA handler, matching the u16[8] forcedata definition src/IRQ.cpp emits at this address"
+    }
+  ],
   "bss": [],
   "relocations": [],
   "compiler_only_output": [],
@@ -184,5 +196,6 @@
       "functions_occur_in_expected_order": "PASS",
       "relocation_destinations_verified": "PASS"
     }
-  }
+  },
+  "production_mode": "intact-object"
 }

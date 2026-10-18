@@ -142,3 +142,8 @@ void func_ov007_020bad8c(void)
         return;
     }
 }
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+u16 data_ov007_020d7b54[6] = { 0x0001, 0x00a0, 0x00c8, 0x003c, 0x00b4, 0x0001 };
+#pragma section forcerodata end

@@ -16,6 +16,11 @@
       "name": ".text",
       "start": "0x02056870",
       "end": "0x02056c1c"
+    },
+    {
+      "name": ".rodata",
+      "start": "0x02086314",
+      "end": "0x02086324"
     }
   ],
   "functions": [
@@ -93,5 +98,14 @@
       "functions_occur_in_expected_order": "PASS",
       "relocation_destinations_verified": "PASS"
     }
-  }
+  },
+  "rodata": [
+    {
+      "symbol": "data_02086314",
+      "address": "0x02086314",
+      "size": "0x10",
+      "evidence": "8-entry texture-window table"
+    }
+  ],
+  "production_mode": "intact-object"
 }

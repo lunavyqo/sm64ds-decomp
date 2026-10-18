@@ -12,7 +12,7 @@ extern s32 data_020a0f6c;
 extern s32 data_020a0f70;
 extern s32 data_020a0f78;
 extern void *data_020a0f7c;
-extern u8 data_020a0f9d;
+extern u8 data_020a0f9d[];
 extern u8 data_020a0fbe[24];
 extern u8 data_020a0fec[];
 extern u8 data_020a1040[];
@@ -331,3 +331,5 @@ void func_0203e20c(void)
         } while (i < 0x11);
     }
 }
+
+u8 data_020a0f9d[3];

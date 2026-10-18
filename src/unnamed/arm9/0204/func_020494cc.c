@@ -83,3 +83,12 @@ void func_020494cc(void *a, int mode)
         data_020a4c48[1] = 0x100;
     }
 }
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+int data_0208220c = 0x1000fff3;
+int data_02082208 = 0x1000ffed;
+int data_02082204 = 0x1000ffe7;
+int data_02082200 = 0x1000ffe1;
+int data_02082210 = 0x1000fffa;
+#pragma section forcerodata end

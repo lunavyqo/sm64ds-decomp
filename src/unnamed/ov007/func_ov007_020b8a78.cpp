@@ -25,3 +25,8 @@ void func_ov007_020b8a78(void *t, int idx) {
     }
 }
 }
+
+#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma section forcerodata begin
+extern "C" unsigned char data_ov007_020d7a34[4] = { 0x0a, 0x0b, 0x0c, 0x00 };
+#pragma section forcerodata end

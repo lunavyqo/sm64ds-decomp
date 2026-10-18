@@ -17,6 +17,16 @@
       "name": ".text",
       "start": "0x02011654",
       "end": "0x02013548"
+    },
+    {
+      "name": ".rodata",
+      "start": "0x02075250",
+      "end": "0x02075258"
+    },
+    {
+      "name": ".bss",
+      "start": "0x0209b470",
+      "end": "0x0209b4b4"
     }
   ],
   "functions": [
@@ -645,7 +655,110 @@
     }
   ],
   "data": [],
-  "bss": [],
+  "bss": [
+    {
+      "symbol": "data_0209b470",
+      "address": "0x0209b470",
+      "size": "0x4",
+      "evidence": "Sound channel cell 0"
+    },
+    {
+      "symbol": "data_0209b474",
+      "address": "0x0209b474",
+      "size": "0x4",
+      "evidence": "Sound channel cell 1"
+    },
+    {
+      "symbol": "data_0209b478",
+      "address": "0x0209b478",
+      "size": "0x4",
+      "evidence": "Sound channel cell 2"
+    },
+    {
+      "symbol": "data_0209b47c",
+      "address": "0x0209b47c",
+      "size": "0x4",
+      "evidence": "Sound channel cell 3"
+    },
+    {
+      "symbol": "data_0209b480",
+      "address": "0x0209b480",
+      "size": "0x4",
+      "evidence": "Sound channel cell 4"
+    },
+    {
+      "symbol": "data_0209b484",
+      "address": "0x0209b484",
+      "size": "0x4",
+      "evidence": "Sound seq word 0"
+    },
+    {
+      "symbol": "data_0209b488",
+      "address": "0x0209b488",
+      "size": "0x4",
+      "evidence": "Sound seq word 1"
+    },
+    {
+      "symbol": "data_0209b48c",
+      "address": "0x0209b48c",
+      "size": "0x4",
+      "evidence": "Sound seq word 2"
+    },
+    {
+      "symbol": "data_0209b490",
+      "address": "0x0209b490",
+      "size": "0x4",
+      "evidence": "Sound seq word 3"
+    },
+    {
+      "symbol": "data_0209b494",
+      "address": "0x0209b494",
+      "size": "0x4",
+      "evidence": "Sound seq word 4"
+    },
+    {
+      "symbol": "data_0209b498",
+      "address": "0x0209b498",
+      "size": "0x4",
+      "evidence": "Sound heap word"
+    },
+    {
+      "symbol": "data_0209b49c",
+      "address": "0x0209b49c",
+      "size": "0x4",
+      "evidence": "Sound flag word"
+    },
+    {
+      "symbol": "data_0209b4a0",
+      "address": "0x0209b4a0",
+      "size": "0x4",
+      "evidence": "Sound table word 0"
+    },
+    {
+      "symbol": "data_0209b4a4",
+      "address": "0x0209b4a4",
+      "size": "0x4",
+      "evidence": "Sound table word 1"
+    },
+    {
+      "symbol": "data_0209b4a8",
+      "address": "0x0209b4a8",
+      "size": "0x4",
+      "evidence": "Sound handle word"
+    },
+    {
+      "symbol": "data_0209b4ac",
+      "address": "0x0209b4ac",
+      "size": "0x4",
+      "evidence": "Sound active word"
+    },
+    {
+      "symbol": "data_0209b4b0",
+      "address": "0x0209b4b0",
+      "size": "0x4",
+      "evidence": "Sound tail word"
+    }
+  ],
   "compiler_only_output": [],
   "notes": [
     "Text-only. The module state (data_0208e420..data_0208e498, data_0209b470..data_0209baa0, data_0209d574, data_0209f250/2f8/394, data_02092120) is all .bss: no initialized bytes exist for this TU to own, so data and bss claims stay empty and the entry promotes as text-only like the other namespace-module TUs.",
@@ -676,5 +789,13 @@
       "relocation_destinations_verified": "PASS"
     }
   },
-  "production_mode": "text-only"
+  "production_mode": "intact-object",
+  "rodata": [
+    {
+      "symbol": "data_02075250",
+      "address": "0x02075250",
+      "size": "0x8",
+      "evidence": "8-byte Sound table"
+    }
+  ]
 }

@@ -10,3 +10,5 @@ void func_02060364(int arg)
     data_020a8760 = p;
     data_020a8764 = p->h;
 }
+
+unsigned int data_020a8764[7];

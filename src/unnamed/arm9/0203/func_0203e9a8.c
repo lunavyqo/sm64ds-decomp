@@ -23,3 +23,5 @@ void func_0203e9a8(u32 a0, int sel, int a2)
         break;
     }
 }
+
+char data_020a0fb8[6];

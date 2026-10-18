@@ -40,3 +40,6 @@ void* func_ov007_020b2bd4(int a, int b)
     func_ov007_020bbf98(p, 3);
     return p;
 }
+
+int data_ov007_02103348[3];
+int data_ov007_02103354[3];

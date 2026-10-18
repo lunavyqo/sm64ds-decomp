@@ -64,7 +64,7 @@ extern "C" {
 
 extern u16 data_02099fcc; // display on (TRUE until GX_DispOff)
 extern int data_02099fd0; // GX DMA channel, -1 if none
-extern u16 data_020a6084; // display mode parked by GX_DispOff
+extern u16 data_020a6084[]; // display mode parked by GX_DispOff
 
 void func_02053d9c(void);
 void DMASyncFillTransfer(u32 channel, void *dst, u32 data, u32 size);
@@ -191,3 +191,5 @@ void func_02053a90(u16 *reg, int brightness) {
 }
 
 } // extern "C"
+
+extern "C" u16 data_020a6084[2];
