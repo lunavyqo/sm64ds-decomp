@@ -566,6 +566,13 @@
           "firstDiff": null
         },
         {
+          "section": ".rodata",
+          "start": "0x02119514",
+          "end": "0x02119564",
+          "differingBytes": 0,
+          "firstDiff": null
+        },
+        {
           "section": ".init",
           "start": "0x0211a000",
           "end": "0x0211a388",

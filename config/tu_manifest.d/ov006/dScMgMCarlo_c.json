@@ -427,7 +427,7 @@
         },
         {
           "section": ".bss",
-          "start": "0x0214250c",
+          "start": "0x021424fc",
           "end": "0x02142558",
           "comparison": "NOBITS -- symbol/module gates"
         }

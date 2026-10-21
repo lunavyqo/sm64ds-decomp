@@ -462,6 +462,13 @@
           "firstDiff": null
         },
         {
+          "section": ".data.gap2",
+          "start": "0x02111c00",
+          "end": "0x02111c40",
+          "differingBytes": 0,
+          "firstDiff": null
+        },
+        {
           "section": ".bss",
           "start": "0x021125e0",
           "end": "0x02112608",

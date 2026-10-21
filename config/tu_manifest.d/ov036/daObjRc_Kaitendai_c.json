@@ -230,6 +230,13 @@
           "firstDiff": null
         },
         {
+          "section": ".data",
+          "start": "0x02113b2c",
+          "end": "0x02113b38",
+          "differingBytes": 0,
+          "firstDiff": null
+        },
+        {
           "section": ".init",
           "start": "0x0211261c",
           "end": "0x02112688",

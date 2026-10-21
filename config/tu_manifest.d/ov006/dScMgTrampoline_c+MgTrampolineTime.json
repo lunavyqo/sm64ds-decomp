@@ -1134,6 +1134,12 @@
           "end": "0x0213fbc4",
           "differingBytes": 0,
           "firstDiff": null
+        },
+        {
+          "section": ".bss",
+          "start": "0x02142f64",
+          "end": "0x02142f68",
+          "comparison": "NOBITS -- symbol/module gates"
         }
       ],
       "objectAudit": {

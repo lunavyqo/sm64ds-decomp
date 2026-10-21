@@ -156,9 +156,9 @@
       "data": [],
       "dataExternalized": []
     },
-    "linkcheck": {
+        "linkcheck": {
       "round": "tools/tubuild.py linkcheck -- scratch dsd delink+lcf, whole-tree mwccarm, mwldarm link, linked-range and module byte comparison, dsd check symbols --fail, full ROM build",
-      "result": "data-verified",
+      "result": "scratch-data-verified",
       "scratch": "build/tu/arm9-OAM/link (gitignored)",
       "phases": {
         "delink": true,
@@ -188,32 +188,15 @@
           "start": "0x0209ea74",
           "end": "0x0209ee74",
           "comparison": "NOBITS -- symbol/module gates"
+        },
+        {
+          "section": ".rodata",
+          "start": "0x020755a0",
+          "end": "0x020755b8",
+          "differingBytes": 0,
+          "firstDiff": null
         }
       ],
-      "objectAudit": {
-        "counts": {
-          "LICENSED": 14
-        },
-        "emittedTextOrderIsRomAscending": true,
-        "nonLicensedSymbols": [],
-        "unlicensedSections": []
-      },
-      "nontextSectionOrder": {
-        "groups": [
-          {
-            "section": ".bss",
-            "original": [
-              30
-            ],
-            "desired": [
-              30
-            ]
-          }
-        ],
-        "objisolate": null,
-        "errors": null
-      },
-      "linkedStorageAliases": null,
       "symbolCheckNewVsBaseline": [],
       "symbolCheckErrors": [
         "[ERROR] Symbol '_deq' in ITCM at 0x01ff9d40 not found in linked binary",
@@ -242,8 +225,7 @@
         "bytes": 16777216,
         "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
         "matchesStockRom": true
-      },
-      "linkerOutput": null
+      }
     }
   },
   "rodata": [

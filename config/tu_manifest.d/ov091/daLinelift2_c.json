@@ -747,6 +747,13 @@
           "firstDiff": null
         },
         {
+          "section": ".rodata",
+          "start": "0x021344f4",
+          "end": "0x02134504",
+          "differingBytes": 0,
+          "firstDiff": null
+        },
+        {
           "section": ".init",
           "start": "0x021345dc",
           "end": "0x021346e8",
@@ -757,6 +764,13 @@
           "section": ".ctor",
           "start": "0x02134b6c",
           "end": "0x02134b70",
+          "differingBytes": 0,
+          "firstDiff": null
+        },
+        {
+          "section": ".data",
+          "start": "0x02134e5c",
+          "end": "0x02134e64",
           "differingBytes": 0,
           "firstDiff": null
         },

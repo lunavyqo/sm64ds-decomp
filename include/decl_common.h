@@ -220,7 +220,7 @@ extern char data_ov016_02113cac[];
 extern struct daObjFloatBoard_c_Resources data_ov016_02114b8c;
 extern char data_ov016_02114e1c[];
 extern char data_ov016_02114e24[];
-extern struct ResourceDescriptor data_ov022_021140d4[2];
+extern struct ResourceDescriptor data_ov022_021140d4[];
 extern char data_ov022_02114618[];
 extern char data_ov022_02114620[];
 extern char data_ov024_02112d00[];

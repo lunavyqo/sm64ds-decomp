@@ -524,8 +524,8 @@ void func_020381cc(void *r0, int i, void **out)
 {
     unsigned char *e = *(unsigned char **)r0;
     if (e == 0 || *(unsigned short *)(e + 4) != 8) {
-        func_02037e9c(&data_020a0c78);
-        *out = &data_020a0c78;
+        func_02037e9c(data_020a0c78);
+        *out = data_020a0c78;
         return;
     }
     *out = e + 8 + (i << 3);
@@ -808,4 +808,6 @@ int func_02037dc4(int p)
 }
 }
 
-extern "C" char data_020a0c78[8];
+extern "C" {
+char data_020a0c78[8];
+}

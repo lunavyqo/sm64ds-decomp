@@ -4,7 +4,6 @@
   "source": "src/unnamed/ov007/func_ov007_020bbe60.c",
   "promoted_source": "src/unnamed/ov007/func_ov007_020bbe60.c",
   "status": "promoted",
-  "production_mode": "intact-object",
   "boundary_confidence": "low",
   "boundary_evidence": [
     "The existing one-function production source is admitted intact with five complete native table objects (120 bytes). No neighboring source is absorbed, and no original class, filename or TU boundary is inferred.",

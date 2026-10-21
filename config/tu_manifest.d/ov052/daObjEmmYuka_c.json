@@ -252,6 +252,13 @@
           "firstDiff": null
         },
         {
+          "section": ".data",
+          "start": "0x021125a0",
+          "end": "0x021125ac",
+          "differingBytes": 0,
+          "firstDiff": null
+        },
+        {
           "section": ".bss",
           "start": "0x021126a8",
           "end": "0x021126d0",
