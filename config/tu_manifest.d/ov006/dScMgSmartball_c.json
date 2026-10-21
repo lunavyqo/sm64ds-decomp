@@ -950,7 +950,7 @@
   ],
   "rodata": [
     {
-      "symbol": "data_ov006_0212edfc",
+      "symbol": "sSmartballCellScores",
       "address": "0x0212edfc",
       "size": "0x10",
       "binding": "STB_GLOBAL"
