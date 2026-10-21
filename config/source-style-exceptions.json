@@ -386,6 +386,294 @@
       "evidence": "df88a655 func_ov075_02115e8c; include/dThIcon_c.h s32 unk_020; notes/experiments/scene-physics3955-review.md; full106/106 ROM proof at005807df4f and independent prepared-object verification."
     },
     {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN15dScMgHanachan_c13InitResourcesEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c19BeforeInitResourcesEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c18AfterInitResourcesEj",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN15dScMgHanachan_c16CleanupResourcesEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN8dScene_c22BeforeCleanupResourcesEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c21AfterCleanupResourcesEj",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN15dScMgHanachan_c8BehaviorEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c14BeforeBehaviorEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN8dScene_c13AfterBehaviorEj",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN15dScMgHanachan_c6RenderEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c12BeforeRenderEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN8dScene_c11AfterRenderEj",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c16OnPendingDestroyEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN7fBase_c9Virtual34Ejj",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN7fBase_c9Virtual38Ejj",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN7fBase_c13OnHeapCreatedEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN15dScMgHanachan_cD1Ev",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN15dScMgHanachan_cD0Ev",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN15dScMgHanachan_c10StartRoundEi",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c11CanEndStateEi",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c11OnNewRecordEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c10OnDealDoneEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c16OnGraphCallback1Ev",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c16OnGraphCallback0Ev",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c16OnGraphCallback2Ev",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c16OnGraphCallback3Ev",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c14GetDisplayModeEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c8OpenMenuEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c9CloseMenuEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c17SaveScreenForMenuEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c21RestoreScreenFromMenuEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c15InitSubScreenBgEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c16InitMainScreenBgEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c11InitEnginesEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c11PaintSquareEiiii",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
+      "path": "src/minigames/d_s_mg_hanachan.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN11dScMgBase_c12IsAltVariantEv",
+      "count": 2,
+      "reason": "data_ov006_0213cab8 is the Hanachan vtable, 36 raw function addresses. A C++ pointer to a virtual member is an 8-byte pointer-to-member here and will not convert to the 4-byte slot. Each name is the ROM symbol for that slot.",
+      "evidence": "include/dScMgHanachan_c.h says the phase member pointer is 8 bytes. mwccarm rejects (int)&dScMgHanachan_c::InitResources as an illegal conversion. The object relocates each word with R_ARM_ABS32 addend 0, and the owned contribution matches the ROM."
+    },
+    {
       "path": "src/minigames/d_s_mg_pachinko2.cpp",
       "rule": "unknown-field",
       "match": "unk_0c",

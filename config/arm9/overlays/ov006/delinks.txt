@@ -240,8 +240,6 @@ src/minigames/d_s_mg_single3d_base.cpp:
     complete
     .text start:0x0210a4b0 end:0x0210a8c0
 
-    .data start:0x0213e42c end:0x0213e448
-
 src/unnamed/ov006/__sinit_ov006_021322bc.c:
     complete
     .init start:0x021322bc end:0x02132894
@@ -257,8 +255,6 @@ src/minigames/d_s_mg_smartball.cpp:
     .text start:0x0210d740 end:0x02119904
 
     .rodata start:0x0212edfc end:0x0212ee0c
-    .data start:0x0213eccc end:0x0213ece8
-    .bss start:0x02142c40 end:0x02142cc0
 
 src/minigames/d_s_mg_sound.cpp:
     complete

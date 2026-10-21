@@ -184,30 +184,6 @@
           "comparison": "NOBITS -- symbol/module gates"
         }
       ],
-      "objectAudit": {
-        "counts": {
-          "LICENSED": 13
-        },
-        "emittedTextOrderIsRomAscending": true,
-        "nonLicensedSymbols": [],
-        "unlicensedSections": []
-      },
-      "nontextSectionOrder": {
-        "groups": [
-          {
-            "section": ".bss",
-            "original": [
-              5
-            ],
-            "desired": [
-              5
-            ]
-          }
-        ],
-        "objisolate": null,
-        "errors": null
-      },
-      "linkedStorageAliases": null,
       "symbolCheckNewVsBaseline": [],
       "symbolCheckErrors": [
         "[ERROR] Symbol '_deq' in ITCM at 0x01ff9d40 not found in linked binary",
@@ -236,8 +212,8 @@
         "bytes": 16777216,
         "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
         "matchesStockRom": true
-      },
-      "linkerOutput": null
+      }
     }
-  }
+  },
+  "production_mode": "intact-object"
 }

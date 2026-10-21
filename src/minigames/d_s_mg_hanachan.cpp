@@ -46,5 +46,80 @@ extern "C" void *dScMgHanachan_c_classInit(void) {
 
 #pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
 #pragma section forcedata begin
-extern "C" int data_ov006_0213cab8[36] = { 0x020edb04, 0x020b0930, 0x020b08f0, 0x020ecec8, 0x0202e5f0, 0x020b0840, 0x020ed18c, 0x020b0620, 0x0202e3c8, 0x020ecee4, 0x020b04f4, 0x0202e398, 0x020b04e8, 0x0204357c, 0x0204349c, 0x02043494, 0x020ea280, 0x020ea2c8, 0x020eda48, 0x020b2994, 0x020b2990, 0x020b298c, 0x020ae198, 0x020ae1a0, 0x020ae140, 0x020ae128, 0x020b04e0, 0x020af27c, 0x020af04c, 0x020af094, 0x020aeed8, 0x020b2880, 0x020b27f4, 0x020b265c, 0x020ae3b4, 0x020ad660 };
+extern "C" {
+int _ZN15dScMgHanachan_c13InitResourcesEv();
+int _ZN11dScMgBase_c19BeforeInitResourcesEv();
+int _ZN11dScMgBase_c18AfterInitResourcesEj();
+int _ZN15dScMgHanachan_c16CleanupResourcesEv();
+int _ZN8dScene_c22BeforeCleanupResourcesEv();
+int _ZN11dScMgBase_c21AfterCleanupResourcesEj();
+int _ZN15dScMgHanachan_c8BehaviorEv();
+int _ZN11dScMgBase_c14BeforeBehaviorEv();
+int _ZN8dScene_c13AfterBehaviorEj();
+int _ZN15dScMgHanachan_c6RenderEv();
+int _ZN11dScMgBase_c12BeforeRenderEv();
+int _ZN8dScene_c11AfterRenderEj();
+int _ZN11dScMgBase_c16OnPendingDestroyEv();
+int _ZN7fBase_c9Virtual34Ejj();
+int _ZN7fBase_c9Virtual38Ejj();
+int _ZN7fBase_c13OnHeapCreatedEv();
+int _ZN15dScMgHanachan_cD1Ev();
+int _ZN15dScMgHanachan_cD0Ev();
+int _ZN15dScMgHanachan_c10StartRoundEi();
+int _ZN11dScMgBase_c11CanEndStateEi();
+int _ZN11dScMgBase_c11OnNewRecordEv();
+int _ZN11dScMgBase_c10OnDealDoneEv();
+int _ZN11dScMgBase_c16OnGraphCallback1Ev();
+int _ZN11dScMgBase_c16OnGraphCallback0Ev();
+int _ZN11dScMgBase_c16OnGraphCallback2Ev();
+int _ZN11dScMgBase_c16OnGraphCallback3Ev();
+int _ZN11dScMgBase_c14GetDisplayModeEv();
+int _ZN11dScMgBase_c8OpenMenuEv();
+int _ZN11dScMgBase_c9CloseMenuEv();
+int _ZN11dScMgBase_c17SaveScreenForMenuEv();
+int _ZN11dScMgBase_c21RestoreScreenFromMenuEv();
+int _ZN11dScMgBase_c15InitSubScreenBgEv();
+int _ZN11dScMgBase_c16InitMainScreenBgEv();
+int _ZN11dScMgBase_c11InitEnginesEv();
+int _ZN11dScMgBase_c11PaintSquareEiiii();
+int _ZN11dScMgBase_c12IsAltVariantEv();
+int data_ov006_0213cab8[36] = {
+    (int)&_ZN15dScMgHanachan_c13InitResourcesEv,
+    (int)&_ZN11dScMgBase_c19BeforeInitResourcesEv,
+    (int)&_ZN11dScMgBase_c18AfterInitResourcesEj,
+    (int)&_ZN15dScMgHanachan_c16CleanupResourcesEv,
+    (int)&_ZN8dScene_c22BeforeCleanupResourcesEv,
+    (int)&_ZN11dScMgBase_c21AfterCleanupResourcesEj,
+    (int)&_ZN15dScMgHanachan_c8BehaviorEv,
+    (int)&_ZN11dScMgBase_c14BeforeBehaviorEv,
+    (int)&_ZN8dScene_c13AfterBehaviorEj,
+    (int)&_ZN15dScMgHanachan_c6RenderEv,
+    (int)&_ZN11dScMgBase_c12BeforeRenderEv,
+    (int)&_ZN8dScene_c11AfterRenderEj,
+    (int)&_ZN11dScMgBase_c16OnPendingDestroyEv,
+    (int)&_ZN7fBase_c9Virtual34Ejj,
+    (int)&_ZN7fBase_c9Virtual38Ejj,
+    (int)&_ZN7fBase_c13OnHeapCreatedEv,
+    (int)&_ZN15dScMgHanachan_cD1Ev,
+    (int)&_ZN15dScMgHanachan_cD0Ev,
+    (int)&_ZN15dScMgHanachan_c10StartRoundEi,
+    (int)&_ZN11dScMgBase_c11CanEndStateEi,
+    (int)&_ZN11dScMgBase_c11OnNewRecordEv,
+    (int)&_ZN11dScMgBase_c10OnDealDoneEv,
+    (int)&_ZN11dScMgBase_c16OnGraphCallback1Ev,
+    (int)&_ZN11dScMgBase_c16OnGraphCallback0Ev,
+    (int)&_ZN11dScMgBase_c16OnGraphCallback2Ev,
+    (int)&_ZN11dScMgBase_c16OnGraphCallback3Ev,
+    (int)&_ZN11dScMgBase_c14GetDisplayModeEv,
+    (int)&_ZN11dScMgBase_c8OpenMenuEv,
+    (int)&_ZN11dScMgBase_c9CloseMenuEv,
+    (int)&_ZN11dScMgBase_c17SaveScreenForMenuEv,
+    (int)&_ZN11dScMgBase_c21RestoreScreenFromMenuEv,
+    (int)&_ZN11dScMgBase_c15InitSubScreenBgEv,
+    (int)&_ZN11dScMgBase_c16InitMainScreenBgEv,
+    (int)&_ZN11dScMgBase_c11InitEnginesEv,
+    (int)&_ZN11dScMgBase_c11PaintSquareEiiii,
+    (int)&_ZN11dScMgBase_c12IsAltVariantEv,
+};
+}
 #pragma section forcedata end

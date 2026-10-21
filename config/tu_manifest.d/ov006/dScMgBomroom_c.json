@@ -23,6 +23,12 @@
       "name": ".bss",
       "start": "0x02141660",
       "end": "0x02141768"
+    },
+    {
+      "name": ".rodata.before_coin_tables",
+      "input_section": ".rodata",
+      "start": "0x0212e2c0",
+      "end": "0x0212e2e8"
     }
   ],
   "functions": [
@@ -594,6 +600,38 @@
       "ordinal": 80
     }
   ],
+  "rodata": [
+    {
+      "symbol": "sBomroomMarkerY",
+      "address": "0x0212e2c0",
+      "size": "0x8",
+      "binding": "STB_GLOBAL"
+    },
+    {
+      "symbol": "sBomroomPenGateX",
+      "address": "0x0212e2c8",
+      "size": "0x8",
+      "binding": "STB_GLOBAL"
+    },
+    {
+      "symbol": "sBomroomHatchPanelY",
+      "address": "0x0212e2d0",
+      "size": "0x8",
+      "binding": "STB_GLOBAL"
+    },
+    {
+      "symbol": "sBomroomHatchPanelX",
+      "address": "0x0212e2d8",
+      "size": "0x8",
+      "binding": "STB_GLOBAL"
+    },
+    {
+      "symbol": "sBomroomPenGateY",
+      "address": "0x0212e2e0",
+      "size": "0x8",
+      "binding": "STB_GLOBAL"
+    }
+  ],
   "data": [],
   "bss": [
     {
@@ -809,7 +847,7 @@
     },
     "linkcheck": {
       "round": "tools/tubuild.py linkcheck -- scratch dsd delink+lcf, whole-tree mwccarm, mwldarm link, linked-range and module byte comparison, dsd check symbols --fail, full ROM build",
-      "result": "link-verified",
+      "result": "scratch-data-verified",
       "scratch": "build/tu/ov006-dScMgBomroom_c/link (gitignored)",
       "phases": {
         "delink": true,
@@ -821,34 +859,33 @@
         "rom": true
       },
       "tuRange": {
-        "start": "0x020d5eb8",
-        "end": "0x020d7c4c",
+        "start": "0x020d5a54",
+        "end": "0x020d95a4",
         "differingBytes": 0,
         "firstDiff": null
       },
       "tuRanges": [
         {
           "section": ".text",
-          "start": "0x020d5eb8",
-          "end": "0x020d7c4c",
+          "start": "0x020d5a54",
+          "end": "0x020d95a4",
+          "differingBytes": 0,
+          "firstDiff": null
+        },
+        {
+          "section": ".bss",
+          "start": "0x02141660",
+          "end": "0x02141768",
+          "comparison": "NOBITS -- symbol/module gates"
+        },
+        {
+          "section": ".rodata.before_coin_tables",
+          "start": "0x0212e2c0",
+          "end": "0x0212e2e8",
           "differingBytes": 0,
           "firstDiff": null
         }
       ],
-      "objectAudit": {
-        "counts": {
-          "LICENSED": 41
-        },
-        "emittedTextOrderIsRomAscending": true,
-        "nonLicensedSymbols": [],
-        "unlicensedSections": []
-      },
-      "nontextSectionOrder": {
-        "groups": [],
-        "objisolate": null,
-        "errors": null
-      },
-      "linkedStorageAliases": null,
       "symbolCheckNewVsBaseline": [],
       "symbolCheckErrors": [
         "[ERROR] Symbol '_deq' in ITCM at 0x01ff9d40 not found in linked binary",
@@ -877,8 +914,8 @@
         "bytes": 16777216,
         "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
         "matchesStockRom": true
-      },
-      "linkerOutput": null
+      }
     }
-  }
+  },
+  "production_mode": "intact-object"
 }

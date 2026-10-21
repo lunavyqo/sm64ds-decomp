@@ -21,6 +21,11 @@
       "name": ".bss",
       "start": "0x02141a54",
       "end": "0x02141e54"
+    },
+    {
+      "name": ".rodata",
+      "start": "0x0212e574",
+      "end": "0x0212e57c"
     }
   ],
   "functions": [
@@ -214,6 +219,14 @@
       "ordinal": 26
     }
   ],
+  "rodata": [
+    {
+      "symbol": "sD3DSoundPanOffsets",
+      "address": "0x0212e574",
+      "size": "0x8",
+      "binding": "STB_GLOBAL"
+    }
+  ],
   "data": [],
   "bss": [
     {
@@ -309,7 +322,7 @@
     },
     "linkcheck": {
       "round": "tools/tubuild.py linkcheck -- scratch dsd delink+lcf, whole-tree mwccarm, mwldarm link, linked-range and module byte comparison, dsd check symbols --fail, full ROM build",
-      "result": "scratch-link-verified",
+      "result": "scratch-data-verified",
       "scratch": "build/tu/ov006-dScMgD3DBase_c/link (gitignored)",
       "phases": {
         "delink": true,
@@ -333,22 +346,21 @@
           "end": "0x020e7660",
           "differingBytes": 0,
           "firstDiff": null
+        },
+        {
+          "section": ".bss",
+          "start": "0x02141a54",
+          "end": "0x02141e54",
+          "comparison": "NOBITS -- symbol/module gates"
+        },
+        {
+          "section": ".rodata",
+          "start": "0x0212e574",
+          "end": "0x0212e57c",
+          "differingBytes": 0,
+          "firstDiff": null
         }
       ],
-      "objectAudit": {
-        "counts": {
-          "LICENSED": 27
-        },
-        "emittedTextOrderIsRomAscending": true,
-        "nonLicensedSymbols": [],
-        "unlicensedSections": []
-      },
-      "nontextSectionOrder": {
-        "groups": [],
-        "objisolate": null,
-        "errors": null
-      },
-      "linkedStorageAliases": null,
       "symbolCheckNewVsBaseline": [],
       "symbolCheckErrors": [
         "[ERROR] Symbol '_deq' in ITCM at 0x01ff9d40 not found in linked binary",
@@ -377,8 +389,7 @@
         "bytes": 16777216,
         "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
         "matchesStockRom": true
-      },
-      "linkerOutput": null
+      }
     }
   },
   "compiler_only_output": [
@@ -459,5 +470,6 @@
       "canonical_module": "ov006",
       "canonical_address": "0x0213c62c"
     }
-  ]
+  ],
+  "production_mode": "intact-object"
 }
