@@ -562,6 +562,38 @@
    "ref": "port/tools/battery.py"
   },
   {
+   "file": "notes/port-split-agent-prompt.md",
+   "ref": "docs/port-selftest-bmp-gate.md"
+  },
+  {
+   "file": "notes/port-split-agent-prompt.md",
+   "ref": "docs/profile-lifecycle-crosswalk"
+  },
+  {
+   "file": "notes/port-split-agent-prompt.md",
+   "ref": "mods/Player_ScaleByCharFactor.c"
+  },
+  {
+   "file": "notes/port-split-agent-prompt.md",
+   "ref": "port/link100"
+  },
+  {
+   "file": "notes/port-split-agent-prompt.md",
+   "ref": "port/ov"
+  },
+  {
+   "file": "notes/port-split-agent-prompt.md",
+   "ref": "port/release-0.4.0"
+  },
+  {
+   "file": "notes/port-split-agent-prompt.md",
+   "ref": "tools/battery.py"
+  },
+  {
+   "file": "notes/port-split-agent-prompt.md",
+   "ref": "tools/romblob.py"
+  },
+  {
    "file": "notes/research-matching-levers.md",
    "ref": "src/randomizer.py"
   },
