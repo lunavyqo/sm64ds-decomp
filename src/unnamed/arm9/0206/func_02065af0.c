@@ -22,3 +22,11 @@ int func_02065af0(int *thiz)
     _ZN3IRQ7RestoreEj(saved);
     return 1;
 }
+
+
+extern unsigned char data_020a9570[];
+
+void *func_02065b88(void)
+{
+    return data_020a9570;
+}

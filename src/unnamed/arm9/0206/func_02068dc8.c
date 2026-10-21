@@ -14,3 +14,9 @@ int func_02068dc8(int a, int b, int c)
     WM_WORK->childMaxSize = b;
     return 1;
 }
+
+
+int func_02068e44(void)
+{
+    return 1;
+}
