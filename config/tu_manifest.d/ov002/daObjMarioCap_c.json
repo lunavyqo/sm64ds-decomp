@@ -19,11 +19,6 @@
       "end": "0x020b8bf0"
     },
     {
-      "name": ".rodata",
-      "start": "0x020ff0a0",
-      "end": "0x020ff0ac"
-    },
-    {
       "name": ".init",
       "start": "0x02101064",
       "end": "0x02101478"
@@ -259,15 +254,6 @@
     }
   ],
   "data": [],
-  "rodata": [
-    {
-      "symbol": "data_ov002_020ff0a0",
-      "address": "0x020ff0a0",
-      "size": "0xc",
-      "binding": "STB_GLOBAL",
-      "evidence": "three AnimRec pointers, mModelIndex 0..2, to the type-15 file handles"
-    }
-  ],
   "bss": [
     {
       "symbol": "data_ov002_0210de00",
@@ -659,13 +645,6 @@
           "firstDiff": null
         },
         {
-          "section": ".rodata",
-          "start": "0x020ff0a0",
-          "end": "0x020ff0ac",
-          "differingBytes": 0,
-          "firstDiff": null
-        },
-        {
           "section": ".init",
           "start": "0x02101064",
           "end": "0x02101478",
@@ -688,7 +667,7 @@
       ],
       "objectAudit": {
         "counts": {
-          "LICENSED": 69
+          "LICENSED": 68
         },
         "emittedTextOrderIsRomAscending": true,
         "nonLicensedSymbols": [],
@@ -697,30 +676,21 @@
       "nontextSectionOrder": {
         "groups": [
           {
-            "section": ".rodata",
-            "original": [
-              35
-            ],
-            "desired": [
-              35
-            ]
-          },
-          {
             "section": ".init",
             "original": [
-              115
+              113
             ],
             "desired": [
-              115
+              113
             ]
           },
           {
             "section": ".ctor",
             "original": [
-              113
+              111
             ],
             "desired": [
-              113
+              111
             ]
           },
           {
@@ -728,6 +698,8 @@
             "original": [
               5,
               6,
+              7,
+              8,
               9,
               10,
               11,
@@ -735,8 +707,6 @@
               13,
               14,
               15,
-              16,
-              17,
               18,
               19,
               23,
@@ -745,59 +715,59 @@
               30,
               31,
               32,
+              35,
+              36,
               37,
-              38,
-              39,
               40,
+              41,
+              42,
               43,
-              44,
               45,
+              46,
               47,
               48,
               49,
               50,
               51,
               52,
-              53,
-              54,
-              55
+              53
             ],
             "desired": [
-              14,
-              10,
-              16,
-              6,
-              12,
+              7,
               9,
-              18,
-              13,
+              14,
+              19,
               11,
+              8,
               15,
               5,
-              17,
-              19,
+              18,
+              13,
+              6,
+              12,
+              10,
+              36,
               37,
-              39,
-              40,
               43,
-              44,
+              41,
+              42,
               23,
               24,
               27,
               30,
-              31,
-              45,
               32,
-              38,
-              53,
-              49,
-              54,
-              55,
-              50,
-              47,
+              31,
+              40,
+              35,
               51,
+              47,
+              52,
+              53,
               48,
-              52
+              45,
+              49,
+              46,
+              50
             ]
           }
         ],
@@ -808,6 +778,8 @@
               "original": [
                 5,
                 6,
+                7,
+                8,
                 9,
                 10,
                 11,
@@ -815,8 +787,6 @@
                 13,
                 14,
                 15,
-                16,
-                17,
                 18,
                 19,
                 23,
@@ -825,63 +795,65 @@
                 30,
                 31,
                 32,
+                35,
+                36,
                 37,
-                38,
-                39,
                 40,
+                41,
+                42,
                 43,
-                44,
                 45,
+                46,
                 47,
                 48,
                 49,
                 50,
                 51,
                 52,
-                53,
-                54,
-                55
+                53
               ],
               "desired": [
-                14,
-                10,
-                16,
-                6,
-                12,
+                7,
                 9,
-                18,
-                13,
+                14,
+                19,
                 11,
+                8,
                 15,
                 5,
-                17,
-                19,
+                18,
+                13,
+                6,
+                12,
+                10,
+                36,
                 37,
-                39,
-                40,
                 43,
-                44,
+                41,
+                42,
                 23,
                 24,
                 27,
                 30,
-                31,
-                45,
                 32,
-                38,
-                53,
-                49,
-                54,
-                55,
-                50,
-                47,
+                31,
+                40,
+                35,
                 51,
+                47,
+                52,
+                53,
                 48,
-                52
+                45,
+                49,
+                46,
+                50
               ],
               "slots": [
                 5,
                 6,
+                7,
+                8,
                 9,
                 10,
                 11,
@@ -889,8 +861,6 @@
                 13,
                 14,
                 15,
-                16,
-                17,
                 18,
                 19,
                 23,
@@ -899,22 +869,22 @@
                 30,
                 31,
                 32,
+                35,
+                36,
                 37,
-                38,
-                39,
                 40,
+                41,
+                42,
                 43,
-                44,
                 45,
+                46,
                 47,
                 48,
                 49,
                 50,
                 51,
                 52,
-                53,
-                54,
-                55
+                53
               ]
             }
           ],
@@ -1180,36 +1150,6 @@
     }
   ],
   "relocations": [
-    {
-      "section": ".rodata",
-      "source": "0x020ff0a0",
-      "type": "R_ARM_ABS32",
-      "kind": "load",
-      "addend": 0,
-      "symbol": "data_ov002_0210de48",
-      "target_module": "ov002",
-      "target_address": "0x0210de48"
-    },
-    {
-      "section": ".rodata",
-      "source": "0x020ff0a4",
-      "type": "R_ARM_ABS32",
-      "kind": "load",
-      "addend": 0,
-      "symbol": "data_ov002_0210de60",
-      "target_module": "ov002",
-      "target_address": "0x0210de60"
-    },
-    {
-      "section": ".rodata",
-      "source": "0x020ff0a8",
-      "type": "R_ARM_ABS32",
-      "kind": "load",
-      "addend": 0,
-      "symbol": "data_ov002_0210de50",
-      "target_module": "ov002",
-      "target_address": "0x0210de50"
-    },
     {
       "section": ".init",
       "source": "0x02101074",
