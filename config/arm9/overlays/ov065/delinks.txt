@@ -8,9 +8,6 @@ src/game/actors/d_a_yurei_mucho.cpp:
     complete
     .text start:0x02115ee0 end:0x02116f98
 
-src/unnamed/ov065/__sinit_ov065_0211c110.c:
-    complete
-    .init start:0x0211c110 end:0x0211c2a8
 src/game/actors/d_a_basabasa.cpp:
     complete
     .text start:0x02116f98 end:0x02117f40
@@ -76,3 +73,6 @@ src/game/actors/d_a_obj_ct_mecha09.cpp:
     .ctor start:0x0211cb04 end:0x0211cb08
     .bss start:0x0211d9cc end:0x0211d9f4
 
+src/unnamed/ov065/__sinit_ov065_0211c110.c:
+    complete
+    .init start:0x0211c110 end:0x0211c2a8

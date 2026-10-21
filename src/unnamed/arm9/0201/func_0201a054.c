@@ -81,8 +81,3 @@ void func_0201a054(void){
   *(volatile u32*)0x40004c4 = 0;
   func_0201a5cc();
 }
-
-#pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
-#pragma section forcedata begin
-char data_0208ee50[12] = { 0x64, 0x73, 0x20, 0x6d, 0x61, 0x72, 0x69, 0x6f, 0x00, 0x00, 0x00, 0x00 };
-#pragma section forcedata end

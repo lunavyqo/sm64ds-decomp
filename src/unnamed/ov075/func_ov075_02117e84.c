@@ -12,7 +12,7 @@ extern unsigned char data_0209fc58;
 extern int data_ov075_0211d870[];
 extern unsigned char data_0209d45c;
 extern int data_02086b58[];
-extern unsigned char data_02092778[];
+extern unsigned char data_02092778;
 
 struct W2 { int a, b; };
 
@@ -31,7 +31,7 @@ void func_ov075_02117e84(void* c)
         *(unsigned char*)((char*)c + 0x287) = 0;
         *(struct W2*)((char*)c + 0x64) = *(struct W2*)data_02086b58;
         _ZN8dScene_c14StartSceneFadeEjjt(6, 2, 0);
-        data_02092778[0] = 1;
+        data_02092778 = 1;
         return;
     }
     if (func_0203d9b4() == 0)

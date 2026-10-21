@@ -77,5 +77,3 @@ void func_020681b8(void)
                   func_020688e4(), func_020688cc(), func_020688b4(),
                   func_02068844() | 2);
 }
-
-u8 data_020a9d4e[2];

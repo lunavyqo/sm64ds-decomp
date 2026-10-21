@@ -24,9 +24,8 @@ extern void *func_ov007_020bc6d4(void *r6, int flags);
 extern void func_ov007_020bc6b4(int *c, int r1, int r2);
 
 extern int data_ov007_020d7c5c[][2];
-/* symbols.txt spans: 0x4 bytes, then 0xc. The stores still index them as Slot. */
-void *data_ov007_02104bc4;
-unsigned char data_ov007_02104bc8[0xc];
+extern Slot data_ov007_02104bc4[];
+extern Slot data_ov007_02104bc8[];
 
 Obj *func_ov007_020beaa0(int p0, int p1)
 {
@@ -43,17 +42,16 @@ Obj *func_ov007_020beaa0(int p0, int p1)
 
     r6 = func_ov007_020b3f20(3);
 
-    ((Slot *)&data_ov007_02104bc4)[p0].p = func_ov007_020b3f20(data_ov007_020d7c5c[p1][p0]);
+    data_ov007_02104bc4[p0].p = func_ov007_020b3f20(data_ov007_020d7c5c[p1][p0]);
 
-    ((Slot *)data_ov007_02104bc8)[p0].p =
-        func_ov007_020b3f20(func_ov007_020aebac() != 0 ? 0xe : 0xf);
+    data_ov007_02104bc8[p0].p = func_ov007_020b3f20(func_ov007_020aebac() != 0 ? 0xe : 0xf);
 
     flags = 2;
     if (p0 == 1)
         flags |= 8;
     o->f4 = func_ov007_020bc6d4(r6, flags);
 
-    func_ov007_020bc6b4((int *)o->f4, (int)&((Slot *)&data_ov007_02104bc4)[p0], 2);
+    func_ov007_020bc6b4((int *)o->f4, (int)&data_ov007_02104bc4[p0], 2);
 
     o->f8 = 0;
     o->f14 = 0;

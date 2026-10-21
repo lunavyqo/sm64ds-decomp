@@ -12,8 +12,7 @@ extern void _ZN9dBgCh_Gnd12SetObjAndPosERK7Vector3P8dActor_c(void *self, const V
 extern int _ZN9dBgCh_Gnd10DetectClsnEv(void *self);
 extern void _ZN9dBgCh_GndD1Ev(void *self);
 
-/* The translate source. z is -300 in 20.12. */
-Vector3 data_02086e84 = {0, 0, -0x12C000};
+extern Vector3 data_02086e84;
 
 /* File-local view of dCamera_c (include/dCamera_c.h is C++): the fields this
  * helper touches. */

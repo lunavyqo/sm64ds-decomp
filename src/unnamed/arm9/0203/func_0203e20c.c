@@ -12,7 +12,7 @@ extern s32 data_020a0f6c;
 extern s32 data_020a0f70;
 extern s32 data_020a0f78;
 extern void *data_020a0f7c;
-extern u8 data_020a0f9d[];
+extern u8 data_020a0f9d;
 extern u8 data_020a0fbe[24];
 extern u8 data_020a0fec[];
 extern u8 data_020a1040[];
@@ -115,7 +115,7 @@ void func_0203e20c(void)
 
         cnt2 = 1;
         i2 = cnt2;
-        p9 = data_020a0f9d;
+        p9 = &data_020a0f9d;
         p11 = data_020a1112;
 
         data_020a0f1c |= 0x9000;
@@ -130,7 +130,7 @@ void func_0203e20c(void)
 
         func_02061c20(&data_020a1680);
 
-        pIdx = data_020a0f9d;
+        pIdx = &data_020a0f9d;
         base1112 = data_020a1112;
         idx = 1;
         sel1 = idx;
@@ -178,7 +178,7 @@ void func_0203e20c(void)
 
     case 4: {
         int ok = 1;
-        u8 *p = data_020a0f9d;
+        u8 *p = &data_020a0f9d;
         int k = 1;
         do {
             if (*p != 0 && func_02067138(k) != 1) {
@@ -234,7 +234,7 @@ void func_0203e20c(void)
         _ZN6Memory10DeallocateEPv(data_020a0f3c);
         _ZN6Memory10DeallocateEPv(data_020a0f7c);
         if (data_020a0f40 != 0) {
-            u8 *p9d = data_020a0f9d;
+            u8 *p9d = &data_020a0f9d;
             u8 *p1112 = data_020a1112;
             u8 *pbe = data_020a0fbe;
             int sl;
@@ -331,5 +331,3 @@ void func_0203e20c(void)
         } while (i < 0x11);
     }
 }
-
-u8 data_020a0f9d[3];

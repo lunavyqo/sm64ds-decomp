@@ -179,10 +179,3 @@ void *func_ov007_020b4c04(int arg0)
     }
     return view;
 }
-
-#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
-#pragma section forcerodata begin
-#pragma explicit_zero_data on
-u16 data_ov007_020d75e8[4] = { 0x0000, 0x0000, 0x0000, 0x0000 };
-#pragma explicit_zero_data off
-#pragma section forcerodata end

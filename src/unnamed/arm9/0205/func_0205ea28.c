@@ -28,5 +28,3 @@ void func_0205ea28(struct V4 *r0, struct V4 *r1)
     if (t < 0) { r0->b = 0; return; }
     if (t > 0xbf) { r0->b = 0xbf; }
 }
-
-int data_020a80e4[8];

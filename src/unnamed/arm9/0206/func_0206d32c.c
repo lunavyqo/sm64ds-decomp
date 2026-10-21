@@ -28,7 +28,7 @@ extern const char data_0208690c;
 extern const char data_0208692c;
 extern const char data_0208696c;
 extern const char data_0208698c;
-extern const char data_020869bc[32];
+extern const char data_020869bc;
 extern const char data_020869dc;
 
 extern void func_0206d890(SavedIntState *state);
@@ -93,7 +93,7 @@ int func_0206d32c(int type, u32 addr, u32 lma, u32 size) {
                     *LM(&EB(table, j)->elems[0].b) += (u32)ov;
                     *LM(&EB(table, j)->elems[0].c) -= (u32)ov;
                     if (!(table->elems[j].c != 0)) {
-                        _ZN4cstd8__assertEPKcS1_S1_i(&data_020868fc, (const char *)0x127, data_020869bc, 1);
+                        _ZN4cstd8__assertEPKcS1_S1_i(&data_020868fc, (const char *)0x127, &data_020869bc, 1);
                     }
                     if (!(table->elems[j].c < 0xf0000000)) {
                         _ZN4cstd8__assertEPKcS1_S1_i(&data_020868fc, (const char *)0x128, &data_020869dc, 1);
@@ -178,8 +178,3 @@ int func_0206d32c(int type, u32 addr, u32 lma, u32 size) {
     func_0206d868(&state);
     return 1;
 }
-
-#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
-#pragma section forcerodata begin
-const char data_020869bc[32] = { 0x70, 0x49, 0x6e, 0x66, 0x6f, 0x2d, 0x3e, 0x6d, 0x5f, 0x69, 0x6e, 0x66, 0x6f, 0x5b, 0x69, 0x20, 0x2b, 0x20, 0x6a, 0x5d, 0x2e, 0x6d, 0x5f, 0x53, 0x49, 0x5a, 0x45, 0x20, 0x3e, 0x20, 0x30, 0x00 };
-#pragma section forcerodata end

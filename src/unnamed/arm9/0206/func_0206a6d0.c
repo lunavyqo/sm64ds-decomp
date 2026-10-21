@@ -71,5 +71,3 @@ void func_0206a6d0(void)
     *(volatile u16 *)0x4000208 = save208;
     _ZN3IRQ7SetIRQsEj(irq);
 }
-
-int data_020a9e00;
