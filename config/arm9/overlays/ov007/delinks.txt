@@ -814,7 +814,13 @@ src/unnamed/ov007/func_ov007_020bbd24.cpp:
 src/unnamed/ov007/func_ov007_020bbe60.c:
     complete
     .text start:0x020bbe60 end:0x020bbf98
+
+src/named/ov007/data_ov007_020cdb34.c:
+    complete
     .rodata start:0x020cdb34 end:0x020cdb4c
+
+src/named/ov007/data_ov007_020d7e68.c:
+    complete
     .data start:0x020d7e68 end:0x020d7ec8
 
 src/unnamed/ov007/func_ov007_020bbf98.c:

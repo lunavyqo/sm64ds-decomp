@@ -230,7 +230,7 @@ extern char data_ov026_02113edc[];
 extern char data_ov026_02113ee4[];
 extern char data_ov027_021130e8;
 extern char data_ov027_02113108[];
-extern char data_ov030_02115d00;
+extern int data_ov030_02115d00[2];
 extern char data_ov030_02115ddc[];
 extern char data_ov045_021125b0[];
 
@@ -2059,7 +2059,7 @@ extern void*data_ov027_02112ca4[3];
 extern void*data_ov029_02112fb8;
 extern void*data_ov029_02112fec;
 extern void*data_ov030_02114824[];
-extern void*data_ov030_02115cf0[];
+extern int data_ov030_02115cf0[2];
 extern void*data_ov034_02113838[];
 extern void*data_ov034_0211384c[];
 extern void*data_ov034_02113860[];
