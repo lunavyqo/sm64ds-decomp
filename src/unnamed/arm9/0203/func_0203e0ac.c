@@ -74,7 +74,6 @@ void func_0203e0ac(void)
     } while (i < 0x11);
 }
 
-
 #include "types.h"
 extern u8 data_020a0f04;
 extern u8 data_020a0f08;
@@ -130,8 +129,7 @@ extern void func_02068a54(void);
 
 #pragma opt_dead_assignments off
 
-void func_0203e20c(void)
-{
+void func_0203e20c(void) {
     if (data_020a0f40 != 0 && data_020a0f50 == 3) {
         data_020a0f50 = 6;
     }
@@ -163,7 +161,8 @@ void func_0203e20c(void)
         void *p;
         int size;
         data_020a0f20 = (u16)func_02059640();
-        func_02068e4c(data_020a0f3c, data_020a10fc, H(data_020a1064, 6), H(data_020a1064, 8), data_020a0f20, 1);
+        func_02068e4c(data_020a0f3c, data_020a10fc, H(data_020a1064, 6), H(data_020a1064, 8),
+                      data_020a0f20, 1);
         func_02068dc8(0x1fe, 8, 3);
         func_020672a4((u32)func_0203e9a8);
         func_02068ae8(data_020a0f28);
@@ -409,14 +408,12 @@ void func_0203e20c(void)
     }
 }
 
-
 extern unsigned short data_020a0f28;
 extern unsigned char data_020a0f0c;
 
-void func_0203e978(short *p)
-{
+void func_0203e978(short *p) {
     if (p[0] != 0)
         return;
-    data_020a0f28 = *(unsigned short*)(p + 1);
+    data_020a0f28 = *(unsigned short *)(p + 1);
     data_020a0f0c = 1;
 }

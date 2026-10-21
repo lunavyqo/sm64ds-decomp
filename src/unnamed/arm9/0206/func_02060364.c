@@ -11,8 +11,10 @@ void func_02060364(int arg)
     data_020a8764 = p->h;
 }
 
-
-struct T867bc { int key; char pad[0x24]; };
+struct T867bc {
+    int key;
+    char pad[0x24];
+};
 extern struct T867bc data_020867bc[];
 
 struct T867bc *func_02060398(int arg) {

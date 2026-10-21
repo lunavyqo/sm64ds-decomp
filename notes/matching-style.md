@@ -458,7 +458,7 @@ is not universal. A case written as a ternary poisoned the whole function's r1/r
 unrelated locals -- *despite* the ROM emitting the classic `moveq/movne` ternary shape. Rewriting it
 as `if/else` fixed a 20-instruction coloring residual far from the ternary itself. When a predicated
 pair is the only construct adjacent to a coloring residual, **try both forms**.
-(`src/unnamed/ov007/func_ov007_020b5f64.c`)
+(`src/unnamed/ov007/func_ov007_020b5bf0.c`, `func_ov007_020b5f64`)
 
 **Parallel loops want their own locals.** Six structurally identical zero-init loops sharing one
 `i`/`p` pair gave correct instruction shape with permuted registers; giving each loop its own counter

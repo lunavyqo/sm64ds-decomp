@@ -11,7 +11,6 @@ void func_ov007_020ba9bc(void){
   func_ov007_020c5188(data_ov007_02104ba0->obj, 0);
 }
 
-
 #include "types.h"
 // @symbol func_ov007_020baa10
 /* recovered: shared common types, declarations from a shared header */
@@ -46,8 +45,7 @@ typedef struct Ov007PickerScene {
 
 /* Each menu state drives the picker's per-step offset across the clamp
  * rectangle; state 5 puts pos back at its rest position. */
-void func_ov007_020baa10(void)
-{
+void func_ov007_020baa10(void) {
     Ov007Picker *a;
     s16 state;
     int dx;
@@ -76,9 +74,12 @@ void func_ov007_020baa10(void)
     case 2: {
         int v;
         int m = _ZN4cstd3modEii(counter, 0x3c);
-        if (m <= 0) v = 0;
-        else if (m >= 0x3c) v = 0x1000;
-        else v = _ZN4cstd3divEii(m << 12, 0x3c);
+        if (m <= 0)
+            v = 0;
+        else if (m >= 0x3c)
+            v = 0x1000;
+        else
+            v = _ZN4cstd3divEii(m << 12, 0x3c);
         s = data_02082214[((u16)((v * 0xffff) >> 12) >> 4) * 2];
         if (state == 2) {
             a->posOffset.x = -dx / 48 + func_ov007_020c3ba8(dx / 48 - -dx / 48);
@@ -94,9 +95,12 @@ void func_ov007_020baa10(void)
         int v;
         int idx;
         int m = _ZN4cstd3modEii(counter, 0x3c);
-        if (m <= 0) v = 0;
-        else if (m >= 0x3c) v = 0x1000;
-        else v = _ZN4cstd3divEii(m << 12, 0x3c);
+        if (m <= 0)
+            v = 0;
+        else if (m >= 0x3c)
+            v = 0x1000;
+        else
+            v = _ZN4cstd3divEii(m << 12, 0x3c);
         if (SCENE->states[3]->currentState == 4)
             v = 0x1000 - v;
         idx = ((u16)((v * 0xffff) >> 12) >> 4) * 2;
@@ -125,7 +129,6 @@ void func_ov007_020baa10(void)
     }
 }
 
-
 #include "types.h"
 #include "nitro/fx/fx.h"
 extern u8 data_ov007_02104ba0[];
@@ -138,8 +141,7 @@ extern int _ZN4cstd3divEii(int, int);
 extern void func_ov007_020bbc08(int a, int b, int c);
 extern void func_ov007_020c55bc(int a, int b, int c);
 
-void func_ov007_020bad8c(void)
-{
+void func_ov007_020bad8c(void) {
     char *mgr;
     char *obj;
     int r6;
@@ -191,8 +193,7 @@ void func_ov007_020bad8c(void)
             func_ov007_020bbc08(3, 0xa, (int)(((long long)v * (0x2000 - v)) >> 0xc));
         }
         return;
-    case 2:
-    {
+    case 2: {
         int v;
         int amt;
         if (var_r4 >= 0x800) {
@@ -213,8 +214,7 @@ void func_ov007_020bad8c(void)
         }
         return;
     }
-    case 3:
-    {
+    case 3: {
         int d;
         u16 p3;
         int m;
@@ -251,8 +251,7 @@ void func_ov007_020bad8c(void)
         *(int *)(*(char **)data_ov007_02104ba0 + 0x1c) = 2;
         return;
     }
-    case 4:
-    {
+    case 4: {
         int m = _ZN4cstd3modEii(r5, 0x3c);
         *(int *)(*(char **)data_ov007_02104ba0 + 0x1c) = 2;
         if (m == 0) {

@@ -24,7 +24,6 @@ void func_02070b98(void* a0, double x, void* d)
     }
 }
 
-
 extern int func_01ff9d40(double, double);
 extern double func_01ff8e10(double, double);
 extern double func_020707f4(double, int *);
@@ -35,8 +34,7 @@ extern void func_02071510(void *, unsigned long long);
 extern void func_02070ec0(void *, int);
 extern void func_02071364(void *, void *, void *);
 
-void func_02070c68(char *out, double x)
-{
+void func_02070c68(char *out, double x) {
     int e;
     double t1;
     double t2;
@@ -106,7 +104,8 @@ void func_02070c68(char *out, double x)
         int nbits, k;
         int *mp;
 
-        if (neg) x = func_01ff8e10(0.0, v);
+        if (neg)
+            x = func_01ff8e10(0.0, v);
         m = func_020707f4(x, &e);
         mm = m;
         mp = (int *)&mm;
@@ -121,7 +120,6 @@ void func_02070c68(char *out, double x)
         out[0] = neg;
     }
 }
-
 
 typedef struct Big {
     short v[19];
@@ -153,33 +151,74 @@ void func_020712a0(Big *out, unsigned char *str, short val);
 void func_02071364(Big *dst, Big *a, Big *b);
 void func_02070ec0(Big *out, int n);
 
-void func_02070ec0(Big *out, int n)
-{
+void func_02070ec0(Big *out, int n) {
     Big half;
     Big copy;
 
     switch (n) {
-    case -64: func_020712a0(out, data_0209a628, -20); return;
-    case -53: func_020712a0(out, data_0209a658, -16); return;
-    case -32: func_020712a0(out, data_0209a680, -10); return;
-    case -16: func_020712a0(out, data_0209a698, -5); return;
-    case -8:  func_020712a0(out, data_0209a6a8, -3); return;
-    case -7:  func_020712a0(out, data_0209a6b0, -3); return;
-    case -6:  func_020712a0(out, data_0209a6b8, -2); return;
-    case -5:  func_020712a0(out, data_0209a6c0, -2); return;
-    case -4:  func_020712a0(out, data_0209a6c8, -2); return;
-    case -3:  func_020712a0(out, data_0209a6cc, -1); return;
-    case -2:  func_020712a0(out, data_0209a6d0, -1); return;
-    case -1:  func_020712a0(out, data_0209a6d4, -1); return;
-    case 0:   func_020712a0(out, data_0209a6d8, 0); return;
-    case 1:   func_020712a0(out, data_0209a6dc, 0); return;
-    case 2:   func_020712a0(out, data_0209a6e0, 0); return;
-    case 3:   func_020712a0(out, data_0209a6e4, 0); return;
-    case 4:   func_020712a0(out, data_0209a6e8, 1); return;
-    case 5:   func_020712a0(out, data_0209a6ec, 1); return;
-    case 6:   func_020712a0(out, data_0209a6f0, 1); return;
-    case 7:   func_020712a0(out, data_0209a6f4, 2); return;
-    case 8:   func_020712a0(out, data_0209a6f8, 2); return;
+    case -64:
+        func_020712a0(out, data_0209a628, -20);
+        return;
+    case -53:
+        func_020712a0(out, data_0209a658, -16);
+        return;
+    case -32:
+        func_020712a0(out, data_0209a680, -10);
+        return;
+    case -16:
+        func_020712a0(out, data_0209a698, -5);
+        return;
+    case -8:
+        func_020712a0(out, data_0209a6a8, -3);
+        return;
+    case -7:
+        func_020712a0(out, data_0209a6b0, -3);
+        return;
+    case -6:
+        func_020712a0(out, data_0209a6b8, -2);
+        return;
+    case -5:
+        func_020712a0(out, data_0209a6c0, -2);
+        return;
+    case -4:
+        func_020712a0(out, data_0209a6c8, -2);
+        return;
+    case -3:
+        func_020712a0(out, data_0209a6cc, -1);
+        return;
+    case -2:
+        func_020712a0(out, data_0209a6d0, -1);
+        return;
+    case -1:
+        func_020712a0(out, data_0209a6d4, -1);
+        return;
+    case 0:
+        func_020712a0(out, data_0209a6d8, 0);
+        return;
+    case 1:
+        func_020712a0(out, data_0209a6dc, 0);
+        return;
+    case 2:
+        func_020712a0(out, data_0209a6e0, 0);
+        return;
+    case 3:
+        func_020712a0(out, data_0209a6e4, 0);
+        return;
+    case 4:
+        func_020712a0(out, data_0209a6e8, 1);
+        return;
+    case 5:
+        func_020712a0(out, data_0209a6ec, 1);
+        return;
+    case 6:
+        func_020712a0(out, data_0209a6f0, 1);
+        return;
+    case 7:
+        func_020712a0(out, data_0209a6f4, 2);
+        return;
+    case 8:
+        func_020712a0(out, data_0209a6f8, 2);
+        return;
     default:
         func_02070ec0(&half, (int)(n + ((n & 0x80000000u) >> 31)) >> 1);
         func_02071364(out, &half, &half);
@@ -195,13 +234,11 @@ void func_02070ec0(Big *out, int n)
     }
 }
 
-
 #include "Decimal.h"
 
 extern void func_02071644(Decimal *result, int length);
 
-void func_020712a0(Decimal *result, unsigned char *digits, short exp)
-{
+void func_020712a0(Decimal *result, unsigned char *digits, short exp) {
     int i;
     unsigned char c;
     result->exp = exp;
@@ -211,8 +248,10 @@ void func_020712a0(Decimal *result, unsigned char *digits, short exp)
         result->sig.text[i++] = (unsigned char)(*digits++ - 0x30);
     }
     result->sig.length = (unsigned char)i;
-    if (digits[0] == 0) return;
-    if (digits[0] < 5) return;
+    if (digits[0] == 0)
+        return;
+    if (digits[0] < 5)
+        return;
     if (digits[0] <= 5) {
         c = digits[1];
         digits++;
@@ -231,13 +270,11 @@ docall:
     func_02071644(result, result->sig.length);
 }
 
-
 #include "Decimal.h"
 
 extern void func_02071644(Decimal *result, int length);
 
-void func_02071364(Decimal *result, const Decimal *x, const Decimal *y)
-{
+void func_02071364(Decimal *result, const Decimal *x, const Decimal *y) {
     unsigned int accumulator = 0;
     unsigned char mantissa[64];
     int i = x->sig.length + y->sig.length - 1;
@@ -308,48 +345,39 @@ void func_02071364(Decimal *result, const Decimal *x, const Decimal *y)
     }
 }
 
-
-typedef struct Decimal
-{
-  unsigned char sign;
-  char unused;
-  short exp;
-  struct
-  {
-    unsigned char length;
-    unsigned char text[32];
-    unsigned char unused;
-  } sig;
+typedef struct Decimal {
+    unsigned char sign;
+    char unused;
+    short exp;
+    struct {
+        unsigned char length;
+        unsigned char text[32];
+        unsigned char unused;
+    } sig;
 } Decimal;
-void func_02071510(Decimal *result, unsigned long long v)
-{
-  result->sign = 0;
-  result->sig.length = 0;
-  if (v != 0)
-  {
-    do
-    {
-      result->sig.text[result->sig.length++] = (unsigned char) (v % 10);
-      v /= 10;
+void func_02071510(Decimal *result, unsigned long long v) {
+    result->sign = 0;
+    result->sig.length = 0;
+    if (v != 0) {
+        do {
+            result->sig.text[result->sig.length++] = (unsigned char)(v % 10);
+            v /= 10;
+        } while (v != 0);
     }
-    while (v != 0);
-  }
-  {
-    unsigned char len = result->sig.length;
-    unsigned char *s = result->sig.text;
-    unsigned char *e = (s + len) - 1;
-    while (s < e)
     {
-      unsigned char t = *s;
-      *s = *e;
-      *e = t;
-      s++;
-      e--;
+        unsigned char len = result->sig.length;
+        unsigned char *s = result->sig.text;
+        unsigned char *e = (s + len) - 1;
+        while (s < e) {
+            unsigned char t = *s;
+            *s = *e;
+            *e = t;
+            s++;
+            e--;
+        }
     }
-  }
-  result->exp = (short) (result->sig.length - 1);
+    result->exp = (short)(result->sig.length - 1);
 }
-
 
 #include "types.h"
 #include "Decimal.h"
@@ -359,17 +387,18 @@ void func_02071510(Decimal *result, unsigned long long v)
 extern int func_02071698(void *value, int length);
 extern void func_02071644(Decimal *value, int length);
 
-void func_020715e0(Decimal *value, int length)
-{
+void func_020715e0(Decimal *value, int length) {
     int r;
-    if (length <= 0) return;
-    if (length >= value->sig.length) return;
+    if (length <= 0)
+        return;
+    if (length >= value->sig.length)
+        return;
     r = func_02071698(value, length);
     value->sig.length = length;
-    if (r < 0) return;
+    if (r < 0)
+        return;
     func_02071644(value, length);
 }
-
 
 // Increment the decimal significand, propagating carry into the exponent.
 // The 2004/b56 output occupies 0x02071644..0x02071698, including the final bx lr.
@@ -377,49 +406,44 @@ void func_020715e0(Decimal *value, int length)
 #include "types.h"
 #include "Decimal.h"
 
-void func_02071644(Decimal *d, int len)
-{
-  unsigned char *base = d->sig.text;
-  unsigned char *p = base + len - 1;
-  for (;;)
-  {
-    unsigned char c = *p;
-    if (c < 9)
-    {
-      *p = c + 1;
-      return;
+void func_02071644(Decimal *d, int len) {
+    unsigned char *base = d->sig.text;
+    unsigned char *p = base + len - 1;
+    for (;;) {
+        unsigned char c = *p;
+        if (c < 9) {
+            *p = c + 1;
+            return;
+        }
+        if (p == base) {
+            *p = 1;
+            d->exp++;
+            return;
+        }
+        *p-- = 0;
     }
-    if (p == base)
-    {
-      *p = 1;
-      d->exp++;
-      return;
-    }
-    *p-- = 0;
-  }
 }
 
-
 #include "types.h"
-int func_02071698(u8* base, int idx)
-{
-    u8* p = base + 5 + idx;
+int func_02071698(u8 *base, int idx) {
+    u8 *p = base + 5 + idx;
     u8 e = *p;
-    u8* end;
-    if (e > 5) return 1;
-    if (e < 5) return -1;
+    u8 *end;
+    if (e > 5)
+        return 1;
+    if (e < 5)
+        return -1;
     p = p + 1;
     end = base + 5 + base[4];
     while (p < end) {
-        if (*p != 0) return 1;
+        if (*p != 0)
+            return 1;
         p = p + 1;
     }
     return ((base + (idx - 1))[5] & 1) ? 1 : -1;
 }
 
-
-int func_02071708(int w0, ...)
-{
+int func_02071708(int w0, ...) {
     unsigned char *p;
     int count;
     unsigned int c;

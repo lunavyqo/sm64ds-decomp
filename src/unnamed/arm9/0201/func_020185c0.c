@@ -61,12 +61,11 @@ int func_020185c0(int a0, unsigned int a1)
     return result;
 }
 
-
 struct S82 {
-    void *f0;           /* +0 */
+    void *f0; /* +0 */
     char pad4[4];
-    unsigned short f8;  /* +8 */
-    unsigned short fa;  /* +0xa */
+    unsigned short f8; /* +8 */
+    unsigned short fa; /* +0xa */
     char padc[8];
 };
 extern struct S82 data_0208ecf4[];
@@ -75,11 +74,11 @@ extern int LoadArchive(int idx);
 extern void Crash(void);
 extern int func_0204ede8(void *o, unsigned int i);
 
-int func_020186c0(unsigned int val)
-{
+int func_020186c0(unsigned int val) {
     unsigned int i;
     struct S82 *e;
-    if (val < 0x8000) return 0;
+    if (val < 0x8000)
+        return 0;
     e = data_0208ecf4;
     for (i = 0; i < 0xd; i++) {
         if (e->f8 <= val && val < e->fa) {
@@ -98,7 +97,6 @@ int func_020186c0(unsigned int val)
     Crash();
     return 0;
 }
-
 
 /* func_02018770 at 0x02018770
  * Unloads the archive a file read mounted for itself, if there is one

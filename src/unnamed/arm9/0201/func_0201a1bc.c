@@ -17,7 +17,6 @@ int func_0201a1bc(void)
     return 1;
 }
 
-
 #include "types.h"
 #include "AsyncJob.h"
 extern int _ZN6Memory8AllocateEji(u32 sz, int align);

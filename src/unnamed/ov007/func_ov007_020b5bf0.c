@@ -184,7 +184,6 @@ void func_ov007_020b5bf0(Ov007ItemView *view) {
     func_ov007_020c8f98((int)view->slideTween);
 }
 
-
 #include "types.h"
 #include "Ov007MenuState.h"
 #include "Ov007Tween.h"
@@ -239,8 +238,7 @@ typedef struct Ov007Work {
 
 /* The parameter keeps the tree's char * spelling (the declaration-agreement
  * gate); the typed view is a local. */
-void func_ov007_020b5f64(char *self)
-{
+void func_ov007_020b5f64(char *self) {
     Ov007ItemView *view = (Ov007ItemView *)self;
     Ov007Item *p;
     Ov007Work *g;

@@ -11,7 +11,6 @@ int func_02019f10(void)
     return 0;
 }
 
-
 extern void func_0205f958(void);
 extern void func_02019ff4(void);
 extern void func_0205f5c0(int a);
@@ -21,8 +20,7 @@ extern void func_02040724(void);
 extern void func_0201a4d0(void);
 extern unsigned char data_0209d4e4;
 
-void func_02019f64(void)
-{
+void func_02019f64(void) {
     int r;
     if (data_0209d4e4 != 0) {
         func_0205f958();
@@ -46,30 +44,23 @@ void func_02019f64(void)
     func_02019ff4();
 }
 
-
 #include "types.h"
-enum IPCStatus {
-    IPC_SUCCESS = 0,
-    IPC_ERROR = -1,
-    IPC_FIFO_FULL = -2
-};
+enum IPCStatus { IPC_SUCCESS = 0, IPC_ERROR = -1, IPC_FIFO_FULL = -2 };
 
 extern enum IPCStatus IPCSend(u32 arg0, u32 arg1, u32 arg2);
 extern void func_0201a028(void);
 
 void func_02019ff4(void) {
-    while (IPCSend(0xd, 2, 0) != 0) {}
+    while (IPCSend(0xd, 2, 0) != 0) {
+    }
     func_0201a028();
 }
-
 
 extern void _ZN3IRQ7DisableEv(void);
 extern void _ZN4CP1516WaitForInterruptEv(void);
 
-void func_0201a028(void)
-{
-    for (;;)
-    {
+void func_0201a028(void) {
+    for (;;) {
         _ZN3IRQ7DisableEv();
         _ZN4CP1516WaitForInterruptEv();
     }

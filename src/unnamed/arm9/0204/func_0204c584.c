@@ -318,13 +318,11 @@ void func_0204c584(u8 *self, List *list)
     } while (i < count);
 }
 
-
 #include "nitro/fx/fx.h"
 typedef short s16;
 typedef long long s64;
 
-void func_0204cd5c(int *out, int *in, int sel, s16 *m)
-{
+void func_0204cd5c(int *out, int *in, int sel, s16 *m) {
     switch (sel) {
     case 2:
         out[0] = 0;
@@ -349,7 +347,6 @@ void func_0204cd5c(int *out, int *in, int sel, s16 *m)
     }
 }
 
-
 #include "types.h"
 #include "nitro/fx/fx.h"
 
@@ -366,8 +363,7 @@ typedef struct {
 extern Vector3s data_02099fc4;
 extern void func_02053380(void *a, Vector3s *b);
 
-void func_0204cebc(void *c)
-{
+void func_0204cebc(void *c) {
     ParticleSystemView *sys = (ParticleSystemView *)c;
     Vector3s vecA;
     Vector3s vecB;

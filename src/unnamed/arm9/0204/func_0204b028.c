@@ -133,7 +133,6 @@ void func_0204b028(Self *self, Node *node)
     }
 }
 
-
 #include "nitro/fx/fx.h"
 typedef unsigned int u32;
 typedef unsigned short u16;
@@ -214,8 +213,7 @@ extern void MulMat4x3Mat4x3(void *a, void *b, void *out);
 extern void func_020553a4(void *m);
 extern void func_02055388(void *m);
 
-void func_0204b244(Self *self, Node *node)
-{
+void func_0204b244(Self *self, Node *node) {
     Ctx *c = self->p34;
     int scale = (node->p40.lo * (node->p40.hi + 1)) >> 5;
     int out[12];

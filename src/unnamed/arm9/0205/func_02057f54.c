@@ -36,7 +36,6 @@ void func_02057f54(void){
   ARMRestoreContext(r5);
 }
 
-
 struct Node58 {
     char pad[0x64];
     int f64;

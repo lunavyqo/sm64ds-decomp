@@ -21,7 +21,6 @@ int func_0205fc44(unsigned int a, unsigned int b)
     return 0;
 }
 
-
 extern void func_0205feac(int a);
 
 typedef struct {
@@ -46,8 +45,7 @@ typedef struct {
 } StructH;
 extern StructH data_020a8114;
 
-void func_0205fcfc(int a0, unsigned int msg, int flag)
-{
+void func_0205fcfc(int a0, unsigned int msg, int flag) {
     unsigned short cmd;
     unsigned short val;
 

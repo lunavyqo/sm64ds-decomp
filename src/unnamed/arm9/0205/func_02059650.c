@@ -14,15 +14,13 @@ long long func_02059650(void)
     return ((long long)counter << 16) | (int)(timer);
 }
 
-
 typedef unsigned long long u64;
 extern volatile u64 data_020a6438;
 extern int data_020a6434;
 extern void func_02056e4c(int a, void *b, int c);
 extern void func_02059700(void);
 
-void func_02059700(void)
-{
+void func_02059700(void) {
     data_020a6438++;
     if (data_020a6434 != 0) {
         *(volatile unsigned short *)0x4000102 = 0;
@@ -33,7 +31,6 @@ void func_02059700(void)
     func_02056e4c(0, (void *)func_02059700, 0);
 }
 
-
 extern unsigned short data_020a6430;
 extern int data_020a6438;
 extern int data_020a6434;
@@ -42,8 +39,7 @@ extern void func_02059624(int bit);
 extern void _ZN3IRQ13SetIRQHandlerEjPFvvE(unsigned int bit, void (*handler)(void));
 extern void _ZN3IRQ10EnableIRQsEj(unsigned int bits);
 
-void func_02059788(void)
-{
+void func_02059788(void) {
     if (data_020a6430 != 0)
         return;
     data_020a6430 = 1;

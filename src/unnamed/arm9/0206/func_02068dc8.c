@@ -15,8 +15,6 @@ int func_02068dc8(int a, int b, int c)
     return 1;
 }
 
-
-int func_02068e44(void)
-{
+int func_02068e44(void) {
     return 1;
 }

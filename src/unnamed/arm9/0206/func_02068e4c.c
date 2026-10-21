@@ -93,7 +93,6 @@ int func_02068e4c(int a0, u16 *a1, int a2, int a3, u16 a4, int a5) {
     return 0;
 }
 
-
 extern void func_02059f2c(void *p);
 
 int func_02069038(void) {

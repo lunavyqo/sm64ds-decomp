@@ -316,7 +316,7 @@
       "src/unnamed/arm9/0201/func_0201818c.c": [
         "arity:3"
       ],
-      "src/unnamed/arm9/0201/func_0201834c.c": [
+      "src/unnamed/arm9/0201/func_020182bc.c": [
         "arity:3"
       ],
       "src/unnamed/arm9/0201/func_02018c00.c": [
@@ -325,7 +325,7 @@
       "src/unnamed/arm9/0203/func_0203db64.c": [
         "arity:3"
       ],
-      "src/unnamed/arm9/0203/func_0203e20c.c": [
+      "src/unnamed/arm9/0203/func_0203e0ac.c": [
         "arity:3"
       ],
       "src/unnamed/arm9/0203/func_0203e9a8.c": [
@@ -436,7 +436,7 @@
       "src/unnamed/arm9/0206/func_020672d0.c": [
         "arity:3"
       ],
-      "src/unnamed/arm9/0206/func_020678a4.c": [
+      "src/unnamed/arm9/0206/func_020676e0.c": [
         "arity:3"
       ],
       "src/unnamed/arm9/0206/func_02067b68.c": [
@@ -742,11 +742,11 @@
       "src/unnamed/arm9/0201/func_0201818c.c": [
         "return:void"
       ],
-      "src/unnamed/arm9/0201/func_0201834c.c": [
+      "src/unnamed/arm9/0201/func_020182bc.c": [
         "param:#1 Obj *",
         "return:void"
       ],
-      "src/unnamed/arm9/0201/func_020184e0.c": [
+      "src/unnamed/arm9/0201/func_02018434.c": [
         "return:void"
       ],
       "src/unnamed/arm9/0201/func_02018934.c": [
@@ -885,7 +885,7 @@
         "param:#2 int",
         "param:#3 int"
       ],
-      "src/unnamed/arm9/0201/func_02019ff4.c": [
+      "src/unnamed/arm9/0201/func_02019f10.c": [
         "return:IPCStatus"
       ],
       "src/unnamed/arm9/0205/func_02059dd4.c": [
@@ -1763,7 +1763,7 @@
       "src/unnamed/arm9/0206/func_02062df0.c": [
         "param:#3 unsigned int"
       ],
-      "src/unnamed/arm9/0206/func_02068680.c": [
+      "src/unnamed/arm9/0206/func_020685cc.c": [
         "param:#1 int"
       ],
       "src/unnamed/arm9/0206/func_020690b0.c": [
@@ -2091,10 +2091,8 @@
       "src/unnamed/arm9/0200/func_02007f14.c": [
         "param:#1 const void *"
       ],
-      "src/unnamed/arm9/0200/func_020084b0.c": [
-        "param:#1 const void *"
-      ],
-      "src/unnamed/arm9/0200/func_02008500.c": [
+      "src/unnamed/arm9/0200/func_02008474.c": [
+        "param:#1 const void *",
         "param:#1 const char *"
       ]
     },
@@ -4263,7 +4261,7 @@
       "src/unnamed/arm9/0206/func_02061fdc.c": [
         "param:#2 int"
       ],
-      "src/unnamed/arm9/0206/func_020620b0.c": [
+      "src/unnamed/arm9/0206/func_02062024.c": [
         "param:#2 int"
       ],
       "src/unnamed/arm9/0206/func_020621b8.c": [
@@ -4319,7 +4317,7 @@
       "src/unnamed/arm9/0206/func_02062380.c": [
         "return:int *"
       ],
-      "src/unnamed/arm9/0206/func_02062428.c": [
+      "src/unnamed/arm9/0206/func_020623ec.c": [
         "return:int *"
       ],
       "src/unnamed/arm9/0206/func_020625fc.c": [
@@ -4347,7 +4345,7 @@
       "src/unnamed/arm9/0206/func_02061fdc.c": [
         "arity:2"
       ],
-      "src/unnamed/arm9/0206/func_020620b0.c": [
+      "src/unnamed/arm9/0206/func_02062024.c": [
         "param:#1 int",
         "param:#2 int",
         "param:#3 void *"
@@ -4373,7 +4371,7 @@
       "src/unnamed/arm9/0206/func_02062380.c": [
         "arity:5"
       ],
-      "src/unnamed/arm9/0206/func_02062428.c": [
+      "src/unnamed/arm9/0206/func_020623ec.c": [
         "arity:9"
       ],
       "src/unnamed/arm9/0206/func_0206259c.c": [
@@ -6702,7 +6700,7 @@
       "src/unnamed/ov007/func_ov007_020bd648.cpp": [
         "param:#5 unsigned short"
       ],
-      "src/unnamed/ov007/func_ov007_020c86c4.c": [
+      "src/unnamed/ov007/func_ov007_020c8498.c": [
         "param:#1 volatile void *",
         "param:#2 int",
         "param:#3 int",
@@ -6715,6 +6713,17 @@
       ]
     },
     "_ZN3G2x18SetBlendBrightnessEPVtts": {
+      "src/Message.cpp": [
+        "param:#2 int",
+        "param:#3 int"
+      ],
+      "src/Message3.cpp": [
+        "param:#2 int",
+        "param:#3 int"
+      ],
+      "src/game/stages/d_s_entry_methods.cpp": [
+        "arity:4"
+      ],
       "src/game/stages/d_s_stage_methods.cpp": [
         "param:#2 int"
       ],
@@ -6724,7 +6733,7 @@
       "src/runtime/graphics/fader/d_wipe.cpp": [
         "param:#3 int"
       ],
-      "src/unnamed/ov007/func_ov007_020c86c4.c": [
+      "src/unnamed/ov007/func_ov007_020c8498.c": [
         "param:#2 int",
         "param:#3 int"
       ],
@@ -6736,17 +6745,6 @@
       ],
       "src/unnamed/ov075/func_ov075_02119d3c.c": [
         "arity:4"
-      ],
-      "src/game/stages/d_s_entry_methods.cpp": [
-        "arity:4"
-      ],
-      "src/Message.cpp": [
-        "param:#2 int",
-        "param:#3 int"
-      ],
-      "src/Message3.cpp": [
-        "param:#2 int",
-        "param:#3 int"
       ]
     },
     "_ZN3G3X13SetClearColorEtiiib": {
@@ -6830,7 +6828,7 @@
       "src/unnamed/arm9/0204/func_0204175c.c": [
         "return:void"
       ],
-      "src/unnamed/arm9/0205/func_02059788.c": [
+      "src/unnamed/arm9/0205/func_02059650.c": [
         "return:void"
       ],
       "src/unnamed/arm9/0205/func_02059c18.c": [
@@ -6883,10 +6881,13 @@
       ]
     },
     "_ZN3IRQ13SetIRQHandlerEjPFvvE": {
+      "src/IRQ2.cpp": [
+        "param:#2 void (*)(void)"
+      ],
       "src/unnamed/arm9/0201/func_0201a4e4.c": [
         "param:#2 void (*)(void)"
       ],
-      "src/unnamed/arm9/0205/func_02059788.c": [
+      "src/unnamed/arm9/0205/func_02059650.c": [
         "param:#2 void (*)(void)"
       ],
       "src/unnamed/arm9/0205/func_0205a21c.c": [
@@ -6896,9 +6897,6 @@
         "param:#2 void (*)(void)"
       ],
       "src/unnamed/arm9/0206/func_02060b64.c": [
-        "param:#2 void (*)(void)"
-      ],
-      "src/IRQ2.cpp": [
         "param:#2 void (*)(void)"
       ]
     },
@@ -6925,7 +6923,7 @@
       "src/Crash.c": [
         "return:void"
       ],
-      "src/unnamed/arm9/0201/func_0201a028.c": [
+      "src/unnamed/arm9/0201/func_02019f10.c": [
         "return:void"
       ],
       "src/unnamed/arm9/0204/func_02040c34.c": [
@@ -7009,7 +7007,7 @@
       "src/unnamed/arm9/0204/func_0204175c.c": [
         "return:void"
       ],
-      "src/unnamed/arm9/0204/func_02041bbc.c": [
+      "src/unnamed/arm9/0204/func_02041a94.c": [
         "return:void"
       ],
       "src/unnamed/arm9/0204/func_02041d28.c": [
@@ -7039,7 +7037,7 @@
       "src/unnamed/arm9/0205/func_02058200.c": [
         "return:void"
       ],
-      "src/unnamed/arm9/0205/func_02058690.c": [
+      "src/unnamed/arm9/0205/func_0205865c.c": [
         "return:void"
       ],
       "src/unnamed/arm9/0205/func_02058894.c": [
@@ -7055,12 +7053,6 @@
         "return:void"
       ],
       "src/unnamed/arm9/0205/func_02059040.c": [
-        "return:void"
-      ],
-      "src/unnamed/arm9/0205/func_020590fc.c": [
-        "return:void"
-      ],
-      "src/unnamed/arm9/0205/func_02059170.c": [
         "return:void"
       ],
       "src/unnamed/arm9/0205/func_02059650.c": [
@@ -7358,7 +7350,7 @@
         "param:#1 int",
         "param:#2 int"
       ],
-      "src/unnamed/arm9/0204/func_020499bc.c": [
+      "src/unnamed/arm9/0204/func_020497a0.c": [
         "param:#1 void *"
       ]
     },
@@ -7825,10 +7817,8 @@
       "include/decl_common.h": [
         "return:void"
       ],
-      "src/unnamed/arm9/0204/func_02048e74.c": [
-        "return:void"
-      ],
-      "src/unnamed/arm9/0204/func_02048e94.c": [
+      "src/unnamed/arm9/0204/func_02048e54.c": [
+        "return:void",
         "return:int"
       ]
     },
@@ -8135,7 +8125,7 @@
       "src/unnamed/arm9/0201/func_0201818c.c": [
         "return:int"
       ],
-      "src/unnamed/arm9/0201/func_0201a244.c": [
+      "src/unnamed/arm9/0201/func_0201a1bc.c": [
         "return:int"
       ]
     },
@@ -11545,7 +11535,7 @@
       ]
     },
     "data_0208685c": {
-      "src/unnamed/arm9/0206/func_020678a4.c": [
+      "src/unnamed/arm9/0206/func_020676e0.c": [
         "return:int []"
       ]
     },
@@ -11635,10 +11625,8 @@
       ]
     },
     "data_0208eb54": {
-      "src/unnamed/arm9/0201/func_020186c0.c": [
-        "return:unsigned char"
-      ],
-      "src/unnamed/arm9/0201/func_02018770.c": [
+      "src/unnamed/arm9/0201/func_020185c0.c": [
+        "return:unsigned char",
         "return:signed char"
       ]
     },
@@ -11741,7 +11729,7 @@
       ]
     },
     "data_02099e20": {
-      "src/unnamed/arm9/0203/func_0203f9d4.c": [
+      "src/unnamed/arm9/0203/func_0203f650.c": [
         "return:int"
       ]
     },
@@ -12205,7 +12193,7 @@
       ]
     },
     "data_0209d518": {
-      "src/unnamed/arm9/0201/func_0201a244.c": [
+      "src/unnamed/arm9/0201/func_0201a1bc.c": [
         "return:int"
       ]
     },
@@ -12223,7 +12211,7 @@
       ]
     },
     "data_0209d5b8": {
-      "src/unnamed/arm9/0201/func_0201a244.c": [
+      "src/unnamed/arm9/0201/func_0201a1bc.c": [
         "return:char []"
       ]
     },
@@ -13157,7 +13145,7 @@
       "src/unnamed/arm9/0203/func_0203d9f4.c": [
         "return:unsigned short []"
       ],
-      "src/unnamed/arm9/0203/func_0203e20c.c": [
+      "src/unnamed/arm9/0203/func_0203e0ac.c": [
         "return:volatile unsigned short"
       ]
     },
@@ -13180,7 +13168,7 @@
       ]
     },
     "data_020a0f34": {
-      "src/unnamed/arm9/0203/func_0203f8a4.c": [
+      "src/unnamed/arm9/0203/func_0203f650.c": [
         "return:short"
       ]
     },
@@ -13190,7 +13178,7 @@
       ]
     },
     "data_020a0f40": {
-      "src/unnamed/arm9/0203/func_0203e20c.c": [
+      "src/unnamed/arm9/0203/func_0203e0ac.c": [
         "return:int"
       ]
     },
@@ -13297,9 +13285,6 @@
       "src/unnamed/arm9/0203/func_0203e0ac.c": [
         "return:unsigned char []"
       ],
-      "src/unnamed/arm9/0203/func_0203e20c.c": [
-        "return:unsigned char []"
-      ],
       "src/unnamed/arm9/0203/func_0203ea5c.c": [
         "return:Rec"
       ]
@@ -13323,7 +13308,7 @@
       ]
     },
     "data_020a10fc": {
-      "src/unnamed/arm9/0203/func_0203e20c.c": [
+      "src/unnamed/arm9/0203/func_0203e0ac.c": [
         "return:unsigned char []"
       ]
     },
@@ -13490,7 +13475,7 @@
       ]
     },
     "data_020a637c": {
-      "src/unnamed/arm9/0205/func_02059170.c": [
+      "src/unnamed/arm9/0205/func_02059040.c": [
         "return:int * []"
       ]
     },
@@ -13518,10 +13503,8 @@
       ]
     },
     "data_020a6438": {
-      "src/unnamed/arm9/0205/func_02059700.c": [
-        "return:volatile unsigned long long"
-      ],
-      "src/unnamed/arm9/0205/func_02059788.c": [
+      "src/unnamed/arm9/0205/func_02059650.c": [
+        "return:volatile unsigned long long",
         "return:int"
       ]
     },
@@ -13537,9 +13520,7 @@
     },
     "data_020a6484": {
       "src/unnamed/arm9/0205/func_0205b274.c": [
-        "return:void * *"
-      ],
-      "src/unnamed/arm9/0205/func_0205b358.c": [
+        "return:void * *",
         "return:N5b358 *"
       ]
     },
@@ -13555,7 +13536,7 @@
       "src/func_0205b070.c": [
         "return:volatile int"
       ],
-      "src/unnamed/arm9/0205/func_0205b358.c": [
+      "src/unnamed/arm9/0205/func_0205b274.c": [
         "return:int"
       ]
     },
@@ -13565,7 +13546,7 @@
       ]
     },
     "data_020a649c": {
-      "src/unnamed/arm9/0205/func_0205b358.c": [
+      "src/unnamed/arm9/0205/func_0205b274.c": [
         "return:int"
       ]
     },
@@ -13580,12 +13561,12 @@
       ]
     },
     "data_020a6760": {
-      "src/unnamed/arm9/0205/func_0205b358.c": [
+      "src/unnamed/arm9/0205/func_0205b274.c": [
         "return:N5b358 []"
       ]
     },
     "data_020a7fc0": {
-      "src/unnamed/arm9/0205/func_0205b358.c": [
+      "src/unnamed/arm9/0205/func_0205b274.c": [
         "return:void *"
       ]
     },
@@ -13600,12 +13581,12 @@
       ]
     },
     "data_020a805c": {
-      "src/unnamed/arm9/0205/func_0205da94.c": [
+      "src/unnamed/arm9/0205/func_0205d96c.c": [
         "return:unsigned int"
       ]
     },
     "data_020a8060": {
-      "src/unnamed/arm9/0205/func_0205db2c.c": [
+      "src/unnamed/arm9/0205/func_0205d96c.c": [
         "return:unsigned int"
       ]
     },
@@ -13633,7 +13614,7 @@
       ]
     },
     "data_020a8108": {
-      "src/unnamed/arm9/0205/func_0205fcfc.c": [
+      "src/unnamed/arm9/0205/func_0205fc44.c": [
         "return:int"
       ]
     },
@@ -13730,12 +13711,12 @@
       ]
     },
     "data_020a94d0": {
-      "src/unnamed/arm9/0206/func_02065ae0.c": [
+      "src/unnamed/arm9/0206/func_02065ad0.c": [
         "return:int"
       ]
     },
     "data_020a9570": {
-      "src/unnamed/arm9/0206/func_02065b88.c": [
+      "src/unnamed/arm9/0206/func_02065af0.c": [
         "return:unsigned char []"
       ]
     },
@@ -15812,12 +15793,12 @@
       ]
     },
     "data_ov007_020ccc68": {
-      "src/unnamed/ov007/func_ov007_020b2bd4.c": [
+      "src/unnamed/ov007/func_ov007_020b2998.c": [
         "return:char []"
       ]
     },
     "data_ov007_020ccc80": {
-      "src/unnamed/ov007/func_ov007_020b2bd4.c": [
+      "src/unnamed/ov007/func_ov007_020b2998.c": [
         "return:char []"
       ]
     },
@@ -15970,9 +15951,7 @@
         "return:int * []"
       ],
       "src/unnamed/ov007/func_ov007_020b155c.c": [
-        "return:char []"
-      ],
-      "src/unnamed/ov007/func_ov007_020b1604.c": [
+        "return:char []",
         "return:void *"
       ],
       "src/unnamed/ov007/func_ov007_020b2454.c": [
@@ -16006,9 +15985,6 @@
         "return:unsigned char []"
       ],
       "src/unnamed/ov007/func_ov007_020b5bf0.c": [
-        "return:unsigned char []"
-      ],
-      "src/unnamed/ov007/func_ov007_020b5f64.c": [
         "return:unsigned char []"
       ],
       "src/unnamed/ov007/func_ov007_020b647c.c": [
@@ -16226,7 +16202,7 @@
       "src/unnamed/ov007/func_ov007_020ba368.c": [
         "return:unsigned char []"
       ],
-      "src/unnamed/ov007/func_ov007_020bad8c.c": [
+      "src/unnamed/ov007/func_ov007_020ba9bc.c": [
         "return:unsigned char []"
       ],
       "src/unnamed/ov007/func_ov007_020bb4b0.c": [
@@ -16292,34 +16268,34 @@
       ]
     },
     "data_ov007_02104bdc": {
-      "src/unnamed/ov007/func_ov007_020c1560.c": [
+      "src/unnamed/ov007/func_ov007_020c14b8.c": [
         "return:unsigned int"
       ],
       "src/unnamed/ov007/func_ov007_020c1804.cpp": [
         "return:int []"
       ],
-      "src/unnamed/ov007/func_ov007_020c184c.cpp": [
+      "src/unnamed/ov007/func_ov007_020c1814.cpp": [
         "return:int"
       ]
     },
     "data_ov007_02104be0": {
-      "src/unnamed/ov007/func_ov007_020c184c.cpp": [
+      "src/unnamed/ov007/func_ov007_020c1814.cpp": [
         "return:int"
       ]
     },
     "data_ov007_02104be4": {
-      "src/unnamed/ov007/func_ov007_020c184c.cpp": [
+      "src/unnamed/ov007/func_ov007_020c1814.cpp": [
         "return:int"
       ]
     },
     "data_ov007_02104be8": {
-      "src/unnamed/ov007/func_ov007_020c14d4.c": [
+      "src/unnamed/ov007/func_ov007_020c14b8.c": [
         "return:unsigned int"
       ],
       "src/unnamed/ov007/func_ov007_020c17f4.cpp": [
         "return:int []"
       ],
-      "src/unnamed/ov007/func_ov007_020c184c.cpp": [
+      "src/unnamed/ov007/func_ov007_020c1814.cpp": [
         "return:int"
       ]
     },
@@ -19594,7 +19570,7 @@
       ]
     },
     "func_01ff859c": {
-      "src/unnamed/arm9/0207/func_02070c68.c": [
+      "src/unnamed/arm9/0207/func_02070b98.c": [
         "return:unsigned long long"
       ]
     },
@@ -20217,6 +20193,13 @@
       ]
     },
     "func_02012790": {
+      "src/_ZN10dScEntry_c16CheckMenuConfirmEi.cpp": [
+        "param:#1 int",
+        "return:void"
+      ],
+      "src/_ZN10dScEntry_c18UpdateCourseSelectEv.cpp": [
+        "return:void"
+      ],
       "src/_ZN7Message6UpdateEv.cpp": [
         "param:#1 int",
         "return:void"
@@ -20331,15 +20314,11 @@
         "param:#1 int",
         "return:void"
       ],
-      "src/unnamed/arm9/0201/func_02019ac4.c": [
+      "src/unnamed/arm9/0201/func_020199a4.c": [
         "param:#1 int",
         "return:void"
       ],
       "src/unnamed/arm9/0203/func_02030790.c": [
-        "param:#1 int",
-        "return:void"
-      ],
-      "src/_ZN10dScEntry_c16CheckMenuConfirmEi.cpp": [
         "param:#1 int",
         "return:void"
       ],
@@ -20373,9 +20352,6 @@
       ],
       "src/unnamed/ov075/func_ov075_0211867c.cpp": [
         "param:#1 int",
-        "return:void"
-      ],
-      "src/_ZN10dScEntry_c18UpdateCourseSelectEv.cpp": [
         "return:void"
       ],
       "src/unnamed/ov075/func_ov075_0211919c.c": [
@@ -22193,7 +22169,7 @@
       "src/unnamed/arm9/0201/func_0201818c.c": [
         "return:int"
       ],
-      "src/unnamed/arm9/0201/func_020182ec.c": [
+      "src/unnamed/arm9/0201/func_020182bc.c": [
         "param:#1 int *",
         "return:int"
       ]
@@ -22210,15 +22186,15 @@
         "param:#3 int",
         "return:void"
       ],
-      "src/unnamed/arm9/0201/func_02018474.c": [
+      "src/unnamed/arm9/0201/func_02018434.c": [
         "param:#1 int *"
       ]
     },
     "func_02018568": {
-      "src/unnamed/arm9/0201/func_0201834c.c": [
+      "src/unnamed/arm9/0201/func_020182bc.c": [
         "param:#1 void *"
       ],
-      "src/unnamed/arm9/0201/func_020184e0.c": [
+      "src/unnamed/arm9/0201/func_02018434.c": [
         "param:#1 unsigned int"
       ]
     },
@@ -22279,12 +22255,12 @@
         "param:#2 void *",
         "param:#3 unsigned int"
       ],
-      "src/unnamed/arm9/0201/func_0201834c.c": [
+      "src/unnamed/arm9/0201/func_020182bc.c": [
         "param:#1 Obj *",
         "param:#2 void *",
         "param:#3 unsigned int"
       ],
-      "src/unnamed/arm9/0201/func_020184e0.c": [
+      "src/unnamed/arm9/0201/func_02018434.c": [
         "param:#1 void *",
         "param:#2 unsigned int",
         "param:#3 unsigned int"
@@ -22296,7 +22272,7 @@
       "src/unnamed/arm9/0201/func_02018b64.c": [
         "param:#1 void *"
       ],
-      "src/unnamed/arm9/0201/func_02018cbc.c": [
+      "src/unnamed/arm9/0201/func_02018c00.c": [
         "param:#1 void *",
         "param:#2 void *"
       ]
@@ -22307,10 +22283,10 @@
       ]
     },
     "func_02018dc4": {
-      "src/unnamed/arm9/0201/func_020182ec.c": [
+      "src/unnamed/arm9/0201/func_020182bc.c": [
         "arity:2"
       ],
-      "src/unnamed/arm9/0201/func_02018474.c": [
+      "src/unnamed/arm9/0201/func_02018434.c": [
         "arity:2"
       ],
       "src/unnamed/arm9/0201/func_020185c0.c": [
@@ -22321,7 +22297,7 @@
       ]
     },
     "func_02018e00": {
-      "src/unnamed/arm9/0201/func_02018cbc.c": [
+      "src/unnamed/arm9/0201/func_02018c00.c": [
         "param:#1 void *"
       ]
     },
@@ -22371,20 +22347,15 @@
     },
     "func_0201a614": {
       "src/unnamed/arm9/0201/func_0201a5cc.c": [
-        "arity:0"
-      ],
-      "src/unnamed/arm9/0201/func_0201a5f8.c": [
+        "arity:0",
         "param:#1 void *"
       ]
     },
     "func_0201a694": {
       "src/unnamed/arm9/0201/func_0201a5cc.c": [
         "arity:0",
-        "return:void"
-      ],
-      "src/unnamed/arm9/0201/func_0201a5f8.c": [
-        "param:#1 void *",
-        "return:void"
+        "return:void",
+        "param:#1 void *"
       ]
     },
     "func_0201a8b4": {
@@ -23280,7 +23251,7 @@
       ]
     },
     "func_0203e978": {
-      "src/unnamed/arm9/0203/func_0203e20c.c": [
+      "src/unnamed/arm9/0203/func_0203e0ac.c": [
         "arity:0"
       ]
     },
@@ -23296,18 +23267,12 @@
       ]
     },
     "func_0203f714": {
-      "src/unnamed/arm9/0203/func_0203f920.c": [
+      "src/unnamed/arm9/0203/func_0203f650.c": [
         "arity:0"
       ]
     },
     "func_0203f920": {
-      "src/unnamed/arm9/0203/func_0203f6b4.c": [
-        "arity:0"
-      ],
-      "src/unnamed/arm9/0203/func_0203f818.c": [
-        "arity:0"
-      ],
-      "src/unnamed/arm9/0203/func_0203f9d4.c": [
+      "src/unnamed/arm9/0203/func_0203f650.c": [
         "arity:0",
         "return:int"
       ]
@@ -23788,7 +23753,7 @@
       ]
     },
     "func_020497a0": {
-      "src/unnamed/arm9/0204/func_02049ba8.c": [
+      "src/unnamed/arm9/0204/func_020497a0.c": [
         "param:#1 int",
         "param:#2 int",
         "param:#3 int",
@@ -23796,7 +23761,7 @@
       ]
     },
     "func_020499bc": {
-      "src/unnamed/arm9/0204/func_02049ba8.c": [
+      "src/unnamed/arm9/0204/func_020497a0.c": [
         "param:#1 int",
         "param:#2 int",
         "param:#3 int",
@@ -24157,7 +24122,7 @@
       ]
     },
     "func_02053380": {
-      "src/unnamed/arm9/0204/func_0204cebc.c": [
+      "src/unnamed/arm9/0204/func_0204c584.c": [
         "param:#2 Vector3s *"
       ]
     },
@@ -24250,7 +24215,7 @@
       ]
     },
     "func_02056e4c": {
-      "src/unnamed/arm9/0205/func_02059700.c": [
+      "src/unnamed/arm9/0205/func_02059650.c": [
         "param:#1 int",
         "param:#2 void *",
         "param:#3 int"
@@ -24308,7 +24273,7 @@
       "src/unnamed/arm9/0206/func_0206a3a4.c": [
         "param:#1 void *"
       ],
-      "src/unnamed/arm9/0206/func_0206cee0.c": [
+      "src/unnamed/arm9/0206/func_0206cec0.c": [
         "param:#1 unsigned int",
         "return:void *"
       ]
@@ -24385,7 +24350,7 @@
       ]
     },
     "func_02057ce8": {
-      "src/unnamed/arm9/0205/func_02057d00.c": [
+      "src/unnamed/arm9/0205/func_02057ce8.c": [
         "param:#1 void *",
         "param:#2 unsigned int",
         "param:#3 unsigned int"
@@ -24527,7 +24492,7 @@
       ]
     },
     "func_0205938c": {
-      "src/unnamed/arm9/0205/func_02059170.c": [
+      "src/unnamed/arm9/0205/func_02059040.c": [
         "return:void *"
       ]
     },
@@ -24606,7 +24571,7 @@
       "src/unnamed/arm9/0203/func_0203db64.c": [
         "param:#1 void *"
       ],
-      "src/unnamed/arm9/0206/func_02069038.c": [
+      "src/unnamed/arm9/0206/func_02068e4c.c": [
         "param:#1 void *"
       ]
     },
@@ -24629,7 +24594,7 @@
       "src/unnamed/arm9/0203/func_0203db64.c": [
         "arity:3"
       ],
-      "src/unnamed/arm9/0203/func_0203e20c.c": [
+      "src/unnamed/arm9/0203/func_0203e0ac.c": [
         "arity:3"
       ],
       "src/unnamed/arm9/0203/func_0203ea5c.c": [
@@ -24979,7 +24944,7 @@
       ]
     },
     "func_0205db78": {
-      "src/unnamed/arm9/0205/func_0205db2c.c": [
+      "src/unnamed/arm9/0205/func_0205d96c.c": [
         "arity:0",
         "return:int"
       ]
@@ -25005,7 +24970,7 @@
       ]
     },
     "func_0205e280": {
-      "src/unnamed/arm9/0205/func_0205e7e0.c": [
+      "src/unnamed/arm9/0205/func_0205e280.c": [
         "param:#1 char *",
         "return:int"
       ]
@@ -25022,7 +24987,7 @@
         "param:#1 Col *",
         "param:#2 Col *"
       ],
-      "src/unnamed/arm9/0205/func_0205efe0.c": [
+      "src/unnamed/arm9/0205/func_0205efc0.c": [
         "param:#1 H4 *",
         "param:#2 H4 *"
       ]
@@ -25066,7 +25031,7 @@
       ]
     },
     "func_0205f5c0": {
-      "src/unnamed/arm9/0201/func_02019f64.c": [
+      "src/unnamed/arm9/0201/func_02019f10.c": [
         "return:void"
       ]
     },
@@ -25087,12 +25052,12 @@
       ]
     },
     "func_0205f8e0": {
-      "src/unnamed/arm9/0201/func_02019e60.c": [
+      "src/unnamed/arm9/0201/func_02019dfc.c": [
         "return:void"
       ]
     },
     "func_0205f958": {
-      "src/unnamed/arm9/0201/func_02019f64.c": [
+      "src/unnamed/arm9/0201/func_02019f10.c": [
         "return:void"
       ]
     },
@@ -25110,7 +25075,7 @@
       ]
     },
     "func_0205fa78": {
-      "src/unnamed/arm9/0201/func_02019f64.c": [
+      "src/unnamed/arm9/0201/func_02019f10.c": [
         "return:void"
       ]
     },
@@ -25132,7 +25097,7 @@
       ]
     },
     "func_0205fbd0": {
-      "src/unnamed/arm9/0205/func_0205f994.c": [
+      "src/unnamed/arm9/0205/func_0205f958.c": [
         "return:void"
       ]
     },
@@ -25165,7 +25130,7 @@
       ]
     },
     "func_0205ff20": {
-      "src/unnamed/arm9/0205/func_0205fb58.c": [
+      "src/unnamed/arm9/0205/func_0205fb1c.c": [
         "arity:4",
         "return:int"
       ],
@@ -25184,12 +25149,12 @@
       ]
     },
     "func_0205ff90": {
-      "src/unnamed/arm9/0205/func_0205da94.c": [
+      "src/unnamed/arm9/0205/func_0205d96c.c": [
         "param:#1 unsigned short"
       ]
     },
     "func_0205ffb0": {
-      "src/unnamed/arm9/0205/func_0205da94.c": [
+      "src/unnamed/arm9/0205/func_0205d96c.c": [
         "param:#1 unsigned short"
       ]
     },
@@ -25238,7 +25203,7 @@
       ]
     },
     "func_02060918": {
-      "src/unnamed/arm9/0205/func_0205db2c.c": [
+      "src/unnamed/arm9/0205/func_0205d96c.c": [
         "param:#1 int",
         "param:#2 int",
         "param:#3 int",
@@ -25336,7 +25301,7 @@
       ]
     },
     "func_02062024": {
-      "src/unnamed/arm9/0206/func_020620b0.c": [
+      "src/unnamed/arm9/0206/func_02062024.c": [
         "return:void"
       ]
     },
@@ -25350,7 +25315,7 @@
       ]
     },
     "func_020621b8": {
-      "src/unnamed/arm9/0203/func_0203f6b4.c": [
+      "src/unnamed/arm9/0203/func_0203f650.c": [
         "param:#1 void *"
       ],
       "src/unnamed/arm9/0206/func_020690b0.c": [
@@ -25399,7 +25364,7 @@
         "param:#1 void (*)(void *)",
         "return:int"
       ],
-      "src/unnamed/arm9/0206/func_02068a28.c": [
+      "src/unnamed/arm9/0206/func_020688fc.c": [
         "param:#5 int",
         "param:#6 int"
       ]
@@ -25473,7 +25438,7 @@
       ]
     },
     "func_020634fc": {
-      "src/unnamed/arm9/0203/func_0203f818.c": [
+      "src/unnamed/arm9/0203/func_0203f650.c": [
         "param:#1 void *"
       ]
     },
@@ -25797,22 +25762,22 @@
       ]
     },
     "func_0206703c": {
-      "src/unnamed/arm9/0203/func_0203e20c.c": [
+      "src/unnamed/arm9/0203/func_0203e0ac.c": [
         "param:#1 unsigned short"
       ]
     },
     "func_02067138": {
-      "src/unnamed/arm9/0203/func_0203e20c.c": [
+      "src/unnamed/arm9/0203/func_0203e0ac.c": [
         "param:#1 unsigned short"
       ]
     },
     "func_020671b4": {
-      "src/unnamed/arm9/0203/func_0203e20c.c": [
+      "src/unnamed/arm9/0203/func_0203e0ac.c": [
         "param:#1 unsigned short"
       ]
     },
     "func_02067250": {
-      "src/unnamed/arm9/0203/func_0203e20c.c": [
+      "src/unnamed/arm9/0203/func_0203e0ac.c": [
         "param:#1 unsigned short"
       ]
     },
@@ -25823,7 +25788,7 @@
       ]
     },
     "func_02067bfc": {
-      "src/unnamed/arm9/0203/func_0203e20c.c": [
+      "src/unnamed/arm9/0203/func_0203e0ac.c": [
         "param:#1 int",
         "param:#3 int"
       ]
@@ -25839,12 +25804,12 @@
       ]
     },
     "func_02068514": {
-      "src/unnamed/arm9/0206/func_02068680.c": [
+      "src/unnamed/arm9/0206/func_020685cc.c": [
         "param:#1 int"
       ]
     },
     "func_020685cc": {
-      "src/unnamed/arm9/0206/func_02068680.c": [
+      "src/unnamed/arm9/0206/func_020685cc.c": [
         "param:#2 void *"
       ]
     },
@@ -25873,7 +25838,7 @@
       ]
     },
     "func_02068dc8": {
-      "src/unnamed/arm9/0203/func_0203e20c.c": [
+      "src/unnamed/arm9/0203/func_0203e0ac.c": [
         "return:void"
       ]
     },
@@ -25883,7 +25848,7 @@
       ]
     },
     "func_02068e4c": {
-      "src/unnamed/arm9/0203/func_0203e20c.c": [
+      "src/unnamed/arm9/0203/func_0203e0ac.c": [
         "param:#1 void *",
         "param:#3 unsigned short",
         "param:#4 unsigned short",
@@ -25979,17 +25944,10 @@
     "func_0206d868": {
       "src/unnamed/arm9/0206/func_0206cf98.c": [
         "param:#1 const SavedIntState *"
-      ],
-      "src/unnamed/arm9/0206/func_0206d32c.c": [
-        "param:#1 const SavedIntState *"
       ]
     },
     "func_0206dab4": {
       "src/unnamed/arm9/0206/func_0206cf98.c": [
-        "arity:2",
-        "return:unsigned int"
-      ],
-      "src/unnamed/arm9/0206/func_0206d32c.c": [
         "arity:2",
         "return:unsigned int"
       ]
@@ -26133,7 +26091,7 @@
       ]
     },
     "func_02071708": {
-      "src/unnamed/arm9/0207/func_02070c68.c": [
+      "src/unnamed/arm9/0207/func_02070b98.c": [
         "arity:1"
       ]
     },
@@ -27603,7 +27561,7 @@
       ]
     },
     "func_ov007_020b3f20": {
-      "src/unnamed/ov007/func_ov007_020b2bd4.c": [
+      "src/unnamed/ov007/func_ov007_020b2998.c": [
         "return:int"
       ],
       "src/unnamed/ov007/func_ov007_020b697c.c": [
@@ -27831,7 +27789,7 @@
       ]
     },
     "func_ov007_020bbf98": {
-      "src/unnamed/ov007/func_ov007_020b2bd4.c": [
+      "src/unnamed/ov007/func_ov007_020b2998.c": [
         "param:#2 int"
       ]
     },
@@ -27851,12 +27809,12 @@
       ]
     },
     "func_ov007_020bc6b4": {
-      "src/unnamed/ov007/func_ov007_020b2bd4.c": [
+      "src/unnamed/ov007/func_ov007_020b2998.c": [
         "param:#2 void *"
       ]
     },
     "func_ov007_020bc6d4": {
-      "src/unnamed/ov007/func_ov007_020b2bd4.c": [
+      "src/unnamed/ov007/func_ov007_020b2998.c": [
         "param:#2 int"
       ],
       "src/unnamed/ov007/func_ov007_020beaa0.c": [
@@ -27929,7 +27887,7 @@
       "src/unnamed/ov007/func_ov007_020bb4b0.c": [
         "arity:1"
       ],
-      "src/unnamed/ov007/func_ov007_020bf790.c": [
+      "src/unnamed/ov007/func_ov007_020bf690.c": [
         "arity:1"
       ]
     },
@@ -27993,7 +27951,7 @@
       ]
     },
     "func_ov007_020bfd70": {
-      "src/unnamed/ov007/func_ov007_020be7a8.c": [
+      "src/unnamed/ov007/func_ov007_020be684.c": [
         "param:#1 int",
         "param:#2 int"
       ]
@@ -28299,17 +28257,13 @@
       "src/unnamed/ov007/func_ov007_020c2acc.c": [
         "param:#2 int",
         "return:void *"
-      ],
-      "src/unnamed/ov007/func_ov007_020c2b38.c": [
-        "param:#2 int",
-        "return:void *"
       ]
     },
     "func_ov007_020c2c68": {
       "src/unnamed/ov007/func_ov007_020c2a04.c": [
         "return:S *"
       ],
-      "src/unnamed/ov007/func_ov007_020c2b9c.c": [
+      "src/unnamed/ov007/func_ov007_020c2acc.c": [
         "return:void *"
       ]
     },
@@ -28597,7 +28551,7 @@
         "param:#2 int",
         "return:char *"
       ],
-      "src/unnamed/ov007/func_ov007_020c2068.c": [
+      "src/unnamed/ov007/func_ov007_020c2024.c": [
         "param:#2 int",
         "return:char *"
       ],
@@ -28627,7 +28581,7 @@
         "param:#2 int",
         "return:void *"
       ],
-      "src/unnamed/ov007/func_ov007_020c690c.c": [
+      "src/unnamed/ov007/func_ov007_020c684c.c": [
         "param:#2 int",
         "return:void *"
       ],
@@ -28787,7 +28741,7 @@
       "src/unnamed/ov007/func_ov007_020ba368.c": [
         "param:#1 int"
       ],
-      "src/unnamed/ov007/func_ov007_020bad8c.c": [
+      "src/unnamed/ov007/func_ov007_020ba9bc.c": [
         "param:#1 int"
       ],
       "src/unnamed/ov007/func_ov007_020bb4b0.c": [
@@ -28973,7 +28927,7 @@
       ]
     },
     "func_ov007_020c844c": {
-      "src/unnamed/ov007/func_ov007_020c690c.c": [
+      "src/unnamed/ov007/func_ov007_020c684c.c": [
         "param:#1 void *"
       ],
       "src/unnamed/ov007/func_ov007_020c798c.c": [
@@ -28982,7 +28936,7 @@
       ]
     },
     "func_ov007_020c86c4": {
-      "src/unnamed/ov007/func_ov007_020c8688.c": [
+      "src/unnamed/ov007/func_ov007_020c8498.c": [
         "arity:2"
       ]
     },
@@ -28993,7 +28947,7 @@
       ]
     },
     "func_ov007_020c897c": {
-      "src/unnamed/ov007/func_ov007_020c8970.c": [
+      "src/unnamed/ov007/func_ov007_020c8498.c": [
         "arity:0",
         "return:int"
       ]

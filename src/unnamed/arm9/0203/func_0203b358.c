@@ -12,7 +12,6 @@ void *func_0203b358(struct Node *thiz)
     return 0;
 }
 
-
 struct Node {
     char pad[4];
     void *cached;

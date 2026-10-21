@@ -70,7 +70,6 @@ void func_ov007_020c684c(char *o)
     p->limitIndex = 0;
 }
 
-
 #include "types.h"
 #include "Ov007StrokePath.h"
 
@@ -107,21 +106,20 @@ typedef struct Ov007Picker {
     Vector3 pos;    /* 0x70 */
     char pad_7c[0x1c];
     Vector3 anchorPos; /* 0x98: the +0x94 Point's position (func_ov007_020c5a6c) */
-    void *link;   /* 0xa4: func_ov007_020c80a4; from +0x94 to posPoint */
-    void *camera; /* 0xa8: a3; func_ov007_020c65bc unprojects through it */
+    void *link;        /* 0xa4: func_ov007_020c80a4; from +0x94 to posPoint */
+    void *camera;      /* 0xa8: a3; func_ov007_020c65bc unprojects through it */
 } Ov007Picker;
 
-extern void* func_ov007_020c3df4(int a, int size);
-extern void func_ov007_020c684c(void* self);
-extern void* func_ov007_020c844c(void* p, int q);
-extern void* func_ov007_020c80a4(void);
-extern void func_ov007_020c8010(void* self, void* a, void* b);
+extern void *func_ov007_020c3df4(int a, int size);
+extern void func_ov007_020c684c(void *self);
+extern void *func_ov007_020c844c(void *p, int q);
+extern void *func_ov007_020c80a4(void);
+extern void func_ov007_020c8010(void *self, void *a, void *b);
 extern int func_ov007_020c2c68(int a, int b, int c);
-extern void func_ov007_020c6724(void* self, int flag);
+extern void func_ov007_020c6724(void *self, int flag);
 
-void* func_ov007_020c690c(int a0, int a1, int a2, int a3, int a4, int a5)
-{
-    char* o = (char*)func_ov007_020c3df4(0, 0xd0);
+void *func_ov007_020c690c(int a0, int a1, int a2, int a3, int a4, int a5) {
+    char *o = (char *)func_ov007_020c3df4(0, 0xd0);
     Ov007Picker *p = (Ov007Picker *)o;
     int n4 = a0 << 2;
     int n2;
@@ -129,34 +127,34 @@ void* func_ov007_020c690c(int a0, int a1, int a2, int a3, int a4, int a5)
 
     p->maxGroups = a0;
     p->maxPoints = a1;
-    *(s32*)(o + 0x18) = a5;
+    *(s32 *)(o + 0x18) = a5;
     p->params = (void *)a4;
     p->camera = (void *)a3;
 
     p->groupPoints = (Vector3 **)func_ov007_020c3df4(0, n4);
     p->groupPointCopies = (Vector3 **)func_ov007_020c3df4(0, n4);
-    *(s32*)(o + 0x30) = 0;
+    *(s32 *)(o + 0x30) = 0;
     p->groups = (Ov007StrokePath **)func_ov007_020c3df4(0, n4);
     p->pointLists = (void **)func_ov007_020c3df4(0, n4);
 
     n2 = a0 << 1;
-    *(void**)(o + 0x48) = func_ov007_020c3df4(0, n2);
-    *(void**)(o + 0x4c) = func_ov007_020c3df4(0, n2);
-    *(void**)(o + 0x50) = func_ov007_020c3df4(0, n2);
-    *(void**)(o + 0x54) = func_ov007_020c3df4(0, n2);
+    *(void **)(o + 0x48) = func_ov007_020c3df4(0, n2);
+    *(void **)(o + 0x4c) = func_ov007_020c3df4(0, n2);
+    *(void **)(o + 0x50) = func_ov007_020c3df4(0, n2);
+    *(void **)(o + 0x54) = func_ov007_020c3df4(0, n2);
 
     p->groupLinks = (void ***)func_ov007_020c3df4(0, n4);
-    *(void**)(o + 0x40) = func_ov007_020c3df4(0, n4);
-    *(void**)(o + 0x44) = func_ov007_020c3df4(0, n4);
+    *(void **)(o + 0x40) = func_ov007_020c3df4(0, n4);
+    *(void **)(o + 0x44) = func_ov007_020c3df4(0, n4);
 
     func_ov007_020c684c(p);
 
     for (i = 0; i < a0; i++) {
         p->groups[i] = 0;
-        ((u16*)*(void**)(o + 0x4c))[i] = 0xffff;
-        ((u16*)*(void**)(o + 0x48))[i] = ((u16*)*(void**)(o + 0x4c))[i];
-        ((u16*)*(void**)(o + 0x54))[i] = 0xffff;
-        ((u16*)*(void**)(o + 0x50))[i] = ((u16*)*(void**)(o + 0x54))[i];
+        ((u16 *)*(void **)(o + 0x4c))[i] = 0xffff;
+        ((u16 *)*(void **)(o + 0x48))[i] = ((u16 *)*(void **)(o + 0x4c))[i];
+        ((u16 *)*(void **)(o + 0x54))[i] = 0xffff;
+        ((u16 *)*(void **)(o + 0x50))[i] = ((u16 *)*(void **)(o + 0x54))[i];
     }
 
     p->posPoint = func_ov007_020c844c(&p->pos, 0xa000);

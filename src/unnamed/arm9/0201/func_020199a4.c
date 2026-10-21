@@ -33,7 +33,6 @@ void func_020199a4(void)
     }
 }
 
-
 extern void func_0201a4d0(void);
 extern int func_0205f650(void);
 extern int func_0205f66c(int a);
@@ -42,8 +41,7 @@ extern void func_02011db4(void);
 extern unsigned char data_0209d4f4;
 extern unsigned char data_0209d4ec;
 
-void func_02019a58(void)
-{
+void func_02019a58(void) {
     while (func_0205f650() != 1 && func_0205f66c(1) != 1) {
         func_0201a4d0();
     }
@@ -55,7 +53,6 @@ void func_02019a58(void)
     }
     data_0209d4ec = 7;
 }
-
 
 enum { false, true };
 
@@ -84,8 +81,7 @@ static inline int IsSkipRequested(void) {
     return (func_0203da3c() != 0 || data_0209f1d8 != 0) ? 1 : 0;
 }
 
-void func_02019ac4(void)
-{
+void func_02019ac4(void) {
     int skip;
     unsigned short lid;
     int delta;

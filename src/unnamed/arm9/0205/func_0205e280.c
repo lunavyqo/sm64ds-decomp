@@ -51,7 +51,6 @@ void func_0205e280(HashCtx* c)
     func_0205e3d4(c);
 }
 
-
 /* SHA-1 block transform (RFC 3174 SHA1ProcessMessageBlock), plus a
    game-specific patch that temporarily zeroes two words of the message
    block while data_020a80c4 is set.
@@ -69,13 +68,11 @@ void func_0205e280(HashCtx* c)
      the round-1 body is what keeps K[0] un-hoisted in the ROM; rounds 2..4
      hoist their K into the preheader on their own. */
 
-typedef struct
-{
+typedef struct {
     unsigned int w[4];
 } T4;
 
-typedef struct
-{
+typedef struct {
     unsigned int Intermediate_Hash[5]; /* 0x00 */
     unsigned int Length_Low;           /* 0x14 */
     unsigned int Length_High;          /* 0x18 */
@@ -88,8 +85,7 @@ extern unsigned int data_0209a054[4];
 
 #define SHA1CircularShift(bits, word) (((word) << (bits)) | ((word) >> (32 - (bits))))
 
-void func_0205e3d4(void *ctx)
-{
+void func_0205e3d4(void *ctx) {
     SHA1Context *context = (SHA1Context *)ctx;
     unsigned int K[4];
     int t;
@@ -101,24 +97,21 @@ void func_0205e3d4(void *ctx)
 
     *(T4 *)K = *(T4 *)data_0209a054;
     blk = context->Message_Block;
-    if (data_020a80c4 != 0)
-    {
+    if (data_020a80c4 != 0) {
         save[0] = *(unsigned int *)(blk + 0x18);
         save[1] = *(unsigned int *)(blk + 0x38);
         *(unsigned int *)(blk + 0x18) = 0;
         *(unsigned int *)(blk + 0x38) = 0;
     }
 
-    for (t = 0; t < 16; t++)
-    {
+    for (t = 0; t < 16; t++) {
         W[t] = (unsigned int)context->Message_Block[t * 4] << 24;
         W[t] |= (unsigned int)context->Message_Block[t * 4 + 1] << 16;
         W[t] |= (unsigned int)context->Message_Block[t * 4 + 2] << 8;
         W[t] |= (unsigned int)context->Message_Block[t * 4 + 3];
     }
 
-    for (t = 16; t < 80; t++)
-    {
+    for (t = 16; t < 80; t++) {
         W[t] = SHA1CircularShift(1, W[t - 3] ^ W[t - 8] ^ W[t - 14] ^ W[t - 16]);
     }
 
@@ -128,8 +121,7 @@ void func_0205e3d4(void *ctx)
     D = context->Intermediate_Hash[3];
     E = context->Intermediate_Hash[4];
 
-    for (t = 0; t < 20; t++)
-    {
+    for (t = 0; t < 20; t++) {
         temp = SHA1CircularShift(5, A) + ((B & C) | ((~B) & D)) + E + W[t] +
                ((volatile unsigned int *)K)[0];
         E = D;
@@ -139,8 +131,7 @@ void func_0205e3d4(void *ctx)
         A = temp;
     }
 
-    for (t = 20; t < 40; t++)
-    {
+    for (t = 20; t < 40; t++) {
         temp = SHA1CircularShift(5, A) + (B ^ C ^ D) + E + W[t] + K[1];
         E = D;
         D = C;
@@ -149,8 +140,7 @@ void func_0205e3d4(void *ctx)
         A = temp;
     }
 
-    for (t = 40; t < 60; t++)
-    {
+    for (t = 40; t < 60; t++) {
         temp = SHA1CircularShift(5, A) + ((B & C) | (B & D) | (C & D)) + E + W[t] + K[2];
         E = D;
         D = C;
@@ -159,8 +149,7 @@ void func_0205e3d4(void *ctx)
         A = temp;
     }
 
-    for (t = 60; t < 80; t++)
-    {
+    for (t = 60; t < 80; t++) {
         temp = SHA1CircularShift(5, A) + (B ^ C ^ D) + E + W[t] + K[3];
         E = D;
         D = C;
@@ -176,27 +165,25 @@ void func_0205e3d4(void *ctx)
     *(unsigned int *)(((int)&context->Intermediate_Hash[4]) & ~0ULL) += E;
     context->Message_Block_Index = 0;
 
-    if (data_020a80c4 != 0)
-    {
+    if (data_020a80c4 != 0) {
         *(unsigned int *)(blk + 0x18) = save[0];
         *(unsigned int *)(blk + 0x38) = save[1];
     }
 }
 
-
 #include "types.h"
 #pragma opt_loop_invariants off
 struct Obj {
-  char pad00[0x14];
-  int f14;       // 0x14
-  int f18;       // 0x18
-  int f1c;       // 0x1c
-  u8 buf[0x40];  // 0x20
-  int f60;       // 0x60
-  int f64;       // 0x64
+    char pad00[0x14];
+    int f14;      // 0x14
+    int f18;      // 0x18
+    int f1c;      // 0x1c
+    u8 buf[0x40]; // 0x20
+    int f60;      // 0x60
+    int f64;      // 0x64
 };
 
-extern void func_0205e3d4(struct Obj*);
+extern void func_0205e3d4(struct Obj *);
 
 int func_0205e6e4(struct Obj *obj, u8 *p, int count) {
     if (count == 0)
@@ -226,18 +213,18 @@ int func_0205e6e4(struct Obj *obj, u8 *p, int count) {
     return 0;
 }
 
-
 extern int func_0205e280(char *c);
 
-int func_0205e7e0(unsigned int *thiz, unsigned char *out)
-{
+int func_0205e7e0(unsigned int *thiz, unsigned char *out) {
     int i;
     unsigned int r;
-    if (thiz == 0 || out == 0) return 1;
+    if (thiz == 0 || out == 0)
+        return 1;
     r = thiz[0x19];
-    if (r != 0) return r;
+    if (r != 0)
+        return r;
     if (thiz[0x18] == 0) {
-        char *p = (char*)thiz;
+        char *p = (char *)thiz;
         func_0205e280(p);
         for (i = 0; i < 0x40; i++)
             (p + i)[0x20] = 0;

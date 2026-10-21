@@ -16,31 +16,29 @@ void func_0203f650(int x)
     fn(v);
 }
 
-
 extern int data_02099e20[];
-void func_0203f6a4(int v) { data_02099e20[0] = v; }
-
-
-extern int func_020621b8(void* p);
-extern void Crash(void);
-extern void func_0203f920(void);
-void func_0203f6b4(void){
-  if (func_020621b8((void*)func_0203f920) == 2) return;
-  Crash();
+void func_0203f6a4(int v) {
+    data_02099e20[0] = v;
 }
 
+extern int func_020621b8(void *p);
+extern void Crash(void);
+extern void func_0203f920(void);
+void func_0203f6b4(void) {
+    if (func_020621b8((void *)func_0203f920) == 2)
+        return;
+    Crash();
+}
 
 extern short data_020a0f18;
 extern void func_0203f6b4(void);
 extern void func_0203f6a4(int v);
 
-void func_0203f6e8(short v)
-{
+void func_0203f6e8(short v) {
     data_020a0f18 = v;
     func_0203f6b4();
     func_0203f6a4(2);
 }
-
 
 #include "types.h"
 extern void func_0203f6e8(s16 v);
@@ -53,10 +51,11 @@ extern u16 data_020a0fd0[];
 extern u8 data_020a0ef4;
 extern s16 data_020a0f18;
 
-struct S { u16 f0, f2, f4, f6, f8, fa; };
+struct S {
+    u16 f0, f2, f4, f6, f8, fa;
+};
 
-void func_0203f714(struct S* s)
-{
+void func_0203f714(struct S *s) {
     u16 a, cur, v;
     int r;
     if (s->f2 != 0) {
@@ -85,24 +84,22 @@ void func_0203f714(struct S* s)
     }
 }
 
-
 extern unsigned short func_02061960(void);
 extern int func_020634fc(void *a, int b, int c, int d, unsigned short e);
 extern void func_0203f920(void);
 
-int func_0203f818(int arg)
-{
+int func_0203f818(int arg) {
     unsigned int n = arg;
     unsigned int mask = func_02061960();
     while (((1 << (n - 1)) & mask) == 0) {
         n = (unsigned short)(n + 1);
-        if (n > 0xe) return 1;
+        if (n > 0xe)
+            return 1;
     }
     if (func_020634fc((void *)func_0203f920, 3, 0x11, n, 0x1e) != 2)
         return 2;
     return 0;
 }
-
 
 extern int func_0203f818(int a);
 extern void func_0203f6e8(short v);
@@ -124,7 +121,6 @@ void func_0203f8a4(void) {
     }
 }
 
-
 #include "types.h"
 extern void func_0203f650(int x);
 extern void func_0203f8a4(void);
@@ -133,8 +129,7 @@ extern void func_0203f6a4(int v);
 extern s16 data_020a0f18;
 extern int data_020a0f90;
 
-void func_0203f920(u16 *o)
-{
+void func_0203f920(u16 *o) {
     switch (o[0]) {
     case 0:
         if (o[1] != 0)
@@ -156,7 +151,6 @@ void func_0203f920(u16 *o)
     }
 }
 
-
 extern void func_0203f650(int x);
 extern int func_02062240(int a0, int a1, int a2);
 extern void func_0203f6a4(int v);
@@ -164,8 +158,7 @@ extern int data_02099e20;
 extern int data_020a0f90;
 extern int func_0203f920(void);
 
-void func_0203f9d4(int a0, int a1)
-{
+void func_0203f9d4(int a0, int a1) {
     data_020a0f90 = a1;
     if (data_02099e20 != 3) {
         func_0203f650(-10);

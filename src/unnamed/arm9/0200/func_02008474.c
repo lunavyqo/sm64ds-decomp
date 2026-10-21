@@ -10,7 +10,6 @@ int func_02008474(struct dCamera_c *self, struct Vector3_16 *v, int a, int b) {
     return func_020084b0(self, (const unsigned char *)((const unsigned char *)v + 6), a, b);
 }
 
-
 // @symbol func_020084b0
 /* recovered: shared common types */
 #include "common.h"
@@ -22,27 +21,23 @@ int func_02008474(struct dCamera_c *self, struct Vector3_16 *v, int a, int b) {
 typedef short s16;
 typedef int s32;
 
-
-
 struct dCamera_c {
     char pad[0x8c];
-    struct Vector3 vec;   // 0x8c
+    struct Vector3 vec; // 0x8c
 };
 
-extern s16 ReadUnalignedShort(const void *from);   // 0x0200e768
+extern s16 ReadUnalignedShort(const void *from); // 0x0200e768
 
-s32 func_020084b0(struct dCamera_c *self, const unsigned char *data)
-{
+s32 func_020084b0(struct dCamera_c *self, const unsigned char *data) {
     s32 y, z, x;
     z = ReadUnalignedShort(data + 4) << 12;
     y = ReadUnalignedShort(data + 2) << 12;
-    x = ReadUnalignedShort(data)     << 12;
+    x = ReadUnalignedShort(data) << 12;
     self->vec.x = x;
     self->vec.y = y;
     self->vec.z = z;
     return 1;
 }
-
 
 #include "types.h"
 

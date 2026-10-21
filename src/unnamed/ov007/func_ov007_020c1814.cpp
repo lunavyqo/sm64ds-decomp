@@ -10,7 +10,6 @@ void func_ov007_020c1814(int textureOffset, int paletteOffset) {
 }
 }
 
-
 //cpp
 
 extern "C" {

@@ -41,7 +41,6 @@ void **func_0205b274(int flag)
     return head;
 }
 
-
 struct Node5b1a4;
 
 typedef struct N5b358 {
@@ -70,8 +69,7 @@ void *func_0205b1d8(int arg);
 void func_0205b1a4(struct Node5b1a4 *node);
 void func_0205b070(int arg);
 
-void func_0205b358(void)
-{
+void func_0205b358(void) {
     int i;
     void *p;
 

@@ -75,13 +75,11 @@ void func_020676e0(unsigned *self, unsigned *mode_p, unsigned *out, unsigned *cu
     }
 }
 
-
 #include "types.h"
 extern void func_020676e0(void *in, void *tbl, void *dst, void *aux);
 extern void CpuCopy8(void *dst, void *src, u32 size);
 extern int data_0208685c[];
-void func_020678a4(int *out, int *in, void *dst)
-{
+void func_020678a4(int *out, int *in, void *dst) {
     int aux;
     char *p;
     int *t;

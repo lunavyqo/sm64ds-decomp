@@ -44,13 +44,11 @@ void func_0205d96c(void *arg)
                   (int)&func_0205db2c, (int)&func_0205db24);
 }
 
-
 extern void func_0205ffb0(unsigned short c);
 extern void func_0205ff90(unsigned short t);
 extern unsigned int data_020a805c;
 
-int func_0205da94(int a, int b)
-{
+int func_0205da94(int a, int b) {
     switch (b) {
     case 9:
         func_0205ffb0((unsigned short)data_020a805c);
@@ -64,12 +62,9 @@ int func_0205da94(int a, int b)
     return 8;
 }
 
-
-int func_0205db24(void)
-{
+int func_0205db24(void) {
     return 1;
 }
-
 
 /* func_0205db2c at 0x0205db2c
  *
@@ -79,15 +74,12 @@ extern unsigned int data_020a8060;
 extern int func_0205db78(void);
 extern int func_02060918(int a0, int a1, int a2, int a3, void *a4, int a5, int a6);
 
-int func_0205db2c(int a, int b, int c, int d)
-{
+int func_0205db2c(int a, int b, int c, int d) {
     func_02060918(data_020a8060, c, b, d, (void *)&func_0205db78, a, 1);
     return 6;
 }
 
-
 extern void func_0205cd5c(void *, int);
-void func_0205db78(void *a)
-{
+void func_0205db78(void *a) {
     func_0205cd5c(a, 0);
 }

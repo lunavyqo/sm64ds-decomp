@@ -32,7 +32,6 @@ int func_020685cc(int a, int b, int flag)
     return 1;
 }
 
-
 extern void MultiStore16(unsigned short val, char *dst, int nbytes);
 extern int func_020685cc(int a, void *b, int flag);
 extern void MultiStore32Bytes(unsigned val, void *dst, int len);
@@ -49,8 +48,7 @@ struct Src {
     unsigned char f18;
 };
 
-void func_02068680(char *dst, struct Src *src, int flag)
-{
+void func_02068680(char *dst, struct Src *src, int flag) {
     volatile unsigned short tmp;
     volatile int z;
     tmp = 0;

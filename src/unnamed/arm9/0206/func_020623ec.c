@@ -4,7 +4,6 @@ void func_020623ec(int a0, int a1, int a2, int a3, unsigned short a4, unsigned s
     func_02062428(a0, 0, a1, a2, a3, a4, a5);
 }
 
-
 /* func_02062428 at 0x02062428
  *
  * Matched byte-for-byte with mwccarm 1.2/sp2p3 (arm9 main).
@@ -22,7 +21,8 @@ extern void _ZN4CP1514FlushDataCacheEjj(unsigned int addr, unsigned int len);
  * ROM computes `handle[1] + 0x100` and uses an 8-bit displacement. All three loads have
  * to be respelled together -- respelling any one alone leaves the other two sharing.
  */
-int func_02062428(int p0, int p1, int p2, int p3, unsigned short p4, unsigned short p5, unsigned short p6) {
+int func_02062428(int p0, int p1, int p2, int p3, unsigned short p4, unsigned short p5,
+                  unsigned short p6) {
     int a;
     int x;
     int *handle;
@@ -33,7 +33,8 @@ int func_02062428(int p0, int p1, int p2, int p3, unsigned short p4, unsigned sh
     x = 1;
     handle = WM_GetSystemWork();
     ret = WM_CheckStateEx(2, 9, 0xa);
-    if (ret != 0) return ret;
+    if (ret != 0)
+        return ret;
 
     _ZN4CP1519InvalidateDataCacheEjj(handle[1] + 0x18e, 2);
     a = *(unsigned short *)((char *)handle[1] + 0x18e);
@@ -47,13 +48,18 @@ int func_02062428(int p0, int p1, int p2, int p3, unsigned short p4, unsigned sh
         _ZN4CP1519InvalidateDataCacheEjj(handle[1] + 0x86, 2);
     }
 
-    if (p2 == 0) return 6;
-    if (x == 0) return 7;
-    if (p3 + (flag != 0 ? 4 : 2) > a) return 6;
-    if (p3 == 0) return 6;
+    if (p2 == 0)
+        return 6;
+    if (x == 0)
+        return 7;
+    if (p3 + (flag != 0 ? 4 : 2) > a)
+        return 6;
+    if (p3 == 0)
+        return 6;
 
     _ZN4CP1514FlushDataCacheEjj(p2, p3);
     ret = WM_SendCommand(0xf, 7, p2, p3, p4, p5, p6, p0, p1);
-    if (ret == 0) return 2;
+    if (ret == 0)
+        return 2;
     return ret;
 }

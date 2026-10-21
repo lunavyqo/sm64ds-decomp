@@ -16,7 +16,6 @@ void func_0205b470(int arg)
     e->fn(e->arg);
 }
 
-
 struct E7f60 {
     void (*fn)(int);
     int arg;
@@ -34,7 +33,6 @@ unsigned char func_0205b4d0(int index, void (*fn)(int), int arg) {
     return e->tag;
 }
 
-
 typedef struct UnkStruct_020a7f60 {
     char pad0[8];
     unsigned char unk8;
@@ -43,13 +41,15 @@ typedef struct UnkStruct_020a7f60 {
 
 extern UnkStruct_020a7f60 data_020a7f60[];
 
-void func_0205b504(int idx)
-{
+void func_0205b504(int idx) {
     *(unsigned char *)((long long)((int)&data_020a7f60[idx] + 8)) += 1;
 }
 
-
-struct E7f60 { int a; int b; unsigned char c; };
+struct E7f60 {
+    int a;
+    int b;
+    unsigned char c;
+};
 extern struct E7f60 data_020a7f60[8];
 
 void func_0205b524(void) {

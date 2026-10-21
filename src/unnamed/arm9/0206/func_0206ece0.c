@@ -265,7 +265,6 @@ char *func_0206ece0(double x, char *buff_end, print_format format)
     return (char *)p;
 }
 
-
 struct S {
     unsigned char pad0[2];
     short count;
@@ -273,8 +272,7 @@ struct S {
     unsigned char digits[1];
 };
 
-void func_0206f338(struct S *s, int p)
-{
+void func_0206f338(struct S *s, int p) {
     unsigned char *digits;
     unsigned char *q;
     unsigned char *end;
@@ -291,7 +289,8 @@ void func_0206f338(struct S *s, int p)
         return;
     }
     len = s->len;
-    if (p >= len) return;
+    if (p >= len)
+        return;
 
     digits = &s->digits[0];
     q = digits + p + 1;

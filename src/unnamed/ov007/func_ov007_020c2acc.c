@@ -14,7 +14,6 @@ void *func_ov007_020c2acc(int pointCount, const unsigned char *xCoords,
     return path;
 }
 
-
 #include "Ov007StrokePath.h"
 
 extern void func_ov007_020c2d44(void *obj, int i);
@@ -30,7 +29,6 @@ void *func_ov007_020c2b38(int pointCount, const int *xCoords, const int *yCoords
     }
     return path;
 }
-
 
 #include "Ov007StrokePath.h"
 

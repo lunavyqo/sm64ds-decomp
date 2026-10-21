@@ -6,8 +6,9 @@ void func_0205efc0(void *c)
     func_0205efe0(c);
 }
 
-
-struct H4 { unsigned short a, b, c, d; };
+struct H4 {
+    unsigned short a, b, c, d;
+};
 struct G {
     unsigned short pad0[2];
     struct H4 src;
@@ -18,8 +19,7 @@ struct G {
 extern struct G data_020a80cc;
 extern void func_0205ea28(struct H4 *p, struct H4 *q);
 
-int func_0205efe0(struct H4 *dest)
-{
+int func_0205efe0(struct H4 *dest) {
     if (data_020a80cc.flag & 1)
         return 1;
     *dest = data_020a80cc.src;

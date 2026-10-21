@@ -9,15 +9,12 @@ void func_0201a5cc(void)
     data_020a4b5c = (void *)func_0201a614;
 }
 
-
 extern void func_0201a694(void *);
 extern void func_0201a614(void *);
-void func_0201a5f8(void *t)
-{
+void func_0201a5f8(void *t) {
     func_0201a694(t);
     func_0201a614(t);
 }
-
 
 extern void func_0201a754(int id);
 extern int GetSceneOverlayID(int id);
@@ -26,8 +23,7 @@ extern int OVERLAY_75_ID;
 extern unsigned char data_0209d4e0;
 extern int data_0208ee4c;
 
-void func_0201a614(int id)
-{
+void func_0201a614(int id) {
     if (id == 1 && data_0209d4e0 != 0) {
         func_0201a754((int)&OVERLAY_75_ID);
         data_0209d4e0 = 0;
@@ -42,7 +38,6 @@ void func_0201a614(int id)
     data_0208ee4c = id;
 }
 
-
 extern unsigned char data_0209d4e0;
 extern int data_0208ee4c;
 extern void func_0201a798(int id);
@@ -51,8 +46,7 @@ extern int GetSceneOverlayID(int id);
 extern void func_0201a754(int id);
 extern int OVERLAY_75_ID;
 
-int func_0201a694(int id)
-{
+int func_0201a694(int id) {
     int ov;
     int old;
 
@@ -82,19 +76,19 @@ int func_0201a694(int id)
     return 2;
 }
 
-
 #include "types.h"
 extern void UnloadOverlay(int id);
 extern int OVERLAY_6_ID;
 extern int OVERLAY_4_ID;
 
 void func_0201a754(int id) {
-    if (id == -1) return;
+    if (id == -1)
+        return;
     UnloadOverlay(id);
-    if (id != (int)&OVERLAY_6_ID) return;
+    if (id != (int)&OVERLAY_6_ID)
+        return;
     UnloadOverlay((int)&OVERLAY_4_ID);
 }
-
 
 #include "types.h"
 extern void LoadOverlay(int id);
@@ -102,7 +96,9 @@ extern int OVERLAY_6_ID;
 extern int OVERLAY_4_ID;
 
 void func_0201a798(int id) {
-    if (id == -1) return;
-    if (id == (int)&OVERLAY_6_ID) LoadOverlay((int)&OVERLAY_4_ID);
+    if (id == -1)
+        return;
+    if (id == (int)&OVERLAY_6_ID)
+        LoadOverlay((int)&OVERLAY_4_ID);
     LoadOverlay(id);
 }

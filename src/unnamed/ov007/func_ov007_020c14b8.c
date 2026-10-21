@@ -6,7 +6,6 @@ void func_ov007_020c14b8(void *t)
     func_ov007_020c14d4(t);
 }
 
-
 #include "types.h"
 extern u32 data_ov007_02104be8;
 extern u32 data_ov007_02104be0;
@@ -24,15 +23,15 @@ struct Tex {
     u32 dest;
 };
 
-void func_ov007_020c14d4(struct Tex *t)
-{
+void func_ov007_020c14d4(struct Tex *t) {
     u32 slot;
     u32 end;
 
-    if (!(t->flags & 2)) return;
+    if (!(t->flags & 2))
+        return;
 
     slot = data_ov007_02104be8;
-    end  = data_ov007_02104be0;
+    end = data_ov007_02104be0;
 
     if (slot + t->size <= end) {
         _ZN2GX16BeginLoadTexPlttEv();
@@ -45,7 +44,6 @@ void func_ov007_020c14d4(struct Tex *t)
         Crash();
     }
 }
-
 
 #include "types.h"
 extern u32 data_ov007_02104bdc;
@@ -64,15 +62,15 @@ struct Tex {
     u32 dest;
 };
 
-void func_ov007_020c1560(struct Tex *t)
-{
+void func_ov007_020c1560(struct Tex *t) {
     u32 slot;
     u32 end;
 
-    if (!(t->flags & 1)) return;
+    if (!(t->flags & 1))
+        return;
 
     slot = data_ov007_02104bdc;
-    end  = data_ov007_02104be4;
+    end = data_ov007_02104be4;
 
     if (slot + t->size <= end) {
         _ZN2GX12BeginLoadTexEv();
