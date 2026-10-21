@@ -471,12 +471,7 @@
         "param:#2 const Vec3 *",
         "param:#3 Vec3 *"
       ],
-      "src/unnamed/arm9/0203/func_0203cebc.c": [
-        "param:#1 Vector3 *",
-        "param:#2 Vector3 *",
-        "param:#3 Vector3 *"
-      ],
-      "src/unnamed/arm9/0203/func_0203cf00.c": [
+      "src/unnamed/arm9/0203/func_0203ce80.c": [
         "param:#1 Vector3 *",
         "param:#2 Vector3 *",
         "param:#3 Vector3 *"
@@ -1754,7 +1749,7 @@
       "src/unnamed/arm9/0205/func_02059eb0.c": [
         "param:#3 unsigned int"
       ],
-      "src/unnamed/arm9/0206/func_02061188.c": [
+      "src/unnamed/arm9/0206/func_0206116c.c": [
         "param:#3 unsigned int"
       ],
       "src/unnamed/arm9/0206/func_02062aa4.cpp": [
@@ -7109,7 +7104,7 @@
       "src/unnamed/arm9/0205/func_0205d044.c": [
         "return:void"
       ],
-      "src/unnamed/arm9/0205/func_0205d3f4.c": [
+      "src/unnamed/arm9/0205/func_0205d3e4.c": [
         "return:void"
       ],
       "src/unnamed/arm9/0205/func_0205eb58.c": [
@@ -12163,7 +12158,7 @@
       ]
     },
     "data_0209d4ac": {
-      "src/unnamed/arm9/0201/func_02018efc.c": [
+      "src/unnamed/arm9/0201/func_02018ec0.c": [
         "return:void *"
       ],
       "src/unnamed/arm9/0201/func_02019440.c": [
@@ -24239,7 +24234,7 @@
       ]
     },
     "func_020553c0": {
-      "src/func_02055780.c": [
+      "src/unnamed/arm9/0205/func_020556d0.c": [
         "arity:1"
       ]
     },
@@ -24820,7 +24815,7 @@
       ]
     },
     "func_0205cdf4": {
-      "src/unnamed/arm9/0205/func_0205d4a0.c": [
+      "src/unnamed/arm9/0205/func_0205d3e4.c": [
         "param:#1 UnkStruct_0205d4a0 *",
         "return:void"
       ],
@@ -24835,8 +24830,8 @@
       "src/unnamed/arm9/0205/func_0205cdf4.cpp": [
         "param:#1 char *"
       ],
-      "src/unnamed/arm9/0205/func_0205d3f4.c": [
-        "param:#1 struct Obj *"
+      "src/unnamed/arm9/0205/func_0205d3e4.c": [
+        "param:#1 Obj *"
       ]
     },
     "func_0205cfa4": {
