@@ -6,5 +6,5 @@ int GetActorDebugName(unsigned int i) {
 
 #pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
 #pragma section forcedata begin
-int data_020914a0[2] = { 0xc09ff09f, 0xffbfa89f };
+int data_020914a0[2] = { 0x5252452a, 0x002a524f };
 #pragma section forcedata end

@@ -39,7 +39,7 @@ dMgMCarlo2CardObj_c *sMCarlo2Cards;
 extern s16 sMCarlo2BoardDelay;   /* frames left before the pair resolves  */
 extern s16 sMCarlo2CardsMoving;  /* pieces still animating                */
 extern s16 sMCarlo2BoardStep;    /* difficulty row into sMCarlo2BoardRows */
-int sMCarlo2FaceCounts[10]; /* per-face weights the picker draws from  */
+int sMCarlo2FaceCounts[10];      /* per-face weights the picker draws from  */
 /* Twenty-three sprite words. The static initializer copies them out of
  * sMgCardSprites in this order; an in-order copy does not. */
 struct Carlo2SpriteWords {

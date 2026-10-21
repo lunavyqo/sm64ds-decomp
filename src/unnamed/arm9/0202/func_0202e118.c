@@ -8,5 +8,5 @@ void* func_0202e118(void){
 
 #pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
 #pragma section forcedata begin
-int data_02092654[3] = { 0x00002c00, 0x002e002d, 0xc030002f };
+int data_02092654[3] = { 0x544f4e2a, 0x41545320, 0x002a4547 };
 #pragma section forcedata end

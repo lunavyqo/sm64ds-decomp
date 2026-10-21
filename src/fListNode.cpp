@@ -185,5 +185,5 @@ extern "C" void func_02044334(Obj *self) {
 
 #pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
 #pragma section forcerodata begin
-extern "C" int data_02082178[6] = { 0x0ff9ff0b, 0x0ff9ff11, 0x0ff9ff18, 0x0ffaff1e, 0x0ffaff24, 0x0ffaff2a };
+extern "C" int data_02082178[6] = { 0x02099f30, 0x02099f78, 0x02099f40, 0x02099f58, 0x02099f38, 0x02099f28 };
 #pragma section forcerodata end

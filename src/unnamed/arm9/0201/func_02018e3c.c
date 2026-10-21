@@ -17,5 +17,5 @@ int func_02018e3c(void *out_file_id, const char *path){
 
 #pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
 #pragma section forcedata begin
-int data_0208ecd8[7] = { 0x3130352d, 0x403a3b3e, 0x180cff27, 0x17121d17, 0xff1b0e1e, 0x000105fe, 0x4d0a4d01 };
+int data_0208ecd8[7] = { 0x5346796d, 0x6e6f435f, 0x74726576, 0x68746150, 0x69466f54, 0x4449656c, 0x00000000 };
 #pragma section forcedata end

@@ -1262,7 +1262,7 @@ extern "C" void func_020134c8(void)
 
 #pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
 #pragma section forcerodata begin
-extern "C" unsigned char data_02075250[8] = { 0x00, 0x00, 0xcc, 0x00, 0x00, 0x00, 0x00, 0x00 };
+extern "C" unsigned char data_02075250[8] = { 0x00, 0x40, 0x80, 0xc0, 0xc0, 0x00, 0x00, 0x00 };
 #pragma section forcerodata end
 extern "C" int data_0209b4ac;
 extern "C" int data_0209b4a8;

@@ -32,7 +32,7 @@
 extern "C" {
 
 extern unsigned char data_ov002_02111154[];
-extern unsigned char data_0208a0e0;
+extern unsigned char data_0208a0e0[];
 extern signed char data_02092114;
 extern int data_0209f3e8[];
 /* The Player*[] array. The shards disagreed scalar-vs-array; the array
@@ -512,7 +512,7 @@ void func_ov001_020aa420(void) {
 
         if (handled == 0) continue;
 
-        cnt = data_0208a0e0;
+        cnt = data_0208a0e0[0];
         for (idx = spC; idx < cnt; idx++) {
             player = (CapRequest *)data_0209f394[idx];
             if (i == player->field8) break;

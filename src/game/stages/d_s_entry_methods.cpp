@@ -264,7 +264,7 @@ s32 dScEntry_c::InitResources() {
     }
 
     data_0208ee44 = 2;
-    data_02092778 = 0;
+    data_02092778[0] = 0;
     return 1;
 }
 

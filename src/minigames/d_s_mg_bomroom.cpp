@@ -2281,7 +2281,7 @@ PMFEntry sBomroomBombMarchTable[5] = {};
 }
 PMF sBomroomBombStateTable[7] = {};
 
-#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma define_section forcerodata ".rodata.before_coin_tables" ".rodata.before_coin_tables" ".rodata.before_coin_tables" data_mode=far_abs
 #pragma section forcerodata begin
 extern "C" int sBomroomHatchPanelX[2] = { 0x00000080, 0x00000080 };
 extern "C" int sBomroomHatchPanelY[2] = { 0x00000008, 0x000000b8 };

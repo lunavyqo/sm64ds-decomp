@@ -36,5 +36,5 @@ void *Model::AddToCommonModelDataArr(BMD_File &file)
 
 #pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
 #pragma section forcedata begin
-extern "C" int data_0208e738[1] = { 0x02043b24 };
+extern "C" int data_0208e738[1] = { 0x00000001 };
 #pragma section forcedata end

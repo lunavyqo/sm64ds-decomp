@@ -2665,7 +2665,7 @@ extern "C" void TrmpLine_Reset(char *p) {
 }
 }
 
-#pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
+#pragma define_section forcerodata ".rodata.before_coin_tables" ".rodata.before_coin_tables" ".rodata.before_coin_tables" data_mode=far_abs
 #pragma section forcerodata begin
 extern "C" unsigned short sTrmpLineDiffuse[4] = { 0x7fff, 0x13ff, 0x011f, 0x0000 };
 extern "C" unsigned short sTrmpLineAmbient[4] = { 0x3def, 0x018c, 0x318c, 0x0000 };

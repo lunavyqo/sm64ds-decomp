@@ -328,7 +328,7 @@ extern OvTbl data_02075804[];
 extern int data_020758c8[];
 extern unsigned char data_02075998[][7];
 extern s16 data_02082214[];
-extern u8 data_0208a0e0;
+extern u8 data_0208a0e0[];
 extern s8 data_02092110;
 extern s8 data_02092118;
 extern s8 data_0209211c;
@@ -4239,7 +4239,7 @@ int dScStage_c::Behavior() {
                     }
                 } else {
                     dScene_c::StartSceneFade(7, 0, 0);
-                    data_02092778 = 1;
+                    data_02092778[0] = 1;
                     data_0209d4b0 = 0;
                 }
                 Sound::StopLoadedMusic_Layer1(0x3c);
@@ -4714,7 +4714,7 @@ int dScStage_c::InitResources() {
         }
         dScene_c::Initialise3dGraphics();
         Enable3dEngines();
-        data_0209f21c = data_0208a0e0;
+        data_0209f21c = data_0208a0e0[0];
         data_0209f250 = (u8)func_0203da9c();
         ResetInput();
         data_0209f2c4 = 0;
@@ -4995,7 +4995,7 @@ int dScStage_c::InitResources() {
             return -1;
     }
 
-    data_02092778 = 0;
+    data_02092778[0] = 0;
     func_0203b9b4(&data_0209e650, func_0203dad4());
     data_0209f208 = 0;
     u32 idx = func_0203dad4() % 6;

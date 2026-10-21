@@ -751,5 +751,5 @@ void ModelComponents::Render(Matrix4x3 *mat, Vector3 *vec) {
 
 #pragma define_section forcerodata ".rodata" ".rodata" ".rodata" data_mode=far_abs
 #pragma section forcerodata begin
-extern "C" int data_02082190[12] = { 0x0ffbff31, 0x0ffbff37, 0x0ffbff3d, 0x0ffcff44, 0x0ffcff4a, 0x0ffcff50, 0x0ffcff56, 0x0ffdff5d, 0x0ffdff63, 0x0ffdff69, 0x0ffdff6c, 0x0ffeff70 };
+extern "C" int data_02082190[12] = { 0x00001000, 0x00000000, 0x00000000, 0x00000000, 0x00001000, 0x00000000, 0x00000000, 0x00000000, 0x00001000, 0x00000000, 0x00000000, 0x00000000 };
 #pragma section forcerodata end

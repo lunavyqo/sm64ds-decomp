@@ -2,7 +2,7 @@
 #include "IRQ.h"
 
 extern "C" {
-extern volatile u16 data_020a644c[2];    /* 0x020a644c */
+extern volatile u16 data_020a644c[2]; /* 0x020a644c */
 extern u32 data_020a6450[2];          /* 0x020a6450 */
 
 void func_02059cb4(void) {

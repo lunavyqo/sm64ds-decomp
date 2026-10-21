@@ -32,6 +32,6 @@ void func_02030790(void)
 
 #pragma define_section forcedata ".data" ".data" ".data" data_mode=far_abs
 #pragma section forcedata begin
-unsigned char data_02092778[4] = { 0x00, 0xa1, 0x00, 0x00 };
+unsigned char data_02092778[4] = { 0x01, 0x00, 0x00, 0x00 };
 int data_0209277c = 0x00a300a2;
 #pragma section forcedata end

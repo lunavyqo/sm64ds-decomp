@@ -16,7 +16,6 @@ struct CLPS_Block;
 struct SharedFilePtr;
 struct SnmBdyModelFilePtr;
 
-
 /* C linkage. These declare ROM symbols by their exact final names, so a C++
    translation unit including this header must not mangle them -- a bare
    `void Foo(int);` seen from C++ emits _Z3Fooi, which exists nowhere. The file
@@ -1287,7 +1286,7 @@ extern u8 data_0208c178[];
 extern u8 data_0208c378[];
 extern u8 data_020926c8[];
 extern u8 data_020926cc[];
-extern u8 data_02092778;
+extern u8 data_02092778[];
 extern u8 data_0209444c[];
 extern u8 data_0209446c[];
 extern u8 data_020945d0[];
@@ -1997,7 +1996,7 @@ extern void*data_0209b2e8;
 extern void*data_0209b450;
 extern void*data_0209b458;
 extern void*data_0209cee8;
-extern void*data_0209cef4[];
+extern struct dExtShadowModel_c *data_0209cef4;
 extern void*data_0209ee78;
 extern void*data_0209ee7c;
 extern void*data_0209ee80;
