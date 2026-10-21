@@ -53,6 +53,10 @@ src/game/actors/d_a_obj_fl_uki_ki.cpp:
     complete
     .text start:0x02112130 end:0x02112380
 
+src/unnamed/ov022/__sinit_ov022_02112f78.c:
+    complete
+    .init start:0x02112f78 end:0x02112fe4
+
 src/game/actors/d_a_obj_fl_fall_block.cpp:
     complete
     .text start:0x02112380 end:0x02112498
@@ -61,6 +65,9 @@ src/game/actors/d_a_obj_fl_fall_block.cpp:
     .data start:0x0211427c end:0x02114288
     .bss start:0x02114640 end:0x02114668
 
+src/unnamed/ov022/__sinit_ov022_02113050.c:
+    complete
+    .init start:0x02113050 end:0x021130bc
 src/game/actors/d_a_obj_fl_maruta.cpp:
     complete
     .text start:0x02112498 end:0x02112950
@@ -68,10 +75,3 @@ src/game/actors/d_a_obj_fl_maruta.cpp:
     .ctor start:0x0211311c end:0x02113120
     .bss start:0x02114690 end:0x021146a0
 
-src/unnamed/ov022/__sinit_ov022_02112f78.c:
-    complete
-    .init start:0x02112f78 end:0x02112fe4
-
-src/unnamed/ov022/__sinit_ov022_02113050.c:
-    complete
-    .init start:0x02113050 end:0x021130bc

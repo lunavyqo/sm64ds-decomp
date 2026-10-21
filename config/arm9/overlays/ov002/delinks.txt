@@ -4,6 +4,11 @@
     .ctor       start:0x021080d0 end:0x02108138 kind:rodata align:4
     .data       start:0x02108140 end:0x0210d9a0 kind:data align:32
     .bss        start:0x0210d9a0 end:0x021111a0 kind:bss align:32
+src/unnamed/ov002/__sinit_ov002_02100560.c:
+    complete
+    .init start:0x02100560 end:0x02100938
+
+
 src/runtime/actor/d_enemy_base.cpp:
     complete
     .text start:0x020ad660 end:0x020aedbc
@@ -130,6 +135,11 @@ src/game/actors/d_a_obj_waterfall.cpp:
     complete
     .text start:0x020b6e08 end:0x020b6f18
     .data start:0x0210945c end:0x0210951c
+
+src/unnamed/ov002/__sinit_ov002_02100f84.c:
+    complete
+    .init start:0x02100f84 end:0x02101064
+
 
 src/game/actors/d_a_obj_mario_cap.cpp:
     complete
@@ -335,17 +345,9 @@ src/game/actors/d_a_mugen_bgm.cpp:
 
 src/game/actors/d_a_demo.cpp:
     complete
-    .text start:0x020f1f70 end:0x020f8838
+    .text start:0x020f1f70 end:0x020f8858
     .data start:0x0210b8c0 end:0x0210b958
     .bss start:0x02110e24 end:0x0211110c
-
-src/_ZThn80_N8daDemo_c10anmModel_cD0Ev.cpp:
-    complete
-    .text start:0x020f8838 end:0x020f8848
-
-src/_ZThn80_N8daDemo_c10anmModel_cD1Ev.cpp:
-    complete
-    .text start:0x020f8848 end:0x020f8858
 
 src/game/actors/d_a_f_pkn_ball.cpp:
     complete
@@ -374,23 +376,6 @@ src/engine/collision/d_m3d_g_lin.cpp:
     complete
     .text start:0x020fea4c end:0x020feabc
 
-src/game/actors/d_a_propeller_heyho_fire.cpp:
-    complete
-    .text start:0x020feabc end:0x020ff014
-    .init start:0x02108094 end:0x021080d0
-    .ctor start:0x02108134 end:0x02108138
-    .bss start:0x02111190 end:0x021111a0
-
-src/unnamed/ov002/__sinit_ov002_02100560.c:
-    complete
-    .init start:0x02100560 end:0x02100938
-
-
-src/unnamed/ov002/__sinit_ov002_02100f84.c:
-    complete
-    .init start:0x02100f84 end:0x02101064
-
-
 src/unnamed/ov002/__sinit_ov002_02107370.c:
     complete
     .init start:0x02107370 end:0x02107f88
@@ -402,3 +387,10 @@ src/unnamed/ov002/__sinit_ov002_02107f88.c:
 src/unnamed/ov002/__sinit_ov002_0210804c.c:
     complete
     .init start:0x0210804c end:0x02108094
+src/game/actors/d_a_propeller_heyho_fire.cpp:
+    complete
+    .text start:0x020feabc end:0x020ff014
+    .init start:0x02108094 end:0x021080d0
+    .ctor start:0x02108134 end:0x02108138
+    .bss start:0x02111190 end:0x021111a0
+
