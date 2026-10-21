@@ -33,7 +33,6 @@ src/minigames/unit020c8a30.cpp:
     complete
     .text start:0x020c8a30 end:0x020c8dd4
 
-    .bss start:0x02140518 end:0x02140538
 
 src/minigames/d_mg_trmpln2_mario.cpp:
     complete

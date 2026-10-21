@@ -1371,9 +1371,6 @@ src/game/stages/d_s_stage_methods.cpp:
     complete
     .text start:0x02023688 end:0x0202e118
 
-    .rodata start:0x020755cc end:0x020755d4
-    .data start:0x02092144 end:0x0209214c
-    .bss start:0x0209f30c end:0x0209f30d
 src/unnamed/arm9/0202/func_0202e118.c:
     complete
     .text start:0x0202e118 end:0x0202e140
@@ -1383,7 +1380,6 @@ src/game/stages/d_scene.cpp:
     complete
     .text start:0x0202e140 end:0x0202ec9c
 
-    .data start:0x02092660 end:0x02092668
 src/runtime/graphics/fader/d_wipe.cpp:
     complete
     .text start:0x0202ec9c end:0x0202fc98
@@ -1540,7 +1536,6 @@ src/game/stages/d_s_mb.cpp:
     complete
     .text start:0x02034a78 end:0x02035354
 
-    .data start:0x020943c4 end:0x0209440c
 src/unnamed/arm9/0203/func_02035354.c:
     complete
     .text start:0x02035354 end:0x02035394
@@ -3455,7 +3450,6 @@ src/unnamed/arm9/0205/func_02059cb4.cpp:
     .text start:0x02059cb4 end:0x02059d08
     complete
 
-    .bss start:0x020a644c end:0x020a6450
 src/IRQ3.cpp:
     .text start:0x02059d08 end:0x02059d8c
     complete
@@ -4404,7 +4398,6 @@ src/unnamed/arm9/0206/func_0206116c.c:
 src/unnamed/arm9/0206/func_02061188.c:
     complete
     .text start:0x02061188 end:0x02061428
-    .bss start:0x020a89ec end:0x020a8a40
 
 src/WM_CheckStateEx.c:
     complete
