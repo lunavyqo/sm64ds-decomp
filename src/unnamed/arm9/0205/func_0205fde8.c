@@ -22,7 +22,7 @@ void func_0205fde8(void)
     func_0205ba64(8, (void *)func_0205fcfc);
     for (i = 0; i < 4; i++)
         *(short *)((char *)&data_020a8138 + (i << 3)) = 0;
-    func_02058b9c(&data_020a8124);
+    func_02058b9c(data_020a8124);
     data_020a8110 = *(int *)0x27ffc3c;
 }
 

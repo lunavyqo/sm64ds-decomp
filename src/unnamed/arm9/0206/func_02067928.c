@@ -67,8 +67,8 @@ int func_02067928(void *a, void *b)
     func_020684d0((char*)data_020a9db8 + 0x186c + idx * 0x5c4);
 
     {
-        u8 id = data_020a9d28;
-        data_020a9d28 = id + 1;
+        u8 id = data_020a9d28[0];
+        data_020a9d28[0] = id + 1;
         *(u8*)((char*)data_020a9db8 + idx * 0x5c4 + 0x1d17) = id;
     }
 
