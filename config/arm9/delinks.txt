@@ -587,7 +587,6 @@ src/engine/save/SaveData.cpp:
     complete
     .text start:0x02013650 end:0x02013e80
 
-    .bss start:0x0209cab4 end:0x0209cad2
 src/runtime/actor/ActorDerived.cpp:
     complete
     .text start:0x02013e80 end:0x02013f4c
