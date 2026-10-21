@@ -315,7 +315,7 @@ src/unnamed/ov007/func_ov007_020b2764.c:
     .text start:0x020b2764 end:0x020b283c
     .rodata start:0x020ccc50 end:0x020ccc68
 
-src/unnamed/ov007/data_ov007_020cdb34.c:
+src/named/ov007/data_ov007_020cdb34.c:
     complete
     .rodata start:0x020cdb34 end:0x020cdb4c
 
@@ -527,7 +527,7 @@ src/unnamed/ov007/func_ov007_020b6d40.c:
     .rodata start:0x020d7a24 end:0x020d7a34
     .data start:0x020d7e28 end:0x020d7e38
 
-src/unnamed/ov007/data_ov007_020d7e68.c:
+src/named/ov007/data_ov007_020d7e68.c:
     complete
     .data start:0x020d7e68 end:0x020d7ec8
 src/unnamed/ov007/func_ov007_020b6eb4.c:
