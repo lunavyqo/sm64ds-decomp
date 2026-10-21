@@ -5204,7 +5204,11 @@ src/__cxa_vec_ctor.cpp:
 
 src/unnamed/arm9/0207/func_02073470.cpp:
     complete
-    .text start:0x02073470 end:0x0207359c
+    .text start:0x02073470 end:0x02073534
+
+src/unnamed/arm9/0207/func_02073534.cpp:
+    complete
+    .text start:0x02073534 end:0x0207359c
 
 src/typeinfo.cpp:
     complete

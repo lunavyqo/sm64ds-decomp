@@ -75,7 +75,7 @@ or used as a DMA destination — it cannot be redirected by redefining an lvalue
 - `src/func_02049018.c:17` — `while (*(volatile unsigned short *)0x40002b0 & 0x8000);`
 - `src/func_02049018.c:18` — `while (*(volatile unsigned short *)0x40002b0 & 0x8000);`
 - `src/cstd.cpp:2` — `while (*(volatile unsigned short *)0x40002b0 & 0x8000)`
-- `src/func_02053380.c:31` — `while (*(volatile unsigned short *)0x40002b0 & 0x8000) {}`
+- `src/unnamed/arm9/0205/func_02053320.c:30` — `while (*(volatile unsigned short *)0x40002b0 & 0x8000) {}`
 
 ## Address-passed sites (not lvalue-redirectable)
 
@@ -84,7 +84,7 @@ or used as a DMA destination — it cannot be redirected by redefining an lvalue
 - `src/engine/gx/GX_Init.cpp:89` — `DMASyncFillTransfer(data_02099fd0, REG_DB_DISPCNT_ADDR, 0, 0x70);`
 - `src/engine/gx/G3X.cpp:83` — `func_0205a064((&data_02099fd0)[0], 0x4000330, 0, 0x10, 0, 0);`
 - `src/engine/gx/G3X.cpp:84` — `DMASyncFillTransfer((&data_02099fd0)[0], 0x4000360, 0, 0x50);`
-- `src/func_02055780.c:4` — `func_020553c0(0x4000400);`
+- `src/unnamed/arm9/0205/func_020556d0.c:51` — `func_020553c0(0x4000400);`
 - `src/func_0205a290.c:35` — `DMAStartTransfer(data_020a6460.f4, base, 0x4000400, -0x3bc00000 | (len >> 2));`
 - `src/func_0205a290.c:38` — `DMAStartTransfer(data_020a6460.f4, base, 0x4000400, 0x84400000 | (len >> 2));`
 - `src/func_ov007_020c0078.c:3` — `* Camera-style perspective setup: writes the viewport register (0x4000580)`
