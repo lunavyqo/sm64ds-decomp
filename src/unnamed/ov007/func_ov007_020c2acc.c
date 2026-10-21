@@ -1,19 +1,15 @@
-extern void *func_ov007_020c2b9c(int count, int x);
+#include "Ov007StrokePath.h"
+
 extern void func_ov007_020c2d44(void *obj, int i);
 
-struct O {
-  char pad[0x24];
-  int *p24;   /* 0x24 */
-  int *p28;   /* 0x28 */
-};
-
-void *func_ov007_020c2acc(int count, unsigned char *a, unsigned char *b, int x){
-  struct O *o = (struct O*)func_ov007_020c2b9c(count, x);
-  int i;
-  for(i = 0; i < count; i++){
-    o->p24[i] = a[i] << 0xc;
-    o->p28[i] = b[i] << 0xc;
-    func_ov007_020c2d44(o, i);
-  }
-  return o;
+void *func_ov007_020c2acc(int pointCount, const unsigned char *xCoords,
+                          const unsigned char *yCoords, const int *progressThresholds) {
+    Ov007StrokePath *path = (Ov007StrokePath *)func_ov007_020c2b9c(pointCount, progressThresholds);
+    int i;
+    for (i = 0; i < pointCount; i++) {
+        path->xCoords[i] = xCoords[i] << 12;
+        path->yCoords[i] = yCoords[i] << 12;
+        func_ov007_020c2d44(path, i);
+    }
+    return path;
 }

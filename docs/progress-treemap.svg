@@ -1885,7 +1885,7 @@ matched: yes</title></rect><rect x="216.16" y="152.89" width="3.41" height="8.67
 module: arm9
 addr: 0x020149f4
 size: 44 bytes
-matched: yes</title></rect><rect x="219.56" y="152.89" width="0.93" height="8.67" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>func_02014a20
+matched: yes</title></rect><rect x="219.56" y="152.89" width="0.93" height="8.67" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN10dCcAcPos_c10GetOwnerIDEv
 module: arm9
 addr: 0x02014a20
 size: 12 bytes
@@ -34833,7 +34833,7 @@ matched: yes</title></rect><rect x="1146.75" y="333.73" width="8.86" height="31.
 module: ov060
 addr: 0x02116518
 size: 552 bytes
-matched: yes</title></rect><rect x="1146.75" y="365.67" width="8.86" height="7.87" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>func_ov060_02116740
+matched: yes</title></rect><rect x="1146.75" y="365.67" width="8.86" height="7.87" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN11daKpaFire_c19func_ov060_02116740Ev
 module: ov060
 addr: 0x02116740
 size: 136 bytes
@@ -34905,7 +34905,7 @@ matched: yes</title></rect><rect x="1163.91" y="322.32" width="39.78" height="5.
 module: ov060
 addr: 0x0211747c
 size: 424 bytes
-matched: yes</title></rect><rect x="1203.69" y="322.32" width="15.01" height="5.46" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>func_ov060_02117624
+matched: yes</title></rect><rect x="1203.69" y="322.32" width="15.01" height="5.46" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN11daKpaFire_c19func_ov060_02117624Ev
 module: ov060
 addr: 0x02117624
 size: 160 bytes
@@ -39749,23 +39749,23 @@ matched: yes</title></rect><rect x="1240.70" y="611.22" width="10.81" height="17
 module: ov075
 addr: 0x02118f38
 size: 364 bytes
-matched: yes</title></rect><rect x="1240.70" y="628.35" width="10.81" height="11.67" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>func_ov075_021190a4
+matched: yes</title></rect><rect x="1240.70" y="628.35" width="10.81" height="11.67" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN10dScEntry_c23UpdatePlayerSelectIntroEv
 module: ov075
 addr: 0x021190a4
 size: 248 bytes
-matched: yes</title></rect><rect x="1251.50" y="554.57" width="14.97" height="9.79" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>func_ov075_0211919c
+matched: yes</title></rect><rect x="1251.50" y="554.57" width="14.97" height="9.79" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN10dScEntry_c22EnterPlayerSelectIntroEv
 module: ov075
 addr: 0x0211919c
 size: 288 bytes
-matched: yes</title></rect><rect x="1266.47" y="554.57" width="20.79" height="9.79" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>func_ov075_021192bc
+matched: yes</title></rect><rect x="1266.47" y="554.57" width="20.79" height="9.79" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN10dScEntry_c16UpdatePlayerSyncEv
 module: ov075
 addr: 0x021192bc
 size: 400 bytes
-matched: yes</title></rect><rect x="1287.26" y="554.57" width="7.90" height="9.79" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>func_ov075_0211944c
+matched: yes</title></rect><rect x="1287.26" y="554.57" width="7.90" height="9.79" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN10dScEntry_c15EnterPlayerSyncEv
 module: ov075
 addr: 0x0211944c
 size: 152 bytes
-matched: yes</title></rect><rect x="1295.15" y="554.57" width="18.08" height="9.79" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>func_ov075_021194e4
+matched: yes</title></rect><rect x="1295.15" y="554.57" width="18.08" height="9.79" fill="#3fa75a" stroke="#2c7a41" stroke-width="0.4"><title>_ZN10dScEntry_c17RenderWaitingTextEv
 module: ov075
 addr: 0x021194e4
 size: 348 bytes

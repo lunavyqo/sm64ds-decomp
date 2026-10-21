@@ -24,9 +24,8 @@
  * file emits both classes' vtables and RTTI.
  *
  * Still unnamed: the header's unk_ fields, and the bytes it leaves as
- * padding that this file reaches by offset (+0x68/+0x6c, +0xb0,
- * +0x2228/+0x4228, +0x4000, +0x4644), plus dScMgD3DBase_c's
- * +0x4664; the func_ov004 and data_ov004 helpers are unnamed in
+ * padding that this file reaches by offset (+0xb0, +0x2228/+0x4228,
+ * +0x4644); the func_ov004 and data_ov004 helpers are unnamed in
  * symbols.txt.
  */
 
@@ -46,14 +45,19 @@
    mVecA into mPos each frame; state 1 (UpdateFlyTo /
    DrawFlyTo) interpolates mPos between the two vectors as the timer
    runs down. The class is not recovered, so the type stays a local view.
-   The three s32 pairs stay raw offsets: declaring them as s32 members makes
-   the struct 4-aligned, and the pool's .bss section goes from 2-byte to
-   4-byte alignment. */
+   The s32 members make the struct 4-aligned, so the pool's .bss section is
+   4-aligned where the old byte-pad view left it 2-aligned. The ROM cannot
+   tell the two apart: sMgFxPool sits at 0x020bebe8, right after the 0x40
+   bytes of sMgSparkleSprites, and every function and the link are
+   unchanged. */
 struct MgFx {
-    char pad[0x1a];                     /* 0x00 mPos, 0x08 mVecA, 0x10 mVecB */
-    s16 mTimer;                         /* 0x1a -- counts down to 0; 0 = free */
-    s16 mDuration;                      /* 0x1c -- mTimer's starting value */
-    s16 mState;                         /* 0x1e -- index into both PMF tables */
+    s32 mPos[2];  /* 0x00 */
+    s32 mVecA[2]; /* 0x08 */
+    s32 mVecB[2]; /* 0x10 */
+    u8 pad_18[2];
+    s16 mTimer;    /* 0x1a -- counts down to 0; 0 = free */
+    s16 mDuration; /* 0x1c -- mTimer's starting value */
+    s16 mState;    /* 0x1e -- index into both PMF tables */
     MgFx() {}
     ~MgFx() {}
     void DrawFlyTo();
@@ -102,7 +106,7 @@ extern void func_0203cbc0(void *ptr);
 extern void func_02012e1c(void);
 void Mg_InitMusic();
 extern void Enable3dEngines(void);
-extern char gMgMenuRow[];
+extern int gMgMenuRow[];
 extern dWipe_c data_0209f61c;
 extern unsigned char data_0209d460[];
 extern unsigned char data_0209d458[];
@@ -546,7 +550,7 @@ extern int Mg_RenderSpriteOnNoMtx(int,int,int,long long);
 void MgFx::DrawFlyTo() {
     int idx=s20adc80::GetGameLanguage();
     int *t=sMgSpriteTables[idx];
-    s20adc80::Mg_RenderSpriteOnNoMtx(t[2], ((int*)this)[0]>>0xc, ((int*)this)[1]>>0xc, -1);
+    s20adc80::Mg_RenderSpriteOnNoMtx(t[2], mPos[0] >> 0xc, mPos[1] >> 0xc, -1);
 }
 
 // @symbol _ZN4MgFx11DrawSparkleEv
@@ -586,8 +590,8 @@ void MgFx::DrawSparkle() {
     }
     {
         int idx = ((int)mTimer) & 0xf;
-        int x = *(int *)this >> 0xc;
-        int y = *(int *)((char *)this + 4) >> 0xc;
+        int x = mPos[0] >> 0xc;
+        int y = mPos[1] >> 0xc;
         s20adcc8::Mg_RenderSpriteOnNoMtx(s20adcc8::sMgSparkleSprites[idx], x, y, -1, -1);
     }
 }
@@ -618,7 +622,6 @@ inline long long inline_fn(int arg0)
    remaining fraction s = mTimer / mDuration: x = mVecA.x * s + mVecB.x * (1 - s),
    y = mVecB.y + s * s * (mVecA.y - mVecB.y), all Fix12. */
 void MgFx::UpdateFlyTo() {
-    char *r5 = (char *)this;
     using namespace s20addcc;
     {
         if (ApproachLinear2(mTimer, 0, 1)) {
@@ -630,15 +633,14 @@ void MgFx::UpdateFlyTo() {
         int c3 = mDuration;
         int c2 = mTimer;
         int t = cstd::fdiv((c3 - c2) << 0xc, c3 << 0xc);
-        int v8 = *((int *)(r5 + 8));
-        int v10 = *((int *)(r5 + 0x10));
+        int v8 = mVecA[0];
+        int v10 = mVecB[0];
         long long m1 = inline_fn(v8) * inline_fn(s);
         long long m2 = inline_fn(v10) * inline_fn(t);
         long long m3 = inline_fn(s) * inline_fn(s);
-        long long m4 = inline_fn((int)((m3 + 0x800) >> 0xc)) *
-                       inline_fn((*((int *)(r5 + 0xc))) - (*((int *)(r5 + 0x14))));
-        *((int *)r5) = ((int)((m1 + 0x800) >> 0xc)) + ((int)((m2 + 0x800) >> 0xc));
-        *((int *)(r5 + 4)) = (*((int *)(r5 + 0x14))) + ((int)((m4 + 0x800) >> 0xc));
+        long long m4 = inline_fn((int)((m3 + 0x800) >> 0xc)) * inline_fn(mVecA[1] - mVecB[1]);
+        mPos[0] = ((int)((m1 + 0x800) >> 0xc)) + ((int)((m2 + 0x800) >> 0xc));
+        mPos[1] = mVecB[1] + ((int)((m4 + 0x800) >> 0xc));
     }
 }
 
@@ -646,16 +648,12 @@ void MgFx::UpdateFlyTo() {
 /* State 0's update: counts mTimer down, passes mVecA to func_0203d630 with
    0xff8, then adds mVecB into mVecA and mVecA into mPos. */
 void MgFx::UpdateDrift() {
-    char* c = (char*)this;
     ApproachLinear2(mTimer, 0, 1);
-    func_0203d630((int*)(c + 8), 0xff8);
-    int *p = (int*)(((int)c + 8));
-    int *p2 = (int*)(((int)c + 0xc));
-    *p += *(int*)(c + 0x10);
-    *p2 += *(int*)(c + 0x14);
-    p = (int*)(((int)c + 4));
-    *(int*)c += *(int*)(c + 8);
-    *p += *(int*)(c + 0xc);
+    func_0203d630(mVecA, 0xff8);
+    mVecA[0] += mVecB[0];
+    mVecA[1] += mVecB[1];
+    mPos[0] += mVecA[0];
+    mPos[1] += mVecA[1];
 }
 
 // @symbol Mg_UpdateFx
@@ -679,16 +677,16 @@ void Mg_InitFx(char *c, short state, short timer, int *pos, int *vecA, int *vecB
     e->mState = state;
     e->mTimer = timer;
     e->mDuration = e->mTimer;
-    *(int *)(c) = pos[0];
-    *(int *)(c + 4) = pos[1];
+    e->mPos[0] = pos[0];
+    e->mPos[1] = pos[1];
     if (vecA) {
-        *(int *)(c + 8) = vecA[0];
-        *(int *)(c + 0xc) = vecA[1];
+        e->mVecA[0] = vecA[0];
+        e->mVecA[1] = vecA[1];
     }
-  if(vecB){
-    *(int*)(c+0x10)=vecB[0];
-    *(int*)(c+0x14)=vecB[1];
-  }
+    if (vecB) {
+        e->mVecB[0] = vecB[0];
+        e->mVecB[1] = vecB[1];
+    }
 }
 }
 }
@@ -1001,9 +999,9 @@ extern "C" {
    four sides clip.
 
    It reads exactly the two object fields slot 33 (InitEngines) initialises.
-   `obj+0x6c` is the layer index: 0..3 select G2S::GetBG0CharPtr through
+   mBrushLayer is the layer index: 0..3 select G2S::GetBG0CharPtr through
    GetBG3CharPtr, and anything else returns without drawing -- which is what
-   slot 33's -1 buys.  `obj+0x68` gates the wrapped region above the touch
+   slot 33's -1 buys.  mBrushOnMain gates the wrapped region above the touch
    screen, where the MAIN engine's G2::GetBG*CharPtr are used instead and y is
    folded by `+ sMgTopScreenYOffset + 0xc0`.  So slot 33 leaves the brush
    disabled and a minigame arms it by choosing a layer.
@@ -1047,7 +1045,6 @@ void dScMgBase_c::PaintSquare(int cx, int cy, int colour, int size) {
     using s20ae3b4::func_02054d88;
     using s20ae3b4::func_02054ea8;
     using s20ae3b4::func_02054efc;
-    char *obj = (char *)this;
 
     int oi;
     int x0;
@@ -1086,9 +1083,9 @@ void dScMgBase_c::PaintSquare(int cx, int cy, int colour, int size) {
                 if (yrow < -0xc0 - sMgTopScreenYOffset)
                     goto inc;
                 if (yrow < -sMgTopScreenYOffset) {
-                    if (*(u8*)(obj + 0x68) == 0)
+                    if (mBrushOnMain == 0)
                         goto inc;
-                    switch (*(int*)(obj + 0x6c)) {
+                    switch (mBrushLayer) {
                     case 0: base = func_02054efc(); break;
                     case 1: base = func_02054ea8(); break;
                     case 2: base = _ZN2G213GetBG2CharPtrEv(); break;
@@ -1101,7 +1098,7 @@ void dScMgBase_c::PaintSquare(int cx, int cy, int colour, int size) {
                         goto inc;
                     if (yrow >= 0xc0)
                         goto inc;
-                    switch (*(int*)(obj + 0x6c)) {
+                    switch (mBrushLayer) {
                     case 0: base = _ZN3G2S13GetBG0CharPtrEv(); break;
                     case 1: base = _ZN3G2S13GetBG1CharPtrEv(); break;
                     case 2: base = _ZN3G2S13GetBG2CharPtrEv(); break;
@@ -1733,15 +1730,16 @@ extern void _ZN3GXS10LoadBGPlttEPKvjj(const void* p, unsigned int a, unsigned in
 
 extern char sMgBrushPalette;
 
-/* Sets up the brush that PaintSquare paints with. Stores `en` at +0x68 and
-   the layer `mode` (0..3) at +0x6c, fills the first 0x300 screen entries of
-   that sub-screen BG layer (and of the main-screen one when `en` is set)
-   with tile numbers 0..0x2ff under palette `base`, zeroes 0x6000 bytes of
-   the layer's character data, and loads the 0x20-byte palette
-   sMgBrushPalette into palette slot `base` on both screens. Any other
-   mode returns at once. */
+/* Sets up the brush that PaintSquare paints with. `sb` is the scene: stores
+   `en` in mBrushOnMain and the layer `mode` (0..3) in mBrushLayer, fills
+   the first 0x300 screen entries of that sub-screen BG layer (and of the
+   main-screen one when `en` is set) with tile numbers 0..0x2ff under
+   palette `base`, zeroes 0x6000 bytes of the layer's character data, and
+   loads the 0x20-byte palette sMgBrushPalette into palette slot `base` on
+   both screens. Any other mode returns at once. */
 void Mg_InitBrush(char* sb, char en, int mode, int base)
 {
+    dScMgBase_c *scene = (dScMgBase_c *)sb;
     volatile unsigned short v0, v1, v2, v3, v4, v5, v6, v7;
     volatile unsigned short w0, w1, w2, w3, w4, w5, w6, w7;
     int val;
@@ -1749,17 +1747,17 @@ void Mg_InitBrush(char* sb, char en, int mode, int base)
     int off;
     int t;
 
-    *(unsigned char*)(sb + 0x68) = en;
+    scene->mBrushOnMain = en;
     i = 0;
     off = i;
-    *(int*)(sb + 0x6c) = mode;
+    scene->mBrushLayer = mode;
     val = i;
     val += base << 12;
 
     for (; i < 0x300; i++, val++, off += 2) {
-        switch (*(int*)(sb + 0x6c)) {
+        switch (scene->mBrushLayer) {
         case 0:
-            if (*(unsigned char*)(sb + 0x68)) {
+            if (scene->mBrushOnMain) {
                 t = _ZN2G212GetBG0ScrPtrEv();
                 t = t + off;
                 MultiStore16(v0 = val, t, 2);
@@ -1769,7 +1767,7 @@ void Mg_InitBrush(char* sb, char en, int mode, int base)
             MultiStore16(v1 = val, t, 2);
             break;
         case 1:
-            if (*(unsigned char*)(sb + 0x68)) {
+            if (scene->mBrushOnMain) {
                 t = _ZN2G212GetBG1ScrPtrEv();
                 t = t + off;
                 MultiStore16(v2 = val, t, 2);
@@ -1779,7 +1777,7 @@ void Mg_InitBrush(char* sb, char en, int mode, int base)
             MultiStore16(v3 = val, t, 2);
             break;
         case 2:
-            if (*(unsigned char*)(sb + 0x68)) {
+            if (scene->mBrushOnMain) {
                 t = _ZN2G212GetBG2ScrPtrEv();
                 t = t + off;
                 MultiStore16(v4 = val, t, 2);
@@ -1789,7 +1787,7 @@ void Mg_InitBrush(char* sb, char en, int mode, int base)
             MultiStore16(v5 = val, t, 2);
             break;
         case 3:
-            if (*(unsigned char*)(sb + 0x68)) {
+            if (scene->mBrushOnMain) {
                 t = _ZN2G212GetBG3ScrPtrEv();
                 t = t + off;
                 MultiStore16(v6 = val, t, 2);
@@ -1803,9 +1801,9 @@ void Mg_InitBrush(char* sb, char en, int mode, int base)
         }
     }
 
-    switch (*(int*)(sb + 0x6c)) {
+    switch (scene->mBrushLayer) {
     case 0:
-        if (*(unsigned char*)(sb + 0x68)) {
+        if (scene->mBrushOnMain) {
             t = func_02054efc();
             w0 = 0;
             MultiStore16(w0, t, 0x6000);
@@ -1815,7 +1813,7 @@ void Mg_InitBrush(char* sb, char en, int mode, int base)
         MultiStore16(w1, t, 0x6000);
         break;
     case 1:
-        if (*(unsigned char*)(sb + 0x68)) {
+        if (scene->mBrushOnMain) {
             t = func_02054ea8();
             w2 = 0;
             MultiStore16(w2, t, 0x6000);
@@ -1825,7 +1823,7 @@ void Mg_InitBrush(char* sb, char en, int mode, int base)
         MultiStore16(w3, t, 0x6000);
         break;
     case 2:
-        if (*(unsigned char*)(sb + 0x68)) {
+        if (scene->mBrushOnMain) {
             t = _ZN2G213GetBG2CharPtrEv();
             w4 = 0;
             MultiStore16(w4, t, 0x6000);
@@ -1835,7 +1833,7 @@ void Mg_InitBrush(char* sb, char en, int mode, int base)
         MultiStore16(w5, t, 0x6000);
         break;
     case 3:
-        if (*(unsigned char*)(sb + 0x68)) {
+        if (scene->mBrushOnMain) {
             t = func_02054d88();
             w6 = 0;
             MultiStore16(w6, t, 0x6000);
@@ -1908,33 +1906,44 @@ void Render(bool draw, OamAttr *obj, int px, int py, int pal, int prio, Matrix2x
 void RenderSub(OamAttr *data, s32 x, s32 y, s32 palette, s32 priority);
 }
 
+/* A view of include/dScMgD3DBase_c.h down to mDrawSubScreen; the member
+ * names and offsets are the header's. Including the header itself
+ * renumbers this file's compiler-generated @ labels (@329 becomes @529),
+ * which the TU manifest pins; this view leaves them alone. */
+struct D3DBaseView : dScMgBase_c {
+    s32 mSavedSubObjBank; /* 0x4660 */
+    u16 mDrawSubScreen;   /* 0x4664 */
+};
+
 /* The sprite wrappers from here to Mg_RenderSpriteBothMtx share one gate.
  * With no scene they draw nothing. With the menu closed and the scene's
- * GetDisplayMode (slot 26) returning 2 -- the value
- * dScMgD3DBase_c's body returns -- they read the u16 at +0x4664
- * (dScMgD3DBase_c::mDrawSubScreen) and draw once, or not at all. Otherwise they
- * take their normal path. +0x4664 is past dScMgBase_c, so it is read
- * raw: including dScMgD3DBase_c.h renumbers this file's
- * compiler-generated @ labels (@329 becomes @529). The OAM::Render
- * overloads taking a Fix12<int> by value stay mangled (see
- * include/OAM.h). */
+ * GetDisplayMode (slot 26) returning 2 they read
+ * dScMgD3DBase_c::mDrawSubScreen and draw once, or not at all. Otherwise they
+ * take their normal path. The cast is proven by that gate: 2 is returned only
+ * by dScMgD3DBase_c's body (ov006:0x020e6e4c), which its four children
+ * inherit without overriding, so the scene is a dScMgD3DBase_c whenever the
+ * field is read. The OAM::Render overloads taking a Fix12<int> by value stay
+ * mangled (see include/OAM.h). */
 
 // @symbol Hud_RenderSprite
 namespace s20af68c {
 extern "C" {
 extern "C" {
 void _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(int, OamAttr*, s32, s32, int, int, int, int, int, int);
-void Hud_RenderSprite(void* attr, int x, int y, int palette, int priority){
-  dScMgBase_c *scene = gMgScene;
-  if(scene == 0) return;
-  if(scene->mMenuOpen == 0){
-    if(scene->GetDisplayMode() == 2){
-      if(*(unsigned short*)((char*)gMgScene + 0x4664) != 0) return;
-      _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, (OamAttr*)attr, x, y, palette, priority, 0x1000, 0x1000, 0, -1);
-      return;
+void Hud_RenderSprite(void *attr, int x, int y, int palette, int priority) {
+    dScMgBase_c *scene = gMgScene;
+    if (scene == 0)
+        return;
+    if (scene->mMenuOpen == 0) {
+        if (scene->GetDisplayMode() == 2) {
+            if (((D3DBaseView *)gMgScene)->mDrawSubScreen != 0)
+                return;
+            _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, (OamAttr *)attr, x, y, palette, priority,
+                                                        0x1000, 0x1000, 0, -1);
+            return;
+        }
     }
-  }
-  OAM::RenderSub((OamAttr*)attr, x, y, palette, priority);
+    OAM::RenderSub((OamAttr *)attr, x, y, palette, priority);
 }
 }
 }
@@ -1950,17 +1959,20 @@ typedef int Fix12i;
 extern "C" int _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(
     int show, struct OamAttr* attr, int a, int b, int c, int d, Fix12i e, int f);
 
-extern "C" int Mg_RenderSubSpriteScaled(int a0, int a1, int a2, int a3, int a4, int a5, unsigned short a6)
-{
+extern "C" int Mg_RenderSubSpriteScaled(int a0, int a1, int a2, int a3, int a4, int a5,
+                                        unsigned short a6) {
     dScMgBase_c *scene = gMgScene;
-    if (scene == 0) return 0;
+    if (scene == 0)
+        return 0;
     if (scene->mMenuOpen == 0) {
         if (scene->GetDisplayMode() == 2) {
-            if (*(unsigned short*)((char*)gMgScene + 0x4664) != 0) return 0;
-            return _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(0, (struct OamAttr*)a0, a1, a2, a3, a4, a5, a6);
+            if (((D3DBaseView *)gMgScene)->mDrawSubScreen != 0)
+                return 0;
+            return _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(0, (struct OamAttr *)a0, a1, a2, a3, a4,
+                                                           a5, a6);
         }
     }
-    return _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(1, (struct OamAttr*)a0, a1, a2, a3, a4, a5, a6);
+    return _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(1, (struct OamAttr *)a0, a1, a2, a3, a4, a5, a6);
 }
 }
 }
@@ -1968,17 +1980,19 @@ extern "C" int Mg_RenderSubSpriteScaled(int a0, int a1, int a2, int a3, int a4, 
 // @symbol Mg_RenderSubSpritePalMtx
 namespace s20af868 {
 extern "C" {
-void Mg_RenderSubSpritePalMtx(void* a0, int a1, int a2, int a3, int a4, void* a5){
-  dScMgBase_c *scene = gMgScene;
-  if(scene == 0) return;
-  if(scene->mMenuOpen == 0){
-    if(scene->GetDisplayMode() == 2){
-      if(*(unsigned short*)((char*)gMgScene + 0x4664) != 0) return;
-      OAM::Render(0, (OamAttr*)a0, a1, a2, a3, a4, (Matrix2x2*)a5);
-      return;
+void Mg_RenderSubSpritePalMtx(void *a0, int a1, int a2, int a3, int a4, void *a5) {
+    dScMgBase_c *scene = gMgScene;
+    if (scene == 0)
+        return;
+    if (scene->mMenuOpen == 0) {
+        if (scene->GetDisplayMode() == 2) {
+            if (((D3DBaseView *)gMgScene)->mDrawSubScreen != 0)
+                return;
+            OAM::Render(0, (OamAttr *)a0, a1, a2, a3, a4, (Matrix2x2 *)a5);
+            return;
+        }
     }
-  }
-  OAM::Render(1, (OamAttr*)a0, a1, a2, a3, a4, (Matrix2x2*)a5);
+    OAM::Render(1, (OamAttr *)a0, a1, a2, a3, a4, (Matrix2x2 *)a5);
 }
 }
 }
@@ -1986,18 +2000,19 @@ void Mg_RenderSubSpritePalMtx(void* a0, int a1, int a2, int a3, int a4, void* a5
 // @symbol Mg_RenderSubSpriteMtx
 namespace s20af948 {
 extern "C" {
-void Mg_RenderSubSpriteMtx(void* a, int b, int c, void* m)
-{
+void Mg_RenderSubSpriteMtx(void *a, int b, int c, void *m) {
     dScMgBase_c *scene = gMgScene;
-    if (scene == 0) return;
+    if (scene == 0)
+        return;
     if (scene->mMenuOpen == 0) {
         if (scene->GetDisplayMode() == 2) {
-            if (*(unsigned short*)((char*)gMgScene + 0x4664) != 0) return;
-            OAM::Render(false, (OamAttr*)a, b, c, -1, -1, (Matrix2x2*)m);
+            if (((D3DBaseView *)gMgScene)->mDrawSubScreen != 0)
+                return;
+            OAM::Render(false, (OamAttr *)a, b, c, -1, -1, (Matrix2x2 *)m);
             return;
         }
     }
-    OAM::Render(true, (OamAttr*)a, b, c, -1, -1, (Matrix2x2*)m);
+    OAM::Render(true, (OamAttr *)a, b, c, -1, -1, (Matrix2x2 *)m);
 }
 }
 }
@@ -2008,18 +2023,21 @@ extern "C" {
 extern "C" {
 void _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(int, OamAttr*, s32, s32, int, int, int, int, int, int);
 
-extern "C" void RenderOamMainScreen(int oam, int x, int y, int palette, int priority)
-{
+extern "C" void RenderOamMainScreen(int oam, int x, int y, int palette, int priority) {
     dScMgBase_c *scene = gMgScene;
-    if (scene == 0) return;
+    if (scene == 0)
+        return;
     if (scene->mMenuOpen == 0) {
         if (scene->GetDisplayMode() == 2) {
-            if (*(unsigned short*)((char*)gMgScene + 0x4664) != 1) return;
-            _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, (OamAttr*)oam, x, y, palette, priority, 0x1000, 0x1000, 0, -1);
+            if (((D3DBaseView *)gMgScene)->mDrawSubScreen != 1)
+                return;
+            _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, (OamAttr *)oam, x, y, palette, priority,
+                                                        0x1000, 0x1000, 0, -1);
             return;
         }
     }
-    _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, (OamAttr*)oam, x, y, palette, priority, 0x1000, 0x1000, 0, -1);
+    _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, (OamAttr *)oam, x, y, palette, priority, 0x1000,
+                                                0x1000, 0, -1);
 }
 }
 }
@@ -2035,17 +2053,20 @@ typedef int Fix12i;
 extern "C" int _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(
     int show, struct OamAttr* attr, int a, int b, int c, int d, Fix12i e, int f);
 
-extern "C" int Mg_RenderMainSpriteScaled(int a0, int a1, int a2, int a3, int a4, int a5, unsigned short a6)
-{
+extern "C" int Mg_RenderMainSpriteScaled(int a0, int a1, int a2, int a3, int a4, int a5,
+                                         unsigned short a6) {
     dScMgBase_c *scene = gMgScene;
-    if (scene == 0) return 0;
+    if (scene == 0)
+        return 0;
     if (scene->mMenuOpen == 0) {
         if (scene->GetDisplayMode() == 2) {
-            if (*(unsigned short*)((char*)gMgScene + 0x4664) != 1) return 0;
-            return _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(0, (struct OamAttr*)a0, a1, a2, a3, a4, a5, a6);
+            if (((D3DBaseView *)gMgScene)->mDrawSubScreen != 1)
+                return 0;
+            return _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(0, (struct OamAttr *)a0, a1, a2, a3, a4,
+                                                           a5, a6);
         }
     }
-    return _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(0, (struct OamAttr*)a0, a1, a2, a3, a4, a5, a6);
+    return _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(0, (struct OamAttr *)a0, a1, a2, a3, a4, a5, a6);
 }
 }
 }
@@ -2053,17 +2074,19 @@ extern "C" int Mg_RenderMainSpriteScaled(int a0, int a1, int a2, int a3, int a4,
 // @symbol Mg_RenderMainSpritePalMtx
 namespace s20afc18 {
 extern "C" {
-void Mg_RenderMainSpritePalMtx(void* a0, int a1, int a2, int a3, int a4, void* a5){
-  dScMgBase_c *scene = gMgScene;
-  if(scene == 0) return;
-  if(scene->mMenuOpen == 0){
-    if(scene->GetDisplayMode() == 2){
-      if(*(unsigned short*)((char*)gMgScene + 0x4664) != 1) return;
-      OAM::Render(0, (OamAttr*)a0, a1, a2, a3, a4, (Matrix2x2*)a5);
-      return;
+void Mg_RenderMainSpritePalMtx(void *a0, int a1, int a2, int a3, int a4, void *a5) {
+    dScMgBase_c *scene = gMgScene;
+    if (scene == 0)
+        return;
+    if (scene->mMenuOpen == 0) {
+        if (scene->GetDisplayMode() == 2) {
+            if (((D3DBaseView *)gMgScene)->mDrawSubScreen != 1)
+                return;
+            OAM::Render(0, (OamAttr *)a0, a1, a2, a3, a4, (Matrix2x2 *)a5);
+            return;
+        }
     }
-  }
-  OAM::Render(0, (OamAttr*)a0, a1, a2, a3, a4, (Matrix2x2*)a5);
+    OAM::Render(0, (OamAttr *)a0, a1, a2, a3, a4, (Matrix2x2 *)a5);
 }
 }
 }
@@ -2071,16 +2094,17 @@ void Mg_RenderMainSpritePalMtx(void* a0, int a1, int a2, int a3, int a4, void* a
 // @symbol DrawOamSprite
 namespace s20afcf8 {
 extern "C" {
-extern "C" void DrawOamSprite(void *arg0, void *arg1, int arg2, void *arg3)
-{
+extern "C" void DrawOamSprite(void *arg0, void *arg1, int arg2, void *arg3) {
     dScMgBase_c *scene = gMgScene;
-    if (scene == 0) return;
+    if (scene == 0)
+        return;
     if (scene->mMenuOpen == 0 && scene->GetDisplayMode() == 2) {
-        if (*(unsigned short*)((char*)gMgScene + 0x4664) != 1) return;
-        OAM::Render(false, (OamAttr*)arg0, (int)arg1, arg2, -1, -1, (Matrix2x2*)arg3);
+        if (((D3DBaseView *)gMgScene)->mDrawSubScreen != 1)
+            return;
+        OAM::Render(false, (OamAttr *)arg0, (int)arg1, arg2, -1, -1, (Matrix2x2 *)arg3);
         return;
     }
-    OAM::Render(false, (OamAttr*)arg0, (int)arg1, arg2, -1, -1, (Matrix2x2*)arg3);
+    OAM::Render(false, (OamAttr *)arg0, (int)arg1, arg2, -1, -1, (Matrix2x2 *)arg3);
 }
 }
 }
@@ -2091,21 +2115,25 @@ extern "C" {
 extern "C" {
 extern int sMgTopScreenYOffset;
 int _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(int, void*, int, int, int, int, int, int, int, int);
-void Mg_RenderSpriteBoth(void* a0, int a1, int a2, int a3, int a4){
-  dScMgBase_c *scene = gMgScene;
-  if(scene == 0) return;
-  if(scene->mMenuOpen == 0){
-    if(scene->GetDisplayMode() == 2){
-      if(*(unsigned short*)((char*)gMgScene + 0x4664) == 1){
-        _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, a0, a1, a2 + 0xc0 + sMgTopScreenYOffset, a3, a4, 0x1000, 0x1000, 0, -1);
+void Mg_RenderSpriteBoth(void *a0, int a1, int a2, int a3, int a4) {
+    dScMgBase_c *scene = gMgScene;
+    if (scene == 0)
         return;
-      }
-      _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, a0, a1, a2, a3, a4, 0x1000, 0x1000, 0, -1);
-      return;
+    if (scene->mMenuOpen == 0) {
+        if (scene->GetDisplayMode() == 2) {
+            if (((D3DBaseView *)gMgScene)->mDrawSubScreen == 1) {
+                _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(
+                    0, a0, a1, a2 + 0xc0 + sMgTopScreenYOffset, a3, a4, 0x1000, 0x1000, 0, -1);
+                return;
+            }
+            _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, a0, a1, a2, a3, a4, 0x1000, 0x1000, 0,
+                                                        -1);
+            return;
+        }
     }
-  }
-  _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, a0, a1, a2 + 0xc0 + sMgTopScreenYOffset, a3, a4, 0x1000, 0x1000, 0, -1);
-  OAM::RenderSub((OamAttr*)a0, a1, a2, a3, a4);
+    _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiES3_ii(0, a0, a1, a2 + 0xc0 + sMgTopScreenYOffset, a3, a4,
+                                                0x1000, 0x1000, 0, -1);
+    OAM::RenderSub((OamAttr *)a0, a1, a2, a3, a4);
 }
 }
 }
@@ -2122,15 +2150,17 @@ typedef int Fix12i;
 extern "C" int _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(
     int show, struct OamAttr* attr, int a, int b, int c, int d, Fix12i e, int f);
 
-extern "C" int Mg_RenderSpriteBothScaled(struct OamAttr* a0, int a1, int a2, int a3, int a4, Fix12i a5, int a6)
-{
+extern "C" int Mg_RenderSpriteBothScaled(struct OamAttr *a0, int a1, int a2, int a3, int a4,
+                                         Fix12i a5, int a6) {
     dScMgBase_c *scene = gMgScene;
-    if (scene == 0) return 0;
+    if (scene == 0)
+        return 0;
     if (scene->mMenuOpen == 0 && scene->GetDisplayMode() == 2) {
-        if (*(unsigned short*)((char*)gMgScene + 0x4664) == 1) {
+        if (((D3DBaseView *)gMgScene)->mDrawSubScreen == 1) {
             int hp = sMgTopScreenYOffset;
             if (a2 >= -0x100 - hp && a2 < -hp) {
-                return _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(0, a0, a1, a2 + 0xc0 + hp, a3, a4, a5, a6);
+                return _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(0, a0, a1, a2 + 0xc0 + hp, a3, a4,
+                                                               a5, a6);
             }
             if (a2 >= -0x40 && a2 < 0xc0) {
                 return _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(0, a0, a1, a2, a3, a4, a5, a6);
@@ -2139,7 +2169,8 @@ extern "C" int Mg_RenderSpriteBothScaled(struct OamAttr* a0, int a1, int a2, int
     } else {
         int hp = sMgTopScreenYOffset;
         if (a2 >= -0x100 - hp && a2 < -hp) {
-            return _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(0, a0, a1, a2 + 0xc0 + hp, a3, a4, a5, a6);
+            return _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(0, a0, a1, a2 + 0xc0 + hp, a3, a4, a5,
+                                                           a6);
         }
         if (a2 >= -0x40 && a2 < 0xc0) {
             return _ZN3OAM6RenderEbP7OamAttriiii5Fix12IiEi(1, a0, a1, a2, a3, a4, a5, a6);
@@ -2155,21 +2186,24 @@ namespace s20b0104 {
 extern "C" {
 extern "C" {
 extern int sMgTopScreenYOffset;
-void RenderOamBothScreens(void* attr, int x, int y, int palette, int priority, void* mtx){
-  dScMgBase_c *scene = gMgScene;
-  if(scene == 0) return;
-  if(scene->mMenuOpen == 0){
-    if(scene->GetDisplayMode() == 2){
-      if(*(unsigned short*)((char*)gMgScene + 0x4664) == 1){
-        OAM::Render(false, (OamAttr*)attr, x, y + 0xc0 + sMgTopScreenYOffset, palette, priority, (Matrix2x2*)mtx);
+void RenderOamBothScreens(void *attr, int x, int y, int palette, int priority, void *mtx) {
+    dScMgBase_c *scene = gMgScene;
+    if (scene == 0)
         return;
-      }
-      OAM::Render(false, (OamAttr*)attr, x, y, palette, priority, (Matrix2x2*)mtx);
-      return;
+    if (scene->mMenuOpen == 0) {
+        if (scene->GetDisplayMode() == 2) {
+            if (((D3DBaseView *)gMgScene)->mDrawSubScreen == 1) {
+                OAM::Render(false, (OamAttr *)attr, x, y + 0xc0 + sMgTopScreenYOffset, palette,
+                            priority, (Matrix2x2 *)mtx);
+                return;
+            }
+            OAM::Render(false, (OamAttr *)attr, x, y, palette, priority, (Matrix2x2 *)mtx);
+            return;
+        }
     }
-  }
-  OAM::Render(false, (OamAttr*)attr, x, y + 0xc0 + sMgTopScreenYOffset, palette, priority, (Matrix2x2*)mtx);
-  OAM::Render(true, (OamAttr*)attr, x, y, palette, priority, (Matrix2x2*)mtx);
+    OAM::Render(false, (OamAttr *)attr, x, y + 0xc0 + sMgTopScreenYOffset, palette, priority,
+                (Matrix2x2 *)mtx);
+    OAM::Render(true, (OamAttr *)attr, x, y, palette, priority, (Matrix2x2 *)mtx);
 }
 }
 }
@@ -2180,21 +2214,23 @@ namespace s20b023c {
 extern "C" {
 extern "C" {
 extern int sMgTopScreenYOffset;
-void Mg_RenderSpriteBothPalMtx(void* a0, int a1, int a2, int a3, void* a4){
-  dScMgBase_c *scene = gMgScene;
-  if(scene == 0) return;
-  if(scene->mMenuOpen == 0){
-    if(scene->GetDisplayMode() == 2){
-      if(*(unsigned short*)((char*)gMgScene + 0x4664) == 1){
-        OAM::Render(0, (OamAttr*)a0, a1, a2 + 0xc0 + sMgTopScreenYOffset, a3, -1, (Matrix2x2*)a4);
+void Mg_RenderSpriteBothPalMtx(void *a0, int a1, int a2, int a3, void *a4) {
+    dScMgBase_c *scene = gMgScene;
+    if (scene == 0)
         return;
-      }
-      OAM::Render(0, (OamAttr*)a0, a1, a2, a3, -1, (Matrix2x2*)a4);
-      return;
+    if (scene->mMenuOpen == 0) {
+        if (scene->GetDisplayMode() == 2) {
+            if (((D3DBaseView *)gMgScene)->mDrawSubScreen == 1) {
+                OAM::Render(0, (OamAttr *)a0, a1, a2 + 0xc0 + sMgTopScreenYOffset, a3, -1,
+                            (Matrix2x2 *)a4);
+                return;
+            }
+            OAM::Render(0, (OamAttr *)a0, a1, a2, a3, -1, (Matrix2x2 *)a4);
+            return;
+        }
     }
-  }
-  OAM::Render(0, (OamAttr*)a0, a1, a2 + 0xc0 + sMgTopScreenYOffset, a3, -1, (Matrix2x2*)a4);
-  OAM::Render(1, (OamAttr*)a0, a1, a2, a3, -1, (Matrix2x2*)a4);
+    OAM::Render(0, (OamAttr *)a0, a1, a2 + 0xc0 + sMgTopScreenYOffset, a3, -1, (Matrix2x2 *)a4);
+    OAM::Render(1, (OamAttr *)a0, a1, a2, a3, -1, (Matrix2x2 *)a4);
 }
 }
 }
@@ -2205,21 +2241,23 @@ namespace s20b0380 {
 extern "C" {
 extern "C" {
 extern int sMgTopScreenYOffset;
-void Mg_RenderSpriteBothMtx(void* a0, int a1, int a2, void* a3){
-  dScMgBase_c *scene = gMgScene;
-  if(scene == 0) return;
-  if(scene->mMenuOpen == 0){
-    if(scene->GetDisplayMode() == 2){
-      if(*(unsigned short*)((char*)gMgScene + 0x4664) == 1){
-        OAM::Render(0, (OamAttr*)a0, a1, a2 + 0xc0 + sMgTopScreenYOffset, -1, -1, (Matrix2x2*)a3);
+void Mg_RenderSpriteBothMtx(void *a0, int a1, int a2, void *a3) {
+    dScMgBase_c *scene = gMgScene;
+    if (scene == 0)
         return;
-      }
-      OAM::Render(0, (OamAttr*)a0, a1, a2, -1, -1, (Matrix2x2*)a3);
-      return;
+    if (scene->mMenuOpen == 0) {
+        if (scene->GetDisplayMode() == 2) {
+            if (((D3DBaseView *)gMgScene)->mDrawSubScreen == 1) {
+                OAM::Render(0, (OamAttr *)a0, a1, a2 + 0xc0 + sMgTopScreenYOffset, -1, -1,
+                            (Matrix2x2 *)a3);
+                return;
+            }
+            OAM::Render(0, (OamAttr *)a0, a1, a2, -1, -1, (Matrix2x2 *)a3);
+            return;
+        }
     }
-  }
-  OAM::Render(0, (OamAttr*)a0, a1, a2 + 0xc0 + sMgTopScreenYOffset, -1, -1, (Matrix2x2*)a3);
-  OAM::Render(1, (OamAttr*)a0, a1, a2, -1, -1, (Matrix2x2*)a3);
+    OAM::Render(0, (OamAttr *)a0, a1, a2 + 0xc0 + sMgTopScreenYOffset, -1, -1, (Matrix2x2 *)a3);
+    OAM::Render(1, (OamAttr *)a0, a1, a2, -1, -1, (Matrix2x2 *)a3);
 }
 }
 }
@@ -2272,9 +2310,19 @@ s32 dScMgBase_c::Render()
     return 1;
 }
 
+/* A view of one of the three 0x134-byte banner records at gMgBanners, with
+ * the member names src/minigames/unit020b2c84.cpp gives MgBanner there. */
+struct MgBanner {
+    char pad_00[0x20];
+    int mFileIndex; /* 0x20 index into the file table; 29 when free */
+    char pad_24[0xc];
+    s16 mGfxSlot; /* 0x30 0..2, see sMgBannerGfxSlotUsed */
+    char pad_32[0x102];
+};
+
 // @symbol _ZN11dScMgBase_c12BeforeRenderEv
 /* Draws the menu instead of the scene while it is open. The two loops draw
- * the three UI records in two passes, those with 0x30 clear first. */
+ * the three banner records in two passes, those with mGfxSlot clear first. */
 int dScMgBase_c::BeforeRender()
 {
     int i; char *p; int i2; char *p2; int j;
@@ -2290,14 +2338,18 @@ int dScMgBase_c::BeforeRender()
     if (mStateController.mSuspended == 0) {
         p = gMgBanners;
         for (i = 0; i < 3; i++, p += 0x134) {
-            if (*(int *)(p + 0x20) == 0x1d) continue;
-            if (*(s16 *)(p + 0x30) != 0) continue;
+            if (((MgBanner *)p)->mFileIndex == 0x1d)
+                continue;
+            if (((MgBanner *)p)->mGfxSlot != 0)
+                continue;
             Banner_Draw(p);
         }
         p2 = gMgBanners;
         for (i2 = 0; i2 < 3; i2++, p2 += 0x134) {
-            if (*(int *)(p2 + 0x20) == 0x1d) continue;
-            if (*(s16 *)(p2 + 0x30) == 0) continue;
+            if (((MgBanner *)p2)->mFileIndex == 0x1d)
+                continue;
+            if (((MgBanner *)p2)->mGfxSlot == 0)
+                continue;
             Banner_Draw(p2);
         }
         mStateController.Render();
@@ -2360,7 +2412,7 @@ int dScMgBase_c::BeforeBehavior()
         mStateController.Behavior();
         g = gMgBanners;
         for (i = 0; i < 3; i++) {
-            if (*(int *)(g + 0x20) != 0x1d)
+            if (((MgBanner *)g)->mFileIndex != 0x1d)
                 Banner_Update(g);
             g += 0x134;
         }
@@ -2395,7 +2447,7 @@ int dScMgBase_c::BeforeBehavior()
 void dScMgBase_c::AfterCleanupResources(u32 vfSuccess)
 {
     if (vfSuccess == 2) {
-        if (((int *)gMgMenuRow)[4] == 0)
+        if (gMgMenuRow[4] == 0)
             Mg_CommitRecords();
         data_0209d4a8 = 0;
         sMgGraphCallback.mScene = 0;
@@ -2424,9 +2476,19 @@ void dScMgBase_c::AfterInitResources(u32 vfSuccess)
 }
 
 // @symbol _ZN11dScMgBase_c19BeforeInitResourcesEv
+namespace s20b0930 {
+extern "C" {
+/* local extern: decl_common.h declares this `(char *)`, but the definition
+   in src/minigames/d_mg_state.cpp takes no parameter and only resets the
+   sMg*Banner position globals. The `add r0, r4, #0x4000` the cartridge has
+   just before the call is the base of the mNewRecord store
+   (`strb r1, [r0, #0x65c]`), left in r0, not an argument. */
+void Mg_ResetBannerLayout(void);
+}
+}
+
 /* Sets up the scene and both displays. Slots 26, 31 and 33 must stay
- * virtual calls so derived scenes can override them. The block at 0x4000 is
- * padding in the header, so it is still passed by offset. */
+ * virtual calls so derived scenes can override them. */
 bool dScMgBase_c::BeforeInitResources()
 {
     if (dScene_c::BeforeInitResources() == 0) return 0;
@@ -2434,15 +2496,18 @@ bool dScMgBase_c::BeforeInitResources()
         func_02019028();
     else
         Enable3dEngines();
-    mMusicTrack = *(int*)(gMgMenuRow + 0x28);
+    mMusicTrack = gMgMenuRow[10]; /* the menu row's music track, +0x28 */
     if (sMgWorkBuffer == 0)
         sMgWorkBuffer = _ZN6Memory13operator_new2Ej(0x4000);
+    /* +0xb0 is the header's pad_0b0. Scanning ov004 and ov006 turns up no
+       other word access at +0xb0 in a scene method or through gMgScene, so
+       no role is established and the store stays raw. */
     if (gMgScene != 0)
         *(int*)((char*)gMgScene + 0xb0) = 0;
     mHudScore = 0;
     mBestHudScore = 0;
     mNewRecord = 0;
-    Mg_ResetBannerLayout((char *)this + 0x4000);
+    s20b0930::Mg_ResetBannerLayout();
     InitEngines();
     Mg_LoadBannerFiles();
     dScene_c::SetFaders(&data_0209f61c);
@@ -2616,18 +2681,15 @@ int Mg_CheckBannerButton(int arg) {
 // @symbol Mg_ShowBanner
 namespace s20b0cac {
 extern "C" {
-struct MgBanner {
-    char pad[0x134];
-};
 extern struct MgBanner gMgBanners[];
 extern void Banner_Init(struct MgBanner *e, int c, int a1, int a2, int a3, int s1, short s2);
 /* Hands its arguments to Banner_Init for the first of the three
-   records at gMgBanners whose word at +0x20 is 0x1d; does nothing
+   records at gMgBanners whose mFileIndex is 0x1d (free); does nothing
    when none is. */
 void Mg_ShowBanner(int c, int a1, int a2, int a3, int arg5, short arg6) {
     int i;
     for (i = 0; i < 3; i++) {
-        if (*(int*)((char*)&gMgBanners[i] + 0x20) == 0x1d) {
+        if (gMgBanners[i].mFileIndex == 0x1d) {
             Banner_Init(&gMgBanners[i], c, a1, a2, a3, arg5, arg6);
             return;
         }
@@ -3597,13 +3659,11 @@ void dScMgBase_c::InitEngines() {
     using s20b265c::Mg_ResetOverlays;
     using s20b265c::Mg_ResetBgOffsets;
     using s20b265c::Mg_DisableAllBanks;
-    char *obj = (char *)this;
-
     void *p;
 
     sMgTopScreenYOffset = 0;
-    obj[0x68] = 0;
-    *(int *)(obj + 0x6c) = -1;
+    mBrushOnMain = 0;
+    mBrushLayer = -1;
     *(vu32 *)0x4001000u |= 0x10000u;
     _ZN2GX15SetGraphicsModeEiii(1, 0, 0);
     _ZN3GXS15SetGraphicsModeEi(0);
@@ -3817,14 +3877,14 @@ dScMgBase_c::dScMgBase_c() : mRunDuringFade(0), unk_0c2(1) {
     mQuitFadeStarted = 0;
 
     gMgScene = this;
-    mLevel = *(u32 *)(gMgMenuRow + 0x30);
+    mLevel = gMgMenuRow[12]; /* dScMiniGm_c::mStartLevel, +0x30 */
 
     mSceneKind = sMgSceneKindByGame[(param1 >> 16) & 0xff];
-    /* param1 &= 0xffff, through a char *: spelled with the member, either
-       as &= or as a plain assignment, mwccarm forms the address this + 8
-       in ip first and the constructor grows by 4 bytes. */
-    *(s32 *)((char *)this + 8) =
-        *(u32 *)((char *)this + 8) & 0xffff;
+    /* param1 &= 0xffff, stored through an s32 lvalue. Spelled as a plain
+       u32 `param1 &= 0xffff` (or `param1 = param1 & 0xffff`), mwccarm forms
+       the address this + 8 in ip first and the constructor grows by 4
+       bytes; `param1 = (u16)param1` shrinks it by 4. */
+    *(s32 *)&param1 = param1 & 0xffff;
     mTallyShown = 0;
     mTallyAnimTimer = 0;
 

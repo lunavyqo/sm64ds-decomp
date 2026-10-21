@@ -239,8 +239,8 @@ int daKpaFire_c::Behavior()
             }
         }
     }
-    func_ov060_02116740((char *)this);
-    func_ov060_02117624((char *)this);
+    func_ov060_02116740();
+    func_ov060_02117624();
     mdCcAc_c.Clear();
     mdCcAc_c.Update();
     return 1;
@@ -260,7 +260,7 @@ int daKpaFire_c::CleanupResources()
     return 1;
 }
 
-// @symbol func_ov060_02117624
+// @symbol _ZN11daKpaFire_c19func_ov060_02117624Ev
 /* Per-frame drop shadow. Does nothing when mDropsShadow is 0. Otherwise it
  * builds a translation matrix in the shared scratch matrix data_020a0e68 at
  * the fire's x, its mGroundY and its z (each >> 3), copies it into the
@@ -270,12 +270,13 @@ int daKpaFire_c::CleanupResources()
  * that value means is not decoded; every caller passes 0xf).
  * The Matrix4x3 at 0x32c remains the header's pad_32c storage; copying it
  * through the RawMatrix4x3 view keeps the block copy intact in C++. */
-extern "C" void func_ov060_02117624(char *c) {
-    struct daKpaFire_c *self = (struct daKpaFire_c *)c;
-    if (self->mDropsShadow == 0) return;
-    Matrix4x3_FromTranslation(&data_020a0e68, self->mPosX>>3, self->mGroundY>>3, self->mPosZ>>3);
-    *(RawMatrix4x3*)self->pad_32c = *(RawMatrix4x3*)&data_020a0e68;
-    _ZN8dActor_c19DropShadowRadHeightER17dExtShadowModel_cR9Matrix4x35Fix12IiES5_j(self, &self->mShadowModel, self->pad_32c, self->mShadowRadiusMul * self->mFireScale, 0x1e000, 0xf);
+void daKpaFire_c::func_ov060_02117624() {
+    if (mDropsShadow == 0)
+        return;
+    Matrix4x3_FromTranslation(&data_020a0e68, mPosX >> 3, mGroundY >> 3, mPosZ >> 3);
+    *(RawMatrix4x3 *)pad_32c = *(RawMatrix4x3 *)&data_020a0e68;
+    _ZN8dActor_c19DropShadowRadHeightER17dExtShadowModel_cR9Matrix4x35Fix12IiES5_j(
+        this, &mShadowModel, pad_32c, mShadowRadiusMul * mFireScale, 0x1e000, 0xf);
 }
 
 // @symbol _ZN11daKpaFire_c19func_ov060_0211747cEv
@@ -418,9 +419,9 @@ void daKpaFire_c::func_ov060_021172e0() {
     {
         dActor_c *spawned = dActor_c::Spawn(ACTOR_COIN, 0, this->mPos, 0, this->mAreaId, -1);
         if (spawned != 0) {
-            spawned->unk_0a4 = 0;
+            spawned->mSpeedX = 0;
             spawned->mVertSpeed = 0;
-            spawned->unk_0ac = 0;
+            spawned->mSpeedZ = 0;
         }
     }
 }
@@ -564,8 +565,8 @@ void daKpaFire_c::func_ov060_02116f74() {
  * Each frame: mFireScale grows by 0x255 (about 0.146) while below 5.0 (0x5000),
  * and the pitch word (mPrevAngleX, signed) loses 0x200 while above 0x800.
  * The three velocity words come from the speed (mHorzSpeed), the pitch and the
- * heading through the sine table: unk_0a4 = x, mVertSpeed = y (-speed times
- * the pitch's table[2p]), unk_0ac = z; the x and z values are divided by 896
+ * heading through the sine table: mSpeedX = x, mVertSpeed = y (-speed times
+ * the pitch's table[2p]), mSpeedZ = z; the x and z values are divided by 896
  * (0x380, not decoded). Position moves by those velocities. Shows
  * PARTICLE_SCALED_9A scaled by mFireScale (y offset 12 * scale). When the mesh
  * collision reports ground it spawns a variant 6 fire with a 16 in 17 chance
@@ -585,7 +586,7 @@ void daKpaFire_c::func_ov060_02116d78() {
         int s0 = data_02082214[i0];
         int speed = this->mHorzSpeed;
         int s1 = data_02082214[i1];
-        this->unk_0a4 = (s1 * (speed * s0)) / 896;
+        this->mSpeedX = (s1 * (speed * s0)) / 896;
     }
     {
         int speed = this->mHorzSpeed;
@@ -596,11 +597,11 @@ void daKpaFire_c::func_ov060_02116d78() {
         int s0 = data_02082214[((*(unsigned short *)&this->mPrevAngleX) >> 4) * 2];
         int s1 = data_02082214[((*(unsigned short *)&this->mPrevAngleY) >> 4) * 2];
         int speed = this->mHorzSpeed;
-        this->unk_0ac = (s1 * ((-speed) * s0)) / 896;
+        this->mSpeedZ = (s1 * ((-speed) * s0)) / 896;
     }
-    this->mPosX += this->unk_0a4;
+    this->mPosX += this->mSpeedX;
     this->mPosY += this->mVertSpeed;
-    this->mPosZ += this->unk_0ac;
+    this->mPosZ += this->mSpeedZ;
 
     func_ov060_02116518(PARTICLE_SCALED_9A, 1, this->mFireScale * 0xc);
     if (this->mWithMeshClsn.IsOnGround() != 0) {
@@ -810,19 +811,17 @@ void daKpaFire_c::func_ov060_021167c8() {
     this->mShadowRadiusMul = 0x10;
 }
 
-// @symbol func_ov060_02116740
+// @symbol _ZN11daKpaFire_c19func_ov060_02116740Ev
 /* Burn the player the fire's cylinder touched. Reads mdCcAc_c.otherOwner (the
  * dCc_c field Clear zeroes; here it is used as an actor uniqueID, 0 for none)
  * and looks that actor up; if it is the Player (actor id 0xbf = ACTOR_PLAYER)
  * and neither Player::mIsMetal nor Player::mIsVanish is set it calls
- * Player::Burn.
- * Keeps the char * parameter decl_common.h declares. */
-extern "C" {
-void func_ov060_02116740(char* c)
-{
-    unsigned int id = ((daKpaFire_c *)c)->mdCcAc_c.otherOwner;
-    if (id == 0) return;
-    Player* player = (Player *)dActor_c::FindWithID(id);
+ * Player::Burn. */
+void daKpaFire_c::func_ov060_02116740() {
+    unsigned int id = ((daKpaFire_c *)this)->mdCcAc_c.otherOwner;
+    if (id == 0)
+        return;
+    Player *player = (Player *)dActor_c::FindWithID(id);
     if (player == 0) return;
     /* Measured: folding this temp into `if (player->actorID != ACTOR_PLAYER)`
        makes the function 12 bytes shorter than the ROM size, 0x88. */
@@ -831,7 +830,6 @@ void func_ov060_02116740(char* c)
     if (player->mIsMetal != 0) return;
     if (player->mIsVanish != 0) return;
     player->Burn();
-}
 }
 
 // @symbol _ZN11daKpaFire_c19func_ov060_02116518Ejii

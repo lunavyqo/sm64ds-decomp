@@ -6,15 +6,24 @@
  *   - func_ and data_ helpers are still the linker names.
  *   - CheckFinished reads mCredits through WordAt. As a plain member the
  *     multiply-add takes its registers the other way round.
- *   - ShuffleCards: mValueCounts[cardValue] hoists the base; adding the slot
- *     to 0x5330 matches.
+ *   - ShuffleCards: mValueCounts[cardValue] hoists the base; the slot is
+ *     added to `this` first and the array reached through a cast back to
+ *     the class. The card walks (DrawCards, RoundWaitDeal, ShuffleCards)
+ *     step a `char *` the same way -- mCards[i] does not match there.
  *   - cstd::atan2 stays the mangled symbol (Fix12<int> by value).
  *   - the factory builds the object by hand because the class has no
  *     constructor declared yet.
  */
 
 /* Runtime asset handles resolved through the overlay 0 file table. */
-enum d_s_mg_memory_AssetId { ASSET_D_2D_MG_CARD_NCL_BIN = 0x00bb };
+enum d_s_mg_memory_AssetId {
+    ASSET_D_2D_MG_CARD_NCL_BIN = 0x00bb,
+    ASSET_D_2D_MG_CARD_NCG_BIN = 0x00ba,
+    ASSET_D_2D_MG_CARD_S_NCG_BIN = 0x00bc,
+    ASSET_D_2D_MG_CARD_F_NCG_BIN = 0x00b7,
+    ASSET_D_2D_MG_CARD_G_NCG_BIN = 0x00b8,
+    ASSET_D_2D_MG_CARD_I_NCG_BIN = 0x00b9
+};
 
 #include "dScMgMemory_c.h"
 #include "common.h"
@@ -22,6 +31,7 @@ enum d_s_mg_memory_AssetId { ASSET_D_2D_MG_CARD_NCL_BIN = 0x00bb };
 #include "PlayerInput.h"
 #include "decl_common.h"
 #include "Sound.h"
+#include "SpawnInfo.h"
 #include "nitro/fx/fx.h"
 
 /* State numbers follow the card PMF table initialized by
@@ -38,22 +48,13 @@ enum MemoryCardState {
 
 typedef void (dScMgMemory_c::*dScMgMemory_cState)();
 typedef void (dScMgMemory_c::*dScMgMemory_cCardState)(int);
+typedef void (dScMgMemory_c::*dScMgMemory_cPlayerState)(int);
 extern "C" dScMgMemory_cState sMemoryResultTable[];
 extern "C" dScMgMemory_cState sMemoryStateTable[];
 extern dScMgMemory_cState sMemoryRoundTable[];
 extern dScMgMemory_cCardState sMemoryCardTable[];
-/* The player-state table filled by the same initializer; no enrolled
- * consumer names it yet, so it keeps the shard's grouping with the
- * no-arg tables. */
-extern "C" dScMgMemory_cState sMemoryPlayerTable[];
-
-/* A walk that advances the scene pointer. The card sits at 0x51a8 so the
- * address stays add #0x5000 plus the field. mCards[i] did not match in
- * DrawCards, RoundWaitDeal, or ShuffleCards. */
-struct dMgMemoryCardCur {
-    char pad[0x51a8];
-    dMgMemoryCard_c card;
-};
+/* Player markers use the int-argument handlers, like the card handlers. */
+extern "C" dScMgMemory_cPlayerState sMemoryPlayerTable[];
 
 namespace GX {
 void LoadOBJPltt(void const *, unsigned int, unsigned int);
@@ -326,14 +327,15 @@ void dScMgMemory_c::DrawCards() {
     cardBase = raw;
     cardIndex = 0;
     do {
-        dMgMemoryCardCur *card = (dMgMemoryCardCur *)cardBase;
-        if (card->card.visible != 0) {
+        dScMgMemory_c *card = (dScMgMemory_c *)cardBase;
+        if (card->mCards[0].visible != 0) {
             dimmed = 0;
             if (mState != STATE_JUDGE_PAIRS)
                 dimmed = 1;
-            spriteIndex = sMemoryCardFrameSprites[card->card.value * 5 + card->card.frame];
-            Hud_RenderSprite(sMemoryCardSprites[spriteIndex], card->card.x >> 12,
-                             card->card.y >> 12, -1, dimmed);
+            spriteIndex =
+                sMemoryCardFrameSprites[card->mCards[0].value * 5 + card->mCards[0].frame];
+            Hud_RenderSprite(sMemoryCardSprites[spriteIndex], card->mCards[0].x >> 12,
+                             card->mCards[0].y >> 12, -1, dimmed);
         }
         cardIndex += 1;
         cardBase += 0x18;
@@ -662,16 +664,18 @@ void dScMgMemory_c::RoundReveal() {
     mState = STATE_JUDGE_PAIRS;
 }
 
-/* Nothing reads the result. The void* return leaves this + 0x5000 in r0. */
-void *dScMgMemory_c::RoundWaitDeal() {
+/* Round dispatch ignores the result. A void return matches its native PMF
+ * contract and preserves the complete emitted body; the historical return
+ * type cannot be recovered from the unused value left in r0. */
+void dScMgMemory_c::RoundWaitDeal() {
     char *raw = (char *)this;
     int waiting = 0;
     int cardIndex = 0;
     char *cardBase = raw;
     for (; cardIndex < 0xc;) {
-        dMgMemoryCardCur *card = (dMgMemoryCardCur *)cardBase;
-        if (card->card.active != 0) {
-            if (card->card.state != CARD_IDLE) {
+        dScMgMemory_c *card = (dScMgMemory_c *)cardBase;
+        if (card->mCards[0].active != 0) {
+            if (card->mCards[0].state != CARD_IDLE) {
                 waiting++;
                 break;
             }
@@ -680,13 +684,13 @@ void *dScMgMemory_c::RoundWaitDeal() {
         cardBase += 0x18;
     }
     if (waiting != 0)
-        return raw;
+        return;
     cardBase = raw;
     cardIndex = 0;
     {
         unsigned char selectState = CARD_SELECTABLE;
         for (; cardIndex < 0xc;) {
-            ((dMgMemoryCardCur *)cardBase)->card.state = selectState;
+            ((dScMgMemory_c *)cardBase)->mCards[0].state = selectState;
             cardIndex++;
             cardBase += 0x18;
         }
@@ -694,7 +698,7 @@ void *dScMgMemory_c::RoundWaitDeal() {
     {
         mSubstate = ROUND_START;
         mState = STATE_JUDGE_PAIRS;
-        return raw + 0x5000;
+        return;
     }
 }
 
@@ -775,9 +779,9 @@ void dScMgMemory_c::ShuffleCards() {
                 (int)((((u32)RandomIntInternal(&data_0209d4b8) >> 16) & 0x7fff) * 4 >> 15) + 1;
             for (;;) {
                 /* mValueCounts[cardValue] hoists the base. Same spelling below. */
-                valueCount = (u8 *)(raw + cardValue + 0x5330);
+                valueCount = &((dScMgMemory_c *)(raw + cardValue))->mValueCounts[0];
                 if (*valueCount < 2) {
-                    ((dMgMemoryCardCur *)cardBase)->card.value = cardValue;
+                    ((dScMgMemory_c *)cardBase)->mCards[0].value = cardValue;
                     *valueCount += 1;
                     break;
                 }
@@ -788,11 +792,11 @@ void dScMgMemory_c::ShuffleCards() {
         }
         cardBase = raw + 0x60;
         for (cardIndex = 4; cardIndex < 12; cardIndex++) {
-            ((dMgMemoryCardCur *)cardBase)->card.x = 0x80000;
-            ((dMgMemoryCardCur *)cardBase)->card.y = -0x80000;
-            ((dMgMemoryCardCur *)cardBase)->card.speed = 0x8000;
-            ((dMgMemoryCardCur *)cardBase)->card.visible = 1;
-            ((dMgMemoryCardCur *)cardBase)->card.state = CARD_MOVING;
+            ((dScMgMemory_c *)cardBase)->mCards[0].x = 0x80000;
+            ((dScMgMemory_c *)cardBase)->mCards[0].y = -0x80000;
+            ((dScMgMemory_c *)cardBase)->mCards[0].speed = 0x8000;
+            ((dScMgMemory_c *)cardBase)->mCards[0].visible = 1;
+            ((dScMgMemory_c *)cardBase)->mCards[0].state = CARD_MOVING;
             cardBase += 0x18;
         }
     } else if (mDifficulty == 1) {
@@ -801,9 +805,9 @@ void dScMgMemory_c::ShuffleCards() {
             cardValue =
                 (int)((((u32)RandomIntInternal(&data_0209d4b8) >> 16) & 0x7fff) * 5 >> 15) + 1;
             for (;;) {
-                valueCount = (u8 *)(raw + cardValue + 0x5330);
+                valueCount = &((dScMgMemory_c *)(raw + cardValue))->mValueCounts[0];
                 if (*valueCount < 2) {
-                    ((dMgMemoryCardCur *)cardBase)->card.value = cardValue;
+                    ((dScMgMemory_c *)cardBase)->mCards[0].value = cardValue;
                     *valueCount += 1;
                     break;
                 }
@@ -814,11 +818,11 @@ void dScMgMemory_c::ShuffleCards() {
         }
         cardBase = raw + 0x30;
         for (cardIndex = 2; cardIndex < 12; cardIndex++) {
-            ((dMgMemoryCardCur *)cardBase)->card.x = 0x80000;
-            ((dMgMemoryCardCur *)cardBase)->card.y = -0x80000;
-            ((dMgMemoryCardCur *)cardBase)->card.speed = 0x8000;
-            ((dMgMemoryCardCur *)cardBase)->card.visible = 1;
-            ((dMgMemoryCardCur *)cardBase)->card.state = CARD_MOVING;
+            ((dScMgMemory_c *)cardBase)->mCards[0].x = 0x80000;
+            ((dScMgMemory_c *)cardBase)->mCards[0].y = -0x80000;
+            ((dScMgMemory_c *)cardBase)->mCards[0].speed = 0x8000;
+            ((dScMgMemory_c *)cardBase)->mCards[0].visible = 1;
+            ((dScMgMemory_c *)cardBase)->mCards[0].state = CARD_MOVING;
             cardBase += 0x18;
         }
     } else {
@@ -827,9 +831,9 @@ void dScMgMemory_c::ShuffleCards() {
             cardValue =
                 (int)((((u32)RandomIntInternal(&data_0209d4b8) >> 16) & 0x7fff) * 6 >> 15) + 1;
             for (;;) {
-                valueCount = (u8 *)(raw + cardValue + 0x5330);
+                valueCount = &((dScMgMemory_c *)(raw + cardValue))->mValueCounts[0];
                 if (*valueCount < 2) {
-                    ((dMgMemoryCardCur *)cardBase)->card.value = cardValue;
+                    ((dScMgMemory_c *)cardBase)->mCards[0].value = cardValue;
                     *valueCount += 1;
                     break;
                 }
@@ -840,11 +844,11 @@ void dScMgMemory_c::ShuffleCards() {
         }
         cardBase = raw;
         for (cardIndex = 0; cardIndex < 12; cardIndex++) {
-            ((dMgMemoryCardCur *)cardBase)->card.x = 0x80000;
-            ((dMgMemoryCardCur *)cardBase)->card.y = -0x80000;
-            ((dMgMemoryCardCur *)cardBase)->card.speed = 0x8000;
-            ((dMgMemoryCardCur *)cardBase)->card.visible = 1;
-            ((dMgMemoryCardCur *)cardBase)->card.state = CARD_MOVING;
+            ((dScMgMemory_c *)cardBase)->mCards[0].x = 0x80000;
+            ((dScMgMemory_c *)cardBase)->mCards[0].y = -0x80000;
+            ((dScMgMemory_c *)cardBase)->mCards[0].speed = 0x8000;
+            ((dScMgMemory_c *)cardBase)->mCards[0].visible = 1;
+            ((dScMgMemory_c *)cardBase)->mCards[0].state = CARD_MOVING;
             cardBase += 0x18;
         }
     }
@@ -1044,7 +1048,7 @@ s32 dScMgMemory_c::InitResources() {
 // @symbol dScMgMemory_c_classInit
 /* Builds the scene by hand (operator new, base constructor, vtables,
  * mShared) because the class has no constructor declared yet. */
-extern "C" void *dScMgMemory_c_classInit() {
+extern "C" dScMgMemory_c *dScMgMemory_c_classInit() {
     char *scene = (char *)fBase_c::operator new(sizeof(dScMgMemory_c));
     if (scene) {
         _ZN11dScMgBase_cC2Ev(scene);
@@ -1053,40 +1057,15 @@ extern "C" void *dScMgMemory_c_classInit() {
         *(void **)scene = &_ZTV13dScMgMemory_c[2];
         Dealer_Construct(scene + 0x4f38);
     }
-    return scene;
+    return (dScMgMemory_c *)scene;
 }
 
 /* Static-init globals (was the handwritten __sinit_ov006_021311c8 shard).
  * The sprite-pointer table plus the five PMF state tables plain-copied
- * from the ROM constants, in retail copy order: the permuted sprite
+ * from native member-pointer constants, in retail copy order: the permuted sprite
  * pointers, the five main states, the six round states, the four result
  * states, the seven card states, then the three player states. */
 extern "C" int sMgCardSprites[];
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_StateSetup;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_StatePlay;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_StateJudge;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_StateResult;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_StateExit;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_RoundStart;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_RoundDealEasy;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_RoundDealNormal;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_RoundDealHard;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_RoundWaitDeal;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_RoundReveal;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_ResultWait;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_ResultReward;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_ResultTurnCards;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_ResultFinish;
-extern "C" dScMgMemory_cCardState pmf_dScMgMemory_c_CardMove;
-extern "C" dScMgMemory_cCardState pmf_dScMgMemory_c_CardIdle;
-extern "C" dScMgMemory_cCardState pmf_dScMgMemory_c_CardSelect;
-extern "C" dScMgMemory_cCardState pmf_dScMgMemory_c_CardFlipUp;
-extern "C" dScMgMemory_cCardState pmf_dScMgMemory_c_CardWait;
-extern "C" dScMgMemory_cCardState pmf_dScMgMemory_c_CardFlipDown;
-extern "C" dScMgMemory_cCardState pmf_dScMgMemory_c_CardFlyAway;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_PlayerDrop;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_PlayerMove;
-extern "C" dScMgMemory_cState pmf_dScMgMemory_c_PlayerWait;
 
 void *sMemoryCardSprites[15] = {
     (void *)sMgCardSprites[0],  (void *)sMgCardSprites[1],  (void *)sMgCardSprites[2],
@@ -1096,27 +1075,51 @@ void *sMemoryCardSprites[15] = {
     (void *)sMgCardSprites[10], (void *)sMgCardSprites[7],  (void *)sMgCardSprites[8],
 };
 dScMgMemory_cState sMemoryStateTable[5] = {
-    pmf_dScMgMemory_c_StateSetup,  pmf_dScMgMemory_c_StatePlay, pmf_dScMgMemory_c_StateJudge,
-    pmf_dScMgMemory_c_StateResult, pmf_dScMgMemory_c_StateExit,
+    &dScMgMemory_c::StateSetup,  &dScMgMemory_c::StatePlay, &dScMgMemory_c::StateJudge,
+    &dScMgMemory_c::StateResult, &dScMgMemory_c::StateExit,
 };
 dScMgMemory_cState sMemoryRoundTable[6] = {
-    pmf_dScMgMemory_c_RoundStart,      pmf_dScMgMemory_c_RoundDealEasy,
-    pmf_dScMgMemory_c_RoundDealNormal, pmf_dScMgMemory_c_RoundDealHard,
-    pmf_dScMgMemory_c_RoundWaitDeal,   pmf_dScMgMemory_c_RoundReveal,
+    &dScMgMemory_c::RoundStart,    &dScMgMemory_c::RoundDealEasy, &dScMgMemory_c::RoundDealNormal,
+    &dScMgMemory_c::RoundDealHard, &dScMgMemory_c::RoundWaitDeal, &dScMgMemory_c::RoundReveal,
 };
 dScMgMemory_cState sMemoryResultTable[4] = {
-    pmf_dScMgMemory_c_ResultWait,
-    pmf_dScMgMemory_c_ResultReward,
-    pmf_dScMgMemory_c_ResultTurnCards,
-    pmf_dScMgMemory_c_ResultFinish,
+    &dScMgMemory_c::ResultWait,
+    &dScMgMemory_c::ResultReward,
+    &dScMgMemory_c::ResultTurnCards,
+    &dScMgMemory_c::ResultFinish,
 };
 dScMgMemory_cCardState sMemoryCardTable[7] = {
-    pmf_dScMgMemory_c_CardMove,    pmf_dScMgMemory_c_CardIdle, pmf_dScMgMemory_c_CardSelect,
-    pmf_dScMgMemory_c_CardFlipUp,  pmf_dScMgMemory_c_CardWait, pmf_dScMgMemory_c_CardFlipDown,
-    pmf_dScMgMemory_c_CardFlyAway,
+    &dScMgMemory_c::CardMove,    &dScMgMemory_c::CardIdle, &dScMgMemory_c::CardSelect,
+    &dScMgMemory_c::CardFlipUp,  &dScMgMemory_c::CardWait, &dScMgMemory_c::CardFlipDown,
+    &dScMgMemory_c::CardFlyAway,
 };
-dScMgMemory_cState sMemoryPlayerTable[3] = {
-    pmf_dScMgMemory_c_PlayerDrop,
-    pmf_dScMgMemory_c_PlayerMove,
-    pmf_dScMgMemory_c_PlayerWait,
+dScMgMemory_cPlayerState sMemoryPlayerTable[3] = {
+    &dScMgMemory_c::PlayerDrop,
+    &dScMgMemory_c::PlayerMove,
+    &dScMgMemory_c::PlayerWait,
 };
+
+extern "C" BaseSpawnInfo<dScMgMemory_c> g_profile_MG_MEMORY = {dScMgMemory_c_classInit, 0x016a,
+                                                               0x016a};
+
+/* Twelve interleaved screen x/y pairs per difficulty. The flat indexing
+ * in CardMove preserves the pinned compiler's measured address formation. */
+extern "C" {
+u16 sMemoryCardPositionsEasy[24] = {224, 160, 160, 160, 96,  160, 32,  160, 224, 136, 160, 136,
+                                    96,  136, 32,  136, 224, 64,  160, 64,  96,  64,  32,  64};
+u16 sMemoryCardPositionsNormal[24] = {200, 160, 136, 160, 224, 136, 176, 136, 128, 136, 80, 136,
+                                      32,  136, 224, 64,  176, 64,  128, 64,  80,  64,  32, 64};
+u16 sMemoryCardPositionsHard[24] = {209, 160, 155, 160, 101, 160, 47,  160, 209, 104, 155, 104,
+                                    101, 104, 47,  104, 209, 48,  155, 48,  101, 48,  47,  48};
+u16 *sMemoryCardPositionsPerDifficulty[3] = {sMemoryCardPositionsEasy, sMemoryCardPositionsNormal,
+                                             sMemoryCardPositionsHard};
+/* Frames0..4 are used by the flip handlers. The sixth stored value is
+ * also24; its original purpose is unknown. */
+u16 sMemoryFlipFrameTimes[6] = {8, 6, 4, 6, 24, 24};
+int sMemoryCardNcgByLanguage[5] = {ASSET_D_2D_MG_CARD_NCG_BIN, ASSET_D_2D_MG_CARD_S_NCG_BIN,
+                                   ASSET_D_2D_MG_CARD_F_NCG_BIN, ASSET_D_2D_MG_CARD_G_NCG_BIN,
+                                   ASSET_D_2D_MG_CARD_I_NCG_BIN};
+/* Seven card values, five flip frames each, indexed by value*5+frame. */
+u16 sMemoryCardFrameSprites[35] = {0, 0, 0, 0, 0, 0,  1, 2, 4, 3, 0,  1,  2, 6, 5, 0,  1, 2,
+                                   8, 7, 0, 1, 2, 10, 9, 0, 1, 2, 12, 11, 0, 1, 2, 14, 13};
+}

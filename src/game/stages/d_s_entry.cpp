@@ -37,8 +37,9 @@
  * Leftover: data_ov075_0211cb64 / 0211c720 / 0211c730 / 0211c954 are
  *   OAM. 0211d72c / 0211d72e / 0211d740 / 0211d742 / 0211d754 /
  *   0211d756 / 0211d948 / 0211d94a are language- or type-indexed
- *   width/height pairs (4-byte stride). Overlay .data/.bss this TU
- *   does not own.
+ *   width/height pairs (4-byte stride). Their BSS remains external. The
+ *   sprite templates and pointer lists now have native definitions below;
+ *   original artwork names are still unknown.
  * Leftover: data_0209b2e4 is still the linker name of the selected
  *   character. This TU's icon_c::Behavior. Naming belongs in arm9.
  * Leftover: g_profile_ENTRY / g_profile_RESULT live outside this TU
@@ -82,10 +83,10 @@ extern int func_0203d974(void);
 int func_0200f0bc(void);
 void func_ov001_020ab5b0(char *r0, int r1, short r2, short r3, short s4, short s5);
 
-extern int data_ov075_0211cb64[];
-extern char data_ov075_0211c720[];
-extern char data_ov075_0211c730[];
-extern void *data_ov075_0211c954[];
+extern OamAttr *data_ov075_0211cb64[];
+extern OamAttr data_ov075_0211c720[];
+extern OamAttr data_ov075_0211c730[];
+extern OamAttr *data_ov075_0211c954[];
 extern short data_ov075_0211d72c[];
 extern short data_ov075_0211d72e[];
 extern short data_ov075_0211d740[];
@@ -130,8 +131,8 @@ void dScEntry_c::icon_c::Render() {
     int y;
     int x;
 
-    xy[0] = unk_004;
-    xy[1] = unk_006;
+    xy[0] = mX;
+    xy[1] = mY;
 
     switch (unk_01c) {
     case 7: {
@@ -140,13 +141,13 @@ void dScEntry_c::icon_c::Render() {
         int scale;
 
         spriteIndex = unk_020;
-        if (unk_010 == 0) {
-            if (unk_011 != 0)
+        if (mOn == 0) {
+            if (mReady != 0)
                 spriteIndex += 4;
         }
         spriteData = (void *)data_ov075_0211cb64[spriteIndex];
 
-        scale = unk_00c;
+        scale = mPressTimer;
         if (scale <= 0) {
             scale = 0x1000;
         } else if (scale < 4) {
@@ -163,7 +164,7 @@ void dScEntry_c::icon_c::Render() {
     case 0:
     case 1:
     case 2:
-        paletteBits = (unk_010 != 0) ? 0x6000 : 0x5000;
+        paletteBits = (mOn != 0) ? 0x6000 : 0x5000;
         /* The ROM's case 0..2 block branches into case 8..11's fill loop.
          * A shared inline helper (void or int-returning), one merged
          * case, a do/while(0) that breaks out of a merged case, a fill
@@ -178,35 +179,35 @@ void dScEntry_c::icon_c::Render() {
     case 9:
     case 10:
     case 11:
-        paletteBits = (unk_010 != 0) ? 0x2000 : 0x1000;
+        paletteBits = (mOn != 0) ? 0x2000 : 0x1000;
     fill:
-        halfWidth = unk_008;
+        halfWidth = mHalfW;
         screenMap = (u16 *)_ZN3G2S12GetBG2ScrPtrEv();
-        x = unk_004;
-        halfHeight = unk_00a;
+        x = mX;
+        halfHeight = mHalfH;
         x -= halfWidth;
         x >>= 3;
         screenMap += x;
-        y = unk_006;
+        y = mY;
         y -= halfHeight;
         screenMap += (y >> 3) << 5;
-        for (row = 0; row < unk_00a >> 2; row++) {
+        for (row = 0; row < mHalfH >> 2; row++) {
             for (column = 0; column < halfWidth >> 2; column++) {
                 screenMap[column] = (u16)(paletteBits | (screenMap[column] & 0xfff));
-                halfWidth = unk_008;
+                halfWidth = mHalfW;
             }
             screenMap += 0x20;
         }
         return;
 
     case 3:
-        if (unk_010 != 0)
+        if (mOn != 0)
             xy[0] = (s16)(xy[0] - 2);
         sprite = data_ov075_0211c720;
         break;
 
     case 4:
-        if (unk_010 != 0)
+        if (mOn != 0)
             xy[0] = (s16)(xy[0] + 2);
         sprite = data_ov075_0211c730;
         break;
@@ -231,9 +232,9 @@ void dScEntry_c::icon_c::Render() {
 void dScEntry_c::icon_c::Behavior() {
     if (unk_01c == 0xd) {
         if (unk_020 == data_0209b2e4) {
-            _Z15ApproachLinear2Rsss(&unk_006, 0x14, 8);
+            _Z15ApproachLinear2Rsss(&mY, 0x14, 8);
         } else {
-            if (_Z15ApproachLinear2Rsss(&unk_006, -0x24, 8) != 0)
+            if (_Z15ApproachLinear2Rsss(&mY, -0x24, 8) != 0)
                 unk_020 = data_0209b2e4;
         }
     }
@@ -414,9 +415,9 @@ extern "C" void func_ov075_02116128(int unused, int slot, int dim) {
  */
 extern "C" {
 extern u8 data_ov075_0211c6e8[];
-extern char data_ov075_0211c7c0[];
+extern OamAttr data_ov075_0211c7c0[];
 extern char data_ov075_0211c8b0[];
-extern char data_ov075_0211c870[];
+extern OamAttr data_ov075_0211c870[];
 extern s8 data_0209f310[];
 extern s16 data_0209f358[];
 extern char data_0209ee90[];
@@ -547,4 +548,100 @@ OamAttr data_ov075_0211c934[2] = {
     {0x0010, 0x11cb, 0xe11d, 0x0000},
     {0x0009, 0x11d5, 0xe11e, 0xffff},
 };
+}
+
+/* Templates consumed by the four choice icons, selected-character icon and
+ * player-result rows. The final entry is drawn before attr3 terminates each
+ * list. Numeric identities are retained where artwork roles are unproven.
+ * The eight-pointer list has four base choices plus four alternate choices;
+ * the five-pointer list includes the initial selection at index 4. */
+
+extern "C" {
+OamAttr data_ov075_0211c6f0[1] = {
+    {0x00e0, 0xc1e0, 0x8090, 0xffff},
+};
+OamAttr data_ov075_0211c708[1] = {
+    {0x00e0, 0xc1e0, 0x6080, 0xffff},
+};
+OamAttr data_ov075_0211c720[1] = {
+    {0x00f8, 0x41f8, 0xf590, 0xffff},
+};
+OamAttr data_ov075_0211c730[1] = {
+    {0x00f8, 0x41f8, 0xf5d0, 0xffff},
+};
+OamAttr data_ov075_0211c778[1] = {
+    {0x00e0, 0xc1e0, 0x4090, 0xffff},
+};
+OamAttr data_ov075_0211c7c0[1] = {
+    {0x00f0, 0x81f0, 0x948a, 0xffff},
+};
+OamAttr data_ov075_0211c870[1] = {
+    {0x00f8, 0x41f8, 0x049a, 0xffff},
+};
+OamAttr data_ov075_0211c890[1] = {
+    {0x00e0, 0xc1e0, 0x2080, 0xffff},
+};
+OamAttr data_ov075_0211cac4[4] = {
+    {0x40f0, 0xc180, 0xe200, 0x0000},
+    {0x40f0, 0xc1c0, 0xe208, 0x0000},
+    {0x40f0, 0xc000, 0xe210, 0x0000},
+    {0x40f0, 0xc040, 0xe218, 0xffff},
+};
+OamAttr data_ov075_0211cae4[4] = {
+    {0x40f0, 0xc180, 0xe280, 0x0000},
+    {0x40f0, 0xc1c0, 0xe288, 0x0000},
+    {0x40f0, 0xc000, 0xe290, 0x0000},
+    {0x40f0, 0xc040, 0xe298, 0xffff},
+};
+OamAttr data_ov075_0211cb04[4] = {
+    {0x40f0, 0xc180, 0xe300, 0x0000},
+    {0x40f0, 0xc1c0, 0xe308, 0x0000},
+    {0x40f0, 0xc000, 0xe310, 0x0000},
+    {0x40f0, 0xc040, 0xe318, 0xffff},
+};
+OamAttr data_ov075_0211cb24[4] = {
+    {0x40f0, 0xc180, 0xe380, 0x0000},
+    {0x40f0, 0xc1c0, 0xe388, 0x0000},
+    {0x40f0, 0xc000, 0xe390, 0x0000},
+    {0x40f0, 0xc040, 0xe398, 0xffff},
+};
+OamAttr data_ov075_0211d084[8] = {
+    {0x40f8, 0x8180, 0x1040, 0x0000}, {0x40f8, 0x81a0, 0x1044, 0x0000},
+    {0x40f8, 0x81c0, 0x1048, 0x0000}, {0x40f8, 0x81e0, 0x104c, 0x0000},
+    {0x40f8, 0x8000, 0x1050, 0x0000}, {0x40f8, 0x8020, 0x1054, 0x0000},
+    {0x40f8, 0x8040, 0x1058, 0x0000}, {0x40f8, 0x8060, 0x105c, 0xffff},
+};
+OamAttr data_ov075_0211d144[9] = {
+    {0x00e0, 0xc1e0, 0x2088, 0x0000}, {0x40e8, 0x81e8, 0x3180, 0x0000},
+    {0x00e8, 0x4008, 0x3184, 0x0000}, {0x40f8, 0x41e8, 0x31c0, 0x0000},
+    {0x40f8, 0x0008, 0x31c4, 0x0000}, {0x4000, 0x81e8, 0x3186, 0x0000},
+    {0x0000, 0x4008, 0x318a, 0x0000}, {0x4010, 0x41e8, 0x31c6, 0x0000},
+    {0x4010, 0x0008, 0x31ca, 0xffff},
+};
+OamAttr data_ov075_0211d18c[9] = {
+    {0x00e0, 0xc1e0, 0x2088, 0x0000}, {0x40e8, 0x81e8, 0x519a, 0x0000},
+    {0x00e8, 0x4008, 0x519e, 0x0000}, {0x40f8, 0x41e8, 0x51da, 0x0000},
+    {0x40f8, 0x0008, 0x51de, 0x0000}, {0x4000, 0x81e8, 0x5194, 0x0000},
+    {0x0000, 0x4008, 0x5198, 0x0000}, {0x4010, 0x41e8, 0x51d4, 0x0000},
+    {0x4010, 0x0008, 0x51d8, 0xffff},
+};
+OamAttr data_ov075_0211d1d4[9] = {
+    {0x00e0, 0xc1e0, 0x2088, 0x0000}, {0x40e8, 0x81e8, 0x7180, 0x0000},
+    {0x00e8, 0x4008, 0x7184, 0x0000}, {0x40f8, 0x41e8, 0x71c0, 0x0000},
+    {0x40f8, 0x0008, 0x71c4, 0x0000}, {0x4000, 0x81e8, 0x7186, 0x0000},
+    {0x0000, 0x4008, 0x718a, 0x0000}, {0x4010, 0x41e8, 0x71c6, 0x0000},
+    {0x4010, 0x0008, 0x71ca, 0xffff},
+};
+OamAttr data_ov075_0211d21c[9] = {
+    {0x00e0, 0xc1e0, 0x2088, 0x0000}, {0x40e8, 0x81e8, 0x919a, 0x0000},
+    {0x00e8, 0x4008, 0x919e, 0x0000}, {0x40f8, 0x41e8, 0x91da, 0x0000},
+    {0x40f8, 0x0008, 0x91de, 0x0000}, {0x4000, 0x81e8, 0x9194, 0x0000},
+    {0x0000, 0x4008, 0x9198, 0x0000}, {0x4010, 0x41e8, 0x91d4, 0x0000},
+    {0x4010, 0x0008, 0x91d8, 0xffff},
+};
+OamAttr *data_ov075_0211c954[5] = {data_ov075_0211cac4, data_ov075_0211cae4, data_ov075_0211cb04,
+                                   data_ov075_0211cb24, data_ov075_0211d084};
+OamAttr *data_ov075_0211cb64[8] = {data_ov075_0211c890, data_ov075_0211d144, data_ov075_0211c778,
+                                   data_ov075_0211d18c, data_ov075_0211c708, data_ov075_0211d1d4,
+                                   data_ov075_0211c6f0, data_ov075_0211d21c};
 }

@@ -1,8 +1,11 @@
 //cpp
 /* Scuttlebug, the spider enemy. ROM RTTI is daSpd_c; vtable 0x02122c2c.
  * daSpd_c_classInit is a reconstructed name (alias Scuttlebug_Spawn).
- * The destructor stays in its own file: it is the key function, and defining
- * it here would emit _ZTI10Scuttlebug, which the cartridge does not have.
+ * ~Scuttlebug is inline in the header, so this TU emits D1 then D0
+ * (0x0211f000, 0x0211f048) and no D2. The class keeps the coined name.
+ * RTTI off suppresses _ZTI10Scuttlebug / _ZTS10Scuttlebug. The emitted
+ * vtable's typeinfo word is zero, not _ZTI7daSpd_c, so that table is
+ * externalized to retail _ZTV10Scuttlebug.
  *
  * Source is REVERSE of ROM order (highest address first). Do not reorder.
  *
@@ -20,6 +23,9 @@
 
 /* common.h first: its flat Matrix4x3 must win the guard; InitResources'
  * whole-matrix store at +0x350 only reproduces with that spelling. */
+/* Before the class header: an inline ~Scuttlebug is the vague-linkage pair,
+ * and RTTI must already be off when that header is parsed. */
+#pragma RTTI off
 /* Runtime asset handles resolved through the overlay 0 file table. */
 enum Scuttlebug_AssetId {
     ASSET_SPIDER_BMD = 0x0425,
@@ -883,7 +889,7 @@ void Scuttlebug::func_ov071_0211f148(dBgCh_Actr *w)
             ((SurfaceInfo *)((char *)fr + 4))->CopyNormalTo(normal);
             if (normal.y != 0) {
                 mVertSpeed =
-                    -(_ZN4cstd4fdivEii(FX_MUL(normal.x, unk_0a4) + FX_MUL(normal.z, unk_0ac),
+                    -(_ZN4cstd4fdivEii(FX_MUL(normal.x, mSpeedX) + FX_MUL(normal.z, mSpeedZ),
                                        normal.y) +
                       0x8000);
             }
@@ -921,7 +927,8 @@ int Scuttlebug::OnAimedAtWithEgg()
     return 204800;
 }
 
-/* Vtable slot 18, and the first function of this run. Not the key function. */
+/* Vtable slot 18. First non-inline virtual, so this is the key function:
+ * the vtable is emitted with it and externalized (see the banner). */
 
 // @symbol _ZN10Scuttlebug13OnYoshiTryEatEv
 int Scuttlebug::OnYoshiTryEat()
