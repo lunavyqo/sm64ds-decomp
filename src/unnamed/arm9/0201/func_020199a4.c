@@ -1,59 +1,3 @@
-#include "types.h"
-extern void func_0201a9ec(void *p);
-extern void func_02030838(void);
-extern void func_02019ac4(void);
-extern void func_0201a4bc(void);
-extern void func_020132d8(void);
-extern u8 data_0209d4ec;
-extern char data_0209d574[];
-extern int data_0208ee44;
-extern u8 data_0209d4f0;
-extern int data_0209d514;
-extern u8 data_0209b480;
-extern u8 data_0209f2d8;
-
-void func_020199a4(void)
-{
-    int sl = 0xb4;
-    if (data_0209d4ec == 7) data_0209d4ec = 0;
-    func_0201a9ec(data_0209d574);
-    for (;;) {
-        int b = (int)(data_0209f2d8 == 1) ? 0 : 1;
-        if (b == 0) func_02030838();
-        {
-            int dt = data_0208ee44;
-            if (sl > 0) sl -= dt;
-            else func_02019ac4();
-        }
-        data_0209d4f0 = 1;
-        func_0201a4bc();
-        data_0209d4f0 = 0;
-        data_0209d514 = 0;
-        if (data_0209b480 != 0) func_020132d8();
-    }
-}
-
-extern void func_0201a4d0(void);
-extern int func_0205f650(void);
-extern int func_0205f66c(int a);
-extern void func_02011db4(void);
-
-extern unsigned char data_0209d4f4;
-extern unsigned char data_0209d4ec;
-
-void func_02019a58(void) {
-    while (func_0205f650() != 1 && func_0205f66c(1) != 1) {
-        func_0201a4d0();
-    }
-
-    if (data_0209d4f4 != 0) {
-        func_02011db4();
-        data_0209d4f4 = 0;
-        func_0201a4d0();
-    }
-    data_0209d4ec = 7;
-}
-
 enum { false, true };
 
 extern int func_0203da3c(void);
@@ -195,5 +139,61 @@ void func_02019ac4(void) {
         } else {
             data_0209d504 = tv - delta;
         }
+    }
+}
+
+extern void func_0201a4d0(void);
+extern int func_0205f650(void);
+extern int func_0205f66c(int a);
+extern void func_02011db4(void);
+
+extern unsigned char data_0209d4f4;
+extern unsigned char data_0209d4ec;
+
+void func_02019a58(void) {
+    while (func_0205f650() != 1 && func_0205f66c(1) != 1) {
+        func_0201a4d0();
+    }
+
+    if (data_0209d4f4 != 0) {
+        func_02011db4();
+        data_0209d4f4 = 0;
+        func_0201a4d0();
+    }
+    data_0209d4ec = 7;
+}
+
+#include "types.h"
+extern void func_0201a9ec(void *p);
+extern void func_02030838(void);
+extern void func_02019ac4(void);
+extern void func_0201a4bc(void);
+extern void func_020132d8(void);
+extern u8 data_0209d4ec;
+extern char data_0209d574[];
+extern int data_0208ee44;
+extern u8 data_0209d4f0;
+extern int data_0209d514;
+extern u8 data_0209b480;
+extern u8 data_0209f2d8;
+
+void func_020199a4(void)
+{
+    int sl = 0xb4;
+    if (data_0209d4ec == 7) data_0209d4ec = 0;
+    func_0201a9ec(data_0209d574);
+    for (;;) {
+        int b = (int)(data_0209f2d8 == 1) ? 0 : 1;
+        if (b == 0) func_02030838();
+        {
+            int dt = data_0208ee44;
+            if (sl > 0) sl -= dt;
+            else func_02019ac4();
+        }
+        data_0209d4f0 = 1;
+        func_0201a4bc();
+        data_0209d4f0 = 0;
+        data_0209d514 = 0;
+        if (data_0209b480 != 0) func_020132d8();
     }
 }

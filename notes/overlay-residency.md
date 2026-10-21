@@ -95,7 +95,7 @@ backwards, which is why `possible()` takes the referring function.
 single word `data_0208ee4c`, so **exactly one of {[ov002](../config/arm9/overlays/ov002/symbols.txt), [ov003](../config/arm9/overlays/ov003/symbols.txt), [ov005](../config/arm9/overlays/ov005/symbols.txt), [ov006](../config/arm9/overlays/ov006/symbols.txt), [ov007](../config/arm9/overlays/ov007/symbols.txt)}
 is resident**. Scene 6 additionally loads [ov075](../config/arm9/overlays/ov075/symbols.txt) once (file select).
 
-And `src/unnamed/arm9/0201/func_0201a5cc.c` (`func_0201a798`):
+And `src/unnamed/arm9/0201/func_0201a798.c:8`:
 
 ```c
 if (id == (int)&overlay_6) LoadOverlay((int)&overlay_4);

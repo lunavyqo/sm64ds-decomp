@@ -1,3 +1,19 @@
+extern void func_02059f2c(void *p);
+
+int func_02069038(void) {
+    unsigned char buf[12];
+    int i;
+    int sum;
+    func_02059f2c(buf);
+    for (i = 0, sum = 0; i < 6; i++) {
+        sum += buf[i];
+    }
+    {
+        unsigned int n = (sum + *(int *)0x27ffc3c) * 7;
+        return n % 20;
+    }
+}
+
 #include "types.h"
 #include "WmWork.h"
 extern int _ZN3IRQ7DisableEv(void);
@@ -91,20 +107,4 @@ int func_02068e4c(int a0, u16 *a1, int a2, int a3, u16 a4, int a5) {
     _ZN3IRQ7RestoreEj(irq);
     *((u16 *)(base2 + 0x1316)) = 1;
     return 0;
-}
-
-extern void func_02059f2c(void *p);
-
-int func_02069038(void) {
-    unsigned char buf[12];
-    int i;
-    int sum;
-    func_02059f2c(buf);
-    for (i = 0, sum = 0; i < 6; i++) {
-        sum += buf[i];
-    }
-    {
-        unsigned int n = (sum + *(int *)0x27ffc3c) * 7;
-        return n % 20;
-    }
 }
