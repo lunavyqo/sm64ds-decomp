@@ -1728,6 +1728,14 @@
       "count": 3,
       "reason": "The state row is a raw function address plus a zero word. Spelling the method as a pointer-to-member emits a static initializer this record does not have, so the relocation uses the linker name.",
       "evidence": "The initializer in this file stores that address in the first word of an 8-byte state record and 0 in the second. The class header already declares the method."
+    },
+    {
+      "path": "src/runtime/actor/d_actor.cpp",
+      "rule": "handspelled-member",
+      "match": "_ZN8dActor_c9SetRangesE5Fix12IiES1_S1_S1_",
+      "count": 3,
+      "reason": "SetRanges takes four Fix12<int> by value. A decl-only member does not accept the constructor's scalar words (mwcc rejects the call as not matching SetRanges(Fix12<int>, Fix12<int>, Fix12<int>, Fix12<int>)), and defining the body as a method homes each used parameter. The extern \"C\" spelling passes them as ints. These three occurrences are the local declaration, the constructor call, and the definition.",
+      "evidence": "include/dActor_c.h does not declare SetRanges; notes/mwccarm-codegen.md 6az measured +0x14 on this function at 0x02010e08; _ZN8dActor_cC2Ev 0x0201150c size 0x148 MATCH under 2004/b56 with the scalar call."
     }
   ]
 }
