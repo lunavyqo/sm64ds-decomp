@@ -1,0 +1,4 @@
+{
+  "path": "src/actors/dScStage_c.cpp#_ZN10dScStage_cD1Ev",
+  "reason": "ov002 dScStage_c promoted to one TU (#3475): the destructor must spell the vague-linkage base symbols (fBase_c::operator new, dActor_c C2/D2) directly or the range will not link, so no_mangled_refs cannot pass; byte match outranks readability."
+}

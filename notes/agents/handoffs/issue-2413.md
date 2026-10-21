@@ -47,7 +47,7 @@ This document describes this commit. The queue records its immutable output SHA.
   `langmode-baseline.json`, which is restored to main's own file rather than
   changed. `include/decl_common.h`, `attribution.json`,
   `symbols/actor_renames.tsv`, `config/converted-baseline.json` ,
-  `config/converted-backslide-exceptions.jsonl` carry v1 edits inherited from the
+  `config/converted-backslide-exceptions.d` carry v1 edits inherited from the
   input commit and were not reconciled here; they belong to the integration lane.
 - ROM observations: [ov102](../../../config/arm9/overlays/ov102/symbols.txt) `0x0214e4fc` holds `"7daBmb_c\0"`; `_ZTI7daBmb_c` at
   `0x0214e508` points its `+4` word at that string and its `+8` word at
@@ -339,7 +339,7 @@ its edits to this class's own rows and reformats nothing:
 |---|---|
 | `attribution.json` | +32 lines, 0 removed, one hunk, inserted beside this class's existing retired-shard rows — the same placement the tree already uses for `src/actors/daDgr_c.cpp#…` and `src/actors/dScGameOver_c.cpp#…` |
 | `config/converted-baseline.json` | 6 whole-file identities out, 6 `path#symbol` identities in; `count` stays 2696 and the list stays sorted and duplicate-free |
-| `config/converted-backslide-exceptions.jsonl` | +6 rows appended, one per retired one-function shard of this class |
+| `config/converted-backslide-exceptions.d` | +6 rows appended, one per retired one-function shard of this class |
 | `symbols/actor_renames.tsv` | 7 [ov102](../../../config/arm9/overlays/ov102/symbols.txt) rows re-spelled in place, +14 appended |
 | `include/decl_common.h` | 1 vtable declaration re-spelled, 1 now-member declaration removed |
 

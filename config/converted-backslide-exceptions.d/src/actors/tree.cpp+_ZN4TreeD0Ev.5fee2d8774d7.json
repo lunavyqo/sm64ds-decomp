@@ -1,0 +1,4 @@
+{
+  "path": "src/actors/tree.cpp#_ZN4TreeD0Ev",
+  "reason": "ov002/Tree promoted to genuine TU src/actors/tree.cpp (snake_case)"
+}

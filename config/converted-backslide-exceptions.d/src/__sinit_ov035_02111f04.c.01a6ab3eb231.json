@@ -1,0 +1,4 @@
+{
+  "path": "src/__sinit_ov035_02111f04.c",
+  "reason": "The handwritten static initializer is retired. daObjCtMecha10_c.cpp defines the four resource handles, and mwcc emits __sinit_daObjCtMecha10_c.cpp with the same 0xbc bytes and the same relocations."
+}

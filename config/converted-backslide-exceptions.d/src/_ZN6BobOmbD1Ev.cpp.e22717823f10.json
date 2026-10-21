@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN6BobOmbD1Ev.cpp",
+  "reason": "ov102/daBmb_c TU promotion: the 6 banked one-function shards (_ZN6BobOmb D1/D0/OnYoshiTryEat/OnAimedAtWithEgg/CleanupResources/Render) were absorbed into src/actors/daBmb_c.cpp, 35/35 byte-match and SCRATCH-LINK-VERIFIED. A reconstructed TU must spell vague-linkage symbols directly (_ZN7fBase_cnwEj, _ZN12dEnemyBase_cC2Ev) or the range will not link, and the 21 auto-named func_ov102_* members it now shares a file with have not been converted, so no_mangled_refs and real_function_name cannot pass for the merged file. Byte-match outranks readability."
+}

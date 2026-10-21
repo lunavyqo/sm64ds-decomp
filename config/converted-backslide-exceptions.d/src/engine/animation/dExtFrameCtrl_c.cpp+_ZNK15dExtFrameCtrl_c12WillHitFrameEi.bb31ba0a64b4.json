@@ -1,0 +1,4 @@
+{
+  "path": "src/engine/animation/dExtFrameCtrl_c.cpp#_ZNK15dExtFrameCtrl_c12WillHitFrameEi",
+  "reason": "Animation.cpp TU folds 7 method shards; its SetAnimation member must keep an extern-C mangled spelling (Fix12<int> by value, wall 6az -- notes/mwccarm-codegen.md), which trips the file-scoped no_mangled_refs check for every absorbed member. Byte-required."
+}

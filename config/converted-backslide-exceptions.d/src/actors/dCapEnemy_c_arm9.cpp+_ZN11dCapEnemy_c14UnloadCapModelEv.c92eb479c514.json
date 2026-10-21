@@ -1,0 +1,5 @@
+{
+  "date": "2026-10-04",
+  "path": "src/actors/dCapEnemy_c_arm9.cpp#_ZN11dCapEnemy_c14UnloadCapModelEv",
+  "reason": "Folded into the arm9 dCapEnemy_c run. UnloadCapModel calls _ZN13SharedFilePtr7ReleaseEv because AddCap returns that call's r0 and the header spells Release() as void; one TU cannot declare both. no_mangled_refs fails for this member only."
+}

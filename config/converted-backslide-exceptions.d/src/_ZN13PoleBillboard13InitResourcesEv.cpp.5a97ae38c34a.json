@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN13PoleBillboard13InitResourcesEv.cpp",
+  "reason": "ov015/daObjBkBillboard_c: six per-function sources promoted into src/game/actors/d_a_obj_bk_billboard.cpp (a move into a CONVERTED file, not a removal)"
+}

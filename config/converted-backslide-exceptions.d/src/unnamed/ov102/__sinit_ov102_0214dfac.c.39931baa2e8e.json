@@ -1,0 +1,4 @@
+{
+  "path": "src/unnamed/ov102/__sinit_ov102_0214dfac.c",
+  "reason": "The handwritten static initializer is retired. d_a_shl.cpp defines the four state records, and mwcc emits __sinit_d_a_shl.cpp with the same 0xf4 bytes and the same twelve relocations."
+}

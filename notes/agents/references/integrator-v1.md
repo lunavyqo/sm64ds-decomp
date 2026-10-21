@@ -61,7 +61,7 @@ This is the step that goes wrong, and the failure is silent in both directions.
 Do it non-destructively:
 
 1. Copy `config/converted-baseline.json` and
-   `config/converted-backslide-exceptions.jsonl` aside.
+   `config/converted-backslide-exceptions.d/` aside.
 2. `git checkout origin/main --` both.
 3. Run `python tools/tiers_ratchet.py --update --reason "<why>"` **once**.
 4. `git diff --no-index` the regenerated files against your copies.

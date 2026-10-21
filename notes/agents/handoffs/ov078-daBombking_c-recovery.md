@@ -61,7 +61,7 @@ This document describes this commit. The queue records its immutable output SHA.
   (`notes/cpp-tu-current-state.md`, `notes/data/tu-promotion-queue.tsv`,
   `notes/data/class-build-worklist.tsv`, `notes/enemy-provenance.md`,
   `notes/archive/n64-decomp-cross-reference.md`). Untouched and deliberately
-  so: `config/converted-backslide-exceptions.jsonl`, every other module's
+  so: `config/converted-backslide-exceptions.d`, every other module's
   `symbols.txt` and `delinks.txt`, and `notes/data/tu-merge-candidates.json`
   (see Repairs).
 - ROM observations, each re-measured on this tree and not quoted from the source

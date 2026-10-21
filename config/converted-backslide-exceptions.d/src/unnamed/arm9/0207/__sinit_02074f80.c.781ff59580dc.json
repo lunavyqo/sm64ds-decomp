@@ -1,0 +1,4 @@
+{
+  "path": "src/unnamed/arm9/0207/__sinit_02074f80.c",
+  "reason": "dWipe_c's destructor became a real named symbol in this PR, so the static-init registration must reference it as _ZN7dWipe_cD1Ev instead of the func_0202fc08 placeholder. __sinit_02074f80.c is a plain .c file and cannot spell dWipe_c::~dWipe_c, so hand-spelling the mangled name is the only way the reference resolves. Net for the PR is +13 CONVERTED, -1."
+}

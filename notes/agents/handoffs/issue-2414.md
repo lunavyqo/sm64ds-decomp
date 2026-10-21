@@ -389,7 +389,7 @@ is reserved to this task.
    No workflow under `.github/workflows/` runs this gate.
 2. The branch already carried edits to `include/decl_common.h`,
    `symbols/actor_renames.tsv`, `config/converted-baseline.json` and
-   `config/converted-backslide-exceptions.jsonl` at the accepted input. This
+   `config/converted-backslide-exceptions.d` at the accepted input. This
    stage did not touch any of them.
 
 Separately, `notes/data/class-facts/Rabbit.json` still carries the retired

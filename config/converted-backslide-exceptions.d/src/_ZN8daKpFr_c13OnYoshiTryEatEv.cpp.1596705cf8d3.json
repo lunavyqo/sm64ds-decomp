@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN8daKpFr_c13OnYoshiTryEatEv.cpp",
+  "reason": "Atomic promotion consolidated this banked one-function path into src/game/actors/d_a_kp_fr.cpp. Its compiler-owned symbol, exact bytes, and relocation identity remain verified in the promoted 21-function class TU; only the legacy path disappeared."
+}

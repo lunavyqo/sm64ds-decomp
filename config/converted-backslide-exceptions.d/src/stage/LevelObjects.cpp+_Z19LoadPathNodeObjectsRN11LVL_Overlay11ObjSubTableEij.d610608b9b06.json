@@ -1,0 +1,4 @@
+{
+  "path": "src/stage/LevelObjects.cpp#_Z19LoadPathNodeObjectsRN11LVL_Overlay11ObjSubTableEij",
+  "reason": "ov002/LevelObjects promotion: the seventeen loaders now live in one src/stage/LevelObjects.cpp, so these eleven members score against the file's mangled declarations of dActor_c::Spawn, the dBgW_Kc octree accessors and LoadMinimapChangeObject. Those exact spellings are what let the whole 0x020fe190..0x020fea4c range link from a single object and reproduce the stock ROM byte-for-byte; byte-match outranks readability."
+}

@@ -275,17 +275,18 @@ steps the dry-run does not print:
    entry whose status is not exactly `promoted`, so leaving it means your
    absorbed shards resolve as `GONE -- not a tracked source file any more`
    instead of `MOVED -- absorbed into ...`, and `--update` writes a **fake
-   backslide row** into `converted-backslide-exceptions.jsonl` for each one,
+   backslide file** under `config/converted-backslide-exceptions.d/` for each one,
    blaming a readability loss on a file that was absorbed cleanly. Measured on
    `dBgActor_c`: `text-verified` gave 939 moves with zero for the class and four
    bogus `GONE` rows; flipping the one field gave 10 moves and four correct
    `MOVED` rows. It is invisible once written. (`tubuild.py:4543` reads status
    too, but only for intact-object TUs — that reader is not the one that bites.)
 4. **`python tools/tiers_ratchet.py --update --reason "<why>"` — never hand-edit
-   `converted-baseline.json`.** The tool also writes
-   `config/converted-backslide-exceptions.jsonl`, re-sorts the array, and adds
-   `src/actors/<Class>.cpp#<symbol>` member rows for members still passing all
-   five criteria. A hand edit gets the count right and the **set** wrong.
+   `converted-baseline.json`.** The tool also writes one file per removal under
+   `config/converted-backslide-exceptions.d/`, leaves every still-banked identity
+   on its old line, and adds `src/actors/<Class>.cpp#<symbol>` member rows for
+   members still passing all five criteria. There is no `count` field to update.
+   A hand edit that rewrites the array gets the **set** wrong.
 
    **But check set membership BEFORE you run it at all.** This step used to read
    as "always `--update`", which contradicts `builder.md`'s "if `--check` passes,

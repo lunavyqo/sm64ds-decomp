@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN11CastleWater8BehaviorEv.cpp",
+  "reason": "ov009/daObjMcWater_c promoted into a single C++ TU (src/game/actors/d_a_obj_mc_water.cpp); the eight legacy one-function sources it consolidates are gone."
+}

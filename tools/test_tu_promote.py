@@ -96,7 +96,7 @@ class IntactPromotion(unittest.TestCase):
 
             data = json.loads(baseline.read_text(encoding="utf-8"))
             self.assertEqual(moved, 1)
-            self.assertEqual(data["count"], 2)
+            self.assertNotIn("count", data)
             self.assertEqual(data["converted"], [
                 "src/actors/TU.cpp#First", "src/Unrelated.cpp"])
             self.assertEqual(data["_note"], TP.TR.NOTE)
@@ -130,6 +130,7 @@ class IntactPromotion(unittest.TestCase):
             with mock.patch.object(TP, "CONFIG", config):
                 TP.rewrite_converted_baseline(plans)
             data = json.loads(baseline.read_text(encoding="utf-8"))
+            self.assertNotIn("count", data)
             self.assertEqual(data["converted"], ["src/actors/Only.cpp"])
 
     def test_plan_and_rewrite_keep_nontext_claims_for_intact_object(self):

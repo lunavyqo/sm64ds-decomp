@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN16daObjKinokoTag_c17SpawnMegaMushroomEv.cpp",
+  "reason": "Genuine daObjKinokoTag_c TU promotion consolidates the nine exact functions into src/game/actors/d_a_obj_kinoko_tag.cpp. The absorbing TU retains only the measured fBase allocator/base/member/vptr construction seam and Fix12-by-value ABI declaration required for exact b56 bytes and relocation targets; the compiler now owns D1/D0, RTTI, ZTS, and the complete vtable."
+}

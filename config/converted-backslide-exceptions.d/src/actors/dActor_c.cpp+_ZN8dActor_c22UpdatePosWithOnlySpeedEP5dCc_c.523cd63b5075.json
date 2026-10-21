@@ -1,0 +1,4 @@
+{
+  "path": "src/actors/dActor_c.cpp#_ZN8dActor_c22UpdatePosWithOnlySpeedEP5dCc_c",
+  "reason": "TU promotion arm9/Actor into src/actors/dActor_c.cpp: the member adds the velocity Vec3 at 0xa4..0xac to mPosX, and 0xa4/0xac are deliberately still `unk_` in include/dActor_c.h -- notes/actor-core-provenance.md records that dEnemyBase_c and daDoor_c prove the words exist but nothing in the tree shows what they mean, so naming them would be a guess the shared header cannot honestly carry. 91/91 MATCH on the promoted span, objisolate clean; the six destructor/ctor tail functions stay as member-definition shards because the ROM's D2/D0/D1 order and the interleaved Vector3sD1 cannot be emitted by one TU, and the real destructor is the key function that emits _ZTV8dActor_c."
+}

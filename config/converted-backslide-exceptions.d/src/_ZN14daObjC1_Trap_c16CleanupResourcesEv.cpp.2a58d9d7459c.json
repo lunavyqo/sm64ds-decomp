@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN14daObjC1_Trap_c16CleanupResourcesEv.cpp",
+  "reason": "daObjC1_Trap_c genuine TU promotion absorbs five lifecycle files into one exact class TU with measured compiler-spelled ABI seams"
+}

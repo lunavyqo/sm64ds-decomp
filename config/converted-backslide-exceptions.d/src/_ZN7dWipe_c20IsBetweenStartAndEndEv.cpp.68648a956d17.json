@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN7dWipe_c20IsBetweenStartAndEndEv.cpp",
+  "reason": "fold/arm9-fader merge: stale shard and pre-rename identities dropped in favor of promoted-TU path#symbol spellings"
+}

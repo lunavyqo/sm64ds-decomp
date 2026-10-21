@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN21daObjKm3_Kurumajiku_cD0Ev.cpp",
+  "reason": "TU promotion of ov047/daObjKm3_Kurumajiku_c (PR #2004, intact-object production): the four banked method files are absorbed into src/game/actors/d_a_obj_km3_kurumajiku.cpp byte-for-byte, and all four score PASS as members (path#symbol). The destination TU is still refused because ONE other member, the .c-derived RickshawBs_Spawn, fails 'Calls things by real names, not mangled _Z' -- exactly as it did before promotion, as src/RickshawBs_Spawn.c, which was never CONVERTED. No method body was de-converted and no readable code was lost; the gate's _member_result() requires EVERY member of the destination to pass, so one never-CONVERTED intake member vetoes four passing ones. Spelling the spawn's base-ctor call and dead vptr store in real names is a byte-match risk, and byte-match comes first."
+}

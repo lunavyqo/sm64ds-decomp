@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN8ShipWingD1Ev.cpp",
+  "reason": "ov036/daObjRc_Hane_c promoted to a single intact TU (src/game/actors/d_a_obj_rc_hane.cpp); its seven legacy one-function sources are consolidated, so their individual CONVERTED rows retire into the TU's."
+}

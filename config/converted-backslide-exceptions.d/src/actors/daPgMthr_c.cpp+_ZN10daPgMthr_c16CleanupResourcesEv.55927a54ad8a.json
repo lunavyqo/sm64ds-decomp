@@ -1,0 +1,4 @@
+{
+  "path": "src/actors/daPgMthr_c.cpp#_ZN10daPgMthr_c16CleanupResourcesEv",
+  "reason": "ov018/daPgMthr_c promoted to a single TU (src/actors/d_a_pg_mthr.cpp); the 6 CONVERTED member rows move from the per-symbol src/_ZN10daPgMthr_c*.cpp paths to the promoted file."
+}

@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN13InvisiblePoleD0Ev.cpp",
+  "reason": "Genuine daBar_c TU promotion retains the measured allocator, base/member construction, vptr, and Fix12 ABI seams required for exact b56 bytes and relocation targets."
+}

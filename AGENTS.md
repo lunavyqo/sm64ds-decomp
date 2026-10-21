@@ -160,6 +160,24 @@ takes `Fix12<int>` by value (the Fix12 wall). Where the header's spelling really
 be used, keep the local declaration and write `local extern: <reason>` in a comment on
 it or on the line above.
 
+## Shared ledgers
+
+Fold and promotion PRs used to conflict because each one rewrote the same line of
+a shared bookkeeping file. The rules that keep them independent:
+
+- `config/converted-baseline.json` is the CONVERTED set. Delete the identity that
+  left and leave every other line where it is. There is no `count` field; the
+  length is the length of the `converted` array, and a stale `count` is ignored.
+  Do not re-sort the array. `python tools/tiers_ratchet.py --update` keeps
+  survivors on their old lines.
+- A removal's reason is a new file under `config/converted-backslide-exceptions.d/`,
+  one per identity, written by `--update --reason`. Do not append to a shared log.
+- `CLAIMS.md` is frozen. Do not append a row. If the claims API returns 401, note
+  it once and proceed.
+- `attribution.json`, `include/decl_common.h`, and
+  `config/dead-reference-baseline.json` only conflict when two edits touch
+  neighboring lines. Insert or delete your own entry. Do not rewrite the file.
+
 ## PR format
 
 - **Title:** describe what changed — the class(es) converted, or the function(s)

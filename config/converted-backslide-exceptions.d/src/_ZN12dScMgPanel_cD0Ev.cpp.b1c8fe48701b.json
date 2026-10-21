@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN12dScMgPanel_cD0Ev.cpp",
+  "reason": "ov006/dScMgPanel_c: 71 one-function shards absorbed into src/actors/dScMgPanel_c.cpp (whole-run TU promotion). The three banked CONVERTED shards -- _ZN12dScMgPanel_cD1Ev, _ZN12dScMgPanel_cD0Ev, _ZN12dScMgPanel_c6RenderEv -- resolve MOVED into the merged TU."
+}

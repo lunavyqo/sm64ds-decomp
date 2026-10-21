@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN12dScMgSound_c6RenderEv.cpp",
+  "reason": "ov006: promote dScMgSound_c into one 82-function C++ TU (src/actors/dScMgSound_c.cpp); the 82 one-function shards are absorbed, not lost -- linkcheck scratch-link-verified, 106/106 modules exact, ROM sha256 identical to stock"
+}

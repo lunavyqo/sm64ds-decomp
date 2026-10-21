@@ -150,7 +150,7 @@ def main():
     ap.add_argument("--explain", default=None, help="print one function's closest matched siblings, then exit")
     ap.add_argument("--out", default=None, help="write worklist JSONL (fuzzy-scheduled). omit = summary only")
     ap.add_argument("--ignore-claims", action="store_true",
-                    help="schedule targets even if CLAIMS.md marks them active/partial "
+                    help="schedule targets even if the frozen CLAIMS.md marks them active/partial "
                          "(default: skip them, so a batch never duplicates held work)")
     ap.add_argument("--draft", action="store_true",
                     help="attach an m2c semantic C draft (row['m2c_draft']) to rows with "

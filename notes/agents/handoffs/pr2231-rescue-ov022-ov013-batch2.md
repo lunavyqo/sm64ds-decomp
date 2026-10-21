@@ -273,7 +273,7 @@ inherited from PR #2231's own manifests or logs.
   and main `b36ed7808`: `symbols/actor_renames.tsv` 3512 +34 -13 (batch)
   +24 -15 (main) = 3542, `attribution.json` overrides 3105 +18 (batch) +55
   (main) = 3178, `config/converted-baseline.json` 2706 +12 -12 (batch) +13
-  -11 (main) = 2708, `config/converted-backslide-exceptions.jsonl` 415 +0
+  -11 (main) = 2708, `config/converted-backslide-exceptions.d` 415 +0
   (batch) +5 (main) = 420; zero missing, zero extra in each.
 - `queue_audit.py --check` (needs `rtti_extract.py`, `rtti_vtables.py --out
   build/rtti_vtables.json` and `tu_map.py --out build/tu_map.json`

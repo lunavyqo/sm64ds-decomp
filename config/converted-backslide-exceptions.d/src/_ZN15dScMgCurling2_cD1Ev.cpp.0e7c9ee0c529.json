@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN15dScMgCurling2_cD1Ev.cpp",
+  "reason": "ov006/dScMgCurling2_c segment-A TU promotion: the CONVERTED destructor shards src/_ZN15dScMgCurling2_cD1Ev.cpp and D0Ev.cpp are absorbed into src/actors/dScMgCurling2_c.cpp, whose other 29 members are still the byte-matched func_ov006_* recoveries. Readability is the humanizer's stage; byte match outranks it, and a reconstructed TU must spell vague-linkage symbols directly."
+}

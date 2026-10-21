@@ -1,0 +1,4 @@
+{
+  "path": "src/actors/ActorBase.cpp#_ZN7fBase_cD1Ev",
+  "reason": "Reconstructed TU src/actors/ActorBase.cpp: D0/D1/D2 and AfterCleanupResources must spell _ZN11fLiNdBaPr_cD1Ev, _ZN4Heap8_DestroyEv and _ZN6Memory10DeallocateEPvP4Heap directly or the range does not link; the 25/25 byte match was recovered against those spellings."
+}

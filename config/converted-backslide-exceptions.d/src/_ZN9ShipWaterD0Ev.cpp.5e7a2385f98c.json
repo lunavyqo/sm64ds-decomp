@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN9ShipWaterD0Ev.cpp",
+  "reason": "ov017/daObjKsWater_c promoted into a single C++ TU (src/game/actors/d_a_obj_ks_water.cpp); the legacy one-function sources it consolidates are gone."
+}

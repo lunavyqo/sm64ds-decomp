@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN16daObjCtMecha05_cD1Ev.cpp",
+  "reason": "Verified ov065/daObjCtMecha05_c 8-to-1 production TU promotion replaces generated shells and raw object offsets with a typed class, compiler-owned D1/D0, RTTI, ZTS, vtable, and actor/process profile. The absorbing TU retains only measured Fix12-by-value and engine ABI declarations, so it must spell mangled symbols directly and no_mangled_refs cannot pass for it. Exact bytes, relocation destinations, and emitted data outrank the file-wide readability metric."
+}

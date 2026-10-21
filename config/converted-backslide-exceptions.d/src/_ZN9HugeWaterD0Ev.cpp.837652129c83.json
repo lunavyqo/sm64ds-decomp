@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN9HugeWaterD0Ev.cpp",
+  "reason": "ov032/daObjTdWater_c: legacy one-function sources consolidated into one promoted TU (src/game/actors/d_a_obj_td_water.cpp); the removed member identities are the per-function files the promotion replaced, byte-identical output proved by rombuild 106/106 exact."
+}

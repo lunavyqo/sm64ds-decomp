@@ -1,0 +1,4 @@
+{
+  "path": "src/__sinit_ov080_02127a60.c",
+  "reason": "The handwritten static initializer is retired. daBttBk_c.cpp defines the model handle and state table, and mwcc emits __sinit_daBttBk_c.cpp with the same 0xcc bytes and the same relocations."
+}

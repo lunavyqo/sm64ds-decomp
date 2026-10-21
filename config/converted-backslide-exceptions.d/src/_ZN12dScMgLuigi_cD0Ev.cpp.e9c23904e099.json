@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN12dScMgLuigi_cD0Ev.cpp",
+  "reason": "TU promotion ov006/dScMgLuigi_c: the five banked shards (D1, D0, AfterCleanupResources, Render, Behavior) were absorbed into src/actors/dScMgLuigi_c.cpp, and a reconstructed TU must spell vague-linkage symbols directly (_ZN7fBase_cnwEj, _ZN11dScMgBase_cC2Ev) or the 0x020efc0c..0x020f3834 range will not link, so no_mangled_refs cannot pass for the whole file. Byte-match outranks readability."
+}

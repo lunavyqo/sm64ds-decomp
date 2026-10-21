@@ -52,10 +52,11 @@
 #     python tools/tiers_ratchet.py --update --reason "St_WallJump_Init: named members
 #         cost 0x14 bytes, reverted to offset casts to hold the match"
 #
-# That rewrites the baseline and appends every removed path to
-# `config/converted-backslide-exceptions.jsonl` with your reason, so each file that ever
-# left the set is one line with a `git blame` and a PR behind it. Commit both and this job
-# is green again. The gate's job is to make a backslide LOUD and ATTRIBUTED, not impossible
+# That rewrites the baseline and writes every removed path as its own file under
+# `config/converted-backslide-exceptions.d/` with your reason, so each file that ever
+# left the set is one file with a `git blame` and a PR behind it. The baseline's length
+# is the array's length: do not add a `count` field. Commit both and this job is green
+# again. The gate's job is to make a backslide LOUD and ATTRIBUTED, not impossible
 # -- and unlike the langmode ratchet's `--update`, this one has no state-dependent refusal,
 # so there is no tree from which it cannot be re-pinned in a single command.
 name: converted ratchet

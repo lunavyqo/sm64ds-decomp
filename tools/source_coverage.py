@@ -96,7 +96,7 @@ because its "match" turned out to be a relocation artefact, an entry removed bec
 range belonged to another module -- all of those are the tree getting MORE honest while
 this number goes down, and a gate with no way to say so would be pressure to leave a
 known-bad match enrolled. So the escape hatch is a real mechanism, and like
-`config/layout-known-issues.txt` and `config/converted-backslide-exceptions.jsonl` it
+`config/layout-known-issues.txt` and `config/converted-backslide-exceptions.d/` it
 lives in the tree, in your diff, with a `git blame` behind it:
 
     config/source-coverage-exceptions.jsonl     one JSON object per line

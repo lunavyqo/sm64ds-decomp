@@ -325,28 +325,28 @@ error.
 ### `tiers_ratchet --update --reason` does not dedupe
 
 If the writer already banked rows and you then take `main`'s copy of the ledger
-files — which the rebase rule requires — a second `--update --reason` **appends
-duplicate rows for the same paths** rather than replacing them. Nothing warns
-you. The working recipe is to restore both files first and update exactly once:
+— which the rebase rule requires — a second `--update --reason` with the **same**
+reason rewrites the same file under `config/converted-backslide-exceptions.d/`
+and changes nothing. A **different** reason is a second file, which is a second
+claim, not a duplicate of the first. The working recipe is to restore both
+ledgers first and update exactly once:
 
-    git checkout <the-new-base> -- config/converted-backslide-exceptions.jsonl                                    config/converted-baseline.json
+    git checkout <the-new-base> -- config/converted-backslide-exceptions.d config/converted-baseline.json
     python tools/tiers_ratchet.py --update --reason "<why>"
 
 **`<the-new-base>` is whatever you rebased onto — not always `origin/main`.**
 When you are stacked on a sibling class branch, `git checkout origin/main --`
-**permanently destroys the sibling's rows**: `write_baseline` regenerates the
-whole `converted` set from the tree so the loud file self-heals, but
-`append_exceptions` opens the exceptions file `"a"` and only ever appends, so
-what you drop there never comes back. That asymmetry is also why the silently
-auto-merging file is the dangerous one and the loudly conflicting one is safe.
+**drops files that exist only on the sibling branch**: `write_baseline` keeps
+every still-banked identity on its old line, and `append_exceptions` writes one
+file per removal. A file you did not just record is not recreated. Restore the
+directory from the base you mean to keep, then `--update` once.
 
 **Detect the damage, do not just apply the remedy.** `git merge-tree
 --write-tree <base> <head>` shows you the silent auto-merge before it lands, and
 an identical-whole-record count over the exceptions file shows you double-banking.
 
-**But do not use `merge-tree` to decide whether a PR will merge.** For
-`config/converted-backslide-exceptions.jsonl` it is exactly the tool that says
-**clean** where GitHub says **CONFLICTING**, because the file is declared
+**But do not use `merge-tree` to decide whether a PR will merge.** This used to
+matter for the single exceptions jsonl, which was declared
 `merge=union` in `.gitattributes` and GitHub ignores the driver. Use it to
 inspect content; use `gh pr view <n> --json mergeable` to decide mergeability.
 Every local compose prediction made with `merge-tree` in this pipeline has
@@ -458,9 +458,12 @@ you**:
   byte-identical and unable to collide. Measured — `dScMgRoulette_c` (#2312), a
   40-member promotion, changed **neither** ledger file and put zero rows in the
   exceptions file. Do not infer "no conflict, therefore no promotion landed".
-- `config/converted-backslide-exceptions.jsonl` **auto-merges silently and
-  reintroduces stale rows** — under a merge exactly as under a cherry-pick, since
-  it is the union driver doing it, not the replay. Measured here: a cherry-pick
+- The backslide log is **one file per removal** under
+  `config/converted-backslide-exceptions.d/`. Two PRs that record different
+  removals add different files and merge. This used to be one jsonl with
+  `merge=union`, which auto-merged locally and **reintroduced stale rows**, and
+  which GitHub then reported as CONFLICTING anyway. Measured here, before that
+  change: a cherry-pick
   re-added five
   `ShipWing` rows naming the former actor-directory location for
   `d_a_obj_rc_hane.cpp`; `main` had since moved it under `src/game/actors/`.
@@ -468,9 +471,9 @@ you**:
   writes that filename bare rather than repo-rooted: quoting the dead path in
   full would fail `check_dead_references`, the gate this paragraph is about.
 
-**Trust `gh pr view --json mergeable` over a local merge test for these two
-files.** `config/converted-backslide-exceptions.jsonl` is declared `merge=union`
-in `.gitattributes`, which that file itself warns GitHub ignores. So
+**Trust `gh pr view --json mergeable` over a local merge test when a file is
+`merge=union`.** The exceptions log no longer is. The jsonl used to be declared
+`merge=union` in `.gitattributes`, which that file itself warns GitHub ignores. So
 `git merge-tree` honours the driver and reports **clean** while GitHub reports
 **CONFLICTING** on the very same pair. A green PR can flip to CONFLICTING with
 nobody pushing anything, purely because the base moved — and a local compose test
@@ -521,7 +524,8 @@ and never re-serialise: a reorder conflicts with every other open PR in the trai
 The audit to run afterwards is `resolved == exact union of both parents` with
 0 missing, 0 invented, 0 value conflicts and 0 duplicate keys — three builders ran
 it and all three came out exact (2,307 = 2,277 + 2,267 on one; 2,340 = 2,307 + 33
-on the next). For `converted-baseline.json`, check the count *and* the swap: one
+on the next). For `converted-baseline.json`, check the set, not a stored count
+(there is no `count` field): one
 fold showed 2,681 held constant with 21 shard paths replaced by 21
 `<Class>.cpp#symbol` rows.
 
@@ -530,9 +534,9 @@ merges silently.** On the 52-member `dScMgMemory2_c` fold it auto-merged with no
 conflict at all — run the count-and-swap audit anyway. **The swap does not have
 to balance**: that fold went 4 shard paths out against 3 member rows in, net −1,
 because `D0` legitimately fails the readability criteria in merged form. An
-unbalanced swap is normal, and the rows in `converted-backslide-exceptions.jsonl`
-are exactly what banks the difference — `tiers_ratchet --check` then passes at the
-lower count. Assert the shape (every removal a plain shard path, every addition a
+unbalanced swap is normal, and the files under `config/converted-backslide-exceptions.d/`
+are exactly what banks the difference — `tiers_ratchet --check` then passes on the
+shorter set. Assert the shape (every removal a plain shard path, every addition a
 TU member row, main's other rows untouched), not the arithmetic.
 
 **Expect `main` to move under you far more than this file used to claim.** It

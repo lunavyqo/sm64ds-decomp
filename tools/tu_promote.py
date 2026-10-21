@@ -250,8 +250,8 @@ def converted_baseline_update(plans):
                 converted.insert(min(insert_at, len(converted)), target)
             moved += 1
 
+    data.pop("count", None)
     data["_note"] = TR.NOTE
-    data["count"] = len(converted)
     data["converted"] = converted
     return path, data, moved
 

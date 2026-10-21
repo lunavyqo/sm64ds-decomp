@@ -75,10 +75,13 @@ HOW TO OVERRIDE (the escape hatch)
         cost 0x14 bytes, reverted to offset casts to hold the match"
 
 `--update` rewrites the baseline. It refuses -- and this is its ONLY refusal -- to
-REMOVE a path without `--reason`. Each removed path is appended to
-`config/converted-backslide-exceptions.jsonl` with that reason, so every file that ever
-left the CONVERTED set is a line in a small file with a `git blame` and a PR behind it.
-Additions never need a reason and never fail anything.
+REMOVE a path without `--reason`. Each removed path is written as its own file under
+`config/converted-backslide-exceptions.d/` with that reason, so every file that ever
+left the CONVERTED set is one file with a `git blame` and a PR behind it. Two PRs
+that each remove a different path add two different files. Git merges those additions
+cleanly, including on GitHub, which does not honor `merge=union` and therefore
+conflicted on every pair of PRs that appended to the old single jsonl. Additions to
+the baseline never need a reason and never fail anything.
 
 TWO FAILURE MODES OF `langmode_audit.py` THIS IS BUILT NOT TO REPEAT
 
@@ -215,12 +218,18 @@ TWO FAILURE MODES OF `langmode_audit.py` THIS IS BUILT NOT TO REPEAT
          onto the new path. If the code genuinely left the tree, that is a real removal
          and `--update --reason` is the correct command -- it is also the ONLY caller of
          `append_exceptions()`, so it is the only road to
-         `config/converted-backslide-exceptions.jsonl`.
+         `config/converted-backslide-exceptions.d/`.
 
-     A NOTE ON `count`. It is metadata. `load_baseline()` reads it back solely to catch a
-     hand-edit that contradicts the array; `tu_promote.py` writes it; nothing else in the
-     tree reads it. A falling `count` is therefore not, by itself, a signal any gate acts
-     on -- do not reason about these remedies as if it were.
+     A NOTE ON `count`. It is not stored. The set is the `converted` array and its
+     length is `len(converted)`. A stored count used to occupy the last line of the
+     file, so every fold PR rewrote that one line and any two of them conflicted.
+     Taking one side's count at merge time left main red: the declared count and the
+     array length disagreed (3579 vs 3578 after #3636, then 3577 vs 3576) even though
+     the array itself was the right union of the deletions. `load_baseline()` ignores
+     a `count` key if a file still has one. What it still refuses is a duplicated
+     identity: that edit shrinks the set while keeping the array's length, and no
+     derived length can see it. `write_baseline()` and `tu_promote.py` do not emit
+     `count`. Do not put it back to make a hand edit "look finished".
 
 WIRED INTO CI, NOT INTO THE HOOK. `.github/workflows/converted-ratchet.yml` runs
 `--check` on `pull_request` and on `push: main`, over `src/**`, this file, `tiers.py`,
@@ -250,6 +259,7 @@ source text over git-tracked files, about two seconds on the whole tree.
 """
 import argparse
 import collections
+import hashlib
 import json
 import pathlib
 import subprocess
@@ -261,13 +271,14 @@ import tiers  # noqa: E402
 import tu_manifest  # noqa: E402  (legacy_source -> promoted_source; see promoted_moves)
 
 BASELINE = REPO / "config" / "converted-baseline.json"
-EXCEPTIONS = REPO / "config" / "converted-backslide-exceptions.jsonl"
+EXCEPTIONS = REPO / "config" / "converted-backslide-exceptions.d"
 
 NOTE = ("The CONVERTED source/member identity set, banked. One-function sources use "
         "their path; promoted TU members append #symbol to that path. "
         "tools/tiers_ratchet.py --check fails when an identity no longer passes all "
-        "five criteria in tools/tiers.py. Removals need --reason and land in "
-        "config/converted-backslide-exceptions.jsonl. Regenerate with "
+        "five criteria in tools/tiers.py. The set is the converted array; its length "
+        "is the array's length and is not stored. Removals need --reason and land as "
+        "one file each under config/converted-backslide-exceptions.d/. Regenerate with "
         "`python tools/tiers_ratchet.py --update`.")
 
 
@@ -406,14 +417,22 @@ class BaselineError(Exception):
     """
 
 
-def load_baseline(path):
-    """The banked set, or None when there is no usable baseline file.
+def load_baseline_rows(path):
+    """The banked identities in file order, or None when there is no usable file.
 
     A malformed or absent baseline is a configuration error, never an empty set: an
     empty set makes --check pass forever, so a deleted baseline would silently disable
     the gate rather than break it.
 
-    Raises BaselineError when the file parses but contradicts itself.
+    Raises BaselineError when the file parses but contradicts itself. A duplicated
+    identity is that contradiction. A stored `count` is not: the length is the
+    array's length, and checking a second copy of it is what made every pair of
+    fold PRs conflict on the same line.
+
+    Order is part of the result on purpose. `--update` rewrites the file from this
+    list and keeps every surviving identity on its old line, so a removal is a
+    one-line deletion. Re-sorting the whole array would put that removal in conflict
+    with every other open edit of the file.
     """
     p = pathlib.Path(path)
     if not p.is_file():
@@ -426,13 +445,11 @@ def load_baseline(path):
     if not isinstance(got, list):
         return None
 
-    # write_baseline() emits sorted(converted) from a set alongside count=len(converted),
-    # so in a file this tool wrote, these numbers agree by construction. A disagreement
-    # means something other than --update edited the file, and both shapes are silent
-    # without this check: set() below swallows duplicates, and nothing has ever read
-    # `count` back. That silence is a real weakening, not a tidiness issue -- an
-    # identity can be dropped from the array and the drop hidden by duplicating
-    # another, leaving a gate that watches less than its own count claims.
+    # set() would swallow a duplicated identity, and the duplicate is the one edit
+    # that shrinks the banked set while leaving the array the same length. No
+    # derived count can see it. A dropped identity that is NOT duplicated is just
+    # a shorter set -- the gate then watches exactly the identities that are
+    # written down, which is the whole of what it can honestly claim.
     if len(set(got)) != len(got):
         dupes = sorted({x for x in got if got.count(x) > 1})
         shown = ", ".join(dupes[:5])
@@ -440,32 +457,108 @@ def load_baseline(path):
         raise BaselineError(
             f"{path} lists {len(got)} identities but only {len(set(got))} are "
             f"distinct.\nDuplicated: {shown}{more}")
-    count = d.get("count")
-    if isinstance(count, int) and count != len(got):
-        raise BaselineError(
-            f"{path} declares count={count} but its `converted` array holds "
-            f"{len(got)} identities.\nThe two are written together by --update, so "
-            "they can only disagree if the file was edited by hand.")
-    return set(got)
+    return list(got)
 
 
-def write_baseline(path, converted):
+def load_baseline(path):
+    """The banked set, or None when there is no usable baseline file.
+
+    Raises BaselineError when the file parses but contradicts itself. See
+    `load_baseline_rows` for which contradictions those are. Order is discarded
+    here; callers that rewrite the file want `load_baseline_rows` instead.
+    """
+    rows = load_baseline_rows(path)
+    if rows is None:
+        return None
+    return set(rows)
+
+
+def ordered_identities(converted, previous_order=None):
+    """Identities to write, preserving the order already on disk.
+
+    Survivors stay on the lines a concurrent PR's diff was cut against. Identities
+    that are new since `previous_order` are appended, sorted among themselves, so a
+    removal does not reshuffle the file and two removals merge as two deletions.
+    With no previous order -- a baseline baked from nothing -- the list is sorted,
+    which is the only stable order there is.
+    """
+    converted = set(converted)
+    if not previous_order:
+        return sorted(converted)
+    kept = [row for row in previous_order if row in converted]
+    fresh = sorted(converted - set(kept))
+    return kept + fresh
+
+
+def write_baseline(path, converted, previous_order=None):
     p = pathlib.Path(path)
     p.parent.mkdir(parents=True, exist_ok=True)
+    # No `count` key. Storing len(converted) beside the array made two fold PRs
+    # conflict on that one line, and a bad resolution of the conflict is what
+    # turned main red. The array is the set.
     body = {"_note": NOTE,
             "criteria": list(tiers.CRITERIA),
-            "count": len(converted),
-            "converted": sorted(converted)}
+            "converted": ordered_identities(converted, previous_order)}
     with open(p, "w", encoding="utf-8", newline="\n") as f:
         f.write(json.dumps(body, indent=2) + "\n")
 
 
+def exception_record_path(directory, row):
+    """The one file that records `row`.
+
+    The source path stays readable (`src/.../name.c.<digest>.json`). `#` in a
+    member identity is written as `+`: it is a legal filename character, this
+    tree's source paths do not otherwise use it, and a `%` escape would be cut
+    short by the dead-reference scanner. The digest is SHA-256 of the canonical
+    JSON, twelve hex digits, so the same row always names the same file and a
+    second reason for the same source names a different one.
+    """
+    canon = json.dumps(row, sort_keys=True, ensure_ascii=False,
+                       separators=(",", ":"))
+    digest = hashlib.sha256(canon.encode("utf-8")).hexdigest()[:12]
+    rel = str(row.get("path") or "unknown").replace("\\", "/")
+    if rel.startswith("/") or ".." in pathlib.PurePosixPath(rel).parts:
+        rel = "unknown"
+    rel = rel.replace("#", "+")
+    return pathlib.Path(directory) / f"{rel}.{digest}.json"
+
+
 def append_exceptions(path, rows):
-    p = pathlib.Path(path)
-    p.parent.mkdir(parents=True, exist_ok=True)
-    with open(p, "a", encoding="utf-8", newline="\n") as f:
-        for r in rows:
-            f.write(json.dumps(r, sort_keys=True) + "\n")
+    """Record each removal as its own file under the directory `path`.
+
+    Returns the file paths. An identical row already on disk is left untouched,
+    so recording the same removal twice does not churn the log and does not
+    append a second copy the way the old jsonl did. Two PRs that record different
+    rows add different files; git merges that, on a local checkout and on GitHub.
+    """
+    written = []
+    for r in rows:
+        dest = exception_record_path(path, r)
+        dest.parent.mkdir(parents=True, exist_ok=True)
+        body = json.dumps(r, indent=2, sort_keys=True, ensure_ascii=False) + "\n"
+        if not (dest.is_file() and dest.read_text(encoding="utf-8") == body):
+            with open(dest, "w", encoding="utf-8", newline="\n") as f:
+                f.write(body)
+        written.append(dest)
+    return written
+
+
+def load_exceptions(path):
+    """Every recorded row under `path`, in path order.
+
+    An absent directory is an empty log. A path that exists and is not a
+    directory is a configuration error and returns None, so a caller can tell
+    "nothing recorded yet" from "this is not the log".
+    """
+    directory = pathlib.Path(path)
+    if not directory.exists():
+        return []
+    if not directory.is_dir():
+        return None
+    rows = []
+    for entry in sorted(directory.rglob("*.json")):
+        rows.append(json.loads(entry.read_text(encoding="utf-8")))
+    return rows
 
 
 def _failures(identity, scores):
@@ -1168,7 +1261,7 @@ def report_orphans(orphans, moves, exceptions_path, tracked, scores, ownership,
               "\n"
               "  So --update is wrong here for the file's reason, not the identity's.\n"
               "  It does not absorb these: they reach `removed`, so it exits 2\n"
-              "  without a --reason, and with one it appends a row to\n"
+              "  without a --reason, and with one it writes a file under\n"
               f"    {exceptions_path}\n"
               "  recording the LEGACY path as REMOVED. Nothing was removed. That row\n"
               "  is a permanent false statement in a log whose whole value is that it\n"
@@ -1258,7 +1351,7 @@ def report_orphans(orphans, moves, exceptions_path, tracked, scores, ownership,
               "    genuinely deleted -- then this is a real REMOVAL, not an orphan, and\n"
               "      re-banking it is right. Run\n"
               '        python tools/tiers_ratchet.py --update --reason "<why it left>"\n'
-              "      which appends a row to\n"
+              "      which writes one file per removal under\n"
               f"        {exceptions_path}\n"
               "      That is the only caller of append_exceptions() in this tool, so it\n"
               "      is the only road to that log.")
@@ -1350,13 +1443,15 @@ def main():
         return 0
 
     try:
-        banked = load_baseline(args.baseline)
+        banked_rows = load_baseline_rows(args.baseline)
     except BaselineError as e:
         print(f"baseline is internally inconsistent:\n\n{e}\n\n"
               "Refusing to run. Fix the file in git rather than re-running --update:\n"
               "--update would bank whatever the tree looks like now, which discards\n"
               "the very difference this check exists to show you.")
         return 2
+
+    banked = None if banked_rows is None else set(banked_rows)
 
     if args.update:
         left = sorted((banked or set()) - current)
@@ -1370,7 +1465,7 @@ def main():
             print("\nA path leaving the CONVERTED set is allowed -- byte-match outranks\n"
                   "readability and sometimes requires it -- but it is not allowed to be\n"
                   "silent. Re-run with --reason \"<why the match needed it>\"; the reason\n"
-                  f"is appended to {args.exceptions} for every path above.")
+                  f"is written under {args.exceptions}, one file per path above.")
             if absorbed_clean:
                 print(f"\n({len(absorbed_clean)} further path(s) made a lossless "
                       "ownership transition.\nThose are not backslides and need no "
@@ -1381,7 +1476,7 @@ def main():
                               [dict({"path": rel, "reason": args.reason},
                                     **({"date": args.date} if args.date else {}))
                                for rel in removed])
-        write_baseline(args.baseline, current)
+        write_baseline(args.baseline, current, previous_order=banked_rows)
         if banked is None:
             print(f"baked {len(current)} CONVERTED path(s) into {args.baseline} (new baseline)")
         else:

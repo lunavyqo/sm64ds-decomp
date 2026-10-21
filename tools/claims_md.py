@@ -13,15 +13,18 @@ TWO REGISTERS, MERGED
 ---------------------
 The authoritative register is the claims service (tangos.json `data.claimsApi`,
 scoped to this repo's board via `data.projectId`): agents try-lock through it and the
-website writes to it. CLAIMS.md rows are the fallback register and are still honored,
-so a hand-written row keeps protecting its range. Reading only the file was the gap
-where an API lock never reached a scheduler and the same function went out twice.
+website writes to it. CLAIMS.md is a frozen historical log. The rows already in it
+are still honored, so an old active row keeps protecting its range, but nothing
+writes a new one: a 401 from the API is noted, not copied into the file. Reading
+only the file was the gap where an API lock never reached a scheduler and the same
+function went out twice.
 
 The API is fetched best-effort with a short timeout: offline or with the service down,
 the file rows still apply and a batch still builds. Set CLAIMS_NO_API=1 to skip the
 network deliberately (offline batch generation without the timeout wait).
 
-CLAIMS.md matching is by SYMBOL NAME and by ADDRESS, because rows are written by hand
+CLAIMS.md matching is by SYMBOL NAME and by ADDRESS, because the historical rows were
+written by hand
 and spell targets inconsistently:
 
     | ov098 func_ov098_0213b9d8 (0x0213b9d8, size 0x144) | ... | **active** | ...

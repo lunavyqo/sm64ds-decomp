@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN8Particle17CheckLavaCallback14SpawnParticlesERNS_6SystemE.cpp",
+  "reason": "ov100/daStarGate_c promotion consolidates legacy StarDoor and particle callback sources into the exact enrolled translation unit; member identities replace retired one-function paths."
+}

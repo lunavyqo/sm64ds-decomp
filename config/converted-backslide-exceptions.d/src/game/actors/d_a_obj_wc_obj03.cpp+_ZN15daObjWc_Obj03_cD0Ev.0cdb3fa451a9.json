@@ -1,0 +1,4 @@
+{
+  "path": "src/game/actors/d_a_obj_wc_obj03.cpp#_ZN15daObjWc_Obj03_cD0Ev",
+  "reason": "ov029/daObjWc_Obj03_c promoted to src/game/actors/d_a_obj_wc_obj03.cpp: D1/D0 carried as // @symbol mangled bodies for the ROM emission order (D1 below D0), costing the no-raw-offset and no-mangled-refs criteria for those two functions"
+}

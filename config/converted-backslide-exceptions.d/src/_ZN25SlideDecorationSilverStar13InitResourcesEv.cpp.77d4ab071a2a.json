@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN25SlideDecorationSilverStar13InitResourcesEv.cpp",
+  "reason": "ov031: daObjHsBillboard_c promoted to a single TU; its six one-function sources are consolidated, not lost"
+}

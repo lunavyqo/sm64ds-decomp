@@ -1,0 +1,4 @@
+{
+  "path": "src/__destroy_arr.c",
+  "reason": "__destroy_arr recovered as real C++ (src/__destroy_arr.c -> src/__destroy_arr.cpp); the .c was a NONMATCHING hand-asm hatch, the .cpp is the byte-exact source"
+}

@@ -38,7 +38,7 @@ that the evidence means what it claims.
 8. **`status: promoted` in the manifest is not cosmetic.**
    `tiers_ratchet.promoted_moves()` skips any entry not exactly `promoted`, so a
    TU left on `text-verified` writes a **fake backslide row** per absorbed shard
-   into `converted-backslide-exceptions.jsonl`, blaming readability loss on files
+   under `config/converted-backslide-exceptions.d/`, blaming readability loss on files
    that were absorbed cleanly. Invisible once written. Check the field.
 9. **The merge tree, not the branch.** `premerge_check` gates each PR alone. Two
    individually-green PRs can produce a red main. Compose the merge yourself and

@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN14RotatingBridgeD1Ev.cpp",
+  "reason": "ov015/daObjBk_Rotebar_c: six one-function sources consolidated into one promoted TU (src/game/actors/d_a_obj_bk_rotebar.cpp); the removed member identities are the legacy per-function files the promotion replaced, byte-identical output proved by rombuild 106/106 exact."
+}

@@ -1633,7 +1633,7 @@
         "src/_ZN11dScMgCoin_cD0Ev.cpp",
         "src/_ZN11dScMgCoin_c6RenderEv.cpp"
       ],
-      "note": "3 of the 61 sections are in the 2681-entry converted set. Deleting them during promotion is a CONVERTED-tier dilution; it goes through tiers_ratchet --update (which APPENDS, never replaces) plus converted-backslide-exceptions.jsonl, never a hand edit."
+      "note": "3 of the 61 sections are in the 2681-entry converted set. Deleting them during promotion is a CONVERTED-tier dilution; it goes through tiers_ratchet --update (which writes one file per removal under config/converted-backslide-exceptions.d/ and does not store a count), never a hand edit."
     },
     "profile_registry": {
       "path": "symbols/profile_reconstruction_registry.json",

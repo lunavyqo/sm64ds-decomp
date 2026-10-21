@@ -1,0 +1,4 @@
+{
+  "path": "src/_ZN17daObjKm3_Dorifu_cD1Ev.cpp",
+  "reason": "TU promotion ov047/daObjKm3_Dorifu_c: the four per-function CONVERTED members become path#symbol entries in src/game/actors/d_a_obj_km3_dorifu.cpp. Rename only, no member lost."
+}

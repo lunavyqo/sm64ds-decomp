@@ -1,0 +1,4 @@
+{
+  "path": "src/game/actors/d_a_obj_rc_dorifu.cpp#_ZN16daObjRc_Dorifu_cD1Ev",
+  "reason": "ov036/daObjRc_Dorifu_c promoted to src/game/actors/d_a_obj_rc_dorifu.cpp: D1/D0 carried as // @symbol mangled bodies for the ROM emission order (D1 below D0, and the real member also emitted an unhomed D2), costing the no-raw-offset and no-mangled-refs criteria for those two functions"
+}

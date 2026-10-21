@@ -34,7 +34,7 @@ fresh base and proves that the composition changed nothing.
 
 dScStage_c 2 is wider than its one row suggests. Besides the source and manifest, a
 promotion edits `delinks.txt`, `converted-baseline.json` (via `tiers_ratchet
---update`, never by hand), `converted-backslide-exceptions.jsonl`, any `port/`
+--update`, never by hand), `config/converted-backslide-exceptions.d/`, any `port/`
 slice manifest naming a deleted shard, and any prose naming one. Six non-source
 files is typical.
 
