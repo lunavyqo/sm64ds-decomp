@@ -4405,7 +4405,7 @@ src/unnamed/arm9/0206/func_0206116c.c:
 src/unnamed/arm9/0206/func_02061188.c:
     complete
     .text start:0x02061188 end:0x02061428
-    .bss start:0x020a89ec end:0x020a8a0c
+    .bss start:0x020a89ec end:0x020a8a40
 
 src/WM_CheckStateEx.c:
     complete

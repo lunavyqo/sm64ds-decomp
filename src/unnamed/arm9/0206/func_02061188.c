@@ -21,6 +21,7 @@ typedef struct {
     char _14[6]; /* 0x14 */
     u16 w1a;     /* 0x1a */
     u32 d1c;     /* 0x1c */
+    char tail[0x34]; /* through data_020a8a40, the next bss symbol */
 } BufT;
 
 BufT data_020a89ec;
