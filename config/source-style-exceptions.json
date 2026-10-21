@@ -1000,6 +1000,14 @@
       "count": 1,
       "reason": "Offset cast carried from the neighboring function on this branch. The functions were already one stretch between two named files.",
       "evidence": "present in src/unnamed/ov002/func_ov002_020e6bb0.c before this fold; the bytes of each function still match"
+    },
+    {
+      "path": "src/unnamed/arm9/0201/func_0201a428.c",
+      "rule": "handspelled-member",
+      "match": "_ZN5mHeap6Heap_t14CreateRootHeapEPvj",
+      "count": 2,
+      "reason": "Mangled name carried from the neighboring function. Both load the same private table.",
+      "evidence": "present in src/unnamed/arm9/0201/func_0201a458.c before this fold; each function's bytes still match"
     }
   ]
 }
