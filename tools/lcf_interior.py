@@ -321,36 +321,6 @@ def interior_rows(config_root):
     return rows
 
 
-def start_alias_rows(config_root):
-    """[(name, addr)] for same-address pairs at a complete range's start.
-
-    One asm block defines one spelling there, so a second row at the same
-    address is the other spelling. `patch` defines whichever spelling the
-    link imports but no object defines.
-    """
-    config_root = pathlib.Path(config_root)
-    rows = []
-    for module in FIXED:
-        d = _module_dir(config_root, module)
-        syms, dl = d / "symbols.txt", d / "delinks.txt"
-        if not (syms.is_file() and dl.is_file()):
-            continue
-        ranges = complete_text_ranges(dl)
-        starts = {lo for lo, _hi in ranges}
-        by_addr: dict[int, list[tuple[str, int]]] = {}
-        for ln in syms.read_text(errors="ignore").splitlines():
-            m = _ROW.match(ln)
-            if not m:
-                continue
-            addr = int(m.group(2), 16)
-            if addr in starts:
-                by_addr.setdefault(addr, []).append((m.group(1), addr))
-        for addr in sorted(by_addr):
-            if len(by_addr[addr]) >= 2:
-                rows.extend(by_addr[addr])
-    return rows
-
-
 def _link_inventory(objects_txt):
     """(defined, imported, BSS extents): the non-local names the link's objects define, and the
     names they reference undefined."""
@@ -423,7 +393,7 @@ def patch(lcf_path, objects_txt, config_root, *, initialized_prefixes=()):
     aliases = sorted(set(aliases))
     if len({row[0] for row in aliases}) != len(aliases):
         raise ValueError("conflicting storage alias identities")
-    rows = interior_rows(config_root) + start_alias_rows(config_root) + list(LINKER_CONSTANTS.items())
+    rows = interior_rows(config_root) + list(LINKER_CONSTANTS.items())
     missing = sorted({(n, a) for n, a in rows
                       if n in imported and n not in defined}, key=lambda r: r[1])
     if not missing and not aliases:
