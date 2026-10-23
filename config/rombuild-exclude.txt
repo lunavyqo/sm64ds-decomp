@@ -106,39 +106,3 @@
 # src/unnamed/arm9/01ff/func_01ffa440.c records the routine and declares the two targets as
 # func_01ffa538 / func_01ffa558.
 func_01ffa440
-
-# --- itcm: seven dual-named runtime primaries ---
-# func_01ff8000 / func_01ff8708 (double +/*, 0x01ff8000..0x01ff8df8) and
-# __aeabi_uldiv / __aeabi_ulmod / func_01ffaa34 / __aeabi_idiv / __aeabi_uidiv
-# (integer /*%, 0x01ffa9dc..0x01ffafd4) each share their address with a zero-size
-# alias row (_dadd / _dmul / _ll_udiv / _ull_mod / _ll_sdiv / _s32_div_f /
-# _u32_div_f), and BOTH spellings are imported by objects in the link. Hand-written
-# sources name the sized spelling (func_020708b4.c and func_020707f4.c declare
-# extern double func_01ff8000/8708; Player.cpp, SoundEngine, d_a_pic_gate and a
-# dozen more declare extern __aeabi_idiv), while every compiler-emitted arithmetic
-# op calls the alias (func_020708b4.o itself imports _dadd and _dmul for its `+`/`*`
-# operators alongside the two sized names it declares; bl _s32_div_f appears in
-# G3i.o, d_meter.o, Message.o, ...).
-# Enrolling a sized primary as its own object defines only that spelling, and
-# the link aborts `Undefined` on the other one (measured 2026-10-23, first all
-# five integer names at once -- 30+ importing objects -- then _dadd/_dmul the
-# same way after narrowing the branch to the float pair). mwccarm cannot export
-# the second name from the same asm block (same measurement as func_01ffa440
-# above), and tools/lcf_interior.py only defines rows strictly INSIDE a
-# complete range (strict `<`: a range start is assumed to be the source's own
-# symbol), so a same-address alias at a range's own start gets no LCF
-# definition either. The _deq precedent -- a size-0 row strictly inside
-# func_01ff97d8's range, which the LCF does define -- shows the mechanism;
-# extending it to range-start aliases is a tools change, out of scope here.
-# Until then the seven stay in the gap object, where the ROM build takes them
-# from today, and their sources stay filed under the alias names
-# (src/_dadd.c, src/_dmul.c, src/_ll_udiv.c, src/_ull_mod.c, src/_ll_sdiv.c,
-# src/_s32_div_f.c, src/_u32_div_f.c), which is also what tools/ docstrings,
-# the bytegate fixtures and the linkcheck alias test address them by.
-func_01ff8000
-func_01ff8708
-__aeabi_uldiv
-__aeabi_ulmod
-func_01ffaa34
-__aeabi_idiv
-__aeabi_uidiv
