@@ -4859,23 +4859,6 @@
         "param:#2 void *"
       ]
     },
-    "_ZN10dBgActor_c13IsClsnInRangeE5Fix12IiES1_": {
-      "src/game/actors/d_a_dgr.cpp": [
-        "param:#1 daDgr_c *"
-      ],
-      "src/game/actors/d_a_obj_ct_mecha11.cpp": [
-        "param:#1 char *"
-      ],
-      "src/game/actors/d_a_obj_rc_carpet.cpp": [
-        "return:void"
-      ],
-      "src/game/actors/d_a_obj_rc_guruguru.cpp": [
-        "return:bool"
-      ],
-      "src/game/actors/d_a_obj_tatefuda.cpp": [
-        "return:void"
-      ]
-    },
     "_ZN10dBgActor_c14KillByMegaCharER6Player": {
       "include/decl_Platform.h": [
         "param:#2 void *"
@@ -4899,14 +4882,6 @@
       ],
       "src/game/actors/d_a_obj_yajirusi.cpp": [
         "param:#5 int"
-      ]
-    },
-    "_ZN10dBgActor_c21IsClsnInRangeOnScreenE5Fix12IiES1_": {
-      "src/game/actors/d_a_obj_block_l.cpp": [
-        "return:void"
-      ],
-      "src/game/actors/d_a_pg_dfdr.cpp": [
-        "return:void"
       ]
     },
     "_ZN10dBgCh_Actr15ClearGroundFlagEv": {
@@ -6021,9 +5996,6 @@
         "param:#1 void *",
         "return:void"
       ],
-      "src/minigames/unit020bfec0.cpp": [
-        "param:#1 void *"
-      ],
       "src/unnamed/ov002/func_ov002_020e5948.c": [
         "param:#1 void *",
         "return:void"
@@ -6066,13 +6038,6 @@
         "param:#1 void *",
         "return:void *"
       ],
-      "src/game/actors/d_a_demo.cpp": [
-        "return:void *"
-      ],
-      "src/game/actors/d_a_door.cpp": [
-        "param:#1 void *",
-        "return:void *"
-      ],
       "src/game/actors/d_a_iwante.cpp": [
         "param:#1 void *",
         "return:void"
@@ -6084,22 +6049,6 @@
       "src/game/actors/d_a_kpa.cpp": [
         "param:#1 void *",
         "return:void"
-      ],
-      "src/game/actors/d_a_star.cpp": [
-        "param:#1 void *",
-        "return:void"
-      ],
-      "src/minigames/d_mg3d_esp_anim_set.cpp": [
-        "param:#1 void *",
-        "return:int"
-      ],
-      "src/minigames/d_mg_trmpln2_mario.cpp": [
-        "param:#1 SharedFilePtr *",
-        "return:void *"
-      ],
-      "src/minigames/unit020bfec0.cpp": [
-        "param:#1 void *",
-        "return:void *"
       ],
       "src/unnamed/ov002/func_ov002_020e5948.c": [
         "param:#1 void *",
@@ -7551,13 +7500,6 @@
       "src/minigames/d_mg3d_esp_anim_set.cpp": [
         "param:#1 void *",
         "return:int"
-      ],
-      "src/minigames/d_mg_trmpln2_mario.cpp": [
-        "param:#1 SharedFilePtr *",
-        "return:struct BMD_File *"
-      ],
-      "src/minigames/unit020bfec0.cpp": [
-        "param:#1 void *"
       ],
       "src/minigames/unit020cd744.cpp": [
         "param:#1 void *"
@@ -10436,11 +10378,6 @@
         "param:#4 const void *",
         "param:#5 unsigned int",
         "return:void"
-      ]
-    },
-    "_ZN8dActor_c22IsTooFarAwayFromPlayerE5Fix12IiE": {
-      "src/game/actors/d_a_krb.cpp": [
-        "param:#1 char *"
       ]
     },
     "_ZN8dActor_c4NextEPKS_": {

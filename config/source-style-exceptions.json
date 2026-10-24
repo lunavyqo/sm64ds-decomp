@@ -484,6 +484,14 @@
     {
       "path": "src/game/player/Player.cpp",
       "rule": "handspelled-member",
+      "match": "_ZN6Player7SetAnimEjiit",
+      "count": 9,
+      "reason": "Six call sites stay on the scalar symbol. func_ov002_020bec9c tail-forwards the callee's r0 as its own int result, so the call cannot be a void method return. func_ov002_020d1f78 passes (w << 4) >> 16, and narrowing that to u16 grew the function by 8 bytes. func_ov002_020d4748 passes AnimSpeed() three times and s5 once; each narrowing cost 8 bytes (0x4e8 to 0x508). The other three occurrences are the local externs those calls need. The definition itself is Player::SetAnim.",
+      "evidence": "ov002/Player 618/618 TEXT-VERIFIED on cpp/player-setanim-1023; SetAnim remains 0x020bef2c size 0x210"
+    },
+    {
+      "path": "src/game/player/Player.cpp",
+      "rule": "handspelled-member",
       "match": "_ZN6PlayerC1Ev",
       "count": 1,
       "reason": "Player's C1 stays the enrolled free function. Its body addresses mModelAnim3, mModelAnim4, mTexSeqBody, mMatChanger and mTexSeqPlayer from one base at this+0xdc, and a Player::Player() definition changes that addressing. Follow-up: rewrite it as the real constructor once that base is preserved.",
@@ -816,14 +824,6 @@
       "count": 2,
       "reason": "These helpers still address the scene through the offset casts their shards matched. include/dScEntry_c.h names most of the bytes, but retyping the casts changes instruction selection; this fold measured that on the step-word save and the data_02086b58 copy. Follow-up: name the accesses when the remaining hole 0x021165b0..0x021190a4 is folded.",
       "evidence": "src/game/stages/d_s_entry_methods.cpp owns ov075 0x021190a4..0x0211a854. 30/30 functions byte-match the ROM under mwccarm 2004/b56 with relocation destinations checked, including the nine functions the file already owned."
-    },
-    {
-      "path": "src/runtime/actor/d_actor.cpp",
-      "rule": "handspelled-member",
-      "match": "_ZN8dActor_c9SetRangesE5Fix12IiES1_S1_S1_",
-      "count": 3,
-      "reason": "SetRanges takes four Fix12<int> by value. A decl-only member does not accept the constructor's scalar words (mwcc rejects the call as not matching SetRanges(Fix12<int>, Fix12<int>, Fix12<int>, Fix12<int>)), and defining the body as a method homes each used parameter. The extern \"C\" spelling passes them as ints. These three occurrences are the local declaration, the constructor call, and the definition.",
-      "evidence": "include/dActor_c.h does not declare SetRanges; notes/mwccarm-codegen.md 6az measured +0x14 on this function at 0x02010e08; _ZN8dActor_cC2Ev 0x0201150c size 0x148 MATCH under 2004/b56 with the scalar call."
     },
     {
       "path": "src/_ZN10dScEntry_c23RenderCourseSelectTitleEv.cpp",
