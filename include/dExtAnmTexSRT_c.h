@@ -24,8 +24,8 @@
  * same way. Declared static below: a static member mangles identically,
  * and the earlier "(this, &model, &file)" reading of this comment cost
  * the PC port a wrong-register hunt.
- * SetFile's definition stays a mangled free function (wall 6az,
- * Fix12<int> in the signature); the declaration below is the real one.
+ * SetFile is a real member. speed is Fix12i. startFrame stays u32,
+ * which mangles as j; the definition loads that argument as a halfword.
  */
 
 #ifdef __cplusplus
@@ -44,8 +44,8 @@ struct dExtAnmTexSRT_c : dExtFrameCtrl_c {
     /* --- non-virtual --- */
     static void Prepare(BMD_File &model, BTA_File &animFile);
     void Update(ModelComponents &model);
-    void SetFile(BTA_File &animFile, int flags, Fix12<int> speed,
-                 u32 startFrame);        /* free function, wall 6az */
+    void SetFile(BTA_File &animFile, int flags, Fix12i speed,
+                 u32 startFrame);
 };
 
 #ifndef SM64DS_PLATFORM_PC

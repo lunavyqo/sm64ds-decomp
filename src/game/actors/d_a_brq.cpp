@@ -22,8 +22,8 @@
  *   int[12] -- a Matrix4x3 assignment scalarizes. Vector3 overlays on
  *   mCamSpacePosX / mScaleX / mPosX stand in where no member exists at
  *   those addresses. SetRanges, dCcAcPos_c::Init, dBgCh_Actr::Init,
- *   dExtAnmModel_c::SetAnim, dExtAnmTexPat_c::SetFile,
- *   dExtAnmTexSRT_c::SetFile and DropShadowRadHeight stay mangled
+ *   dExtAnmModel_c::SetAnim, dExtAnmTexPat_c::SetFile
+ *   and DropShadowRadHeight stay mangled
  *   extern "C" spellings -- they take Fix12<int> by value
  *   (notes/mwccarm-codegen.md 6az).
  *   UpdateDefeatedState calls the interworking veneer
@@ -266,10 +266,6 @@ struct BCA_File; struct BTP_File; struct BTA_File;
 /* local extern: the matched free-function spelling of SetFile; a member call is pending. */
 extern "C" unsigned int _ZN15dExtAnmTexPat_c7SetFileER8BTP_Fileiit(dExtAnmTexPat_c *, BTP_File &,
                                                                    int, Fix12i, unsigned int);
-extern "C" unsigned int _ZN15dExtAnmTexSRT_c7SetFileER8BTA_Filei5Fix12IiEj(dExtAnmTexSRT_c *,
-                                                                           BTA_File &, int, Fix12i,
-                                                                           unsigned int);
-
 extern BTA_File data_ov070_021231f4;
 
 // @symbol _ZN7daBrq_c16EnterActiveStateEv
@@ -280,8 +276,7 @@ s32 daBrq_c::EnterActiveState()
     _ZN15dExtAnmTexPat_c7SetFileER8BTP_Fileiit(
         &mTextureSequence, *(BTP_File *)data_ov070_021235ec.filePtr, 0, 0x1000, 0);
     mTextureSequence.speed = 0x1000;
-    _ZN15dExtAnmTexSRT_c7SetFileER8BTA_Filei5Fix12IiEj(&mTextureTransformer, data_ov070_021231f4, 0,
-                                                       0x1000, 0);
+    mTextureTransformer.SetFile(data_ov070_021231f4, 0, 0x1000, 0);
     mTextureTransformer.speed = 0x2000;
     mStateTimer = 0xf;
     mTurnSpeed = 0;

@@ -14,7 +14,7 @@
  * ledge check, collision, and the stuck check.
  *
  * leftovers:
- * - dExtAnmModel_c::SetAnim, dExtAnmMaterial_c::SetFile, dCcAc_c::Init,
+ * - dExtAnmModel_c::SetAnim, dCcAc_c::Init,
  *   DropShadowRadHeight and KillByInvincibleChar take Fix12<int> by
  *   value. The header calls size-DIFF 0212a6f8, 02129a00, 0212a580,
  *   02129ed4 and InitResources. The bridges pass those bits as
@@ -211,8 +211,7 @@ extern int data_02099368[];
 extern void _ZN12daStarBase_c27LinkSilverStarAndStarMarkerEPc(char *a, char *b);
 extern u8 data_0209f208[];
 extern u8 *data_0209f344;
-extern void _ZN17dExtAnmMaterial_c7SetFileER8BMA_Filei5Fix12IiEj(void *m, void *f, int a, int fix,
-                                                                 unsigned int j);
+extern void d_a_krbMatSetFileHold(void *m, void *f, int a, int fix, unsigned int j);
 /* Three-register reconstructed interface; death-state stores also use r3. */
 extern void func_ov002_020aea30(void *self, void *actor, void *collision);
 extern int *data_ov084_0213088c;
@@ -718,8 +717,8 @@ int daKrb_c::func_ov084_02129a00() {
             goomba->mVertSpeed = 0x14000;     /* 20.0 */
             dExtAnmMaterial_c::Prepare(*(BMD_File *)(data_ov084_02130cf8.filePtr),
                                        *(BMA_File *)&data_ov084_0213088c);
-            _ZN17dExtAnmMaterial_c7SetFileER8BMA_Filei5Fix12IiEj(
-                &goomba->mMaterialChanger, &data_ov084_0213088c, 0x40000000, 0x1000, 0);
+            goomba->mMaterialChanger.SetFile(*(BMA_File *)&data_ov084_0213088c, 0x40000000,
+                                              0x1000, 0);
             goomba->mMaterialChanger.currFrame = 0;
             ((dCc_c *)&goomba->mdCcAc_c)->Clear();
             return 0;
@@ -753,8 +752,8 @@ int daKrb_c::func_ov084_02129a00() {
                 goomba->mHorzSpeed = -goomba->mHorzSpeed;
                 dExtAnmMaterial_c::Prepare(*(BMD_File *)(data_ov084_02130cf8.filePtr),
                                            *(BMA_File *)&data_ov084_0213088c);
-                _ZN17dExtAnmMaterial_c7SetFileER8BMA_Filei5Fix12IiEj(
-                    &goomba->mMaterialChanger, &data_ov084_0213088c, 0x40000000, 0x1000, 0);
+                goomba->mMaterialChanger.SetFile(*(BMA_File *)&data_ov084_0213088c, 0x40000000,
+                                              0x1000, 0);
                 goomba->mMaterialChanger.currFrame = 0;
             }
         }
@@ -1210,8 +1209,8 @@ void daKrb_c::func_ov084_0212a774() {
         }
         dExtAnmMaterial_c::Prepare(*(BMD_File *)(data_ov084_02130cf8.filePtr),
                                    *(BMA_File *)&data_ov084_0213089c);
-        _ZN17dExtAnmMaterial_c7SetFileER8BMA_Filei5Fix12IiEj(
-            &goomba->mMaterialChanger, &data_ov084_0213089c, 0x40000000, 0x1000, 0);
+        goomba->mMaterialChanger.SetFile(*(BMA_File *)&data_ov084_0213089c, 0x40000000,
+                                          0x1000, 0);
         goomba->mMaterialChanger.currFrame = 0;
         return;
     }
@@ -1942,8 +1941,7 @@ int daKrb_c::InitResources() {
 
     dExtAnmMaterial_c::Prepare(*(BMD_File *)data_ov084_02130cf8.filePtr,
                                *(BMA_File *)&data_ov084_0213089c);
-    _ZN17dExtAnmMaterial_c7SetFileER8BMA_Filei5Fix12IiEj(&mMaterialChanger, &data_ov084_0213089c,
-                                                         0x40000000, 0x1000, 0);
+    mMaterialChanger.SetFile(*(BMA_File *)&data_ov084_0213089c, 0x40000000, 0x1000, 0);
 
     mCoinType = COIN_PLAIN;
 

@@ -1620,10 +1620,10 @@
     {
       "path": "src/minigames/unit020bfec0.cpp",
       "rule": "handspelled-member",
-      "match": "_ZN15dExtAnmTexSRT_c7SetFileER8BTA_Filei5Fix12IiEj",
+      "match": "_ZN15dExtAnmTexSRT_c7SetFileER8BTA_Fileiij",
       "count": 10,
-      "reason": "Respelled by the texture-animation RTTI rename: src/minigames/unit020bfec0.cpp on cpp/model-family-rom-names carries the same 10 occurrence(s) as _ZN18TextureTransformer7SetFileER8BTA_Filei5Fix12IiEj. No new hand-spelled binding is added. Follow-up: convert to a real member call with the rest of this file's bindings.",
-      "evidence": "origin/cpp/model-family-rom-names:src/minigames/unit020bfec0.cpp 10x _ZN18TextureTransformer7SetFileER8BTA_Filei5Fix12IiEj; head 10x _ZN15dExtAnmTexSRT_c7SetFileER8BTA_Filei5Fix12IiEj; tools/source_style.py --base origin/cpp/model-family-rom-names"
+      "reason": "Presenter stores the controller as s32[5], so these calls stay on the scalar C identifier. The speed argument is Fix12i, which mangles as i.",
+      "evidence": "include/Presenter.h mTexAnim is s32[5]; head 10x _ZN15dExtAnmTexSRT_c7SetFileER8BTA_Fileiij"
     },
     {
       "path": "src/minigames/unit020bfec0.cpp",

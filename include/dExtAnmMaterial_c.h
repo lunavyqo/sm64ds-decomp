@@ -26,8 +26,8 @@
  * r2 is never touched, so there is no third argument and hence no this; r0 is
  * the BMD, forwarded to the name-lookup helper. A static member mangles
  * identically, so the symbol is unchanged.
- * SetFile's definition stays a mangled free function (wall 6az,
- * Fix12<int> in the signature); the declaration below is the real one.
+ * SetFile is a real member. speed is Fix12i. startFrame stays u32,
+ * which mangles as j; the definition loads that argument as a halfword.
  */
 
 #ifdef __cplusplus
@@ -47,8 +47,8 @@ struct dExtAnmMaterial_c : dExtFrameCtrl_c {
 
     /* --- non-virtual --- */
     void Update(ModelComponents &model);
-    void SetFile(BMA_File &animFile, int flags, Fix12<int> speed,
-                 u32 startFrame);        /* free function, wall 6az */
+    void SetFile(BMA_File &animFile, int flags, Fix12i speed,
+                 u32 startFrame);
 
     /* --- static --- */
     static void Prepare(BMD_File &model, BMA_File &animFile);

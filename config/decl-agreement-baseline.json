@@ -6226,6 +6226,11 @@
         "param:#5 unsigned int"
       ]
     },
+    "_ZN15dExtAnmTexSRT_c7SetFileER8BTA_Fileiij": {
+      "src/minigames/unit020bfec0.cpp": [
+        "param:#2 void *"
+      ]
+    },
     "_ZN15dExtAnmTexSRT_cD1Ev": {
       "include/decl_TextureTransformer.h": [
         "return:void"

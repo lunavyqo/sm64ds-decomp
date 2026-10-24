@@ -7,8 +7,9 @@
    deferred codegen.
 
    leftovers:
-   - SetFile keeps its mangled spelling (Fix12<int> by value, wall 6az).
-     SetAnimation is the scalar method. The member declarations are real.
+   - SetFile's startFrame is unsigned int in the signature. The matched
+     load is a halfword of that stack argument.
+   - SetAnimation is the scalar method. The member declarations are real.
    - func_02046e28 and func_020470e8 stay extern "C" helpers with no
      declaring header; Prepare's ROM body is a 0xc long-call veneer, so it
      calls func_020470e8 with that function's own two-argument signature.
@@ -34,16 +35,15 @@ dExtAnmMaterial_c::dExtAnmMaterial_c() {
 // @symbol _ZN17dExtAnmMaterial_cD1Ev
 dExtAnmMaterial_c::~dExtAnmMaterial_c() {}
 
-// @symbol _ZN17dExtAnmMaterial_c7SetFileER8BMA_Filei5Fix12IiEj
-extern "C" void _ZN17dExtAnmMaterial_c7SetFileER8BMA_Filei5Fix12IiEj(dExtAnmMaterial_c *self,
-                                                                     BMA_File *file, s32 flags,
-                                                                     s32 speed, u16 startFrame) {
-    if (file == self->file) {
-        self->SetFlags(flags);
-        self->speed = speed;
+// @symbol _ZN17dExtAnmMaterial_c7SetFileER8BMA_Fileiij
+void dExtAnmMaterial_c::SetFile(BMA_File &animFile, int flags, Fix12i speed, u32 startFrame) {
+    if (&animFile == file) {
+        SetFlags(flags);
+        this->speed = speed;
     } else {
-        self->file = file;
-        self->SetAnimation(file->numFrames, flags, speed, startFrame);
+        u16 frame = *(u16 *)&startFrame;
+        file = &animFile;
+        SetAnimation(animFile.numFrames, flags, speed, frame);
     }
 }
 
