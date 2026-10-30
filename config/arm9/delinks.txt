@@ -158,6 +158,8 @@ src/engine/save/SaveData.cpp:
 src/runtime/actor/ActorDerived.cpp:
     complete
     .text start:0x02013e80 end:0x02013f4c
+    .init start:0x02074dc0 end:0x02074dc4
+    .ctor start:0x02086b74 end:0x02086b78
 
 
 src/func_02013f4c.cpp:
@@ -4082,10 +4084,6 @@ src/typeinfo.cpp:
 src/unnamed/arm9/0207/__sinit_02074dbc.c:
     complete
     .init start:0x02074dbc end:0x02074dc0
-
-src/unnamed/arm9/0207/__sinit_02074dc0.c:
-    complete
-    .init start:0x02074dc0 end:0x02074dc4
 
 src/unnamed/arm9/0207/__sinit_02074e0c.c:
     complete

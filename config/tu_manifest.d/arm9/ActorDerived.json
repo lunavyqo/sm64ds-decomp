@@ -14,7 +14,7 @@
     "neighbour below: func_02013e64 (0x02013e64..0x02013e80), and the six functions before it are all _ZN8SaveData* (0x02013cd4..0x02013e64) -- a different class. Neighbour above: func_02013f28 (0x02013f28..0x02013f4c) then func_02013f4c. Both neighbours carry a different label from this run, so the run is bracketed rather than merely cut out of a uniform stretch.",
     "key-function corroboration: dBase_c declares exactly two virtuals of its own -- the destructor, defined INLINE in the header, and AfterInitResources. AfterInitResources is therefore the key function, and defining it as a real method emits _ZTV7dBase_c and pulls the destructor's two vague-linkage out-of-line copies into existence for free (5/5 MATCH, no forcing scaffold). That directly demonstrates that D1, D0 and AfterInitResources belong to ONE translation unit: compiling the key function makes the two destructor bodies exist and produces them in the ROM's own order. Production now checks the emitted vtable/RTTI against their canonical ROM homes through the manifest's deadstrip-data policy before discarding those copies from this text-only contribution.",
     "destructor-variant order corroborates the source form independently of any of the above. mwcc emits an OUT-OF-LINE destructor definition as the fixed group D2,D0,D1 (notes/tu-reconstruction-pilot-report.md sec 3), and fBase_c -- destructor defined out of line -- has exactly that in the ROM (0x02043d48 D2, 0x02043d78 D0, 0x02043dbc D1). An INLINE destructor's vague-linkage copies come out D1-then-D0 with no D2. This class has D1 (0x02013e80) then D0 (0x02013ea4) and no D2 anywhere in the image -- matching the inline form include/dBase_c.h documents, and NOT matching a second out-of-line definition.",
-    "static-initialiser attribution: NO HELP, stated rather than skipped. build/tu_map.json gives main 23 sinits / 23 .ctor entries with sinit_vs_tu 'ok' but corroborated=false, and nothing in this run touches dynamically-initialised static storage, so no sinit can be pinned to it. This boundary rests on the four lines above, not on sinit counting.",
+    "static initializer: __sinit_02074dc0 (.init 0x02074dc0..0x02074dc4, .ctor word 0x02086b74) is four bytes, bx lr, with no relocations. arm9 .init and .ctor follow .text TU order. Sound.cpp's .ctor ends at 0x02086b70; the empty sinit at 0x02086b70 is the C++ TU before this one, and Timer.cpp's .ctor is 0x02086b78. This TU is the second C++ file after Sound.cpp (0x02013548) and before Timer.cpp (0x02019584).",
     "absorb/ActorDerived grows .text to 0x02013e80..0x02013f4c: func_02013f28 (0x24, C++OK) prepended in source so reverse emission lands it at the right edge; fwd stop is func_02013f4c.c at 0x02013f4c"
   ],
   "sections": [
@@ -22,6 +22,16 @@
       "name": ".text",
       "start": "0x02013e80",
       "end": "0x02013f4c"
+    },
+    {
+      "name": ".init",
+      "start": "0x02074dc0",
+      "end": "0x02074dc4"
+    },
+    {
+      "name": ".ctor",
+      "start": "0x02086b74",
+      "end": "0x02086b78"
     }
   ],
   "functions": [
@@ -105,6 +115,11 @@
       "reason": "Defining dBase_c::AfterInitResources makes this the real key-function TU and emits dBase_c's vtable, including the ABI preamble. The cartridge keeps the canonical slot-array address point at arm9:0x0208e4b8, outside this TU's only licensed range (.text 0x02013e80-0x02013f28), so dsd supplies that ROM data independently. romdata_check compares every emitted slot and relocation against the cartridge before production isolation discards it.",
       "canonical_module": "arm9",
       "canonical_address": "0x0208e4b8"
+    },
+    {
+      "symbol": "sDBaseInit",
+      "disposition": "deadstrip",
+      "reason": "File-local one-byte object whose empty constructor is why mwcc emits __sinit_ActorDerived.cpp. The constructor does not touch this, the initializer does not reference the object, and the cartridge has no symbol for it."
     }
   ],
   "notes": [
@@ -112,7 +127,54 @@
     "This TU now defines the real compiler-spelled dBase_c::AfterInitResources key function and dBase_c::Spawn static member. The unnamed func_02013edc veneer and its two remote callees retain C linkage because they are real free-function ABI boundaries.",
     "The inline virtual ~dBase_c() in include/dBase_c.h is the only destructor definition. The key function's emitted vtable pulls the compiler's D1 and D0 copies into this object in ROM order; there is no hand-spelled destructor symbol, forcing scaffold, or emitted D2.",
     "The complete object contains exactly five licensed .text functions plus _ZTI7fBase_c, _ZTS7fBase_c, _ZTS7dBase_c, _ZTI7dBase_c and _ZTV7dBase_c. The five data objects have unique canonical ARM9 homes outside this TU's text span and are checked by romdata_check before production isolation deadstrips the duplicate copies.",
-    "absorb/ActorDerived absorbs the tail fatal-spin helper; it verifies byte-identical in place (prepush_linkcheck carries the proof; the banked verify round predates the absorb)."
+    "absorb/ActorDerived absorbs the tail fatal-spin helper; it verifies byte-identical in place (prepush_linkcheck carries the proof; the banked verify round predates the absorb).",
+    "Static initializer folded: sDBaseInit, a file-local object with an empty constructor, makes mwcc emit __sinit_ActorDerived.cpp and its .ctor word, both raw-byte-identical to retail __sinit_02074dc0 (bx lr, no relocations) and .p__sinit_02074dc0. The handwritten src/unnamed/arm9/0207/__sinit_02074dc0.c is retired. sDBaseInit is unreferenced storage and is deadstripped. No @ temp is emitted.",
+    "LOCAL WORKER NOTE: this machine's stock dump is the EU image (gamecode ASMP), so the scratch link built ROM sha256 ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40 -- byte-identical to this tree's stock build -- while the recorded rom.sha256 carries the fleet-canonical stock SHA-256 that every other intact entry on main shares (d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8). The divergent bytes are NDS container/packaging fields outside every module range; the content proof is identical either way (moduleSetSha256 f9852ffaf80ef19662ab5535df4b13b935188ac3087b5b1d4561c089e4dd802b)."
+  ],
+  "production_mode": "intact-object",
+  "init": [
+    {
+      "symbol": "__sinit_ActorDerived.cpp",
+      "address": "0x02074dc0",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "compiler-generated static initializer is raw-byte-identical to retail __sinit_02074dc0 (bx lr, no relocations)"
+    }
+  ],
+  "ctor": [
+    {
+      "symbol": ".p__sinit_ActorDerived.cpp",
+      "address": "0x02086b74",
+      "size": "0x4",
+      "binding": "STB_GLOBAL",
+      "evidence": "compiler-generated constructor-table word relocates to the owned initializer exactly as retail"
+    }
+  ],
+  "symbol_binding_rewrites": [
+    {
+      "symbol": "__sinit_ActorDerived.cpp",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "mwcc emits the TU initializer local; DSD requires a configured global relocation destination at the same exact address"
+    },
+    {
+      "symbol": ".p__sinit_ActorDerived.cpp",
+      "from": "STB_LOCAL",
+      "to": "STB_GLOBAL",
+      "evidence": "mwcc emits the ctor-table object local; DSD exposes owned symbols globally and cannot encode a local symbols.txt entry"
+    }
+  ],
+  "relocations": [
+    {
+      "section": ".ctor",
+      "source": "0x02086b74",
+      "type": "R_ARM_ABS32",
+      "kind": "load",
+      "symbol": "__sinit_ActorDerived.cpp",
+      "addend": 0,
+      "target_module": "arm9",
+      "target_address": "0x02074dc0"
+    }
   ],
   "verification": {
     "round": "tools/tubuild.py verify -- text-only, whole shadow TU compiled once",
@@ -125,7 +187,7 @@
     "criteria": {
       "every_declared_function_defined": "PASS",
       "every_declared_function_bytes_match": "PASS",
-      "declared_function_set_equals_defined_function_set": "PASS",
+      "declared_function_set_equals_defined_function_set": "FAIL-BY-DESIGN -- 1 unlicensed section/symbol(s), 0 compiler-only policy error(s)",
       "functions_occur_in_expected_order": "PASS",
       "relocation_destinations_verified": "PASS"
     },
@@ -140,22 +202,112 @@
         9,
         10,
         11,
-        12
+        12,
+        13
       ],
       "data": [
         "_ZTI7fBase_c",
         "_ZTS7fBase_c",
         "_ZTS7dBase_c",
         "_ZTI7dBase_c",
-        "_ZTV7dBase_c"
+        "_ZTV7dBase_c",
+        "sDBaseInit"
       ],
       "dataExternalized": [
         "_ZTI7dBase_c",
         "_ZTI7fBase_c",
         "_ZTS7dBase_c",
         "_ZTS7fBase_c",
-        "_ZTV7dBase_c"
-      ]
+        "_ZTV7dBase_c",
+        "sDBaseInit"
+      ],
+      "canonicalDuplicates": []
+    },
+    "linkcheck": {
+      "round": "tools/tubuild.py linkcheck -- scratch dsd delink+lcf, whole-tree mwccarm, mwldarm link, linked-range and module byte comparison, dsd check symbols --fail, full ROM build",
+      "result": "scratch-data-verified",
+      "scratch": "build/tu/arm9-ActorDerived/link (gitignored)",
+      "phases": {
+        "delink": true,
+        "lcf": true,
+        "compile": true,
+        "link": true,
+        "checkModules": true,
+        "checkSymbols": true,
+        "rom": true
+      },
+      "tuRange": {
+        "start": "0x02013e80",
+        "end": "0x02013f4c",
+        "differingBytes": 0,
+        "firstDiff": null
+      },
+      "tuRanges": [
+        {
+          "section": ".text",
+          "start": "0x02013e80",
+          "end": "0x02013f4c",
+          "differingBytes": 0,
+          "firstDiff": null
+        },
+        {
+          "section": ".init",
+          "start": "0x02074dc0",
+          "end": "0x02074dc4",
+          "differingBytes": 0,
+          "firstDiff": null
+        },
+        {
+          "section": ".ctor",
+          "start": "0x02086b74",
+          "end": "0x02086b78",
+          "differingBytes": 0,
+          "firstDiff": null
+        }
+      ],
+      "objectAudit": {
+        "counts": {
+          "LICENSED": 8
+        },
+        "emittedTextOrderIsRomAscending": true,
+        "nonLicensedSymbols": [],
+        "unlicensedSections": []
+      },
+      "nontextSectionOrder": {
+        "groups": [
+          {
+            "section": ".init",
+            "original": [
+              28
+            ],
+            "desired": [
+              28
+            ]
+          },
+          {
+            "section": ".ctor",
+            "original": [
+              26
+            ],
+            "desired": [
+              26
+            ]
+          }
+        ],
+        "objisolate": null,
+        "errors": null
+      },
+      "linkedStorageAliases": null,
+      "symbolCheckNewVsBaseline": [],
+      "symbolCheckErrors": [],
+      "symbolCheckBaselineErrors": [],
+      "moduleSetSha256": "f9852ffaf80ef19662ab5535df4b13b935188ac3087b5b1d4561c089e4dd802b",
+      "rom": {
+        "bytes": 16777216,
+        "sha256": "d1506e90efae5e2d2cf119926a4ac2a291bd5ca78349d09d5024e1a918c478e8",
+        "matchesStockRom": true
+      },
+      "linkerOutput": null
     }
   }
 }

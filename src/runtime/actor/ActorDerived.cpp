@@ -35,8 +35,7 @@ extern void func_02013f4c(void);
  * (arm9 0x02013f28..0x02013f4c): fatal-error spin, IME off then call the
  * next entry forever. Defined first because this file emits in reverse
  * source order, so the tail body lands at the run's right edge. */
-extern "C" void func_02013f28(void)
-{
+extern "C" void func_02013f28(void) {
     *(volatile unsigned short *)0x4000208;
     *(volatile unsigned short *)0x4000208 = 0;
     for (;;)
@@ -44,21 +43,29 @@ extern "C" void func_02013f28(void)
 }
 
 // @symbol _ZN7dBase_c18AfterInitResourcesEj
-void dBase_c::AfterInitResources(u32 vfSuccess)
-{
+void dBase_c::AfterInitResources(u32 vfSuccess) {
     if (vfSuccess == 1)
         MarkForDestruction();
     fBase_c::AfterInitResources(vfSuccess);
 }
 
 // @symbol _ZN7dBase_c5SpawnEjP7fBase_cii
-fBase_c *dBase_c::Spawn(u32 actorID, fBase_c *parent, int, int)
-{
+fBase_c *dBase_c::Spawn(u32 actorID, fBase_c *parent, int, int) {
     return func_02042ffc(actorID, parent);
 }
 
 // @symbol func_02013edc
-extern "C" void func_02013edc(int a, int b, int c)
-{
+extern "C" void func_02013edc(int a, int b, int c) {
     func_02042fe4(a, b, c);
 }
+
+/* Retail __sinit_02074dc0 is four bytes, bx lr, and this is the second C++
+   TU after Sound.cpp. A file-scope object with an empty constructor is what
+   makes mwcc emit that initializer and its .ctor word. The constructor does
+   not touch the object, nothing else names it, and the one-byte .bss is
+   deadstripped. A real dBase_c static would construct fBase_c and register
+   the destructor, which is far more than four bytes. */
+struct DBaseInit {
+    DBaseInit() {}
+};
+static DBaseInit sDBaseInit;
