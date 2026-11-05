@@ -1,7 +1,7 @@
 /* storage 0x02396BAC runtime 0x027C8B24 size 0xC8 main. */
 
 extern void fn_02395354(unsigned int addr, unsigned int val);
-extern unsigned int fn_02395334(unsigned int addr);
+extern unsigned char fn_02395334(void *addr);
 extern void fn_02382C98(unsigned char *src, unsigned int dst, unsigned int count);
 
 int fn_02396BAC(unsigned int count, unsigned char *src) {
@@ -19,7 +19,7 @@ int fn_02396BAC(unsigned int count, unsigned char *src) {
             cursor = cursor + 1;
             i = 0;
             while (i < count) {
-                fn_02395354(cursor, fn_02395334((unsigned int)src));
+                fn_02395354(cursor, fn_02395334((void *)((unsigned int)src)));
                 cursor = cursor + 1;
                 src = src + 1;
                 i = i + 1;

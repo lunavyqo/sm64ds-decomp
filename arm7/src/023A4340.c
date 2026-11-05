@@ -2,7 +2,7 @@
  * Copy count bytes from the record at base+0x2DC, starting 0x2A before
  * off. No explicit return: r0 is left as the last call wrote it. */
 
-extern int fn_02385334(unsigned char *p);
+extern unsigned char fn_02385334(void *addr);
 extern int fn_02385354(int dst, int byte);
 
 void fn_023A4340(int off, int count, int dst) {

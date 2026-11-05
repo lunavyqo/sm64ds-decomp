@@ -1,4 +1,4 @@
-extern unsigned int fn_02395334(unsigned int addr);
+extern unsigned char fn_02395334(void *addr);
 extern void fn_02395354(unsigned int addr, unsigned int val);
 
 int fn_02397508(unsigned int a1, unsigned int src) {
@@ -23,7 +23,7 @@ int fn_02397508(unsigned int a1, unsigned int src) {
     }
     i = 0;
     while (i < a1) {
-        fn_02395354(*(int *)0x0380FFF4 + 0x31C + i, fn_02395334(src));
+        fn_02395354(*(int *)0x0380FFF4 + 0x31C + i, fn_02395334((void *)(src)));
         src += 1;
         i++;
     }
@@ -40,7 +40,7 @@ int fn_02397508(unsigned int a1, unsigned int src) {
                *(unsigned short *)((char *)base + 0x38E);
         n = 0;
         while (n < a1) {
-            fn_02395354(dest + n, fn_02395334(*pp + 0x31C + n));
+            fn_02395354(dest + n, fn_02395334((void *)(*pp + 0x31C + n)));
             n++;
         }
     }

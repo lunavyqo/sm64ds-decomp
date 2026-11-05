@@ -15,7 +15,7 @@ extern int fn_0239E91C(unsigned short*,int);
 extern void fn_0239F778(int);
 extern void fn_02396EFC(int);
 extern void fn_02394DF8(int,int);
-extern void fn_0239A96C(unsigned short,unsigned short);
+extern int fn_0239A96C(int,unsigned short);
 extern void fn_0239AE84(int,int);
 extern void fn_0239477C(int,int);
 
@@ -94,7 +94,7 @@ void fn_023A3CAC(void) {
     if (v4 == 0) {
         int v10;
         cfg[1] = (unsigned short)v0;
-        fn_0239A96C(v0, (unsigned short)(cfg[9] & 0xff));
+        fn_0239A96C((unsigned short)v0, (unsigned short)(cfg[9] & 0xff));
         *(unsigned short *)(*(int *)(*(unsigned char **)0x0380FFF4 + 0x2E0) + 28 * v0 + 20) = cfg[21];
         v10 = *(int *)(*(unsigned char **)0x0380FFF4 + 0x2E0) + 28 * v0;
         *(unsigned short *)(v10 + 24) = *(unsigned short *)(v10 + 26);

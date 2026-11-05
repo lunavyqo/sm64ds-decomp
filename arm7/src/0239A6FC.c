@@ -6,7 +6,7 @@
 extern int *dat_0380FFF4;
 extern int fn_02380884(int);
 extern int fn_023808C0(int);
-extern unsigned int fn_02395334(unsigned int addr);
+extern unsigned char fn_02395334(void *addr);
 extern void fn_02395354(unsigned int addr, unsigned int val);
 
 int fn_0239A6FC(int a1) {
@@ -18,7 +18,7 @@ int fn_0239A6FC(int a1) {
     base = off + 0x480425C;
     saved = fn_02380884(0x1000000);
     if (a1 == 0) {
-        unsigned int b = fn_02395334(base + 4) | 1;
+        unsigned int b = fn_02395334((void *)(base + 4)) | 1;
         fn_02395354(base + 4, b & 0xFF);
     } else {
         unsigned int half;
@@ -28,7 +28,7 @@ int fn_0239A6FC(int a1) {
 
         half = *(unsigned short *)(ent + a1 * 0x1C + 2);
         addr = base + 5 + (half >> 3);
-        b = fn_02395334(addr) | (1 << (half & 7));
+        b = fn_02395334((void *)(addr)) | (1 << (half & 7));
         fn_02395354(addr, b & 0xFF);
     }
     return fn_023808C0(saved);

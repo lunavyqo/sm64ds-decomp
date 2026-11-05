@@ -1,0 +1,819 @@
+{
+  "task": "arm7-remaining-native1014",
+  "stage": "match_parent_request",
+  "status": "Producer handoff for the first target; independent verification pending. The full four-target task remains unfinished.",
+  "base": "5aae4bbdb6a920da96cd17715b9bf56ea84a3baf",
+  "tested_source_checkpoint": "2968e16b4ceb072c2bcc45fa1944ebe512368978",
+  "upstream_pr": "https://github.com/tangosdev/sm64ds-decomp/pull/3758",
+  "publication_target": "Update existing fork PR 10 only after independent acceptance; no new PR or merge.",
+  "author": {
+    "session": "codex-arm7-remaining-astra1014",
+    "agent_uuid": "01a13996-b2f1-7d93-8bdd-510e5c78a79e",
+    "role": "Actual Source author, private probe author, and producer"
+  },
+  "prior_authorship": {
+    "parent_draft": "AH61. The failed draft and earlier allocator-limit claim remain in historical checkpoints.",
+    "existing_callers": "Existing author history and comments are preserved. Existing function credit is not reassigned.",
+    "assist": "Root and Recovery supplied read-only retail, counterpart, and scope evidence. Independent verification is the next stage."
+  },
+  "literal_changed_source_paths": [
+    "arm7/src/02395334.c",
+    "arm7/src/02396440.c",
+    "arm7/src/023964FC.c",
+    "arm7/src/02396BAC.c",
+    "arm7/src/02397508.c",
+    "arm7/src/0239A650.c",
+    "arm7/src/0239A6FC.c",
+    "arm7/src/0239A96C.c",
+    "arm7/src/0239B25C.c",
+    "arm7/src/0239B504.c",
+    "arm7/src/0239B5F4.c",
+    "arm7/src/0239B89C.c",
+    "arm7/src/0239BEC0.c",
+    "arm7/src/0239C0CC.c",
+    "arm7/src/0239C1DC.c",
+    "arm7/src/0239C858.c",
+    "arm7/src/0239E5F8.c",
+    "arm7/src/0239E83C.c",
+    "arm7/src/0239EC48.c",
+    "arm7/src/0239EDE0.c",
+    "arm7/src/0239F228.c",
+    "arm7/src/023A132C.c",
+    "arm7/src/023A13CC.c",
+    "arm7/src/023A1828.c",
+    "arm7/src/023A1D1C.c",
+    "arm7/src/023A2344.c",
+    "arm7/src/023A2F48.c",
+    "arm7/src/023A3CAC.c",
+    "arm7/src/023A40DC.c",
+    "arm7/src/023A4340.c",
+    "arm7/src/023A43D8.c"
+  ],
+  "source_blob_bindings": {
+    "arm7/src/02395334.c": "e2d0618da487dd7ddfa61d3af68f39aa26ff1efc",
+    "arm7/src/02396440.c": "9e2818dfaa926925ce8a970bd4ba531390c496e5",
+    "arm7/src/023964FC.c": "2765abe617d4e0756f8c98a6edfbe7398e0df76a",
+    "arm7/src/02396BAC.c": "5e2a6be0752588d60d7087f0b9cf1672cb779937",
+    "arm7/src/02397508.c": "6a45d974d7ff9e44f3d6cef9cf3da7ee6c9639fa",
+    "arm7/src/0239A650.c": "9ea6ca5e1bde4e29cdea024e4bd062e1023b1a79",
+    "arm7/src/0239A6FC.c": "9173da37515490da717f9938b4c2c7572cf765e5",
+    "arm7/src/0239A96C.c": "c52ca4d01dfa231d93375d6da4e64d268fdaad7b",
+    "arm7/src/0239B25C.c": "8382af369adba5d02321c6ca8958cf63c183439b",
+    "arm7/src/0239B504.c": "ca00b3672740634bda208e793cb10c6c84fc88b6",
+    "arm7/src/0239B5F4.c": "5bc41fa346f7860efd7ad7d35835edb1143b38e7",
+    "arm7/src/0239B89C.c": "46a0bc2b75853e7b410a9229486d37f6c6512218",
+    "arm7/src/0239BEC0.c": "6aa999964d5905babf240c328981f862008d27a0",
+    "arm7/src/0239C0CC.c": "f50c97892f38e69ba8daa7ceb9fdbf3bda6f8b88",
+    "arm7/src/0239C1DC.c": "d9971e344bfdfa98dd9ac5ae4def2b2413a1ccdf",
+    "arm7/src/0239C858.c": "e088a4421971c77f776223d30a557cd4adb0d26c",
+    "arm7/src/0239E5F8.c": "8620e0a1daa6fd2459e20740e3dfdd958e2aa96f",
+    "arm7/src/0239E83C.c": "3a847d661df976b525dac971d257628b00dd56db",
+    "arm7/src/0239EC48.c": "591a33fbea2de4bf2c44c8a4b33071207dabbd97",
+    "arm7/src/0239EDE0.c": "d9cefc635d84fbae5aa2de4646de1a6ce498a923",
+    "arm7/src/0239F228.c": "bd9ba110beaf8f3222daa0ae5798349a3959fe02",
+    "arm7/src/023A132C.c": "2118049e7cbbc35c2bba1fd80cd949da45645134",
+    "arm7/src/023A13CC.c": "82ae1d1423640e3ea8590abfade0d5e15ce91b89",
+    "arm7/src/023A1828.c": "dfe461983adb5ea175b26a781eebd428e6f98641",
+    "arm7/src/023A1D1C.c": "3581aa88573428f37d5924f69a9e332b37a912bc",
+    "arm7/src/023A2344.c": "9c8424ee6f3f524a0cc601babd0815cc716d0353",
+    "arm7/src/023A2F48.c": "d8db8e38fe1252ede4d15021a353d0c6ee1edcd2",
+    "arm7/src/023A3CAC.c": "cfad23083e980b93cc0c293254a75b7c4e71bcaf",
+    "arm7/src/023A40DC.c": "4a1d4c882345f6586e6ce146fcc1aea3c1fea1d7",
+    "arm7/src/023A4340.c": "59063d9e3ca095300dab2067c1e7da0175ca6075",
+    "arm7/src/023A43D8.c": "ae23ea8588d0cdcb61200bae576452521e472532"
+  },
+  "source_changes": [
+    "Enroll only parent request 023A2F48 at its complete 0x7CC-byte extent. The other three drafts are unchanged.",
+    "Reconcile both byte-reader aliases and all caller declarations to unsigned char (void*). All previously enrolled family objects remain literally equal.",
+    "Change fn_0239A96C second argument to unsigned short consistently with its three callers. Preserve the previously implicit first-argument narrowing explicitly in 023A3CAC. Keep fn_02397468 original unsigned-short parameter and correct its other caller declaration.",
+    "Use the observed one-bit field at work+0x316 and a partial 28-byte record type. Preserve the timestamp storage lifetime and pass the actual third input to fn_023A40DC. No new compiler flags, pragmas, assembly, or shared headers."
+  ],
+  "extent": {
+    "storage_start": "0x023a2f48",
+    "storage_end": "0x023a3714",
+    "runtime_start": "0x027d4ec0",
+    "runtime_end": "0x027d568c",
+    "code_bytes": 1932,
+    "literal_pool_bytes": 64,
+    "literal_words": 16,
+    "complete_bytes": 1996,
+    "references": 41,
+    "blind": 0,
+    "different_bytes": 0
+  },
+  "family_proof": {
+    "functions": 33,
+    "references": 333,
+    "blind": 0,
+    "verified": 33,
+    "prior_enrolled_full_raw_literal": 32,
+    "getter_family_prior_enrolled": 27,
+    "getter_family_references": 241,
+    "small_family_prior_enrolled": 5,
+    "small_family_references": 51,
+    "rows": [
+      {
+        "path": "arm7/src/02395334.c",
+        "storage": "0x2395334",
+        "runtime": "0x27c72ac",
+        "bytes": 32,
+        "verdict": "VERIFIED",
+        "references": 0,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "e0f03404fa4ea06cb7e176d0edbf0e95ea3f2b979ce6589aa5f8cbc30b84e992",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/02396440.c",
+        "storage": "0x2396440",
+        "runtime": "0x27c83b8",
+        "bytes": 188,
+        "verdict": "VERIFIED",
+        "references": 3,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "e183e4d37e69f475173f042c8435cf9cec15718d38fb53af70db9528e006bc4a",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/023964FC.c",
+        "storage": "0x23964fc",
+        "runtime": "0x27c8474",
+        "bytes": 172,
+        "verdict": "VERIFIED",
+        "references": 4,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "5d1362ebaa2cc750085b071f94aaf6f4e3956d2fea9b200e028990ea9f281e14",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/02396BAC.c",
+        "storage": "0x2396bac",
+        "runtime": "0x27c8b24",
+        "bytes": 200,
+        "verdict": "VERIFIED",
+        "references": 4,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "6df36266adccc15ce37fbe090f65dbd8d586567eda4917b9b4bd0c606a46be83",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/02397468.c",
+        "storage": "0x2397468",
+        "runtime": "0x27c93e0",
+        "bytes": 64,
+        "verdict": "VERIFIED",
+        "references": 0,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "56ab338e963daa28b9332d0c890b1fe9bfc1f2c44681fc6250992ad2228d49b2",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/02397508.c",
+        "storage": "0x2397508",
+        "runtime": "0x27c9480",
+        "bytes": 308,
+        "verdict": "VERIFIED",
+        "references": 5,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "e0cee4466228bc4b100c5eab8306152eb294b462122a59a69f30b575bd467c54",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239A650.c",
+        "storage": "0x239a650",
+        "runtime": "0x27cc5c8",
+        "bytes": 172,
+        "verdict": "VERIFIED",
+        "references": 7,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "c83348adf2f217398480b2463292502727eb187d625ef9868bfde85755580895",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239A6FC.c",
+        "storage": "0x239a6fc",
+        "runtime": "0x27cc674",
+        "bytes": 168,
+        "verdict": "VERIFIED",
+        "references": 7,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "ec980ad9a19bcf54c124e6f2bccb1df24f5046ae77a889d11428fa1a25d86a0a",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239A96C.c",
+        "storage": "0x239a96c",
+        "runtime": "0x27cc8e4",
+        "bytes": 32,
+        "verdict": "VERIFIED",
+        "references": 1,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "bfad5c7e4b7c67e84e609a5cc37b44e332589bad78a9f7de5b675b9beace26f2",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239B25C.c",
+        "storage": "0x239b25c",
+        "runtime": "0x27cd1d4",
+        "bytes": 328,
+        "verdict": "VERIFIED",
+        "references": 10,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "5ff741383e8afc4d509db955ada227ae876865199b06e5c8e0be273fd78acdf2",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239B504.c",
+        "storage": "0x239b504",
+        "runtime": "0x27cd47c",
+        "bytes": 240,
+        "verdict": "VERIFIED",
+        "references": 8,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "9449792a9d0a4df4b5cd1bf39d9da298d07d12f1447d9ed9ce9bf3edb43ec81d",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239B5F4.c",
+        "storage": "0x239b5f4",
+        "runtime": "0x27cd56c",
+        "bytes": 252,
+        "verdict": "VERIFIED",
+        "references": 8,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "4f39564af51b0a48cb251cf2367a061714590ecbf2a97c6d164cb6bc80156676",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239B89C.c",
+        "storage": "0x239b89c",
+        "runtime": "0x27cd814",
+        "bytes": 712,
+        "verdict": "VERIFIED",
+        "references": 18,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "4d6c9ea453c97f0d70e35024f4708e87eab31c902c27f7c033eb5c27b4b045f6",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239BEC0.c",
+        "storage": "0x239bec0",
+        "runtime": "0x27cde38",
+        "bytes": 524,
+        "verdict": "VERIFIED",
+        "references": 13,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "8d916feb85d4d3420070e07743a52060ab169c552d077af69cd6f0cce8e4d70e",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239C0CC.c",
+        "storage": "0x239c0cc",
+        "runtime": "0x27ce044",
+        "bytes": 272,
+        "verdict": "VERIFIED",
+        "references": 2,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "4ede26d58ff1af1703cf7aae52563d62ee1521638f35177007706fe9765bdce5",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239C1DC.c",
+        "storage": "0x239c1dc",
+        "runtime": "0x27ce154",
+        "bytes": 456,
+        "verdict": "VERIFIED",
+        "references": 10,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "b1de3014a1a4aa07d442e8174a714aecc66b0a249cd4f9cbde05eaf14b7b4a8f",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239C858.c",
+        "storage": "0x239c858",
+        "runtime": "0x27ce7d0",
+        "bytes": 380,
+        "verdict": "VERIFIED",
+        "references": 5,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "a5f27c0753942a5474d3fc0866451c153cd863ef6f4f3d6fcd6f65a851971b81",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239E5F8.c",
+        "storage": "0x239e5f8",
+        "runtime": "0x27d0570",
+        "bytes": 324,
+        "verdict": "VERIFIED",
+        "references": 12,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "159cdc1bb396828aa5a6951cae5473fd02891075741111e5223280a286a073cc",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239E83C.c",
+        "storage": "0x239e83c",
+        "runtime": "0x27d07b4",
+        "bytes": 140,
+        "verdict": "VERIFIED",
+        "references": 4,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "4f86f35ae138a786d753369ac46238c2810030b007812477b0ecb77a110a864c",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239EC48.c",
+        "storage": "0x239ec48",
+        "runtime": "0x27d0bc0",
+        "bytes": 408,
+        "verdict": "VERIFIED",
+        "references": 14,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "f84c8a5e9143d31ef45c1a71a0df0a8ebfd1b0f92fc664e9986277f62b726fc3",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239EDE0.c",
+        "storage": "0x239ede0",
+        "runtime": "0x27d0d58",
+        "bytes": 424,
+        "verdict": "VERIFIED",
+        "references": 14,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "ad042b5d6539dffe252fe48ec4a7ce0dce005a1d113d6fb8864017ec9ae8c907",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/0239F228.c",
+        "storage": "0x239f228",
+        "runtime": "0x27d11a0",
+        "bytes": 1084,
+        "verdict": "VERIFIED",
+        "references": 34,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "7c4f45d0d083242495f195116c625508e1ea4f0fc322251a9df77cb1551617e0",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/023A132C.c",
+        "storage": "0x23a132c",
+        "runtime": "0x27d32a4",
+        "bytes": 160,
+        "verdict": "VERIFIED",
+        "references": 5,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "aa64dbadccdc8a0eab6a9b72ee6b3a7d387c9f99b47be29851c72739d9a54bcf",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/023A13CC.c",
+        "storage": "0x23a13cc",
+        "runtime": "0x27d3344",
+        "bytes": 132,
+        "verdict": "VERIFIED",
+        "references": 5,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "466d3cc71628ef7631ed128de758072f7b3000edfaa850af9f372b2ec849a992",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/023A1450.c",
+        "storage": "0x23a1450",
+        "runtime": "0x27d33c8",
+        "bytes": 984,
+        "verdict": "VERIFIED",
+        "references": 26,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "cddf4c82c4888892611ff5a412d7014b83014160596e93633182e2bbc2663559",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/023A1828.c",
+        "storage": "0x23a1828",
+        "runtime": "0x27d37a0",
+        "bytes": 896,
+        "verdict": "VERIFIED",
+        "references": 10,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "c79fb21573617ab25373ab67d33380bbfa6a9ba0f03efc9323de0f1bbe222174",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/023A1D1C.c",
+        "storage": "0x23a1d1c",
+        "runtime": "0x27d3c94",
+        "bytes": 1576,
+        "verdict": "VERIFIED",
+        "references": 22,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "ba23924f36286eeca51b0aa54bf5e1c36794b16cca02c16d3e4eb4489b8e3926",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/023A2344.c",
+        "storage": "0x23a2344",
+        "runtime": "0x27d42bc",
+        "bytes": 928,
+        "verdict": "VERIFIED",
+        "references": 17,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "74f4cb2e10fced24a5f25ed5cb556e20d02157a9b8e8f55642f904996e21ba4e",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/023A2F48.c",
+        "storage": "0x23a2f48",
+        "runtime": "0x27d4ec0",
+        "bytes": 1996,
+        "verdict": "VERIFIED",
+        "references": 41,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "b3402ea863a8a5317de0083c078b6c8c03e689fcf48d1ad0e3b516b2d8b12daa",
+        "unchanged_prior_enrolled_raw": false
+      },
+      {
+        "path": "arm7/src/023A3CAC.c",
+        "storage": "0x23a3cac",
+        "runtime": "0x27d5c24",
+        "bytes": 936,
+        "verdict": "VERIFIED",
+        "references": 14,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "f8df81a026713ce99afdea196c88f5ba49fb7d78da0525a16e0865760a471136",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/023A40DC.c",
+        "storage": "0x23a40dc",
+        "runtime": "0x27d6054",
+        "bytes": 368,
+        "verdict": "VERIFIED",
+        "references": 6,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "76416238200c0861e1e5b6be8892a216ad3b6fb061d94ca13dfee752f4be20c4",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/023A4340.c",
+        "storage": "0x23a4340",
+        "runtime": "0x27d62b8",
+        "bytes": 96,
+        "verdict": "VERIFIED",
+        "references": 2,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "06e2480df625d3d9748aa10a5907903c705eade362df9b2167ba4928669c01ff",
+        "unchanged_prior_enrolled_raw": true
+      },
+      {
+        "path": "arm7/src/023A43D8.c",
+        "storage": "0x23a43d8",
+        "runtime": "0x27d6350",
+        "bytes": 172,
+        "verdict": "VERIFIED",
+        "references": 2,
+        "blind": 0,
+        "differences": 0,
+        "object_sha256": "daded3d6bf2e799496e84d648a9b0e4ad4a12c8003c1a69b1a3208d39176e6f0",
+        "unchanged_prior_enrolled_raw": true
+      }
+    ]
+  },
+  "declaration_population": {
+    "actual_runtime": "0x027c72ac",
+    "aliases": [
+      "fn_02395334",
+      "fn_02385334"
+    ],
+    "definition_and_caller_files": 28,
+    "callers": 27,
+    "actual_call_occurrences": 73,
+    "canonical_calls": 68,
+    "alias_calls": 5,
+    "correction": "The original private inventory counted one comment as a call (74). Corrected inventory v2 counts 73 calls. The 28-file resource closure is unchanged.",
+    "corrected_inventory_sha256": "744664e929990f8261767f3505aa45c816e8aad0ce6660405312fc63a8806ded"
+  },
+  "full_ARM7_build": {
+    "command": "python arm7/build.py",
+    "terminal": 0,
+    "elapsed_seconds": 19.48,
+    "bytes": 150308,
+    "sha1": "0efbc2d43d0a7ae4a087472fd0ec7ca2875ec865",
+    "sha256": "f2c6cf5ee7648834dd39945ee8d06ec3960ee5e9a316fd67b449042653fe8f10",
+    "rows": 825,
+    "source_bytes": "0x23770",
+    "retail_gap_bytes": "0x13b4"
+  },
+  "normal_link_metadata_limits": {
+    "normal_policy": "Unchanged arm7/build.py links each swapped .text section. Unenrolled gaps retain retail bytes. No build policy changed.",
+    "target_nontext": [
+      {
+        "name": ".exceptix",
+        "type": "SHT_PROGBITS",
+        "flags": 2,
+        "size": 12,
+        "sha256": "dfa80f8ca8491a33c6e1f906c34cf38ad2cf987cb7a58b3be660198364aebbfb"
+      }
+    ],
+    "qualification": "The compiler-generated 12-byte .exceptix section is inventoried separately; it is not claimed as mapped retail metadata. All 32 previously enrolled complete ELFs, including nontext sections, symbols, and typed edges, remain literally unchanged. No data or BSS reconstruction is claimed."
+  },
+  "coverage": {
+    "pure_C_sources": 764,
+    "compiled_C_rows": 823,
+    "assembly_pack_rows": 2,
+    "tagged_ASM_PRIMITIVE": 26,
+    "tagged_ASM_STANDIN": 33,
+    "remaining_unenrolled_C_drafts": 3,
+    "legacy828_count_pure_C_entries": 766,
+    "legacy_count_tail_qualification": "Includes two IDA tails, not two additional C functions. Tags alone do not establish original assembly."
+  },
+  "rejected_epochs": [
+    "The initial 1992-byte extent omitted the last literal word; independent primary evidence corrected it to 1996 bytes. The old 1932-byte near-miss row and failed attempt are retained as an archive, not current match status.",
+    "The widened u32 setter produced 72 bytes; chained stores produced 68, both failing the existing 64-byte function. The original u16 setter contract is retained.",
+    "The u16-return/integer-address getter family regressed two enrolled functions. The u8-return/integer-address family regressed one due to pointer escape. Only the coherent u8-return/pointer-address family preserved all 27 enrolled objects.",
+    "Const timestamp access changed the aggregate copy into scalar accesses and produced 1988 bytes. Record arithmetic and lifetime diagnostics are retained as failed or inert variants. Direct typed record access matches; no compiler impossibility is claimed."
+  ],
+  "historical_findings_unchanged": {
+    "notes/experiments/arm7-receive-native1014.json": [
+      {
+        "id": "ARM7-RECEIVE-SEQUENCE-WORD",
+        "status": "fixed observed layout",
+        "reason": "Two-byte bitfield low4/high12 verified under2004/b56, including compile-time size and c7ab layout fixture. Original names/type spelling unknown."
+      },
+      {
+        "id": "ARM7-RECEIVE-ARITY",
+        "status": "fixed",
+        "reason": "Original actual caller passes two arguments; unused third draft parameter removed and sole direct declaration agrees."
+      },
+      {
+        "id": "ARM7-RECEIVE-CALLER-BUFFER",
+        "status": "fixed",
+        "reason": "Single8-halfword object replaces cross-array traversal and covers sibling16-byte copy. Seven halfwords initialized, finalhalfword untouched. Fresh completecaller output unchanged."
+      },
+      {
+        "id": "ARM7-RECEIVE-WIDER-LAYOUTS",
+        "status": "partial",
+        "reason": "Other raw node/list offsets, integer pointer fields, temporary names and control-flow reconstruction retained. This is not full WLAN class or shared-header reconstruction."
+      },
+      {
+        "id": "ARM7-RECEIVE-HELPER-ABIS",
+        "status": "partial",
+        "reason": "Existing direct signed-divider runtime call and other raw local helper declarations retained. The runtime ASM definition uses a placeholder void(void) Source signature; retail physical R0/R1 input andR0 quotient plus exactdestination are checked, not claimed globally reconciled. Halfword-copy fn_02382C98 uses existing legitimate absolute map; no new Cdefinition guessed."
+      },
+      {
+        "id": "ARM7-REMAINING-DRAFTS",
+        "status": "partial separate scopes",
+        "reason": "Four unenrolled drafts remain.02386100 genuine same-TU visibility probes still preserve different caller-save/frame behavior. Earlier tinywrapper/copy/fill/bitmask failures remain private, not compiler impossibility proofs."
+      },
+      {
+        "id": "ARM7-RECEIVE-UNINITIALIZED-TRANSPORT-HALFWORD",
+        "status": "inherited partial",
+        "reason": "Siblingcopy transfers16bytes while caller initializes14. Finalhalfword remainsindeterminate/untouched as retail; no invented initialization or recovered semanticvalue is claimed."
+      }
+    ],
+    "notes/experiments/arm7-average-native1014.json": [
+      {
+        "id": "ARM7-AVERAGE-DATA-LAYOUT",
+        "status": "partial",
+        "reason": "Original data-block structure and field spelling are not recovered; byte offset0x1614 retained. Address identity and runtime destination proven."
+      },
+      {
+        "id": "ARM7-AVERAGE-ORIGINAL-TYPES",
+        "status": "partial",
+        "reason": "Unsigned sum and signed index reproduce observed LSR and BLT. Original source spelling and typedefs are not uniquely recovered."
+      },
+      {
+        "id": "ARM7-WRAPPER-NONTAIL",
+        "status": "deferred separate scope",
+        "reason": "Plain genuine C wrappers0238208C/02382558 still tail-call under unchanged compiler flags; no compiler impossibility asserted, no assembly substituted as new C match."
+      },
+      {
+        "id": "ARM7-REMAINING-ASSEMBLY",
+        "status": "partial separate scope",
+        "reason": "Other stand-ins and primitive provenance retain predecessor qualifications; only this60-byte target is reconstructed here."
+      }
+    ]
+  },
+  "findings": [
+    {
+      "id": "ARM7-RECEIVE-SEQUENCE-WORD",
+      "status": "fixed observed layout",
+      "reason": "Two-byte bitfield low4/high12 verified under2004/b56, including compile-time size and c7ab layout fixture. Original names/type spelling unknown."
+    },
+    {
+      "id": "ARM7-RECEIVE-ARITY",
+      "status": "fixed",
+      "reason": "Original actual caller passes two arguments; unused third draft parameter removed and sole direct declaration agrees."
+    },
+    {
+      "id": "ARM7-RECEIVE-CALLER-BUFFER",
+      "status": "fixed",
+      "reason": "Single8-halfword object replaces cross-array traversal and covers sibling16-byte copy. Seven halfwords initialized, finalhalfword untouched. Fresh completecaller output unchanged."
+    },
+    {
+      "id": "ARM7-RECEIVE-WIDER-LAYOUTS",
+      "status": "partial",
+      "reason": "Other raw node/list offsets, integer pointer fields, temporary names and control-flow reconstruction retained. This is not full WLAN class or shared-header reconstruction."
+    },
+    {
+      "id": "ARM7-RECEIVE-HELPER-ABIS",
+      "status": "partial",
+      "reason": "Existing direct signed-divider runtime call and other raw local helper declarations retained. The runtime ASM definition uses a placeholder void(void) Source signature; retail physical R0/R1 input andR0 quotient plus exactdestination are checked, not claimed globally reconciled. Halfword-copy fn_02382C98 uses existing legitimate absolute map; no new Cdefinition guessed."
+    },
+    {
+      "id": "ARM7-REMAINING-DRAFTS",
+      "status": "partial; first of four targets matched",
+      "reason": "Parent request 023A2F48 now matches its complete 1996 bytes. 02386100 (112 bytes), 02385F2C (148 bytes), and 0238B08C (144 bytes) remain unenrolled and retain their named producer/verifier stages. Prior failures do not establish compiler impossibility."
+    },
+    {
+      "id": "ARM7-RECEIVE-UNINITIALIZED-TRANSPORT-HALFWORD",
+      "status": "inherited partial",
+      "reason": "Siblingcopy transfers16bytes while caller initializes14. Finalhalfword remainsindeterminate/untouched as retail; no invented initialization or recovered semanticvalue is claimed."
+    },
+    {
+      "id": "ARM7-AVERAGE-DATA-LAYOUT",
+      "status": "partial",
+      "reason": "Original data-block structure and field spelling are not recovered; byte offset0x1614 retained. Address identity and runtime destination proven."
+    },
+    {
+      "id": "ARM7-AVERAGE-ORIGINAL-TYPES",
+      "status": "partial",
+      "reason": "Unsigned sum and signed index reproduce observed LSR and BLT. Original source spelling and typedefs are not uniquely recovered."
+    },
+    {
+      "id": "ARM7-WRAPPER-NONTAIL",
+      "status": "deferred separate scope",
+      "reason": "Plain genuine C wrappers0238208C/02382558 still tail-call under unchanged compiler flags; no compiler impossibility asserted, no assembly substituted as new C match."
+    },
+    {
+      "id": "ARM7-REMAINING-ASSEMBLY",
+      "status": "partial separate scope",
+      "reason": "Other stand-ins and primitive provenance retain predecessor qualifications; only this60-byte target is reconstructed here."
+    },
+    {
+      "id": "ARM7-PARENT-COMPLETE-EXTENT",
+      "status": "fixed",
+      "reason": "All 483 instructions and 16 literal words are covered: 1996 bytes = 0x78C + 0x40, ending at the next enrolled function, 023A3714. Retail loads at +0x600 and +0x60C read the last pool word at +0x7C8. The original 1992-byte/15-word assumption is superseded."
+    },
+    {
+      "id": "ARM7-PARENT-TRUE-CALLEES",
+      "status": "fixed observed physical contracts",
+      "reason": "Five stale call labels were replaced with actual enrolled homes; the parser is 023A1828. fn_023A40DC receives all three retail inputs, including the SSID pointer from packet+0x18. Runtime destinations and explicit REL/RELA addends are checked."
+    },
+    {
+      "id": "ARM7-BYTE-READER-FAMILY",
+      "status": "fixed coherent reconstructed interface",
+      "reason": "Both existing names at 0x027C72AC now use unsigned char (void*) across the definition and all 27 callers. The body masks every result to 0xFF; an existing u8 alias caller and measured pointer-escape behavior support this reconstruction. This does not establish a unique original signature. All 27 enrolled complete RAW objects remain literally equal; aliases, symbols, build settings, and headers are unchanged."
+    },
+    {
+      "id": "ARM7-PARENT-RECORD-LAYOUT",
+      "status": "partial",
+      "reason": "The observed 28-byte record has an opaque 24-byte prefix and unsigned halfwords at +0x18/+0x1A. Direct typed access reproduces retail. The prefix fields and original identifiers remain unrecovered."
+    },
+    {
+      "id": "ARM7-PARENT-TIMESTAMP-AND-CLEAR",
+      "status": "partial original source provenance",
+      "reason": "One native 64-bit timestamp object and two eight-byte sample unions reproduce the observed storage and update lifetimes. The existing volatile-zero store/load before the clear call matches retail and enrolled siblings; it does not recover a unique SDK macro. No new artificial volatile access, assembly, or pragma was added."
+    },
+    {
+      "id": "ARM7-PARENT-OTHER-LAYOUTS-ABIS",
+      "status": "partial",
+      "reason": "Other work-area offsets, integer pointer transports, parser field names, and assembly-runtime interfaces remain partial. The local packet definitions mirror compatible C types in 023A1828 and 023A40DC. No shared type header or complete WLAN class reconstruction is claimed."
+    },
+    {
+      "id": "ARM7-GATE-COVERAGE",
+      "status": "explicit limitation",
+      "reason": "Ordinary ARM9 declaration and prepush Source filters exclude arm7/. Actual byte coverage is the dedicated 33-function, 333-reference strict proof and complete ARM7 image. Independent review must cover all 31 literal changed ARM7 Source paths; generic Source-filter success does not cover them."
+    },
+    {
+      "id": "ARM7-PUBLIC-VALIDATION",
+      "status": "pending external validation",
+      "reason": "The fork relay configuration is unavailable. Local matching and complete-image proof are not public/private CI or main acceptance. No merge is authorized."
+    }
+  ],
+  "other_targets": [
+    {
+      "symbol": "fn_02386100",
+      "bytes": 112,
+      "status": "UNFINISHED and unenrolled; original Source is literal.",
+      "blob": "38512bd90e3425133b20618f1e7cd0e56699d82d"
+    },
+    {
+      "symbol": "fn_02385F2C",
+      "bytes": 148,
+      "status": "UNFINISHED and unenrolled; original Source is literal.",
+      "blob": "378432f6eee0a9581c3115b19ebbdd9e3d9485ee"
+    },
+    {
+      "symbol": "fn_0238B08C",
+      "bytes": 144,
+      "status": "UNFINISHED and unenrolled; original Source is literal.",
+      "blob": "8826ea7a0c63d0f64b3d0da2954f5a29494fcd4b"
+    }
+  ],
+  "static_gates": {
+    "diff-check": {
+      "terminal": 0,
+      "scope_note": "Actual check"
+    },
+    "port-refcheck": {
+      "terminal": 0,
+      "scope_note": "Actual check"
+    },
+    "decl-agreement": {
+      "terminal": 0,
+      "scope_note": "Does not cover ARM7 Source"
+    },
+    "prepush-linkcheck": {
+      "terminal": 0,
+      "scope_note": "Does not cover ARM7 Source"
+    }
+  },
+  "gate_qualification": "The standard src/ scoped declaration and prepush scanners do not cover arm7/; their terminal results are not ARM7 byte or declaration acceptance. Dedicated33-function/333ref strict proof and manual literal31Source review are required separately.",
+  "tested_input_trees": {
+    "arm7": "4cfcb1a5570edff0c958c4914fdb671c83f3ff2f",
+    "src": "932302ebc72d38c713ec7c24c3eb65177f60fdce",
+    "include": "8f78ffefa083dc979fac4cfc30e05a58203eab25",
+    "config": "3da73792638cbc6ac2162f6f4945bd277c76c160",
+    "tools": "8c5bf0d53f662f5160534ad6e99f6ce9b7411009",
+    "port": "7f94d11db1302e785eb3cdff9d5f7d8416f4ee33"
+  },
+  "final_binding_rule": "The final commit adds only this report after the tested Source checkpoint. The arm7 tree and all other code/configuration/tool trees must remain literal. No new global build is claimed for the report commit.",
+  "evidence": {
+    "fresh_production_proof": {
+      "path": "build/arm7-remaining-native1014/production-proof/PROOF.json",
+      "sha256": "250d55c1c4e9a75d04c8923f1e21ffdaac37e9031cdb5727a936dd69b783f68d"
+    },
+    "full_ARM7_result": {
+      "path": "build/arm7-remaining-native1014/production-gates/full-arm7-result.json",
+      "sha256": "de78315dbd72d04b7dd2a872c7949d42f0930e8e3a13cfa394647ff0d3b5c663"
+    },
+    "static_gates": {
+      "path": "build/arm7-remaining-native1014/production-gates/static-gates.json",
+      "sha256": "b289802401761e08f278e59ec78f5890efd98ce687db03917c1dfe3ae7f71b2b"
+    },
+    "private_winner": {
+      "path": "build/arm7-remaining-native1014/winner-epoch/HANDOFF.json",
+      "sha256": "d898052a2fe65e9f7faf42029dd3bd021d4748e700985592d9fd4645065d9189"
+    },
+    "getter_family": {
+      "path": "build/arm7-remaining-native1014/getter-family-u8-pointer/RESULTS.json",
+      "sha256": "1736e2233734a35ac3b814fb1cfbf20b2228842617182bbbd0c58c23daefa9ad"
+    },
+    "bit0_counterpart": {
+      "path": "build/arm7-remaining-native1014/same-field-bit0/RESULTS.json",
+      "sha256": "10f54d893b1199f0551e61d94d88f3b5201cd7babb710d70dbaaf2d9d88a14ac"
+    }
+  },
+  "toolchain": {
+    "compiler": "2004/b56",
+    "compiler_sha256": "c6aafc210c78e91b123e8e949b8e26faa76849225b9f639780fcc9db6cdff0b7",
+    "flags": [
+      "-O4,s",
+      "-proc",
+      "arm7tdmi",
+      "-interworking",
+      "-fp",
+      "soft",
+      "-enum",
+      "int",
+      "-lang",
+      "c99",
+      "-char",
+      "signed"
+    ],
+    "build_script_unchanged": true,
+    "new_pragmas": false
+  }
+}

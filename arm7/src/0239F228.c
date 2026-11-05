@@ -3,7 +3,7 @@
 extern unsigned int fn_023963F0(void);
 extern void fn_02396958(char *dst, char *src, char *a, char *b);
 extern void fn_02395354(char *addr, unsigned int val);
-extern unsigned int fn_02395334(char *addr);
+extern unsigned char fn_02395334(void *addr);
 extern unsigned int fn_0239E784(char *p);
 
 void fn_0239F228(void) {

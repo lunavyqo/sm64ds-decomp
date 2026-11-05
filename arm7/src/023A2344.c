@@ -3,7 +3,7 @@
 extern void fn_02382C80(int val, void *dst, int n);
 extern void fn_02382CB4(int val, void *dst, int n);
 extern void fn_023A17C8(void *a1);
-extern unsigned int fn_02395334(const void *a1);
+extern unsigned char fn_02395334(void *addr);
 extern void fn_02395354(void *a1, unsigned int a2);
 extern void fn_023969D8(unsigned short *dst, const unsigned short *src);
 extern void fn_023954C4(unsigned int a1, unsigned int a2, int a3, int a4);

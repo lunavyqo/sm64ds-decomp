@@ -1,7 +1,7 @@
 /* storage 0x0239E83C runtime 0x027D07B4 size 0x88 main. */
 
 extern void fn_02395354(int addr, int val);
-extern int fn_02395334(char *a1);
+extern unsigned char fn_02395334(void *addr);
 
 int fn_0239E83C(int a1) {
     int v2 = 0;

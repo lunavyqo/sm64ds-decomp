@@ -10,7 +10,7 @@ typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned int u32;
 
-extern unsigned char fn_02385334(void *p);              /* WL_ReadByte */
+extern unsigned char fn_02385334(void *addr);              /* WL_ReadByte */
 extern int fn_02385354(void *p, int data);              /* WL_WriteByte */
 extern void fn_02382C80(u16 data, void *destp, u32 size); /* MIi_CpuClear16 */
 extern unsigned short *fn_023969D8(unsigned short *dst, unsigned short *src1); /* WSetMacAdrs1 */

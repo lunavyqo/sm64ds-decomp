@@ -1,6 +1,6 @@
 #pragma scheduling off
 extern void fn_02385354(int dst, int value);
-extern int fn_02385334(unsigned char *p);
+extern unsigned char fn_02385334(void *addr);
 int fn_0239E5F8(int a1) {
     unsigned char *base;
     unsigned short hw;

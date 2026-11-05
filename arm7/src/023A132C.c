@@ -1,6 +1,6 @@
 extern char *unk_380FFF4;
 extern void fn_023952E4(unsigned short value);
-extern unsigned fn_02395334(void *bytes);
+extern unsigned char fn_02395334(void *addr);
 extern int fn_023952B0(void);
 
 int fn_023A132C(unsigned short *packet) {

@@ -3,7 +3,7 @@
  * fn_02395334, then sets bit (1 << table[v]) or bit 15 per byte.
  * One pool data ref (unk_27D663C table), two calls to fn_02395334. */
 
-extern unsigned int fn_02395334(unsigned char *p); /* =0x027C72AC */
+extern unsigned char fn_02395334(void *addr); /* =0x027C72AC */
 extern unsigned short unk_27D663C[]; /* =0x027D663C */
 
 void fn_02396440(unsigned char *a1, unsigned short *a2) {

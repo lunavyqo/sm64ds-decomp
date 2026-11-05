@@ -1,7 +1,7 @@
 /* storage 0x0239BEC0 runtime 0x027CDE38 main ARM. */
 
 extern void fn_023969F4(int a);
-extern unsigned int fn_02395334(unsigned short *p);
+extern unsigned char fn_02395334(void *addr);
 extern int fn_023A43D8(int a);
 extern void fn_023970C8(unsigned int note, int flag);
 extern void fn_02395DA8(void);

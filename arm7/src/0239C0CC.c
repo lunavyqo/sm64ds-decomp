@@ -1,7 +1,7 @@
 /* storage 0x0239C0CC runtime 0x027CE044 size 0x110 main ARM.
  * Pool: =0x380FFF4. Callees fn_02395334, fn_0239B89C. */
 
-extern int fn_02395334(void *p);
+extern unsigned char fn_02395334(void *addr);
 extern void fn_0239B89C(void);
 
 int fn_0239C0CC(unsigned short *a1, unsigned short *a2)

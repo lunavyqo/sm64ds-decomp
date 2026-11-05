@@ -1,6 +1,6 @@
 extern int fn_02395C74(int a1);
 extern void fn_02397738(unsigned short a1, unsigned short a2);
-extern int fn_02395334(void *p);
+extern unsigned char fn_02395334(void *addr);
 extern int fn_023A43D8(int a1);
 extern void fn_023970C8(unsigned short a1, int a2);
 extern void fn_02395DA8(void);

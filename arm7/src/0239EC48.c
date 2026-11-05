@@ -5,7 +5,7 @@ extern void fn_02383DC4(int a1);
 extern void fn_023833C8(char *dst, char *src, int len);
 extern int fn_02399630(int a1);
 extern void fn_023857D8(char *a1, short *a2);
-extern int fn_02395334(char *a1);
+extern unsigned char fn_02395334(void *addr);
 extern void fn_02395354(int addr, int val);
 extern int fn_0239E784(int a1);
 

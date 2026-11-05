@@ -1,4 +1,4 @@
-extern int fn_02395334(void *p);
+extern unsigned char fn_02395334(void *addr);
 extern int fn_02395238(unsigned char byte, unsigned short acc);
 
 int fn_023A43D8(int *a1) {

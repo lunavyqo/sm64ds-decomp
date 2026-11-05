@@ -1,7 +1,7 @@
 extern volatile unsigned short half_4808044;
 extern char *unk_380FFF4;
 extern void fn_023952E4(unsigned short value);
-extern unsigned fn_02395334(void *bytes);
+extern unsigned char fn_02395334(void *addr);
 extern unsigned short fn_023952B0(void);
 
 void fn_023A13CC(int index, char *packet) {

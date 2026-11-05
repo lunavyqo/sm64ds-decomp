@@ -1,6 +1,6 @@
-// NONMATCHING: closest C attempt, not a byte match (storage 0x02388798 runtime 0x03800630 linked 0x224 wram.).
-// @ 0x02388798 size 0x208 (runtime 0x03800630, wram). Residue class: see the notes below.
-// Tried by AH21; not enrolled, so the build keeps the original bytes for this range.
+// @ 0x02388798 size 0x224 (runtime 0x03800630, wram).
+// Matching C by AH21; enrolled with its complete 0x208-byte code and 0x1C-byte literal pool.
+// The former NONMATCHING extent omitted the pool; the unchanged C matches all 0x224 bytes.
 /* storage 0x02388798 runtime 0x03800630 linked 0x224 wram.
  * Case 1 passes fn_02388720 through a function-pointer parameter so the
  * address homes in r8 and the request stays in r7. */

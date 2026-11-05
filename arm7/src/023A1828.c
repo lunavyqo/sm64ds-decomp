@@ -8,7 +8,7 @@
  * through R4 (5 predicated insns, 0x378); without it, loop-invariant
  * motion still homes a1+12 in R4 for the hot cases while the 6-insn DD
  * tail keeps its `bne` + fresh `add r1,sb,#0xc` (0x380 exact). C only. */
-extern unsigned int fn_02395334(unsigned char *p); /* =0x027C72AC */
+extern unsigned char fn_02395334(void *addr); /* =0x027C72AC */
 extern void fn_02396440(unsigned char *a1, unsigned short *a2); /* =0x027C83B8 */
 extern unsigned int fn_023964FC(unsigned int a1, unsigned char *a2); /* =0x027C8474 */
 extern int dword_380FFF4[]; /* =0x0380FFF4, read as base pointer per use */

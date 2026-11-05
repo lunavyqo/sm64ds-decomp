@@ -7,7 +7,7 @@ extern void fn_0239F778(unsigned short *arg);
 extern int fn_023A132C(unsigned short *packet);
 extern void fn_023A13CC(int index, char *packet);
 extern void fn_023969F4(int a1);
-extern unsigned int fn_02395334(unsigned int addr);
+extern unsigned char fn_02395334(void *addr);
 extern void fn_02382C98(void *a1, void *a2, int a3);
 
 void fn_023A1D1C(unsigned short *a1) {
@@ -194,7 +194,7 @@ true3in:
                     fn_023969F4(32);
                 } else {
                     *(unsigned short *)((*(unsigned char **)(void *)0x0380FFF4) + 956) = 51;
-                    v30 = fn_02395334((unsigned int)((char *)a1 + 51));
+                    v30 = fn_02395334((void *)((unsigned int)((char *)a1 + 51)));
                     v32 = fn_0239E9C0((short *)(a1 + 15), v30);
                     if (v32 == 0)
                         goto tail;

@@ -1,0 +1,456 @@
+{
+  "task": "arm7-receive-native1014",
+  "status": "Producer verified exact checkpoint; independent acceptance pending",
+  "base": "319367936896486f444032c405d227454662492f",
+  "author": {
+    "agent": "/root/cpp_frontier_astra1014",
+    "uuid": "01a13996-b2f1-7d93-8bdd-510e5c78a79e",
+    "session": "codex-arm7-receive-astra1014",
+    "role": "Actual matching bitfield, two-argument interface and coherent caller-buffer reconstruction author; not independent verifier"
+  },
+  "prior_authorship": {
+    "draft_attempt": "AH54 from original target comment; private session identity not established",
+    "target_source_commit": "eb6c92500da722445195b7b307d024ae073018f8",
+    "caller_source_commit": "fe740a0abeccc362a1bd53221faa58a977c39b28",
+    "existing_git_author": "lunavyqo <60808132+lunavyqo@users.noreply.github.com>",
+    "preservation": "Existing draft/caller work retained and credited. No claim to original function discovery or entire earlier bodies; no attribution files changed."
+  },
+  "scope": {
+    "write_files": [
+      "arm7/src/023A0CE0.c",
+      "arm7/src/023A11E0.c",
+      "arm7/swap.txt",
+      "arm7/README.md",
+      "notes/experiments/arm7-receive-native1014.json"
+    ],
+    "owned_ranges": [
+      "range:arm7:0x023A0CE0:0x023A0F58",
+      "range:arm7:0x027D2C58:0x027D2ED0",
+      "range:arm7:0x023A11E0:0x023A132C",
+      "range:arm7:0x027D3158:0x027D32A4"
+    ],
+    "headers_changed": false,
+    "build_flags_changed": false,
+    "build_script_changed": false,
+    "symbol_map_changed": false,
+    "enrollment_added": "0x023A0CE0 0x278 fn_023A0CE0 src/023A0CE0.c main",
+    "previous823rows_preserved": true
+  },
+  "source_reconstruction": {
+    "target": "Existing AH54 C draft completes with genuine unsigned-short4:12 bitfield assignment for the observed low nibble update. Eight call relocations and all632bytes including pool match retail. No inline/whole asm, fake aliases, ghost parameters, new pragma or compiler policy.",
+    "parameter_contract": "Actual sole caller supplies two pointers; remove unused draft third parameter and give caller exact unsigned-short-pointer declaration. Two-argument callsite unchanged. Original nominal typedefs not uniquely known.",
+    "caller": "One buf[8] replaces split buf[3]/extra[7]. Seven initialized halfwords occupySP+0..13; eighth halfword remains untouched as retail. Sibling023A0F58 copies16bytes at027D3084..027D3090, establishing required16-byte source-object capacity. Complete332-byte caller text+pool and allallocatedmetadata/typedrefs remain literal equal to freshbase.",
+    "retained_pragmas": [
+      "#pragma opt_propagation off",
+      "#pragma opt_common_subs off"
+    ],
+    "pragma_qualification": "Existing AH54 matching controls preserved; no claim these were recovered original pragmas.",
+    "bitfield_layout": {
+      "size": 2,
+      "alignment_inferred_from_ushort_bitfield": 2,
+      "example_low": 7,
+      "example_high": 2748,
+      "emitted_bytes": "c7ab",
+      "compile_time_size_assert_pass": true
+    }
+  },
+  "target_proof": {
+    "base": "319367936896486f444032c405d227454662492f",
+    "source_sha256": "1e3053299d943b145dca8d4ecbd01baded2ff05e8072ca9d9ccdca6d94d88d9d",
+    "function_bytes": 632,
+    "code_bytes": 620,
+    "pool_bytes": 12,
+    "storage": [
+      "0x023A0CE0",
+      "0x023A0F58"
+    ],
+    "runtime": [
+      "0x027D2C58",
+      "0x027D2ED0"
+    ],
+    "relocated_full_extent_literal_retail_equal": true,
+    "blind": 0,
+    "typed_call_refs": [
+      {
+        "offset": "0x13c",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02394DF8",
+        "addend": -8,
+        "destination": "0x27c6d70"
+      },
+      {
+        "offset": "0x160",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02382C98",
+        "addend": -8,
+        "destination": "0x37fab30"
+      },
+      {
+        "offset": "0x174",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_0238D594",
+        "addend": -8,
+        "destination": "0x380542c"
+      },
+      {
+        "offset": "0x218",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02394D84",
+        "addend": -8,
+        "destination": "0x27c6cfc"
+      },
+      {
+        "offset": "0x224",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_0239477C",
+        "addend": -8,
+        "destination": "0x27c66f4"
+      },
+      {
+        "offset": "0x23c",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02394D84",
+        "addend": -8,
+        "destination": "0x27c6cfc"
+      },
+      {
+        "offset": "0x248",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_0239477C",
+        "addend": -8,
+        "destination": "0x27c66f4"
+      },
+      {
+        "offset": "0x25c",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02394DF8",
+        "addend": -8,
+        "destination": "0x27c6d70"
+      }
+    ],
+    "literal_pool_hex": "f4ff8003e405000018050000",
+    "compiler_flags": [
+      "-O4,s",
+      "-proc",
+      "arm7tdmi",
+      "-interworking",
+      "-fp",
+      "soft",
+      "-enum",
+      "int",
+      "-lang",
+      "c99",
+      "-char",
+      "signed"
+    ],
+    "existing_pragmas": [
+      "opt_propagation off",
+      "opt_common_subs off"
+    ]
+  },
+  "caller_proof": {
+    "source_sha256": "25dbddb31639ead22757489f49f9c9750d2ea1136433a1a2513e58d68d7a4a39",
+    "storage": [
+      "0x023A11E0",
+      "0x023A132C"
+    ],
+    "runtime": [
+      "0x027D3158",
+      "0x027D32A4"
+    ],
+    "text_pool_bytes": 332,
+    "all_allocated_bytes_attrs_and_typed_refs_literal_equal": true,
+    "buffer_reconstruction": "One buf[8] replaces split buf[3]/extra[7]. Seven initialized halfwords occupySP+0..13; eighth halfword remains untouched as retail. Sibling023A0F58 copies16bytes at027D3084..027D3090, establishing required16-byte source-object capacity. Complete332-byte caller text+pool and allallocatedmetadata/typedrefs remain literal equal to freshbase.",
+    "declaration": "void fn_023A0CE0(unsigned short *node, unsigned short *buf);",
+    "physical_argument_count": 2
+  },
+  "full_image_proof": {
+    "exit": 0,
+    "elapsed_seconds": 16.57799999997951,
+    "rows": 824,
+    "source_bytes": 143268,
+    "whole_image_bytes": 150308,
+    "sha1": "0efbc2d43d0a7ae4a087472fd0ec7ca2875ec865",
+    "literal_retail_equal": true
+  },
+  "normal_ARM7_link_policy": "Unchanged build selects .text from each object. New nativeC target .exceptix12B/self-reference is compiler-generated and unretained, like other C entries; no data/BSS/init/ctor introduced. Code and pool both included in normal824row full-image proof.",
+  "coverage": {
+    "rows_before": 823,
+    "rows_after": 824,
+    "pure_C_sources_before": 762,
+    "pure_C_sources_after": 763,
+    "listed_C_entries_after": 765,
+    "tagged_ASM_primitives": 26,
+    "ASM_standins": 33,
+    "privileged_standins": 3,
+    "other_standins": 30,
+    "unenrolled_C_drafts_before": 5,
+    "unenrolled_C_drafts_after": 4,
+    "remaining_C_like_upper_bound": 34,
+    "enrolled_bytes": 143268,
+    "retail_gap_bytes": 7040,
+    "qualification": "Two listed entries remainIDA tails, not extra functions. Hybrid image equality is not complete nativeC coverage. Instruction rarity is not proof of assembly origin."
+  },
+  "findings": [
+    {
+      "id": "ARM7-RECEIVE-SEQUENCE-WORD",
+      "status": "fixed observed layout",
+      "reason": "Two-byte bitfield low4/high12 verified under2004/b56, including compile-time size and c7ab layout fixture. Original names/type spelling unknown."
+    },
+    {
+      "id": "ARM7-RECEIVE-ARITY",
+      "status": "fixed",
+      "reason": "Original actual caller passes two arguments; unused third draft parameter removed and sole direct declaration agrees."
+    },
+    {
+      "id": "ARM7-RECEIVE-CALLER-BUFFER",
+      "status": "fixed",
+      "reason": "Single8-halfword object replaces cross-array traversal and covers sibling16-byte copy. Seven halfwords initialized, finalhalfword untouched. Fresh completecaller output unchanged."
+    },
+    {
+      "id": "ARM7-RECEIVE-WIDER-LAYOUTS",
+      "status": "partial",
+      "reason": "Other raw node/list offsets, integer pointer fields, temporary names and control-flow reconstruction retained. This is not full WLAN class or shared-header reconstruction."
+    },
+    {
+      "id": "ARM7-RECEIVE-HELPER-ABIS",
+      "status": "partial",
+      "reason": "Existing direct signed-divider runtime call and other raw local helper declarations retained. The runtime ASM definition uses a placeholder void(void) Source signature; retail physical R0/R1 input andR0 quotient plus exactdestination are checked, not claimed globally reconciled. Halfword-copy fn_02382C98 uses existing legitimate absolute map; no new Cdefinition guessed."
+    },
+    {
+      "id": "ARM7-REMAINING-DRAFTS",
+      "status": "partial separate scopes",
+      "reason": "Four unenrolled drafts remain.02386100 genuine same-TU visibility probes still preserve different caller-save/frame behavior. Earlier tinywrapper/copy/fill/bitmask failures remain private, not compiler impossibility proofs."
+    },
+    {
+      "id": "ARM7-RECEIVE-UNINITIALIZED-TRANSPORT-HALFWORD",
+      "status": "inherited partial",
+      "reason": "Siblingcopy transfers16bytes while caller initializes14. Finalhalfword remainsindeterminate/untouched as retail; no invented initialization or recovered semanticvalue is claimed."
+    }
+  ],
+  "validation_qualification": "Localproducer proof for corrected8-halfwordSource, with previous7-halfwordepoch rejected as Source evidence. Final report-only commit preserves tested compiler inputs. Independentreview/publication separate; no privateCIpass or merge claimed.",
+  "ownership_read": {
+    "queue": "259407e7fe0ddee210a5af5ec104374ce53e0e84",
+    "observed_ARM7_tasks": "existing-match, average-native, combined-independent all phase done",
+    "qualification": "Actual own producerclaim for five-file scope; no self-acceptance.",
+    "claimed_queue": "9c26c909ca1eee62e61d7d647d6d85e65817fc88"
+  },
+  "production_proof": {
+    "tested_checkpoint": "2d12c661edaffff12ee262f03c60148304559706",
+    "target_source_sha256": "1e3053299d943b145dca8d4ecbd01baded2ff05e8072ca9d9ccdca6d94d88d9d",
+    "caller_source_sha256": "25dbddb31639ead22757489f49f9c9750d2ea1136433a1a2513e58d68d7a4a39",
+    "target_raw_sha256": "4247a7862a646606313907a168e9a1ef8fa98ffb7e910451617f7580201e4ee0",
+    "caller_raw_sha256": "6da8407428e5c449d1d8b347b25acd57cece1358821cc9aea8bdfc4002122a0f",
+    "target_whole_allocated_graph_equal_private_winner": true,
+    "target_whole_RAW_literal_equal_private_winner": true,
+    "caller_whole_allocated_bytes_attrs_refs_literal_equal_fresh_base": true,
+    "caller_whole_RAW_literal_equal_fresh_base": true,
+    "all8_target_refs": [
+      {
+        "offset": "0x13c",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02394DF8",
+        "addend": -8,
+        "destination": "0x27c6d70",
+        "linked_actual_destination": "0x27c6d70"
+      },
+      {
+        "offset": "0x160",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02382C98",
+        "addend": -8,
+        "destination": "0x37fab30",
+        "linked_actual_destination": "0x37fab30"
+      },
+      {
+        "offset": "0x174",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_0238D594",
+        "addend": -8,
+        "destination": "0x380542c",
+        "linked_actual_destination": "0x380542c"
+      },
+      {
+        "offset": "0x218",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02394D84",
+        "addend": -8,
+        "destination": "0x27c6cfc",
+        "linked_actual_destination": "0x27c6cfc"
+      },
+      {
+        "offset": "0x224",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_0239477C",
+        "addend": -8,
+        "destination": "0x27c66f4",
+        "linked_actual_destination": "0x27c66f4"
+      },
+      {
+        "offset": "0x23c",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02394D84",
+        "addend": -8,
+        "destination": "0x27c6cfc",
+        "linked_actual_destination": "0x27c6cfc"
+      },
+      {
+        "offset": "0x248",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_0239477C",
+        "addend": -8,
+        "destination": "0x27c66f4",
+        "linked_actual_destination": "0x27c66f4"
+      },
+      {
+        "offset": "0x25c",
+        "type": "R_ARM_PC24",
+        "symbol": "fn_02394DF8",
+        "addend": -8,
+        "destination": "0x27c6d70",
+        "linked_actual_destination": "0x27c6d70"
+      }
+    ],
+    "normal_build_rows": 824,
+    "whole_image_size": 150308,
+    "whole_image_sha1": "0efbc2d43d0a7ae4a087472fd0ec7ca2875ec865",
+    "whole_image_literal_retail_equal": true,
+    "fresh_build_exit": 0
+  },
+  "gates": {
+    "arm7": {
+      "command": [
+        "python",
+        "arm7/build.py"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 19.32900000002701,
+      "log_sha256": "c180aa4b4d12da9d403b780c8d5b0f3eb3548c9d706c3d8d04ada8a3e8751a83"
+    },
+    "prepush": {
+      "command": [
+        "python",
+        "tools/prepush_linkcheck.py",
+        "--range",
+        "319367936896486f444032c405d227454662492f..HEAD"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 1.8130000000237487,
+      "log_sha256": "9c4499ed23edc10341f91fb94547e25639aca8e7dd03134ae29ab3535ed95567"
+    },
+    "declaration": {
+      "command": [
+        "python",
+        "tools/check_decl_agreement.py",
+        "--changed",
+        "319367936896486f444032c405d227454662492f"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.26600000000325963,
+      "log_sha256": "1fb25d334c151903cd16a6512b2c9399150bee040a09729294b3c7dcb5a7cb7b"
+    },
+    "port": {
+      "command": [
+        "python",
+        "tools/port_refcheck.py"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 1.6880000000237487,
+      "log_sha256": "b010cd028d86799a0ca3fef6d8a50d00786d7610b9d12dc8e7eee993a7c1b86e"
+    },
+    "diff": {
+      "command": [
+        "git",
+        "diff",
+        "--check",
+        "319367936896486f444032c405d227454662492f..HEAD"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.06300000002374873,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "buffer_consumer_proof": {
+    "buffer_object": "unsigned short buf[8]",
+    "initialized_bytes": 14,
+    "transport_bytes": 16,
+    "remaining_bytes": "last2 remain untouched, preserving inherited retail behavior; not semantically recovered values",
+    "all_escape_consumers": [
+      "fn_023969D8 (destination buf orbuf+3, exactly6-byte stores)",
+      "fn_023A0CE0 (reference input, directhalfword reads0..6 only)",
+      "fn_023A0F58 (reference input, directreads0..6 and exactly16-byte sourcecopy)"
+    ],
+    "target_maximum_direct_read_bytes": 14,
+    "sibling_direct_reads": [
+      {
+        "address": "0x27d2f10",
+        "offset": "0x40",
+        "instruction": "ldrh ip, [r8, #4]"
+      },
+      {
+        "address": "0x27d2f20",
+        "offset": "0x50",
+        "instruction": "ldrh ip, [r8, #2]"
+      },
+      {
+        "address": "0x27d2f30",
+        "offset": "0x60",
+        "instruction": "ldrh ip, [r8]"
+      },
+      {
+        "address": "0x27d2f40",
+        "offset": "0x70",
+        "instruction": "ldrh ip, [r8, #0xa]"
+      },
+      {
+        "address": "0x27d2f50",
+        "offset": "0x80",
+        "instruction": "ldrh ip, [r8, #8]"
+      },
+      {
+        "address": "0x27d2f60",
+        "offset": "0x90",
+        "instruction": "ldrh ip, [r8, #6]"
+      },
+      {
+        "address": "0x27d2f70",
+        "offset": "0xa0",
+        "instruction": "ldrh r3, [r8, #0xc]"
+      }
+    ],
+    "sibling_copy_window": [
+      {
+        "address": "0x27d3084",
+        "instruction": "mov r0, r8"
+      },
+      {
+        "address": "0x27d3088",
+        "instruction": "add r1, r6, #4"
+      },
+      {
+        "address": "0x27d308c",
+        "instruction": "mov r2, #0x10"
+      },
+      {
+        "address": "0x27d3090",
+        "instruction": "bl #0x37fab30"
+      }
+    ],
+    "sibling_pointer_lifetime": "incomingR1 moved toR8; no R8 reassignment before relevantcopy; saved/restoredcallee register",
+    "reject_prior": "Private sealed seven-halfword epoch and Sourcecheckpoint35bb610 fail the sibling source-object extent requirement despite identical linkedbytes. They are retained as rejected Source evidence."
+  },
+  "rejected_source_epoch": {
+    "private_handoff_sha256": "87686d3e5fb4c3e779c059724a4207857aaf240b7bca47586cb35388de1f5474",
+    "checkpoint": "35bb610d3e707512bf8374e237877a25b3c46f9d",
+    "finding": "Seven-halfword object insufficient for sibling16-byte copy, despite byte equality. Preserved historicalSource/proof; not finalSourceacceptance.",
+    "repair_checkpoint": "2d12c661edaffff12ee262f03c60148304559706",
+    "historical_full_image_proof_qualification": "The private replay recorded below used the rejected seven-halfwordSource. Currentproduction proof above freshlybuilds eight-halfwordSource."
+  },
+  "gate_coverage": {
+    "arm7": "Actual normal python arm7/build.py terminal0 for corrected8-halfwordcheckpoint; complete824rows literalretail.",
+    "prepush": "Terminal0 with no matched srcfiles; ARM7 outside its scope.",
+    "declaration": "Terminal0 with no src/include/config change; ARM7 outside ratchet. Directnewtarget/caller declaration agrees; inheritedhelperASM placeholders remain explicitlypartial.",
+    "port": "267referencesresolve.",
+    "ARM9_rombuild": "Not rerun: no ARM9 Source/header/config/build change; normalARM7 image is relevantgate."
+  }
+}

@@ -1,6 +1,6 @@
 /* storage 0x0239C858 runtime 0x027CE7D0 size 0x17C main. */
 
-extern int fn_02395334(void *a1);
+extern unsigned char fn_02395334(void *addr);
 extern void fn_0239763C(unsigned short *a1);
 extern void fn_02397508(int a1, unsigned short *a2);
 extern int fn_0238477C(int a1, int a2);

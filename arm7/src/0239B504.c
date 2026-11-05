@@ -2,7 +2,7 @@ extern int *fn_02394E7C(int a1, int a2);
 extern void fn_02394FC4(int a1);
 extern void fn_023969D8(void *dst, void *src);
 extern void fn_0239AE84(int a1, int *obj);
-extern int fn_02395334(unsigned char *p);
+extern unsigned char fn_02395334(void *addr);
 extern void fn_02395354(unsigned char *p, int v);
 
 int fn_0239B504(void *src, unsigned short val, unsigned char *bytes) {

@@ -4,7 +4,7 @@ extern int fn_023A43D8(int a);
 extern void fn_0239763C(unsigned short *p);
 extern void fn_02397508(unsigned int n, unsigned short *p);
 extern void fn_023974A8(unsigned int n);
-extern void fn_02397468(unsigned int n);
+extern int fn_02397468(unsigned short n);
 extern void fn_023970C8(unsigned int n, int zero);
 extern void fn_0239707C(unsigned short *p);
 extern void fn_02396C74(unsigned int n, unsigned short *p);

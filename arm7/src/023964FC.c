@@ -3,7 +3,7 @@
  * One pool data ref (off_380FFF4), three calls to fn_02395334. */
 
 extern unsigned char *off_380FFF4; /* =0x0380FFF4 */
-extern unsigned int fn_02395334(unsigned char *p); /* =0x027C72AC */
+extern unsigned char fn_02395334(void *addr); /* =0x027C72AC */
 
 unsigned int fn_023964FC(unsigned int a1, unsigned char *a2) {
     unsigned char * volatile *pp;
