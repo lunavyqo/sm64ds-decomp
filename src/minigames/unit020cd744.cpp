@@ -136,7 +136,6 @@ extern "C" void TrmpItem_ProjectToScreen(char *c, unsigned short scoreValue) {
 }
 
 namespace s020cd864 {
-// @symbol TrmpItem_MotionSpinHover
 extern "C" void TrmpItem_MotionSpinHover(char *arg) {
     /* The spin axis and the reference direction, built on first use. */
     static Vector3 sUnitY(0, 0x1000, 0);
@@ -204,7 +203,6 @@ extern "C" void TrmpItem_SetMotionSpinDrift(char *p) {
 }
 
 namespace s020cdaec {
-// @symbol TrmpItem_MotionSpinSway
 extern "C" void TrmpItem_MotionSpinSway(char *arg) {
     /* The spin axis and the reference direction, built on first use. */
     static Vector3 sUnitY(0, 0x1000, 0);
@@ -488,7 +486,6 @@ extern "C" void TrmpItem_StartAppear(char *c) {
 }
 
 namespace s020ce108 {
-// @symbol TrmpItem_ReflectOffLine
 
 extern "C" {
 extern void Vec3_Sub(Vector3 *out, const Vector3 *a, const Vector3 *b);
@@ -789,7 +786,6 @@ done:
 }
 
 namespace s020ce8a0 {
-// @symbol TrmpItem_ProjectOnLine
 
 extern "C" void Vec3_Sub(Vector3 *out, const Vector3 *a, const Vector3 *b);
 extern "C" int DotVec3(const struct Vector3 *a, const struct Vector3 *b);
@@ -824,7 +820,6 @@ extern "C" void TrmpItem_ProjectOnLine(char *item, Obj *jumper, int *currentProj
 }
 
 namespace s020ce988 {
-// @symbol TrmpItem_UpdateMatrix
 
 extern "C" {
 void Matrix4x3_FromQuaternion(const void *q, struct Matrix4x3 *mF);
@@ -1278,7 +1273,6 @@ static inline void G3_Vtx(s16 x, s16 y, s16 z) {
 
 #define SEND_VTX(p) G3_Vtx((s16)((p)->x >> 8), (s16)((p)->y >> 8), (s16)((p)->z >> 8))
 
-// @symbol TrmpLine_Draw
 /* Loads the object's placement and scale matrices, then draws its 4x4 vertex
  * patch (positions mVerts, packed normals mPackedNormals) as three triangle
  * strips per face, the back face first with negated normals. Each normal
@@ -1374,7 +1368,6 @@ typedef void (C::*PMF)();
 struct C {
     PMF pmf;
 };
-// @symbol TrmpLine_Update
 extern "C" void TrmpLine_Update(C *c) {
     (c->*(c->pmf))();
 }
@@ -1383,7 +1376,6 @@ extern "C" void TrmpLine_Update(C *c) {
 namespace s020cf790 {
 extern "C" void TrmpLine_ComputeNormals(char *c);
 
-// @symbol TrmpLine_StateFade
 extern "C" void TrmpLine_StateFade(char *c) {
     if (ApproachLinear2(*(int *)&TRMPLINE(c)->mAlpha, 0, 1) != 0) {
         TRMPLINE(c)->mStatus = 0;
@@ -1403,7 +1395,6 @@ struct S {
 extern "C" {
 extern struct S pmf_TrmpLine_StateFade;
 }
-// @symbol TrmpLine_SetStateFade
 extern "C" void TrmpLine_SetStateFade(char *p) {
     *(struct S *)TRMPLINE(p)->mState = pmf_TrmpLine_StateFade;
 }
@@ -1418,7 +1409,6 @@ extern "C" {
 extern s16 data_02082214[];
 }
 
-// @symbol TrmpLine_StateSettle
 extern "C" void TrmpLine_StateSettle(char *c) {
     int normalX, normalY;
     int negativeSine;
@@ -1480,7 +1470,6 @@ struct S {
 extern "C" {
 extern struct S pmf_TrmpLine_StateSettle;
 }
-// @symbol TrmpLine_SetStateSettle
 extern "C" void TrmpLine_SetStateSettle(char *p) {
     *(struct S *)TRMPLINE(p)->mState = pmf_TrmpLine_StateSettle;
 }
@@ -1496,7 +1485,6 @@ extern "C" int TrmpLine_PushJumper(char *o);
 extern "C" void TrmpLine_ComputeNormals(char *o);
 extern "C" void TrmpLine_SetStateFade(char *o);
 
-// @symbol TrmpLine_StateFlex
 extern "C" void TrmpLine_StateFlex(char *o) {
     int row, column;
     int normalX, normalY;
@@ -1570,7 +1558,6 @@ struct S {
 extern "C" {
 extern struct S pmf_TrmpLine_StateFlex;
 }
-// @symbol TrmpLine_SetStateFlex
 extern "C" void TrmpLine_SetStateFlex(char *p) {
     *(struct S *)TRMPLINE(p)->mState = pmf_TrmpLine_StateFlex;
 }
@@ -1636,7 +1623,6 @@ extern "C" {
 extern int sTrmpLinePushStrongPitchEnd;
 }
 
-// @symbol TrmpLine_PushJumper
 extern "C" int TrmpLine_PushJumper(char *c) {
     int jumperIndex;
     int currentAlong;
@@ -1852,7 +1838,6 @@ struct Spare4 {
     ~Spare4() {}
 };
 
-// @symbol TrmpLine_Build
 extern "C" void TrmpLine_Build(char *c, short *startPoint, short *endPoint) {
     Spare4 spare4;
     Vector3 startPosition, endPosition;
@@ -2108,7 +2093,6 @@ extern "C" void TrmpLine_Draw(char *p);
 extern "C" {
 extern Matrix4x3 data_0209b3ec; /* local extern: the view matrix (Graphics3D.cpp) */
 }
-// @symbol TrmpLine_DrawAll
 extern "C" void TrmpLine_DrawAll(void) {
     int light[3];
     *(volatile int *)0x4000440 = 2;
@@ -2134,7 +2118,6 @@ extern "C" void TrmpLine_DrawAll(void) {
 
 namespace s020d0ac0 {
 extern "C" void TrmpLine_Update(void *c);
-// @symbol TrmpLine_UpdateAll
 extern "C" void TrmpLine_UpdateAll(void) {
     int i = 0;
     char *p = (char *)sTrmpLines;
@@ -2149,7 +2132,6 @@ extern "C" void TrmpLine_UpdateAll(void) {
 
 namespace s020d0b04 {
 
-// @symbol TrmpLine_ClearAll
 extern "C" void TrmpLine_ClearAll(u32) {
     int i = 0;
     unsigned char *p = (unsigned char *)sTrmpLines;
@@ -2170,7 +2152,6 @@ extern void *sTrmpLineTexAddr;
 extern char sTrmpLinePltt[];
 extern void *sTrmpLinePlttAddr;
 }
-// @symbol TrmpLine_LoadTextures
 extern "C" void TrmpLine_LoadTextures(void) {
     sTrmpLineTexAddr = (void *)dExtSimpleModel_c::LoadTextureToVram(sTrmpLineTex, 0x400);
     sTrmpLinePlttAddr = (void *)func_02045a50(sTrmpLinePltt, 0x20);
@@ -2185,7 +2166,6 @@ extern "C" {
 extern short sTrmpStartLine[];
 }
 extern "C" void TrmpLine_Build(char *g, short *a, short *b);
-// @symbol TrmpLine_CreateStartLineT2
 extern "C" void TrmpLine_CreateStartLineT2(void) {
     short a[2];
     short b[2];
@@ -2209,7 +2189,6 @@ extern "C" {
 extern short sTrmpStartLine[];
 }
 extern "C" void TrmpLine_Build(char *g, short *a, short *b);
-// @symbol TrmpLine_CreateStartLineT1
 extern "C" void TrmpLine_CreateStartLineT1(void) {
     short a[2];
     short b[2];
@@ -2261,7 +2240,6 @@ extern "C" {
 extern s16 data_ov006_02140cae[];
 }
 
-// @symbol TrmpLine_Create
 extern "C" int TrmpLine_Create(s16 *startPoint, s16 *endPoint) {
     s16 deltaPixels[2];
     int delta[2];
@@ -2438,10 +2416,8 @@ TrmpLine sTrmpLines[4];
    at the end of the file, after the static initializer and __arraydtor, which
    is where the cartridge has D1 and then C1. Out-of-line bodies would come
    ahead of __arraydtor and bring a D2/C2 pair with no ROM home. */
-// @symbol _ZN8TrmpLineD1Ev
 inline TrmpLine::~TrmpLine() {}
 
-// @symbol _ZN8TrmpLineC1Ev
 inline TrmpLine::TrmpLine() {
     mStatus = 0;
 }

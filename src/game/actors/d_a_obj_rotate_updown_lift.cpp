@@ -147,14 +147,11 @@ extern void hold_d_a_obj_rotate_updown_lift(dBgW_KcMbg *self, KCL_File *file, co
 }
 
 // 0x02130f00 (0x4c)
-// @symbol _ZN23daObjRotateUpdownLift_cD1Ev
-// @symbol _ZN23daObjRotateUpdownLift_cD0Ev
 daObjRotateUpdownLift_c::~daObjRotateUpdownLift_c()
 {
 }
 
 // 0x02130fac (0xc4)
-// @symbol func_ov091_02130fac
 /* Put a killed lift back on its spawn node. The watcher calls this. */
 void daObjRotateUpdownLift_c::func_ov091_02130fac()
 {
@@ -178,7 +175,6 @@ void daObjRotateUpdownLift_c::func_ov091_02130fac()
 }
 
 // 0x02131070 (0x8c)
-// @symbol _ZN23daObjRotateUpdownLift_c4KillEv
 void daObjRotateUpdownLift_c::Kill()
 {
     Particle::System::NewSimple(0xbb, mPosX, mPosY, mPosZ);
@@ -196,7 +192,6 @@ void daObjRotateUpdownLift_c::Kill()
 }
 
 // 0x021310fc (0x64)
-// @symbol _ZN23daObjRotateUpdownLift_c15OnHitByMegaCharER7daPly_c
 /* HS_UPDOWN_LIFT ignores the hit. The others count it, play 0x1e, and
    snap yaw back to the previous angle. */
 void daObjRotateUpdownLift_c::OnHitByMegaChar(daPly_c &player) {
@@ -211,7 +206,6 @@ void daObjRotateUpdownLift_c::OnHitByMegaChar(daPly_c &player) {
 }
 
 // 0x02131160 (0x1e0)
-// @symbol func_ov091_02131160
 /* Aim the cuboid shadow and the clip volume. Called every frame except
    for HS_UPDOWN_LIFT. */
 void daObjRotateUpdownLift_c::func_ov091_02131160() {
@@ -261,7 +255,6 @@ void daObjRotateUpdownLift_c::func_ov091_02131160() {
 }
 
 // 0x02131340 (0x48)
-// @symbol func_ov091_02131340
 /* Write the model matrix: full rotation, translation at 1/8 of position. */
 void daObjRotateUpdownLift_c::func_ov091_02131340()
 {
@@ -273,7 +266,6 @@ void daObjRotateUpdownLift_c::func_ov091_02131340()
 }
 
 // 0x02131388 (0x80)
-// @symbol _ZN23daObjRotateUpdownLift_c16CleanupResourcesEv
 int daObjRotateUpdownLift_c::CleanupResources()
 {
     if (param1 == 0xffff)
@@ -286,7 +278,6 @@ int daObjRotateUpdownLift_c::CleanupResources()
 }
 
 // 0x02131408 (0x60)
-// @symbol _ZN23daObjRotateUpdownLift_c6RenderEv
 int daObjRotateUpdownLift_c::Render()
 {
     if (mIsDead)
@@ -298,7 +289,6 @@ int daObjRotateUpdownLift_c::Render()
 }
 
 // 0x02131468 (0x488)
-// @symbol _ZN23daObjRotateUpdownLift_c8BehaviorEv
 int daObjRotateUpdownLift_c::Behavior()
 {
     Vector3 pos;
@@ -456,7 +446,6 @@ int daObjRotateUpdownLift_c::Behavior()
 }
 
 // 0x021318f0 (0x2b4)
-// @symbol _ZN23daObjRotateUpdownLift_c13InitResourcesEv
 int daObjRotateUpdownLift_c::InitResources()
 {
     Vector3 spawnAt;
@@ -545,14 +534,12 @@ int daObjRotateUpdownLift_c::InitResources()
 }
 
 // 0x02131ba4 (0x38)
-// @symbol daObjRotateUpdownLift_c_classInit_HS_UPDOWN_LIFT
 extern "C" daObjRotateUpdownLift_c *daObjRotateUpdownLift_c_classInit_HS_UPDOWN_LIFT()
 {
     return new daObjRotateUpdownLift_c();
 }
 
 // 0x02131bdc (0x38)
-// @symbol daObjRotateUpdownLift_c_classInit_UPDOWN_LIFT
 extern "C" daObjRotateUpdownLift_c *daObjRotateUpdownLift_c_classInit_UPDOWN_LIFT()
 {
     return new daObjRotateUpdownLift_c();

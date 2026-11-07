@@ -522,19 +522,16 @@ extern daPly_c::State data_ov002_0211070c;
 extern daPly_c::State data_ov002_02110724;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bccfcEPhii
 int daPly_c::func_ov002_020bccfc(unsigned char *params, int beginFrame, int endFrame) {
     this->MarkForDestruction();
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bcd18EPhii
 int daPly_c::func_ov002_020bcd18(unsigned char *params, int beginFrame, int endFrame) {
     mHorzSpeed = Player_ScaleByCharFactor(this, 0xa000);
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bcd38EPhii
 extern "C" {
 int daPly_c::func_ov002_020bcd38(unsigned char *params, int beginFrame, int endFrame) {
     extern int ApproachAngle(s16 *angle, int from, int start, int speed, int max);
@@ -665,7 +662,6 @@ int data_ov002_0210a6ec[6] = {18, 20, 0, 0, 0, 0};
 
 /* PLAYER's registry descriptor: the factory and the draw/update priorities
  * the actor framework reads from data_020a4bb8[PLAYER]. */
-// @symbol g_profile_PLAYER
 SpawnInfo<daPly_c> g_profile_PLAYER = {
     daPly_c_classInit,
     191,        /* behavior priority */
@@ -708,7 +704,6 @@ AnimScriptStep *data_ov002_0210a7a0[] = {
     data_ov002_0210a6bc, data_ov002_0210a65c,
 };
 
-// @symbol func_ov002_020bcdf0
 void func_ov002_020bcdf0(char *self)
 {
     daPly_c *player = reinterpret_cast<daPly_c *>(self);
@@ -804,7 +799,6 @@ particle:
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bd06cEj
 void daPly_c::func_ov002_020bd06c(unsigned int state2) {
     char *self = (char *)this;
     int flag;
@@ -884,7 +878,6 @@ void daPly_c::func_ov002_020bd06c(unsigned int state2) {
     }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bd20cEPhii
 int daPly_c::func_ov002_020bd20c(unsigned char *params, int beginFrame, int endFrame) {
     if (mAnimScriptId != *params) {
         func_ov002_020bd06c(*params);
@@ -894,7 +887,6 @@ int daPly_c::func_ov002_020bd20c(unsigned char *params, int beginFrame, int endF
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bd250EPhii
 extern "C" {
 int daPly_c::func_ov002_020bd250(unsigned char *params, int beginFrame, int endFrame) {
     extern void Vec3_RotateYAndTranslate(Vector3* out, const Vector3* base, int angle, const Vector3* off);
@@ -925,7 +917,6 @@ int daPly_c::func_ov002_020bd250(unsigned char *params, int beginFrame, int endF
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bd354EPhii
 int daPly_c::func_ov002_020bd354(unsigned char *params, int beginFrame, int endFrame) {
 
     if (beginFrame == gKuppaScriptFrame) {
@@ -938,7 +929,6 @@ int daPly_c::func_ov002_020bd354(unsigned char *params, int beginFrame, int endF
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bd3a0EPhii
 extern "C" {
 int daPly_c::func_ov002_020bd3a0(unsigned char *params, int beginFrame, int endFrame) {
     extern u16 data_0209f49e;
@@ -955,7 +945,6 @@ int daPly_c::func_ov002_020bd3a0(unsigned char *params, int beginFrame, int endF
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bd438EPhii
 extern "C" {
 int daPly_c::func_ov002_020bd438(unsigned char *params, int beginFrame, int endFrame) {
     extern void func_02012694(unsigned int, void*);
@@ -965,33 +954,28 @@ int daPly_c::func_ov002_020bd438(unsigned char *params, int beginFrame, int endF
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bd45cEPhii
 int daPly_c::func_ov002_020bd45c(unsigned char *params, int beginFrame, int endFrame) {
     unsigned int v = ReadUnalignedInt(params);
     Sound::PlayBank0(v, mCamSpacePos);
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bd480EPhii
 int daPly_c::func_ov002_020bd480(unsigned char *params, int beginFrame, int endFrame) {
     unsigned int v = ReadUnalignedInt(params);
     Sound::PlayCharVoice(mCharacter, v, mCamSpacePos);
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bd4acEPhii
 int daPly_c::func_ov002_020bd4ac(unsigned char *params, int beginFrame, int endFrame) {
     func_ov002_020d228c(this);
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bd4c8EPhii
 int daPly_c::func_ov002_020bd4c8(unsigned char *params, int beginFrame, int endFrame) {
     mFlags |= 0x24000000;
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bd4e0EPhii
 extern "C" {
 int daPly_c::func_ov002_020bd4e0(unsigned char *data, int beginFrame, int endFrame) {
     extern Fix12i Vec3_HorzDist(const Vector3 *a, const Vector3 *b);
@@ -1033,7 +1017,6 @@ int daPly_c::func_ov002_020bd4e0(unsigned char *data, int beginFrame, int endFra
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bd600EPhii
 int daPly_c::func_ov002_020bd600(unsigned char *data, int beginFrame, int endFrame) {
 
     s32 x, y, z;
@@ -1048,7 +1031,6 @@ int daPly_c::func_ov002_020bd600(unsigned char *data, int beginFrame, int endFra
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bd664EPhii
 extern "C" {
 int daPly_c::func_ov002_020bd664(unsigned char *cmd, int beginFrame, int endFrame) {
     extern ScriptCommand data_ov002_02110794[14];
@@ -1087,7 +1069,6 @@ int daPly_c::func_ov002_020bd664(unsigned char *cmd, int beginFrame, int endFram
 }
 }
 
-// @symbol _ZN7daPly_c8CanPauseEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 extern daPly_c::State data_ov002_0211067c;
@@ -1115,12 +1096,10 @@ ret0:
   return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bd8acEv
 int daPly_c::func_ov002_020bd8ac() {
     return mIsNoControl == 0;
 }
 
-// @symbol _ZN7daPly_c13EndStateMusicEj
 void daPly_c::EndStateMusic(u32 music) {
     u32 other = mPowerupMusic;
     if (other == 0) {
@@ -1134,7 +1113,6 @@ void daPly_c::EndStateMusic(u32 music) {
     mStateMusic = 0;
 }
 
-// @symbol _ZN7daPly_c15StartStateMusicEj
 void daPly_c::StartStateMusic(u32 music) {
     u32 other = mPowerupMusic;
     if (other == music) {
@@ -1149,7 +1127,6 @@ void daPly_c::StartStateMusic(u32 music) {
     Sound::SetMusic(mPlayerNo, music);
 }
 
-// @symbol _ZN7daPly_c15EndPowerupMusicEj
 void daPly_c::EndPowerupMusic(u32 music) {
     u32 other = mStateMusic;
     if (other == 0) {
@@ -1163,7 +1140,6 @@ void daPly_c::EndPowerupMusic(u32 music) {
     mPowerupMusic = 0;
 }
 
-// @symbol _ZN7daPly_c17StartPowerupMusicEj
 void daPly_c::StartPowerupMusic(u32 music) {
     u32 other = mStateMusic;
     if (other == music) {
@@ -1178,7 +1154,6 @@ void daPly_c::StartPowerupMusic(u32 music) {
     Sound::SetMusic(mPlayerNo, music);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bda48Ev
 extern "C" {
 void daPly_c::func_ov002_020bda48() {
     extern void func_ov002_020de968(void*);
@@ -1193,7 +1168,6 @@ void daPly_c::func_ov002_020bda48() {
 }
 }
 
-// @symbol _ZN7daPly_c8HasNoCapEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -1217,7 +1191,6 @@ int daPly_c::HasNoCap() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bdb50Ei
 extern "C" {
 void daPly_c::func_ov002_020bdb50(int arg) {
     char* c = (char*)this;
@@ -1245,7 +1218,6 @@ void daPly_c::func_ov002_020bdb50(int arg) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bdc18Ev
 extern "C" {
 void daPly_c::func_ov002_020bdc18() {
     char *c = (char *)this;
@@ -1262,7 +1234,6 @@ void daPly_c::func_ov002_020bdc18() {
 }
 }
 
-// @symbol _ZN7daPly_c16IncMegaKillCountEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 void daPly_c::IncMegaKillCount() {
@@ -1296,7 +1267,6 @@ void daPly_c::IncMegaKillCount() {
     ((daObj1UpLogo_c *)a)->SetFollowTarget(0);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bdd2cEv
 extern "C" {
 void daPly_c::func_ov002_020bdd2c() {
     extern void *data_0209f318;
@@ -1315,7 +1285,6 @@ void daPly_c::func_ov002_020bdd2c() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bdd9cEv
 void daPly_c::func_ov002_020bdd9c() {
     if (mIsMetal != 1)
         return;
@@ -1327,7 +1296,6 @@ void daPly_c::func_ov002_020bdd9c() {
     EndPowerupMusic(0x34);
 }
 
-// @symbol _ZN7daPly_c14InitMetalWarioEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 void daPly_c::InitMetalWario() {
@@ -1358,7 +1326,6 @@ void daPly_c::InitMetalWario() {
     func_ov002_020c43c4(4);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bdef0Ev
 void daPly_c::func_ov002_020bdef0() {
     if (mIsVanish == 0)
         return;
@@ -1370,7 +1337,6 @@ void daPly_c::func_ov002_020bdef0() {
     EndPowerupMusic(0x33);
 }
 
-// @symbol _ZN7daPly_c15InitVanishLuigiEv
 /* recovered: named members + shared header, real C++ method
  *
  * Starts the vanish cap: sets the flag, arms mPowerupTimer to 0x258 (the same 600
@@ -1387,7 +1353,6 @@ void daPly_c::InitVanishLuigi() {
     func_ov002_020c43c4(3);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bdf8cEv
 extern "C" {
 void daPly_c::func_ov002_020bdf8c() {
     extern char* data_0209f318;
@@ -1404,7 +1369,6 @@ void daPly_c::func_ov002_020bdf8c() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020be008Ev
 extern "C" {
 void daPly_c::func_ov002_020be008() {
     extern unsigned char data_0209f2d8;
@@ -1428,7 +1392,6 @@ void daPly_c::func_ov002_020be008() {
 }
 }
 
-// @symbol _ZN7daPly_c18SetNewHatCharacterEjjb
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 void daPly_c::SetNewHatCharacter(unsigned int p1, unsigned int p2, bool p3) {
@@ -1460,7 +1423,6 @@ void daPly_c::SetNewHatCharacter(unsigned int p1, unsigned int p2, bool p3) {
 }
 }
 
-// @symbol _ZN7daPly_c16SetRealCharacterEj
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -1493,7 +1455,6 @@ void daPly_c::SetRealCharacter(unsigned int chr_) {
 }
 }
 
-// @symbol _ZN7daPly_c18TurnOffToonShadingEj
 /* recovered: named members + shared header, real C++ method */
 void daPly_c::TurnOffToonShading(unsigned int j) {
     dExtSimpleModel_c *m;
@@ -1508,7 +1469,6 @@ void daPly_c::TurnOffToonShading(unsigned int j) {
     func_ov002_020e6b74(m, (int *)mModels.mHeadTexParams[j + 4]);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020be3b0Ev
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -1696,12 +1656,10 @@ void daPly_c::func_ov002_020be3b0() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bea7cEv
 int daPly_c::func_ov002_020bea7c() {
     return mCapFlags != 0;
 }
 
-// @symbol _ZN7daPly_c15IsCollectingCapEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::IsCollectingCap() {
     unsigned short v = mCapFlags;
@@ -1710,7 +1668,6 @@ int daPly_c::IsCollectingCap() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020beabcEv
 void daPly_c::func_ov002_020beabc() {
     char *p = (char *)this;
     mCapFlags = 5;
@@ -1724,7 +1681,6 @@ void daPly_c::func_ov002_020beabc() {
     mModels.mHeadModels[id2]->SetPolygonMode(2);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020beb38Ev
 extern "C" {
 int daPly_c::func_ov002_020beb38() {
     extern unsigned short data_0209f49e;
@@ -1742,7 +1698,6 @@ int daPly_c::func_ov002_020beb38() {
 }
 }
 
-// @symbol func_ov002_020bebd4
 extern "C" {
 void func_ov002_020bebd4(void *unused) {
   int i;
@@ -1755,7 +1710,6 @@ void func_ov002_020bebd4(void *unused) {
 }
 }
 
-// @symbol func_ov002_020bec2c
 extern "C" {
 void func_ov002_020bec2c(void){
     int i;
@@ -1768,19 +1722,16 @@ void func_ov002_020bec2c(void){
 }
 }
 
-// @symbol func_ov002_020bec84
 extern "C" {
 int func_ov002_020bec84(daPly_c *p, unsigned int i) {
     return p->IsAnim(data_ov002_020ff220[i]);
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bec9cEjiit
 void daPly_c::func_ov002_020bec9c(unsigned int a, int b, Fix12i d, u16 e) {
     SetAnim(data_ov002_020ff220[a], b, d, e);
 }
 
-// @symbol _ZNK7daPly_c14GetBodyModelIDEjb
 /* recovered: named members + shared header, real C++ method
  *
  * Metal cap overrides whichever body model the caller asked for. Which metal
@@ -1801,7 +1752,6 @@ unsigned int daPly_c::GetBodyModelID(unsigned int a, bool b_) const {
     return a;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020becf4Eii
 int daPly_c::func_ov002_020becf4(int v, int arg2) {
     int cond;
     int r1;
@@ -1827,7 +1777,6 @@ int daPly_c::func_ov002_020becf4(int v, int arg2) {
     return (r1 + v) & 0xff;
 }
 
-// @symbol _ZN7daPly_c12FinishedAnimEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::FinishedAnim() {
     unsigned int modelID = GetBodyModelID(param1 & 0xff, 0);
@@ -1836,7 +1785,6 @@ int daPly_c::FinishedAnim() {
     return model->Finished() != 0;
 }
 
-// @symbol Player_AdvanceAnims
 extern "C" {
 void Player_AdvanceAnims(void *self) {
     daPly_c *player = reinterpret_cast<daPly_c *>(self);
@@ -1854,7 +1802,6 @@ void Player_AdvanceAnims(void *self) {
 }
 }
 
-// @symbol _ZN7daPly_c6IsAnimEj
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::IsAnim(unsigned int a) {
   int ip = param1;
@@ -1866,7 +1813,6 @@ int daPly_c::IsAnim(unsigned int a) {
   return matches ? 1 : 0;
 }
 
-// @symbol _ZN7daPly_c7SetAnimEjiit
 #define LAUNDER16(p) ((u16 *)(int)(p))
 #pragma push
 #pragma opt_propagation off
@@ -1947,7 +1893,6 @@ void daPly_c::SetAnim(u32 animId, int flags, Fix12i speed, u16 startFrame) {
 #pragma pop
 #undef LAUNDER16
 
-// @symbol _ZN7daPly_c19func_ov002_020bf13cEv
 /* matched pure C — was HAND-ASM regperm floor; y-early preload cracks r4/r5 */
 void daPly_c::func_ov002_020bf13c() {
     /* v is the POD VecFx32, not Vector3, measured: v never escapes, and the ROM keeps
@@ -1994,7 +1939,6 @@ void daPly_c::func_ov002_020bf13c() {
     }
 }
 
-// @symbol func_ov002_020bf224
 /* func_ov002_020bf224 — scale b by an s16 factor from a 0x18-stride table
  * indexed by byte gActivePlayerSlot (fx12 rounded multiply), clamped below by c.
  * No callees; data: gActivePlayerSlot (u8 index), data_0209f4a0 (s16 table).
@@ -2010,7 +1954,6 @@ int func_ov002_020bf224(int a, int b, int c)
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bf27cEi
 int daPly_c::func_ov002_020bf27c(int r1) {
     int v = param1;
     int b;
@@ -2024,14 +1967,12 @@ int daPly_c::func_ov002_020bf27c(int r1) {
     return r1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bf2d8Ei
 void daPly_c::func_ov002_020bf2d8(Fix12i a) {
     void*c = (void*)this;
     unsigned int t = data_ov002_020ff140[param1];
     this->mVertSpeed = FX_MUL(a, (int)t);
 }
 
-// @symbol Player_ScaleByCharFactor
 extern "C" {
 Fix12i Player_ScaleByCharFactor(void*c, Fix12i a){
     int idx = ((daPly_c *)c)->param1 & 0xff;
@@ -2040,7 +1981,6 @@ Fix12i Player_ScaleByCharFactor(void*c, Fix12i a){
 }
 }
 
-// @symbol func_ov002_020bf340
 extern "C" {
 void func_ov002_020bf340(int dummy, int*p, int delta, int limit){
   int neg = -limit;
@@ -2050,7 +1990,6 @@ void func_ov002_020bf340(int dummy, int*p, int delta, int limit){
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bf36cEPv
 void daPly_c::func_ov002_020bf36c(void *arg) {
     typedef int Fix12i;
     Fix12i saved;
@@ -2069,7 +2008,6 @@ void daPly_c::func_ov002_020bf36c(void *arg) {
     func_ov002_020ce798();
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bf40cEv
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -2104,7 +2042,6 @@ int daPly_c::func_ov002_020bf40c() {
 }
 }
 
-// @symbol _ZN7daPly_c4HealEi
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::Heal(int amt) {
@@ -2116,7 +2053,6 @@ int daPly_c::Heal(int amt) {
   return GiveHealth(mPlayerNo, amt);
 }
 
-// @symbol _ZN7daPly_c9GetHealthEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::GetHealth() {
@@ -2124,7 +2060,6 @@ int daPly_c::GetHealth() {
   return (signed char)(gPlayerHealth[i] >> 8);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bf56cEi
 int daPly_c::func_ov002_020bf56c(int b) {
     int m;
     switch (func_ov002_020c031c()) {
@@ -2147,7 +2082,6 @@ int daPly_c::func_ov002_020bf56c(int b) {
     return FX_MUL(b, m);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bf5e0Ev
 extern "C" {
 void daPly_c::func_ov002_020bf5e0() {
     extern void Vec3_RotateYAndTranslate(void*, void*, short angle, void*);
@@ -2228,7 +2162,6 @@ state_merge:
 }
 }
 
-// @symbol func_ov002_020bf800
 extern "C" {
 void func_ov002_020bf800(char *c, Vector3_16f v)
 {
@@ -2246,7 +2179,6 @@ void func_ov002_020bf800(char *c, Vector3_16f v)
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bf88cEv
 void daPly_c::func_ov002_020bf88c() {
     if (mIsInShallowWater) return;
     if (gSubSoundID == 0x2e)
@@ -2257,7 +2189,6 @@ void daPly_c::func_ov002_020bf88c() {
         Particle::RunningSlidingDustAt(this->mPosX, this->mPosY, this->mPosZ);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bf90cEv
 extern "C" {
 void daPly_c::func_ov002_020bf90c() {
     extern int func_0201226c(int a0, int a1, int a2, int a3, int a4, short a5);
@@ -2277,7 +2208,6 @@ void daPly_c::func_ov002_020bf90c() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bf9d4Ev
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 // func_ov002_020bf9d4 at 0x020bf9d4
@@ -2302,7 +2232,6 @@ void daPly_c::func_ov002_020bf9d4() {
   }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020bfa74Ev
 /* daPly_c on a CLPS surface of type 0xb (a current/conveyor tile): the tile's
  * CLPS word names a two-node path whose direction is the push vector. Spawns the
  * flow particle (func_ov002_020bf800), keeps the surface loop sound alive, and
@@ -2378,7 +2307,6 @@ int daPly_c::func_ov002_020bfa74() {
 #undef SIN
 #undef COS
 
-// @symbol _ZN7daPly_c19func_ov002_020bfec0Ev
 int daPly_c::func_ov002_020bfec0() {
     int state = mSurfaceType;
     int inc;
@@ -2451,7 +2379,6 @@ ret0:
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c0108Ei
 #define AT(p, off) ((void *)(int)((char *)(p) + (off)))
 extern "C" {
 int daPly_c::func_ov002_020c0108(int p1) {
@@ -2511,7 +2438,6 @@ int daPly_c::func_ov002_020c0108(int p1) {
 }
 #undef AT
 
-// @symbol _ZN7daPly_c19func_ov002_020c031cEv
 extern "C" {
 extern daPly_c::State data_ov002_02110514;
 }
@@ -2525,7 +2451,6 @@ int daPly_c::func_ov002_020c031c() {
     return r4;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c0364Ej
 void daPly_c::func_ov002_020c0364(u32 arg) {
     int flag;
 
@@ -2549,7 +2474,6 @@ void daPly_c::func_ov002_020c0364(u32 arg) {
     }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c0434Ev
 int daPly_c::func_ov002_020c0434() {
     unsigned short f = mStateFlags & 1;
     if (f) {
@@ -2563,12 +2487,10 @@ int daPly_c::func_ov002_020c0434() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c04acEv
 int daPly_c::func_ov002_020c04ac() {
   return AngleDiff(mFloorAngle, this->mAngleY) <= 0x4000;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c04e0Ev
 extern "C" {
 int daPly_c::func_ov002_020c04e0() {
     extern int Vec3_HorzLen(void*);
@@ -2641,7 +2563,6 @@ int daPly_c::func_ov002_020c04e0() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c0688Ev
 int daPly_c::func_ov002_020c0688() {
     if (mIsAirborne == 0)
         return 1;
@@ -2661,7 +2582,6 @@ int daPly_c::func_ov002_020c0688() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c06fcEi
 extern "C" {
 int daPly_c::func_ov002_020c06fc(int arg) {
     char *c = (char *)this;
@@ -2806,7 +2726,6 @@ int daPly_c::func_ov002_020c06fc(int arg) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c0cbcEv
 int daPly_c::func_ov002_020c0cbc() {
     int t;
     int d;
@@ -2833,7 +2752,6 @@ int daPly_c::func_ov002_020c0cbc() {
   return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c0d90Ei
 extern "C" {
 int daPly_c::func_ov002_020c0d90(int y) {
     extern int data_0209f32c;
@@ -2880,7 +2798,6 @@ int daPly_c::func_ov002_020c0d90(int y) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c0fb4Ev
 extern "C" {
 int daPly_c::func_ov002_020c0fb4() {
     extern int func_ov002_020dec70(void *);
@@ -2981,7 +2898,6 @@ int daPly_c::func_ov002_020c0fb4() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c1234Ev
 /* Signature deliberately copied from the local declaration above: the
    ROM name carries by-value class parameters (e.g. Fix12<int>), which
    mwccarm passes differently at the call site, so declaring the true
@@ -3019,7 +2935,6 @@ void daPly_c::func_ov002_020c1234() {
         mGroundSubSoundActive = 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c133cEv
 extern "C" {
 void daPly_c::func_ov002_020c133c() {
     typedef unsigned char u8;
@@ -3058,7 +2973,6 @@ set0:
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c14b8Ev
 extern "C" {
 void daPly_c::func_ov002_020c14b8() {
     void *arg0 = (void *)this;
@@ -3148,7 +3062,6 @@ void daPly_c::func_ov002_020c14b8() {
 }
 }
 
-// @symbol _ZN7daPly_c19SetFloorSurfaceInfoERK5dBgPi
 void daPly_c::SetFloorSurfaceInfo(const dBgPi &hit) {
     Vector3 v;
     mClpsWord1Lo = hit.surface.clps.func_02037e90();
@@ -3166,7 +3079,6 @@ void daPly_c::SetFloorSurfaceInfo(const dBgPi &hit) {
     mFloorAngle = cstd::atan2(mFloorNormalX, mFloorNormalZ);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c179cEi
 /* recovered: shared common types */
 // func_ov002_020c179c at 0x020c179c
 // Matched byte-for-byte with mwccarm 1.2/sp2p3 (ov002).
@@ -3208,7 +3120,6 @@ int daPly_c::func_ov002_020c179c(int angle) {
     }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c18b0Ei
 void daPly_c::func_ov002_020c18b0(int p1) {
     if (mIsAirborne != 0)
         return;
@@ -3236,7 +3147,6 @@ void daPly_c::func_ov002_020c18b0(int p1) {
     }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c19d0Eii
 extern "C" {
 int daPly_c::func_ov002_020c19d0(int arg1, int arg2) {
     char* self = (char*)this;
@@ -3260,7 +3170,6 @@ int daPly_c::func_ov002_020c19d0(int arg1, int arg2) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c1ad8Ei
 /* daPly_c::func_ov002_020c1ad8(int) at 0x020c1ad8 (ov002)
  * Matched byte-for-byte with mwccarm 1.2/sp2p3.
  */
@@ -3307,7 +3216,6 @@ int daPly_c::func_ov002_020c1ad8(int ang) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c1c84Ei
 extern "C" {
 int daPly_c::func_ov002_020c1c84(int arg) {
     char* self = (char*)this;
@@ -3352,7 +3260,6 @@ int daPly_c::func_ov002_020c1c84(int arg) {
 }
 }
 
-// @symbol func_ov002_020c1e44
 extern "C" {
 int func_ov002_020c1e44(void* a, int x) {
     daPly_c *p = (daPly_c *)a;
@@ -3364,7 +3271,6 @@ int func_ov002_020c1e44(void* a, int x) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c1eb4Ei
 /* recovered: shared common types */
 extern "C" {
 void daPly_c::func_ov002_020c1eb4(int dmg) {
@@ -3407,7 +3313,6 @@ void daPly_c::func_ov002_020c1eb4(int dmg) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c200cEi
 extern "C" {
 int daPly_c::func_ov002_020c200c(int arg) {
     char* self = (char*)this;
@@ -3435,7 +3340,6 @@ int daPly_c::func_ov002_020c200c(int arg) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c2138Ev
 // Matched byte-for-byte with mwccarm 1.2/sp2p3 (ov002).
 int daPly_c::func_ov002_020c2138() {
     char* self = (char*)this;
@@ -3453,7 +3357,6 @@ if (this->func_ov002_020c1c84(ang)) return 1;
 return this->func_ov002_020c1ad8(ang);
 }
 
-// @symbol func_ov002_020c2270
 /* recovered: shared common types */
 extern "C" {
 int func_ov002_020c2270(daPly_c *c, void *p1, void *p2) {
@@ -3473,7 +3376,6 @@ int func_ov002_020c2270(daPly_c *c, void *p1, void *p2) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c231cEv
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -3550,7 +3452,6 @@ int daPly_c::func_ov002_020c231c() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c25a8Ei
 extern "C" {
 int daPly_c::func_ov002_020c25a8(int arg1) {
     void *arg0 = (void *)this;
@@ -3724,7 +3625,6 @@ int daPly_c::func_ov002_020c25a8(int arg1) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c29d4Ev
 /* Signature deliberately copied from the local declaration above: the
    ROM name carries by-value class parameters (e.g. Fix12<int>), which
    mwccarm passes differently at the call site, so declaring the true
@@ -3757,7 +3657,6 @@ void daPly_c::func_ov002_020c29d4() {
     }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c2b08Ev
 void daPly_c::func_ov002_020c2b08() {
     void *arg0 = (void *)this;
     daPly_c *c = (daPly_c *)arg0;
@@ -3863,7 +3762,6 @@ void daPly_c::func_ov002_020c2b08() {
     return;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c2db8Ev
 void daPly_c::func_ov002_020c2db8() {
     unsigned char *c = (unsigned char *)this;
     ((daPly_c *)(c))->func_ov002_020c14b8();
@@ -3889,7 +3787,6 @@ void daPly_c::func_ov002_020c2db8() {
     ((daPly_c *)(c))->func_ov002_020c29d4();
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c2e78Ev
 void daPly_c::func_ov002_020c2e78() {
     unsigned char w = IsPlayerWarping(mPlayerNo);
     if (w == 0)
@@ -3903,7 +3800,6 @@ void daPly_c::func_ov002_020c2e78() {
   *p |= 8;
 }
 
-// @symbol _ZN7daPly_c7CanWarpEv
 /* recovered: named members + shared header, real C++ method
  *
  * Warping is allowed from exactly two states. One of them is now spelt as the
@@ -3926,7 +3822,6 @@ int daPly_c::CanWarp() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c7IsInAirEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::IsInAir() {
     if (mIsAirborne)
@@ -3934,7 +3829,6 @@ int daPly_c::IsInAir() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c2f64Ev
 void daPly_c::func_ov002_020c2f64() {
     if (this->mLandSoundPlayed)
         return;
@@ -3958,7 +3852,6 @@ void daPly_c::func_ov002_020c2f64() {
 #define CURVE_END_1 4
 #define CURVE_END_2 5
 
-// @symbol _ZN7daPly_c14AnimSplinePollEPi
 /* SM64's anim_spline_poll: blend the current four keyframes into out,
    advance, and return 1 once the path has run out. */
 int daPly_c::AnimSplinePoll(int *out) {
@@ -4001,7 +3894,6 @@ int daPly_c::AnimSplinePoll(int *out) {
     return ret;
 }
 
-// @symbol _ZN7daPly_c14AnimSplineInitEv
 /* SM64's anim_spline_init. The keyframes are always gJumboStarKeyframes. */
 void daPly_c::AnimSplineInit() {
     mSplineKeyframe = 0;
@@ -4009,7 +3901,6 @@ void daPly_c::AnimSplineInit() {
     mSplineState = CURVE_BEGIN_1;
 }
 
-// @symbol _ZN7daPly_c16SplineGetWeightsEPi
 extern "C" {
 static inline int FX(int a, int b) {
     return FX_MUL((a), (b));
@@ -4080,7 +3971,6 @@ void daPly_c::SplineGetWeights(Fix12i *out) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c37a4EPc
 /* recovered: shared common types */
 extern "C" {
 void daPly_c::func_ov002_020c37a4(char *arg) {
@@ -4102,7 +3992,6 @@ void daPly_c::func_ov002_020c37a4(char *arg) {
 }
 }
 
-// @symbol _ZN7daPly_c23JumboStarCutsceneFlyingEv
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 #define LA(p) ((int)(p))
@@ -4157,7 +4046,6 @@ void daPly_c::JumboStarCutsceneFlying() {
 }
 #undef LA
 
-// @symbol _ZN7daPly_c26JumboStarCutsceneTakingOffEv
 int daPly_c::JumboStarCutsceneTakingOff() {
     unsigned int r5;
     char *anim;
@@ -4208,7 +4096,6 @@ int daPly_c::JumboStarCutsceneTakingOff() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c24JumboStarCutsceneFallingEv
 void daPly_c::JumboStarCutsceneFalling() {
     typedef int Fix12i;
   if (mStateWork == 0){
@@ -4240,14 +4127,12 @@ void daPly_c::JumboStarCutsceneFalling() {
   Player_AdvanceAnims(this);
 }
 
-// @symbol _ZN7daPly_c19AdvanceCutsceneStepEv
 void daPly_c::AdvanceCutsceneStep() {
     mStateStep = 0;
     mStateWork = mStateStep;
     (this->mStatePhase)++;
 }
 
-// @symbol _ZN7daPly_c17St_EndingFly_MainEv
 /* recovered: shared header, real C++ method
  *
  * ov002, 0x020c3d1c, size 0x50. The per-tick handler for the ending flight,
@@ -4282,7 +4167,6 @@ int daPly_c::St_EndingFly_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c17St_EndingFly_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_EndingFly_Init() {
     Player_DisableInteraction(this);
@@ -4293,14 +4177,12 @@ int daPly_c::St_EndingFly_Init() {
     return 1;
 }
 
-// @symbol func_ov002_020c3dbc
 extern "C" {
 void func_ov002_020c3dbc(daPly_c *player) {
     player->ChangeState(data_ov002_0211058c);
 }
 }
 
-// @symbol _ZN7daPly_c21St_OpeningWakeUp_MainEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_OpeningWakeUp_Main() {
     switch (mStateStep) {
@@ -4325,21 +4207,18 @@ int daPly_c::St_OpeningWakeUp_Main() {
     return 1;
 }
 
-// @symbol func_ov002_020c3e8c
 extern "C" {
 void func_ov002_020c3e8c(daPly_c *player) {
     player->ChangeState(data_ov002_0211013c);
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c3ea0Ev
 int daPly_c::func_ov002_020c3ea0() {
     this->SetAnim(0xb3, 0x40000000, 0x1000, 0);
     mStateStep = 2;
     return 2;
 }
 
-// @symbol _ZN7daPly_c21St_OpeningWakeUp_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_OpeningWakeUp_Init() {
     mSleepStage = 0;
@@ -4348,7 +4227,6 @@ int daPly_c::St_OpeningWakeUp_Init() {
     return 1;
 }
 
-// @symbol func_ov002_020c3f18
 extern "C" {
 void func_ov002_020c3f18(char* p) {
     extern void func_ov002_020d2e74(void*);
@@ -4357,14 +4235,12 @@ void func_ov002_020c3f18(char* p) {
 }
 }
 
-// @symbol func_ov002_020c3f2c
 extern "C" {
 void func_ov002_020c3f2c(daPly_c *player) {
     player->ChangeState(data_ov002_02110544);
 }
 }
 
-// @symbol _ZN7daPly_c15St_Respawn_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Respawn_Main() {
@@ -4408,7 +4284,6 @@ int daPly_c::St_Respawn_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c15St_Respawn_InitEv
 /* recovered: named members + shared header, real C++ method
  *
  * Restores the spawn point saved by daPly_c::InitResources, lifts the player
@@ -4446,7 +4321,6 @@ int daPly_c::St_Respawn_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c4188Ev
 extern "C" {
 int daPly_c::func_ov002_020c4188() {
     extern int* data_0209f318;
@@ -4528,7 +4402,6 @@ int daPly_c::func_ov002_020c4188() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c43c4Ej
 extern "C" {
 void daPly_c::func_ov002_020c43c4(unsigned int idx) {
     extern unsigned char data_0209f2d8;
@@ -4568,7 +4441,6 @@ void daPly_c::func_ov002_020c43c4(unsigned int idx) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c44c4Ev
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -4661,7 +4533,6 @@ cont:
 }
 }
 
-// @symbol _ZN7daPly_c15St_Talk_CleanupEv
 /* recovered: named members + shared header, real C++ method
  *
  * Leaving the talk state: clear the "in conversation" bit (0x800000) on the
@@ -4693,7 +4564,6 @@ int daPly_c::St_Talk_Cleanup() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c47f4Ev
 /* recovered: shared common types */
 extern "C" {
 int daPly_c::func_ov002_020c47f4() {
@@ -4724,7 +4594,6 @@ ret0:
 }
 }
 
-// @symbol _ZN7daPly_c12St_Talk_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -4830,7 +4699,6 @@ int daPly_c::St_Talk_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c12St_Talk_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Talk_Init() {
     mIsControlDisabled = 1;
@@ -4851,7 +4719,6 @@ int daPly_c::St_Talk_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c12ShowMessage2ER7fBase_cjPK7Vector3hh
 /* recovered: named members + shared header, real C++ method
  *
  * Starts a message. Already talking is success only at sub-step 0 or 3;
@@ -4920,7 +4787,6 @@ finish:
 }
 }
 
-// @symbol _ZN7daPly_c11ShowMessageER7fBase_cjPK7Vector3hh
 /* recovered: named members + shared header, real C++ method
  *
  * Thin wrapper: forwards to ShowMessage2 and, if that took, clears mStateWork
@@ -4940,7 +4806,6 @@ int daPly_c::ShowMessage(fBase_c &a_, unsigned int b, const Vector3 *v, unsigned
     return 0;
 }
 
-// @symbol _ZN7daPly_c18HasFinishedTalkingEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 extern daPly_c::State data_ov002_0211046c;
@@ -4954,7 +4819,6 @@ int daPly_c::HasFinishedTalking() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c12Unk_020c4f40Et
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 extern daPly_c::State data_ov002_0211046c;
@@ -4969,7 +4833,6 @@ int daPly_c::Unk_020c4f40(unsigned short x) {
     return 0;
 }
 
-// @symbol _ZN7daPly_c9StartTalkER7fBase_cb
 /* recovered: named members + shared header, real C++ method
  *
  * Entering conversation. Already talking to this actor with mStateStep 0 is
@@ -5020,7 +4883,6 @@ ret0:
 }
 }
 
-// @symbol func_ov002_020c51d0
 extern "C" {
 /* The look-at target: daTrs_c passes its own mPos with x negated and y raised
    by 0xc8000, and daHanachan_c passes the segment it wants Mario to face. */
@@ -5037,7 +4899,6 @@ int func_ov002_020c51d0(daPly_c *player, Vector3 *st) {
 }
 }
 
-// @symbol func_ov002_020c5244
 extern "C" {
 int func_ov002_020c5244(void)
 {
@@ -5045,7 +4906,6 @@ int func_ov002_020c5244(void)
 }
 }
 
-// @symbol _ZN7daPly_c12GetTalkStateEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 extern daPly_c::State data_ov002_0211046c;
@@ -5064,7 +4924,6 @@ int daPly_c::GetTalkState() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c21St_StuckInGround_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -5105,7 +4964,6 @@ int daPly_c::St_StuckInGround_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c5444Ev
 /* recovered: shared common types */
 void daPly_c::func_ov002_020c5444() {
     Vector3 v;
@@ -5127,7 +4985,6 @@ void daPly_c::func_ov002_020c5444() {
     Particle::System::NewSimple(0xc7, v.x, v.y, v.z);
 }
 
-// @symbol _ZN7daPly_c21St_StuckInGround_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_StuckInGround_Init() {
@@ -5143,7 +5000,6 @@ int daPly_c::St_StuckInGround_Init() {
   return 1;
 }
 
-// @symbol _ZN7daPly_c24St_BowserEarthquake_MainEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_BowserEarthquake_Main() {
     if (mStateStep == 0) {
@@ -5179,7 +5035,6 @@ int daPly_c::St_BowserEarthquake_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c24St_BowserEarthquake_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_BowserEarthquake_Init() {
     if (mStateStep == 0) {
@@ -5191,7 +5046,6 @@ int daPly_c::St_BowserEarthquake_Init() {
     return 1;
 }
 
-// @symbol func_ov002_020c56f0
 extern "C" {
 int func_ov002_020c56f0(unsigned char* c, unsigned char arg)
 {
@@ -5207,7 +5061,6 @@ int func_ov002_020c56f0(unsigned char* c, unsigned char arg)
 }
 }
 
-// @symbol _ZN7daPly_c15St_DeadPit_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -5301,7 +5154,6 @@ int daPly_c::St_DeadPit_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c15St_DeadPit_InitEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_DeadPit_Init() {
@@ -5396,7 +5248,6 @@ int daPly_c::St_DeadPit_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c14EnterWhirlpoolEv
 /* recovered: named members + shared header, real C++ method */
 /* daPly_c::EnterWhirlpool() @ 0x20c5cc8 (ov002) -- tail-call veneer to daPly_c::func_ov002_020c5dec(int) (0x20c5dec) with r1=9.
  */
@@ -5404,7 +5255,6 @@ void daPly_c::EnterWhirlpool() {
     ((daPly_c *)((void *)this))->func_ov002_020c5dec(9);
 }
 
-// @symbol func_ov002_020c5cd8
 extern "C" {
 int func_ov002_020c5cd8(char *c, int arg) {
     daPly_c *player = (daPly_c *)c;
@@ -5416,7 +5266,6 @@ int func_ov002_020c5cd8(char *c, int arg) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c5d0cEv
 int daPly_c::func_ov002_020c5d0c() {
     u16 *p;
     if (this->mPosY - mGroundY >= 0x100000)
@@ -5426,7 +5275,6 @@ int daPly_c::func_ov002_020c5d0c() {
     return func_ov002_020c5dec(1);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c5d60Ev
 extern "C" {
 extern daPly_c::State data_ov002_02110124;
 extern daPly_c::State data_ov002_02110064;
@@ -5444,7 +5292,6 @@ void daPly_c::func_ov002_020c5d60() {
   this->func_ov002_020c5dec(1);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c5decEi
 extern "C" {
 extern daPly_c::State data_ov002_02110124;
 }
@@ -5459,7 +5306,6 @@ int daPly_c::func_ov002_020c5dec(int r1) {
     return 1;
 }
 
-// @symbol _ZN7daPly_c15St_DeadHit_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -5515,7 +5361,6 @@ int daPly_c::St_DeadHit_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c15St_DeadHit_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -5532,7 +5377,6 @@ int daPly_c::St_DeadHit_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c607cEiiPi
 int daPly_c::func_ov002_020c607c(int p1, int p2, int *outptr) {
     char *self = (char *)this;
     mLineClsnActor = 0;
@@ -5564,7 +5408,6 @@ int daPly_c::func_ov002_020c607c(int p1, int p2, int *outptr) {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c61acEv
 extern "C" {
 int daPly_c::func_ov002_020c61ac() {
     extern void func_ov002_020de968(void *);
@@ -5643,7 +5486,6 @@ int daPly_c::func_ov002_020c61ac() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c647cEi
 /* recovered: shared common types */
 // Matched byte-for-byte with mwccarm 1.2/sp2p3 (ov002).
 int daPly_c::func_ov002_020c647c(int arg1) {
@@ -5673,7 +5515,6 @@ int daPly_c::func_ov002_020c647c(int arg1) {
     return r5;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c6538Ev
 int daPly_c::func_ov002_020c6538() {
     dBgCh_Gnd rg;
     Vector3 v;
@@ -5700,7 +5541,6 @@ int daPly_c::func_ov002_020c6538() {
     }
 }
 
-// @symbol _ZN7daPly_c17St_Squish_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Squish_Cleanup() {
     int val = 0x1000;
@@ -5715,7 +5555,6 @@ int daPly_c::St_Squish_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c14St_Squish_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -5811,7 +5650,6 @@ int daPly_c::St_Squish_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c6908Ev
 int daPly_c::func_ov002_020c6908() {
 
     if (mStateWork == 1) {
@@ -5835,7 +5673,6 @@ ret0:
   return 0;
 }
 
-// @symbol _ZN7daPly_c14St_Squish_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Squish_Init() {
     typedef int Fix12i;
@@ -5853,7 +5690,6 @@ int daPly_c::St_Squish_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c12Unk_020c6a10Ej
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::Unk_020c6a10(unsigned int arg_) {
@@ -5882,7 +5718,6 @@ int daPly_c::Unk_020c6a10(unsigned int arg_) {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c6adcEv
 extern "C" {
 extern daPly_c::State data_ov002_021102a4;
 }
@@ -5896,7 +5731,6 @@ int daPly_c::func_ov002_020c6adc() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c16St_Teleport_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -5977,7 +5811,6 @@ int daPly_c::St_Teleport_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c16St_Teleport_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Teleport_Init() {
     Player_DisableInteraction(this);
@@ -5989,7 +5822,6 @@ int daPly_c::St_Teleport_Init() {
     return 1;
 }
 
-// @symbol func_ov002_020c6e14
 /* func_ov002_020c6e14 at 0x020c6e14
  *
  * Matched byte-for-byte with mwccarm 1.2/sp2p3 (ov002).
@@ -6024,7 +5856,6 @@ int func_ov002_020c6e14(daPly_c *actor) {
 }
 }
 
-// @symbol _ZN7daPly_c21St_LevelEnter_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 /* daPly_c::St_LevelEnter_Cleanup() at 0x020c6f34 (ov002).
  * Cleanup hook of the ST_LEVEL_ENTER player state-machine state; a no-op
@@ -6035,7 +5866,6 @@ s32 daPly_c::St_LevelEnter_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c18St_LevelEnter_MainEv
 /* recovered: named members + shared header, real C++ method
  *
  * Level-entry cutscene, per frame. mStateWork indexes a table of
@@ -6062,7 +5892,6 @@ int daPly_c::St_LevelEnter_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c6fe4Ev
 void daPly_c::func_ov002_020c6fe4() {
     int id;
 
@@ -6080,7 +5909,6 @@ void daPly_c::func_ov002_020c6fe4() {
     }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c70acEv
 void daPly_c::func_ov002_020c70ac() {
     if (mStateTimer != 0) {
         this->mVertSpeed = 0;
@@ -6118,7 +5946,6 @@ void daPly_c::func_ov002_020c70ac() {
     }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c7194Ev
 extern "C" {
 extern daPly_c::State data_ov002_02110214;
 }
@@ -6132,7 +5959,6 @@ void daPly_c::func_ov002_020c7194() {
     this->ChangeState(data_ov002_02110214);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c71e0Ev
 extern "C" {
 void daPly_c::func_ov002_020c71e0() {
     extern unsigned char data_0209f2bc[];
@@ -6155,7 +5981,6 @@ void daPly_c::func_ov002_020c71e0() {
 }
 }
 
-// @symbol func_ov002_020c72a4
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -6186,7 +6011,6 @@ void func_ov002_020c72a4(void* thisptr)
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c7350Ev
 extern "C" {
 void daPly_c::func_ov002_020c7350() {
     typedef unsigned char u8;
@@ -6273,7 +6097,6 @@ void daPly_c::func_ov002_020c7350() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c75f0Ev
 extern "C" {
 void daPly_c::func_ov002_020c75f0() {
     extern void func_02012694(u32 id, void*);
@@ -6347,7 +6170,6 @@ void daPly_c::func_ov002_020c75f0() {
 }
 }
 
-// @symbol _ZN7daPly_c18St_LevelEnter_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -6484,7 +6306,6 @@ int daPly_c::St_LevelEnter_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c7cbcEv
 extern "C" {
 int daPly_c::func_ov002_020c7cbc() {
     extern u8 gPrevReturnState;
@@ -6508,7 +6329,6 @@ int daPly_c::func_ov002_020c7cbc() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c7dd0Ei
 extern "C" {
 void daPly_c::func_ov002_020c7dd0(int i) {
     extern unsigned char gPrevReturnState;
@@ -6539,7 +6359,6 @@ void daPly_c::func_ov002_020c7dd0(int i) {
 }
 }
 
-// @symbol _ZN7daPly_c15IsEnteringLevelEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::IsEnteringLevel() {
     if (this->IsStateEnteringLevel() == 0)
@@ -6550,7 +6369,6 @@ int daPly_c::IsEnteringLevel() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c20IsStateEnteringLevelEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::IsStateEnteringLevel() {
@@ -6560,7 +6378,6 @@ int daPly_c::IsStateEnteringLevel() {
     return this->IsState(data_ov002_0211025c);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c7f10Ev
 int daPly_c::func_ov002_020c7f10() {
     unsigned char v;
     if (!this->IsState(data_ov002_0211022c))
@@ -6590,7 +6407,6 @@ fail:
   return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c7ff8Ev
 extern "C" {
 void daPly_c::func_ov002_020c7ff8() {
     extern dCamera_c *data_0209f318;
@@ -6627,7 +6443,6 @@ void daPly_c::func_ov002_020c7ff8() {
 }
 }
 
-// @symbol _ZN7daPly_c20St_NoControl_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_NoControl_Cleanup() {
@@ -6642,7 +6457,6 @@ int daPly_c::St_NoControl_Cleanup() {
 }
 }
 
-// @symbol _ZN7daPly_c17St_NoControl_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_NoControl_Main() {
@@ -6757,7 +6571,6 @@ int daPly_c::St_NoControl_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c84b0Ev
 unsigned char daPly_c::func_ov002_020c84b0() {
     Vector3 v;
     short ang;
@@ -6775,7 +6588,6 @@ dummy_label_675641:;
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c8540Ev
 /* func_ov002_020c8540 at 0x020c8540 (ov002)
  * Matched byte-for-byte with mwccarm 1.2/sp2p3.
  */
@@ -6833,7 +6645,6 @@ int daPly_c::func_ov002_020c8540() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c8714Ev
 /* func_ov002_020c8714 @ 0x020c8714 (ov002, size 0x268)
  * daPly_c cap-power ending update: while active, ducks the music, damps the
  * forward speed (or launches on variant 1), and streams the sparkle trail;
@@ -6905,7 +6716,6 @@ int daPly_c::func_ov002_020c8714() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c897cEv
 extern "C" {
 int daPly_c::func_ov002_020c897c() {
     extern void func_02012694(u32 a, void*);
@@ -6928,7 +6738,6 @@ int daPly_c::func_ov002_020c897c() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c8a4cEv
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -6956,7 +6765,6 @@ int daPly_c::func_ov002_020c8a4c() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c8b54Ev
 int daPly_c::func_ov002_020c8b54() {
     if (mStateTimer == 0) {
         this->mHorzSpeed = 0xa000;
@@ -6965,7 +6773,6 @@ int daPly_c::func_ov002_020c8b54() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c8b78Ev
 /* recovered: shared common types */
 extern "C" {
 int daPly_c::func_ov002_020c8b78() {
@@ -7001,7 +6808,6 @@ int daPly_c::func_ov002_020c8b78() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c8cb0Ev
 int daPly_c::func_ov002_020c8cb0() {
   if (this->FinishedAnim()) {
     if (data_02092110 >= 0)
@@ -7013,7 +6819,6 @@ int daPly_c::func_ov002_020c8cb0() {
   return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c8d14Ev
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 int daPly_c::func_ov002_020c8d14() {
@@ -7068,7 +6873,6 @@ int daPly_c::func_ov002_020c8d14() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c8f0cEv
 int daPly_c::func_ov002_020c8f0c() {
   int *p0 = &this->mScaleX;
   int *p1 = &this->mScaleY;
@@ -7088,7 +6892,6 @@ int daPly_c::func_ov002_020c8f0c() {
   return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c8f80Ev
 /* recovered: shared common types */
 /* Signature deliberately copied from the local declaration above: the
    ROM name carries by-value class parameters (e.g. Fix12t<int>), which
@@ -7117,7 +6920,6 @@ int daPly_c::func_ov002_020c8f80() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c904cEv
 int daPly_c::func_ov002_020c904c() {
     typedef unsigned int u32;
     typedef int s32;
@@ -7140,7 +6942,6 @@ int daPly_c::func_ov002_020c904c() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c9128Ev
 int daPly_c::func_ov002_020c9128() {
 
     if (mStateStep == 4) {
@@ -7158,7 +6959,6 @@ int daPly_c::func_ov002_020c9128() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c91bcEv
 extern "C" {
 int daPly_c::func_ov002_020c91bc() {
     extern int gNextActorUpdateMask;
@@ -7175,7 +6975,6 @@ int daPly_c::func_ov002_020c91bc() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c924cEv
 extern "C" {
 int daPly_c::func_ov002_020c924c() {
     extern void func_0201f32c(int x);
@@ -7187,7 +6986,6 @@ int daPly_c::func_ov002_020c924c() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c9288Ev
 int daPly_c::func_ov002_020c9288() {
 
     if (!func_ov002_020bea7c()) {
@@ -7203,7 +7001,6 @@ int daPly_c::func_ov002_020c9288() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c92fcEv
 extern "C" {
 int daPly_c::func_ov002_020c92fc() {
     extern int gNextActorUpdateMask;
@@ -7253,7 +7050,6 @@ int daPly_c::func_ov002_020c92fc() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c94a4Ev
 extern "C" {
 int daPly_c::func_ov002_020c94a4() {
     extern u8 data_0209211c;
@@ -7317,7 +7113,6 @@ int daPly_c::func_ov002_020c94a4() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c965cEv
 int daPly_c::func_ov002_020c965c() {
     u8 st;
 
@@ -7343,7 +7138,6 @@ done:
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c9718Ev
 /* daPly_c::func_ov002_020c9718() at 0x020c9718
  *
  * Matched byte-for-byte with mwccarm 1.2/sp2p3 (overlay ov002).
@@ -7364,7 +7158,6 @@ void daPly_c::func_ov002_020c9718() {
 }
 }
 
-// @symbol _ZN7daPly_c17St_NoControl_InitEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_NoControl_Init() {
@@ -7382,14 +7175,12 @@ int daPly_c::St_NoControl_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c97e0Ev
 void daPly_c::func_ov002_020c97e0() {
     mStateStep = 19;
     this->mHorzSpeed = 0;
     this->mVertSpeed = 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c97f8Ev
 void daPly_c::func_ov002_020c97f8() {
     mStateStep = 0x1a;
     mAngleYSpeed = 0;
@@ -7398,7 +7189,6 @@ void daPly_c::func_ov002_020c97f8() {
     this->mVertSpeed = 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c9840Ev
 void daPly_c::func_ov002_020c9840() {
     mHasNoCap = 0;
     mStateStep = 0x18;
@@ -7410,7 +7200,6 @@ void daPly_c::func_ov002_020c9840() {
     Sound::PlayCharVoice(mCharacter, 4, mCamSpacePos);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c98a4Ev
 extern "C" {
 void daPly_c::func_ov002_020c98a4() {
     extern void* data_0209f318[];
@@ -7425,7 +7214,6 @@ void daPly_c::func_ov002_020c98a4() {
 }
 }
 
-// @symbol func_ov002_020c990c
 extern "C" {
 void func_ov002_020c990c(daPly_c *p) {
     typedef int Fix12;
@@ -7443,7 +7231,6 @@ void func_ov002_020c990c(daPly_c *p) {
 }
 }
 
-// @symbol func_ov002_020c9998
 /* recovered: shared common types */
 extern "C" {
 void func_ov002_020c9998(daPly_c *p) {
@@ -7456,7 +7243,6 @@ void func_ov002_020c9998(daPly_c *p) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c9a04Ev
 /* recovered: shared common types */
 void daPly_c::func_ov002_020c9a04() {
     Vector3 v;
@@ -7477,7 +7263,6 @@ void daPly_c::func_ov002_020c9a04() {
     Particle::System::NewSimple(0x60, v.x, v.y, v.z);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c9ac0Ev
 void daPly_c::func_ov002_020c9ac0() {
     mRootMotionMode = 1;
     mSkipGroundUpdate = 1;
@@ -7489,7 +7274,6 @@ void daPly_c::func_ov002_020c9ac0() {
     this->SetAnim(0x93, 0x40000000, 0x1000, 0);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c9b10Ev
 int daPly_c::func_ov002_020c9b10() {
     mStateStep=0xe;
     this->SetAnim(0x47, 0, 0x1000, 0);
@@ -7499,7 +7283,6 @@ int daPly_c::func_ov002_020c9b10() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c9b5cEv
 void daPly_c::func_ov002_020c9b5c() {
     mSkipGroundUpdate = 1;
     mIsBodyClsnEnabled = 0;
@@ -7507,7 +7290,6 @@ void daPly_c::func_ov002_020c9b5c() {
     func_ov002_020c9b10();
 }
 
-// @symbol func_ov002_020c9b7c
 extern "C" {
 void func_ov002_020c9b7c(daPly_c *p) {
     typedef int Fix12i;
@@ -7526,7 +7308,6 @@ void func_ov002_020c9b7c(daPly_c *p) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c9c00Ev
 int daPly_c::func_ov002_020c9c00() {
     if(mIsAirborne!=0){
         this->SetAnim(0x54, 0x40000000, 0x1000, 0);
@@ -7537,7 +7318,6 @@ int daPly_c::func_ov002_020c9c00() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c9c4cEv
 void daPly_c::func_ov002_020c9c4c() {
     typedef int Fix12i;
     this->SetAnim(data_ov002_020ff118[mStateStep], 0x40000000, 0x1000, 0);
@@ -7550,7 +7330,6 @@ void daPly_c::func_ov002_020c9c4c() {
     this->mVertSpeed = 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c9cc0Ev
 void daPly_c::func_ov002_020c9cc0() {
   mStateWaitTimer=3;
   mStateStep=6;
@@ -7560,7 +7339,6 @@ void daPly_c::func_ov002_020c9cc0() {
   if(data_02092110==0x26 || data_02092110==0x12) mOpacity=0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c9d1cEv
 int daPly_c::func_ov002_020c9d1c() {
     mStateStep=4;
     mAngleYSpeed=0x4000;
@@ -7570,7 +7348,6 @@ int daPly_c::func_ov002_020c9d1c() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c9d68Ev
 void daPly_c::func_ov002_020c9d68() {
   if(mIsAirborne == 0){
     int b = (int)(mRidingShell != 0);
@@ -7585,7 +7362,6 @@ tail:
   this->mHorzSpeed = 0;
 }
 
-// @symbol func_ov002_020c9de4
 extern "C" {
 void func_ov002_020c9de4(char* c){
     ((daPly_c *)(c))->func_ov002_020bdd9c();
@@ -7596,14 +7372,12 @@ void func_ov002_020c9de4(char* c){
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020c9e18Ev
 void daPly_c::func_ov002_020c9e18() {
     if (mIsNoControl != 1) return;
     mIsNoControl = 0;
     this->mdCcAcPos_c.flags &= ~4;
 }
 
-// @symbol Player_DisableInteraction
 extern "C" {
 void Player_DisableInteraction(void *self) {
     daPly_c *player = (daPly_c *)self;
@@ -7613,7 +7387,6 @@ void Player_DisableInteraction(void *self) {
 }
 }
 
-// @symbol _ZN7daPly_c12Unk_020c9e5cEh
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::Unk_020c9e5c(unsigned char h) {
     if (!IsState(data_ov002_0211022c))
@@ -7704,14 +7477,12 @@ int daPly_c::Unk_020c9e5c(unsigned char h) {
     return 0;
 }
 
-// @symbol func_ov002_020ca0f4
 extern "C" {
 int func_ov002_020ca0f4(daPly_c *player) {
     return player->IsState(data_ov002_0211022c);
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020ca108Ev
 void daPly_c::func_ov002_020ca108() {
 
     if (mIsOpeningBigDoor) {
@@ -7721,7 +7492,6 @@ void daPly_c::func_ov002_020ca108() {
     this->ChangeState(data_ov002_0211013c);
 }
 
-// @symbol _ZN7daPly_c11OpenBigDoorEv
 /* recovered: named members + shared header, real C++ method */
 /* daPly_c::OpenBigDoor() at 0x020ca144 (ov002).
  * Sets a u8 flag at offset 0x70b (1803) in the daPly_c object to 1.
@@ -7731,7 +7501,6 @@ void daPly_c::OpenBigDoor() {
     mIsOpeningBigDoor = 1; /* +0x70b */
 }
 
-// @symbol _ZN7daPly_c12Unk_020ca150Eh
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::Unk_020ca150(unsigned char a) {
     if (IsState(data_ov002_0211022c)) {
@@ -7745,7 +7514,6 @@ int daPly_c::Unk_020ca150(unsigned char a) {
     return 0;
 }
 
-// @symbol _ZN7daPly_c17SetNoControlStateEhih
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::SetNoControlState(unsigned char a_, int b, unsigned char c_) {
 
@@ -7773,7 +7541,6 @@ int daPly_c::SetNoControlState(unsigned char a_, int b, unsigned char c_) {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020ca270Ev
 int daPly_c::func_ov002_020ca270() {
     if (IsState(data_ov002_02110124)) {
         if (mStateStep == 1)
@@ -7782,7 +7549,6 @@ int daPly_c::func_ov002_020ca270() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c15JumpIntoBooCageER7Vector3
 /* recovered: named members + shared header, real C++ method
  *
  * Refuses while airborne and still rising, then takes control, records the
@@ -7805,7 +7571,6 @@ int daPly_c::JumpIntoBooCage(Vector3 &v_) {
 }
 }
 
-// @symbol _ZN7daPly_c13TryTalkToDoorEh
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::TryTalkToDoor(unsigned char a) {
     if (this->IsState(data_ov002_0211013c) || this->IsState(ST_WAIT) ||
@@ -7817,13 +7582,11 @@ int daPly_c::TryTalkToDoor(unsigned char a) {
     return 0;
 }
 
-// @symbol _ZN7daPly_c21IsOpeningDoorWithStarEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::IsOpeningDoorWithStar() {
     return this->Unk_020c9e5c(0xe) || this->GetTalkState() > 0;
 }
 
-// @symbol _ZN7daPly_c16TryTalkToKeyDoorEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::TryTalkToKeyDoor() {
     if (this->IsState(data_ov002_0211013c) || this->IsState(ST_WAIT) ||
@@ -7834,7 +7597,6 @@ int daPly_c::TryTalkToKeyDoor() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c12Unk_020ca488Ev
 /* recovered: named members + shared header, real C++ method */
 /* daPly_c::Unk_020ca488() @ 0x20ca488 (ov002) -- tail-call veneer to daPly_c::Unk_020c9e5c(unsigned char) (0x20c9e5c) with r1=11.
  */
@@ -7842,7 +7604,6 @@ int daPly_c::Unk_020ca488() {
     return this->Unk_020c9e5c(11);
 }
 
-// @symbol _ZN7daPly_c16TryEnterStarDoorER7Vector3s
 /* recovered: named members + shared header, real C++ method
  *
  * Only from the walking, waiting or crouching states. Takes control, records
@@ -7872,7 +7633,6 @@ int daPly_c::TryEnterStarDoor(Vector3 &pos_, short kind) {
 }
 }
 
-// @symbol _ZN7daPly_c12CanEnterDoorEh
 /* recovered: named members + shared header, real C++ method */
 // daPly_c::CanEnterDoor(unsigned char door)
 // The +0x48 vcall on the held actor is dActor_c::OnYoshiTryEat (slot 18), and
@@ -7906,7 +7666,6 @@ int daPly_c::CanEnterDoor(unsigned char door) {
     return 0;
 }
 
-// @symbol _ZN7daPly_c17PlayMammaMiaSoundEv
 /* recovered: named members + shared header, real C++ method */
 void daPly_c::PlayMammaMiaSound() {
     /* mCamSpacePosX/Y/Z are three consecutive words; dActor_c.h declares them
@@ -7914,7 +7673,6 @@ void daPly_c::PlayMammaMiaSound() {
     Sound::PlayCharVoice(mCharacter, 0x27, mCamSpacePos);
 }
 
-// @symbol _ZN7daPly_c24TryExitWhiteDoorWithStarEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::TryExitWhiteDoorWithStar() {
     if (IsState(data_ov002_0211022c)) {
@@ -7925,7 +7683,6 @@ int daPly_c::TryExitWhiteDoorWithStar() {
     return this->SetNoControlState(0x11, -1, 1) != 0;
 }
 
-// @symbol func_ov002_020ca78c
 extern "C" {
 int func_ov002_020ca78c(daPly_c *player) {
     if (player->IsState(data_ov002_0211022c)) {
@@ -7936,7 +7693,6 @@ int func_ov002_020ca78c(daPly_c *player) {
 }
 }
 
-// @symbol _ZN7daPly_c16St_DebugFly_MainEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_DebugFly_Main() {
@@ -7973,7 +7729,6 @@ int daPly_c::St_DebugFly_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c16St_DebugFly_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_DebugFly_Init() {
     Player_DisableInteraction(this);
@@ -7983,7 +7738,6 @@ int daPly_c::St_DebugFly_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c12Unk_020ca8f8Ev
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 extern daPly_c::State data_ov002_0211064c;
@@ -7997,7 +7751,6 @@ int daPly_c::Unk_020ca8f8() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020ca940Ev
 extern "C" {
 void daPly_c::func_ov002_020ca940() {
     extern u8 data_0209f2d8;
@@ -8080,7 +7833,6 @@ void daPly_c::func_ov002_020ca940() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020cabe0Ev
 void daPly_c::func_ov002_020cabe0() {
 
     unsigned short v = (unsigned short)(mStateFlags & 4);
@@ -8089,7 +7841,6 @@ void daPly_c::func_ov002_020cabe0() {
     ChangeState(data_ov002_0211064c);
 }
 
-// @symbol _ZN7daPly_c15St_Null_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 /* daPly_c::St_Null_Cleanup() at 0x020cac20 (ov002).
  * Cleanup hook of the ST_NULL do-nothing player state; returns VS_FAIL (1).
@@ -8100,7 +7851,6 @@ s32 daPly_c::St_Null_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c12St_Null_MainEv
 /* recovered: named members + shared header, real C++ method */
 /* daPly_c::St_Null_Main() at 0x020cac28 (ov002).
  * Main hook of the ST_NULL do-nothing player state; returns VS_FAIL (1).
@@ -8111,7 +7861,6 @@ s32 daPly_c::St_Null_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c12St_Null_InitEv
 /* recovered: shared header, real C++ method
  *
  * ov002, 0x020cac30, size 0x8 -- `mov r0, #1; bx lr` and nothing else.
@@ -8132,7 +7881,6 @@ int daPly_c::St_Null_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c21St_CameraZoom_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_CameraZoom_Cleanup() {
     *(unsigned short *)((char *)&mStateFlags) &= ~4;
@@ -8140,7 +7888,6 @@ int daPly_c::St_CameraZoom_Cleanup() {
     return 1;
 }
 
-// @symbol func_ov002_020cac60
 extern "C" {
 int func_ov002_020cac60(char *self)
 {
@@ -8163,7 +7910,6 @@ int func_ov002_020cac60(char *self)
 }
 }
 
-// @symbol _ZN7daPly_c18St_CameraZoom_MainEv
 /* recovered: named members + shared header, real C++ method
  *
  * The zoomed-in camera pose. Runs only while data_02092110 is negative. Losing
@@ -8202,7 +7948,6 @@ int daPly_c::St_CameraZoom_Main() {
 }
 }
 
-// @symbol func_ov002_020cae10
 extern "C" {
 void func_ov002_020cae10(char* c)
 {
@@ -8226,7 +7971,6 @@ void func_ov002_020cae10(char* c)
 }
 }
 
-// @symbol _ZN7daPly_c18St_CameraZoom_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -8244,7 +7988,6 @@ int daPly_c::St_CameraZoom_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c18ClearClimbColliderEv
 void daPly_c::ClearClimbCollider() {
     mClimbClsn = 0;
     mdCcAcPos_c.flags &= ~4u;
@@ -8252,7 +7995,6 @@ void daPly_c::ClearClimbCollider() {
     func_ov002_020e63a4();
 }
 
-// @symbol _ZN7daPly_c10StartClimbEP5dCc_c
 /* dCc_c's player-hit callback (func_02014f5c) offers the player the collider
  * it touched. Refuse while the climb cooldown runs or the player is riding a
  * shell, already climbing, holding something, taking damage, out of control,
@@ -8314,7 +8056,6 @@ ret0a:
 }
 }
 
-// @symbol _ZN7daPly_c17St_Headstand_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -8367,7 +8108,6 @@ int daPly_c::St_Headstand_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c17St_Headstand_InitEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_Headstand_Init() {
@@ -8383,7 +8123,6 @@ int daPly_c::St_Headstand_Init() {
 }
 }
 
-// @symbol func_ov002_020cb354
 /* recovered: shared common types */
 extern "C" {
 int func_ov002_020cb354(daPly_c *thisptr) {
@@ -8410,7 +8149,6 @@ int func_ov002_020cb354(daPly_c *thisptr) {
 }
 }
 
-// @symbol func_ov002_020cb400
 extern "C" {
 int func_ov002_020cb400(char *c) {
     daPly_c *self = (daPly_c *)c;
@@ -8427,7 +8165,6 @@ int func_ov002_020cb400(char *c) {
 }
 }
 
-// @symbol func_ov002_020cb474
 extern "C" {
 void func_ov002_020cb474(char *c) {
     daPly_c *self = (daPly_c *)c;
@@ -8465,7 +8202,6 @@ void func_ov002_020cb474(char *c) {
 }
 }
 
-// @symbol _ZN7daPly_c16St_Climb_CleanupEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Climb_Cleanup() {
@@ -8478,7 +8214,6 @@ int daPly_c::St_Climb_Cleanup() {
   return 1;
 }
 
-// @symbol _ZN7daPly_c13St_Climb_MainEv
 /* daPly_c::St_Climb_Main (ov002:0x020cb5bc, 0x778).
  *
  * func_ov002_020cc05c takes the pad-held halfword as a second argument it
@@ -8702,7 +8437,6 @@ tail: {
 }
 }
 
-// @symbol _ZN7daPly_c13St_Climb_InitEv
 int daPly_c::St_Climb_Init() {
     Player_ReleaseHeldActor(this);
 
@@ -8752,7 +8486,6 @@ int daPly_c::St_Climb_Init() {
     return 1;
 }
 
-// @symbol func_ov002_020cbea8
 #define LA(p) ((int)(p))
 extern "C" {
 int func_ov002_020cbea8(char *c)
@@ -8798,7 +8531,6 @@ int func_ov002_020cbea8(char *c)
 }
 #undef LA
 
-// @symbol func_ov002_020cc01c
 extern "C" {
 int func_ov002_020cc01c(char* c){
     daPly_c *self = (daPly_c *)c;
@@ -8810,7 +8542,6 @@ int func_ov002_020cc01c(char* c){
 }
 }
 
-// @symbol func_ov002_020cc05c
 extern "C" {
 void func_ov002_020cc05c(char *self)
 {
@@ -8844,7 +8575,6 @@ void func_ov002_020cc05c(char *self)
 }
 }
 
-// @symbol _ZN7daPly_c9IsOnShellEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 extern daPly_c::State data_ov002_02110304;
@@ -8856,7 +8586,6 @@ int daPly_c::IsOnShell() {
     return 0;
 }
 
-// @symbol func_ov002_020cc16c
 extern "C" {
 int func_ov002_020cc16c(daPly_c *player, void *state) {
     if (player->mRidingShell != 0)
@@ -8873,7 +8602,6 @@ int func_ov002_020cc16c(daPly_c *player, void *state) {
 }
 }
 
-// @symbol _ZN7daPly_c14LeaveShellRideEv
 void daPly_c::LeaveShellRide() {
     if (mRidingShell == 0)
         return;
@@ -8881,7 +8609,6 @@ void daPly_c::LeaveShellRide() {
     ChangeState(data_ov002_0211013c);
 }
 
-// @symbol _ZN7daPly_c16St_Shell_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Shell_Cleanup() {
     char *p = *(char **)((char *)&mRidingShell);
@@ -8896,7 +8623,6 @@ int daPly_c::St_Shell_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c13St_Shell_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -9018,7 +8744,6 @@ int daPly_c::St_Shell_Main() {
 }
 }
 
-// @symbol func_ov002_020cc660
 extern "C" {
 void func_ov002_020cc660(char *self, int angle){
     extern s32 ApproachAngle(void*, s16 from, s16 start, s16 speed, s16 max);
@@ -9048,7 +8773,6 @@ void func_ov002_020cc660(char *self, int angle){
 }
 }
 
-// @symbol _ZN7daPly_c13St_Shell_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Shell_Init() {
     Player_ReleaseHeldActor(this);
@@ -9058,7 +8782,6 @@ int daPly_c::St_Shell_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c17St_HurtWater_MainEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_HurtWater_Main() {
@@ -9099,7 +8822,6 @@ int daPly_c::St_HurtWater_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c17St_HurtWater_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -9125,7 +8847,6 @@ int daPly_c::St_HurtWater_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c23St_MetalWaterWater_MainEv
 /* recovered: named members + shared header, real C++ method
  *
  * Metal Mario walking along the bottom underwater. Losing both the metal and
@@ -9216,7 +8937,6 @@ int daPly_c::St_MetalWaterWater_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c23St_MetalWaterWater_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_MetalWaterWater_Init() {
     mIsInAirState = 1;
@@ -9234,7 +8954,6 @@ int daPly_c::St_MetalWaterWater_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c24St_MetalWaterGround_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -9316,7 +9035,6 @@ int daPly_c::St_MetalWaterGround_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c24St_MetalWaterGround_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_MetalWaterGround_Init() {
     dActor_c *p = *(dActor_c **)((char *)&mHeldObj);
@@ -9341,7 +9059,6 @@ tail:
     return 1;
 }
 
-// @symbol func_ov002_020cd190
 extern "C" {
 void func_ov002_020cd190(char* c){
     daPly_c *self = (daPly_c *)c;
@@ -9353,7 +9070,6 @@ void func_ov002_020cd190(char* c){
 }
 }
 
-// @symbol _ZN7daPly_c15St_Swim_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Swim_Cleanup() {
     if (mSwimMusicPushed != 0) {
@@ -9363,13 +9079,11 @@ int daPly_c::St_Swim_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020cd218EiPiS0_
 void daPly_c::func_ov002_020cd218(int v, int *out1, int *out2) {
     *out1 = FX_MUL(v, data_02082214[((unsigned short)mPrevAngleX >> 4) * 2 + 1]);
     *out2 = -FX_MUL(v, data_02082214[((unsigned short)mPrevAngleX >> 4) * 2]);
 }
 
-// @symbol func_ov002_020cd28c
 extern "C" {
 int func_ov002_020cd28c(daPly_c *self) {
     self->SetAnim(0xaf, 0x40000000, 0x1000, 0);
@@ -9378,14 +9092,12 @@ int func_ov002_020cd28c(daPly_c *self) {
 }
 }
 
-// @symbol _ZN7daPly_c13StartAnim0xABEv
 void daPly_c::StartAnim0xAB() {
     SetAnim(0xab, 0x40000000, 0x1000, 0);
     mStateStep = 1;
     mStateTimer = 0;
 }
 
-// @symbol _ZN7daPly_c13StartAnim0xAEEv
 void daPly_c::StartAnim0xAE() {
     SetAnim(0xae, 0x40000000, 0x1000, 0);
     mStateStep = 6;
@@ -9393,7 +9105,6 @@ void daPly_c::StartAnim0xAE() {
     mStateWork &= 0xa;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020cd364Ev
 void daPly_c::func_ov002_020cd364() {
     func_ov002_020dc020();
     mAttackClsn.Clear();
@@ -9402,14 +9113,12 @@ void daPly_c::func_ov002_020cd364() {
     mStateStep = 5;
 }
 
-// @symbol _ZN7daPly_c13StartAnim0xAAEv
 void daPly_c::StartAnim0xAA() {
     SetAnim(0xaa, 0x40000000, 0x1000, 0);
     mStateStep = 4;
     mStateTimer = 7;
 }
 
-// @symbol _ZN7daPly_c13StartAnim0xA9Ev
 void daPly_c::StartAnim0xA9() {
     SetAnim(0xa9, 0x40000000, 0x1000, 0);
     mStateStep = 2;
@@ -9418,7 +9127,6 @@ void daPly_c::StartAnim0xA9() {
     Sound::PlayBank0(0x14, mCamSpacePos);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020cd448Ev
 void daPly_c::func_ov002_020cd448() {
     unsigned char fl;
     if (mStateStep < 2)
@@ -9453,7 +9161,6 @@ tail:
     mAngleZ = mAngleXSpeed;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020cd550Ev
 /* the += / -= on 0x92 go through a materialized base (add r1,c,#0x92;
    ldrsh/strh [r1]); the (long long)-mask launder stops mwcc folding it. */
 #define LS16(p) (*(short*)(int)(p))
@@ -9496,7 +9203,6 @@ void daPly_c::func_ov002_020cd550() {
 }
 #undef LS16
 
-// @symbol _ZN7daPly_c19func_ov002_020cd71cEv
 void daPly_c::func_ov002_020cd71c() {
     typedef short s16;
     int ip = data_ov002_020ff1f0[param1];
@@ -9542,7 +9248,6 @@ void daPly_c::func_ov002_020cd71c() {
     mPrevAngleY = mAngleY;
 }
 
-// @symbol _ZN7daPly_c12St_Swim_MainEv
 /* recovered: named members + shared header, real C++ method
  *
  * Swimming, per frame. Metal cap diverts to the metal-underwater state and
@@ -9818,7 +9523,6 @@ int daPly_c::St_Swim_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020ce324Ev
 extern "C" {
 int daPly_c::func_ov002_020ce324() {
     typedef unsigned char u8;
@@ -9885,7 +9589,6 @@ int daPly_c::func_ov002_020ce324() {
 }
 }
 
-// @symbol _ZN7daPly_c12St_Swim_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -9910,7 +9613,6 @@ int daPly_c::St_Swim_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020ce5f8Ev
 /* recovered: shared common types */
 extern "C" {
 int daPly_c::func_ov002_020ce5f8() {
@@ -9973,7 +9675,6 @@ int daPly_c::func_ov002_020ce5f8() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020ce798Ev
 /* the -= 0x4000 goes through a materialized base (add r1,c,#0x60; ldr/str [r1]);
    the (long long)-mask launder is what stops mwcc folding it to [c,#0x60]. */
 #define LDR_I(p) (*(int*)(int)(p))
@@ -10013,7 +9714,6 @@ void daPly_c::func_ov002_020ce798() {
 }
 #undef LDR_I
 
-// @symbol _ZN7daPly_c19func_ov002_020ce8bcEi
 extern "C" {
 void daPly_c::func_ov002_020ce8bc(int arg1) {
     extern char* data_0209f32c;
@@ -10042,7 +9742,6 @@ void daPly_c::func_ov002_020ce8bc(int arg1) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020ce9c8Ev
 extern "C" {
 void daPly_c::func_ov002_020ce9c8() {
     extern char* data_0209f32c;
@@ -10076,7 +9775,6 @@ void daPly_c::func_ov002_020ce9c8() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020ceaf4Ev
 extern "C" {
 int daPly_c::func_ov002_020ceaf4() {
     extern int data_0209f32c;
@@ -10088,7 +9786,6 @@ int daPly_c::func_ov002_020ceaf4() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020ceb54Ev
 extern "C" {
 int daPly_c::func_ov002_020ceb54() {
     extern int data_0209f32c;
@@ -10096,7 +9793,6 @@ int daPly_c::func_ov002_020ceb54() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020ceb7cEv
 /* The 0x6e5 read-modify-write goes through a materialized base
    (ldr rN,[pc]; add rN,c,rN) because 0x6e5 is not an ARM rotated immediate;
    the (long long)-mask launder is what stops mwcc folding it to [c,#0x6e5]. */
@@ -10122,7 +9818,6 @@ void daPly_c::func_ov002_020ceb7c() {
 }
 #undef LAUNDER_U8
 
-// @symbol _ZN7daPly_c19func_ov002_020cec2cEv
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 /* func_ov002_020cec2c at 0x020cec2c (ov002), size 0x184
@@ -10181,13 +9876,11 @@ ret0:
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020cedb0Ei
 Fix12i daPly_c::func_ov002_020cedb0(Fix12i a) {
     unsigned int t = data_ov002_020ff158[param1];
     return FX_MUL(a, (int)t);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020cede0Ev
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -10240,7 +9933,6 @@ int daPly_c::func_ov002_020cede0() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020cef84Ev
 extern "C" {
 int daPly_c::func_ov002_020cef84() {
     typedef struct {
@@ -10327,7 +10019,6 @@ int daPly_c::func_ov002_020cef84() {
 }
 }
 
-// @symbol func_ov002_020cf20c
 /* recovered: shared common types */
 // func_ov002_020cf20c at 0x020cf20c
 // Matched byte-for-byte with mwccarm 1.2/sp2p3 (ov002).
@@ -10364,7 +10055,6 @@ int func_ov002_020cf20c(char* c) {
 }
 }
 
-// @symbol func_ov002_020cf2f8
 extern "C" {
 void func_ov002_020cf2f8(void *c) {
     extern int ApproachAngle(void *, int, int, int, int);
@@ -10379,7 +10069,6 @@ void func_ov002_020cf2f8(void *c) {
 }
 }
 
-// @symbol func_ov002_020cf384
 extern "C" {
 void func_ov002_020cf384(char *p)
 {
@@ -10391,7 +10080,6 @@ void func_ov002_020cf384(char *p)
 }
 }
 
-// @symbol _ZN7daPly_c20St_CeilingGrate_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -10484,7 +10172,6 @@ int daPly_c::St_CeilingGrate_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c20St_CeilingGrate_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -10498,7 +10185,6 @@ int daPly_c::St_CeilingGrate_Init() {
 }
 }
 
-// @symbol func_ov002_020cf700
 extern "C" {
 int func_ov002_020cf700(daPly_c *player) {
     extern int func_ov002_020cf700(void*);
@@ -10506,7 +10192,6 @@ int func_ov002_020cf700(daPly_c *player) {
 }
 }
 
-// @symbol _ZN7daPly_c14St_OnWall_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -10596,7 +10281,6 @@ int daPly_c::St_OnWall_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c14St_OnWall_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_OnWall_Init() {
@@ -10609,7 +10293,6 @@ int daPly_c::St_OnWall_Init() {
   return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020cfaf0Ev
 int daPly_c::func_ov002_020cfaf0() {
     dBgCh_Lin line;
     Vector3 v1;
@@ -10639,7 +10322,6 @@ int daPly_c::func_ov002_020cfaf0() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020cfbdcEv
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 int daPly_c::func_ov002_020cfbdc() {
@@ -10691,7 +10373,6 @@ int daPly_c::func_ov002_020cfbdc() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020cfd84EPvS0_
 // func_ov002_020cfd84 at 0x020cfd84
 // Matched byte-for-byte with mwccarm 1.2/sp2p3 (ov002).
 int daPly_c::func_ov002_020cfd84(void *a, void *b) {
@@ -10718,7 +10399,6 @@ int daPly_c::func_ov002_020cfd84(void *a, void *b) {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020cfea4Ev
 /* recovered: daPly_c ground/edge probe used while carrying or standing on
  * another actor.
  *
@@ -10840,7 +10520,6 @@ int daPly_c::func_ov002_020cfea4() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d0178Eii
 int daPly_c::func_ov002_020d0178(int arg1, int flag) {
 
     Vector3 normal;
@@ -10961,7 +10640,6 @@ int daPly_c::func_ov002_020d0178(int arg1, int flag) {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d0580Ev
 /* Signature deliberately copied from the local declaration above: the
    ROM name carries by-value class parameters (e.g. Fix12<int>), which
    mwccarm passes differently at the call site, so declaring the true
@@ -10996,7 +10674,6 @@ cont:
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d06c0Ev
 /* Signature deliberately copied from the local declaration above: the
    ROM name carries by-value class parameters (e.g. Fix12<int>), which
    mwccarm passes differently at the call site, so declaring the true
@@ -11039,7 +10716,6 @@ cont:
     return 1;
 }
 
-// @symbol _ZN7daPly_c17St_LedgeGrab_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_LedgeGrab_Main() {
@@ -11055,7 +10731,6 @@ int daPly_c::St_LedgeGrab_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c17St_LedgeGrab_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_LedgeGrab_Init() {
 
@@ -11069,7 +10744,6 @@ int daPly_c::St_LedgeGrab_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c20St_LedgeHang_CleanupEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_LedgeHang_Cleanup() {
@@ -11078,7 +10752,6 @@ int daPly_c::St_LedgeHang_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d0948Ev
 void daPly_c::func_ov002_020d0948() {
 
     /* The two header reads go through a byte pointer: with the int-typed
@@ -11108,7 +10781,6 @@ void daPly_c::func_ov002_020d0948() {
     ChangeState(data_ov002_021101b4);
 }
 
-// @symbol _ZN7daPly_c17St_LedgeHang_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -11173,7 +10845,6 @@ int daPly_c::St_LedgeHang_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c17St_LedgeHang_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_LedgeHang_Init() {
     /* The POD VecFx32, not Vector3, measured: `VecFx32 z3 = {0, 0, 0}` on a POD
@@ -11209,14 +10880,12 @@ int daPly_c::St_LedgeHang_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d0d2cEv
 int daPly_c::func_ov002_020d0d2c() {
     if (IsState(data_ov002_0210ffec) || IsState(data_ov002_02110004))
         return 1;
     return 0;
 }
 
-// @symbol _ZN7daPly_c17St_WallSlide_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -11259,7 +10928,6 @@ int daPly_c::St_WallSlide_Main() {
   }
 }
 
-// @symbol _ZN7daPly_c17St_WallSlide_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_WallSlide_Init() {
 
@@ -11271,7 +10939,6 @@ int daPly_c::St_WallSlide_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c13St_Crawl_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -11339,7 +11006,6 @@ int daPly_c::St_Crawl_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c13St_Crawl_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Crawl_Init() {
 
@@ -11348,7 +11014,6 @@ int daPly_c::St_Crawl_Init() {
     return 1;
 }
 
-// @symbol func_ov002_020d1164
 // func_ov002_020d1164 at 0x020d1164
 // Matched byte-for-byte with mwccarm 1.2/sp2p3 (ov002).
 extern "C" {
@@ -11375,7 +11040,6 @@ int func_ov002_020d1164(void *c) {
 }
 }
 
-// @symbol func_ov002_020d1204
 extern "C" {
 int func_ov002_020d1204(void* thisptr)
 {
@@ -11399,7 +11063,6 @@ int func_ov002_020d1204(void* thisptr)
 }
 }
 
-// @symbol func_ov002_020d12b0
 extern "C" {
 int func_ov002_020d12b0(u8 *self)
 {
@@ -11423,7 +11086,6 @@ ret0:
 }
 }
 
-// @symbol _ZN7daPly_c14St_Crouch_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -11493,7 +11155,6 @@ int daPly_c::St_Crouch_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c14St_Crouch_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -11518,7 +11179,6 @@ int daPly_c::St_Crouch_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c17St_HoldHeavy_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -11616,7 +11276,6 @@ end:
 }
 }
 
-// @symbol _ZN7daPly_c17St_HoldHeavy_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_HoldHeavy_Init() {
@@ -11627,7 +11286,6 @@ int daPly_c::St_HoldHeavy_Init() {
   return 1;
 }
 
-// @symbol _ZN7daPly_c20St_HoldLight_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_HoldLight_Cleanup() {
 
@@ -11638,7 +11296,6 @@ int daPly_c::St_HoldLight_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c17St_HoldLight_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -11780,7 +11437,6 @@ end:
 }
 }
 
-// @symbol _ZN7daPly_c17St_HoldLight_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_HoldLight_Init() {
 
@@ -11809,7 +11465,6 @@ int daPly_c::St_HoldLight_Init() {
     return 1;
 }
 
-// @symbol func_ov002_020d1f78
 extern "C" {
 void func_ov002_020d1f78(void *selfPtr, u32 param)
 {
@@ -11893,7 +11548,6 @@ state_merge:
 }
 }
 
-// @symbol _ZN7daPly_c21St_WaitQuicksand_MainEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_WaitQuicksand_Main() {
 
@@ -11914,7 +11568,6 @@ int daPly_c::St_WaitQuicksand_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c21St_WaitQuicksand_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_WaitQuicksand_Init() {
 
@@ -11923,7 +11576,6 @@ int daPly_c::St_WaitQuicksand_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d225cEv
 int daPly_c::func_ov002_020d225c() {
 
     if (param1 == 3 && mSleepStage == 2 && mStatePhase == 0)
@@ -11931,7 +11583,6 @@ int daPly_c::func_ov002_020d225c() {
     return 0;
 }
 
-// @symbol func_ov002_020d228c
 extern "C" {
 void func_ov002_020d228c(daPly_c *player) {
 
@@ -11946,7 +11597,6 @@ void func_ov002_020d228c(daPly_c *player) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d22ecEi
 extern "C" {
 int daPly_c::func_ov002_020d22ec(int arg) {
     extern char data_0209f4a0[];
@@ -11963,7 +11613,6 @@ int daPly_c::func_ov002_020d22ec(int arg) {
 }
 }
 
-// @symbol _ZN7daPly_c15St_Wait_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_Wait_Cleanup() {
@@ -11992,7 +11641,6 @@ int daPly_c::St_Wait_Cleanup() {
 }
 }
 
-// @symbol _ZN7daPly_c12St_Wait_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -12282,7 +11930,6 @@ int daPly_c::St_Wait_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d2da0Ev
 extern "C" {
 int daPly_c::func_ov002_020d2da0() {
     struct E18 {
@@ -12309,7 +11956,6 @@ int daPly_c::func_ov002_020d2da0() {
 }
 }
 
-// @symbol func_ov002_020d2e74
 /* recovered: shared common types */
 extern "C" {
 void func_ov002_020d2e74(daPly_c *p) {
@@ -12333,7 +11979,6 @@ void func_ov002_020d2e74(daPly_c *p) {
 }
 }
 
-// @symbol func_ov002_020d2f24
 extern "C" {
 void func_ov002_020d2f24(daPly_c *player) {
 
@@ -12377,7 +12022,6 @@ store:
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d2fdcEv
 extern "C" {
 int daPly_c::func_ov002_020d2fdc() {
     typedef struct { u16 flags; char pad[22]; } Entry24;
@@ -12455,7 +12099,6 @@ int daPly_c::func_ov002_020d2fdc() {
 }
 }
 
-// @symbol _ZN7daPly_c12St_Wait_InitEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_Wait_Init() {
@@ -12516,7 +12159,6 @@ L13c:
 }
 }
 
-// @symbol func_ov002_020d3498
 extern "C" {
 void func_ov002_020d3498(void *c) {
     daPly_c *player = (daPly_c *)c;
@@ -12527,7 +12169,6 @@ void func_ov002_020d3498(void *c) {
 }
 }
 
-// @symbol _ZN7daPly_c18St_TurnAround_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -12579,7 +12220,6 @@ int daPly_c::St_TurnAround_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c18St_TurnAround_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_TurnAround_Init() {
 
@@ -12588,7 +12228,6 @@ int daPly_c::St_TurnAround_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d36d8Ei
 extern "C" {
 int daPly_c::func_ov002_020d36d8(int arg) {
     extern int func_ov002_020d674c(char* c);
@@ -12642,7 +12281,6 @@ int daPly_c::func_ov002_020d36d8(int arg) {
 }
 }
 
-// @symbol _ZN7daPly_c12St_Walk_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -12741,7 +12379,6 @@ end:
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d3b9cEv
 /* recovered: daPly_c walk state helper (between St_Walk_Main and St_Walk_Init): steering and turn approach. */
 extern "C" {
 static inline s16 GetStick(void)
@@ -12923,7 +12560,6 @@ int daPly_c::func_ov002_020d3b9c() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d413cEi
 extern "C" {
 void daPly_c::func_ov002_020d413c(int arg) {
     extern int ApproachAngle(short *angle, int targetAngle, int invFactor, int maxDelta, int minDelta);
@@ -12954,7 +12590,6 @@ void daPly_c::func_ov002_020d413c(int arg) {
 }
 }
 
-// @symbol _ZN7daPly_c12St_Walk_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -13047,12 +12682,10 @@ merge:
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d4540Ev
 void daPly_c::func_ov002_020d4540() {
     mIsBraking = 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d454cEv
 void daPly_c::func_ov002_020d454c() {
     if (mIsAirborne != 0)
         return;
@@ -13062,7 +12695,6 @@ void daPly_c::func_ov002_020d454c() {
     SetAnim(0x36, 0x40000000, 0x1000, 0);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d45c0Ev
 extern "C" {
 void daPly_c::func_ov002_020d45c0() {
     extern s16 data_0209f4a0[];
@@ -13105,7 +12737,6 @@ void daPly_c::func_ov002_020d45c0() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d4748Ev
 /* local extern: the call passes an untyped this, so it cannot use the header method. */
 extern "C" {
 static inline int* GetAnim(char* c)
@@ -13228,7 +12859,6 @@ void daPly_c::func_ov002_020d4748() {
 }
 }
 
-// @symbol _ZN7daPly_c18PlayLandingEffectsEv
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 /* Signature deliberately copied from the local declaration above: the
@@ -13274,7 +12904,6 @@ void daPly_c::PlayLandingEffects() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d4d88Eii
 /* func_ov002_020d4d88 at 0x020d4d88
  *
  * Matched byte-for-byte with mwccarm 1.2/sp2p3 (ov002).
@@ -13288,7 +12917,6 @@ int daPly_c::func_ov002_020d4d88(int a, int b) {
     return 0;
 }
 
-// @symbol _ZN7daPly_c12St_Bonk_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -13360,7 +12988,6 @@ ret1:
 }
 }
 
-// @symbol _ZN7daPly_c12St_Bonk_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Bonk_Init() {
     this->SetAnim(0x13, 0x40000000, 0x1000, 0);
@@ -13371,7 +12998,6 @@ int daPly_c::St_Bonk_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c8BlowAwayEs
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -13388,7 +13014,6 @@ void daPly_c::BlowAway(short v) {
     this->ChangeState(data_ov002_0211037c);
 }
 
-// @symbol _ZN7daPly_c16St_BurnLava_MainEv
 /* recovered: named members + shared header, real C++ method
  *
  * Burn-in-lava, per frame: kills the player once outside battle levels, spawns
@@ -13478,7 +13103,6 @@ int daPly_c::St_BurnLava_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c16St_BurnLava_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_BurnLava_Init() {
@@ -13500,7 +13124,6 @@ int daPly_c::St_BurnLava_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d5338Ev
 int daPly_c::func_ov002_020d5338() {
 
 
@@ -13511,7 +13134,6 @@ int daPly_c::func_ov002_020d5338() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c16St_BurnFire_MainEv
 /* recovered: named members + shared header, real C++ method
  *
  * daPly_c burn-in-fire state: early-exits via ChangeState on a couple of
@@ -13633,7 +13255,6 @@ int daPly_c::St_BurnFire_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c16St_BurnFire_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_BurnFire_Init() {
     mIsTakingDamage = 1;
@@ -13656,7 +13277,6 @@ int daPly_c::St_BurnFire_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c4BurnEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::Burn() {
@@ -13669,7 +13289,6 @@ int daPly_c::Burn() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19St_Electrocute_MainEv
 /* recovered: named members + shared header, real C++ method
  *
  * Electrocution, per frame: a looping shock sound and three stacked particle
@@ -13741,7 +13360,6 @@ int daPly_c::St_Electrocute_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c19St_Electrocute_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Electrocute_Init() {
     DropHeldObj();
@@ -13756,7 +13374,6 @@ int daPly_c::St_Electrocute_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c5ShockEj
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::Shock(unsigned int j) {
@@ -13776,7 +13393,6 @@ int daPly_c::Shock(unsigned int j) {
     return 1;
 }
 
-// @symbol func_ov002_020d5ab4
 extern "C" {
 int func_ov002_020d5ab4(daPly_c *p) {
     typedef long long s64;
@@ -13824,7 +13440,6 @@ int func_ov002_020d5ab4(daPly_c *p) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d5c6cEv
 extern "C" {
 int daPly_c::func_ov002_020d5c6c() {
     extern int func_ov002_020d600c(void* p);
@@ -13845,7 +13460,6 @@ change:
 }
 }
 
-// @symbol func_ov002_020d5cec
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -13906,7 +13520,6 @@ extern "C" int func_ov002_020d5cec(void *self) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d5ed0Ev
 int daPly_c::func_ov002_020d5ed0() {
 
     if (!this->IsState(data_ov002_02110064)) {
@@ -13920,7 +13533,6 @@ int daPly_c::func_ov002_020d5ed0() {
     return 1;
 }
 
-// @symbol func_ov002_020d5f34
 extern "C" {
 int func_ov002_020d5f34(daPly_c *c, void *st) {
     daPly_c *player = (daPly_c *)c;
@@ -13934,7 +13546,6 @@ int func_ov002_020d5f34(daPly_c *c, void *st) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d5f98EPhS0_
 extern "C" {
 int daPly_c::func_ov002_020d5f98(unsigned char *a, unsigned char *b) {
     extern int RandomIntInternal(int* seed);
@@ -13951,7 +13562,6 @@ int daPly_c::func_ov002_020d5f98(unsigned char *a, unsigned char *b) {
 }
 }
 
-// @symbol func_ov002_020d600c
 extern "C" {
 int func_ov002_020d600c(daPly_c *player) {
     if (player->IsState(data_ov002_02110064)) {
@@ -13962,7 +13572,6 @@ int func_ov002_020d600c(daPly_c *player) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d6048Ev
 extern "C" {
 extern daPly_c::State data_ov002_02110064;
 }
@@ -13976,7 +13585,6 @@ int daPly_c::func_ov002_020d6048() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c23St_InYoshiMouth_CleanupEv
 /* recovered: named members + shared header, real C++ method
  *
  * ov002, 0x020d6084, size 0x34. Leaving the state Yoshi has you in: two body
@@ -14010,7 +13618,6 @@ int daPly_c::St_InYoshiMouth_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c20St_InYoshiMouth_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -14090,7 +13697,6 @@ int daPly_c::St_InYoshiMouth_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c20St_InYoshiMouth_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_InYoshiMouth_Init() {
@@ -14110,7 +13716,6 @@ int daPly_c::St_InYoshiMouth_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d6334Ei
 int daPly_c::func_ov002_020d6334(int val) {
     int i;
     int *arr;
@@ -14124,7 +13729,6 @@ int daPly_c::func_ov002_020d6334(int val) {
     return 0;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d6368Ev
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 void daPly_c::func_ov002_020d6368() {
@@ -14157,7 +13761,6 @@ void daPly_c::func_ov002_020d6368() {
     mEggParams = zero;
 }
 
-// @symbol _ZN7daPly_c15St_Swallow_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -14224,7 +13827,6 @@ L65ec:
 }
 }
 
-// @symbol _ZN7daPly_c15St_Swallow_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Swallow_Init() {
     daPly_c::State;
@@ -14244,7 +13846,6 @@ int daPly_c::St_Swallow_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c20RegisterEggCoinCountEjbb
 /* recovered: named members + shared header, real C++ method */
 void daPly_c::RegisterEggCoinCount(unsigned int count, bool b2, bool b3) {
     mEggParams = (count & 0xf) << 2;
@@ -14254,7 +13855,6 @@ void daPly_c::RegisterEggCoinCount(unsigned int count, bool b2, bool b3) {
         *(unsigned char *)((char *)&mEggParams) |= 0x80;
 }
 
-// @symbol func_ov002_020d674c
 extern "C" {
 int func_ov002_020d674c(char* c){
     daPly_c *player = (daPly_c *)c;
@@ -14265,7 +13865,6 @@ int func_ov002_020d674c(char* c){
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d6790Ev
 int daPly_c::func_ov002_020d6790() {
     if (mMouthHoldTimer != 0)
         return 0;
@@ -14330,7 +13929,6 @@ ret0:
     }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d6998Ev
 /* recovered: shared common types */
 extern "C" {
 int daPly_c::func_ov002_020d6998() {
@@ -14433,7 +14031,6 @@ fail:
 }
 }
 
-// @symbol func_ov002_020d6c60
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 /* Second parameter is void* to agree with decl_common.h:1443. It was char*, which in a
@@ -14486,7 +14083,6 @@ ret0b:
 }
 }
 
-// @symbol _ZN7daPly_c15TongueWallProbeEv
 /* The first two words of the SurfaceInfo rl.surface are copied as one
  * two-int struct. Spelled `{ int a, b; }`, C++ scalarizes that copy into
  * load/store/load/store, 10 words off the ROM's load/load/store/store;
@@ -14583,7 +14179,6 @@ int daPly_c::TongueWallProbe() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d7030EPv
 int daPly_c::func_ov002_020d7030(void *b) {
     int flag = (((dActor_c *)b)->mFlags & 0x60000) != 0;
     if (flag)
@@ -14595,7 +14190,6 @@ int daPly_c::func_ov002_020d7030(void *b) {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d708cEv
 extern "C" {
 char *daPly_c::func_ov002_020d708c() {
     extern int Vec3_Dist(const void* a, const void* b);
@@ -14638,14 +14232,12 @@ char *daPly_c::func_ov002_020d708c() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d718cEv
 void daPly_c::func_ov002_020d718c() {
 
     this->mObjInMouth = 0;
     func_ov002_020d71a0();
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d71a0Ev
 extern "C" {
 void daPly_c::func_ov002_020d71a0() {
     struct G {
@@ -14660,7 +14252,6 @@ void daPly_c::func_ov002_020d71a0() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d71ecEi
 /* P2's only member is an array. With named members, C++ copies each
  * table into arr[] member by member, and the arr base and the zero for
  * the stack argument take their registers in the other order (5 words
@@ -14710,7 +14301,6 @@ void daPly_c::func_ov002_020d71ec(int arg1) {
 }
 }
 
-// @symbol _ZN7daPly_c21St_YoshiPower_CleanupEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_YoshiPower_Cleanup() {
@@ -14742,7 +14332,6 @@ end:
     return 1;
 }
 
-// @symbol func_ov002_020d7430
 // State globals still have incompatible declarations across the legacy callers.
 extern "C" {
 void func_ov002_020d7430(daPly_c &player) {
@@ -14766,7 +14355,6 @@ void func_ov002_020d7430(daPly_c &player) {
 }
 }
 
-// @symbol _ZN7daPly_c18St_YoshiPower_MainEv
 /* recovered: named members + shared header, real C++ method
  *
  * Yoshi swallowing and spitting, per frame. mStateStep walks the sequence, and
@@ -15062,7 +14650,6 @@ int daPly_c::St_YoshiPower_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c18St_YoshiPower_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 /* daPly_c::St_YoshiPower_Init at 0x020d7ed0 (ov002), size 0x200
@@ -15120,7 +14707,6 @@ int daPly_c::St_YoshiPower_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d80d0Ev
 void daPly_c::func_ov002_020d80d0() {
     if (mIsFire != 1)
         return;
@@ -15131,7 +14717,6 @@ void daPly_c::func_ov002_020d80d0() {
     EndPowerupMusic(0x32);
 }
 
-// @symbol func_ov002_020d8118
 extern "C" {
 void func_ov002_020d8118(daPly_c *c) {
     daPly_c *player = (daPly_c *)c;
@@ -15143,7 +14728,6 @@ void func_ov002_020d8118(daPly_c *c) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d8158Ev
 void daPly_c::func_ov002_020d8158() {
     if (param1 != 3) {
         *(u16 *)(int)(&mStateFlags) &= ~0x1000;
@@ -15164,7 +14748,6 @@ void daPly_c::func_ov002_020d8158() {
     mUseAltBodyModel = 1;
 }
 
-// @symbol _ZN7daPly_c13InitFireYoshiEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 extern daPly_c::State data_ov002_0211004c;
@@ -15178,14 +14761,12 @@ void daPly_c::InitFireYoshi() {
     this->ChangeState(data_ov002_0211004c);
 }
 
-// @symbol _ZN7daPly_c21St_DizzyStars_CleanupEv
 int daPly_c::St_DizzyStars_Cleanup() {
 
     mFlags &= ~0x80u;
     return 1;
 }
 
-// @symbol _ZN7daPly_c18St_DizzyStars_MainEv
 /* recovered: named members + shared header, real C++ method */
 /* the walk state */
 int daPly_c::St_DizzyStars_Main() {
@@ -15199,7 +14780,6 @@ int daPly_c::St_DizzyStars_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c18St_DizzyStars_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_DizzyStars_Init() {
     mStateTimer = 0x12c;
@@ -15207,7 +14787,6 @@ int daPly_c::St_DizzyStars_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d82f0Ev
 int daPly_c::func_ov002_020d82f0() {
     if (mInvincibleTimer != 0)
         return 0;
@@ -15227,7 +14806,6 @@ ret1:
     return 1;
 }
 
-// @symbol func_ov002_020d8360
 /* func_ov002_020d8360 at 0x020d8360
  *
  * Matched byte-for-byte with mwccarm 1.2/sp2p3 (ov002).
@@ -15319,7 +14897,6 @@ int func_ov002_020d8360(void *self, void *other, unsigned int flags)
 }
 }
 
-// @symbol func_ov002_020d853c
 extern "C" {
 int func_ov002_020d853c(daPly_c *player, char *o) {
     extern short Vec3_HorzAngle(const void *v0, const void *v1);
@@ -15339,7 +14916,6 @@ int func_ov002_020d853c(daPly_c *player, char *o) {
 }
 }
 
-// @symbol func_ov002_020d85fc
 extern "C" {
 extern "C" int func_ov002_020d85fc(daPly_c *player, daPly_c *arg, int flags) {
     if ((flags & 0x1000) && arg->param1 == 2 &&
@@ -15353,7 +14929,6 @@ extern "C" int func_ov002_020d85fc(daPly_c *player, daPly_c *arg, int flags) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d869cEv
 struct PVec869c { s32 x, y, z; ~PVec869c() {} };
 extern "C" {
 extern "C" {
@@ -15412,7 +14987,6 @@ int daPly_c::func_ov002_020d869c() {
 }
 }
 
-// @symbol func_ov002_020d8838
 // Set bit 0x20 in the halfword flag at self+0x6ce and return. The u64-mask launder
 // forces the base+offset to materialize into a register (pool-loaded 0x6ce + add) so
 // the ldrh/strh reuse it, matching the ROM instead of folding the address.
@@ -15424,7 +14998,6 @@ void func_ov002_020d8838(char *self)
 }
 }
 
-// @symbol func_ov002_020d8854
 /* recovered: shared common types */
 extern "C" {
 void func_ov002_020d8854(char *self) {
@@ -15463,7 +15036,6 @@ void func_ov002_020d8854(char *self) {
 }
 }
 
-// @symbol func_ov002_020d8944
 /* recovered: shared common types */
 // non-trivial destructor keeps the particle-spawn vector on the stack (no SROA)
 struct PVec8944 {
@@ -15510,7 +15082,6 @@ int func_ov002_020d8944(void *self, daPly_c *enemy, daPly_c *v1) {
 }
 }
 
-// @symbol func_ov002_020d8a50
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -15614,7 +15185,6 @@ void func_ov002_020d8a50(char* self, int which)
 }
 }
 
-// @symbol func_ov002_020d8d10
 /* recovered: shared common types */
 /* func_ov002_020d8d10 at 0x020d8d10
  *
@@ -15643,7 +15213,6 @@ void func_ov002_020d8d10(struct Self *self, Vector3 *pos) {
 }
 }
 
-// @symbol _ZN7daPly_c4HurtERK7Vector3jihhh
 /* recovered: named members + shared header, declarations from a shared header */
 /* recovered: named members + shared header */
 extern "C" {
@@ -15786,12 +15355,10 @@ L9c:
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d91b8Ei
 void daPly_c::func_ov002_020d91b8(int a) {
     Sound::PlayCharVoice(mCharacter, data_ov002_020ff120[a & 1], mCamSpacePos);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d91e0Eii
 extern "C" {
 int daPly_c::func_ov002_020d91e0(int damage, int doPre) {
     extern u8 data_0209f2d8;
@@ -15820,7 +15387,6 @@ int daPly_c::func_ov002_020d91e0(int damage, int doPre) {
 }
 }
 
-// @symbol func_ov002_020d9298
 extern "C" {
 int func_ov002_020d9298(daPly_c *player) {
     if (player->IsState(data_ov002_021105a4))
@@ -15838,7 +15404,6 @@ int func_ov002_020d9298(daPly_c *player) {
 }
 }
 
-// @symbol _ZN7daPly_c6BounceEi
 /* recovered: named members + shared header, declarations from a shared header */
 /* recovered: named members + shared header */
 void daPly_c::Bounce(Fix12i f) {
@@ -15852,7 +15417,6 @@ void daPly_c::Bounce(Fix12i f) {
     Sound::PlayBank0(0xb6, this->mCamSpacePos);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d93acEv
 /* recovered: shared common types */
 extern "C" {
 int daPly_c::func_ov002_020d93ac() {
@@ -15906,7 +15470,6 @@ fail:
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d94ccEv
 /* recovered: shared common types */
 extern "C" {
 int daPly_c::func_ov002_020d94cc() {
@@ -15973,7 +15536,6 @@ fail:
 }
 }
 
-// @symbol _ZN7daPly_c15St_Hurt_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 // daPly_c::St_Hurt_Cleanup - clear flag bit 0x80 in the u32 at this+0xb0, return 1.
 // The u64-mask launder forces the base to materialize (add r2,this,#0xb0) so the
@@ -15983,7 +15545,6 @@ int daPly_c::St_Hurt_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c12St_Hurt_MainEv
 /* recovered: named members + shared header, real C++ method
  *
  * Three-phase hurt state, sequenced by mStatePhase: 0 lands the hit (sound, voice,
@@ -16074,7 +15635,6 @@ int daPly_c::St_Hurt_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d98b4Ev
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -16103,7 +15663,6 @@ void daPly_c::func_ov002_020d98b4() {
 }
 }
 
-// @symbol _ZN7daPly_c17StartHurtFallAnimEv
 void daPly_c::StartHurtFallAnim() {
     daPly_c *player = (daPly_c *)this;
     u8 idx;
@@ -16118,7 +15677,6 @@ void daPly_c::StartHurtFallAnim() {
     player->mStateWork |= 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d9a4cEv
 void daPly_c::func_ov002_020d9a4c() {
     int idx = GetBodyModelID(param1 & 0xff, 0);
     dExtAnmModel_c *anim = mModels.mBodyModels[idx];
@@ -16126,7 +15684,6 @@ void daPly_c::func_ov002_020d9a4c() {
         mStateWork |= 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020d9aacEv
 void daPly_c::func_ov002_020d9aac() {
     int v;
 
@@ -16154,7 +15711,6 @@ void daPly_c::func_ov002_020d9aac() {
     }
 }
 
-// @symbol _ZN7daPly_c12St_Hurt_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -16185,7 +15741,6 @@ int daPly_c::St_Hurt_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c12GetHurtStateEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 extern daPly_c::State data_ov002_02110094;
@@ -16196,7 +15751,6 @@ int daPly_c::GetHurtState() {
     return -1;
 }
 
-// @symbol func_ov002_020d9c70
 extern "C" {
 void func_ov002_020d9c70(char *o)
 {
@@ -16250,7 +15804,6 @@ void func_ov002_020d9c70(char *o)
 }
 }
 
-// @symbol func_ov002_020d9dcc
 /* The state test compares the comparison as an int,
  * `(int)(x == 0xbf) == 0`.  In C++ the comparison is a bool: tested
  * directly, the 0/1 is folded into the branch (12 bytes short), and
@@ -16321,7 +15874,6 @@ int func_ov002_020d9dcc(daPly_c *player) {
 }
 }
 
-// @symbol _ZN7daPly_c22St_SwingPlayer_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_SwingPlayer_Cleanup() {
     char *p = *(char **)((char *)&mHeldObj);
@@ -16339,7 +15891,6 @@ int daPly_c::St_SwingPlayer_Cleanup() {
 // the difference and the step in one register across both if-converted arms, and the
 // angular speed is declared before the difference, which gives it ip and the step r3.
 extern "C" {
-// @symbol _ZN7daPly_c19St_SwingPlayer_MainEv
 int daPly_c::St_SwingPlayer_Main() {
     char* c = (char*)this;
     typedef s32 Fix12;
@@ -16445,7 +15996,6 @@ int daPly_c::St_SwingPlayer_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c19St_SwingPlayer_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_SwingPlayer_Init() {
     mHorzSpeed = 0;
@@ -16460,14 +16010,12 @@ int daPly_c::St_SwingPlayer_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c25St_GrabBowserTail_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_GrabBowserTail_Cleanup() {
     func_ov002_020daa74();
     return 1;
 }
 
-// @symbol _ZN7daPly_c22St_GrabBowserTail_MainEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_GrabBowserTail_Main() {
@@ -16555,7 +16103,6 @@ int daPly_c::St_GrabBowserTail_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c22St_GrabBowserTail_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -16571,7 +16118,6 @@ int daPly_c::St_GrabBowserTail_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c9DropActorEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::DropActor() {
 
@@ -16626,7 +16172,6 @@ int daPly_c::DropActor() {
     }
 }
 
-// @symbol func_ov002_020da95c
 extern "C" {
 int func_ov002_020da95c(char *c)
 {
@@ -16643,7 +16188,6 @@ int func_ov002_020da95c(char *c)
 }
 }
 
-// @symbol _ZN7daPly_c11DropHeldObjEv
 int daPly_c::DropHeldObj() {
     char *s = (char *)mHeldObj;
     int b = (s != 0);
@@ -16665,7 +16209,6 @@ int daPly_c::DropHeldObj() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020daa74Ev
 int daPly_c::func_ov002_020daa74() {
     char* self = (char*)this;
     char *s = (char *)mHeldObj;
@@ -16687,7 +16230,6 @@ int daPly_c::func_ov002_020daa74() {
     return 1;
 }
 
-// @symbol Player_ReleaseHeldActor
 extern "C" {
 int Player_ReleaseHeldActor(void *self) {
     daPly_c *c = (daPly_c *)self;
@@ -16706,7 +16248,6 @@ int Player_ReleaseHeldActor(void *self) {
 }
 }
 
-// @symbol _ZN7daPly_c7TryGrabER8dActor_c
 /* recovered: named members + shared header, real C++ method
  *
  * Refuses if already holding something or if the target does not carry the
@@ -16747,7 +16288,6 @@ bd:
     }
 }
 
-// @symbol func_ov002_020dacb4
 extern "C" {
 int func_ov002_020dacb4(daPly_c *p, char *actor) {
     int t;
@@ -16814,7 +16354,6 @@ int func_ov002_020dacb4(daPly_c *p, char *actor) {
 }
 }
 
-// @symbol _ZN7daPly_c13St_Throw_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 // Matched byte-for-byte with mwccarm 1.2/sp2p3 (ov002).
@@ -16862,7 +16401,6 @@ int daPly_c::St_Throw_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c13St_Throw_InitEv
 /* recovered: named members + shared header, real C++ method
  *
  * mHeldObj is declared s32 in daPly_c.h but is an actor pointer: this reads
@@ -16892,7 +16430,6 @@ int daPly_c::St_Throw_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c17St_Thrown_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 // daPly_c::St_Thrown_Cleanup - clear flag bit 0x2000 in the u32 at this+0x2ec, return 1.
 // The u64-mask launder forces the base to materialize (add r2,this,#0x2ec) so the
@@ -16902,7 +16439,6 @@ int daPly_c::St_Thrown_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c14St_Thrown_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Thrown_Main() {
@@ -16971,7 +16507,6 @@ L1f8:
     return 1;
 }
 
-// @symbol _ZN7daPly_c14St_Thrown_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Thrown_Init() {
     int b = (mFlags & 0x400) ? 1 : 0;
@@ -16986,7 +16521,6 @@ int daPly_c::St_Thrown_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c18St_Grabbed_CleanupEv
 /* recovered: named members + shared header, real C++ method
  *
  * Clears bit 1 of the body-collision flags, then if something is holding the
@@ -17013,7 +16547,6 @@ int daPly_c::St_Grabbed_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c15St_Grabbed_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Grabbed_Main() {
@@ -17060,7 +16593,6 @@ int daPly_c::St_Grabbed_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c15St_Grabbed_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Grabbed_Init() {
     DropHeldObj();
@@ -17074,7 +16606,6 @@ int daPly_c::St_Grabbed_Init() {
     return 1;
 }
 
-// @symbol func_ov002_020db54c
 /* recovered: shared common types */
 extern "C" {
 extern "C" void func_ov002_020db54c(void *self, int a, int b, short c) {
@@ -17107,7 +16638,6 @@ extern "C" void func_ov002_020db54c(void *self, int a, int b, short c) {
 }
 }
 
-// @symbol func_ov002_020db5f4
 extern "C" {
 int func_ov002_020db5f4(daPly_c *c, dActor_c *arg) {
     daPly_c *player = (daPly_c *)c;
@@ -17124,7 +16654,6 @@ int func_ov002_020db5f4(daPly_c *c, dActor_c *arg) {
 }
 }
 
-// @symbol func_ov002_020db674
 extern "C" {
 int func_ov002_020db674(char* c, int a1, int a2, int a3)
 {
@@ -17145,7 +16674,6 @@ int func_ov002_020db674(char* c, int a1, int a2, int a3)
 }
 }
 
-// @symbol _ZN7daPly_c15UpdateScaleAnimEv
 void daPly_c::UpdateScaleAnim() {
     int s;
     u8 i;
@@ -17206,14 +16734,12 @@ void daPly_c::UpdateScaleAnim() {
     }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020db8bcEh
 void daPly_c::func_ov002_020db8bc(unsigned char kind) {
     mScaleAnimStep = 1;
     mScaleAnimTimer = 0;
     mScaleAnimKind = kind;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020db8d8Ev
 /* recovered: shared common types */
 extern "C" {
 void daPly_c::func_ov002_020db8d8() {
@@ -17253,7 +16779,6 @@ void daPly_c::func_ov002_020db8d8() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020dba0cEv
 extern "C" {
 void daPly_c::func_ov002_020dba0c() {
     extern unsigned char data_0209f2d8;
@@ -17292,7 +16817,6 @@ void daPly_c::func_ov002_020dba0c() {
 }
 }
 
-// @symbol func_ov002_020dbaec
 extern "C" {
 void func_ov002_020dbaec(char *c) {
     daPly_c *player = (daPly_c *)c;
@@ -17328,7 +16852,6 @@ void func_ov002_020dbaec(char *c) {
 }
 }
 
-// @symbol func_ov002_020dbbc0
 extern "C" {
 void func_ov002_020dbbc0(char *c) {
     daPly_c *player = (daPly_c *)c;
@@ -17364,7 +16887,6 @@ void func_ov002_020dbbc0(char *c) {
 }
 }
 
-// @symbol func_ov002_020dbc94
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -17395,7 +16917,6 @@ void func_ov002_020dbc94(char* c) {
 }
 }
 
-// @symbol func_ov002_020dbd94
 extern "C" {
 void func_ov002_020dbd94(char *c) {
     daPly_c *player = (daPly_c *)c;
@@ -17430,7 +16951,6 @@ void func_ov002_020dbd94(char *c) {
 }
 }
 
-// @symbol func_ov002_020dbe70
 extern "C" {
 void func_ov002_020dbe70(char *c) {
     daPly_c *player = (daPly_c *)c;
@@ -17465,7 +16985,6 @@ void func_ov002_020dbe70(char *c) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020dbf4cEv
 extern "C" {
 void daPly_c::func_ov002_020dbf4c() {
     extern unsigned char data_0209f2d8;
@@ -17498,7 +17017,6 @@ void daPly_c::func_ov002_020dbf4c() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020dc020Ev
 void daPly_c::func_ov002_020dc020() {
     Vector3 v;
     int r2, r3;
@@ -17518,7 +17036,6 @@ void daPly_c::func_ov002_020dc020() {
     func_ov002_020dc174(&v, r2, r3, 0x1000, 0);
 }
 
-// @symbol func_ov002_020dc09c
 /* func_ov002_020dc09c at 0x020dc09c
  *
  * Matched byte-for-byte with mwccarm 1.2/sp2p3 (ov002).
@@ -17560,7 +17077,6 @@ void func_ov002_020dc09c(char *c) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020dc174EPK7Vector3iijj
 /* The attack collision's offset, reach and height. pos is a const Vector3 *: it
    goes straight to dCcAcPos_c::Init, whose ROM symbol mangles that
    parameter as RK7Vector3, a const Vector3 &. Eleven callers in this file each used to spell it void *. */
@@ -17570,7 +17086,6 @@ void daPly_c::func_ov002_020dc174(const Vector3 *pos, Fix12i reach, Fix12i heigh
     mAttackClsn.Init(this, *pos, reach, height, flags | 2 | f, a6);
 }
 
-// @symbol _ZN7daPly_c17St_SlideKick_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -17656,7 +17171,6 @@ L1d8:
 }
 }
 
-// @symbol _ZN7daPly_c17St_SlideKick_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -17679,7 +17193,6 @@ int daPly_c::St_SlideKick_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c17St_SweepKick_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -17698,7 +17211,6 @@ int daPly_c::St_SweepKick_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c17St_SweepKick_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_SweepKick_Init() {
     this->SetAnim(0x68, 0x40000000, 0x1000, 0);
@@ -17710,7 +17222,6 @@ int daPly_c::St_SweepKick_Init() {
     return 1;
 }
 
-// @symbol func_ov002_020dc560
 #define ADDR(p) ((int *)(p))
 extern "C" {
 void func_ov002_020dc560(void *self) {
@@ -17762,7 +17273,6 @@ void func_ov002_020dc560(void *self) {
 }
 #undef ADDR
 
-// @symbol _ZN7daPly_c17St_ButtSlide_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -17861,7 +17371,6 @@ int daPly_c::St_ButtSlide_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c17St_ButtSlide_InitEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_ButtSlide_Init() {
@@ -17880,7 +17389,6 @@ int daPly_c::St_ButtSlide_Init() {
 }
 }
 
-// @symbol func_ov002_020dcafc
 /* func_ov002_020dcafc at 0x020dcafc
  *
  * Matched byte-for-byte with mwccarm 1.2/sp2p3 (ov002).
@@ -17911,7 +17419,6 @@ void func_ov002_020dcafc(void *c) {
 }
 }
 
-// @symbol _ZN7daPly_c20St_StomachSlide_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -18072,7 +17579,6 @@ end:
 }
 }
 
-// @symbol _ZN7daPly_c20St_StomachSlide_InitEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_StomachSlide_Init() {
@@ -18092,7 +17598,6 @@ int daPly_c::St_StomachSlide_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c12St_Dive_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -18119,7 +17624,6 @@ int daPly_c::St_Dive_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c8IsDivingEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 extern daPly_c::State data_ov002_021105bc;
@@ -18129,19 +17633,16 @@ int daPly_c::IsDiving() {
     return this->IsState(data_ov002_021105bc) != 0;
 }
 
-// @symbol _ZN7daPly_c17LostGrabbedObjectEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::LostGrabbedObject() {
     return ((daPly_c *)((void *)this))->IsAnim(0x18) || ((daPly_c *)((void *)this))->IsAnim(0x8b);
 }
 
-// @symbol _ZN7daPly_c14IsFrontSlidingEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::IsFrontSliding() {
     return ((daPly_c *)((void *)this))->IsAnim(0x43) || ((daPly_c *)((void *)this))->IsAnim(0x40);
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020dd2f4Ev
 int daPly_c::func_ov002_020dd2f4() {
     int atan;
 
@@ -18161,7 +17662,6 @@ int daPly_c::func_ov002_020dd2f4() {
     return 0;
 }
 
-// @symbol _ZN7daPly_c17St_PunchKick_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -18243,7 +17743,6 @@ end:
 }
 }
 
-// @symbol func_ov002_020dd5ec
 extern "C" {
 void func_ov002_020dd5ec(daPly_c *player) {
     extern int RandomIntInternal(int *seed);
@@ -18299,7 +17798,6 @@ void func_ov002_020dd5ec(daPly_c *player) {
 }
 }
 
-// @symbol _ZN7daPly_c17St_PunchKick_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_PunchKick_Init() {
@@ -18319,7 +17817,6 @@ int daPly_c::St_PunchKick_Init() {
   return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020dd824Ev
 int daPly_c::func_ov002_020dd824() {
     if (mIsAirborne)
         return 0;
@@ -18335,7 +17832,6 @@ int daPly_c::func_ov002_020dd824() {
     return 0;
 }
 
-// @symbol func_ov002_020dd8b8
 extern "C" {
 int func_ov002_020dd8b8(daPly_c *player) {
     if (!player->IsState(data_ov002_021105a4))
@@ -18344,14 +17840,12 @@ int func_ov002_020dd8b8(daPly_c *player) {
 }
 }
 
-// @symbol func_ov002_020dd8f4
 extern "C" {
 void func_ov002_020dd8f4(daPly_c *player) {
     ((daPly_c *)player)->ChangeState(data_ov002_021101b4);
 }
 }
 
-// @symbol func_ov002_020dd908
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -18383,7 +17877,6 @@ void func_ov002_020dd908(char *sb) {
 }
 }
 
-// @symbol _ZN7daPly_c22St_GroundPound_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 // daPly_c::St_GroundPound_Cleanup - clear flag bit 0x20 in the u32 at this+0x2ec, return 1.
 // The u64-mask launder forces the base to materialize (add r2,this,#0x2ec) so the
@@ -18393,7 +17886,6 @@ int daPly_c::St_GroundPound_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19St_GroundPound_MainEv
 /* recovered: named members + shared header, real C++ method
  *
  * Ground pound, per frame. mStateStep is read SIGNED and acts as a three-way
@@ -18526,7 +18018,6 @@ int daPly_c::St_GroundPound_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c19St_GroundPound_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_GroundPound_Init() {
   unsigned int anim;
@@ -18544,7 +18035,6 @@ int daPly_c::St_GroundPound_Init() {
   return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020dde74Ev
 extern "C" {
 extern "C" {
 int daPly_c::func_ov002_020dde74() {
@@ -18584,7 +18074,6 @@ change574:
 }
 }
 
-// @symbol _ZN7daPly_c19St_TornadoSpin_MainEv
 /* recovered: named members + shared header, real C++ method
  *
  * Being carried up a tornado. The player orbits mAttachedActor: the horizontal
@@ -18654,7 +18143,6 @@ int daPly_c::St_TornadoSpin_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19St_TornadoSpin_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -18673,14 +18161,12 @@ int daPly_c::St_TornadoSpin_Init() {
 }
 }
 
-// @symbol func_ov002_020de328
 extern "C" {
 int func_ov002_020de328(daPly_c *player) {
     return player->IsState(data_ov002_021102bc);
 }
 }
 
-// @symbol func_ov002_020de33c
 extern "C" {
 int func_ov002_020de33c(daPly_c *c, int a) {
     daPly_c *player = (daPly_c *)c;
@@ -18696,7 +18182,6 @@ ok:
 }
 }
 
-// @symbol _ZN7daPly_c18St_Balloon_CleanupEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -18707,7 +18192,6 @@ int daPly_c::St_Balloon_Cleanup() {
 }
 }
 
-// @symbol func_ov002_020de3d0
 extern "C" {
 void func_ov002_020de3d0(int a0, short* r1, short* r2){
   if(*r2 >= 0x100) *r2 -= 0x20;
@@ -18718,7 +18202,6 @@ void func_ov002_020de3d0(int a0, short* r1, short* r2){
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020de428Ev
 /* 0x74 is mCamSpacePos and 0x70c is mStateArg; St_Balloon_Main counts the
  * latter down and calls this on a bounce. */
 void daPly_c::func_ov002_020de428() {
@@ -18728,7 +18211,6 @@ void daPly_c::func_ov002_020de428() {
     mStateArg = 0x1e;
 }
 
-// @symbol _ZN7daPly_c15St_Balloon_MainEv
 /* recovered: named members + shared header, real C++ method
  *
  * Balloon (wing-cap style) flight, per frame. Bails out to one of two states
@@ -18840,7 +18322,6 @@ s32 daPly_c::St_Balloon_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c15St_Balloon_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -18867,7 +18348,6 @@ int daPly_c::St_Balloon_Init() {
 }
 }
 
-// @symbol func_ov002_020de968
 // local extern: this file's local Vector3/Fix12i shadow the shared headers, so it cannot include daPly_c.h and use the member
 extern "C" {
 struct Vector3e968 { int x, y, z; ~Vector3e968(){} };
@@ -18892,7 +18372,6 @@ void func_ov002_020de968(char* c){
 }
 }
 
-// @symbol _ZN7daPly_c16InitBalloonMarioEv
 /* recovered: named members + shared header, real C++ method */
 void daPly_c::InitBalloonMario() {
     Vector3 v;
@@ -18916,7 +18395,6 @@ void daPly_c::InitBalloonMario() {
     Sound::PlayBank0(0xd7, mCamSpacePos);
 }
 
-// @symbol _ZN7daPly_c17St_WindCarry_MainEv
 /* Signature deliberately copied from the local declaration above: the
    ROM name carries by-value class parameters (e.g. Fix12<int>), which
    mwccarm passes differently at the call site, so declaring the true
@@ -18960,7 +18438,6 @@ int daPly_c::St_WindCarry_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c17St_WindCarry_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -18976,7 +18453,6 @@ int daPly_c::St_WindCarry_Init() {
 }
 }
 
-// @symbol func_ov002_020dec70
 extern "C" {
 extern "C" int func_ov002_020dec70(char *c)
 {
@@ -19011,7 +18487,6 @@ extern "C" int func_ov002_020dec70(char *c)
 }
 }
 
-// @symbol _ZN7daPly_c21St_JumpQuicksand_MainEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_JumpQuicksand_Main() {
 
@@ -19028,7 +18503,6 @@ int daPly_c::St_JumpQuicksand_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c21St_JumpQuicksand_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_JumpQuicksand_Init() {
     mJumpedFromQuicksand = 1;
@@ -19040,7 +18514,6 @@ int daPly_c::St_JumpQuicksand_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c17St_Cannon_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 // daPly_c::St_Cannon_Cleanup - clear flag bit 0x20 in the u32 at this+0x2ec, return 1.
 // The u64-mask launder forces the base to materialize (add r2,this,#0x2ec) so the
@@ -19050,7 +18523,6 @@ int daPly_c::St_Cannon_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c14St_Cannon_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -19128,7 +18600,6 @@ int daPly_c::St_Cannon_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c14St_Cannon_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Cannon_Init() {
     Player_DisableInteraction(this);
@@ -19148,7 +18619,6 @@ int daPly_c::St_Cannon_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c16IsInsideOfCannonEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 extern daPly_c::State data_ov002_021102d4;
@@ -19160,7 +18630,6 @@ int daPly_c::IsInsideOfCannon() {
     return mStateStep != 2 ? 1 : 0;
 }
 
-// @symbol _ZN7daPly_c22IsBeingShotOutOfCannonEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 extern daPly_c::State data_ov002_021102d4;
@@ -19172,7 +18641,6 @@ int daPly_c::IsBeingShotOutOfCannon() {
     return mStateStep == 2 ? 1 : 0;
 }
 
-// @symbol func_ov002_020df300
 extern "C" {
 int func_ov002_020df300(char* p) {
     extern int data_0209f318;
@@ -19185,7 +18653,6 @@ int func_ov002_020df300(char* p) {
 }
 }
 
-// @symbol _ZN7daPly_c19TryEnterCannonStateEv
 /* Signature deliberately copied from the local declaration above: the
    ROM name carries by-value class parameters (e.g. Fix12<int>), which
    mwccarm passes differently at the call site, so declaring the true
@@ -19205,7 +18672,6 @@ int daPly_c::TryEnterCannonState() {
 }
 }
 
-// @symbol _ZN7daPly_c14St_Owl_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Owl_Cleanup() {
     EndStateMusic(0x2f);
@@ -19213,7 +18679,6 @@ int daPly_c::St_Owl_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c11St_Owl_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -19318,7 +18783,6 @@ int daPly_c::St_Owl_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c11St_Owl_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -19335,7 +18799,6 @@ int daPly_c::St_Owl_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020df7acEv
 extern "C" {
 int daPly_c::func_ov002_020df7ac() {
     extern daPly_c::State data_ov002_02110244;
@@ -19347,7 +18810,6 @@ int daPly_c::func_ov002_020df7ac() {
 }
 }
 
-// @symbol func_ov002_020df7f4
 extern "C" {
 int func_ov002_020df7f4(daPly_c *player) {
     extern daPly_c::State data_ov002_02110244;
@@ -19357,7 +18819,6 @@ int func_ov002_020df7f4(daPly_c *player) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020df840EPvP7Vector3
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -19379,7 +18840,6 @@ int daPly_c::func_ov002_020df840(void *arg1, Vector3 *arg2) {
 }
 }
 
-// @symbol func_ov002_020df8f0
 extern "C" {
 void func_ov002_020df8f0(char* c)
 {
@@ -19521,7 +18981,6 @@ void func_ov002_020df8f0(char* c)
 }
 }
 
-// @symbol _ZN7daPly_c11St_Fly_MainEv
 /* Signature deliberately copied from the local declaration above: the
    ROM name carries by-value class parameters (e.g. Fix12<int>), which
    mwccarm passes differently at the call site, so declaring the true
@@ -19665,7 +19124,6 @@ skip:
 #undef sp1C
 #undef c
 
-// @symbol _ZN7daPly_c11St_Fly_InitEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_Fly_Init() {
@@ -19689,7 +19147,6 @@ int daPly_c::St_Fly_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e032cEv
 extern "C" {
 void daPly_c::func_ov002_020e032c() {
     extern unsigned char data_0209f2d8;
@@ -19708,7 +19165,6 @@ void daPly_c::func_ov002_020e032c() {
 }
 }
 
-// @symbol _ZN7daPly_c16InitWingFeathersEb
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -19735,14 +19191,12 @@ void daPly_c::InitWingFeathers(bool b_) {
 }
 }
 
-// @symbol func_ov002_020e0478
 extern "C" {
 int func_ov002_020e0478(daPly_c *c) {
     return c->IsState(data_ov002_02110214) != 0;
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e04a4Ev
 /* func_ov002_020e04a4 at 0x020e04a4
  *
  * Matched byte-for-byte with mwccarm 1.2/sp2p3 (ov002).
@@ -19755,7 +19209,6 @@ void daPly_c::func_ov002_020e04a4() {
 }
 }
 
-// @symbol _ZN7daPly_c12St_Land_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -19850,7 +19303,6 @@ tail:
 }
 }
 
-// @symbol _ZN7daPly_c12St_Land_InitEv
 /* Signature deliberately copied from the local declaration above: the
    ROM name carries by-value class parameters (e.g. Fix12<int>), which
    mwccarm passes differently at the call site, so declaring the true
@@ -19920,7 +19372,6 @@ int daPly_c::St_Land_Init() {
 }
 #pragma pop
 
-// @symbol _ZN7daPly_c19func_ov002_020e0a64Ev
 int daPly_c::func_ov002_020e0a64() {
     if (IsAnim(0x54) == 0)
         mJumpComboTimer = 8;
@@ -19929,7 +19380,6 @@ int daPly_c::func_ov002_020e0a64() {
     return data_ov002_0210a5b4[mJumpComboStage];
 }
 
-// @symbol _ZN7daPly_c21St_SmallLaunchUp_MainEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_SmallLaunchUp_Main() {
 
@@ -19940,7 +19390,6 @@ int daPly_c::St_SmallLaunchUp_Main() {
   return 1;
 }
 
-// @symbol _ZN7daPly_c21St_SmallLaunchUp_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_SmallLaunchUp_Init() {
     mJumpedFromQuicksand = 0;
@@ -19958,7 +19407,6 @@ int daPly_c::St_SmallLaunchUp_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c17St_SlopeJump_MainEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_SlopeJump_Main() {
@@ -19982,7 +19430,6 @@ int daPly_c::St_SlopeJump_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c17St_SlopeJump_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_SlopeJump_Init() {
     mJumpedFromQuicksand = 0;
@@ -20003,7 +19450,6 @@ int daPly_c::St_SlopeJump_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e0cccEPv
 int daPly_c::func_ov002_020e0ccc(void *st) {
     int b;
     if (st == 0)
@@ -20015,14 +19461,12 @@ int daPly_c::func_ov002_020e0ccc(void *st) {
     return 1;
 }
 
-// @symbol _ZN7daPly_c22St_CrazedCrate_CleanupEv
 int daPly_c::St_CrazedCrate_Cleanup() {
     mdCcAcPos_c.flags &= ~0x20;
     mJumpComboStage = 0;
     return 1;
 }
 
-// @symbol _ZN7daPly_c19St_CrazedCrate_MainEv
 extern "C" {
 int daPly_c::St_CrazedCrate_Main() {
     typedef long long s64;
@@ -20085,7 +19529,6 @@ int daPly_c::St_CrazedCrate_Main() {
 }
 }
 
-// @symbol func_ov002_020e0f38
 extern "C" {
 void func_ov002_020e0f38(char* c, int a){
     daPly_c *player = (daPly_c *)c;
@@ -20100,7 +19543,6 @@ void func_ov002_020e0f38(char* c, int a){
 }
 }
 
-// @symbol _ZN7daPly_c19St_CrazedCrate_InitEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 /* daPly_c::St_CrazedCrate_Init() at 0x020e0fac (ov002), size 0x74
@@ -20124,7 +19566,6 @@ int daPly_c::St_CrazedCrate_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c10SpinBounceEi
 /* recovered: named members + shared header */
 void daPly_c::SpinBounce(Fix12i f) {
     if (this->IsState(data_ov002_021105a4))
@@ -20138,14 +19579,12 @@ void daPly_c::SpinBounce(Fix12i f) {
     this->ChangeState(data_ov002_02110454);
 }
 
-// @symbol func_ov002_020e10a8
 extern "C" {
 int func_ov002_020e10a8(daPly_c *c) {
     return c->IsState(data_ov002_02110454) != 0;
 }
 }
 
-// @symbol _ZN7daPly_c15St_Spin_CleanupEv
 /* recovered: named members + shared header, real C++ method */
 // daPly_c::St_Spin_Cleanup - clear flag bit 0x20 in the u32 at this+0x2ec, return 1.
 // The u64-mask launder forces the base to materialize (add r2,this,#0x2ec) so the
@@ -20155,7 +19594,6 @@ int daPly_c::St_Spin_Cleanup() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c12St_Spin_MainEv
 /* recovered: named members + shared header, real C++ method
  *
  * Spin-jump, per frame. Landing hands off to another state after snapping the
@@ -20182,7 +19620,6 @@ int daPly_c::St_Spin_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c12St_Spin_InitEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_Spin_Init() {
@@ -20210,7 +19647,6 @@ int daPly_c::St_Spin_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c16St_LongJump_MainEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_LongJump_Main() {
     func_ov002_020e28d4(0x1800, 0x800);
@@ -20221,7 +19657,6 @@ int daPly_c::St_LongJump_Main() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c16St_LongJump_InitEv
 /* recovered: named members + shared header, real C++ method
  *
  * Three guards get first refusal on the long jump; if any takes it, this
@@ -20267,7 +19702,6 @@ int daPly_c::St_LongJump_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c16St_SideFlip_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -20336,7 +19770,6 @@ int daPly_c::St_SideFlip_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c17St_WaterJump_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_WaterJump_Init() {
     mJumpedFromQuicksand = 0;
@@ -20353,7 +19786,6 @@ int daPly_c::St_WaterJump_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c21St_HeadstandJump_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_HeadstandJump_Init() {
     mJumpedFromQuicksand = 0;
@@ -20369,7 +19801,6 @@ int daPly_c::St_HeadstandJump_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c16St_WallJump_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -20396,7 +19827,6 @@ int daPly_c::St_WallJump_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c16St_WallJump_InitEv
 /* recovered: named members + shared header, real C++ method
  *
  * ov002, 0x020e17f8, size 0xb0. Entering the wall jump: clear the airborne
@@ -20443,7 +19873,6 @@ int daPly_c::St_WallJump_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c16St_BackFlip_InitEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_BackFlip_Init() {
@@ -20472,7 +19901,6 @@ int daPly_c::St_BackFlip_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c24St_SlideKickRecover_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_SlideKickRecover_Init() {
     *(char *)((char *)&mJumpedFromQuicksand) = 0;
@@ -20489,7 +19917,6 @@ int daPly_c::St_SlideKickRecover_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c16St_SideFlip_InitEv
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
 int daPly_c::St_SideFlip_Init() {
@@ -20517,7 +19944,6 @@ int daPly_c::St_SideFlip_Init() {
 }
 }
 
-// @symbol _ZN7daPly_c12St_Fall_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Fall_Main() {
@@ -20533,7 +19959,6 @@ int daPly_c::St_Fall_Main() {
   return 1;
 }
 
-// @symbol _ZN7daPly_c12St_Fall_InitEv
 /* recovered: named members + shared header, real C++ method */
 int daPly_c::St_Fall_Init() {
     *(char *)((char *)&mJumpedFromQuicksand) = 0;
@@ -20553,7 +19978,6 @@ int daPly_c::St_Fall_Init() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e1c20Ev
 extern "C" {
 void daPly_c::func_ov002_020e1c20() {
     extern int func_02012120(unsigned int p0, unsigned int p1, unsigned int p2, const Vector3 *p3,
@@ -20614,7 +20038,6 @@ void daPly_c::func_ov002_020e1c20() {
 }
 }
 
-// @symbol func_ov002_020e1e70
 extern "C" {
 void func_ov002_020e1e70(char *c) {
     extern int func_02012120(unsigned int p0, unsigned int p1, unsigned int p2, const Vector3 *p3,
@@ -20652,7 +20075,6 @@ void func_ov002_020e1e70(char *c) {
 }
 }
 
-// @symbol func_ov002_020e200c
 extern "C" {
 void func_ov002_020e200c(char* c){
     extern unsigned char data_0209f49c[];
@@ -20677,7 +20099,6 @@ void func_ov002_020e200c(char* c){
 }
 }
 
-// @symbol _ZN7daPly_c12St_Jump_MainEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -20739,7 +20160,6 @@ int daPly_c::St_Jump_Main() {
 }
 }
 
-// @symbol _ZN7daPly_c12St_Jump_InitEv
 /* recovered: named members + shared header, real C++ method
  *
  * Entering the jump state. Two guards get first refusal. Then the triple-jump
@@ -20834,7 +20254,6 @@ skipclear:
     return 1;
 }
 
-// @symbol func_ov002_020e25d4
 /* recovered: shared common types */
 extern "C" {
 extern "C" void func_ov002_020e25d4(char *c)
@@ -20844,7 +20263,6 @@ extern "C" void func_ov002_020e25d4(char *c)
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e25f0Ei
 extern "C" {
 inline int inline_fn(int *arg0) {
     extern int RandomIntInternal(int *seed);
@@ -20863,7 +20281,6 @@ void daPly_c::func_ov002_020e25f0(int a) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e2664Ev
 extern "C" {
 int daPly_c::func_ov002_020e2664() {
     extern int func_ov002_020d674c(char* c);
@@ -20937,7 +20354,6 @@ ret0:
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e28d4Eii
 extern "C" {
 void daPly_c::func_ov002_020e28d4(int a, int b) {
     extern void ApproachAngle(s16* cur, s16 target, int divisor, int band, int maxStep);
@@ -20996,7 +20412,6 @@ void daPly_c::func_ov002_020e28d4(int a, int b) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e2ad0Ev
 void daPly_c::func_ov002_020e2ad0() {
     if (mSinkDepth <= 0x1000)
         return;
@@ -21010,7 +20425,6 @@ void daPly_c::func_ov002_020e2ad0() {
     }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e2b6cEv
 int daPly_c::func_ov002_020e2b6c() {
     if (mSinkDepth < 0xb000)
         return 0;
@@ -21018,7 +20432,6 @@ int daPly_c::func_ov002_020e2b6c() {
     return 1;
 }
 
-// @symbol func_ov002_020e2ba8
 extern "C" {
 int func_ov002_020e2ba8(daPly_c *player) {
     if (player->mIsMega == 0)
@@ -21028,7 +20441,6 @@ int func_ov002_020e2ba8(daPly_c *player) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e2be4Ev
 extern "C" {
 int daPly_c::func_ov002_020e2be4() {
     int thr;
@@ -21057,7 +20469,6 @@ int daPly_c::func_ov002_020e2be4() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e2c84Ev
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -21120,7 +20531,6 @@ int daPly_c::func_ov002_020e2c84() {
 }
 }
 
-// @symbol _ZN7daPly_c22TryEnterBigFallLandingEv
 extern "C" {
 int daPly_c::TryEnterBigFallLanding() {
     char *base = (char *)this;
@@ -21183,7 +20593,6 @@ ret0:
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e301cEv
 extern "C" {
 void daPly_c::func_ov002_020e301c() {
     extern dCamera_c *data_0209f318;
@@ -21195,13 +20604,11 @@ void daPly_c::func_ov002_020e301c() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e3078EPv
 struct Player3078 { char p[0x400]; };
 int daPly_c::func_ov002_020e3078(void *s) {
     return mPrevState == s;
 }
 
-// @symbol _ZN7daPly_c7IsStateERNS_5StateE
 /* recovered: real C++ method, named members + shared header */
 /* Five instructions, and every one of them is in the source now:
      ldr r0, [r0, #0x370]   -> mState
@@ -21219,7 +20626,6 @@ bool daPly_c::IsState(daPly_c::State &state) {
     return mState == &state;
 }
 
-// @symbol _ZN7daPly_c11ChangeStateERNS_5StateE
 /* recovered: named members + shared header, real C++ method,
  * declarations from a shared header
  *
@@ -21328,7 +20734,6 @@ int daPly_c::ChangeState(daPly_c::State &state) {
 }
 }
 
-// @symbol _ZN7daPly_c16CleanupResourcesEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 /* _020bdef0, _020bdd9c, _020e032c and __cxa_vec_delete come from decl_common.h
@@ -21540,7 +20945,6 @@ int daPly_c::CleanupResources() {
 }
 }
 
-// @symbol _ZN7daPly_c16OnPendingDestroyEv
 /* recovered: named members + shared header, real C++ method */
 /* daPly_c::OnPendingDestroy() at 0x020e3a04 (ov002) -- vtable slot 12.
  * Empty override; daPly_c does nothing when marked for destruction.
@@ -21549,7 +20953,6 @@ void daPly_c::OnPendingDestroy() {
     (void)this;
 }
 
-// @symbol _ZN7daPly_c6RenderEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 extern "C" {
@@ -21672,7 +21075,6 @@ int daPly_c::Render() {
 }
 }
 
-// @symbol func_ov002_020e3e00
 /* recovered: shared common types */
 //
 /* decl_common.h is deliberately NOT included. This file declares its callees
@@ -21744,7 +21146,6 @@ extern "C" void func_ov002_020e3e00(dExtSimpleModel_c *obj, Vector3 *vec, unsign
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e3f90Ev
 extern "C" {
 int daPly_c::func_ov002_020e3f90() {
     extern void ApproachAngle(short* v, int target, int a, int b, int c);
@@ -21844,7 +21245,6 @@ int daPly_c::func_ov002_020e3f90() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e4374EPiS0_
 void daPly_c::func_ov002_020e4374(int *p1, int *p2) {
     int v;
     int m;
@@ -21864,7 +21264,6 @@ void daPly_c::func_ov002_020e4374(int *p1, int *p2) {
     *p1 += 0x28000;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e444cEv
 /* recovered: shared common types, declarations from a shared header */
 /* recovered: shared common types */
 extern "C" {
@@ -21951,7 +21350,6 @@ void daPly_c::func_ov002_020e444c() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e4768Ev
 // local extern: include-free shard, the call passes the object as an untyped pointer so it cannot use the header member
 extern "C" {
 extern "C" {
@@ -22017,7 +21415,6 @@ void daPly_c::func_ov002_020e4768() {
 }
 }
 
-// @symbol func_ov002_020e496c
 extern "C" {
 int func_ov002_020e496c(daPly_c *c) {
     daPly_c *player = (daPly_c *)c;
@@ -22026,7 +21423,6 @@ int func_ov002_020e496c(daPly_c *c) {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e4990Ev
 int daPly_c::func_ov002_020e4990() {
     int id;
     int b;
@@ -22046,7 +21442,6 @@ int daPly_c::func_ov002_020e4990() {
     return 1;
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e4bb8Ev
 void daPly_c::func_ov002_020e4bb8() {
     u8 save_6fd;
     u8 save_6f9;
@@ -22117,7 +21512,6 @@ void daPly_c::func_ov002_020e4bb8() {
     mHasWings = save_6ff;
 }
 
-// @symbol _ZN7daPly_c8BehaviorEv
 /* recovered: named members + shared header, real C++ method, declarations from a shared header */
 /* recovered: named members + shared header, real C++ method */
 /* local extern: the call passes an untyped this, so it cannot use the header method. */
@@ -22386,7 +21780,6 @@ after_player_slot:
 }
 #undef LAU
 
-// @symbol _ZN7daPly_c13InitResourcesEv
 /* recovered: named members + shared header, real C++ method */
 // Match: daPly_c::InitResources (ov002:0x020e558c).
 // The 0x14-byte block allocated for mHeldObjQueue is zeroed in place with
@@ -22533,7 +21926,6 @@ Ld0:
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e5948Ev
 /* defined in src/game/actors/d_a_obj1up_logo.cpp */
 #pragma push
 #pragma opt_propagation off
@@ -22822,7 +22214,6 @@ void daPly_c::func_ov002_020e5948() {
 }
 #pragma pop
 
-// @symbol _ZN7daPly_c18PlayCharacterSoundEv
 extern "C" {
 void daPly_c::PlayCharacterSound() {
     extern void func_02011f7c(int a);
@@ -22830,7 +22221,6 @@ void daPly_c::PlayCharacterSound() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e6350Ev
 extern "C" {
 void daPly_c::func_ov002_020e6350() {
     extern int func_02011ee4(int x);
@@ -22841,7 +22231,6 @@ void daPly_c::func_ov002_020e6350() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e63a4Ev
 void daPly_c::func_ov002_020e63a4() {
     int v[3];
     v[0] = data_ov002_0210f92c[0];
@@ -22883,7 +22272,6 @@ struct PlayerFileBone {
 };
 typedef char PlayerFileBone_size_must_be_0x40[sizeof(PlayerFileBone) == 0x40 ? 1 : -1];
 
-// @symbol _ZN7daPly_c19func_ov002_020e640cEv
 extern "C" {
 void daPly_c::func_ov002_020e640c() {
     extern void Vec3_RotateYAndTranslate(Vector3 *dst, const Vector3 *src, s16 ang, const Vector3 *t);
@@ -22992,7 +22380,6 @@ void daPly_c::func_ov002_020e640c() {
 }
 }
 
-// @symbol _ZN7daPly_c19func_ov002_020e6780Ev
 void daPly_c::func_ov002_020e6780() {
     mSpineRot[0] = 0;
     mSpineRot[1] = 0;
@@ -23011,8 +22398,6 @@ void daPly_c::func_ov002_020e6780() {
  * is not in the cartridge. */
 #pragma defer_codegen on
 
-// @symbol _ZN7daPly_cD0Ev
-// @symbol _ZN7daPly_cD1Ev
 daPly_c::~daPly_c() {}
 
 #pragma defer_codegen off
@@ -23020,16 +22405,13 @@ daPly_c::~daPly_c() {}
 /* Every member is built by the compiler. mModels' implicit constructor is
  * inlined with its own `this` (daPly_c + 0xdc), which is the second base
  * register the retail body carries. C2 is not in the cartridge. */
-// @symbol _ZN7daPly_cC1Ev
 daPly_c::daPly_c() {}
 
-// @symbol _ZN7daPly_c13OnYoshiTryEatEv
 int daPly_c::OnYoshiTryEat() {
     (void)this;
     return 1;
 }
 
-// @symbol func_ov002_020e69c0
 extern "C" {
 extern unsigned short data_ov002_0210a760[];
 void func_ov002_020e69c0(void *unused)
@@ -23055,7 +22437,6 @@ static inline int Color_Lerp(int to, int t, int fromScaled) {
 
 /* Blends RGB555 colour from toward to by the fx12 weight t (0..0x1000).
  * The first argument is not read. */
-// @symbol Color_Interp
 int Color_Interp(int unused, int from, int to, int t) {
     int r;
     int g;
@@ -23091,7 +22472,6 @@ struct ColorRamp {
 /* Blends the 32-entry ramp toward data_ov002_0210a760 (which
  * func_ov002_020e69c0 rotates) by blend, into the ramp's second half,
  * and hands that half to func_020555a4. */
-// @symbol func_ov002_020e6a78
 void func_ov002_020e6a78(void *ramp, int blend) {
     unsigned short *src = ((ColorRamp *)ramp)->base;
     unsigned short *target = data_ov002_0210a760;
@@ -23105,7 +22485,6 @@ void func_ov002_020e6a78(void *ramp, int blend) {
 
 /* Fills both halves of the ramp with the grey ramp (i, i, i) and clears
  * DISP3DCNT bits 1, 12 and 13. */
-// @symbol func_ov002_020e6ad4
 unsigned short *func_ov002_020e6ad4(unsigned short *ramp) {
     unsigned short *dst = ramp;
     unsigned short *copy = ((ColorRamp *)ramp)->blended;
@@ -23135,7 +22514,6 @@ struct ModelMaterial {
 };
 
 /* Zeroes every material's TEXIMAGE_PARAM (the untextured cap flash). */
-// @symbol func_ov002_020e6b3c
 void func_ov002_020e6b3c(void *model) {
     void **p = (void **)((char *)model + 8);
     ModelMaterialRes *res = (ModelMaterialRes *)p[0];
@@ -23147,7 +22525,6 @@ void func_ov002_020e6b3c(void *model) {
 }
 
 /* Writes the words func_ov002_020e6bb0 saved back into the materials. */
-// @symbol func_ov002_020e6b74
 void func_ov002_020e6b74(void *model, int *saved) {
     void **p = (void **)((char *)model + 8);
     ModelMaterialRes *res = (ModelMaterialRes *)p[0];
@@ -23159,7 +22536,6 @@ void func_ov002_020e6b74(void *model, int *saved) {
 }
 
 /* Allocates one word per material and saves each TEXIMAGE_PARAM into it. */
-// @symbol func_ov002_020e6bb0
 int *func_ov002_020e6bb0(void *model) {
     void **pp;
     ModelMaterialRes *res;
@@ -24023,7 +23399,6 @@ enum sinit_ov002_021019d0_AssetId {
     ASSET_Y_TX_SLEEP_TO_LIE_BTP = 0x0586
 };
 
-// @symbol __sinit_ov002_021019d0
 extern "C" {
 void func_0203b9b4(int *p, int v);
 void __register_global_object(void *object, void *destructor, void **node);

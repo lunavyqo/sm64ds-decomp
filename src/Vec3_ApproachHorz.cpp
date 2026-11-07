@@ -29,7 +29,6 @@ extern void SubVec3(Vector3 *a, Vector3 *b, Vector3 *c);
 extern int Vec3_Equal(const struct Vector3 *a, const struct Vector3 *b);
 }
 
-// @symbol _Z14ApproachLinearR7Vector3RKS_i
 int ApproachLinear(Vector3 &dst, const Vector3 &target, int step) {
     struct Vector3 diff;
     struct Vector3 scaled;
@@ -48,7 +47,6 @@ int ApproachLinear(Vector3 &dst, const Vector3 &target, int step) {
     return 0;
 }
 
-// @symbol Vec3_ApproachHorz
 extern "C" int Vec3_ApproachHorz(struct Vec3 *out, struct Vec3 *a, int maxStep) {
     struct Vector3 diff;
     struct Vector3 scaled;
