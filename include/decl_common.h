@@ -920,7 +920,6 @@ extern void*data_ov016_021136e4[];
 extern void*data_ov016_021149d4[];
 extern void*data_ov023_02112088;
 /* data_ov026_02113f3c is defined by d_a_water_tatumaki.cpp. */
-extern void*data_ov027_02112ca4[3];
 extern void*data_ov034_02113838[];
 extern void*data_ov034_0211384c[];
 extern void*data_ov034_02113860[];
@@ -930,7 +929,6 @@ extern void*data_ov034_0211389c[];
 extern void*data_ov034_021138b0[];
 extern void*data_ov051_021116b0[];
 extern void*data_ov065_0211c0a8[];
-extern void*data_ov065_0211cd68[];
 extern void*data_ov065_0211cfd8[];
 extern void*data_ov065_0211d768[];
 extern void*data_ov065_0211d770[];
