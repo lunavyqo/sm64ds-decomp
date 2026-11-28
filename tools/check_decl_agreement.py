@@ -192,7 +192,11 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 BASELINE = REPO / "config" / "decl-agreement-baseline.json"
 
 # Floors. A scan smaller than this means the parser broke, not that the tree got tidy.
-MIN_FILES = 2000
+# MIN_FILES was 2000 while the tree carried one file per shard; the fold integration
+# retires hundreds of single-function shards into consolidated translation units, so
+# the post-fold tree scans about 1800 files legitimately. 1500 still trips only when
+# the parser breaks -- a broken scan reads single digits, never four.
+MIN_FILES = 1500
 MIN_DECLS = 5000
 MIN_SYMBOLS = 500
 
