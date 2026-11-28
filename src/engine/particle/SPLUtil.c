@@ -7,6 +7,8 @@
 #include "private/spl_particle_views.h"
 #include "types.h"
 
+extern u32 gSPLRandomState;
+
 /* The default projection for a tracked particle (func_0204dab4): the
    screen x and y are the position's whole parts, y negated, and the
    weight is 0xfff. */
@@ -42,11 +44,6 @@ void func_0204dc84(char *self) {
     rec->x = rec->y;
     rec->particle = 0;
 }
-
-//cpp
-#include "nitro/fx/fx.h"
-#include "private/spl_particle_views.h"
-#include "nitro/fx/fx_cp.h"
 
 /* spl_particle_views.h's record, spelled again so the declaration gate reads
  * TrackingRecord below as a struct tag */
@@ -151,44 +148,31 @@ void func_0204dab4(void *sys, TrackingRecord *buf, int count, unsigned int mask,
     } while (++j < count);
 }
 
-#include "types.h"
-#include "nitro/fx/fx_vec.h"
-extern s32 PARTICLE_RNG_STATE;
-
 /* A random unit vector: three draws from the SPL LCG, each shifted down 8,
  * for x, y and z, then normalized. The name is pret's SPL's
  * (its spl_random.c, pret-coined). */
 void SPLRandom_VecFx32(VecFx32 *out) {
-    s32 s = PARTICLE_RNG_STATE;
-    s32 x = ((unsigned int)s * 0x5eedf715u + 0x1b0cb173u);
-    PARTICLE_RNG_STATE = x;
+    s32 x = gSPLRandomState * 0x5eedf715u + 0x1b0cb173u;
+    gSPLRandomState = x;
     out->x = x >> 8;
-    s = PARTICLE_RNG_STATE;
-    s32 y = ((unsigned int)s * 0x5eedf715u + 0x1b0cb173u);
-    PARTICLE_RNG_STATE = y;
+    s32 y = gSPLRandomState * 0x5eedf715u + 0x1b0cb173u;
+    gSPLRandomState = y;
     out->y = y >> 8;
-    s = PARTICLE_RNG_STATE;
-    s32 z = ((unsigned int)s * 0x5eedf715u + 0x1b0cb173u);
-    PARTICLE_RNG_STATE = z;
+    s32 z = gSPLRandomState * 0x5eedf715u + 0x1b0cb173u;
+    gSPLRandomState = z;
     out->z = z >> 8;
     VEC_Normalize(out, out);
 }
-
-#include "types.h"
-#include "nitro/fx/fx_vec.h"
-extern u32 gSPLRandomState;
 
 /* A random unit vector in the XY plane: two draws from the SPL LCG, each
  * shifted down 8, for x and y, z = 0, then normalized. The name is pret's
  * SPL's (its spl_random.c, pret-coined); pret's file defines
  * SPLRandom_VecFx32 first, and mwccarm emits in reverse source order. */
 void SPLRandom_VecFx32_XY(VecFx32 *out) {
-    s32 s = gSPLRandomState;
-    s32 x = ((unsigned int)s * 0x5eedf715u + 0x1b0cb173u);
+    s32 x = gSPLRandomState * 0x5eedf715u + 0x1b0cb173u;
     gSPLRandomState = x;
     out->x = x >> 8;
-    s = gSPLRandomState;
-    s32 y = ((unsigned int)s * 0x5eedf715u + 0x1b0cb173u);
+    s32 y = gSPLRandomState * 0x5eedf715u + 0x1b0cb173u;
     gSPLRandomState = y;
     out->y = y >> 8;
     out->z = 0;

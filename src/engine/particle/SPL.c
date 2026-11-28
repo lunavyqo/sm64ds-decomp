@@ -57,6 +57,24 @@ struct Tex {
 };
 
 extern u32 gSPLRandomState;
+/* The color animation (func_0204d294's ColorRampInit; SPL's SPLColorAnim). */
+typedef struct ColorRampInit {
+    u16 startColor;           /* 0x0 */
+    u16 endColor;             /* 0x2 */
+    u8 pad[4];                /* 0x4 */
+    u16 randomStartColor : 1; /* 0x8 bit 0 */
+    u16 frest : 15;
+} ColorRampInit;
+
+/* The texture animation (func_0204d150's TexAnimInit; SPL's SPLTexAnim). */
+typedef struct TexAnimInit {
+    u8 textures[8];        /* 0x0 */
+    u32 frameCount : 8;    /* 0x8 bits 0-7 */
+    u32 step : 8;          /* bits 8-15 */
+    u32 randomizeInit : 1; /* bit 16 */
+    u32 prest : 15;
+} TexAnimInit;
+
 extern VecFx16 sUpVector;
 extern void (*sRotationFunctions[])(int, int, void *);
 extern void (*sPlaneDrawingFunctions[])(u8, u8);
@@ -94,8 +112,6 @@ void SPLEmitter_Update(void *manager, void *self);
 void SPLManager_DoDraw(char *self);
 void SPLEmitter_Emit(void *self, void *list);
 
-#include "private/spl_particle_views.h"
-
 /* The particle definition's scale animation (SPL's SPLScaleAnim): the scale
  * ramps start -> mid over life rates [0, in), holds mid until out, then ramps
  * mid -> end over [out, 255]. */
@@ -128,8 +144,6 @@ void SPLAnim_Scale(ParticleElement *ptcl, PtclDef *def, int lifeRate) {
     }
 }
 
-#include "types.h"
-#include "private/spl_particle_views.h"
 /* Three-stop RGB555 colour ramp entry (SPL's SPLColorAnim). */
 struct ColorRamp {
     u16 startColor;
@@ -228,14 +242,10 @@ void SPLAnim_Color(ParticleElement *ptcl, PtclDef *data, int age) {
     ptcl->color = ramp->endColor;
 }
 
-#include "types.h"
-#include "private/spl_particle_views.h"
-extern u32 gSPLRandomState;
-
 /* The particle's 0x40 halfword (SPL's visibility): the base alpha in bits 0-4,
  * the animated alpha in bits 5-9. This
- * callback rewrites the halfword whole, so it keeps this view rather than
- * spl_particle_views.h's ParticleElement, which spells it as bitfields. */
+ * callback rewrites the halfword whole, so it uses the local visibility view
+ * above rather than spl_particle_views.h's bitfield spelling. */
 
 /* Three 5-bit alpha stops in one halfword. */
 struct AlphaStops {
@@ -289,9 +299,6 @@ void SPLAnim_Alpha(struct ParticleAlphaView *ptcl, PtclDef *def, int lifeRate) {
          ((((u32)((value * (255 - ((range * (int)(s >> 0x18)) >> 8))) << 8) >> 0x10) & 0x1f) << 5));
 }
 
-#include "types.h"
-#include "private/spl_particle_views.h"
-
 /* The particle definition's texture animation (SPL's SPLTexAnim): up to eight
  * texture indices, each shown for `step` life-rate units. */
 struct TexAnim {
@@ -313,8 +320,6 @@ void SPLAnim_Texture(ParticleElement *ptcl, PtclDef *def, int lifeRate) {
     }
 }
 
-#include "private/spl_particle_views.h"
-
 /* The child particles' scale callback: the scale runs from 1.0 at birth to
  * child->endScale at lifeRate 255. The name is pret's SPL coinage, not a ROM
  * or SDK symbol. */
@@ -326,12 +331,10 @@ void SPLAnim_ChildScale(ParticleElement *ptcl, PtclDef *def, int lifeRate) {
     ptcl->animScale = endScale + delta;
 }
 
-#include "types.h"
-
 /* The particle's 0x40 halfword (SPL's visibility): the base alpha in bits 0-4
  * (SPLEmitter_EmitParticles seeds it), the animated alpha in bits 5-9. This
- * callback rewrites the halfword whole, so it keeps this view rather than
- * spl_particle_views.h's ParticleElement, which spells it as bitfields. */
+ * callback rewrites the halfword whole, so it uses the local visibility view
+ * above rather than spl_particle_views.h's bitfield spelling. */
 
 /* The child particles' alpha callback: the animated alpha fades from 31 at
  * birth to 0 at lifeRate 255. The name is pret's SPL coinage, not a ROM or
@@ -342,32 +345,7 @@ void SPLAnim_ChildAlpha(struct ParticleAlphaView *ptcl, void *def, int lifeRate)
     *visibility = (*visibility & ~0x3e0) | ((alpha & 0x1f) << 5);
 }
 
-#include "types.h"
-#include "nitro/fx/fx.h"
-#include "nitro/fx/fx_trig.h"
-#include "nitro/fx/fx_vec.h"
-#include "private/spl_particle_views.h"
-
-/* The color animation (func_0204d294's ColorRampInit; SPL's SPLColorAnim). */
-typedef struct ColorRampInit {
-    u16 startColor;           /* 0x0 */
-    u16 endColor;             /* 0x2 */
-    u8 pad[4];                /* 0x4 */
-    u16 randomStartColor : 1; /* 0x8 bit 0 */
-    u16 frest : 15;
-} ColorRampInit;
-
-/* The texture animation (func_0204d150's TexAnimInit; SPL's SPLTexAnim). */
-typedef struct TexAnimInit {
-    u8 textures[8];        /* 0x0 */
-    u32 frameCount : 8;    /* 0x8 bits 0-7 */
-    u32 step : 8;          /* bits 8-15 */
-    u32 randomizeInit : 1; /* bit 16 */
-    u32 prest : 15;
-} TexAnimInit;
-
 extern VecFx16 sUpVector;
-extern u32 gSPLRandomState;
 
 static inline u32 RandVal(void) {
     u32 s = gSPLRandomState * 0x5eedf715u + 0x1b0cb173u;
@@ -598,13 +576,8 @@ void SPLEmitter_EmitParticles(ParticleSystem *sys, List *list) {
     } while (i < count);
 }
 
-#include "types.h"
-#include "private/spl_particle_views.h"
-
 /* Particle::System (include/Particle__System.h) as the child spawn reads it:
    the second particle list holds the children. */
-
-extern u32 gSPLRandomState;
 
 /* Spawn child->count particles from the parent particle self into sys's
    child list. SPLEmitter_Update calls it for a live particle at the emission
@@ -705,8 +678,6 @@ void SPLEmitter_EmitChildren(ParticleElement *self, SystemListView *sys, List *f
     } while (i < def->count);
 }
 
-#include "nitro/gx/g3imm_cmd.h"
-
 /* Draw the unit quad in the XY plane (z = 0), with the texture repeated
  * 2^tileS by 2^tileT times. The particle draws pick it or SPLUtil_DrawXZPlane out of
  * sPlaneDrawingFunctions by the definition's polygon reference plane. The name is pret's SPL's
@@ -727,8 +698,6 @@ void SPLUtil_DrawXYPlane(int tileS, int tileT) {
     G3_End();
 }
 
-#include "nitro/gx/g3imm_cmd.h"
-
 /* Draw the unit quad in the XZ plane (y = 0), with the texture repeated
  * 2^tileS by 2^tileT times. The particle draws pick it or SPLUtil_DrawXYPlane out of
  * sPlaneDrawingFunctions by the definition's polygon reference plane. The name is pret's SPL's
@@ -748,8 +717,6 @@ void SPLUtil_DrawXZPlane(int tileS, int tileT) {
     G3_Vtx10(-0x1000, 0, -0x1000);
     G3_End();
 }
-
-#include "nitro/fx/fx.h"
 
 /* Build a rotation about the (1, 1, 1) diagonal from its sine and cosine:
  * 0x555 is 1/3 and 0x93d is sqrt(1/3) in 20.12. The particle draws pick it or
@@ -775,9 +742,6 @@ void SPLUtil_RotateXYZ(int sin, int cos, MtxFx43 *mat) {
     mat->m[3][2] = 0;
 }
 
-#include "types.h"
-#include "nitro/fx/fx.h"
-
 /* Build a rotation about Y from its sine and cosine. The particle draws pick
  * it or SPLUtil_RotateXYZ out of sRotationFunctions by the definition's polygon
  * rotation axis. The name is pret's SPL's. */
@@ -795,13 +759,6 @@ void SPLUtil_RotateY(int sin, int cos, MtxFx43 *mat) {
     mat->m[2][2] = cos;
     mat->m[3][2] = 0;
 }
-
-#include "common.h"
-#include "nitro/fx/fx.h"
-#include "nitro/fx/fx_trig.h"
-#include "private/spl_particle_views.h"
-#include "nitro/gx/g3imm_cmd.h"
-#include "nitro/fx/fx_mtx43.h"
 
 /* Draw one particle as a camera-facing quad (draw type 0, SPLManager_DoDraw):
  * alpha and the next polygon ID into POLYGON_ATTR (nothing more when the
@@ -877,13 +834,6 @@ void SPLDraw_Billboard(ManagerView *mgr, ParticleElement *ptcl) {
     }
 }
 
-#include "common.h"
-#include "nitro/fx/fx.h"
-#include "nitro/fx/fx_trig.h"
-#include "private/spl_particle_views.h"
-#include "nitro/gx/g3imm_cmd.h"
-#include "nitro/fx/fx_mtx43.h"
-
 /* Draw one child particle as a camera-facing quad (child draw type 0,
  * SPLManager_DoDraw): SPLDraw_Billboard with the child record's tile counts. The
  * name is pret's SPL's. */
@@ -953,15 +903,6 @@ void SPLDraw_Child_Billboard(ManagerView *mgr, ParticleElement *ptcl) {
         SPLUtil_DrawXYPlane((u8)child->textureTileCountS, (u8)child->textureTileCountT);
     }
 }
-
-#include "common.h"
-#include "nitro/fx/fx.h"
-#include "nitro/fx/fx_vec.h"
-#include "nitro/fx/fx_mtx33.h"
-#include "nitro/fx/fx_mtx43.h"
-#include "private/spl_particle_views.h"
-#include "nitro/gx/g3imm_cmd.h"
-#include "nitro/mi/memory.h"
 
 /* No header declares these. */
 
@@ -1066,15 +1007,6 @@ void SPLDraw_DirectionalBillboard(ManagerView *mgr, ParticleElement *ptcl) {
     }
 }
 
-#include "common.h"
-#include "nitro/fx/fx.h"
-#include "nitro/fx/fx_vec.h"
-#include "nitro/fx/fx_mtx33.h"
-#include "nitro/fx/fx_mtx43.h"
-#include "private/spl_particle_views.h"
-#include "nitro/gx/g3imm_cmd.h"
-#include "nitro/mi/memory.h"
-
 /* No header declares these. */
 
 /* Draw one child particle as a quad stretched along its flight (child draw
@@ -1172,13 +1104,6 @@ void SPLDraw_Child_DirectionalBillboard(ManagerView *mgr, ParticleElement *ptcl)
     }
 }
 
-#include "types.h"
-#include "nitro/fx/fx.h"
-#include "nitro/fx/fx_trig.h"
-#include "private/spl_particle_views.h"
-#include "nitro/gx/g3imm_cmd.h"
-#include "math/MtxStack.h"
-
 extern void MTX_Scale43_(Matrix4x3 *m, int sx, int sy, int sz); /* scale matrix */
 extern void G3_LoadMtx43(void *m);                              /* load the 4x3 matrix */
 extern void G3_MultMtx43(void *m);                              /* multiply by the 4x3 matrix */
@@ -1243,17 +1168,6 @@ void SPLDraw_Polygon(ManagerView *mgr, ParticleElement *ptcl) {
     }
 }
 
-#include "types.h"
-#include "nitro/fx/fx.h"
-#include "nitro/fx/fx_trig.h"
-#include "private/spl_particle_views.h"
-#include "nitro/gx/g3imm_cmd.h"
-#include "math/MtxStack.h"
-
-extern void MTX_Scale43_(Matrix4x3 *m, int sx, int sy, int sz); /* scale matrix */
-extern void G3_LoadMtx43(void *m);                              /* load the 4x3 matrix */
-extern void G3_MultMtx43(void *m);                              /* multiply by the 4x3 matrix */
-
 /* Draw one child particle as a textured quad (child draw type 2,
  * SPLManager_DoDraw): SPLDraw_Polygon with the child record's rotation axis, plane
  * and tile counts, and the rotation applied before the scale. The name is
@@ -1312,11 +1226,6 @@ void SPLDraw_Child_Polygon(ManagerView *mgr, ParticleElement *ptcl) {
     }
 }
 
-#include "types.h"
-#include "nitro/fx/fx.h"
-#include "nitro/gx/g3imm.h"
-#include "nitro/gx/g3imm_cmd.h"
-
 /* Bind a particle texture record: set its image and palette (texture
    coordinates from the texcoord command, texGen 1), then load a texture
    matrix that scales by its width and height. SPLManager_DoDraw binds the system's
@@ -1338,10 +1247,7 @@ void SPLUtil_SetTexture(struct Tex *self) {
    : SPLUtil_SetTexture_Stub`). */
 void SPLUtil_SetTexture_Stub(void *texture) {}
 
-#include "types.h"
 /* recovered: shared common types */
-#include "common.h"
-#include "private/spl_particle_views.h"
 struct H2 {
     u16 a, b;
 };
@@ -1387,8 +1293,6 @@ void SPLEmitter_Init(ParticleSystem *o, void *p18, struct Vector3 *src3) {
     o->m70 = 0;
 }
 
-#include "types.h"
-#include "nitro/fx/fx.h"
 /* SPLEmitter_Update @ 0x0204a730 (arm9, size 0x6fc)   [mwccarm 2004/b56]
  * Particle system update: emit, run the per-particle animation and behavior
  * tables, integrate, spawn children and retire expired particles, then the
@@ -1584,7 +1488,7 @@ void SPLEmitter_Update(void *manager, void *self) {
     if (emitterLifeTime == 0 || sys->age < emitterLifeTime) {
         if (sys->age % sys->emitInterval == 0) {
             if (!sys->terminate && !sys->stopGenerate) {
-                SPLEmitter_EmitParticles((ParticleSystem *)self, (List *)&mgr->freeParticles);
+                SPLEmitter_EmitParticles(self, (List *)&mgr->freeParticles);
             }
         }
     }
@@ -1670,7 +1574,7 @@ void SPLEmitter_Update(void *manager, void *self) {
                 s32 r1 = FX_MUL(a, b);
                 s32 r0 = (life << 12) - (r1 >> 8);
                 if (life != 0 && r0 >= 0 && ((r0 >> 12) % cfg->emissionInterval) == 0) {
-                    SPLEmitter_EmitChildren((ParticleElement *)node, (SystemListView *)self,
+                    SPLEmitter_EmitChildren((ParticleElement *)node, self,
                                             (List *)&mgr->freeParticles);
                 }
             }
@@ -1774,9 +1678,6 @@ void SPLEmitter_Update(void *manager, void *self) {
         cb(self);
     }
 }
-
-#include "types.h"
-#include "private/spl_particle_views.h"
 
 /* Draw the current system's particles, then its child particles: bind the
  * definition's texture, pick the draw routine by draw type (billboard,
