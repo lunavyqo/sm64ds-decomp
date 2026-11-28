@@ -32,10 +32,10 @@ extern int myFS_ReadFile(FSFile *p_file, void *dst, int len);
 extern int myFS_ConvertPathToFileID(FSFileID *p_file_id, const char *path);
 extern unsigned func_02018ac4(unsigned *p);
 extern void DecompressLZ16(void *src, void *dst);
-extern int func_0204eda4(int file, char *archive, unsigned int index);
-extern int func_0204ede8(void *o, unsigned int i);
+extern int func_0204eda4(FSFile *file, struct S82 *archive, unsigned int index);
+extern int func_0204ede8(struct S82 *archive, unsigned int i);
 extern int func_0204ee10(struct S82 *archive);
-extern int func_0204ee40(void *archive, void *name, void *narc);
+extern int func_0204ee40(struct S82 *archive, char *name, char *narc);
 extern s32 GetOwnerLanguage(void);
 extern void *data_020a0ea0;
 extern int data_0208edf8[];
@@ -95,18 +95,18 @@ int func_020189f0(const char *path) {
    mount it there under name (func_0204ee40). Returns the block, or 0
    (freeing it) if the read or the mount fails. */
 enum { ARCHIVE_HEAD_SIZE = 0x60 };
-void *func_02018934(char *name, char *path, void *heap) {
+struct S82 *func_02018934(char *name, char *path, void *heap) {
     FSFile file;
-    void *result = 0;
-    void *ptr;
-    void *p60;
+    struct S82 *result = 0;
+    struct S82 *ptr;
+    char *p60;
     int diff, aligned;
 
     FS_InitFile(&file);
     myFS_OpenFile(&file, path);
     diff = FS_GetLength(&file);
     aligned = (diff + 15) & ~15;
-    ptr = ((mHeap::Heap_t *)heap)->_Allocate(aligned + ARCHIVE_HEAD_SIZE, -0x10);
+    ptr = (struct S82 *)((mHeap::Heap_t *)heap)->_Allocate(aligned + ARCHIVE_HEAD_SIZE, -0x10);
     p60 = (char *)ptr + ARCHIVE_HEAD_SIZE;
     DC_FlushRange(p60, aligned);
     if (myFS_ReadFile(&file, p60, diff) == diff && func_0204ee40(ptr, name, p60)) {
@@ -249,7 +249,7 @@ int func_020185c0(FSFile *file, unsigned int id) {
                         return 0;
                     }
                 }
-                result = func_0204eda4((int)file, (char *)e->archive, id - e->firstFileId);
+                result = func_0204eda4(file, e->archive, id - e->firstFileId);
                 break;
             }
             i++;

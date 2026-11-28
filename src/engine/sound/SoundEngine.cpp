@@ -390,7 +390,7 @@ extern void SND_DestroyBank(struct SNDBankData *bank);
 extern void SND_AssignWaveArc(struct SNDBankData *bank, int index, struct SNDWaveArc *waveArc);
 
 /* In-span forward declarations. */
-extern int func_0204eda4(int r0, char* a, u32 idx);
+extern int func_0204eda4(FSFile *file, struct S82 *archive, u32 idx);
 extern int func_0204ee10(struct S82 *self);
 extern int func_0204ede8(struct S82 *o, unsigned int i);
 extern int func_0204ee40(struct S82 *self, char *name, char *p);
@@ -2431,13 +2431,13 @@ extern "C" int func_0204ede8(struct S82 *o, unsigned int i) {
     return r;
 }
 
-extern "C" int func_0204eda4(int r0, char *a, u32 idx) {
+extern "C" int func_0204eda4(FSFile *file, struct S82 *archive, u32 idx) {
     int r = 0;
-    if (idx < ((struct S82 *)a)->f54->fileCount) {
+    if (idx < archive->f54->fileCount) {
         FSFileID id;
-        id.arc = &((struct S82 *)a)->arc;
+        id.arc = &archive->arc;
         id.file_id = idx;
-        r = FS_OpenFileFast((FSFile *)r0, id);
+        r = FS_OpenFileFast(file, id);
     }
     return r;
 }
