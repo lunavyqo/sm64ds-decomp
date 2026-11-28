@@ -41,7 +41,7 @@ extern "C" {
 #endif
 extern CaptureEffect gCaptureEffect;
 
-void func_02049ba8(void *, void *, unsigned int, int, CaptureEffect *);
+void func_02049ba8(short *, short *, unsigned int, int, CaptureEffect *);
 void func_020499bc(short *, short *, unsigned int, CaptureEffect *);
 void func_020497a0(short *, short *, unsigned int, CaptureEffect *);
 #ifdef __cplusplus
