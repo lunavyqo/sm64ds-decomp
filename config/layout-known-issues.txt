@@ -45,3 +45,9 @@ L2 func_ov084_0212d564
 # ov009/029/034/036/043: the remaining code-free #5594 groups, one array
 # per contiguous free run; the delinks map claims each run at its cartridge
 # addresses.
+
+# --- L3: address-named data in src/unnamed/<mod>/ --------------------------------
+# srcpath's address-name regex covers func_/FUN_/__sinit only, so a data shard whose
+# name is its address reads as "carries a name" to the bucket check. Same shape main
+# already banked for the retired src/unnamed/ov007/data_ov007_02103240.c.
+L3 src/unnamed/ov007/data_ov007_0210324c.c

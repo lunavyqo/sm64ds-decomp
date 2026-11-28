@@ -1045,6 +1045,10 @@ src/engine/fx/FX_vec.c:
     complete
     .text start:0x02053274 end:0x020538b8
 
+src/FX_SinCosTable_.c:
+    complete
+    .rodata start:0x02082214 end:0x02086214
+
 src/FX_AtanTable_.c:
     complete
     .rodata start:0x02086214 end:0x02086314
@@ -1351,7 +1355,7 @@ src/engine/card/CARD_Rom.c:
     .text start:0x02060890 end:0x02060f60
     .bss start:0x020a8780 end:0x020a89a0
 
-src/engine/card/CARD_Request.c:
+src/engine/card/CARDi_Request.c:
     complete
     .text start:0x02060f60 end:0x020610ac
 
