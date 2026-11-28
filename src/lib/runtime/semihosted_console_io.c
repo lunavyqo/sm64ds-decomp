@@ -1,4 +1,6 @@
-/* The ARM runtime's semihosted_console_io: the three SYS semihosting stubs
+/* HAND-ASM PRIMITIVE: byte-faithful asm-block match. Per asm policy.
+
+   The ARM runtime's semihosted_console_io: the three SYS semihosting stubs
  * and the MSL debug-console procs built on them. pret pokediamond carries
  * the same six functions as the one RUNTIME_ARM object
  * arm9/asm/RUNTIME_ARM_semihosted_console_io.s (sys_writec, sys_readc,

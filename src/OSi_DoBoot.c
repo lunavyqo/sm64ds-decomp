@@ -1,3 +1,41 @@
+// HAND-ASM PRIMITIVE: byte-faithful asm-block match (assembly-only primitive). Per asm policy.
+//
+// OSi_DoBoot at 0x01ffdb28 (ITCM) -- NitroSDK, the last step of OS_ResetSystem (see
+// src/OSi_ReloadRomData.c): after OSi_ReloadRomData has reloaded both binaries off the
+// card, this hands off to the freshly loaded ARM9 image and never returns. The SDK ships
+// it as an asm function in OS_reset.c. pret/pokediamond's copy has the same shape: IME
+// off, the REG_IPCSYNC handshake, scratch clears that keep the exception-vector word at
+// 0x027ffd9c, then a jump through the header's ARM9 entry with r0-r10 loaded. This older
+// SDK clears two 0x80-byte blocks with func_02059d98 where the later one clears three
+// smaller blocks with OSi_CpuClear32.
+//
+// Why this is assembly and not C, independent of the instruction list:
+//   * It makes two `bl func_02059d98` calls with NO prologue and NO frame, and keeps
+//     live values in r1 and ip straight across them -- the saved word at 0x027ffd9c
+//     is held in ip over the first call, and the REG_IPCSYNC pointer in r1 over both.
+//     That is only sound because the callee (src/unnamed/arm9/0205/func_02059d98.c, a hand-asm block
+//     clear) is known to touch r0-r10 and nothing else. No compiler assumes a
+//     callee's clobber set; mwccarm would spill to callee-saved registers and push.
+//   * The tail is a bulk register load, `ldmia r11, {r0-r10}`, followed by `mov r11, #0`
+//     and `bx ip` -- eleven registers set up as the entry state of another program and
+//     then jumped to. C has no construct that assigns the register file and transfers.
+//   * It never returns, so it never needs lr; `mov lr, ip` seeds the new image's lr
+//     with its own entry point instead.
+//
+// The handshake: wait until the ARM7 puts 1 in REG_IPCSYNC's input nibble, answer with
+// 1 in the output nibble (0x100), clear the two 0x80-byte scratch blocks at 0x027ffd80
+// and 0x027fff80 -- preserving the word at 0x027ffd9c across the first clear -- then
+// wait for the ARM7 to drop its 1 and release the register. 0x027ffe24 is the ARM9
+// entry-address field of the cartridge header copy at 0x027ffe00, the same block
+// src/OSi_ReloadRomData.c reads its ROM offset / RAM address / size triples out of.
+//
+// 0x04000208 is REG_IME; storing 0x04000000 there clears bit 0, i.e. interrupts off.
+// The I/O base doubles as both the value and the store's base register.
+// OSi_HW_DTCM is the SDK's own spelling of the DTCM base in OS_reset.c. The word it
+// clears, 0x3fc0 + HW_DTCM_SYSRV_OFS_INTR_VECTOR, is the IRQ vector in the system
+// reserve. The same pool entry is reloaded as the register-image pointer at the end,
+// where the later SDK loads HW_PXI_SIGNAL_PARAM_ARM9 instead.
+
 #include "types.h"
 #include "nitro/hw/mmap_shared.h"
 #include "nitro/hw/mmap_tcm.h"

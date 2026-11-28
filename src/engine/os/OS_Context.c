@@ -1,4 +1,6 @@
-/* The thread execution context (the Nitro SDK's os_context.c), arm9 .text
+/* HAND-ASM PRIMITIVE: byte-faithful asm-block match. Per asm policy.
+
+   The thread execution context (the Nitro SDK's os_context.c), arm9 .text
  * 0x02058568..0x0205865c. All three routines are hand-written assembly in
  * the SDK itself; mwccarm emits asm bodies in source order, the order pret's
  * pokediamond os_context.c writes them in. A later SDK revision adds a
