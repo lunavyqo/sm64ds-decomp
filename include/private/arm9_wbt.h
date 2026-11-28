@@ -48,8 +48,8 @@ typedef struct WBTPeerRecord {
     int block_id; /* 0x10 */
     int seq_no;   /* 0x14 */
     unsigned char pad_18[8];
-    int user_data;    /* 0x20 -- the payload's address in the packet */
-    WBTPeerRecv recv; /* 0x24 */
+    const unsigned char *user_data; /* 0x20 -- the payload's address in the packet */
+    WBTPeerRecv recv;               /* 0x24 */
 } WBTPeerRecord;
 
 /* The WBT work area the library functions take as their first argument. */

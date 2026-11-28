@@ -28,7 +28,7 @@ int func_02064fe8(void *dst, unsigned short b, char c);
 WBTBlockInfoList *func_02065a94(int key);
 void func_02065ad0(WBTBlockInfoList *list);
 WBTBlockInfoList *func_02065ae0(void);
-int func_02065af0(int *thiz);
+int func_02065af0(WBTCommand *thiz);
 WBTCommand *func_02065b88(void);
 WBTWork *func_02065b94(void);
 void func_02065ba0(int v);
@@ -78,7 +78,7 @@ WBTCommand *func_02065b88(void) {
     return &data_020a9570;
 }
 
-int func_02065af0(int *thiz) {
+int func_02065af0(WBTCommand *thiz) {
     OSIntrMode saved = OS_DisableInterrupts();
     WBTCommand *r;
     if (data_020a94c0.initialized != 1) {
@@ -230,7 +230,7 @@ void WBT_RequestSync(u16 target_bmp, WBTCallback callback) {
     cmd.command = WBT_CMD_REQ_SYNC;
     cmd.target_bmp = target_bmp;
     cmd.callback = callback;
-    func_02065af0((int *)&cmd);
+    func_02065af0(&cmd);
 }
 
 /* NitroSDK WBT_GetBlockInfo: WBT_GetBlock's REQ_GET_BLOCK built as
@@ -245,7 +245,7 @@ void WBT_GetBlockInfo(u16 target_bmp, int index, const void *recv_buf_table, WBT
     cmd.u.get.block_id = index;
     cmd.u.get.recv_data_size = sizeof(WBTBlockInfo);
     MI_CpuCopy32(recv_buf_table, cmd.u.get.recv_buf_table, sizeof(cmd.u.get.recv_buf_table));
-    func_02065af0((int *)&cmd);
+    func_02065af0(&cmd);
 }
 
 /* NitroSDK WBT_GetBlock: queue a REQ_GET_BLOCK command asking the peers
@@ -261,7 +261,7 @@ void WBT_GetBlock(u16 target_bmp, u32 block_id, const void *recv_buf_table, u32 
     cmd.u.get.recv_data_size = recv_size;
     MI_CpuCopy32(recv_buf_table, cmd.u.get.recv_buf_table, sizeof(cmd.u.get.recv_buf_table));
     MI_CpuCopy32(pkt_bmp_table, cmd.u.get.pkt_bmp_table, sizeof(cmd.u.get.pkt_bmp_table));
-    func_02065af0((int *)&cmd);
+    func_02065af0(&cmd);
 }
 
 /* NitroSDK WBT_PutUserData: queue a REQ_USER_DATA command that sends the
@@ -276,7 +276,7 @@ int WBT_PutUserData(u16 target_bmp, const void *data, s32 size, WBTCallback call
     cmd.callback = callback;
     MI_CpuCopy8(data, cmd.u.user_data.data, size);
     cmd.u.user_data.size = (u8)size;
-    return func_02065af0((int *)&cmd);
+    return func_02065af0(&cmd);
 }
 
 int data_0209a070 = 1;
@@ -407,7 +407,7 @@ void WBT_InitParent(int send_packet_size, int recv_packet_size, WBTCallback call
         i++;
     } while (i < 16);
     cmd.command = WBT_CMD_REQ_NONE;
-    func_02065af0((int *)&cmd);
+    func_02065af0(&cmd);
     func_02065be0();
     func_02065ba0(send_packet_size - 0xe);
     func_02065bb0(recv_packet_size - 0xe);
@@ -444,7 +444,7 @@ void WBT_InitChild(WBTCallback callback) {
         work->peer[i].last_cmd_counter = 0;
     }
     cmd.command = WBT_CMD_REQ_NONE;
-    func_02065af0((int *)&cmd);
+    func_02065af0(&cmd);
     func_02065be0();
     func_02065ba0(0);
     func_02065bb0(0);
@@ -483,7 +483,7 @@ void WBT_End(void) {
         work->peer[i].last_cmd_counter = 0;
     }
     cmd.command = WBT_CMD_REQ_NONE;
-    func_02065af0((int *)&cmd);
+    func_02065af0(&cmd);
     func_02065be0();
     func_02065ba0(-1);
     func_02065bb0(-1);

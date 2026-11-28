@@ -16,7 +16,7 @@ int func_02063e08(WBTWork *work, int aid, void *buf, int size);
 int func_02063ea8(WBTWork *work, int aid, int buf, int size);
 void func_02064470(WBTWork *self, int r1, int r2);
 void func_02064554(WBTWork *work, int sel, int idx, s16 a3);
-int func_02064674(WBTPacketBitmap *pkt_bmp, int idx, int dst);
+int func_02064674(WBTPacketBitmap *pkt_bmp, int idx, const void *dst);
 int func_0206470c(WBTPacketBitmap *pkt_bmp);
 void func_020647a4(WBTPacketBitmap *pkt_bmp, int value);
 int func_020647d8(WBTPacketBitmap *p, int i);
@@ -38,6 +38,16 @@ int func_02064eac(unsigned char *dst, unsigned short a1, unsigned char a2, short
                   int a5);
 int func_02064f54(unsigned char *dst, unsigned short b, unsigned char c, int d, int e);
 int func_02064fe8(void *dst, unsigned short b, char c);
+
+/* wbt_api.c's half of the library. */
+WBTBlockInfoList *func_02065a94(int key);
+WBTBlockInfoList *func_02065ae0(void);
+void func_02065ba0(int v);
+void func_02065bb0(int v);
+int func_02065bc0(void);
+int func_02065bd0(void);
+void func_02065bf4(void);
+int func_02065c1c(void);
 
 int func_02064fe8(void *dst, unsigned short b, char c) {
     char *p;
@@ -218,8 +228,6 @@ int func_02064a28(unsigned char *dst, unsigned short v, unsigned char b) {
     return c2 + 1 - dst;
 }
 
-extern WBTBlockInfoList *func_02065ae0(void);
-extern int func_02065bc0(void);
 int data_0209a064 = -1;
 int data_0209a068 = -1;
 int data_0209a06c = -1;
@@ -261,9 +269,6 @@ int func_0206491c(unsigned int key, int val) {
     return -1;
 }
 
-extern WBTBlockInfoList *func_02065ae0(void);
-extern int func_02065bc0(void);
-
 char *func_02064888(unsigned int id, int idx) {
     WBTBlockInfoList *node = func_02065ae0();
 
@@ -290,8 +295,6 @@ char *func_02064888(unsigned int id, int idx) {
 
     return 0;
 }
-
-extern int func_02065bd0(void);
 
 /* NitroSDK WBT: reset one peer's packet bitmap for a transfer of length
  * bytes into buffer: the packet count (length over the packet size,
@@ -371,9 +374,7 @@ fail:
     return -1;
 }
 
-extern int func_02065bd0(void);
-
-int func_02064674(WBTPacketBitmap *pkt_bmp, int idx, int dst) {
+int func_02064674(WBTPacketBitmap *pkt_bmp, int idx, const void *dst) {
     int n = func_02065bd0();
     int cnt = pkt_bmp->count;
     unsigned char *base = pkt_bmp->buffer;
@@ -381,11 +382,11 @@ int func_02064674(WBTPacketBitmap *pkt_bmp, int idx, int dst) {
         if (idx == cnt - 1) {
             int rem = pkt_bmp->length % n;
             if (rem != 0)
-                MI_CpuCopy8((const void *)dst, base + idx * n, rem);
+                MI_CpuCopy8(dst, base + idx * n, rem);
             else
-                MI_CpuCopy8((const void *)dst, base + idx * n, n);
+                MI_CpuCopy8(dst, base + idx * n, n);
         } else {
-            MI_CpuCopy8((const void *)dst, base + idx * n, n);
+            MI_CpuCopy8(dst, base + idx * n, n);
         }
     } else {
         return 0;
@@ -431,7 +432,7 @@ void func_02064554(WBTWork *work, int sel, int idx, s16 a3) {
             break;
         }
         o->u.user_data.size = v;
-        MI_CpuCopy8((const void *)c->user_data, o->u.user_data.data, o->u.user_data.size);
+        MI_CpuCopy8(c->user_data, o->u.user_data.data, o->u.user_data.size);
     } break;
     case WBT_CMD_SYSTEM_CALLBACK:
     case WBT_CMD_REQ_ERROR:
@@ -489,9 +490,6 @@ void func_02064470(WBTWork *self, int r1, int r2) {
     if (self->cmd.target_bmp == 0)
         self->cmd.command = WBT_CMD_REQ_NONE;
 }
-
-extern void func_02065ba0(int size);
-extern void func_02065bb0(int size);
 
 /* Whether this console's aid is set in a packet's target bitmap. */
 static inline int IsTargeted(u16 bmp) {
@@ -590,7 +588,7 @@ int func_02063ea8(WBTWork *work, int aid, int buf, int size) {
                 field = 9;
                 break;
             case 9:
-                peer->user_data = (int)cur;
+                peer->user_data = cur;
                 func_02064554(work, peer->command, aid, 0);
                 peer->state = 2;
                 return consumed + 9;
@@ -678,7 +676,7 @@ int func_02063ea8(WBTWork *work, int aid, int buf, int size) {
                 case 5:
                 case 7: {
                     int cur_cmd;
-                    peer->user_data = (int)cur;
+                    peer->user_data = cur;
                     cur_cmd = work->cmd.command;
                     if ((cur_cmd == 4 || cur_cmd == 6) &&
                         peer->block_id == work->cmd.u.get.block_id &&
@@ -713,9 +711,6 @@ int func_02063ea8(WBTWork *work, int aid, int buf, int size) {
     func_02064554(work, 0xF, aid, 5);
     return consumed;
 }
-
-int func_02065bc0(void);
-int func_02065bd0(void);
 
 int func_02063e08(WBTWork *work, int aid, void *buf, int size) {
     WBTPeerRecord *peer;
@@ -765,9 +760,6 @@ int func_02063d3c(WBTWork *work, int aid, void *buf, int size) {
     return ret;
 }
 
-extern WBTBlockInfoList *func_02065a94(int key);
-extern int func_02065bc0(void);
-
 /* NitroSDK WBT: answer a peer's completed GET_BLOCK request (REQ_GET_BLOCK)
  * with one packet of the block. A COMMON block's packet comes straight from
  * the registered data (func_02064888); a USER block's comes from the
@@ -816,8 +808,6 @@ int func_02063bc4(WBTWork *work, int idx, void *buf, int size) {
     return r6;
 }
 
-extern int func_02065bc0(void);
-
 int func_02063ae4(WBTWork *work, int idx, void *buf, int size) {
     WBTPeerRecord *e = &work->peer[idx];
     int r7 = 0;
@@ -841,9 +831,6 @@ int func_02063ae4(WBTWork *work, int idx, void *buf, int size) {
     }
     return r7;
 }
-
-extern int func_02065bc0(void);
-extern int func_02065bd0(void);
 
 /* NitroSDK WBT: write the running command's next request packet into buf.
  * SYNC and USER_DATA resend the request. GET_BLOCK and GET_BLOCKINFO ask each
@@ -903,21 +890,6 @@ int func_02063980(WBTWork *work, void *buf, int size) {
  * peer's receive bitmap: GET_BLOCK into the caller's buffer and bitmap
  * tables, GET_BLOCKINFO into the peer record's own bitmap words.
  * The WBTCommand / WBTWork views are in private/arm9_wbt.h. */
-
-extern void func_02065bf4(void);
-extern int func_02065c1c(void);
-extern int func_02065bc0(void);
-extern int func_02065bd0(void);
-extern int func_02064f54(unsigned char *dst, unsigned short target_bmp, unsigned char cmd_counter,
-                         int b, int c);
-extern void func_020647fc(WBTPacketBitmap *pkt, int length, unsigned int *bitmap,
-                          unsigned char *buffer);
-extern int func_02064e18(unsigned char *dst, unsigned short target_bmp, unsigned char cmd_counter,
-                         unsigned int block_id, unsigned int seq);
-extern int func_02064cd8(unsigned char *dst, unsigned short target_bmp, unsigned char cmd_counter,
-                         unsigned int block_id, unsigned int seq);
-extern int func_02064a94(unsigned char *dst, unsigned short target_bmp, unsigned char cmd_counter,
-                         const void *data, unsigned char size);
 
 int func_02063718(WBTWork *work, void *buf, int size) {
     int t;
