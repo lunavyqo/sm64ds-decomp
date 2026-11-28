@@ -40,11 +40,9 @@ void func_ov007_020c2024(Ov007Touch *t) {
 }
 
 // @symbol func_ov007_020c2018
-#pragma long_calls on
 void func_ov007_020c2018(void *p) {
     func_ov007_020c3d1c(p);
 }
-#pragma long_calls off
 
 // @symbol func_ov007_020c1db0
 void func_ov007_020c1db0(Ov007Touch *a, TPData *b) {

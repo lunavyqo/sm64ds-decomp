@@ -5,6 +5,7 @@
  * positional and emits the functions in this source order. */
 #include "types.h"
 
+/* Load-bearing: deleting this changes the formatter and six helper bodies. */
 #pragma optimize_for_size on
 #pragma defer_codegen off
 
@@ -88,6 +89,7 @@ void func_0206c9f4(struct Stream *s, unsigned int n);
 int func_0206ca44(const char *s);
 
 /* Format one variadic debug message in 64-byte chunks. */
+/* Load-bearing: this body's retail instruction selection leaves common subexpressions in place. */
 #pragma opt_common_subs off
 void func_0206a928(struct Stream *ctx, const char *fmt, int **ap) {
     int conv;
@@ -636,6 +638,7 @@ void func_0206a928(struct Stream *ctx, const char *fmt, int **ap) {
     if (nbuf != 0)
         ctx->fn(ctx, buf, nbuf);
 }
+/* Load-bearing: restoring the default here keeps func_0206bdb4's retail body. */
 #pragma opt_common_subs on
 
 int func_0206bc8c(u64 d) {
@@ -814,6 +817,7 @@ u64 func_0206bdb4(u64 d, int mode) {
 }
 
 /* Multiply a soft-double by ten. */
+/* Load-bearing: this body's retail instruction selection leaves common subexpressions in place; later bodies are unaffected. */
 #pragma opt_common_subs off
 u64 func_0206c244(u64 d) {
     int sign;
@@ -875,7 +879,6 @@ u64 func_0206c244(u64 d) {
 
     return out;
 }
-#pragma opt_common_subs on
 
 u64 func_0206c51c(u64 a, u64 b) {
     int tmp;

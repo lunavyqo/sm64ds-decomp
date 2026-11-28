@@ -2,8 +2,7 @@
 /* Mario, Luigi, Wario and Yoshi. ov002, 0x020bccfc..0x020e6a08, plus
  * the static initializer at 0x021019d0. ~daPly_c() is the key function, so this file
  * emits daPly_c's vtable, typeinfo and type name.
- * defer_codegen stays off except around ~daPly_c(), where it is on so D0
- * lands before D1.
+ * defer_codegen stays off, keeping .text in source order.
  * Local optimization pragmas and some copy/reload forms are load-bearing.
  * Evidence: config/tu_manifest.d/ov002/daPly_c.json, notes/data/class-facts/daPly_c.json; measured limits: notes/experiments/player-readability-1014.json.
  *
@@ -20345,17 +20344,11 @@ void daPly_c::func_ov002_020e6780() {
     mHeadRotMode = 0;
 }
 
-/* Out-of-line ~daPly_c is the key function. defer_codegen on for this
- * definition only: under defer_codegen off the variants come out D1, D0, D2,
- * and the cartridge order is D0 then D1. With deferred codegen they come out
- * D2, D0, D1, and the following function stays after them. The vtable's
- * typeinfo and type name are compared against the cartridge's records. D2
- * is not in the cartridge. */
-#pragma defer_codegen on
-
+/* Out-of-line ~daPly_c is the key function. The variants come out D2, D0,
+ * D1; the cartridge order is D0 then D1, and D2 is not in the cartridge. The
+ * vtable's typeinfo and type name are compared against the cartridge's
+ * records. */
 daPly_c::~daPly_c() {}
-
-#pragma defer_codegen off
 
 /* Every member is built by the compiler. mModels' implicit constructor is
  * inlined with its own `this` (daPly_c + 0xdc), which is the second base

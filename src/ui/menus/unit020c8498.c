@@ -127,11 +127,9 @@ Ov007Transition *Transition_Create(void) {
 }
 
 // @symbol Transition_Destroy
-#pragma long_calls on
 void Transition_Destroy(void *p) {
     func_ov007_020c3d1c(p);
 }
-#pragma long_calls off
 
 // @symbol func_ov007_020c8ac0
 void func_ov007_020c8ac0(Ov007Transition *tr) {
@@ -184,11 +182,9 @@ void func_ov007_020c897c(Ov007Transition *tr) {
 }
 
 // @symbol func_ov007_020c8970
-#pragma long_calls on
 void func_ov007_020c8970(Ov007Transition *tr) {
     func_ov007_020c897c(tr);
 }
-#pragma long_calls off
 
 // @symbol func_ov007_020c86c4
 void func_ov007_020c86c4(Ov007Transition *tr) {

@@ -5,6 +5,7 @@
 #include "nitro/hw/mmap_shared.h"
 #include "private/debugger_block.h"
 
+/* Load-bearing: deleting this changes all three debug-ring bodies. */
 #pragma optimize_for_size on
 
 struct Ring {
