@@ -48,9 +48,9 @@ extern "C" {
 extern unsigned int gLastUsedFileID;
 
 unsigned int func_02018a24(unsigned int);
-int func_020186c0(unsigned int val);
-int func_02018568(int a);
-unsigned int func_02018ac4(unsigned int *p);
+unsigned char *func_020186c0(unsigned int val);
+int func_02018568(const void *a);
+unsigned int func_02018ac4(const void *p);
 void DecompressLZ16(void *src, void *dst);
 int func_020185c0(void *buf, unsigned int x);
 void func_02018770(void);
@@ -81,12 +81,12 @@ void SharedFilePtr::func_02017e0c(unsigned int id) {
    and stash and return the buffer. */
 void *SharedFilePtr::Load() {
     gLastUsedFileID = fileID;
-    int p = func_020186c0(fileID);
+    unsigned char *p = func_020186c0(fileID);
     if (p != 0) {
         unsigned int size;
         void *mem;
         if (func_02018568(p)) {
-            unsigned int *q = (unsigned int *)(p + 4);
+            unsigned char *q = p + 4;
             size = func_02018ac4(q);
             mem = Memory::Allocate(size);
             DecompressLZ16(q, mem);
@@ -96,7 +96,7 @@ void *SharedFilePtr::Load() {
             size = FS_GetLength(&obj);
             FS_CloseFile(&obj);
             mem = Memory::Allocate(size, 0x20);
-            MI_CpuCopy8((void *)p, mem, size);
+            MI_CpuCopy8(p, mem, size);
         }
         func_02018770();
         DC_StoreRange(mem, size);
@@ -107,35 +107,35 @@ void *SharedFilePtr::Load() {
     FSFile obj2;
     void *cp;
     unsigned int csize;
-    int raw;
+    unsigned char *raw;
     int fsize;
 
     func_020185c0(&obj2, fileID);
     fsize = FS_GetLength(&obj2);
     if (fsize <= 8)
         OS_Terminate();
-    raw = (int)Memory::Allocate(fsize, 0x20);
-    DC_FlushRange((void *)raw, fsize);
-    int r = myFS_ReadFile(&obj2, (void *)raw, fsize);
+    raw = (unsigned char *)Memory::Allocate(fsize, 0x20);
+    DC_FlushRange(raw, fsize);
+    int r = myFS_ReadFile(&obj2, raw, fsize);
     if (r != fsize)
         return 0;
     FS_CloseFile(&obj2);
     func_02018770();
     if (func_02018568(raw) != 0) {
         unsigned int t;
-        cp = (void *)(raw + 4);
-        t = func_02018ac4((unsigned int *)cp);
+        cp = raw + 4;
+        t = func_02018ac4(cp);
         csize = fsize - 4;
         fsize = t;
         void *compressed = Memory::Allocate(csize);
         MI_CpuCopy8(cp, compressed, csize);
-        Memory::Deallocate((void *)raw);
-        raw = (int)Memory::Allocate(fsize);
-        DecompressLZ16(compressed, (void *)raw);
+        Memory::Deallocate(raw);
+        raw = (unsigned char *)Memory::Allocate(fsize);
+        DecompressLZ16(compressed, raw);
         Memory::Deallocate(compressed);
     }
-    DC_StoreRange((void *)raw, fsize);
-    filePtr = (void *)raw;
+    DC_StoreRange(raw, fsize);
+    filePtr = raw;
     return filePtr;
 }
 

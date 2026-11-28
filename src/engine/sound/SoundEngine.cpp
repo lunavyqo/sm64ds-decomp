@@ -392,7 +392,7 @@ extern void SND_AssignWaveArc(struct SNDBankData *bank, int index, struct SNDWav
 /* In-span forward declarations. */
 extern int func_0204eda4(FSFile *file, struct S82 *archive, u32 idx);
 extern int func_0204ee10(struct S82 *self);
-extern int func_0204ede8(struct S82 *o, unsigned int i);
+extern unsigned char *func_0204ede8(struct S82 *o, unsigned int i);
 extern int func_0204ee40(struct S82 *self, char *name, char *p);
 extern int func_0204ef9c(void* p);
 extern void func_0204efe0(void);
@@ -2423,10 +2423,10 @@ extern "C" int func_0204ee10(struct S82 *self) {
     return 1;
 }
 
-extern "C" int func_0204ede8(struct S82 *o, unsigned int i) {
-    int r = 0;
+extern "C" unsigned char *func_0204ede8(struct S82 *o, unsigned int i) {
+    unsigned char *r = 0;
     if (i < o->f54->fileCount) {
-        r = (int)o->f58 + o->f54->files[i].start;
+        r = o->f58 + o->f54->files[i].start;
     }
     return r;
 }

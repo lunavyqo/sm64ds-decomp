@@ -30,10 +30,10 @@ extern int myFS_OpenFileFast(FSFile *p_file, FSFileID id);
 extern int myFS_OpenFile(FSFile *p_file, const char *path);
 extern int myFS_ReadFile(FSFile *p_file, void *dst, int len);
 extern int myFS_ConvertPathToFileID(FSFileID *p_file_id, const char *path);
-extern unsigned func_02018ac4(unsigned *p);
+extern unsigned func_02018ac4(const void *p);
 extern void DecompressLZ16(void *src, void *dst);
 extern int func_0204eda4(FSFile *file, struct S82 *archive, unsigned int index);
-extern int func_0204ede8(struct S82 *archive, unsigned int i);
+extern unsigned char *func_0204ede8(struct S82 *archive, unsigned int i);
 extern int func_0204ee10(struct S82 *archive);
 extern int func_0204ee40(struct S82 *archive, char *name, char *narc);
 extern s32 GetOwnerLanguage(void);
@@ -199,7 +199,7 @@ void func_02018770(void) {
 /* The address of archived file val's bytes inside its mounted archive
    (func_0204ede8), mounting the archive first if needed. 0 for a FAT id
    (below 0x8000), which has no in-memory copy. */
-int func_020186c0(unsigned int val) {
+unsigned char *func_020186c0(unsigned int val) {
     unsigned int i;
     ArchiveTableEntry *e;
     if (val < 0x8000)
@@ -277,8 +277,8 @@ FSFileID func_02018598(int arg) {
    first 4 bytes). The loaders then read the LZ header at
    a + 4 (func_02018ac4) and decompress from there. The file address is an
    int here, as most of the callers declare it. */
-int func_02018568(int a) {
-    return memcmp((const void *)a, data_0208edf8, 4) == 0;
+int func_02018568(const void *a) {
+    return memcmp(a, data_0208edf8, 4) == 0;
 }
 
 /* Read up to n bytes of the open file into buf (cache-maintained around the
@@ -296,7 +296,7 @@ int func_020184e0(FSFile *self, void *buf, unsigned int n) {
     func_02018770();
     if (len != r)
         return 0;
-    func_02018568((int)buf);
+    func_02018568(buf);
     DC_StoreRange(buf, len);
     return len;
 }
@@ -335,7 +335,7 @@ void *func_0201834c(FSFile *file, int flush) {
         int readLen = myFS_ReadFile(file, buf, len);
         if (readLen != len)
             return result;
-        if (func_02018568((int)buf) != 0) {
+        if (func_02018568(buf) != 0) {
             /* the LZ header word follows the "LZ77" tag */
             len = func_02018ac4(buf + 1);
             result = Memory::Allocate(len);
@@ -395,12 +395,12 @@ int func_02018270(unsigned int handle, void *dest, int size) {
 void *func_0201818c(unsigned int id, int flush) {
     FSFile obj;
     FSFile file;
-    int p = func_020186c0(id);
+    unsigned char *p = func_020186c0(id);
     if (p != 0) {
         unsigned int size;
         void *mem;
         if (func_02018568(p)) {
-            unsigned int *q = (unsigned int *)(p + 4);
+            unsigned char *q = p + 4;
             size = func_02018ac4(q);
             mem = Memory::Allocate(size);
             DecompressLZ16(q, mem);
@@ -409,7 +409,7 @@ void *func_0201818c(unsigned int id, int flush) {
             size = FS_GetLength(&obj);
             FS_CloseFile(&obj);
             mem = Memory::Allocate(size, 0x20);
-            MI_CpuCopy8((const void *)p, mem, size);
+            MI_CpuCopy8(p, mem, size);
         }
         func_02018770();
         if (flush != 0)
@@ -442,7 +442,7 @@ u32 LoadCompressedFileAt(int fileID, void *target) {
     if (!src)
         return 0;
 
-    size = func_02018ac4((unsigned *)src);
+    size = func_02018ac4(src);
     DecompressLZ16(src, target);
     Deallocate(src);
     return size;
