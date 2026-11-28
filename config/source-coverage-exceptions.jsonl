@@ -32,3 +32,4 @@
 
 {"module": "arm9", "section": ".bss", "start": "0x020a4d30", "end": "0x020a7fc4", "reason": "coverage honestly narrowed: main over-claimed this unannotated bss run inside ModelComponents; the fold claims the owned ModelComponents/CaptureEffect objects but no owner is known for the gap"}
 {"module": "arm9", "section": ".bss", "start": "0x0209cee8", "end": "0x0209d3b0", "reason": "coverage honestly narrowed: main over-claimed this unannotated bss run inside Sound; the fold claims the owned sound objects but no owner is known for the gap"}
+{"module": "arm9", "section": ".bss", "start": "0x020a80c4", "end": "0x020a80c8", "reason": "coverage honestly narrowed: main over-claimed this trailing word inside FS_Rom; it belongs to DGT_Hash2 but the unpromoted multi-function shard object cannot yet license bss content"}

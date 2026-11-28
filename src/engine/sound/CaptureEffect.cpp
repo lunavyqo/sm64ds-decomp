@@ -48,16 +48,18 @@ void func_02049c48(int kind) {
 
 extern "C" void func_02049ba8(void *left, void *right, unsigned int len, int format,
                               CaptureEffect *ctx) {
+    s16 *leftSamples = (s16 *)left;
+    s16 *rightSamples = (s16 *)right;
     if (ctx->fn)
         ctx->fn(left, right, len, format, ctx->arg);
     switch (ctx->kind) {
     case 0:
         return;
     case 1:
-        func_020499bc((s16 *)left, (s16 *)right, len, ctx);
+        func_020499bc(leftSamples, rightSamples, len, ctx);
         return;
     case 2:
-        func_020497a0((s16 *)left, (s16 *)right, len, ctx);
+        func_020497a0(leftSamples, rightSamples, len, ctx);
         return;
     }
 }

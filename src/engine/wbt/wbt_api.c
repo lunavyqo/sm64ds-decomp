@@ -9,7 +9,12 @@
 
 /* data_020a94c0 is the terminal ARM9 .bss blob below; these labels are
  * interior views of it which the linker script also exposes to other TUs. */
-extern u8 data_020a94c0[];
+typedef struct {
+    int initialized;
+    u8 rest[0xf5c];
+} WbtBssBlob;
+
+extern WbtBssBlob data_020a94c0;
 extern u8 data_020a94c4;
 extern s16 data_020a94c8;
 extern s16 data_020a94cc;
@@ -76,7 +81,7 @@ WBTCommand *func_02065b88(void) {
 int func_02065af0(int *thiz) {
     OSIntrMode saved = OS_DisableInterrupts();
     WBTCommand *r;
-    if (*(int *)data_020a94c0 != 1) {
+    if (data_020a94c0.initialized != 1) {
         OS_RestoreInterrupts(saved);
         return 0;
     }
@@ -380,11 +385,11 @@ void WBT_InitParent(int send_packet_size, int recv_packet_size, WBTCallback call
     WBTWork *work;
     WBTCommand cmd;
 
-    if (*(int *)data_020a94c0 == 1) {
+    if (data_020a94c0.initialized == 1) {
         OS_RestoreInterrupts(saved);
         return;
     }
-    *(int *)data_020a94c0 = 1;
+    data_020a94c0.initialized = 1;
     WBT_SetOwnAid(0);
     func_02065ad0(0);
     work = func_02065b94();
@@ -419,11 +424,11 @@ void WBT_InitChild(WBTCallback callback) {
     WBTWork *work;
     WBTCommand cmd;
 
-    if (*(int *)data_020a94c0 == 1) {
+    if (data_020a94c0.initialized == 1) {
         OS_RestoreInterrupts(saved);
         return;
     }
-    *(int *)data_020a94c0 = 1;
+    data_020a94c0.initialized = 1;
     WBT_SetOwnAid(-1);
     func_02065ad0(0);
     work = func_02065b94();
@@ -458,11 +463,11 @@ void WBT_End(void) {
     WBTWork *work;
     int i;
     WBTCommand cmd;
-    if (*(int *)data_020a94c0 == 0) {
+    if (data_020a94c0.initialized == 0) {
         OS_RestoreInterrupts(saved);
         return;
     }
-    *(int *)data_020a94c0 = 0;
+    data_020a94c0.initialized = 0;
     WBT_SetOwnAid(-1);
     func_02065ad0(0);
     work = func_02065b94();
@@ -488,7 +493,7 @@ void WBT_End(void) {
 /* The tail of the ARM9 .bss: the WBT child-thread state at the base, then a
    WM block and newlib's __cs/__atexit/signal state. One object so the
    configured interior labels keep their addresses. */
-u8 data_020a94c0[0xf60];
+WbtBssBlob data_020a94c0;
 
 int WBT_MpParentSendHook(void *sendbuf, int send_size) {
     unsigned short r = 0;

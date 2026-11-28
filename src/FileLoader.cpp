@@ -137,10 +137,10 @@ int LoadArchive(int idx) {
 /* Give archive i back to the heap it came from, if it is mounted. */
 void UnloadArchive(int i) {
     ArchiveTableEntry *p = &gArchiveTable[i];
-    void *a = p->archive;
+    struct S82 *a = p->archive;
     if (a == 0)
         return;
-    func_02018908((struct S82 *)a, p->heap);
+    func_02018908(a, p->heap);
     p->archive = 0;
     p->heap = 0;
 }
@@ -179,7 +179,7 @@ void UnloadArchives(void) {
     ArchiveTableEntry *p = gArchiveTable;
     for (i = 0; i < ARCHIVE_TABLE_COUNT; i++) {
         if (p->archive != 0) {
-            func_02018908((struct S82 *)p->archive, p->heap);
+            func_02018908(p->archive, p->heap);
             p->archive = 0;
         }
         p++;
@@ -382,10 +382,10 @@ int LoadFileAt(int handle, void *dest) {
 
 /* Read up to size bytes of the asset handle's file into dest (func_020184e0). */
 int func_02018270(unsigned int handle, void *dest, int size) {
-    char buf[0x44];
+    FSFile file;
     unsigned int r = func_02018a24(handle);
-    func_020185c0((FSFile *)buf, r);
-    return func_020184e0((FSFile *)buf, dest, size);
+    func_020185c0(&file, r);
+    return func_020184e0(&file, dest, size);
 }
 
 /* Load file id (an asset handle, or an archived file id) into a new heap

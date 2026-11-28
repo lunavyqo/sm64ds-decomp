@@ -1324,7 +1324,6 @@ src/engine/fs/FS_Overlay.c:
 src/engine/dgt/DGT_Hash2.c:
     complete
     .text start:0x0205e0f4 end:0x0205e91c
-    .bss start:0x020a80c4 end:0x020a80c8
 
 src/engine/cp/CP_Context.c:
     complete

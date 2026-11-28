@@ -16,11 +16,13 @@
  * and mounts it under name (func_02018934); UnloadArchive and UnloadArchives
  * give it back (func_02018908). Ids below 0x8000 are plain FAT ids
  * (func_020185c0). Plain C types: the consumers are C. */
+struct S82;
+
 typedef struct ArchiveTableEntry {
     /* 0x00 -- the mounted archive, 0 while unloaded: a 0x60-byte head (the
      * FSArchive, then the NARC, FATB and FIMG pointers; SoundEngine.cpp's
      * struct S82) and the file image after it */
-    void *archive;
+    struct S82 *archive;
     void *heap;                 /* 0x04 -- the heap archive came from */
     unsigned short firstFileId; /* 0x08 */
     unsigned short endFileId;   /* 0x0a -- one past the last */

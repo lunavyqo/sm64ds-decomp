@@ -16,9 +16,9 @@ int func_02063e08(WBTWork *work, int aid, void *buf, int size);
 int func_02063ea8(WBTWork *work, int aid, int buf, int size);
 void func_02064470(WBTWork *self, int r1, int r2);
 void func_02064554(WBTWork *work, int sel, int idx, s16 a3);
-int func_02064674(int *p, int idx, int dst);
+int func_02064674(WBTPacketBitmap *pkt_bmp, int idx, int dst);
 int func_0206470c(WBTPacketBitmap *pkt_bmp);
-void func_020647a4(char *self, int value);
+void func_020647a4(WBTPacketBitmap *pkt_bmp, int value);
 int func_020647d8(WBTPacketBitmap *p, int i);
 void func_020647fc(WBTPacketBitmap *pkt, int length, unsigned int *bitmap, unsigned char *buffer);
 char *func_02064888(unsigned int id, int idx);
@@ -321,8 +321,7 @@ int func_020647d8(WBTPacketBitmap *p, int i) {
 /* Mark packet value received: count it, remember it as the latest, and set
  * its bit. func_02063ea8 calls it once func_02064674 has copied the packet
  * into the buffer. */
-void func_020647a4(char *self, int value) {
-    WBTPacketBitmap *pkt_bmp = (WBTPacketBitmap *)self;
+void func_020647a4(WBTPacketBitmap *pkt_bmp, int value) {
     pkt_bmp->recv_count += 1;
     pkt_bmp->current = value;
 
@@ -374,19 +373,19 @@ fail:
 
 extern int func_02065bd0(void);
 
-int func_02064674(int *p, int idx, int dst) {
+int func_02064674(WBTPacketBitmap *pkt_bmp, int idx, int dst) {
     int n = func_02065bd0();
-    int cnt = p[1];
-    int base = p[6];
+    int cnt = pkt_bmp->count;
+    unsigned char *base = pkt_bmp->buffer;
     if (idx < cnt) {
         if (idx == cnt - 1) {
-            int rem = p[0] % n;
+            int rem = pkt_bmp->length % n;
             if (rem != 0)
-                MI_CpuCopy8((const void *)dst, (void *)(idx * n + base), rem);
+                MI_CpuCopy8((const void *)dst, base + idx * n, rem);
             else
-                MI_CpuCopy8((const void *)dst, (void *)(idx * n + base), n);
+                MI_CpuCopy8((const void *)dst, base + idx * n, n);
         } else {
-            MI_CpuCopy8((const void *)dst, (void *)(idx * n + base), n);
+            MI_CpuCopy8((const void *)dst, base + idx * n, n);
         }
     } else {
         return 0;
@@ -684,9 +683,9 @@ int func_02063ea8(WBTWork *work, int aid, int buf, int size) {
                     if ((cur_cmd == 4 || cur_cmd == 6) &&
                         peer->block_id == work->cmd.u.get.block_id &&
                         (work->cmd.target_bmp & (u16)(1 << aid)) &&
-                        func_020647d8((WBTPacketBitmap *)recv, peer->seq_no) == 0) {
-                        if (func_02064674((int *)recv, peer->seq_no, peer->user_data) == 1) {
-                            func_020647a4((char *)recv, peer->seq_no);
+                        func_020647d8(&recv->pkt_bmp, peer->seq_no) == 0) {
+                        if (func_02064674(&recv->pkt_bmp, peer->seq_no, peer->user_data) == 1) {
+                            func_020647a4(&recv->pkt_bmp, peer->seq_no);
                         } else {
                             func_02064554(work, 0xF, aid, 6);
                         }
