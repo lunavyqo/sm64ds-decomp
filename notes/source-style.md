@@ -194,7 +194,7 @@ above, adding `-Iinclude` for production TUs:
 | Input | clang-tidy 19.1.0 result |
 |---|---|
 | `tools/style_fixtures/good.cpp` | Exit 0; no selected diagnostics. |
-| `src/GetSoundMode.c` (C99) | Exit 0; no selected diagnostics. |
+| `src/Display.cpp` (C99) | Exit 0; no selected diagnostics. |
 | `src/game/actors/d_a_yegg.cpp` | Exit 1: `fBase_c.h`'s operator-new parameter type disagrees with Clang's target `size_t`. |
 | `src/minigames/d_mg_trmpln2_mario.cpp` | Exit 1: conflicting declarations (`data_ov006_0214059c`, `func_ov006_020e6e3c`, etc.) and an out-of-line member declaration; stopped after 20 errors. |
 

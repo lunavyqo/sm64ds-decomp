@@ -3,7 +3,7 @@
 
 /* NitroSDK's DMA API (nitro/mi/dma.h): mi_dma.c, defined in
  * src/engine/mi/MI_Dma.cpp, and the geometry-FIFO sends of mi_dma_gxcommand.c
- * (src/engine/mi/MI_DmaGXCommand.cpp, src/MI_SendGXCommand.c), with the SDK's
+ * (src/engine/mi/MI_DmaGXCommand.cpp, src/MIi_DmaSetParams_wait.cpp), with the SDK's
  * signatures. As in memory.h, the parameters stay unnamed (a named parameter
  * in a declaration costs every C++ includer an @NNN number), and the sizes
  * and channel numbers are spelled unsigned int, the SDK's u32. */
@@ -32,7 +32,7 @@ void MI_SendGXCommandAsync(unsigned int, const void *, unsigned int, MIDmaCallba
 
 /* Arms one channel: source, destination, then the control word that starts
  * it, with interrupts masked (pret/pokediamond MI_dma.h). The body is in
- * ITCM, src/MIi_DmaSetParams.cpp. */
+ * ITCM, src/MIi_DmaSetParams_wait.cpp. */
 void MIi_DmaSetParams(unsigned int, unsigned int, unsigned int, unsigned int);
 
 #ifdef __cplusplus

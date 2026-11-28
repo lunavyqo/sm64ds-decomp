@@ -48,8 +48,8 @@ MAX_READ = 0x80          # longer `m` reads time out on the melonDS stub
 
 # EU addresses (this repo's ROM).
 # The game's loaded-overlay table: 12 slots of {s32 id (-1 = free), u32 start, u32 size}.
-# LoadOverlay (src/LoadOverlay.c) fills a slot before it calls FS_LoadOverlay;
-# UnloadOverlay (src/UnloadOverlay.c), func_02017e94 and func_02017e60 free them.
+# LoadOverlay (src/FileLoader.cpp) fills a slot before it calls FS_LoadOverlay;
+# UnloadOverlay (src/FileLoader.cpp), func_02017e94 and func_02017e60 free them.
 OVERLAY_TABLE = 0x0209d3c4
 OVERLAY_SLOTS = 12
 # The live view matrix (Matrix4x3, Fix12): CopyToViewMat (src/engine/view/Graphics3D.cpp)

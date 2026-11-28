@@ -74,7 +74,7 @@ RANGE = _load_ranges()
 def conflict(a, b):
     """Can `a` and `b` be resident together?  No, if their ranges intersect.
 
-    `LoadOverlay` (src/LoadOverlay.c) walks the 12-entry resident table
+    `LoadOverlay` (src/FileLoader.cpp) walks the 12-entry resident table
     `data_0209d3c4` and calls `Crash()` when the incoming overlay's
     [start, start + code + bss) intersects one already there. The game enforces
     this itself; it is not an assumption about the linker.

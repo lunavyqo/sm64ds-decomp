@@ -11,7 +11,7 @@
  *
  * pret's pokediamond MI_dma_gxcommand.c defines MI_SendGXCommandAsync,
  * MIi_FIFOCallback and MIi_DMACallback in this order (after
- * MI_SendGXCommand, which goes to ITCM: src/MI_SendGXCommand.c). mwccarm
+ * MI_SendGXCommand, which goes to ITCM: src/MIi_DmaSetParams_wait.cpp). mwccarm
  * emits the bodies in reverse, so MIi_DMACallback is lowest. This SDK has no
  * MIi_CheckDma0SourceAddress, and MI_SendGXCommandAsyncFast is not in this
  * ROM.

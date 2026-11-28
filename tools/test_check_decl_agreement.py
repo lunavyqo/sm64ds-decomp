@@ -1789,7 +1789,7 @@ class DeclarationScopeTests(unittest.TestCase):
     `namespace Memory { void Deallocate(void *, Heap *); }` in include/Memory.h
     declares `_ZN6Memory10DeallocateEPvPN5mHeap6Heap_tE`, but it was recorded as a
     declaration of the flat name `Deallocate`, which the tree ALSO defines (C
-    linkage, src/Deallocate.cpp). That one record made a false arity finding
+    linkage, src/FileLoader.cpp). That one record made a false arity finding
     against the C function, and made Memory.h answer the redeclaration gate for
     every C-linkage `extern void Deallocate(void *);`. The definition branches
     already claimed nothing in a mangled scope; declarations now do the same.
@@ -2451,7 +2451,7 @@ class NativeFreeOverloadTests(unittest.TestCase):
 class CFunctionWithCxxOverloadTests(unittest.TestCase):
     """A C function and a C++ inline overload of its name are two entities.
 
-    The tree's shape: NitroSDK's `VEC_Add` is C, defined in src/VEC_Add.c and
+    The tree's shape: NitroSDK's `VEC_Add` is C, defined in src/engine/fx/FX_vec.c and
     declared `extern "C"` in nitro/fx/fx_vec.h; math/CalcLib.h adds an inline
     `VEC_Add(Vector3 *, ...)` that forwards to it, after the C++ guard closes the
     extern "C" block. Measuring either one against the other's body is comparing
@@ -2477,7 +2477,7 @@ class CFunctionWithCxxOverloadTests(unittest.TestCase):
         def tree(t):
             t.write("include/fx_vec.h", self.SDK_H)
             t.write("include/CalcLib.h", self.OVERLOAD_H)
-            t.write("src/VEC_Add.c",
+            t.write("src/engine/fx/FX_vec.c",
                     '#include "fx_vec.h"\n'
                     "void VEC_Add(const VecFx32 *a, const VecFx32 *b, VecFx32 *ab)\n"
                     "{\n    ab->x = a->x + b->x;\n}\n")
@@ -2518,7 +2518,7 @@ class CFunctionWithCxxOverloadTests(unittest.TestCase):
                 reverse=reverse)
             self.assertEqual([(f["kind"], f["got"], f["want"], f["ref_file"])
                               for f in findings],
-                             [("return", "int", "void", "src/VEC_Add.c")])
+                             [("return", "int", "void", "src/engine/fx/FX_vec.c")])
 
     def test_a_c_declaration_matching_NO_entity_is_still_reported(self):
         for reverse in (False, True):

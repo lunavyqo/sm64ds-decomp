@@ -6,7 +6,7 @@
 /*
  * MSL's file_struc.h: the FILE of the __files table (0x0209a330) and the
  * proc types of its read/write/close_proc. The console procs
- * (src/__read_console.c, src/__write_console.c, src/__close_console.c) are
+ * (src/lib/runtime/semihosted_console_io.c) are
  * three of those procs; fflush, __flush_all, __flush_buffer and
  * __prep_buffer (src/cstd4.cpp) read the FILE itself.
  */

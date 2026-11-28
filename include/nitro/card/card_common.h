@@ -102,7 +102,7 @@ void CARD_UnlockBackup(u16);
 
 /* The backup type the game selected: word 0 of its backup spec (ntrtwl/NitroSDK
  * nitro/card/common.h). The SDK returns a CARDBackupType; the
- * definition, src/CARD_GetCurrentBackupType.c, spells it int. */
+ * definition, src/engine/card/CARD_Backup.c, spells it int. */
 int CARD_GetCurrentBackupType(void);
 
 /* card_request.c */

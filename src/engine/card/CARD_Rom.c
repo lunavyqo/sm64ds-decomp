@@ -112,7 +112,7 @@ static int CARDi_ReadFromCache(CARDRomStat *p) {
 
 /* A read is done: mark it successful and end the task. The body after the
  * result is the SDK's CARDi_EndTask(p, TRUE), written out: this SDK keeps
- * CARDi_EndTask out of line (src/CARDi_EndTask.cpp), and the ROM inlines it
+ * CARDi_EndTask out of line (src/engine/card/CARD_Backup.c), and the ROM inlines it
  * here. */
 // @symbol CARDi_ReadEnd
 static void CARDi_ReadEnd(void) {

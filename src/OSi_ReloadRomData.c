@@ -28,7 +28,7 @@ extern void OSReadROMArea(u32 src, void *dst, int len);
  * card lock inside OSi_ReloadRomData instead. It lives in ITCM because OSi_ReloadRomData
  * overwrites the ARM9 image in main RAM.
  *
- * Sole caller: src/func_02013f4c.cpp, which passes 0.
+ * Sole caller: src/CrashScreen.cpp, which passes 0.
  */
 void OS_ResetSystem(u32 resetArg) {
     if (MB_IsMultiBootChild())
@@ -50,7 +50,7 @@ void OS_ResetSystem(u32 resetArg) {
  * offset / ram address / size fields of the cartridge header copy at HW_ROM_HEADER_BUF.
  * Card offsets below 0x8000 are the header and the secure area, which the page-read
  * command cannot reach, so the ARM9 read starts at 0x8000 and the RAM below that is left
- * as it is. OSReadROMArea (src/OSReadROMArea.c) is the SDK's OSi_ReadCardRom32.
+ * as it is. OSReadROMArea (src/OSi_DoBoot.c) is the SDK's OSi_ReadCardRom32.
  *
  * The SDK's later version adds HW_ROM_BASE_OFFSET_BUF and reads all six header fields
  * after the cache maintenance. This one reads the ARM9 fields first, then takes the card
