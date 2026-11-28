@@ -208,6 +208,7 @@
     "LOCAL WORKER NOTE: this machine builds the EU-dump control ROM ddab9300b24aeae254192c2a30d812b07ece3adff83230e75c865ed915c9de40, byte-identical to its strict stock control; verification.linkcheck.rom.sha256 is normalized to the fleet-canonical hash per #3691."
   ],
   "verification": {
+    "flags": "-O4,p -enum int -lang c++ -char signed -interworking -proc arm946e -gccext,on -msgstyle gcc -Cpp_exceptions off",
     "linkcheck": {
       "round": "tools/tubuild.py linkcheck -- scratch dsd delink+lcf, whole-tree mwccarm, mwldarm link, linked-range and module byte comparison, dsd check symbols --fail, full ROM build",
       "result": "scratch-data-verified",

@@ -135,6 +135,7 @@
     "CARDi_LockResource / CARDi_UnlockResource are static in pret; here they keep external linkage like every other arm9 symbol, and they stay out of line either way."
   ],
   "verification": {
+    "flags": "-O4,p -enum int -lang c++ -char signed -interworking -proc arm946e -gccext,on -msgstyle gcc -Cpp_exceptions off",
     "linkcheck": {
       "round": "tools/tubuild.py linkcheck -- scratch dsd delink+lcf, whole-tree mwccarm, mwldarm link, linked-range and module byte comparison, dsd check symbols --fail, full ROM build",
       "result": "data-verified",

@@ -97,6 +97,7 @@
     "Two functions, .text 0x02019dfc..0x02019ebc; the .bss run is 0x0209d4d4..0x0209d528."
   ],
   "verification": {
+    "flags": "-O4,p -enum int -lang c++ -char signed -interworking -proc arm946e -gccext,on -msgstyle gcc -Cpp_exceptions off",
     "linkcheck": {
       "round": "tools/tubuild.py linkcheck -- scratch dsd delink+lcf, whole-tree mwccarm, mwldarm link, linked-range and module byte comparison, dsd check symbols --fail, full ROM build",
       "result": "data-verified",

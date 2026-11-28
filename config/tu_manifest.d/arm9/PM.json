@@ -212,6 +212,7 @@
     "Text-only. The channel's .bss variables (0x020a8104..0x020a813c) stay with their owner unassigned. They carry pm.c's static names from ntrtwl/NitroSDK: PMi_IsInit, PMi_SyncFlag, PMi_SleepEndFlag, PMi_LCDCount, PMi_Work, PMi_Mutex and PMi_RegisterBuffer (data_020a813c is the buffer field of its last entry, which dsd records as its own reloc target)."
   ],
   "verification": {
+    "flags": "-O4,p -enum int -lang c99 -char signed -interworking -proc arm946e -gccext,on -msgstyle gcc -Cpp_exceptions off",
     "linkcheck": {
       "round": "tools/tubuild.py linkcheck -- scratch dsd delink+lcf, whole-tree mwccarm, mwldarm link, linked-range and module byte comparison, dsd check symbols --fail, full ROM build",
       "result": "data-verified",
