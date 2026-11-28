@@ -8,7 +8,7 @@
  * function skip each overlay-table entry's file_id (SHA1ProcessMessageBlock), and
  * return the previous setting. FS_AttachOverlayTable turns it on around the
  * overlay table's digest check. */
-extern int data_020a80c4;
+int data_020a80c4;
 
 int DGT_SetOverlayTableMode(int flag) {
     int prev = data_020a80c4;
@@ -119,7 +119,6 @@ typedef struct {
     unsigned int w[4];
 } T4;
 
-extern int data_020a80c4;
 extern T4 data_0209a054;
 
 #define SHA1CircularShift(bits, word) (((word) << (bits)) | ((word) >> (32 - (bits))))
@@ -208,8 +207,6 @@ void SHA1ProcessMessageBlock(SHA1Context *context) {
     }
 }
 
-extern void SHA1ProcessMessageBlock(SHA1Context *context);
-
 /* RFC 3174 SHA1PadMessage: append the 0x80 terminator and zero-fill the
  * block, processing it (SHA1ProcessMessageBlock) first if the
  * 64-bit length no longer fits, then store the length big-endian in the last
@@ -242,11 +239,6 @@ void SHA1PadMessage(SHA1Context *context) {
 
     SHA1ProcessMessageBlock(context);
 }
-
-/* RFC 3174 SHA1Reset, SHA1Input and SHA1Result. */
-extern int SHA1Reset(SHA1Context *context);
-extern int SHA1Input(SHA1Context *context, const unsigned char *data, int len);
-extern int SHA1Result(SHA1Context *context, unsigned char *out);
 
 void DGT_Hash2CalcHmac(unsigned char *out, unsigned char *msg, int msglen, unsigned char *key,
                        int keylen) {
